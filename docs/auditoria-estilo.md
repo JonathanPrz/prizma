@@ -1,6 +1,6 @@
 # Auditoría de accesibilidad y estilo de Prizma
 
-Fecha: 15 de noviembre de 2026. Página auditada: https://jonathanprz.github.io/prizma/. Base local: `1c30404` (main al comenzar). Alcance: página de selección publicada y su vista previa; revisión de `AGENTS.md`, `docs/diseno.md`, HTML, CSS y eventos que reconstruyen los controles. La propuesta conserva el logo de teselas, los tres propósitos y todos los textos y opciones existentes.
+Fecha: 15 de noviembre de 2026. Página auditada: https://jonathanprz.github.io/prizma/. Base local: `1c30404` (main al comenzar). Alcance: página de selección publicada y su vista previa; revisión de `AGENTS.md`, `docs/diseno.md`, HTML, CSS y eventos que reconstruyen los controles. La implementación final usa la dirección **B · Panel de trabajo**, elegida por el dueño. Conserva el logo de teselas, los tres propósitos y todos los textos y opciones existentes.
 
 Se distinguen hallazgos de accesibilidad de decisiones visuales. Una preferencia estética no es un incumplimiento WCAG. La sección de perfil de `docs/diseno.md` está desactualizada frente a la tarea 002 integrada, cuyas preguntas actuales se conservan.
 
@@ -49,7 +49,7 @@ Hallazgos ordenados por impacto en el uso. Referencia: [WCAG 2.2](https://www.w3
 - La página tiene `lang="es"`, encabezados, regiones, etiquetas y fieldsets. Las tarjetas usan botones reales con `aria-pressed`; los mensajes de conteo y respaldo conservan `aria-live`.
 - El SVG decorativo está oculto al árbol accesible. Los propósitos tienen nombres y los estados elegidos no dependen solo del color: el botón cambia de texto/estado y en la propuesta el filtro también usa subrayado y borde.
 - Los botones principales son de al menos 44 px de alto. Las etiquetas de casillas aportan áreas activas de al menos 32 px en escritorio y 40 px en teléfono; el control de archivo conserva etiqueta y foco visible. No se cuenta solo el dibujo de la casilla.
-- En las capturas iniciales axe no encontró infracciones automáticas; los problemas A1 y A2 requirieron pruebas manuales. En A y B tampoco encontró infracciones automáticas en los cuatro estados de captura de cada dirección. La vista previa de A se comprobó además con selección y notas.
+- En las capturas iniciales axe no encontró infracciones automáticas; los problemas A1 y A2 requirieron pruebas manuales. En A y B tampoco encontró infracciones automáticas en los cuatro estados de captura de cada dirección. La vista previa de B se comprobó además con selección y notas.
 - El contraste de texto y los colores de propósito se comprobó también con los filtros activos. Las exenciones de controles desactivados no se usaron para justificar texto activo.
 
 ### Contraste de la propuesta elegida
@@ -59,13 +59,13 @@ Ratios calculados con luminancia relativa sRGB, redondeados a dos decimales. Tex
 | Uso | Claro: par medido | Ratio | Oscuro: par medido | Ratio |
 |---|---|---:|---|---:|
 | Texto principal | `#18213f` / `#ffffff` | 15,81 | `#e8ecf8` / `#192133` | 13,61 |
-| Texto secundario sobre fondo | `#4a5372` / `#f5f3ef` | 6,84 | `#b6bfd5` / `#111724` | 9,73 |
+| Texto secundario sobre fondo | `#4a5372` / `#eef1f7` | 6,70 | `#b6bfd5` / `#0d1424` | 9,98 |
 | Motivar | `#b0145a` / `#ffffff` | 6,79 | `#ff7fb0` / `#192133` | 6,82 |
 | Presentar | `#00727d` / `#ffffff` | 5,67 | `#4fd1dc` / `#192133` | 8,79 |
 | Mostrar | `#5a33a8` / `#ffffff` | 8,49 | `#b79cff` / `#192133` | 7,05 |
 | Borde de campo | `#7b8395` / `#ffffff` | 3,80 | `#8490a8` / `#192133` | 5,00 |
 
-B usa las mismas superficies de tarjetas, bordes y colores de propósito. Su fondo claro `#eef1f7` con texto secundario `#4a5372` también supera 4,5:1; se revisó con axe y medición de los colores. El foco conserva la variable original de enfoque en ambos temas.
+La tabla corresponde a B, la implementación final. A queda como referencia visual de la primera propuesta y mantiene su registro de comprobación. El foco conserva la variable original de enfoque en ambos temas.
 
 ## B. Calidad visual
 
@@ -73,7 +73,7 @@ B usa las mismas superficies de tarjetas, bordes y colores de propósito. Su fon
 
 **Evidencia.** «Nivel» ocupa solo la mitad de la retícula original y las casillas se distribuyen como texto corrido en todo el ancho. Las dos preguntas quedan una debajo de otra, con líneas de distinta longitud. Falta un contenedor que distinga la preparación de la clase del catálogo.
 
-**Corrección aplicada en A.** Perfil como una superficie propia; preguntas en dos columnas paralelas en escritorio, con casillas alineadas en filas. Nivel con ancho limitado, meta a todo el ancho. En teléfono se conserva una columna con áreas táctiles cómodas. No se vuelve obligatorio ni se colapsa el formulario.
+**Corrección aplicada en B.** Perfil en un panel propio a la izquierda, acciones en el centro y selección a la derecha. Las casillas se alinean en filas dentro del perfil. En pantallas intermedias se usan dos columnas y en teléfono una, con áreas táctiles cómodas. No se vuelve obligatorio ni se colapsa el formulario.
 
 ### V2 · Alta · La pregunta de la meta se fragmenta en filas artificiales
 
@@ -85,7 +85,7 @@ B usa las mismas superficies de tarjetas, bordes y colores de propósito. Su fon
 
 **Evidencia.** La misma familia pesada aparece en marca, titular y encabezados. «Tu clase» y los títulos de acciones compiten sin una separación editorial clara. En escritorio, la bajada queda siempre debajo del titular, dejando una zona derecha sin función.
 
-**Corrección aplicada.** A combina Georgia del sistema para titular y títulos de sección con Atkinson ya existente para controles y contenido. Se conserva una escala contenida y la bajada acompaña al titular en dos columnas de escritorio. B ofrece otra respuesta: solo sans serif, cabecera compacta y tres columnas funcionales.
+**Corrección aplicada en B.** Atkinson en toda la interfaz, con una cabecera compacta y una escala menor en títulos auxiliares. La jerarquía se apoya en paneles y columnas funcionales. La alternativa A usa Georgia en títulos; se conserva únicamente en sus capturas de comparación.
 
 ### V4 · Media · El ritmo de las tarjetas y los filtros parece uniforme
 
@@ -103,7 +103,7 @@ B usa las mismas superficies de tarjetas, bordes y colores de propósito. Su fon
 
 **Evidencia.** La base usa un fondo azulado y numerosas superficies de borde similar. Es coherente, pero comunica una utilidad técnica más que una herramienta docente de lectura y elección. Es una valoración de diseño, no una prueba de usabilidad con docentes.
 
-**Corrección aplicada.** A usa un papel cálido y tinta azul, manteniendo blanco en superficies y los colores de propósito. B conserva un enfoque frío y operativo, con retícula más compacta. La elección de A es una hipótesis de diseño que el dueño puede evaluar con las capturas y una prueba con docentes.
+**Respuesta visual elegida.** El dueño prefirió B: fondo gris azulado y enfoque operativo, con retícula compacta y menos peso de cabecera. A ofrece la alternativa de papel cálido y títulos editoriales. La preferencia del dueño decide entre ambas; no se presenta como una conclusión de usabilidad con docentes.
 
 ## Dos direcciones y decisión
 
@@ -117,9 +117,11 @@ B usa las mismas superficies de tarjetas, bordes y colores de propósito. Su fon
 | Teléfono | Una columna, navegación accesible al pie | Una columna y navegación al pie; pierde parte de su ventaja de panel |
 | Riesgo | Más recorrido vertical; los atajos no sustituyen una futura prueba de uso | Tres columnas cargan el campo visual; perfil más estrecho |
 
-**Elección: A.** Mantiene el carácter sobrio de la marca y diferencia preparación, elección y salida. Se adapta mejor a la lectura de acciones con sus fuentes, y evita añadir complejidad de panel. No se afirma que sea una decisión validada por usuarios. B queda como prototipo de comparación; su CSS no se carga ni se distribuye como un modo adicional de la aplicación.
+**Elección final: B, indicada por el dueño.** Perfil, catálogo y selección quedan visibles a la vez en escritorio. Se mantiene Atkinson en toda la interfaz y una cabecera compacta. Solo B se carga como implementación; A queda como referencia visual. No hay interruptor A/B.
 
-La composición A no pretende reducir a cualquier costo la altura en teléfono: las casillas legibles y separadas requieren espacio. El acceso a la selección se resuelve con navegación persistente, no ocultando contenido o reduciendo la letra.
+**Ajustes solicitados:** los tres filtros de «¿Para qué?» son botones compactos en una fila cuando hay espacio, con `flex-wrap` para pasar a otra línea. A 390 px se apilan; a 1440 px comparten fila, también cuando están activos. El logo de la cabecera mide **2,75 rem (44 px con la raíz de 16 px)** en todos los tamaños, sin alterar su geometría ni los colores.
+
+Las casillas legibles requieren espacio en teléfono; el acceso a la selección se mantiene mediante navegación persistente. Se conservan el selector de tema, la restauración de foco, los datos, respaldos y PDF.
 
 ### Capturas
 
@@ -128,22 +130,22 @@ Se conservan ocho imágenes por estado/dirección: entrada y zona de acciones, e
 | Estado | Escritorio claro | Teléfono claro | Escritorio oscuro | Teléfono oscuro |
 |---|---|---|---|---|
 | Publicado, antes | [Entrada](marca/antes/escritorio.png) | [Entrada](marca/antes/telefono.png) | [Entrada](marca/antes/escritorio-oscuro.png) | [Entrada](marca/antes/telefono-oscuro.png) |
-| A, implementada | [Entrada](marca/direccion-a/escritorio.png) | [Entrada](marca/direccion-a/telefono.png) | [Entrada](marca/direccion-a/escritorio-oscuro.png) | [Entrada](marca/direccion-a/telefono-oscuro.png) |
-| B, prototipo | [Entrada](marca/direccion-b/escritorio.png) | [Entrada](marca/direccion-b/telefono.png) | [Entrada](marca/direccion-b/escritorio-oscuro.png) | [Entrada](marca/direccion-b/telefono-oscuro.png) |
+| A, referencia | [Entrada](marca/direccion-a/escritorio.png) | [Entrada](marca/direccion-a/telefono.png) | [Entrada](marca/direccion-a/escritorio-oscuro.png) | [Entrada](marca/direccion-a/telefono-oscuro.png) |
+| B, implementada | [Entrada](marca/direccion-b/escritorio.png) | [Entrada](marca/direccion-b/telefono.png) | [Entrada](marca/direccion-b/escritorio-oscuro.png) | [Entrada](marca/direccion-b/telefono-oscuro.png) |
 
 Las capturas de tarjetas y filtros usan el prefijo `acciones-` en las mismas carpetas. Se incluyen fichas con los tres colores de propósito en el catálogo; las imágenes no sustituyen el recorrido completo de teclado.
 
 ## Implementación, pruebas y revisión
 
-- `styles.css`: dirección A, retícula adaptable, contraste, foco, navegación móvil, temas explícitos/automático y conservación de la hoja blanca para impresión. Variables de colores y fuentes en `:root`; paleta del logo sin cambios.
+- `styles.css`: dirección B, retícula adaptable, contraste, foco, navegación móvil, temas explícitos/automático y conservación de la hoja blanca para impresión. Variables de colores y fuentes en `:root`; paleta del logo sin cambios.
 - `index.html`: envoltorios mínimos de cabecera y pregunta de la meta, enlaces de sección, selector etiquetado y lectura temprana de tema. Los IDs usados por el resto de la aplicación se conservan.
 - `app.js`: únicamente selección/persistencia del tema y restauración de foco tras reconstruir botones. Sin cambios en filtrado, datos, contenido, respaldo o PDF.
 - Prueba de 10 combinaciones entre dispositivo claro/oscuro y preferencia ausente/clara/oscura/automática/inválida. Verificación del atributo antes de solicitar CSS, persistencia tras recarga y adaptación del sistema en vivo. Lectura y escritura de localStorage bloqueadas sin romper la página.
 - Pruebas de teclado: skip link, enlaces a selección, filtros, elegir/quitar y selector nativo. Controles revisados frente a la barra inferior para que el foco no quede tapado. Comprobación de estilos con colores forzados y movimiento reducido.
 - Notas, exportación JSON, vista previa, descarga PDF y estilos de impresión comprobados en Chromium. Se mantuvieron catálogo y textos, comprobados contra el DOM publicado. Validador de catálogo y prueba existente de singular/fecha local correctos.
-- axe se ejecutó también en B con los mismos dos temas y tamaños. Los prototipos se capturaron con el mismo HTML/contenido; B se obtuvo aplicando temporalmente estilos en el navegador, sin mantener una segunda interfaz productiva.
+- B se volvió a capturar directamente desde su implementación en `styles.css`, sin estilos temporales, en claro/oscuro y escritorio/teléfono. Los tres filtros comparten fila a 1440 px, envuelven a 800 px y se apilan a 390 px; logo calculado de 44 × 44 px en ambos temas. A conserva las capturas de la alternativa original.
 
-**Revisión `ponytail-review`:** se leyeron diff, selectores, consumidores de IDs y funciones que reconstruyen controles. Se revisaron recorrido de teclado, preferencia guardada como entrada externa y usos de los estilos de impresión. Se corrigió la pérdida de foco detectada en la base y se evitó una barra de diálogo fija en teléfono. No quedaron hallazgos nuevos que bloquearan el PR. Carga supuesta: usuarios independientes de una página estática; no hay estado de tema compartido entre procesos.
+**Revisión `ponytail-review`:** se leyeron diff, selectores, consumidores de IDs y funciones que reconstruyen controles. Se revisaron recorrido de teclado, preferencia guardada como entrada externa y usos de los estilos de impresión. Se corrigió la pérdida de foco detectada en la base y se evitó una barra de diálogo fija en teléfono. La revisión final se repitió sobre B: se eliminaron la tipografía editorial y una regla móvil de tamaño de logo redundante, se revisaron los puntos de cambio de retícula y se verificaron filtros activos, tema, foco e impresión. No quedaron hallazgos nuevos que bloquearan el PR. Carga supuesta: usuarios independientes de una página estática; no hay estado de tema compartido entre procesos.
 
 ### Qué no se probó
 
