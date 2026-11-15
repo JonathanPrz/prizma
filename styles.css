@@ -251,3 +251,6 @@ legend .enlace-guia-dua { display: inline-block; font-size: .875rem; font-weight
 @media print { .tabla-cif { overflow: visible; } .tabla-cif table { min-width: 0; } }
 
 @media (max-width: 48rem) { .contexto > .casilla-practica { width: 100%; max-width: none; } }
+
+#aviso-apoyos h3 { margin-top: 1.25rem; }
+.enlace-aviso-apoyos, #ver-privacidad { display: inline-block; min-height: 1.5rem; }

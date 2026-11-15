@@ -135,8 +135,8 @@ try {
     </div>
     <div id="estudiante" class="resultados" tabindex="-1">
       <h2 class="solo-lectores">Resultados de apoyos</h2>
-      <p id="aviso-acceso-escolar" class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
-      <p id="aviso-acceso-superior" class="ayuda" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
+      <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo. <a href="#aviso-apoyos" class="enlace-aviso-apoyos" aria-haspopup="dialog" aria-controls="aviso-apoyos">Antes de empezar</a></p>
+      <p id="aviso-acceso-superior" class="ayuda" hidden>Los apoyos se acuerdan con el estudiante y la unidad de inclusión. <a href="#aviso-apoyos" class="enlace-aviso-apoyos" aria-haspopup="dialog" aria-controls="aviso-apoyos">Antes de empezar</a></p>
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
@@ -215,6 +215,17 @@ try {
   </ol>
   <p class="ayuda">Basado en las Pautas DUA 3.0 de CAST (2024).</p>
   <button type="button" id="guia-empezar" class="boton boton-principal" disabled>Empezar</button>
+</dialog>
+
+<dialog id="aviso-apoyos" class="aviso-privacidad" aria-labelledby="t-aviso-apoyos">
+  <h2 id="t-aviso-apoyos" tabindex="-1" autofocus>Antes de empezar</h2>
+  <h3>Cómo se acuerdan los apoyos</h3>
+  <p id="acuerdo-escolar">Conversa con el estudiante y su familia antes de aplicar un apoyo. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
+  <p id="acuerdo-superior" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución. Pregúntale qué barreras encuentra y qué le ha servido antes, y deja el acuerdo por escrito (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
+  <h3>Privacidad</h3>
+  <p>Usa solo iniciales. No escribas nombres, RUT, diagnósticos ni datos de salud. Los datos quedan solo en este navegador.</p>
+  <p><a href="#aviso-privacidad" id="ver-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Ver aviso completo</a></p>
+  <button type="button" id="apoyos-entendido" class="boton boton-principal">Entendido</button>
 </dialog>
 
 <dialog id="aviso-privacidad" class="aviso-privacidad" aria-labelledby="t-privacidad">

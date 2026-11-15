@@ -194,6 +194,8 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
+let guiaVista = false, apoyosAvisados = false, avisosPreparados = false, volverAvisoApoyos = false;
+const CLAVE_AVISO_APOYOS = "prizma.aviso-apoyos.v1";
 let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
@@ -247,6 +249,7 @@ function mostrarPestana(id, enfocar = false) {
   $("#panel-" + id + " .cabecera-intro").append($("#abrir-filtros"));
   guardar(); actualizarConteoFiltros();
   if (enfocar) $("#tab-" + id).focus();
+  revisarAvisos();
 }
 
 function prepararPestanas() {
@@ -727,21 +730,21 @@ async function descargarPdf() {
 
 function mostrarGuiaDUA(origen = document.activeElement) {
   const guia = $("#guia-dua");
-  if (guia.open) return;
+  if (document.querySelector("dialog[open]")) return;
+  guiaVista = true;
   origenGuiaDUA = origen;
   guia.returnValue = "";
   guia.showModal();
+  $("#t-guia-dua").focus();
 }
 
 function prepararGuiaDUA() {
   document.querySelectorAll(".enlace-guia-dua").forEach((enlace) => enlace.addEventListener("click", (evento) => {
     evento.preventDefault(); mostrarGuiaDUA(enlace);
   }));
-  $("#guia-empezar").addEventListener("click", () => {
-    try { localStorage.setItem(CLAVE_GUIA_DUA, "1"); } catch (e) { /* funciona sin almacenamiento */ }
-    $("#guia-dua").close("empezar");
-  });
+  $("#guia-empezar").addEventListener("click", () => $("#guia-dua").close("empezar"));
   $("#guia-dua").addEventListener("close", () => {
+    try { localStorage.setItem(CLAVE_GUIA_DUA, "1"); } catch (e) { /* funciona sin almacenamiento */ }
     if ($("#guia-dua").returnValue === "empezar") {
       if (location.hash !== "#dua") history.pushState(null, "", "#dua");
       mostrarPestana("dua");
@@ -753,18 +756,75 @@ function prepararGuiaDUA() {
       mostrarAvisoPrivacidad(origenAvisoPrivacidad);
     } else if (destino?.isConnected) destino.focus();
   });
-  let vista = false;
-  try { vista = localStorage.getItem(CLAVE_GUIA_DUA) === "1"; } catch (e) { /* se muestra en esta visita */ }
-  if (!vista) mostrarGuiaDUA();
+  try { guiaVista = localStorage.getItem(CLAVE_GUIA_DUA) === "1"; } catch (e) { /* se muestra en esta visita */ }
 }
 
 function mostrarAvisoPrivacidad(origen = document.activeElement) {
   const aviso = $("#aviso-privacidad");
   if (aviso.open) return;
   origenAvisoPrivacidad = origen;
-  if ($("#guia-dua").open) { privacidadPendiente = true; return; }
+  if (document.querySelector("dialog[open]")) { privacidadPendiente = true; return; }
   aviso.showModal();
+  $("#t-privacidad").focus();
   privacidadAvisada = true;
+}
+
+function mostrarAvisoApoyos() {
+  if (document.querySelector("dialog[open]")) return;
+  $("#acuerdo-escolar").hidden = esSuperior();
+  $("#acuerdo-superior").hidden = !esSuperior();
+  $("#aviso-apoyos").returnValue = "";
+  $("#aviso-apoyos").showModal();
+  $("#t-aviso-apoyos").focus();
+}
+
+function revisarAvisos() {
+  if (!avisosPreparados || document.querySelector("dialog[open]")) return;
+  if (privacidadPendiente) {
+    privacidadPendiente = false;
+    mostrarAvisoPrivacidad(origenAvisoPrivacidad);
+  } else if (volverAvisoApoyos) {
+    volverAvisoApoyos = false;
+    mostrarAvisoApoyos();
+  } else if (estado.pestana === "dua" && !guiaVista) mostrarGuiaDUA($("#tab-dua"));
+  else if (estado.pestana === "apoyos" && !apoyosAvisados) mostrarAvisoApoyos();
+}
+
+function prepararAvisos() {
+  try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
+  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(evento.currentTarget); });
+  $("#privacidad-entendido").addEventListener("click", () => {
+    try { localStorage.setItem(CLAVE_PRIVACIDAD, "1"); } catch (e) { /* la confirmación dura esta visita */ }
+    $("#aviso-privacidad").close();
+  });
+  $("#aviso-privacidad").addEventListener("close", () => {
+    if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
+  });
+  prepararGuiaDUA();
+  try { apoyosAvisados = localStorage.getItem(CLAVE_AVISO_APOYOS) === "1"; } catch (e) { /* se avisa durante esta visita */ }
+  document.querySelectorAll(".enlace-aviso-apoyos").forEach((enlace) => enlace.addEventListener("click", (evento) => {
+    evento.preventDefault(); mostrarAvisoApoyos();
+  }));
+  $("#apoyos-entendido").addEventListener("click", () => $("#aviso-apoyos").close());
+  $("#ver-privacidad").addEventListener("click", (evento) => {
+    evento.preventDefault();
+    volverAvisoApoyos = true;
+    $("#aviso-apoyos").close("privacidad");
+  });
+  $("#aviso-apoyos").addEventListener("close", () => {
+    if ($("#aviso-apoyos").returnValue === "privacidad") {
+      mostrarAvisoPrivacidad($("#ver-privacidad"));
+      return;
+    }
+    apoyosAvisados = true; privacidadAvisada = true;
+    try {
+      localStorage.setItem(CLAVE_AVISO_APOYOS, "1");
+      localStorage.setItem(CLAVE_PRIVACIDAD, "1");
+    } catch (e) { /* la confirmación dura esta visita */ }
+    $("#tab-apoyos").focus();
+  });
+  document.querySelectorAll("dialog").forEach((dialogo) => dialogo.addEventListener("close", revisarAvisos));
+  avisosPreparados = true;
 }
 
 async function iniciar() {
@@ -777,18 +837,9 @@ async function iniciar() {
     document.documentElement.dataset.tema = tema.value;
     try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
-  try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
-  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(evento.currentTarget); });
-  $("#privacidad-entendido").addEventListener("click", () => {
-    try { localStorage.setItem(CLAVE_PRIVACIDAD, "1"); } catch (e) { /* la confirmación dura esta visita */ }
-    $("#aviso-privacidad").close();
-  });
-  $("#aviso-privacidad").addEventListener("close", () => {
-    if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
-  });
   cargar();
+  prepararAvisos();
   prepararPestanas(); prepararFiltros();
-  prepararGuiaDUA();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
     return r.json();

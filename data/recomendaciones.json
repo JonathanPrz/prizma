@@ -2499,32 +2499,6 @@
     "revision": null
   },
   {
-    "id": "sup-coordinar",
-    "tipo": "adicional",
-    "titulo": "Acuerda los ajustes con el estudiante y la unidad de inclusión",
-    "como": [
-      "Pregunta al estudiante qué barreras encuentra y qué le ha servido antes.",
-      "Coordina con la unidad de inclusión o de apoyo de tu institución.",
-      "Deja por escrito el acuerdo y revísalo cada semestre."
-    ],
-    "porque": "Los ajustes razonables se definen caso a caso, con la persona y no por ella.",
-    "areas": [],
-    "dimensiones": [],
-    "niveles": [
-      "superior"
-    ],
-    "contextos": [],
-    "respaldo": "norma-legal",
-    "fuentes": [
-      "ley-21091",
-      "ley-20422",
-      "cdpd",
-      "mineduc-es-20422"
-    ],
-    "destacada": false,
-    "revision": null
-  },
-  {
     "id": "sup-tiempo",
     "tipo": "acceso",
     "titulo": "Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide",
