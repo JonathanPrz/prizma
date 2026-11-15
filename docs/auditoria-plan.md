@@ -100,5 +100,4 @@ Hay 6 cambios de prioridad alta:
 - **Etapa 2:** suma los facilitadores, la dimensión 10 y la voz del estudiante.
 - **Etapa 3:** el Tiempo 2 cambia según el nivel, con ajustes razonables en superior.
 
-Estos cambios no están aplicados en `diseno.md`. Se aplican cuando los apruebes.
-La excepción es A9, que corregí porque era un error.
+**Estado:** todos los cambios están aplicados en `diseno.md` v0.2, el 15 de noviembre de 2026. Se aprobaron junto con el alcance de la v1: parvularia, básica y media CH y TP, sin educación superior, práctica profesional ni trabajo. La observación C4 queda limitada a esos niveles.

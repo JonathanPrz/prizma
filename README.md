@@ -1,7 +1,7 @@
 # Prizma
 
-Planificador de clases inclusivas para docentes de todos los niveles:
-parvularia, básica, media, técnico-profesional y superior.
+Planificador de clases inclusivas para docentes de educación parvularia, básica y media, incluida la técnico-profesional.
+La educación superior queda para una versión futura.
 
 Una clase, muchas formas de aprender.
 El Diseño Universal para el Aprendizaje (DUA) funciona aquí como un menú de opciones.

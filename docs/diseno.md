@@ -1,153 +1,220 @@
 # Diseño de Prizma
 
-Versión 0.1 · noviembre 2026 · borrador para validar
+Versión 0.2 · 15 de noviembre de 2026 · incluye los cambios de `auditoria-plan.md`
+
+Los códigos entre corchetes, como [A1], remiten a la observación de la auditoría que originó cada cambio.
 
 ## 1. La idea en una frase
 
 El docente cuenta cómo es su clase y qué barreras ve.
-Prizma le muestra acciones concretas para reducir esas barreras, con su fuente.
+Prizma le muestra acciones concretas para reducir esas barreras, cada una con su fuente.
 Prizma no planifica la clase.
 
-## 2. Recorrido del usuario
+## 2. Alcance de la versión 1
+
+| Incluido | Fuera por ahora |
+|---|---|
+| Educación parvularia | Educación superior: universidades, IP y CFT |
+| Educación básica | Práctica profesional en empresas |
+| Educación media científico-humanista | Ajustes en el trabajo |
+| Educación media técnico-profesional, en las clases y módulos del liceo | |
+
+**Razón.** Los niveles incluidos comparten un mismo marco legal: Decreto 83, Decreto 170, Decreto 67 y Circular 586. Los que quedan fuera tienen otras normas y otros responsables, y necesitan otro catálogo.
+
+El nivel educativo se guarda como un dato, así que se pueden agregar más adelante. Las fuentes de educación superior ya revisadas, la Ley 21.091 y la CDPD, quedan en `fuentes/`.
+
+## 3. Recorrido del usuario
 
 La portada tiene 2 puertas:
 
 | Puerta | Para qué | Resultado |
 |---|---|---|
-| **Mi clase** | Todo el curso. DUA. | Acciones para antes, durante y después |
-| **Un estudiante** | Casos específicos. | Apoyos de acceso, después adecuaciones curriculares, más apoyos adicionales |
+| **Mi clase** | Todo el curso. DUA. | Acciones para antes, durante y después de la clase, y para toda la clase |
+| **Un estudiante** | Casos específicos. | Adecuaciones de acceso, luego adecuaciones en los objetivos, y apoyos adicionales |
 
-Las 2 puertas comparten el **perfil de la clase**: se responde una vez y sirve para las dos.
+Las 2 puertas comparten el **perfil de la clase**. Se responde una sola vez.
 
-### 2.1 Perfil de la clase (30 segundos, 3 preguntas)
+### 3.1 Perfil de la clase (1 minuto, 4 preguntas, todas opcionales)
 
-1. Nivel: parvularia · básica · media · técnico-profesional · superior
-2. Tipo de clase: teórica · práctica · taller o laboratorio · en terreno · en línea
-3. Evaluación: individual · grupal · escrita · oral · práctica (se pueden marcar varias)
+1. **Nivel:** parvularia · básica · media CH · media TP
+2. **Tipo de clase:** teórica · práctica · taller o laboratorio · en terreno · en línea
+3. **Evaluación**, se puede marcar más de una: individual · grupal · escrita · oral · práctica
+4. **¿Qué quieres que aprendan en esta clase?** Es texto libre [A1]. Prizma no lo evalúa. Lo muestra en los resultados y en el PDF con este recordatorio: "Quita las barreras, no el desafío de aprender esto".
 
-Cada respuesta es opcional. Sin respuesta, no se filtra.
+Una pregunta sin respuesta no filtra nada.
 
-### 2.2 Tiempo 1. Mi clase (DUA)
+### 3.2 Tiempo 1. Mi clase (DUA)
 
-- Arriba, 3 pestañas: **Antes · Durante · Después**.
-- Debajo, 3 propósitos para filtrar, en palabras simples:
-  - **Motivar y sostener el interés** (compromiso, red afectiva)
-  - **Presentar la información** (representación, red de reconocimiento)
-  - **Mostrar lo aprendido** (acción y expresión, red estratégica)
-- Cada acción es una tarjeta: verbo + acción, "por qué funciona" en 1 frase, fuente.
-- Botón "Elegir". Lo elegido va a **Mi selección**.
+- **4 pestañas:** Antes · Durante · Después · En toda la clase [A4]. La última reúne lo que no depende de un momento: pertenencia, normas, sesgos y prácticas restaurativas.
+- **3 filtros por propósito**, en palabras simples:
+  - **Motivar y sostener el interés:** principio de Compromiso, red afectiva.
+  - **Presentar la información:** principio de Representación, red de reconocimiento.
+  - **Mostrar lo aprendido:** principio de Acción y expresión, red estratégica.
+- **Acciones destacadas.** Las 5 estrategias que la EEF identifica con buena evidencia van marcadas [C18]: instrucción explícita, estrategias metacognitivas, andamiaje, agrupamiento flexible y uso de tecnología.
+- **Cada tarjeta** muestra:
+  - la acción, que empieza con un verbo,
+  - en 1 frase, por qué funciona,
+  - el tipo de respaldo [A6],
+  - la consideración DUA de la que viene, por ejemplo 7.1.
+- El botón "Elegir" pasa la acción a **Mi selección**.
 
-Es un menú. No hay mínimo ni puntaje. No hay casillas de "cumple / no cumple".
+Es un menú. No hay mínimos, puntajes ni casillas de "cumple / no cumple".
 
-### 2.3 Tiempo 2. Un estudiante
+### 3.3 Tiempo 2. Un estudiante
 
 1. **Iniciales** del estudiante. Nada más que lo identifique.
-2. **Perfil de barreras**, con 4 formas de llenarlo (todas opcionales y combinables):
-   - **Encuesta breve del docente**: 1 pregunta por dimensión, "¿Qué le cuesta en clase?".
-   - **Desde un informe**: el docente traduce un informe psicopedagógico a las mismas dimensiones. El informe no se sube ni se guarda.
-   - **Voz del estudiante**: preguntas en lectura fácil, para responder junto al docente o imprimir.
-   - **Voz de la familia**: lo mismo, pensado para la familia.
-3. **Resultados**, en este orden:
-   1. Apoyos de acceso
-   2. Adecuaciones curriculares, que se muestran después de los de acceso, con un aviso: "Úsalas cuando los apoyos de acceso no bastan. Requieren acuerdo con el equipo de apoyo."
-   3. Apoyos adicionales: desregulación, comunicación con la familia, normativa que respalda
-4. Cada resultado dice **por qué aparece**: "Porque marcaste: le cuesta sostener la atención · clase práctica".
+2. **Perfil de barreras y facilitadores.** Hay 4 formas de llenarlo. Todas son opcionales y se pueden combinar:
+   - **Encuesta breve del docente**, en 2 pasos [D1]:
+     1. El docente marca las áreas que aplican.
+     2. Para cada área, marca las situaciones de la clase en que aparecen barreras [A2] y con qué frecuencia.
+   - **Desde un informe:** el docente pasa un informe psicopedagógico a las mismas dimensiones. El informe no se sube ni se guarda.
+   - **Voz del estudiante** [A7]: preguntas en lectura fácil, para responder con el docente o imprimir.
+   - **Voz de la familia:** lo mismo, pensado para la familia.
 
-### 2.4 Mi selección y PDF
+   Antes de usar la voz del estudiante o de la familia, Prizma avisa: "Pide permiso y explica para qué sirve" [D3].
+3. **Facilitadores** [B1]: "¿Qué le ayuda?". Los apoyos que ya funcionan suben en las recomendaciones y el PDF los destaca.
+4. **Atajo por condición** (opcional) [C7]: el docente elige una condición de la lista del Decreto 170 y del Decreto 83. Prizma sugiere qué dimensiones revisar y el docente confirma. **La condición no se guarda.**
+5. **Resultados**, en este orden [C1]:
+   1. **Adecuaciones de acceso**, agrupadas en los 4 tipos del Decreto 83 [C2]: presentación de la información, formas de respuesta, entorno, y organización del tiempo y el horario.
+   2. **Adecuaciones en los objetivos**, en los 5 tipos del Decreto 83: graduación de la complejidad, priorización, temporalización, enriquecimiento y eliminación. Llevan este aviso: "Úsalas solo si las de acceso no bastan. Se deciden con el equipo de apoyo y la familia, y se registran en el PACI". La eliminación aparece al final y como último recurso.
+   3. **Apoyos adicionales:** desregulación (ver 3.4), trabajo con la familia y la normativa que respalda cada apoyo.
+6. **Cada resultado dice por qué aparece.** Por ejemplo: "Porque marcaste: le cuesta seguir instrucciones orales · clase práctica · le ayudan los apoyos visuales".
 
-- Reúne lo elegido en los 2 tiempos.
-- El docente puede escribir 1 nota por acción.
-- "Descargar PDF" genera un documento ordenado: datos de la clase, acciones por momento, apoyos por estudiante (iniciales), fuentes al final y el aviso de responsabilidad.
+**Reglas según el nivel** [C4]:
 
-## 3. Organización de barreras: 9 dimensiones
-
-Basadas en el enfoque de la CIF: se describe lo que cuesta en la actividad y el contexto, no un diagnóstico.
-
-| # | Dimensión | Ejemplos de lo que cuesta |
+| Nivel | Adecuaciones en los objetivos | Base legal |
 |---|---|---|
-| 1 | Atención y organización | sostener la atención, empezar tareas, planificar, recordar instrucciones |
-| 2 | Comunicación y lenguaje | entender instrucciones orales, expresarse, usar comunicación alternativa |
-| 3 | Lectura, escritura y cálculo | leer textos largos, escribir a mano, operar con números |
-| 4 | Visión y audición | ver la pizarra, escuchar en ruido |
-| 5 | Sensibilidad sensorial | ruido, luz, multitudes, texturas |
-| 6 | Movimiento y motricidad | escribir, manipular materiales, desplazarse |
-| 7 | Emociones y regulación | ansiedad, frustración, desregulación |
-| 8 | Interacción social | trabajo en grupo, normas implícitas, exponer en público |
-| 9 | Salud y energía | fatiga, dolor, ausencias por tratamiento |
+| Parvularia | Ocultas por defecto, con el aviso "En parvularia, preferentemente no" | Decreto 83, anexo |
+| Básica | Visibles | Decreto 83 |
+| Media CH y TP | Visibles | Decreto 67, art. 5, que remite a los Decretos 83 y 170 |
 
-Más una dimensión de **contexto** (factores ambientales de la CIF): espacio físico, tiempos, materiales y tecnología, idioma y cultura, apoyo en casa.
+### 3.4 Desregulación (dentro de Apoyos adicionales) [C6, C12, C13, C14]
 
-**Intensidad**, en palabras simples: a veces · seguido · casi siempre.
+- Sirve para **cualquier estudiante**. Si el estudiante es autista, agrega: "Revisa su PAEC".
+- Tiene 3 momentos:
+  - **Antes:** prevención. Anticipación, ambiente sensorial, un adulto de confianza, un espacio de calma, regular la demanda y educación emocional.
+  - **Durante:** acompañar. Validar la emoción, guardar silencio, dar distancia, ofrecer objetos de autorregulación, no retar ni amenazar, y llevar a los compañeros a otro espacio para que la situación se maneje en privado.
+  - **Después:** reparar. Acompañar al estudiante y a quienes presenciaron la situación, dar descanso a los adultos y ajustar el plan.
+- Cada ficha termina con: "**Sigue el protocolo de tu establecimiento**".
+- **Prizma nunca da instrucciones de contención física.** Nunca recomienda suspender, reducir la jornada, condicionar la matrícula ni, en parvularia, sancionar.
+- **Base:** Circular 586, Mineduc 2025 y la guía del Reino Unido de 2019.
 
-**Condición (opcional).** El docente puede indicar una condición, por ejemplo TEA o TDAH. Funciona como **atajo**: sugiere qué dimensiones revisar y el docente confirma. La condición no se guarda. Se guarda solo el perfil de barreras.
+### 3.5 Mi selección y PDF
 
-## 4. Ficha de cada recomendación
+- Reúne lo elegido en los 2 tiempos. El docente puede escribir 1 nota por acción.
+- "Descargar PDF" genera un documento con:
+  - los datos de la clase y la meta de aprendizaje,
+  - las acciones agrupadas por momento,
+  - los apoyos de cada estudiante, identificado solo con sus iniciales, con el título "**Propuesta para conversar con el equipo de apoyo**" [C3],
+  - para el equipo de apoyo, el código DUA y el tipo oficial de cada adecuación [D2],
+  - las fuentes al final,
+  - la fecha y la versión del catálogo [E1],
+  - el aviso de responsabilidad.
+
+## 4. Barreras: 5 áreas y 11 dimensiones
+
+Las áreas 1 a 4 siguen las 4 grandes áreas del *SEND Code of Practice* que usa la EEF [C17]. El área 5 suma el contexto de la CIF y la identidad de DUA 3.0 [A3, B3].
+Cada dimensión se pregunta como **situaciones de la clase**, no como fallas del estudiante [A2].
+
+| Área | Dimensión | Ejemplos de situaciones con barreras |
+|---|---|---|
+| **1. Cognición y aprendizaje** | 1. Atención y organización | instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad |
+| | 2. Lectura, escritura y cálculo | textos largos, copiar de la pizarra, escribir a mano, cálculo mental |
+| **2. Comunicación e interacción** | 3. Comunicación y lenguaje | instrucciones solo orales, lenguaje figurado, responder en voz alta |
+| | 4. Interacción social | trabajo en grupo, normas que no se dicen, exponer en público |
+| **3. Social, emocional y salud mental** | 5. Emociones y regulación | evaluaciones, imprevistos, frustración, desregulación |
+| **4. Sensorial y física** | 6. Visión y audición | ver la pizarra, escuchar con ruido |
+| | 7. Sensibilidad sensorial | ruido, luz, multitudes, texturas, olores |
+| | 8. Movimiento y motricidad | escribir, manipular materiales, desplazarse |
+| | 9. Salud y energía | fatiga, dolor, ausencias por tratamiento |
+| **5. Contexto e identidad** | 10. Identidad, lengua y pertenencia | otra lengua materna, pueblo originario, migración, sentirse parte del curso |
+| | 11. Espacio, tiempo y actitudes | sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa |
+
+**Frecuencia**, en la interfaz: a veces · seguido · casi siempre [B4].
+Prizma registra el **desempeño en la clase actual**, es decir, lo que el docente ve y puede cambiar [B2].
+
+## 5. Ficha de cada recomendación
 
 Cada recomendación es un registro en `data/recomendaciones.json`:
 
 | Campo | Contenido |
 |---|---|
 | `id` | identificador estable |
-| `tipo` | `dua` · `acceso` · `curricular` · `adicional` |
-| `titulo` | acción concreta que empieza con verbo |
+| `tipo` | `dua` · `acceso` · `objetivos` · `desregulacion` · `adicional` |
+| `subtipo` | Si es acceso, uno de los 4 tipos del Decreto 83. Si es de objetivos, uno de los 5. Si es desregulación, antes, durante o después |
+| `titulo` | acción concreta, que empieza con un verbo |
 | `como` | 2 o 3 pasos |
 | `porque` | 1 frase: por qué funciona |
-| `momento` | antes · durante · después (solo DUA) |
-| `principio` | compromiso · representación · acción y expresión (solo DUA) |
-| `barreras` | dimensiones que reduce |
-| `niveles` | niveles donde aplica (vacío = todos) |
-| `contextos` | tipos de clase y evaluación donde aplica (vacío = todos) |
-| `evidencia` | investigación sólida · consenso de expertos · norma legal · orientación oficial |
-| `fuentes` | ids de `data/fuentes.json` (mínimo 1) |
-| `requiere_equipo` | sí en adecuaciones curriculares |
+| `momento` | antes · durante · después · toda la clase (solo en las de tipo DUA) |
+| `consideracion` | código DUA 3.0, por ejemplo `7.1` |
+| `areas` y `dimensiones` | las barreras que reduce |
+| `niveles` | niveles donde aplica. Vacío significa todos |
+| `contextos` | tipos de clase y de evaluación donde aplica. Vacío significa todos |
+| `respaldo` | `investigacion-solida` · `investigacion-moderada` · `consenso-expertos` · `orientacion-oficial` · `norma-legal` [A6, C16] |
+| `fuentes` | ids de `data/fuentes.json`, mínimo 1 |
+| `destacada` | sí para las 5 estrategias EEF [C18] |
+| `revision` | quién la revisó y cuándo [E2] |
 
-## 5. Cómo se ordenan las recomendaciones
+**Reglas del catálogo**
+- Sin fuente, una recomendación no entra.
+- Si su evidencia es débil o dudosa, no entra, o entra solo con `respaldo: orientacion-oficial` [C16].
+- Ninguna promete ajustar la enseñanza a un "estilo de aprendizaje". Se habla de "preferencias e intereses" [C9].
+- Nada se copia de CAST, de la OMS ni de la EEF. Todo se redacta con palabras propias [A9].
 
-1. **Filtrar (ocultar):** se oculta lo que no aplica al nivel o al contexto marcado.
-2. **Priorizar (ordenar):** suben las que reducen más barreras marcadas, pesadas por intensidad.
-3. **Explicar:** cada tarjeta muestra las razones que la hicieron aparecer.
+## 6. Cómo se ordenan las recomendaciones
 
-Más información da recomendaciones más precisas, pero con poca información la herramienta ya muestra resultados útiles.
+1. **Filtrar (ocultar):** lo que no aplica al nivel o al contexto marcado.
+2. **Priorizar (ordenar):** suben las que reducen más barreras marcadas, según su frecuencia, y las que coinciden con un facilitador.
+3. **Explicar:** cada tarjeta muestra por qué apareció.
 
-## 6. Respaldo y responsabilidad
+Con poca información ya hay resultados útiles. Con más información, los resultados son más precisos.
 
-- Cada recomendación tiene al menos 1 fuente pública y su nivel de evidencia.
-- Neurociencia: solo hallazgos con buena evidencia (práctica de recuperación, estudio espaciado, carga cognitiva, emoción y atención) y la relación de DUA 3.0 con las 3 redes cerebrales. Sin neuromitos (estilos de aprendizaje, "10 % del cerebro").
-- Desregulación: solo desde orientaciones oficiales. Ante riesgo, siempre "sigue el protocolo de tu establecimiento".
-- Aviso visible en la página y en el PDF: "Orientación pedagógica. No reemplaza la evaluación de profesionales ni los protocolos de tu establecimiento."
-- Antes de publicar, el contenido lo revisan profesionales: educación diferencial, psicopedagogía, terapia ocupacional.
+## 7. Lenguaje
 
-## 7. Privacidad
+- Lenguaje claro y lectura fácil en los textos para estudiantes y familias [C10].
+- "Estudiante con necesidades de apoyo" o, mejor, describir la barrera. Nunca "estudiante NEE".
+- Con autismo, "estudiante autista", como recomienda Mineduc [C15].
+- En la interfaz, palabras simples. En la ayuda y en el PDF, los términos oficiales: principio, directriz, consideración, adecuación de acceso, adecuación en los objetivos [A8].
 
-- Sin servidor y sin cuentas. Los datos quedan en `localStorage` del navegador.
-- Solo iniciales. Sin diagnósticos guardados. Los informes no se suben.
-- Exportar e importar un archivo `.json` para respaldo o para cambiar de equipo.
-- Botón "Borrar todo".
+## 8. Respaldo y responsabilidad
 
-## 8. Técnica
+- Cada recomendación declara su tipo de respaldo y al menos 1 fuente.
+- **Neurociencia:** se usa para explicar los 3 propósitos del DUA. No se dice "respaldado por la neurociencia" en cada acción [A6].
+- Aviso visible en la página y en el PDF: "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento".
+- Antes de publicar, el contenido lo revisan profesionales: educación diferencial, psicopedagogía y terapia ocupacional.
+
+## 9. Privacidad
+
+- Sin servidor y sin cuentas. Los datos quedan en el `localStorage` del navegador.
+- Solo iniciales. No se guardan diagnósticos ni condiciones. No se suben informes.
+- Exportar e importar un archivo `.json`, para respaldo o para cambiar de equipo.
+- Botones "Borrar todo" y "**Borrar al salir**", con un aviso para computadores compartidos [C8].
+- **Pendiente:** revisar la Ley 21.719 de protección de datos antes de probar con docentes [C8].
+
+## 10. Técnica
 
 - Sitio estático en GitHub Pages: `index.html`, `app.js`, `styles.css`, `data/*.json`.
 - Sin framework ni compilación.
-- PDF con hoja de estilos de impresión ("Guardar como PDF" del navegador).
-  shortcut: depende del diálogo de impresión del navegador; si en teléfonos resulta torpe, generar el PDF con una librería.
-- Un script de revisión comprueba el catálogo: campos válidos, cada fuente existe, cada recomendación tiene fuente.
-- Accesibilidad WCAG 2.2 AA: teclado, foco visible, contraste, objetivos táctiles de 24 px o más, sin depender del color.
+- PDF con una hoja de estilos de impresión, usando "Guardar como PDF" del navegador.
+  `shortcut:` depende del diálogo de impresión. Si en teléfonos resulta incómodo, generar el PDF con una librería.
+- Un script revisa el catálogo: que los campos sean válidos, que cada fuente exista y que cada recomendación tenga fuente.
+- Accesibilidad WCAG 2.2 AA: teclado, foco visible, contraste, objetivos táctiles de 24 px o más, y nada que dependa solo del color.
 
-## 9. Plan por etapas
+## 11. Plan por etapas
 
 | Etapa | Qué se construye | Cómo sabemos que funciona |
 |---|---|---|
-| 0. Fuentes | `docs/fuentes.md` con enlaces verificados. Copias `.md` de los documentos revisados. Revisión de licencias. | Cada fuente abre y está citada |
-| 1. Prototipo | Perfil de la clase + Tiempo 1 (unas 30 acciones DUA) + Mi selección + PDF | 3 a 5 docentes lo usan sin ayuda en menos de 10 minutos |
-| 2. Estudiante | Iniciales + encuesta de barreras + unos 40 apoyos de acceso + orden explicado | Los docentes entienden por qué aparece cada apoyo |
-| 3. Ampliación | Adecuaciones curriculares, apoyos adicionales, entrada desde informe, voz del estudiante y familia en lectura fácil | Revisión de profesionales |
-| 4. Publicación | Auditoría de accesibilidad, revisión de contenido, licencia abierta | Lista de control WCAG 2.2 AA |
+| 0. Fuentes | Hecha: normativa, DUA 3.0, CIF, orientaciones de Mineduc y fuentes internacionales. Falta: un catálogo con evidencia de apoyos por barrera y la Ley 21.719 | Cada fuente está en `fuentes/` y citada |
+| 1. Prototipo | Perfil de la clase con meta de aprendizaje, Tiempo 1 con **36 acciones, 1 por consideración DUA** [A5], las 5 destacadas de la EEF, Mi selección y PDF | 3 a 5 docentes lo usan sin ayuda en menos de 10 minutos |
+| 2. Estudiante | Iniciales, encuesta en 2 pasos, facilitadores, voz del estudiante, adecuaciones de acceso en los 4 tipos y orden explicado | Los docentes entienden por qué aparece cada apoyo |
+| 3. Ampliación | Adecuaciones en los objetivos con sus reglas por nivel, módulo de desregulación, entrada desde informe y voz de la familia | Revisión de profesionales |
+| 4. Publicación | Auditoría de accesibilidad, revisión del contenido y licencia abierta | Lista de control WCAG 2.2 AA |
 
-## 10. Licencias
+## 12. Licencias
 
-Corregido el 15 de noviembre de 2026. Ver `auditoria-plan.md`, observación A9.
-
-- **DUA 3.0 (CAST):** el sitio no tiene licencia abierta y sus derechos están reservados. Las acciones se redactan con palabras propias, citan la consideración de la que vienen y no copian texto. Se escribirá a CAST para contarle del proyecto.
+- **DUA 3.0 (CAST):** sin licencia abierta. Se redacta con palabras propias y se cita la consideración. Se escribirá a CAST para contarle del proyecto.
 - **CIF (OMS):** derechos reservados. Se usa el modelo y no se copian códigos ni definiciones.
-- **Normativa chilena:** es pública. Se cita con enlace a bcn.cl.
-- **Propuesta para Prizma:** el código con licencia MIT y el contenido propio con licencia CC BY-SA 4.0.
+- **EEF:** sin licencia declarada. Solo análisis propio.
+- **Normativa chilena y documentos públicos de Mineduc y de la Superintendencia de Educación:** se citan con su enlace.
+- **Guía del Reino Unido de 2019:** Open Government Licence v3.0.
+- **Prizma:** el código con licencia MIT y el contenido propio con licencia CC BY-SA 4.0.
