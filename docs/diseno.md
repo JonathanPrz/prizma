@@ -42,6 +42,8 @@ Una pregunta sin respuesta no filtra nada.
 
 ### 3.2 Tiempo 1. Mi clase (DUA)
 
+**Entrada principal: «¿Qué quieres resolver en esta clase?»** (decidido el 15 de noviembre de 2026). Así se usa el DUA en la práctica: se parte de una meta y de una barrera concreta, y se eligen solo las consideraciones que la responden (CAST, preguntas frecuentes de DUA 3.0). Las 8 necesidades y sus consideraciones están en `data/necesidades.json`. Elegir una necesidad **no oculta nada**: sube las acciones que la responden y muestra «Responde a: …». «¿Cuándo?» y «¿Para qué?» quedan como filtros secundarios.
+
 - **4 pestañas:** Antes · Durante · Después · En toda la clase [A4]. La última reúne lo que no depende de un momento: pertenencia, normas, sesgos y prácticas restaurativas.
 - **3 filtros por propósito**, en palabras simples:
   - **Motivar y sostener el interés:** principio de Compromiso, red afectiva.
