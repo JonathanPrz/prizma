@@ -5,7 +5,7 @@ Fecha: 15 de noviembre de 2026.
 
 **Base de la revisión**
 - **Verificada:** DUA 3.0 y CIF, leídas en la fuente. Ver `fuentes/dua-3.0.md` y `fuentes/cif.md`.
-- **Preliminar:** normativa chilena, revisada de memoria. Falta confirmar con el texto. Ver `fuentes/README.md`.
+- **Verificada:** normativa chilena y CDPD, con sus textos en `fuentes/normativa/`.
 
 **Prioridad**
 - **Alta:** cambia la estructura o crea un riesgo legal.
@@ -50,18 +50,21 @@ Hay 6 cambios de prioridad alta:
 | B3 | La CIF suma las **actitudes** como factor ambiental: de compañeros, docentes y familia. | Incluir las actitudes en la dimensión de contexto. | Media |
 | B4 | La escala de la CIF tiene 5 niveles, de 0 a 4. El diseño propone 3. | Mantener 3 niveles en la interfaz: es lo más simple para docentes. | Baja |
 
-## C. Normativa chilena (preliminar, falta verificar)
+## C. Normativa chilena (verificada el 15-nov-2026 con los textos de `fuentes/normativa/`)
 
-| # | Observación | Propuesta | Prioridad |
-|---|---|---|---|
-| C1 | El Decreto 83 ordena 3 pasos: DUA para todos, luego adecuaciones de acceso y al final adecuaciones en los objetivos. El diseño ya sigue ese orden. | Mantener el orden y citar el decreto en la ayuda. | Alta |
-| C2 | Según recuerdo, el Decreto 83 define 4 tipos de adecuación de acceso: presentación de la información, formas de respuesta, entorno, y organización del tiempo y el horario. También define 5 tipos de adecuación en los objetivos: graduación de la complejidad, priorización, temporalización, enriquecimiento y eliminación, que es el último recurso. | Usar esos tipos oficiales como categorías del catálogo. Así Prizma habla el mismo idioma que el PIE. | Alta |
-| C3 | Las adecuaciones en los objetivos se formalizan en un PACI, el Plan de Adecuaciones Curriculares Individualizado. Se decide con el equipo y la familia, después de una evaluación. | Prizma no genera un PACI. Su PDF dice "Propuesta para conversar con el equipo de apoyo". | Alta |
-| C4 | El Decreto 83 rige para parvularia y básica. Media se rige por la evaluación diversificada del Decreto 67 y por el PIE del Decreto 170. En superior no existe la "adecuación curricular" en el mismo sentido: rigen los **ajustes razonables** de la CDPD y la Ley 20.422. | El Tiempo 2 cambia según el nivel. En superior, la sección se llama "Ajustes razonables" y oculta las adecuaciones de objetivos. | Alta |
-| C5 | Falta la Convención sobre los Derechos de las Personas con Discapacidad (ONU, 2006), que Chile ratificó en 2008. Define los ajustes razonables (art. 2) y el derecho a la educación inclusiva (art. 24). | Agregarla como fuente. | Media |
-| C6 | La Ley 21.545 pide que los establecimientos tengan protocolos para las desregulaciones. El protocolo es del establecimiento, no de Prizma. | En desregulación, Prizma da solo prevención y orientaciones generales tomadas de documentos oficiales. Cada ficha termina con "Sigue el protocolo de tu establecimiento". Nunca da instrucciones de contención física. | Alta |
-| C7 | El Decreto 170 define las categorías de NEE para el PIE. | La lista de "condición como atajo" usa esas categorías y no se guarda. | Media |
-| C8 | Datos personales. Un informe psicopedagógico tiene datos sensibles de salud. La Ley 21.719 de protección de datos (2024) entra en vigencia en diciembre de 2026, según recuerdo. | Agregar la Ley 21.719 como fuente a revisar. Prizma no sube informes y guarda solo iniciales. En computadores compartidos debe avisar y ofrecer "Borrar al salir". | Media |
+| # | Observación | Propuesta | Prioridad | Verificación |
+|---|---|---|---|---|
+| C1 | El Decreto 83 ordena 2 pasos: DUA y diversificación para todo el curso, y después adecuaciones curriculares para quien las necesite. | Mantener el orden del diseño y citar el decreto. | Alta | Confirmada |
+| C2 | Hay 4 tipos de adecuación de acceso (presentación de la información, formas de respuesta, entorno, organización del tiempo y el horario) y 5 tipos en los objetivos (graduación de la complejidad, priorización, temporalización, enriquecimiento y eliminación). La eliminación va solo en última instancia. | Usar estos tipos oficiales como categorías del catálogo. | Alta | Confirmada |
+| C3 | **Todas** las adecuaciones curriculares de un estudiante, de acceso y en los objetivos, se registran en el PACI. Se deciden en equipo, con la familia y con la participación del estudiante. | El PDF de Prizma dice "Propuesta para conversar con el equipo de apoyo" en las dos secciones, no solo en la de objetivos. | Alta | Corregida: la versión anterior solo hablaba de objetivos |
+| C4 | Los niveles tienen reglas distintas: (a) **parvularia**, preferentemente sin adecuaciones en los objetivos; (b) **básica**, Decreto 83; (c) **media y TP**, el art. 5 del Decreto 67 obliga a diversificar y permite adecuaciones según los Decretos 83 y 170; (d) **superior**, ajustes razonables según la Ley 21.091 (art. 2 e) y la CDPD, y ajustes necesarios según la Ley 20.422 (art. 39) y la Ley 21.545 (art. 21). | El Tiempo 2 se adapta al nivel. En parvularia, los objetivos quedan ocultos por defecto. En superior, la sección se llama "Ajustes razonables". | Alta | Corregida: media sí admite adecuaciones |
+| C5 | La CDPD define los ajustes razonables (art. 2) y la educación inclusiva (art. 24). Negar un ajuste razonable es discriminación. | Incluida como fuente. | Media | Confirmada |
+| C6 | El art. 18 de la Ley 21.545 pide que los establecimientos ajusten sus reglamentos para abordar las desregulaciones. La ley no trae un protocolo. | Prizma da prevención y orientaciones generales, y remite al protocolo del establecimiento. Faltan las orientaciones de Mineduc. | Alta | Confirmada. Fuente pendiente |
+| C7 | Las NEE transitorias (art. 20 del Decreto 170) y las permanentes (lista del Decreto 83) son la base de la "condición como atajo". | Usar esas categorías. No guardarlas. | Media | Confirmada |
+| C8 | Datos personales y la Ley 21.719. | Agregar la Ley 21.719 como fuente pendiente. | Media | Pendiente |
+| C9 | **Nueva.** El anexo del Decreto 83 habla de "estilos de aprendizaje". La investigación no respalda ajustar la enseñanza a un estilo. | Citar la norma, pero redactar las acciones como "preferencias e intereses", sin prometer que adaptar a un estilo mejore el aprendizaje. | Media | Nueva |
+| C10 | **Nueva.** La Ley 21.545 pide "lenguaje claro y sencillo" (art. 3 a) y reconoce la autonomía progresiva (art. 3 b) y la neurodiversidad (art. 3 f). | Respalda la lectura fácil, la voz del estudiante y el lenguaje no deficitario de Prizma. | Media | Nueva |
+| C11 | **Nueva.** La definición de ajustes necesarios de la Ley 20.422 (art. 8) incluye el ambiente social y de actitud. | Respalda incluir las actitudes en el contexto (B3). | Baja | Nueva |
 
 ## D. Experiencia de uso
 

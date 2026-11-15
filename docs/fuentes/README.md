@@ -10,16 +10,18 @@ Cada archivo `.md` de esta carpeta es un análisis o una copia de trabajo de una
 | Pautas DUA 3.0 (CAST, 2024) | `dua-3.0.md` | Analizada | Derechos reservados. Solo análisis propio y citas cortas. |
 | DUA 3.0, referencias por consideración | `dua-3.0-referencias.md` | Recopiladas | Son referencias bibliográficas. |
 | CIF (OMS, 2001) | `cif.md` | Analizada | Derechos reservados. Solo análisis propio. |
-| Decreto 83/2015 | `normativa/decreto-83-2015.md` | **Falta el texto** | Norma pública |
-| Decreto 170/2009 | `normativa/decreto-170-2009.md` | **Falta el texto** | Norma pública |
-| Ley 20.422 | `normativa/ley-20422.md` | **Falta el texto** | Norma pública |
-| Ley 21.091 | `normativa/ley-21091.md` | **Falta el texto** | Norma pública |
-| Ley 21.545 (Ley TEA) | `normativa/ley-21545.md` | **Falta el texto** | Norma pública |
-| Ley 20.845 (Inclusión Escolar) | `normativa/ley-20845.md` | **Falta el texto** (fuente nueva) | Norma pública |
-| Decreto 67/2018 (Evaluación) | `normativa/decreto-67-2018.md` | **Falta el texto** (fuente nueva) | Norma pública |
-| Convención sobre los Derechos de las Personas con Discapacidad (ONU) | `normativa/cdpd.md` | **Falta el texto** (fuente nueva) | Documento público de la ONU |
-| Orientaciones Mineduc sobre el Decreto 83 | `orientaciones/` | **Falta** | Revisar el aviso de cada documento |
+| Decreto 83/2015 | `normativa/decreto-83-2015.md` | Copiada y analizada | Norma pública |
+| Decreto 170/2009 | `normativa/decreto-170-2009.md` | Copiada y analizada | Norma pública |
+| Ley 20.422 | `normativa/ley-20422.md` | Copiada y analizada | Norma pública |
+| Ley 21.091 | `normativa/ley-21091.md` | Copiada y analizada | Norma pública |
+| Ley 21.545 (Ley TEA) | `normativa/ley-21545.md` | Copiada y analizada | Norma pública |
+| Ley 20.845 (Inclusión Escolar) | `normativa/ley-20845.md` | Copiada y analizada | Norma pública |
+| Decreto 67/2018 (Evaluación) | `normativa/decreto-67-2018.md` | Copiada y analizada | Norma pública |
+| Convención sobre los Derechos de las Personas con Discapacidad (ONU) | `normativa/cdpd.md` | Copiada y analizada | Documento público de la ONU |
+| Orientaciones Mineduc: estrategias diversificadas para básica (2017) | `orientaciones/mineduc-orientaciones-d83-basica-2017.md` | Copiada, falta analizarla | Se autoriza su reproducción citando la fuente |
 | Orientaciones sobre desregulación emocional y conductual | `orientaciones/` | **Falta** | Revisar el aviso de cada documento |
+
+Análisis de las normas: `normativa/README.md`.
 
 ## Documentos que faltan
 
