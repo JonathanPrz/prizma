@@ -1,6 +1,6 @@
 # Tarea 022 · Una guía por pestaña, sin ventanas automáticas
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/022-guias-por-pestana`
+Estado: **integrada** (PR #22) · Asignada a: Codex · Rama: `codex/022-guias-por-pestana`
 
 ## Para qué
 
