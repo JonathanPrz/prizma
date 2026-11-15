@@ -1,6 +1,6 @@
 # Tarea 009 · Sección «Un estudiante»: adecuaciones de acceso
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/009-un-estudiante`
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/009-un-estudiante`
 
 ## Para qué
 
