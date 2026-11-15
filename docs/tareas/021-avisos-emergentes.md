@@ -1,6 +1,6 @@
 # Tarea 021 · Avisos emergentes al entrar a cada pestaña
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/021-avisos-emergentes`
+Estado: **integrada** (PR #21) · Asignada a: Codex · Rama: `codex/021-avisos-emergentes`
 
 ## Para qué
 
