@@ -20,7 +20,7 @@ try {
 <script src="app.js" defer></script>
 </head>
 <body>
-<a class="saltar" href="#paso-1">Ir al contenido</a>
+<a class="saltar" href="#panel-dua">Ir al contenido</a>
 
 <header class="cabecera">
   <div class="marco">
@@ -38,24 +38,9 @@ try {
     </div>
   </div>
 </header>
-    <div class="cabecera-intro marco">
-      <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
-      <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
-    </div>
-
 <main class="marco disposicion">
-  <nav class="pasos" aria-label="Pasos para preparar tu clase">
-    <a href="#paso-1" data-paso="1" aria-current="step">1. Tu <span data-voc="clase">clase</span></a>
-    <a href="#paso-2" data-paso="2">2. Para todos</a>
-    <a href="#paso-3" data-paso="3">3. Para un estudiante (opcional)</a>
-  </nav>
-  <p id="mochila-estado" class="solo-lectores" role="status"></p>
-  <div class="principal">
-    <section id="paso-1" class="perfil paso" aria-labelledby="t-perfil">
-      <h2 id="t-perfil" tabindex="-1">Tu <span data-voc="clase">clase</span></h2>
-      <p class="ayuda">Todo es opcional. El nivel muestra las acciones que sirven en ese nivel. Tus otras respuestas ponen primero las más útiles para tu <span data-voc="clase">clase</span>. Todo aparece en tu PDF.</p>
-      <form id="perfil" class="perfil-campos">
-        <label>Nivel
+  <div class="contexto">
+    <label>Nivel
           <select id="nivel" name="nivel">
             <option value="">Sin indicar</option>
             <option value="parvularia">Educación parvularia</option>
@@ -65,16 +50,42 @@ try {
             <option value="superior">Educación superior (universidad, IP o CFT)</option>
           </select>
         </label>
-        <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
-          <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
-          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
-        </label>
-      <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
+    <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
+      <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
+      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos adicionales</button>
+    </div>
+  </div>
+  <div class="cabecera-intro">
+      <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
+      <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+    </div>
+  <p id="mochila-estado" class="solo-lectores" role="status"></p>
+  <button type="button" id="abrir-filtros" class="boton" aria-haspopup="dialog" aria-controls="filtros-dialogo">Filtros (0)</button>
+  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0">
+    <div id="lugar-filtros-dua" class="lugar-filtros">
+      <aside id="filtros-dua" class="filtros perfil" aria-labelledby="t-filtros-dua">
+        <h2 id="t-filtros-dua" tabindex="-1">Filtros</h2>
+        <p class="ayuda">Todo es opcional. El nivel muestra las acciones que sirven en ese nivel. Tus otras respuestas ponen primero las más útiles para tu <span data-voc="clase">clase</span>. Todo aparece en tu PDF.</p>
+        <form id="perfil" class="perfil-campos">
+          <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
         <legend>¿Qué quieres resolver en esta clase? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
         <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
         <div class="chips" id="necesidades"></div>
       </fieldset>
-        <details class="mas-detalles"><summary>Más detalles (opcional)</summary>
+          <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
+          <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
+          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
+        </label>
+          <fieldset class="momentos">
+        <legend>¿Cuándo?</legend>
+        <div class="segmentos" id="momentos"></div>
+      </fieldset>
+
+      <fieldset class="propositos">
+        <legend>¿Para qué? <span class="ayuda">Si no eliges ninguno, se muestran todos.</span></legend>
+        <div class="chips" id="propositos"></div>
+      </fieldset>
+          <details class="mas-detalles"><summary>Más detalles (opcional)</summary>
         <fieldset class="perfil-opciones">
           <legend>¿Qué harán principalmente?</legend>
           <p id="actividad-ayuda" class="ayuda">Puedes marcar varias.</p>
@@ -94,39 +105,30 @@ try {
           <label><input type="checkbox" name="evidencia" value="observacion" aria-describedby="evidencia-ayuda"> Observaré mientras trabajan</label>
         </fieldset>
         </details>
-      </form>
-      <a class="boton boton-principal siguiente" href="#paso-2" data-paso="2">Ver acciones para el curso</a>
-    </section>
-
-    <section id="paso-2" class="acciones paso" aria-labelledby="t-acciones" hidden>
-      <p class="resumen"><span id="resumen-clase"></span> <a href="#paso-1" data-paso="1">Cambiar</a></p>
-      <div id="acciones" tabindex="-1">
-      <h2 id="t-acciones" tabindex="-1">Acciones para todo el <span data-voc="curso">curso</span></h2>
-
-      <fieldset class="momentos">
-        <legend>¿Cuándo?</legend>
-        <div class="segmentos" id="momentos"></div>
-      </fieldset>
-
-      <fieldset class="propositos">
-        <legend>¿Para qué? <span class="ayuda">Si no eliges ninguno, se muestran todos.</span></legend>
-        <div class="chips" id="propositos"></div>
-      </fieldset>
-
+          <a href="#dua" id="limpiar-filtros">Limpiar filtros</a>
+        </form>
+      </aside>
+    </div>
+    <div id="acciones" class="resultados" tabindex="-1">
+      <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
       <p class="conteo" id="conteo" aria-live="polite"></p>
       <ul class="tarjetas" id="tarjetas"></ul>
-      </div>
-      <a class="boton siguiente" href="#paso-3" data-paso="3">Agregar apoyos para un estudiante (opcional)</a>
-    </section>
-    <div id="paso-3" class="paso" hidden>
-    <section id="estudiante" class="perfil" tabindex="-1" aria-labelledby="t-estudiante">
-      <h2 id="t-estudiante" tabindex="-1">Apoyos para un estudiante</h2>
-      <div class="perfil-campos">
+    </div>
+  </section>
+  <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="0" hidden>
+    <div id="lugar-filtros-apoyos" class="lugar-filtros">
+      <aside id="filtros-apoyos" class="filtros perfil" aria-labelledby="t-filtros-apoyos">
+        <h2 id="t-filtros-apoyos" tabindex="-1">Filtros</h2>
+        <div class="perfil-campos">
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
-        <fieldset class="perfil-opciones"><legend>Paso 1: ¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
-        <div><h3>Paso 2: ¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
+        <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
+        <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
       </div>
+      </aside>
+    </div>
+    <div id="estudiante" class="resultados" tabindex="-1">
+      <h2 id="t-estudiante">Apoyos para un estudiante</h2>
       <p id="aviso-acceso-escolar" class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
       <p id="aviso-acceso-superior" class="ayuda" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
@@ -145,10 +147,15 @@ try {
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
-    </section>
     </div>
-  </div>
+  </section>
 </main>
+
+<dialog id="filtros-dialogo" class="filtros-dialogo" aria-labelledby="t-filtros-dialogo">
+  <h2 id="t-filtros-dialogo" tabindex="-1" autofocus>Filtros</h2>
+  <div id="filtros-dialogo-cuerpo"></div>
+  <button type="button" id="ver-resultados" class="boton boton-principal">Ver resultados</button>
+</dialog>
 
 <dialog id="mochila" class="mochila" aria-labelledby="t-seleccion">
   <aside class="seleccion" id="seleccion" tabindex="-1" aria-labelledby="t-seleccion">

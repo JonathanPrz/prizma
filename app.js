@@ -125,6 +125,7 @@ function sincronizarEstudiante() {
         ids.forEach((d) => { delete estado.estudiante.dimensiones[d]; grupo.querySelector(`input[name="dimension-${d}"][value="0"]`).checked = true; });
         guardar(); pintarApoyos(); actualizarRespaldo();
       }
+      actualizarConteoFiltros();
     });
     areas.append(el("label", {}, casilla, nombre));
     ids.forEach((d) => {
@@ -135,7 +136,7 @@ function sincronizarEstudiante() {
         radio.checked = (estado.estudiante.dimensiones[d] || 0) === valor;
         radio.addEventListener("change", () => {
           if (valor) estado.estudiante.dimensiones[d] = valor; else delete estado.estudiante.dimensiones[d];
-          guardar(); pintarApoyos(); actualizarRespaldo();
+          guardar(); pintarApoyos(); actualizarRespaldo(); actualizarConteoFiltros();
         });
         campo.append(el("label", {}, radio, texto));
       });
@@ -151,7 +152,7 @@ function escucharEstudiante() {
       const campo = evento.target, escribio = Boolean(campo.value);
       estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
       campo.value = estado.estudiante[clave];
-      guardar(); pintarSeleccion();
+      guardar(); pintarSeleccion(); actualizarConteoFiltros();
       if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad(campo);
     });
   }
@@ -163,7 +164,7 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
-let estado = { paso: 1, perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
+let estado = { pestana: "dua", perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
@@ -192,43 +193,101 @@ function voc(clave) {
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
+  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos adicionales";
 }
 
-function pintarResumen() {
-  const partes = [NIVELES[estado.perfil.nivel], estado.perfil.meta];
-  const elegidas = necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto);
-  if (elegidas.length) partes.push("Quiere resolver: " + elegidas.join("; "));
-  $("#resumen-clase").textContent = partes.filter(Boolean).join(" · ") || `Tu ${voc("clase")} · Sin preferencias indicadas`;
-}
-
-function mostrarPaso(paso, enfocar = true) {
-  estado.paso = paso;
-  for (const numero of [1, 2, 3]) $("#paso-" + numero).hidden = numero !== paso;
-  document.querySelectorAll(".pasos a").forEach((enlace) => {
-    if (Number(enlace.dataset.paso) === paso) enlace.setAttribute("aria-current", "step");
-    else enlace.removeAttribute("aria-current");
-  });
-  pintarResumen(); guardar();
-  if (enfocar) {
-    $("#paso-" + paso + " h2").focus({ preventScroll: true });
-    $("#paso-" + paso).scrollIntoView({ block: "start" });
+function mostrarPestana(id, enfocar = false) {
+  if (id !== estado.pestana && $("#filtros-dialogo").open) cerrarFiltros(false);
+  estado.pestana = id;
+  for (const nombre of ["dua", "apoyos"]) {
+    $("#panel-" + nombre).hidden = nombre !== id;
+    const tab = $("#tab-" + nombre);
+    tab.setAttribute("aria-selected", String(nombre === id));
+    tab.tabIndex = nombre === id ? 0 : -1;
   }
+  guardar(); actualizarConteoFiltros();
+  if (enfocar) $("#tab-" + id).focus();
 }
 
-function prepararPasos() {
+function prepararPestanas() {
   const desdeHash = (enfocar) => {
-    const paso = /^#paso-([123])$/.exec(location.hash);
-    if (!paso) history.replaceState(null, "", "#paso-1");
-    mostrarPaso(paso ? Number(paso[1]) : 1, enfocar);
+    const id = ["#dua", "#apoyos"].includes(location.hash) ? location.hash.slice(1) :
+      !location.hash && ["dua", "apoyos"].includes(estado.pestana) ? estado.pestana : "dua";
+    if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+    mostrarPestana(id, enfocar);
   };
-  document.querySelectorAll("[data-paso], .saltar").forEach((enlace) => enlace.addEventListener("click", (evento) => {
-    if (enlace.hash === location.hash) { evento.preventDefault(); mostrarPaso(Number(location.hash.slice(-1))); }
-  }));
+  for (const [indice, id] of ["dua", "apoyos"].entries()) {
+    const tab = $("#tab-" + id);
+    const activar = (nombre) => {
+      if (location.hash === "#" + nombre) mostrarPestana(nombre, true);
+      else location.hash = nombre;
+    };
+    tab.addEventListener("click", () => activar(id));
+    tab.addEventListener("keydown", (evento) => {
+      const siguiente = { ArrowRight: 1 - indice, ArrowLeft: 1 - indice, Home: 0, End: 1 }[evento.key];
+      if (siguiente === undefined) return;
+      evento.preventDefault(); activar(["dua", "apoyos"][siguiente]);
+    });
+  }
   window.addEventListener("hashchange", () => desdeHash(true));
+  $(".saltar").addEventListener("click", (evento) => {
+    evento.preventDefault(); $("#panel-" + estado.pestana).focus();
+  });
+  delete estado.paso;
   desdeHash(false);
   $("#abrir-mochila").addEventListener("click", () => $("#mochila").showModal());
   $("#cerrar-mochila").addEventListener("click", () => $("#mochila").close());
   $("#mochila").addEventListener("close", () => $("#abrir-mochila").focus());
+}
+
+function cantidadFiltros() {
+  if (estado.pestana === "apoyos") return document.querySelectorAll("#areas input:checked").length +
+    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim()));
+  const p = estado.perfil;
+  return (Array.isArray(estado.necesidades) ? estado.necesidades.length : 0) + estado.propositos.length + p.actividad.length + p.evidencia.length +
+    Number(Boolean(p.meta.trim())) + Number(estado.momento !== "antes");
+}
+
+function actualizarConteoFiltros() {
+  $("#abrir-filtros").textContent = `Filtros (${cantidadFiltros()})`;
+}
+
+function limpiarFiltros() {
+  estado.necesidades = []; estado.propositos = []; estado.momento = "antes";
+  estado.perfil = { ...estado.perfil, meta: "", actividad: [], evidencia: [] };
+  guardar(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
+}
+
+let devolverFocoFiltros = true;
+function devolverFiltros() {
+  const filtro = $("#filtros-dialogo-cuerpo .filtros");
+  if (filtro) $("#lugar-" + filtro.id).append(filtro);
+}
+function cerrarFiltros(enfocar = true) {
+  devolverFocoFiltros = enfocar;
+  devolverFiltros(); $("#filtros-dialogo").close();
+}
+function abrirFiltros() {
+  const dialogo = $("#filtros-dialogo");
+  if (dialogo.open) return;
+  devolverFocoFiltros = true;
+  $("#filtros-dialogo-cuerpo").append($("#filtros-" + estado.pestana));
+  dialogo.showModal();
+}
+function prepararFiltros() {
+  const telefono = window.matchMedia("(max-width: 59.999rem)");
+  $("#abrir-filtros").addEventListener("click", abrirFiltros);
+  $("#ver-resultados").addEventListener("click", () => cerrarFiltros());
+  $("#filtros-dialogo").addEventListener("close", () => {
+    if ($("#filtros-dialogo").open) return;
+    devolverFiltros();
+    if (devolverFocoFiltros) $(telefono.matches ? "#abrir-filtros" : "#tab-" + estado.pestana).focus();
+  });
+  telefono.addEventListener("change", () => {
+    if (!telefono.matches && $("#filtros-dialogo").open) cerrarFiltros();
+    else if (telefono.matches && (document.activeElement === document.body || document.activeElement.closest(".filtros"))) $("#abrir-filtros").focus();
+  });
+  $("#limpiar-filtros").addEventListener("click", (evento) => { evento.preventDefault(); limpiarFiltros(); });
 }
 
 function nombreMomento(id, nombre) {
@@ -279,7 +338,7 @@ function el(tag, attrs = {}, ...hijos) {
 }
 
 function pintarControles() {
-  pintarResumen();
+  actualizarConteoFiltros();
   $("#necesidades-campo").hidden = !necesidades.length;
   $("#necesidades").replaceChildren(...necesidades.map((n) => el("button", {
     type: "button", id: "necesidad-" + n.id, class: "chip", "aria-pressed": String(estado.necesidades.includes(n.id)),
@@ -295,7 +354,7 @@ function pintarControles() {
     const conteo = estado.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => coincidenciasNecesidades(r).length).length} para ti` : String(acciones.length);
     const input = el("input", { type: "radio", name: "momento", value: id, id: "m-" + id });
     input.checked = estado.momento === id;
-    input.addEventListener("change", () => { estado.momento = id; guardar(); pintarTarjetas(); });
+    input.addEventListener("change", () => { estado.momento = id; guardar(); pintarTarjetas(); actualizarConteoFiltros(); });
     cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombreMomento(id, nombre) + " ", el("small", { text: `(${conteo})` }))));
   }
   const chips = $("#propositos"); chips.replaceChildren();
@@ -414,13 +473,17 @@ function sincronizarPerfil() {
 }
 
 function escucharPerfil() {
-  $("#perfil").addEventListener("input", () => {
+  const actualizar = () => {
     estado.perfil = {
       nivel: $("#nivel").value, meta: $("#meta").value,
       actividad: [...document.querySelectorAll('input[name="actividad"]:checked')].map((c) => c.value),
       evidencia: [...document.querySelectorAll('input[name="evidencia"]:checked')].map((c) => c.value),
     };
     guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
+  };
+  $("#nivel").addEventListener("change", actualizar);
+  $("#perfil").addEventListener("input", (evento) => {
+    if (evento.target.matches('#meta, input[name="actividad"], input[name="evidencia"]')) actualizar();
   });
 }
 
@@ -611,10 +674,11 @@ function prepararGuiaDUA() {
   });
   $("#guia-dua").addEventListener("close", () => {
     if ($("#guia-dua").returnValue === "empezar") {
-      if (location.hash !== "#paso-1") history.pushState(null, "", "#paso-1");
-      mostrarPaso(1, false);
+      if (location.hash !== "#dua") history.pushState(null, "", "#dua");
+      mostrarPestana("dua");
+      if (window.matchMedia("(max-width: 59.999rem)").matches && !privacidadPendiente) abrirFiltros();
     }
-    const destino = $("#guia-dua").returnValue === "empezar" ? ($("#necesidades button") || $("#t-perfil")) : origenGuiaDUA;
+    const destino = $("#guia-dua").returnValue === "empezar" ? ($("#necesidades button") || ($("#filtros-dialogo").open ? $("#t-filtros-dialogo") : $("#t-filtros-dua"))) : origenGuiaDUA;
     if (privacidadPendiente) {
       privacidadPendiente = false;
       mostrarAvisoPrivacidad(origenAvisoPrivacidad);
@@ -654,7 +718,7 @@ async function iniciar() {
     if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
   });
   cargar();
-  prepararPasos();
+  prepararPestanas(); prepararFiltros();
   prepararGuiaDUA();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
@@ -687,7 +751,7 @@ async function iniciar() {
   $("#borrar").addEventListener("click", () => {
     if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección, tus notas y los datos del estudiante de este navegador?`)) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }
-    history.replaceState(null, "", "#paso-1");
+    history.replaceState(null, "", "#dua");
     location.reload();
   });
 }

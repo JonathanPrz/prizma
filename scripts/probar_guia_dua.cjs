@@ -4,21 +4,22 @@ const path = require('node:path');
 const vm = require('node:vm');
 const nodos = new Map();
 const almacen = new Map();
-const contexto = vm.createContext({location: {hash: "#paso-1"}, history: {pushState() {}}, document: {
+const contexto = vm.createContext({window: {matchMedia: () => ({matches: false})}, location: {hash: "#dua"}, history: {pushState() {}}, document: {
   activeElement: null,
   querySelector: selector => nodos.get(selector) || null,
-  querySelectorAll: selector => selector === ".pasos a" ? [] : enlaces,
+  querySelectorAll: () => enlaces,
 }, localStorage: {getItem: clave => almacen.get(clave), setItem: (clave, valor) => almacen.set(clave, valor)}});
 function nodo(id) {
   return {id, isConnected: true, open: false, returnValue: '', eventos: {},
     addEventListener(tipo, fn) {this.eventos[tipo] = fn;},
+    setAttribute() {},
     focus() {contexto.document.activeElement = this;},
     showModal() {this.open = true; nodos.get(this.id === 'guia-dua' ? '#t-guia-dua' : '#t-privacidad').focus();},
     close(valor) {this.open = false; if (valor !== undefined) this.returnValue = valor; this.eventos.close?.();},
     click() {this.eventos.click({preventDefault() {}, currentTarget: this});},
   };
 }
-for (const id of ['guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-perfil', 'resumen-clase', 'paso-1', 'paso-2', 'paso-3']) nodos.set('#' + id, nodo(id));
+for (const id of ['guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos']) nodos.set('#' + id, nodo(id));
 nodos.set('#necesidades button', nodo('primera-necesidad'));
 const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
@@ -50,7 +51,7 @@ nodos.get('#aviso-privacidad').close();
 nodos.delete('#necesidades button');
 enlaces[1].click();
 nodos.get('#guia-empezar').click();
-assert.equal(contexto.document.activeElement.id, 't-perfil');
+assert.equal(contexto.document.activeElement.id, 't-filtros-dua');
 contexto.localStorage.getItem = contexto.localStorage.setItem = () => {throw new Error('bloqueado');};
 vm.runInContext('prepararGuiaDUA()', contexto);
 assert.equal(guia.open, true);
