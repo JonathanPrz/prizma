@@ -3918,7 +3918,6 @@
       5
     ],
     "niveles": [
-      "parvularia",
       "basica",
       "media"
     ],
@@ -4401,6 +4400,38 @@
     "fuentes": [
       "ley-21091",
       "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-9-rutina",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Ajusta la rutina a los momentos del día en que tiene más energía",
+    "como": [
+      "Observa en qué momentos del día está más activo y en cuáles se cansa.",
+      "Ofrece en sus mejores momentos las experiencias que le piden más esfuerzo.",
+      "Planifica un momento de descanso después."
+    ],
+    "porque": "El Decreto 83 permite modificar la forma en que se estructura el horario para que cada niño o niña pueda participar.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      1,
+      5
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
