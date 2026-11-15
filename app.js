@@ -143,9 +143,9 @@ function escucharEstudiante() {
 const $ = (s) => document.querySelector(s);
 const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].directrices.includes(r.consideracion.split(".")[0]));
 
-let catalogo = [], fuentes = {};
+let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
-let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], seleccion: {}, estudiante: normalizarEstudiante() };
+let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
@@ -197,6 +197,12 @@ function coincidencias(r) {
   const ctx = [...estado.perfil.actividad, ...estado.perfil.evidencia];
   return r.contextos.filter((c) => ctx.includes(c));
 }
+function normalizarNecesidades(ids) {
+  return Array.isArray(ids) ? [...new Set(ids.filter((id) => typeof id === "string" && necesidades.some((n) => n.id === id)))] : [];
+}
+function coincidenciasNecesidades(r) {
+  return necesidades.filter((n) => estado.necesidades.includes(n.id) && n.consideraciones.includes(r.consideracion));
+}
 function etiqueta(valor) {
   const casilla = document.querySelector(`input[value="${valor}"]`);
   return casilla ? casilla.closest("label").textContent.trim() : valor;
@@ -205,7 +211,7 @@ function visibles() {
   return catalogo
     .filter((r) => r.tipo === "dua" && r.momento === estado.momento && aplica(r))
     .filter((r) => !estado.propositos.length || estado.propositos.includes(proposito(r)))
-    .sort((a, b) => (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
+    .sort((a, b) => (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
 }
 
 function el(tag, attrs = {}, ...hijos) {
@@ -218,13 +224,23 @@ function el(tag, attrs = {}, ...hijos) {
 }
 
 function pintarControles() {
+  $("#necesidades-campo").hidden = !necesidades.length;
+  $("#necesidades").replaceChildren(...necesidades.map((n) => el("button", {
+    type: "button", id: "necesidad-" + n.id, class: "chip", "aria-pressed": String(estado.necesidades.includes(n.id)),
+    onclick: () => {
+      estado.necesidades = estado.necesidades.includes(n.id) ? estado.necesidades.filter((id) => id !== n.id) : [...estado.necesidades, n.id];
+      guardar(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
+      document.getElementById("necesidad-" + n.id).focus();
+    }, text: n.texto,
+  })));
   const cont = $("#momentos"); cont.replaceChildren();
   for (const [id, nombre] of MOMENTOS) {
-    const n = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r)).length;
+    const acciones = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r));
+    const conteo = estado.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => coincidenciasNecesidades(r).length).length} para ti` : String(acciones.length);
     const input = el("input", { type: "radio", name: "momento", value: id, id: "m-" + id });
     input.checked = estado.momento === id;
     input.addEventListener("change", () => { estado.momento = id; guardar(); pintarTarjetas(); });
-    cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombreMomento(id, nombre) + " ", el("small", { text: `(${n})` }))));
+    cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombreMomento(id, nombre) + " ", el("small", { text: `(${conteo})` }))));
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
@@ -247,6 +263,7 @@ function tarjeta(r) {
     el("div", { class: "t-arriba" },
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
+    dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
     acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     el("h3", { text: r.titulo }),
@@ -339,7 +356,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || Object.keys(estado.estudiante.dimensiones).length);
+  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || Object.keys(estado.estudiante.dimensiones).length);
 }
 
 function actualizarRespaldo() {
@@ -348,7 +365,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante };
+  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
@@ -369,7 +386,7 @@ function validarRespaldo(datos) {
   const ids = new Set(catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS)).map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
-  return { perfil, seleccion, estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
+  return { perfil, seleccion, necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
 }
 
 async function abrirRespaldo(evento) {
@@ -380,12 +397,12 @@ async function abrirRespaldo(evento) {
     let datos;
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
-    const { perfil, seleccion, estudiante, descartadas } = validarRespaldo(datos);
+    const { perfil, seleccion, estudiante, necesidades: elegidas, descartadas } = validarRespaldo(datos);
     if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y tu estudiante por los del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante;
+    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas;
     guardar(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
       (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
@@ -402,7 +419,8 @@ function documento() {
   const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)]
     .filter((c) => p[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
   const datos = [p.nivel && NIVELES[p.nivel], p.actividad.length && "Harán: " + textos("actividad"),
-    p.evidencia.length && "Mostrarán lo aprendido: " + textos("evidencia")].filter(Boolean);
+    p.evidencia.length && "Mostrarán lo aprendido: " + textos("evidencia"),
+    estado.necesidades.length && "Quiere resolver: " + necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto).join("; ")].filter(Boolean);
   return {
     fecha: `${fecha}. Generado con Prizma, catálogo del ${VERSION_CATALOGO}.`,
     datos: datos.length ? datos.join(". ") + "." : "",
@@ -530,13 +548,23 @@ async function iniciar() {
     if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
   });
   cargar();
+  const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
+    if (!r.ok) throw new Error("necesidades");
+    return r.json();
+  }).then((datos) => {
+    if (!Array.isArray(datos) || datos.some((n) =>
+      !n || typeof n.id !== "string" || !n.id.trim() || typeof n.texto !== "string" || !n.texto.trim() ||
+      !Array.isArray(n.consideraciones) || n.consideraciones.some((c) => typeof c !== "string" || !Object.hasOwn(CONSIDERACIONES, c)))) return [];
+    return new Set(datos.map((n) => n.id)).size === datos.length ? datos : [];
+  }).catch(() => []);
   try {
-    const [r, f] = await Promise.all(["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })));
-    catalogo = r; fuentes = Object.fromEntries(f.map((x) => [x.id, x]));
+    const [r, f, n] = await Promise.all([...["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })), cargaNecesidades]);
+    catalogo = r; fuentes = Object.fromEntries(f.map((x) => [x.id, x])); necesidades = n;
   } catch (e) {
     $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";
     return;
   }
+  estado.necesidades = normalizarNecesidades(estado.necesidades);
   estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id === id)));
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   window.addEventListener("beforeprint", armarHoja);
