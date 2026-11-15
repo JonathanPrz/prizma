@@ -103,3 +103,7 @@ Algunos ejemplos útiles para el catálogo:
 - **Evidencia desigual.** Los documentos de Mineduc mezclan prácticas con buena evidencia, como los apoyos visuales, la anticipación y la CAA, con otras de evidencia débil. Por ejemplo, la guía de 2025 menciona chalecos y mantas con peso, y hasta donde sé, las revisiones sistemáticas no encuentran efectos claros. Hay que verificarlo. En Prizma, esas prácticas se marcan como "orientación oficial" y no como "investigación sólida".
 - **El PAEC es para estudiantes autistas con diagnóstico. El protocolo DEC es para todos.** El módulo de desregulación de Prizma sirve para cualquier estudiante. Si el estudiante es autista, agrega: "Revisa su PAEC".
 - **Prizma no reemplaza el PAEC ni el protocolo.** Ofrece ideas para el eje preventivo y para la conversación con la familia.
+
+## Media técnico-profesional (agregado el 15-11-2026)
+
+- `mineduc-gestion-curricular-emtp-2016.md`: copia de trabajo aportada por el dueño. Útil: los criterios de evaluación incluyen condiciones de seguridad (pp. 25–26) y la planificación parte de las necesidades de los estudiantes respecto del aprendizaje esperado (pp. 61–62).

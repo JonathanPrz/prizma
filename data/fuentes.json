@@ -118,5 +118,41 @@
     "cita": "Ley 21.091 (2018). Sobre Educación Superior.",
     "url": "https://www.bcn.cl/leychile/navegar?idNorma=1118991",
     "archivo": "docs/fuentes/normativa/ley-21091.md"
+  },
+  {
+    "id": "acs-2025",
+    "cita": "American Chemical Society (2025). Teaching Chemistry to Students with Disabilities, 5.ª ed.",
+    "url": "https://www.acs.org/content/dam/acsorg/about/governance/committees/cwd/tcswd-5th-edition.pdf",
+    "archivo": "docs/fuentes/internacional/acs-quimica-discapacidad-2025.md"
+  },
+  {
+    "id": "unesco-tvet-2025",
+    "cita": "UNESCO y UNESCO-UNEVOC (2025). Inclusion in TVET: a practical guide. CC BY-SA 3.0 IGO.",
+    "url": "https://doi.org/10.54675/BUZO8428",
+    "archivo": "docs/fuentes/internacional/unesco-inclusion-tvet-2025.md"
+  },
+  {
+    "id": "mineduc-emtp-2016",
+    "cita": "Mineduc (2016). Orientaciones para la gestión e implementación del currículum de la educación media técnico-profesional.",
+    "url": "https://bibliotecadigital.mineduc.cl/handle/20.500.12365/2184",
+    "archivo": "docs/fuentes/orientaciones/mineduc-gestion-curricular-emtp-2016.md"
+  },
+  {
+    "id": "mineduc-didactica-tp-2023",
+    "cita": "Mineduc (2023). Orientaciones didácticas: Formación Diferenciada Técnico Profesional.",
+    "url": "https://aprendoenlinea.mineduc.gob.cl/recursos/orientaciones-didacticas-formacion-diferenciada-tecnico-profesional",
+    "archivo": "docs/fuentes/codex/practica/chile-mineduc-didactica-tp-2023.md"
+  },
+  {
+    "id": "uw-doit-labs",
+    "cita": "Burgstahler, S. (2014). Making Science Labs Accessible to Students with Disabilities. DO-IT, University of Washington.",
+    "url": "https://doit.uw.edu/brief/making-science-labs-accessible-to-students-with-disabilities/",
+    "archivo": "docs/fuentes/codex/practica/eeuu-uw-laboratorios-2014.md"
+  },
+  {
+    "id": "asqa-2026",
+    "cita": "Australian Skills Quality Authority (2026). Training Support Practice Guide.",
+    "url": "https://www.asqa.gov.au/for-providers/standards-for-RTOs/practice-guides/quality-area-2-vet-student-support/training-support-practice-guide",
+    "archivo": "docs/fuentes/codex/practica/australia-asqa-apoyo-vet-2026.md"
   }
 ]

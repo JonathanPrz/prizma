@@ -3,7 +3,7 @@ const leer=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const c=vm.createContext({document:{querySelector:()=>({options:[{value:''},{value:'basica'},{value:'superior'}]}),querySelectorAll:()=>[]},localStorage:{getItem:()=>JSON.stringify({perfil:{},estudiante:{},seleccion:{}})}});
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
 const e=s=>JSON.parse(JSON.stringify(vm.runInContext(s,c)));
-vm.runInContext(`catalogo=${leer('data/recomendaciones.json')}; fuentes=Object.fromEntries(catalogo.flatMap(r=>r.fuentes).map(id=>[id,{cita:id,url:'https://example.org'}])); estado.perfil.nivel='basica'`,c);
+vm.runInContext(`catalogo=${leer('data/recomendaciones.json')}.filter(r=>!r.contextos.includes('practica')); fuentes=Object.fromEntries(catalogo.flatMap(r=>r.fuentes).map(id=>[id,{cita:id,url:'https://example.org'}])); estado.perfil.nivel='basica'`,c);
 for(const v of ['null','1','"true"','[]','{}'])assert.equal(e(`normalizarEstudiante({practica:${v}}).practica`),false);
 assert.equal(e('normalizarEstudiante({practica:true}).practica'),true);
 for(const v of ['null','1','"inventada"','[]'])assert.equal(e(`normalizarAsignatura(${v})`),'');

@@ -96,7 +96,8 @@
     "contextos": [
       "experimentar",
       "crear",
-      "haciendo"
+      "haciendo",
+      "practica"
     ],
     "respaldo": "investigacion-solida",
     "fuentes": [
@@ -290,7 +291,8 @@
     ],
     "niveles": [],
     "contextos": [
-      "escuchar-leer"
+      "escuchar-leer",
+      "practica"
     ],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -356,7 +358,8 @@
     "niveles": [],
     "contextos": [
       "grupo",
-      "conversar"
+      "conversar",
+      "practica"
     ],
     "respaldo": "investigacion-solida",
     "fuentes": [
@@ -714,7 +717,8 @@
     "niveles": [],
     "contextos": [
       "escuchar-leer",
-      "experimentar"
+      "experimentar",
+      "practica"
     ],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -776,7 +780,8 @@
     "niveles": [],
     "contextos": [
       "haciendo",
-      "experimentar"
+      "experimentar",
+      "practica"
     ],
     "respaldo": "investigacion-solida",
     "fuentes": [
@@ -1072,7 +1077,9 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "practica"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -1107,7 +1114,8 @@
       "superior"
     ],
     "contextos": [
-      "escribiendo"
+      "escribiendo",
+      "practica"
     ],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -1137,7 +1145,8 @@
     "niveles": [],
     "contextos": [
       "haciendo",
-      "observacion"
+      "observacion",
+      "practica"
     ],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -3193,6 +3202,335 @@
     "respaldo": "norma-legal",
     "fuentes": [
       "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-recorrido",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Recorre el taller o laboratorio con el estudiante antes de la primera sesión",
+    "como": [
+      "Ubiquen juntos salidas, duchas, extintores y equipos.",
+      "Acuerden qué ajustes necesita y quién más debe saberlo.",
+      "Definan cómo se comunicarán durante el curso."
+    ],
+    "porque": "Conocer el espacio antes mejora la seguridad y permite resolver barreras a tiempo.",
+    "areas": [
+      "sensorial",
+      "cognicion",
+      "contexto"
+    ],
+    "dimensiones": [
+      8,
+      6,
+      1,
+      11
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-procedimiento",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Entrega el procedimiento por pasos, escrito y con imágenes",
+    "como": [
+      "Divide el procedimiento en pasos numerados, con fotos o esquemas.",
+      "Explícalo en voz alta y muéstralo antes de empezar.",
+      "Deja la guía a la vista en el puesto de trabajo."
+    ],
+    "porque": "Una guía que se puede volver a mirar reduce errores y riesgos.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      1,
+      2,
+      3
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "uw-doit-labs",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-rotulos",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Haz legibles los rótulos y las señales de seguridad",
+    "como": [
+      "Usa rótulos con letra grande y alto contraste, o en Braille o relieve.",
+      "Asegura que las alarmas tengan señal visual además de sonora.",
+      "Revisa que pueda leer los rótulos antes de usar un material."
+    ],
+    "porque": "Si no puede leer o escuchar una advertencia, no puede protegerse.",
+    "areas": [
+      "sensorial",
+      "cognicion"
+    ],
+    "dimensiones": [
+      6,
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025",
+      "uw-doit-labs"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-puesto",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ajusta el puesto de trabajo y deja libres los pasillos",
+    "como": [
+      "Ofrece una mesa de altura regulable o un puesto adaptado.",
+      "Deja los controles y herramientas al alcance desde donde trabaja.",
+      "Mantén despejados los pasillos y las salidas."
+    ],
+    "porque": "Un puesto accesible permite trabajar con autonomía y seguridad.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "uw-doit-labs",
+      "acs-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-asistente",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Si la manipulación no es lo que se evalúa, que dirija a un asistente",
+    "como": [
+      "Asigna a alguien que ya domine el procedimiento.",
+      "El estudiante decide cada paso; el asistente solo ejecuta y no da pistas.",
+      "Evalúa las decisiones del estudiante, no la manipulación."
+    ],
+    "porque": "Así el razonamiento del procedimiento sigue siendo del estudiante.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8,
+      6
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-tiempo",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Da tiempo extra para preparar, terminar y ordenar",
+    "como": [
+      "Permite llegar antes o quedarse después de la sesión.",
+      "O que termine en otra sesión del mismo taller.",
+      "Prevé pausas breves en las sesiones largas."
+    ],
+    "porque": "El apuro en un taller aumenta los errores y los riesgos.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      1,
+      8,
+      9
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025",
+      "uw-doit-labs"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-evacuacion",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Planifica la evacuación con el estudiante",
+    "como": [
+      "Pregúntale qué ayuda necesita en una emergencia.",
+      "Asigna a una persona que lo acompañe y avisa al encargado de seguridad.",
+      "Inclúyelo en los simulacros."
+    ],
+    "porque": "Un plan acordado antes evita improvisar cuando hay peligro.",
+    "areas": [
+      "sensorial",
+      "emocional"
+    ],
+    "dimensiones": [
+      8,
+      6,
+      5
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-evaluar",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Evalúa el desempeño esencial y ajusta solo la forma",
+    "como": [
+      "Identifica qué desempeño y qué normas de seguridad son esenciales.",
+      "Ajusta la forma: demostrar, explicar en voz alta o usar ayudas técnicas.",
+      "No elimines los requisitos de seguridad."
+    ],
+    "porque": "El ajuste quita barreras sin rebajar la competencia que se certifica.",
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      1,
+      2,
+      3,
+      8
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "asqa-2026",
+      "unesco-tvet-2025",
+      "mineduc-emtp-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "prac-grupos",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Arma parejas o grupos de taller que funcionen",
+    "como": [
+      "Ofrece ayuda para formar la pareja o el grupo.",
+      "Reparte roles para que todos practiquen el procedimiento.",
+      "Revisa cada cierto tiempo si el arreglo funciona."
+    ],
+    "porque": "Un grupo equitativo da a cada estudiante oportunidades reales de practicar.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp",
+      "superior"
+    ],
+    "contextos": [
+      "practica"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "acs-2025",
+      "mineduc-didactica-tp-2023"
     ],
     "destacada": false,
     "revision": null

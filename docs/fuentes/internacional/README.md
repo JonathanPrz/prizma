@@ -108,3 +108,8 @@ Ninguna fuente revisada hasta ahora trae un catálogo de **qué apoyo usar para 
 - **CCSSO y NCEO (2016). *Accommodations Manual*** (Estados Unidos). Clasifica las adecuaciones de acceso en la evaluación.
 - **Australia, NCCD.** Ejemplos de ajustes razonables por tipo de necesidad, según los *Disability Standards for Education 2005*.
 - **What Works Clearinghouse**, guías de práctica (Estados Unidos, dominio público). Califican la evidencia de cada estrategia.
+
+## Talleres y laboratorios (agregado el 15-11-2026)
+
+- `acs-quimica-discapacidad-2025.md`: análisis propio de la guía de la American Chemical Society (sin licencia abierta; no se guarda copia). Sección 3.9: ajustes en laboratorio, asistente dirigido, seguridad y evacuación.
+- `unesco-inclusion-tvet-2025.md`: copia completa de la guía de UNESCO-UNEVOC sobre inclusión en formación técnica (CC BY-SA 3.0 IGO). Útil: tabla 9 (estrategias DUA por grupo), tabla 12 (plan de clase inclusivo, p. 73) y ajustes en la evaluación (p. 78).
