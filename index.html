@@ -17,7 +17,7 @@
 <header class="cabecera">
   <div class="marco">
     <p class="marca"><span class="prisma" aria-hidden="true"></span>Prizma</p>
-    <h1>Acciones para que todo tu curso pueda aprender</h1>
+    <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
     <p class="bajada">Elige las que te sirvan. Prizma no planifica tu clase: te ofrece un menú, cada acción con su fuente.</p>
   </div>
 </header>
@@ -25,7 +25,7 @@
 <main class="marco disposicion">
   <div class="principal">
     <section class="perfil" aria-labelledby="t-perfil">
-      <h2 id="t-perfil">Tu clase</h2>
+      <h2 id="t-perfil">Tu <span data-voc="clase">clase</span></h2>
       <p class="ayuda">Todo es opcional. Sirve para ordenar las acciones y aparece en tu PDF.</p>
       <form id="perfil" class="perfil-campos">
         <label>Nivel
@@ -37,25 +37,25 @@
             <option value="media-tp">Media técnico-profesional</option>
           </select>
         </label>
-        <label>Tipo de clase
-          <select id="tipo" name="tipo">
-            <option value="">Sin indicar</option>
-            <option value="teorica">Teórica</option>
-            <option value="practica">Práctica</option>
-            <option value="taller">Taller o laboratorio</option>
-            <option value="terreno">En terreno</option>
-            <option value="en-linea">En línea</option>
-          </select>
-        </label>
-        <fieldset class="evaluacion">
-          <legend>Evaluación</legend>
-          <label><input type="checkbox" name="evaluacion" value="individual"> Individual</label>
-          <label><input type="checkbox" name="evaluacion" value="grupal"> Grupal</label>
-          <label><input type="checkbox" name="evaluacion" value="escrita"> Escrita</label>
-          <label><input type="checkbox" name="evaluacion" value="oral"> Oral</label>
-          <label><input type="checkbox" name="evaluacion" value="practica"> Práctica</label>
+        <fieldset class="perfil-opciones">
+          <legend>¿Qué harán principalmente?</legend>
+          <p id="actividad-ayuda" class="ayuda">Puedes marcar varias.</p>
+          <label><input type="checkbox" name="actividad" value="escuchar-leer" aria-describedby="actividad-ayuda"> Escuchar o leer</label>
+          <label><input type="checkbox" name="actividad" value="conversar" aria-describedby="actividad-ayuda"> Conversar o debatir</label>
+          <label><input type="checkbox" name="actividad" value="experimentar" aria-describedby="actividad-ayuda"> Experimentar o manipular materiales</label>
+          <label><input type="checkbox" name="actividad" value="crear" aria-describedby="actividad-ayuda"> Crear o producir algo</label>
+          <label><input type="checkbox" name="actividad" value="moverse" aria-describedby="actividad-ayuda"> Moverse o salir de la sala</label>
         </fieldset>
-        <label class="meta">¿Qué quieres que aprendan en esta clase?
+        <fieldset class="perfil-opciones">
+          <legend>¿Cómo mostrarán lo que aprendieron?</legend>
+          <p id="evidencia-ayuda" class="ayuda">Puedes marcar varias.</p>
+          <label><input type="checkbox" name="evidencia" value="escribiendo" aria-describedby="evidencia-ayuda"> Escribiendo</label>
+          <label><input type="checkbox" name="evidencia" value="hablando" aria-describedby="evidencia-ayuda"> Hablando o explicando</label>
+          <label><input type="checkbox" name="evidencia" value="haciendo" aria-describedby="evidencia-ayuda"> Haciendo o demostrando</label>
+          <label><input type="checkbox" name="evidencia" value="grupo" aria-describedby="evidencia-ayuda"> En grupo</label>
+          <label><input type="checkbox" name="evidencia" value="observacion" aria-describedby="evidencia-ayuda"> Observaré mientras trabajan</label>
+        </fieldset>
+        <label class="meta">¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?
           <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
           <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
         </label>
@@ -63,7 +63,7 @@
     </section>
 
     <section id="acciones" class="acciones" aria-labelledby="t-acciones">
-      <h2 id="t-acciones">Acciones para todo el curso</h2>
+      <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
 
       <fieldset class="momentos">
         <legend>¿Cuándo?</legend>

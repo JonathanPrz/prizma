@@ -36,20 +36,50 @@ const $ = (s) => document.querySelector(s);
 const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].directrices.includes(r.consideracion.split(".")[0]));
 
 let catalogo = [], fuentes = {};
-let estado = { perfil: { nivel: "", tipo: "", evaluacion: [], meta: "" }, momento: "antes", propositos: [], seleccion: {} };
+let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], seleccion: {} };
 
 function cargar() {
-  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: { ...estado.perfil, ...g.perfil } }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
 }
 function guardar() {
   try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
+}
+
+function normalizarPerfil(perfil) {
+  const p = perfil && typeof perfil === "object" && !Array.isArray(perfil) ? perfil : {};
+  const lista = (nombre) => {
+    const valores = [...document.querySelectorAll(`input[name="${nombre}"]`)].map((c) => c.value);
+    return Array.isArray(p[nombre]) ? [...new Set(p[nombre].filter((v) => valores.includes(v)))] : [];
+  };
+  return {
+    nivel: typeof p.nivel === "string" && [...$("#nivel").options].some((o) => o.value === p.nivel) ? p.nivel : "",
+    actividad: lista("actividad"), evidencia: lista("evidencia"),
+    meta: typeof p.meta === "string" ? p.meta.slice(0, 500) : "",
+  };
+}
+
+function voc(clave) {
+  const palabras = { clase: "experiencia de aprendizaje", curso: "grupo", estudiantes: "niños y niñas" };
+  return estado.perfil.nivel === "parvularia" ? palabras[clave] : clave;
+}
+
+function aplicarVocabulario() {
+  document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
+}
+
+function nombreMomento(id, nombre) {
+  return id === "toda-la-clase" ? `En toda la ${voc("clase")}` : nombre;
+}
+
+function nombresMomentos() {
+  return Object.fromEntries(MOMENTOS.map(([id, nombre]) => [id, nombreMomento(id, nombre)]));
 }
 
 // Oculta lo que no aplica al perfil. Una lista vacía en la ficha significa "aplica siempre".
 function aplica(r) {
   const p = estado.perfil;
   if (r.niveles.length && p.nivel && !r.niveles.includes(p.nivel)) return false;
-  const ctx = [p.tipo, ...p.evaluacion].filter(Boolean);
+  const ctx = [...p.actividad, ...p.evidencia];
   if (r.contextos.length && ctx.length && !ctx.some((c) => r.contextos.includes(c))) return false;
   return true;
 }
@@ -76,7 +106,7 @@ function pintarControles() {
     const input = el("input", { type: "radio", name: "momento", value: id, id: "m-" + id });
     input.checked = estado.momento === id;
     input.addEventListener("change", () => { estado.momento = id; guardar(); pintarTarjetas(); });
-    cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombre + " ", el("small", { text: `(${n})` }))));
+    cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombreMomento(id, nombre) + " ", el("small", { text: `(${n})` }))));
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
@@ -131,7 +161,7 @@ function pintarSeleccion() {
   $("#sel-vacia").hidden = sel.length > 0;
   $("#pdf").disabled = sel.length === 0;
   actualizarRespaldo();
-  const nombreMomento = Object.fromEntries(MOMENTOS);
+  const nombreMomento = nombresMomentos();
   $("#sel-lista").replaceChildren(...sel.map((r) => {
     const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
     nota.value = estado.seleccion[r.id] || "";
@@ -146,23 +176,27 @@ function pintarSeleccion() {
 
 function sincronizarPerfil() {
   const p = estado.perfil;
-  $("#nivel").value = p.nivel; $("#tipo").value = p.tipo; $("#meta").value = p.meta;
-  document.querySelectorAll('input[name="evaluacion"]').forEach((c) => { c.checked = p.evaluacion.includes(c.value); });
+  $("#nivel").value = p.nivel; $("#meta").value = p.meta;
+  for (const nombre of ["actividad", "evidencia"]) {
+    document.querySelectorAll(`input[name="${nombre}"]`).forEach((c) => { c.checked = p[nombre].includes(c.value); });
+  }
+  aplicarVocabulario();
 }
 
 function escucharPerfil() {
   $("#perfil").addEventListener("input", () => {
     estado.perfil = {
-      nivel: $("#nivel").value, tipo: $("#tipo").value, meta: $("#meta").value,
-      evaluacion: [...document.querySelectorAll('input[name="evaluacion"]:checked')].map((c) => c.value),
+      nivel: $("#nivel").value, meta: $("#meta").value,
+      actividad: [...document.querySelectorAll('input[name="actividad"]:checked')].map((c) => c.value),
+      evidencia: [...document.querySelectorAll('input[name="evidencia"]:checked')].map((c) => c.value),
     };
-    guardar(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
+    guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   });
 }
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(p.nivel || p.tipo || p.meta || p.evaluacion.length || Object.keys(estado.seleccion).length);
+  return Boolean(p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length);
 }
 
 function actualizarRespaldo() {
@@ -188,14 +222,7 @@ function validarRespaldo(datos) {
   if (!objeto(datos.perfil) || !objeto(datos.seleccion) || Object.values(datos.seleccion).some((nota) => typeof nota !== "string")) {
     throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma.");
   }
-  const p = datos.perfil;
-  const opcion = (id, valor) => typeof valor === "string" && [...$(id).options].some((o) => o.value === valor) ? valor : "";
-  const evaluaciones = [...document.querySelectorAll('input[name="evaluacion"]')].map((c) => c.value);
-  const perfil = {
-    nivel: opcion("#nivel", p.nivel), tipo: opcion("#tipo", p.tipo),
-    evaluacion: Array.isArray(p.evaluacion) ? [...new Set(p.evaluacion.filter((v) => evaluaciones.includes(v)))] : [],
-    meta: typeof p.meta === "string" ? p.meta.slice(0, 500) : "",
-  };
+  const perfil = normalizarPerfil(datos.perfil);
   const ids = new Set(catalogo.map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
@@ -211,7 +238,7 @@ async function abrirRespaldo(evento) {
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
     const { perfil, seleccion, descartadas } = validarRespaldo(datos);
-    if (hayDatos() && !window.confirm("Esto reemplaza tu clase y tu selección actuales por las del respaldo. ¿Continuar?")) {
+    if (hayDatos() && !window.confirm(`Esto reemplaza tu ${voc("clase")} y tu selección actuales por las del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
@@ -227,9 +254,12 @@ const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesio
 
 // Un solo modelo del documento para la vista previa, la impresión y el PDF descargable.
 function documento() {
-  const p = estado.perfil, sel = elegidasOrdenadas(), nombreMomento = Object.fromEntries(MOMENTOS);
+  const p = estado.perfil, sel = elegidasOrdenadas(), nombreMomento = nombresMomentos();
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
-  const datos = [p.nivel && NIVELES[p.nivel], p.tipo && $("#tipo").selectedOptions[0].text, p.evaluacion.length && "Evaluación: " + p.evaluacion.join(", ")].filter(Boolean);
+  const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)]
+    .filter((c) => p[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
+  const datos = [p.nivel && NIVELES[p.nivel], p.actividad.length && "Harán: " + textos("actividad"),
+    p.evidencia.length && "Mostrarán lo aprendido: " + textos("evidencia")].filter(Boolean);
   return {
     fecha: `${fecha}. Generado con Prizma, catálogo del ${VERSION_CATALOGO}.`,
     datos: datos.length ? datos.join(". ") + "." : "",
@@ -248,7 +278,7 @@ function documento() {
 function armarHoja() {
   const d = documento();
   const partes = [
-    el("h1", { text: "Acciones para mi clase" }),
+    el("h1", { text: `Acciones para mi ${voc("clase")}` }),
     el("p", { class: "h-meta", text: d.fecha }),
     d.datos ? el("p", { text: d.datos }) : null,
     d.meta ? el("p", {}, el("strong", { text: "Meta de aprendizaje: " }), d.meta, el("br"), el("em", { text: "Quita las barreras, no el desafío de aprender esto." })) : null,
@@ -272,7 +302,7 @@ function definicionPdf() {
   const d = documento();
   const linea = { canvas: [{ type: "line", x1: 0, y1: 0, x2: 505, y2: 0, lineWidth: 0.6, lineColor: "#888888" }], margin: [0, 0, 0, 6] };
   const contenido = [
-    { text: "Acciones para mi clase", style: "h1" },
+    { text: `Acciones para mi ${voc("clase")}`, style: "h1" },
     { text: d.fecha, style: "dato", margin: [0, 0, 0, 4] },
     d.datos ? { text: d.datos, margin: [0, 0, 0, 4] } : null,
     d.meta ? { text: [{ text: "Meta de aprendizaje: ", bold: true }, d.meta], margin: [0, 4, 0, 0] } : null,
@@ -294,7 +324,7 @@ function definicionPdf() {
     { table: { widths: ["*"], body: [[{ text: AVISO, style: "dato", margin: [4, 4, 4, 4] }]] }, layout: { hLineColor: "#888888", vLineColor: "#888888" }, margin: [0, 14, 0, 0] },
   ].filter(Boolean);
   return {
-    info: { title: "Acciones para mi clase", creator: "Prizma" },
+    info: { title: `Acciones para mi ${voc("clase")}`, creator: "Prizma" },
     pageSize: "LETTER", pageMargins: [54, 54, 54, 60],
     content: contenido,
     footer: (actual, total) => ({ text: `Página ${actual} de ${total}`, alignment: "right", fontSize: 8, color: "#555555", margin: [54, 20, 54, 0] }),
@@ -339,7 +369,7 @@ async function iniciar() {
   $("#imprimir").addEventListener("click", () => window.print());
   $("#cerrar").addEventListener("click", () => $("#vista").close());
   $("#borrar").addEventListener("click", () => {
-    if (!window.confirm("¿Borrar tu clase, tu selección y tus notas de este navegador?")) return;
+    if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección y tus notas de este navegador?`)) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }
     location.reload();
   });
