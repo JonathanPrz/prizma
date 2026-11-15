@@ -1,6 +1,6 @@
 # Tarea 019 · Investigar fuentes sobre apoyos en talleres, laboratorios y terreno
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/019-fuentes-practicas`
+Estado: **integrada** (PR #19) · Asignada a: Codex · Rama: `codex/019-fuentes-practicas`
 
 ## Para qué
 

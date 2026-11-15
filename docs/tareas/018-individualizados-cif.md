@@ -1,6 +1,6 @@
 # Tarea 018 · Apoyos individualizados, ejemplos por asignatura, actividades prácticas y resumen CIF
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/018-individualizados-cif`
+Estado: **integrada** (PR #18) · Asignada a: Codex · Rama: `codex/018-individualizados-cif`
 
 ## Para qué
 
