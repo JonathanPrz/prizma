@@ -87,6 +87,13 @@
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
+      <button type="button" id="guardar-respaldo" class="boton" disabled>Guardar respaldo</button>
+      <div class="abrir-respaldo">
+        <input type="file" id="abrir-respaldo" accept=".json,application/json" aria-describedby="respaldo-ayuda">
+        <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
+      </div>
+      <p id="respaldo-ayuda" class="ayuda">El respaldo es un archivo en tu equipo. Sirve para no perder tu trabajo o pasarlo a otro computador.</p>
+      <p id="respaldo-estado" class="ayuda" aria-live="polite"></p>
       <button type="button" id="borrar" class="boton boton-sutil">Borrar todo</button>
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
     </div>

@@ -130,6 +130,7 @@ function pintarSeleccion() {
   $("#n-sel").textContent = sel.length;
   $("#sel-vacia").hidden = sel.length > 0;
   $("#pdf").disabled = sel.length === 0;
+  actualizarRespaldo();
   const nombreMomento = Object.fromEntries(MOMENTOS);
   $("#sel-lista").replaceChildren(...sel.map((r) => {
     const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
@@ -147,13 +148,79 @@ function sincronizarPerfil() {
   const p = estado.perfil;
   $("#nivel").value = p.nivel; $("#tipo").value = p.tipo; $("#meta").value = p.meta;
   document.querySelectorAll('input[name="evaluacion"]').forEach((c) => { c.checked = p.evaluacion.includes(c.value); });
+}
+
+function escucharPerfil() {
   $("#perfil").addEventListener("input", () => {
     estado.perfil = {
       nivel: $("#nivel").value, tipo: $("#tipo").value, meta: $("#meta").value,
       evaluacion: [...document.querySelectorAll('input[name="evaluacion"]:checked')].map((c) => c.value),
     };
-    guardar(); pintarControles(); pintarTarjetas();
+    guardar(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
   });
+}
+
+function hayDatos() {
+  const p = estado.perfil;
+  return Boolean(p.nivel || p.tipo || p.meta || p.evaluacion.length || Object.keys(estado.seleccion).length);
+}
+
+function actualizarRespaldo() {
+  $("#guardar-respaldo").disabled = !hayDatos();
+}
+
+function guardarRespaldo() {
+  const guardado = new Date().toISOString();
+  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
+  const enlace = el("a", { href: url, download: `prizma-respaldo-${guardado.slice(0, 10)}.json` });
+  document.body.append(enlace);
+  enlace.click(); enlace.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  $("#respaldo-estado").textContent = "Respaldo descargado. Búscalo en tu carpeta de descargas.";
+}
+
+function validarRespaldo(datos) {
+  const objeto = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+  if (!objeto(datos) || datos.app !== "prizma" || datos.version !== 1) {
+    throw new Error("Este archivo no es un respaldo de Prizma.");
+  }
+  if (!objeto(datos.perfil) || !objeto(datos.seleccion) || Object.values(datos.seleccion).some((nota) => typeof nota !== "string")) {
+    throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma.");
+  }
+  const p = datos.perfil;
+  const opcion = (id, valor) => typeof valor === "string" && [...$(id).options].some((o) => o.value === valor) ? valor : "";
+  const evaluaciones = [...document.querySelectorAll('input[name="evaluacion"]')].map((c) => c.value);
+  const perfil = {
+    nivel: opcion("#nivel", p.nivel), tipo: opcion("#tipo", p.tipo),
+    evaluacion: Array.isArray(p.evaluacion) ? [...new Set(p.evaluacion.filter((v) => evaluaciones.includes(v)))] : [],
+    meta: typeof p.meta === "string" ? p.meta.slice(0, 500) : "",
+  };
+  const ids = new Set(catalogo.map((r) => r.id));
+  const entradas = Object.entries(datos.seleccion);
+  const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
+  return { perfil, seleccion, descartadas: entradas.length - Object.keys(seleccion).length };
+}
+
+async function abrirRespaldo(evento) {
+  const input = evento.target, archivo = input.files[0], aviso = $("#respaldo-estado");
+  if (!archivo) return;
+  try {
+    if (archivo.size > 200 * 1024) throw new Error("El archivo es demasiado grande para ser un respaldo de Prizma.");
+    let datos;
+    try { datos = JSON.parse(await archivo.text()); }
+    catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
+    const { perfil, seleccion, descartadas } = validarRespaldo(datos);
+    if (hayDatos() && !window.confirm("Esto reemplaza tu clase y tu selección actuales por las del respaldo. ¿Continuar?")) {
+      aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
+      return;
+    }
+    estado.perfil = perfil; estado.seleccion = seleccion;
+    guardar(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+    aviso.textContent = `Respaldo abierto: ${Object.keys(seleccion).length} acciones.` +
+      (descartadas ? ` ${descartadas} acciones ya no están en el catálogo y no se cargaron.` : "");
+  } catch (e) { aviso.textContent = e.message; }
+  finally { input.value = ""; }
 }
 
 const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.";
@@ -263,9 +330,11 @@ async function iniciar() {
     return;
   }
   estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => r.id === id)));
-  sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+  sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   window.addEventListener("beforeprint", armarHoja);
   $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });
+  $("#guardar-respaldo").addEventListener("click", guardarRespaldo);
+  $("#abrir-respaldo").addEventListener("change", abrirRespaldo);
   $("#descargar").addEventListener("click", descargarPdf);
   $("#imprimir").addEventListener("click", () => window.print());
   $("#cerrar").addEventListener("click", () => $("#vista").close());

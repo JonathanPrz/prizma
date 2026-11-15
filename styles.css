@@ -124,6 +124,10 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .sel-momento { font-size: .875rem; color: var(--tenue); }
 .sel-lista textarea { min-height: 2.5rem; font-size: .9375rem; }
 .quitar { font: inherit; font-size: .875rem; justify-self: start; background: none; border: 0; color: var(--enfoque); text-decoration: underline; cursor: pointer; padding: .25rem 0; min-height: 1.5rem; }
+.abrir-respaldo { position: relative; }
+.abrir-respaldo input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.abrir-respaldo label { display: block; text-align: center; }
+.abrir-respaldo input:focus-visible + label { outline: 3px solid var(--enfoque); outline-offset: 2px; }
 .sel-botones { display: grid; gap: .5rem; }
 
 .pie { border-top: 1px solid var(--linea); padding-block: 1.5rem 2.5rem; color: var(--tenue); font-size: .9375rem; }
