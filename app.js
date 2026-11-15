@@ -2,7 +2,6 @@
 // Prizma, etapa 1: menú de acciones DUA para todo el curso. Sin servidor: los datos quedan en localStorage.
 const CLAVE = "prizma.v1";
 const CLAVE_PRIVACIDAD = "prizma.privacidad.v1";
-const CLAVE_GUIA_DUA = "prizma.guia-dua.v1";
 const VERSION_CATALOGO = "2026-11-15";
 
 const MOMENTOS = [
@@ -103,10 +102,17 @@ function situacionesSinApoyos() {
   return Object.keys(estado.estudiante.dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
+function pintarTituloApoyos() {
+  $("#t-apoyos").textContent = `${esSuperior() ? "Ajustes razonables" : "Apoyos"} para ${estado.estudiante.iniciales || "un estudiante"}`;
+}
 function pintarApoyos() {
   const superior = esSuperior();
   $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos individualizados para un estudiante";
   $("#bajada-apoyos").textContent = `Elige los que le sirvan. Prizma no reemplaza ${superior ? "a la unidad de inclusión" : "al equipo de apoyo"}: te ofrece un menú, cada apoyo con su fuente.`;
+  pintarTituloApoyos();
+  document.querySelectorAll(".enlace-guia-apoyos").forEach((enlace) => {
+    enlace.textContent = superior ? "¿Cómo acordar ajustes razonables?" : "¿Cómo usar los apoyos individualizados?";
+  });
   $("#aviso-acceso-escolar").hidden = superior;
   $("#aviso-acceso-superior").hidden = !superior;
   $("#objetivos-aviso").hidden = superior;
@@ -182,7 +188,7 @@ function escucharEstudiante() {
       const campo = evento.target, escribio = Boolean(campo.value);
       estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
       campo.value = estado.estudiante[clave];
-      guardar(); pintarSeleccion(); actualizarConteoFiltros();
+      guardar(); pintarTituloApoyos(); pintarSeleccion(); actualizarConteoFiltros();
       if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad(campo);
     });
   }
@@ -194,8 +200,7 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
-let guiaVista = false, apoyosAvisados = false, avisosPreparados = false, volverAvisoApoyos = false;
-const CLAVE_AVISO_APOYOS = "prizma.aviso-apoyos.v1";
+let origenGuiaApoyos = null, dialogoPrivacidad = null;
 let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
@@ -246,10 +251,9 @@ function mostrarPestana(id, enfocar = false) {
     tab.setAttribute("aria-selected", String(nombre === id));
     tab.tabIndex = nombre === id ? 0 : -1;
   }
-  $("#panel-" + id + " .cabecera-intro").append($("#abrir-filtros"));
+  $("#panel-" + id + " .acciones-intro").append($("#abrir-filtros"));
   guardar(); actualizarConteoFiltros();
   if (enfocar) $("#tab-" + id).focus();
-  revisarAvisos();
 }
 
 function prepararPestanas() {
@@ -731,7 +735,6 @@ async function descargarPdf() {
 function mostrarGuiaDUA(origen = document.activeElement) {
   const guia = $("#guia-dua");
   if (document.querySelector("dialog[open]")) return;
-  guiaVista = true;
   origenGuiaDUA = origen;
   guia.returnValue = "";
   guia.showModal();
@@ -744,7 +747,6 @@ function prepararGuiaDUA() {
   }));
   $("#guia-empezar").addEventListener("click", () => $("#guia-dua").close("empezar"));
   $("#guia-dua").addEventListener("close", () => {
-    try { localStorage.setItem(CLAVE_GUIA_DUA, "1"); } catch (e) { /* funciona sin almacenamiento */ }
     if ($("#guia-dua").returnValue === "empezar") {
       if (location.hash !== "#dua") history.pushState(null, "", "#dua");
       mostrarPestana("dua");
@@ -756,75 +758,66 @@ function prepararGuiaDUA() {
       mostrarAvisoPrivacidad(origenAvisoPrivacidad);
     } else if (destino?.isConnected) destino.focus();
   });
-  try { guiaVista = localStorage.getItem(CLAVE_GUIA_DUA) === "1"; } catch (e) { /* se muestra en esta visita */ }
 }
 
 function mostrarAvisoPrivacidad(origen = document.activeElement) {
   const aviso = $("#aviso-privacidad");
   if (aviso.open) return;
   origenAvisoPrivacidad = origen;
-  if (document.querySelector("dialog[open]")) { privacidadPendiente = true; return; }
+  const abierto = document.querySelector("dialog[open]");
+  if (abierto) {
+    if (origen?.closest("dialog") === abierto && ["filtros-dialogo", "mochila"].includes(abierto.id)) {
+      dialogoPrivacidad = abierto;
+      abierto.addEventListener("close", () => mostrarAvisoPrivacidad(origen), { once: true });
+      abierto.close();
+    } else privacidadPendiente = true;
+    return;
+  }
   aviso.showModal();
   $("#t-privacidad").focus();
   privacidadAvisada = true;
 }
 
-function mostrarAvisoApoyos() {
+function mostrarGuiaApoyos(origen = document.activeElement) {
   if (document.querySelector("dialog[open]")) return;
-  $("#acuerdo-escolar").hidden = esSuperior();
-  $("#acuerdo-superior").hidden = !esSuperior();
-  $("#aviso-apoyos").returnValue = "";
-  $("#aviso-apoyos").showModal();
-  $("#t-aviso-apoyos").focus();
-}
-
-function revisarAvisos() {
-  if (!avisosPreparados || document.querySelector("dialog[open]")) return;
-  if (privacidadPendiente) {
-    privacidadPendiente = false;
-    mostrarAvisoPrivacidad(origenAvisoPrivacidad);
-  } else if (volverAvisoApoyos) {
-    volverAvisoApoyos = false;
-    mostrarAvisoApoyos();
-  } else if (estado.pestana === "dua" && !guiaVista) mostrarGuiaDUA($("#tab-dua"));
-  else if (estado.pestana === "apoyos" && !apoyosAvisados) mostrarAvisoApoyos();
+  origenGuiaApoyos = origen;
+  $("#t-guia-apoyos").textContent = esSuperior() ? "Cómo acordar ajustes razonables" : "Cómo usar los apoyos individualizados";
+  $("#guia-apoyos-escolar").hidden = esSuperior();
+  $("#guia-apoyos-superior").hidden = !esSuperior();
+  $("#guia-apoyos").showModal();
+  $("#t-guia-apoyos").focus();
 }
 
 function prepararAvisos() {
   try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
-  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(evento.currentTarget); });
+  document.querySelectorAll("#privacidad, .enlace-privacidad").forEach((enlace) => enlace.addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(enlace); }));
   $("#privacidad-entendido").addEventListener("click", () => {
     try { localStorage.setItem(CLAVE_PRIVACIDAD, "1"); } catch (e) { /* la confirmación dura esta visita */ }
     $("#aviso-privacidad").close();
   });
   $("#aviso-privacidad").addEventListener("close", () => {
+    if (dialogoPrivacidad) {
+      const anterior = dialogoPrivacidad;
+      dialogoPrivacidad = null;
+      if (anterior.id === "filtros-dialogo") abrirFiltros();
+      else anterior.showModal();
+    }
     if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
   });
   prepararGuiaDUA();
-  try { apoyosAvisados = localStorage.getItem(CLAVE_AVISO_APOYOS) === "1"; } catch (e) { /* se avisa durante esta visita */ }
-  document.querySelectorAll(".enlace-aviso-apoyos").forEach((enlace) => enlace.addEventListener("click", (evento) => {
-    evento.preventDefault(); mostrarAvisoApoyos();
+  document.querySelectorAll(".enlace-guia-apoyos").forEach((enlace) => enlace.addEventListener("click", (evento) => {
+    evento.preventDefault(); mostrarGuiaApoyos(enlace);
   }));
-  $("#apoyos-entendido").addEventListener("click", () => $("#aviso-apoyos").close());
-  $("#ver-privacidad").addEventListener("click", (evento) => {
-    evento.preventDefault();
-    volverAvisoApoyos = true;
-    $("#aviso-apoyos").close("privacidad");
+  $("#guia-apoyos-entendido").addEventListener("click", () => $("#guia-apoyos").close());
+  $("#guia-apoyos").addEventListener("close", () => {
+    if (origenGuiaApoyos?.isConnected) origenGuiaApoyos.focus();
   });
-  $("#aviso-apoyos").addEventListener("close", () => {
-    if ($("#aviso-apoyos").returnValue === "privacidad") {
-      mostrarAvisoPrivacidad($("#ver-privacidad"));
-      return;
+  document.querySelectorAll("dialog").forEach((dialogo) => dialogo.addEventListener("close", () => {
+    if (privacidadPendiente && !document.querySelector("dialog[open]")) {
+      privacidadPendiente = false;
+      mostrarAvisoPrivacidad(origenAvisoPrivacidad);
     }
-    apoyosAvisados = true; privacidadAvisada = true;
-    try {
-      localStorage.setItem(CLAVE_AVISO_APOYOS, "1");
-      localStorage.setItem(CLAVE_PRIVACIDAD, "1");
-    } catch (e) { /* la confirmación dura esta visita */ }
-    $("#tab-apoyos").focus();
-  });
-  document.querySelectorAll("dialog").forEach((dialogo) => dialogo.addEventListener("close", revisarAvisos));
-  avisosPreparados = true;
+  }));
 }
 
 async function iniciar() {

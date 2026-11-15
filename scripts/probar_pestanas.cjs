@@ -23,7 +23,7 @@ function nodo(id) {
 }
 for (const id of ['panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos', '.saltar', 'abrir-filtros', 'filtros-dialogo', 'filtros-dialogo-cuerpo', 'ver-resultados', 't-filtros-dialogo', 'limpiar-filtros', 'abrir-mochila', 'cerrar-mochila', 'mochila', 't-seleccion']) nodos.set(id === '.saltar' ? id : '#' + id, nodo(id));
 for (const id of ['dua', 'apoyos']) {
-  nodos.set('#panel-' + id + ' .cabecera-intro', nodo('intro-' + id));
+  nodos.set('#panel-' + id + ' .acciones-intro', nodo('intro-' + id));
   nodos.set('#filtros-' + id, nodo('filtros-' + id));
   nodos.set('#lugar-filtros-' + id, nodo('lugar-filtros-' + id));
   nodos.get('#lugar-filtros-' + id).append(nodos.get('#filtros-' + id));

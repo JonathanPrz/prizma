@@ -52,7 +52,6 @@ a { color: var(--enfoque); text-underline-offset: .2em; }
 .cabecera-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; padding-block: 1.1rem; }
 .marca { display: flex; align-items: center; gap: .35rem; font-weight: 800; font-size: 1.5rem; letter-spacing: -.035em; }
 .marca .logo { width: 2.75rem; height: 2.75rem; flex: none; }
-.cabecera-barra > .enlace-guia-dua { display: inline-flex; align-items: center; min-height: 1.5rem; }
 .tema { margin-left: auto; min-width: 0; max-width: 100%; display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 600; }
 .tema select { min-width: 0; width: auto; max-width: 100%; font-size: .875rem; min-height: 2.75rem; padding: .45rem .55rem; }
 .cabecera-intro { grid-column: 1 / -1; display: grid; gap: .75rem; padding-block: 1.5rem; }
@@ -105,7 +104,7 @@ legend { font-weight: 600; padding: 0; margin-bottom: .25rem; }
 input[type="checkbox"] { width: 1.2rem; height: 1.2rem; flex: none; accent-color: var(--tinta); margin: 0; }
 .meta { border-top: 1px solid var(--linea); padding-top: 1rem; }
 .meta .ayuda { font-weight: 400; }
-#acciones > h2 { padding-bottom: .75rem; border-bottom: 2px solid var(--tinta); }
+#acciones > h2, #estudiante > h2 { padding-bottom: .75rem; border-bottom: 2px solid var(--tinta); }
 .propositos legend .ayuda { display: block; margin-top: .15rem; }
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
 .chip { font: inherit; font-size: .875rem; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .45rem .65rem; border-radius: .35rem; border: 1px solid var(--borde-control); background: var(--superficie); color: var(--tinta); cursor: pointer; text-align: left; }
@@ -171,7 +170,6 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .tarjetas { grid-template-columns: minmax(0, 1fr); }
   .cabecera-intro h1 { font-size: 1.75rem; }
   .cabecera-barra { gap: .5rem 1rem; padding-block: .5rem; }
-  .cabecera-barra > .enlace-guia-dua { font-size: .875rem; margin-left: auto; }
   .tema { margin-left: 0; flex: 1 1 10rem; }
   .tema select { width: 100%; }
   #abrir-mochila { font-size: .875rem; padding-inline: .65rem; }
@@ -238,7 +236,6 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .ultimo-recurso { justify-self: start; padding: .2rem .5rem; border: 1px solid var(--tinta); }
 .hoja .h-grupo { margin-block: 1rem .5rem; }
 
-legend .enlace-guia-dua { display: inline-block; font-size: .875rem; font-weight: 400; min-height: 1.5rem; }
 #guia-dua .ayuda { margin-bottom: 1rem; }
 
 #apoyos-adicionales .tarjeta { border-inline-start: 4px solid var(--enfoque); }
@@ -252,6 +249,5 @@ legend .enlace-guia-dua { display: inline-block; font-size: .875rem; font-weight
 
 @media (max-width: 48rem) { .contexto > .casilla-practica { width: 100%; max-width: none; } }
 
-#aviso-apoyos h2 { font-size: 1.375rem; }
-#aviso-apoyos h3 { margin-top: 1.25rem; font-size: 1rem; }
-.enlace-aviso-apoyos, #ver-privacidad { display: inline-block; min-height: 1.5rem; }
+.acciones-intro { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.enlace-guia-dua, .enlace-guia-apoyos, .enlace-privacidad, #privacidad { display: inline-block; min-height: 1.5rem; }

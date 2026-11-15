@@ -10,7 +10,7 @@ const contexto = vm.createContext({window: {matchMedia: () => ({matches: false})
   querySelectorAll: () => enlaces,
 }, localStorage: {getItem: clave => almacen.get(clave), setItem: (clave, valor) => almacen.set(clave, valor)}});
 function nodo(id) {
-  return {id, isConnected: true, open: false, returnValue: '', eventos: {},
+  return {id, isConnected: true, open: false, returnValue: '', eventos: {}, closest() {return null;},
     addEventListener(tipo, fn) {this.eventos[tipo] = fn;},
     setAttribute() {},
     append() {},
@@ -21,17 +21,19 @@ function nodo(id) {
   };
 }
 for (const id of ['guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos']) nodos.set('#' + id, nodo(id));
-for (const id of ['dua', 'apoyos']) nodos.set('#panel-' + id + ' .cabecera-intro', nodo('intro-' + id));
+for (const id of ['dua', 'apoyos']) nodos.set('#panel-' + id + ' .acciones-intro', nodo('intro-' + id));
 nodos.set('#necesidades button', nodo('primera-necesidad'));
 const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
 vm.runInContext(archivo('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
 const guia = nodos.get('#guia-dua');
-vm.runInContext('prepararGuiaDUA(); mostrarGuiaDUA()', contexto);
+vm.runInContext('prepararGuiaDUA()', contexto);
+assert.equal(guia.open, false);
+vm.runInContext('mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);
 assert.equal(contexto.document.activeElement.id, 't-guia-dua');
 nodos.get('#guia-empezar').click();
-assert.equal(almacen.get('prizma.guia-dua.v1'), '1');
+assert.equal(almacen.has('prizma.guia-dua.v1'), false);
 assert.equal(contexto.document.activeElement.id, 'primera-necesidad');
 vm.runInContext('prepararGuiaDUA()', contexto);
 assert.equal(guia.open, false);
@@ -70,4 +72,4 @@ assert.deepEqual([...html.matchAll(/<li>(.*?)<\/li>/g)].map(m => m[1]), [
 ]);
 assert.ok(html.includes('>Basado en las Pautas DUA 3.0 de CAST (2024).</p>'));
 assert.ok(html.includes('>Empezar</button>'));
-console.log('Correcto: texto exacto, primera visita, confirmación, foco, reapertura, prioridad de privacidad y almacenamiento bloqueado.');
+console.log('Correcto: texto exacto, guía solo manual, Empezar y foco, reapertura, prioridad de privacidad y almacenamiento bloqueado.');
