@@ -7,6 +7,11 @@ Una clase, muchas formas de aprender.
 El Diseño Universal para el Aprendizaje (DUA) funciona aquí como un menú de opciones.
 No es una lista de cotejo.
 
+## Por qué Prizma
+
+Un prisma recibe una sola luz y la abre en muchos colores.
+Una clase inclusiva hace lo mismo: un mismo objetivo, muchas formas de aprender.
+
 ## Cómo funciona
 
 Prizma no te dice cómo planificar tu clase.
@@ -39,6 +44,7 @@ Ley 20.422, Ley 21.091 y Ley 21.545.
 
 ## Estado
 
-En diseño. Todavía no hay código.
+Etapa 1: la página «Mi clase» con 36 acciones DUA, una por cada consideración de DUA 3.0.
+Para probarla en tu computador: `python3 -m http.server` en esta carpeta y abre http://localhost:8000.
 
 Proyecto personal, no institucional.
