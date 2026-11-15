@@ -26,7 +26,6 @@ try {
   <div class="marco">
     <div class="cabecera-barra">
       <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="14" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="39" y="14" width="22" height="22" rx="1.6" fill="var(--motivar)"/><rect x="64" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="14" y="39" width="22" height="22" rx="1.6" fill="var(--presentar)"/><rect x="39" y="39" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="64" y="39" width="22" height="22" rx="1.6" fill="var(--mostrar)"/><rect x="14" y="64" width="22" height="22" rx="1.6" fill="currentColor"/><circle cx="50" cy="75" r="11" fill="var(--presentar)"/><rect x="64" y="64" width="22" height="22" rx="1.6" fill="currentColor"/></svg>Prizma</p>
-      <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a>
       <label class="tema" for="tema">Tema
         <select id="tema" name="tema">
           <option value="dispositivo">Según mi dispositivo</option>
@@ -60,7 +59,10 @@ try {
   <div class="cabecera-intro">
       <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
       <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+      <div class="acciones-intro">
+      <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a>
       <button type="button" id="abrir-filtros" class="boton" aria-haspopup="dialog" aria-controls="filtros-dialogo">Filtros (0)</button>
+      </div>
     </div>
     <div id="lugar-filtros-dua" class="lugar-filtros">
       <aside id="filtros-dua" class="filtros perfil" aria-labelledby="t-filtros-dua">
@@ -72,7 +74,7 @@ try {
           <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
         </label>
           <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
-        <legend>¿Qué quieres resolver en esta <span data-voc="clase">clase</span>? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
+        <legend>¿Qué quieres resolver en esta <span data-voc="clase">clase</span>?</legend>
         <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
         <div class="chips" id="necesidades"></div>
       </fieldset>
@@ -120,12 +122,14 @@ try {
     <div class="cabecera-intro">
       <h1 id="t-estudiante">Apoyos individualizados para un estudiante</h1>
       <p id="bajada-apoyos" class="bajada">Elige los que le sirvan. Prizma no reemplaza al equipo de apoyo: te ofrece un menú, cada apoyo con su fuente.</p>
+      <div class="acciones-intro"><a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></div>
     </div>
     <div id="lugar-filtros-apoyos" class="lugar-filtros">
       <aside id="filtros-apoyos" class="filtros perfil" aria-labelledby="t-filtros-apoyos">
         <h2 id="t-filtros-apoyos" tabindex="-1">Filtros</h2>
         <div class="perfil-campos">
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
+        <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
@@ -134,9 +138,9 @@ try {
       </aside>
     </div>
     <div id="estudiante" class="resultados" tabindex="-1">
-      <h2 class="solo-lectores">Resultados de apoyos</h2>
-      <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo. <a href="#aviso-apoyos" class="enlace-aviso-apoyos" aria-haspopup="dialog" aria-controls="aviso-apoyos">Antes de empezar</a></p>
-      <p id="aviso-acceso-superior" class="ayuda" hidden>Los apoyos se acuerdan con el estudiante y la unidad de inclusión. <a href="#aviso-apoyos" class="enlace-aviso-apoyos" aria-haspopup="dialog" aria-controls="aviso-apoyos">Antes de empezar</a></p>
+      <h2 id="t-apoyos">Apoyos para un estudiante</h2>
+      <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo. <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></p>
+      <p id="aviso-acceso-superior" class="ayuda" hidden>Los apoyos se acuerdan con el estudiante y la unidad de inclusión. <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></p>
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
@@ -199,7 +203,7 @@ try {
   <div class="marco">
     <p><strong>Orientación pedagógica.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento.</p>
     <p>Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
-    <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a> · <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></p>
+    <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a> · <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a> · <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></p>
   </div>
 </footer>
 
@@ -217,15 +221,31 @@ try {
   <button type="button" id="guia-empezar" class="boton boton-principal" disabled>Empezar</button>
 </dialog>
 
-<dialog id="aviso-apoyos" class="aviso-privacidad" aria-labelledby="t-aviso-apoyos">
-  <h2 id="t-aviso-apoyos" tabindex="-1" autofocus>Antes de empezar</h2>
-  <h3>Cómo se acuerdan los apoyos</h3>
-  <p id="acuerdo-escolar">Conversa con el estudiante y su familia antes de aplicar un apoyo. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
-  <p id="acuerdo-superior" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución. Pregúntale qué barreras encuentra y qué le ha servido antes, y deja el acuerdo por escrito (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
-  <h3>Privacidad</h3>
-  <p>Usa solo iniciales. No escribas nombres, RUT, diagnósticos ni datos de salud. Los datos quedan solo en este navegador.</p>
-  <p><a href="#aviso-privacidad" id="ver-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Ver aviso completo</a></p>
-  <button type="button" id="apoyos-entendido" class="boton boton-principal">Entendido</button>
+<dialog id="guia-apoyos" class="aviso-privacidad" aria-labelledby="t-guia-apoyos">
+  <h2 id="t-guia-apoyos" tabindex="-1" autofocus>Cómo usar los apoyos individualizados</h2>
+  <div id="guia-apoyos-escolar">
+    <ol>
+      <li>Parte por el DUA. Muchas barreras se resuelven con acciones para todo el curso.</li>
+      <li>Describe la situación, no al estudiante: marca dónde encuentra barreras y con qué frecuencia.</li>
+      <li>Anota qué le ayuda y qué dicen el estudiante y su familia.</li>
+      <li>Elige primero adecuaciones de acceso. Las adecuaciones en los objetivos son solo para cuando el acceso no basta.</li>
+      <li>Acuerda los apoyos con el estudiante, su familia y el equipo de apoyo, y regístralos en el PACI.</li>
+      <li>Revisa cada cierto tiempo si siguen sirviendo.</li>
+    </ol>
+    <p class="ayuda">Basado en el Decreto 83 (2015) y la CIF (OMS, 2001).</p>
+  </div>
+  <div id="guia-apoyos-superior" hidden>
+    <ol>
+      <li>Parte por el diseño universal. Muchas barreras se resuelven para todo el curso.</li>
+      <li>Pregúntale al estudiante qué barreras encuentra y qué le ha servido antes.</li>
+      <li>Marca esas situaciones y con qué frecuencia aparecen.</li>
+      <li>Elige ajustes que mantengan los resultados de aprendizaje: cambia la forma, no la exigencia.</li>
+      <li>Acuérdalos con el estudiante y la unidad de inclusión, y déjalos por escrito.</li>
+      <li>Revisa cada semestre si siguen sirviendo.</li>
+    </ol>
+    <p class="ayuda">Basado en la Ley 21.091, la Ley 20.422 y las orientaciones de la Subsecretaría de Educación Superior.</p>
+  </div>
+  <button type="button" id="guia-apoyos-entendido" class="boton boton-principal">Entendido</button>
 </dialog>
 
 <dialog id="aviso-privacidad" class="aviso-privacidad" aria-labelledby="t-privacidad">
