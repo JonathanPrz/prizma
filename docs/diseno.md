@@ -207,8 +207,9 @@ Con poca información ya hay resultados útiles. Con más información, los resu
 
 - Sitio estático en GitHub Pages: `index.html`, `app.js`, `styles.css`, `data/*.json`.
 - Sin framework ni compilación.
-- PDF con una hoja de estilos de impresión, usando "Guardar como PDF" del navegador.
-  `shortcut:` depende del diálogo de impresión. Si en teléfonos resulta incómodo, generar el PDF con una librería.
+- PDF: primero una **vista previa**, con 2 opciones:
+  - **Descargar PDF:** se genera en el navegador con pdfmake 0.2.10 (licencia MIT), guardado en `vendor/pdfmake/`. Se carga solo al pedir la descarga. Es texto real, con número de página.
+  - **Imprimir:** usa la hoja de estilos de impresión del navegador.
 - Un script revisa el catálogo: que los campos sean válidos, que cada fuente exista y que cada recomendación tenga fuente.
 - Accesibilidad WCAG 2.2 AA: teclado, foco visible, contraste, objetivos táctiles de 24 px o más, y nada que dependa solo del color.
 

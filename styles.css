@@ -141,21 +141,32 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .segmentos span { border-bottom: 1px solid var(--linea); text-align: center; }
 }
 
-/* Hoja para PDF */
-.hoja { display: none; }
+/* Vista previa: la hoja se ve como papel, también en modo oscuro */
+.vista { width: min(56rem, 100vw - 2rem); max-height: calc(100vh - 2rem); padding: 0; border: 0; border-radius: .6rem; background: var(--papel); color: var(--tinta); }
+.vista::backdrop { background: rgb(15 20 38 / .6); }
+.vista-barra { position: sticky; top: 0; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem 1.25rem; background: var(--superficie); border-bottom: 1px solid var(--linea); }
+.vista-botones { display: flex; flex-wrap: wrap; gap: .5rem; }
+.vista-botones .boton { width: auto; }
+.vista-barra .ayuda { flex-basis: 100%; }
+.vista-barra .ayuda:empty { display: none; }
+.hoja { margin: 1.25rem; padding: 2.5rem 2.75rem; background: #fff; color: #111; box-shadow: 0 1px 3px rgb(0 0 0 / .2); font-size: 1rem; line-height: 1.5; }
+.hoja h1 { font-size: 1.6rem; margin-bottom: .15rem; }
+.hoja h2 { font-size: 1.15rem; margin: 1.3rem 0 .5rem; border-bottom: 1px solid #888; padding-bottom: .2rem; }
+.hoja h3 { font-size: 1.02rem; margin: 0 0 .2rem; }
+.hoja p + p { margin-top: .3rem; }
+.hoja .h-meta, .hoja .h-dato { color: #444; font-size: .85rem; }
+.hoja .h-accion { break-inside: avoid; margin-bottom: .9rem; }
+.hoja .h-accion ol { margin: .2rem 0; padding-left: 1.3rem; }
+.hoja .h-nota { border-left: 3px solid #888; padding-left: .5rem; margin-top: .3rem; }
+.hoja .h-fuentes { font-size: .85rem; padding-left: 1.3rem; overflow-wrap: anywhere; }
+.hoja .h-aviso { margin-top: 1.2rem; font-size: .85rem; border: 1px solid #888; padding: .5rem .7rem; }
+@media (max-width: 34rem) { .hoja { margin: .5rem; padding: 1.25rem 1rem; } }
+
+/* Impresión: solo la hoja */
 @media print {
   @page { margin: 18mm 16mm; }
-  body { background: #fff; color: #000; font-size: 11pt; }
-  .saltar, .cabecera, .disposicion, .pie, noscript { display: none !important; }
-  .hoja { display: block; }
-  .hoja h1 { font-size: 20pt; margin-bottom: 2pt; }
-  .hoja h2 { font-size: 13pt; margin: 14pt 0 6pt; border-bottom: 1pt solid #888; padding-bottom: 2pt; }
-  .hoja h3 { font-size: 11.5pt; margin: 0 0 2pt; }
-  .hoja .h-meta { color: #333; }
-  .hoja .h-accion { break-inside: avoid; margin-bottom: 9pt; }
-  .hoja .h-accion ol { margin: 2pt 0; padding-left: 14pt; }
-  .hoja .h-dato { font-size: 9.5pt; color: #333; }
-  .hoja .h-nota { border-left: 2pt solid #888; padding-left: 6pt; margin-top: 3pt; }
-  .hoja .h-fuentes { font-size: 9.5pt; padding-left: 14pt; }
-  .hoja .h-aviso { margin-top: 14pt; font-size: 9.5pt; border: 1pt solid #888; padding: 6pt; }
+  body { background: #fff; }
+  .saltar, .cabecera, .disposicion, .pie, noscript, .vista-barra { display: none !important; }
+  .vista { display: block !important; position: static; width: auto; max-height: none; overflow: visible; background: #fff; }
+  .hoja { margin: 0; padding: 0; box-shadow: none; font-size: 11pt; }
 }

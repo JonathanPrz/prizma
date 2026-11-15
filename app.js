@@ -156,31 +156,101 @@ function sincronizarPerfil() {
   });
 }
 
-function armarHoja() {
+const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.";
+
+// Un solo modelo del documento para la vista previa, la impresión y el PDF descargable.
+function documento() {
   const p = estado.perfil, sel = elegidasOrdenadas(), nombreMomento = Object.fromEntries(MOMENTOS);
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
-  const usadas = [...new Set(sel.flatMap((r) => r.fuentes))];
   const datos = [p.nivel && NIVELES[p.nivel], p.tipo && $("#tipo").selectedOptions[0].text, p.evaluacion.length && "Evaluación: " + p.evaluacion.join(", ")].filter(Boolean);
-  const hoja = $("#hoja");
+  return {
+    fecha: `${fecha}. Generado con Prizma, catálogo del ${VERSION_CATALOGO}.`,
+    datos: datos.length ? datos.join(". ") + "." : "",
+    meta: p.meta.trim(),
+    grupos: MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).map(([id]) => ({
+      nombre: nombreMomento[id],
+      acciones: sel.filter((r) => r.momento === id).map((r) => ({
+        titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
+        dato: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
+      })),
+    })),
+    fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
+  };
+}
+
+function armarHoja() {
+  const d = documento();
   const partes = [
     el("h1", { text: "Acciones para mi clase" }),
-    el("p", { class: "h-meta", text: `${fecha}. Generado con Prizma, catálogo del ${VERSION_CATALOGO}.` }),
-    datos.length ? el("p", { text: datos.join(". ") + "." }) : null,
-    p.meta ? el("p", {}, el("strong", { text: "Meta de aprendizaje: " }), p.meta, el("br"), el("em", { text: "Quita las barreras, no el desafío de aprender esto." })) : null,
-    ...MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).flatMap(([id]) => [
-      el("h2", { text: nombreMomento[id] }),
-      ...sel.filter((r) => r.momento === id).map((r) => el("div", { class: "h-accion" },
-        el("h3", { text: r.titulo }),
-        el("ol", {}, r.como.map((x) => el("li", { text: x }))),
-        el("p", {}, el("strong", { text: "Por qué funciona: " }), r.porque),
-        el("p", { class: "h-dato", text: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.` }),
-        estado.seleccion[r.id] ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), estado.seleccion[r.id]) : null)),
+    el("p", { class: "h-meta", text: d.fecha }),
+    d.datos ? el("p", { text: d.datos }) : null,
+    d.meta ? el("p", {}, el("strong", { text: "Meta de aprendizaje: " }), d.meta, el("br"), el("em", { text: "Quita las barreras, no el desafío de aprender esto." })) : null,
+    ...d.grupos.flatMap((g) => [
+      el("h2", { text: g.nombre }),
+      ...g.acciones.map((a) => el("div", { class: "h-accion" },
+        el("h3", { text: a.titulo }),
+        el("ol", {}, a.como.map((x) => el("li", { text: x }))),
+        el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque),
+        el("p", { class: "h-dato", text: a.dato }),
+        a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null)),
     ]),
     el("h2", { text: "Fuentes" }),
-    el("ol", { class: "h-fuentes" }, usadas.map((f) => el("li", { text: `${fuentes[f].cita} ${fuentes[f].url}` }))),
-    el("p", { class: "h-aviso", text: "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas." }),
+    el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", { text: f }))),
+    el("p", { class: "h-aviso", text: AVISO }),
   ];
-  hoja.replaceChildren(...partes.filter(Boolean));
+  $("#hoja").replaceChildren(...partes.filter(Boolean));
+}
+
+function definicionPdf() {
+  const d = documento();
+  const linea = { canvas: [{ type: "line", x1: 0, y1: 0, x2: 505, y2: 0, lineWidth: 0.6, lineColor: "#888888" }], margin: [0, 0, 0, 6] };
+  const contenido = [
+    { text: "Acciones para mi clase", style: "h1" },
+    { text: d.fecha, style: "dato", margin: [0, 0, 0, 4] },
+    d.datos ? { text: d.datos, margin: [0, 0, 0, 4] } : null,
+    d.meta ? { text: [{ text: "Meta de aprendizaje: ", bold: true }, d.meta], margin: [0, 4, 0, 0] } : null,
+    d.meta ? { text: "Quita las barreras, no el desafío de aprender esto.", italics: true, margin: [0, 0, 0, 6] } : null,
+    ...d.grupos.flatMap((g) => [
+      { text: g.nombre, style: "h2" }, linea,
+      ...g.acciones.map((a) => ({
+        unbreakable: true, margin: [0, 0, 0, 10], stack: [
+          { text: a.titulo, style: "h3" },
+          { ol: a.como, margin: [0, 2, 0, 2] },
+          { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] },
+          { text: a.dato, style: "dato", margin: [0, 2, 0, 0] },
+          a.nota ? { text: [{ text: "Mi nota: ", bold: true }, a.nota], margin: [0, 3, 0, 0] } : null,
+        ].filter(Boolean),
+      })),
+    ]),
+    { text: "Fuentes", style: "h2" }, linea,
+    { ol: d.fuentes, style: "dato" },
+    { table: { widths: ["*"], body: [[{ text: AVISO, style: "dato", margin: [4, 4, 4, 4] }]] }, layout: { hLineColor: "#888888", vLineColor: "#888888" }, margin: [0, 14, 0, 0] },
+  ].filter(Boolean);
+  return {
+    info: { title: "Acciones para mi clase", creator: "Prizma" },
+    pageSize: "LETTER", pageMargins: [54, 54, 54, 60],
+    content: contenido,
+    footer: (actual, total) => ({ text: `Página ${actual} de ${total}`, alignment: "right", fontSize: 8, color: "#555555", margin: [54, 20, 54, 0] }),
+    defaultStyle: { fontSize: 10.5, lineHeight: 1.25 },
+    styles: { h1: { fontSize: 18, bold: true, margin: [0, 0, 0, 2] }, h2: { fontSize: 13, bold: true, margin: [0, 12, 0, 3] }, h3: { fontSize: 11, bold: true }, dato: { fontSize: 8.5, color: "#444444" } },
+  };
+}
+
+// pdfmake pesa unos 2 MB: se carga solo cuando alguien pide descargar.
+function cargarScript(src) {
+  return new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => mal(new Error(src)); document.head.append(s); });
+}
+async function descargarPdf() {
+  const aviso = $("#vista-estado"), boton = $("#descargar");
+  boton.disabled = true; aviso.textContent = "Preparando el PDF…";
+  try {
+    if (!window.pdfMake) { await cargarScript("vendor/pdfmake/pdfmake.min.js"); await cargarScript("vendor/pdfmake/vfs_fonts.js"); }
+    const fecha = new Date().toISOString().slice(0, 10);
+    window.pdfMake.createPdf(definicionPdf()).download(`prizma-mi-clase-${fecha}.pdf`);
+    aviso.textContent = "PDF descargado. Búscalo en tu carpeta de descargas.";
+  } catch (e) {
+    aviso.textContent = "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».";
+  } finally { boton.disabled = false; }
 }
 
 async function iniciar() {
@@ -195,7 +265,10 @@ async function iniciar() {
   estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => r.id === id)));
   sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   window.addEventListener("beforeprint", armarHoja);
-  $("#pdf").addEventListener("click", () => { armarHoja(); window.print(); });
+  $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });
+  $("#descargar").addEventListener("click", descargarPdf);
+  $("#imprimir").addEventListener("click", () => window.print());
+  $("#cerrar").addEventListener("click", () => $("#vista").close());
   $("#borrar").addEventListener("click", () => {
     if (!window.confirm("¿Borrar tu clase, tu selección y tus notas de este navegador?")) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }

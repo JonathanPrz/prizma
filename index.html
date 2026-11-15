@@ -85,8 +85,8 @@
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
     <ol id="sel-lista" class="sel-lista"></ol>
     <div class="sel-botones">
-      <button type="button" id="pdf" class="boton boton-principal">Descargar PDF</button>
-      <p class="ayuda">Se abre la ventana de impresión: elige «Guardar como PDF».</p>
+      <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
+      <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
       <button type="button" id="borrar" class="boton boton-sutil">Borrar todo</button>
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
     </div>
@@ -100,7 +100,18 @@
   </div>
 </footer>
 
-<section id="hoja" class="hoja" aria-hidden="true"></section>
+<dialog id="vista" class="vista" aria-labelledby="t-vista">
+  <div class="vista-barra">
+    <h2 id="t-vista">Vista previa</h2>
+    <div class="vista-botones">
+      <button type="button" id="descargar" class="boton boton-principal">Descargar PDF</button>
+      <button type="button" id="imprimir" class="boton">Imprimir</button>
+      <button type="button" id="cerrar" class="boton boton-sutil">Cerrar</button>
+    </div>
+    <p id="vista-estado" class="ayuda" aria-live="polite"></p>
+  </div>
+  <article id="hoja" class="hoja"></article>
+</dialog>
 <noscript><p class="marco">Prizma necesita JavaScript activado para mostrar las acciones.</p></noscript>
 </body>
 </html>
