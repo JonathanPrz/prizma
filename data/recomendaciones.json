@@ -2530,7 +2530,7 @@
     "titulo": "Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide",
     "como": [
       "Revisa si la velocidad es parte del resultado de aprendizaje.",
-      "Si no lo es, acuerda el tiempo adicional antes de la evaluación.",
+      "Si no lo es, acuérdalo antes de la evaluación. El Mineduc sugiere como referencia un 50% más.",
       "Aplícalo también a evaluaciones en línea y con plazo."
     ],
     "porque": "La evidencia muestra beneficios, sobre todo cuando el tiempo estándar no alcanza para trabajar al propio ritmo.",
@@ -2547,6 +2547,7 @@
     "respaldo": "investigacion-moderada",
     "fuentes": [
       "ofqual-2025",
+      "mineduc-es-20422",
       "ley-21091"
     ],
     "destacada": false,
@@ -2575,6 +2576,7 @@
     "respaldo": "investigacion-moderada",
     "fuentes": [
       "wood-2018",
+      "mineduc-es-20422",
       "ley-20422"
     ],
     "destacada": false,
@@ -2716,8 +2718,9 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
+      "mineduc-es-20422",
       "ofs-uk",
       "udl-on-campus"
     ],
@@ -4079,7 +4082,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-21545",
       "udl-on-campus"
@@ -4112,7 +4115,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-21545",
       "ley-21091"
@@ -4126,9 +4129,9 @@
     "subtipo": "tiempo",
     "titulo": "Acuerda pausas en clases largas y evaluaciones",
     "como": [
-      "Define si las pausas suman tiempo o no a la evaluación.",
-      "Acuerda una forma discreta de pedirlas.",
-      "Aplícalo también en evaluaciones en línea."
+      "Como referencia, el Mineduc sugiere una pausa de 15 minutos en las evaluaciones; ajústala a cada caso.",
+      "Acuerda una forma discreta de pedir pausas en clases.",
+      "Permite salir de la sala por motivos de salud sin pedir explicaciones frente al curso."
     ],
     "porque": "Una pausa breve permite sostener el esfuerzo cuando hay fatiga, dolor o sobrecarga.",
     "areas": [
@@ -4144,7 +4147,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-20422",
       "ley-21091"
@@ -4204,7 +4207,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-20422",
       "ofs-uk"
@@ -4301,7 +4304,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-21545",
       "udl-on-campus"
@@ -4334,7 +4337,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-21545",
       "mineduc-es-20422"
@@ -4365,7 +4368,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "mineduc-es-21545"
     ],

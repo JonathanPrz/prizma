@@ -107,3 +107,10 @@ Algunos ejemplos útiles para el catálogo:
 ## Media técnico-profesional (agregado el 15-11-2026)
 
 - `mineduc-gestion-curricular-emtp-2016.md`: copia de trabajo aportada por el dueño. Útil: los criterios de evaluación incluyen condiciones de seguridad (pp. 25–26) y la planificación parte de las necesidades de los estudiantes respecto del aprendizaje esperado (pp. 61–62).
+
+## Educación superior: guías de la Subsecretaría (agregado el 15-11-2026)
+
+Copias completas aportadas por el dueño. Reemplazan como archivo de respaldo a los resúmenes de `codex/superior/`.
+- `mineduc-es-ley-21545-2025.md`: ajustes para estudiantes autistas. Respaldan: pocos estímulos y luz y sonido adecuados, audífonos de cancelación y lentes (p. 14); espacios tranquilos, aviso anticipado de cambios, salas con menos estudiantes, distintos formatos y evaluación progresiva del trabajo en equipo y las presentaciones orales (p. 15); equipos de acompañamiento (pp. 13–14).
+- `mineduc-es-ley-20422-2026.md`: ajustes por tipo de discapacidad. Respaldan: macrotipo, Braille, LSCh, audio y descripción de imágenes (p. 17); **tiempo adicional de referencia del 50% y una pausa de 15 minutos** (p. 18); apoyos para tomar apuntes y material anticipado (p. 35); subtítulos, comunicación frontal y micrófonos (p. 43); formatos compatibles con lector de pantalla (p. 45). Aclara que no es un documento interpretativo ni vinculante (p. 2).
+- Corrección: el resumen de Codex decía que la guía de la Ley 20.422 no fija porcentajes de tiempo adicional. Sí sugiere uno como referencia (p. 18).
