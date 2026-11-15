@@ -3,7 +3,7 @@
 ## Qué es Prizma
 
 Página web estática que ofrece a docentes chilenos acciones concretas, con fuente, para que todo su curso pueda aprender. Se basa en DUA 3.0 y en la normativa chilena.
-Versión 1: educación parvularia, básica y media (CH y TP). Diseño completo en `docs/diseno.md`.
+Niveles: educación parvularia, básica y media (CH y TP). La educación superior (universitaria y TP) está en investigación. Diseño completo en `docs/diseno.md`.
 
 ## Roles
 

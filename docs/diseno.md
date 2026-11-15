@@ -10,18 +10,15 @@ El docente cuenta cómo es su clase y qué barreras ve.
 Prizma le muestra acciones concretas para reducir esas barreras, cada una con su fuente.
 Prizma no planifica la clase.
 
-## 2. Alcance de la versión 1
+## 2. Alcance
 
-| Incluido | Fuera por ahora |
-|---|---|
-| Educación parvularia | Educación superior: universidades, IP y CFT |
-| Educación básica | Práctica profesional en empresas |
-| Educación media científico-humanista | Ajustes en el trabajo |
-| Educación media técnico-profesional, en las clases y módulos del liceo | |
+**Decisión del 15 de noviembre de 2026:** el dueño incluye la **educación superior**, universitaria y técnico-profesional (universidades, IP y CFT). Antes estaba fuera de la versión 1.
 
-**Razón.** Los niveles incluidos comparten un mismo marco legal: Decreto 83, Decreto 170, Decreto 67 y Circular 586. Los que quedan fuera tienen otras normas y otros responsables, y necesitan otro catálogo.
+| Incluido | En investigación | Fuera por ahora |
+|---|---|---|
+| Educación parvularia, básica y media (CH y TP, en el liceo) | Educación superior universitaria y técnico-profesional | Práctica profesional en empresas, ajustes en el trabajo |
 
-El nivel educativo se guarda como un dato, así que se pueden agregar más adelante. Las fuentes de educación superior ya revisadas, la Ley 21.091 y la CDPD, quedan en `fuentes/`.
+En educación superior no hay adecuaciones curriculares del Decreto 83: rigen los **ajustes razonables o necesarios** de la Ley 21.091 (art. 2 e), la Ley 20.422 (art. 39), la Ley 21.545 (art. 21) y la CDPD (art. 2 y 24). Las fuentes las recopila Codex en `docs/fuentes/codex/superior/` y el contenido lo redacta Claude.
 
 ## 3. Recorrido del usuario
 
