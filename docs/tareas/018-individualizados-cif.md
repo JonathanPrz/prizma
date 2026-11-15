@@ -16,8 +16,7 @@ El dueño pidió cuatro cambios:
 
 1. **Nombre de la pestaña:**
    - En la escuela, la pestaña se llama «Apoyos individualizados» y el `h1` dice «Apoyos individualizados para un estudiante».
-   - En superior, la pestaña se llama «Ajustes individualizados» y el `h1` dice «Ajustes individualizados para un estudiante».
-   - Las tarjetas, el aviso y el PDF siguen usando «Ajuste razonable», que es el término de la Ley 21.091: no lo cambies.
+   - En superior no cambia nada: se mantiene el término legal de la Ley 21.091, «Ajustes razonables», en la pestaña, el `h1`, las tarjetas, el aviso y el PDF.
    - Ajusta las pruebas que comprueban estos textos.
 2. **Adecuaciones en los objetivos, agrupadas:**
    - Dentro del bloque «Si los apoyos de acceso no bastan», agrupa las fichas por tipo, con un `h3` por tipo (`TIPOS_OBJETIVOS`).
@@ -40,7 +39,7 @@ El dueño pidió cuatro cambios:
 Las fichas, las fuentes, «Mi mochila», la pestaña DUA, los temas y el logo.
 
 ## Criterios de aceptación
-- [ ] La pestaña y el `h1` usan los nombres nuevos en la escuela y en superior. Las tarjetas de superior siguen diciendo «Ajuste razonable».
+- [ ] En la escuela, la pestaña y el `h1` dicen «Apoyos individualizados». En superior siguen diciendo «Ajustes razonables».
 - [ ] Las adecuaciones en los objetivos aparecen agrupadas por tipo, y el selector filtra los ejemplos sin ocultar las fichas generales.
 - [ ] La casilla de actividades prácticas no aparece mientras no haya fichas con `practica`. Con una ficha simulada, la casilla aparece y el grupo funciona.
 - [ ] El PDF y la vista previa muestran la tabla CIF con las situaciones marcadas, y la tabla funciona con lector de pantalla.
