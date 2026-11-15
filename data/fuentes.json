@@ -154,5 +154,17 @@
     "cita": "Australian Skills Quality Authority (2026). Training Support Practice Guide.",
     "url": "https://www.asqa.gov.au/for-providers/standards-for-RTOs/practice-guides/quality-area-2-vet-student-support/training-support-practice-guide",
     "archivo": "docs/fuentes/codex/practica/australia-asqa-apoyo-vet-2026.md"
+  },
+  {
+    "id": "mineduc-extranjeros-2017",
+    "cita": "Mineduc (2017). Orientaciones técnicas para la inclusión educativa de estudiantes extranjeros.",
+    "url": "https://bibliotecadigital.mineduc.cl/bitstream/handle/20.500.12365/438/MONO-366.pdf",
+    "archivo": "docs/fuentes/codex/mineduc-inclusion-extranjeros-2017-resumen.md"
+  },
+  {
+    "id": "mineduc-intercultural-2022",
+    "cita": "Mineduc y Universidad de Chile (2022). Guía metodológica para la comunicación intercultural con personas no hispanohablantes en las comunidades educativas.",
+    "url": "https://estudiantesextranjeros.mineduc.cl/wp-content/uploads/sites/88/2024/01/6.4-Guia-metodologica-para-la-comunicacion-intercultural-con-personas-no-hispanohablantes-1.pdf",
+    "archivo": "docs/fuentes/codex/mineduc-comunicacion-intercultural-2022-resumen.md"
   }
 ]

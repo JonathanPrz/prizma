@@ -9,7 +9,9 @@ vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
 vm.runInContext(`catalogo = ${leer('data/recomendaciones.json')}; estado.perfil.nivel = "superior"; estado.estudiante.dimensiones = {2: 2}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));`, contexto);
 const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, contexto)));
 assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-coordinar":"Acuerdo"}}).perfil.nivel'), 'superior');
-assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id).sort()'), ['sup-apuntes', 'sup-digital', 'sup-formatos', 'sup-tiempo']);
+// Con la situación 2 marcada en superior se ven todas y solo las fichas de superior con esa situación.
+assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id).sort()'), ejecutar('catalogo.filter(r => r.tipo === "acceso" && r.niveles.includes("superior") && !r.contextos.includes("practica") && r.dimensiones.includes(2)).map(r => r.id).sort()'));
+assert(ejecutar('accesosVisibles().length') > 0 && ejecutar('accesosVisibles().every(r => r.id.startsWith("sup-"))'));
 assert.deepEqual(ejecutar('objetivosVisibles()'), []);
 assert.equal(ejecutar('catalogo.filter(r => r.tipo === "desregulacion" && aplica(r)).length'), 0);
 assert.equal(ejecutar('catalogo.filter(r => r.tipo === "dua" && aplica(r)).length'), 36);

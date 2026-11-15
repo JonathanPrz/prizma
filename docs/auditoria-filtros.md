@@ -65,3 +65,4 @@ Fichas de acceso por situación: entre 0 y 4. Es poco para un repositorio con fi
 - **C1 hecho** (15 nov 2026): 5 fichas nuevas (`acc-2-concreto`, `acc-2-registro`, `sup-lengua`, `sup-confidencial`, `sup-recursos`) y `sup-senas` suma la situación 10 (Ley 20.422 reconoce a la comunidad sorda como minoría lingüística y cultural). Ningún nivel queda con situaciones sin apoyos.
 - **C2 iniciado** (15 nov 2026): 8 ejemplos de adecuaciones en los objetivos por asignatura, con el campo `asignatura`. La eliminación no tiene ejemplos: es el último recurso.
 - El validador ahora exige que cada nivel tenga al menos un apoyo por situación.
+- **C3 hecho** (15 nov 2026): 29 adecuaciones de acceso nuevas. Cada nivel tiene al menos 4 apoyos por situación, sin contar los prácticos, y el validador lo exige. La mayoría se basa en los ejemplos que da el propio Decreto 83 para cada tipo de acceso.

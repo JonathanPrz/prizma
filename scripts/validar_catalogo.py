@@ -37,10 +37,11 @@ errores += [f"{r['id']}: objetivos no aplica a parvularia ni a superior" for r i
 ASIGNATURAS = {"", "lenguaje", "matematica", "ciencias", "historia"}
 errores += [f"{r['id']}: asignatura inválida" for r in R if "asignatura" in r and (r["tipo"] != "objetivos" or r["asignatura"] not in ASIGNATURAS)]
 acceso = [r for r in R if r["tipo"] == "acceso"]
-# Cada nivel debe tener al menos un apoyo para cada situación que se puede marcar.
+# Cada nivel debe tener al menos 4 apoyos de acceso (sin contar los prácticos) para cada situación que se puede marcar.
 for n in ["parvularia", "basica", "media", "superior"]:
-    vacias = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or n in r["niveles"] for d in r["dimensiones"]})
-    errores += [f"{n}: situaciones sin apoyos {vacias}"] if vacias else []
+    generales = [r for r in acceso if (not r["niveles"] or n in r["niveles"]) and "practica" not in r["contextos"]]
+    pocas = [d for d in range(1, 12) if sum(d in r["dimensiones"] for r in generales) < 4]
+    errores += [f"{n}: situaciones con menos de 4 apoyos {pocas}"] if pocas else []
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
 sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or "basica" in r["niveles"] for d in r["dimensiones"]})
 if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso: {sin_acceso}")

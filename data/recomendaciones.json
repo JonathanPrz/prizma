@@ -3476,5 +3476,929 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "acc-1-agenda",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+    "como": [
+      "Muestra los momentos del día o de la clase con imágenes o palabras.",
+      "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+      "Marquen juntos lo que ya está hecho."
+    ],
+    "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-autismo-2025",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-1-organizador",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Permite usar organizadores gráficos, calculadora u otras ayudas al responder",
+    "como": [
+      "Acuerda qué ayuda puede usar y en qué tareas.",
+      "Practiquen con ella antes de la evaluación.",
+      "Úsala solo cuando no sea lo que se evalúa."
+    ],
+    "porque": "El Decreto 83 incluye estas ayudas entre las formas de respuesta, sin bajar la exigencia.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1,
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ccsso-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-2-pictogramas",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Acompaña las palabras escritas con pictogramas o imágenes",
+    "como": [
+      "Pon una imagen junto a cada instrucción o palabra clave.",
+      "Usa siempre las mismas imágenes para lo mismo.",
+      "Retíralas de a poco cuando ya no las necesite."
+    ],
+    "porque": "Una imagen conocida da otra entrada a un texto que todavía cuesta leer.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      2,
+      3
+    ],
+    "niveles": [
+      "parvularia",
+      "basica"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-parvularia-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-2-hablado",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Lee los textos en voz alta y muéstralos con imágenes grandes",
+    "como": [
+      "Lee el cuento o la instrucción mientras muestras las imágenes.",
+      "Señala con el dedo lo que vas leyendo.",
+      "Vuelve a leerlo cuando lo pida."
+    ],
+    "porque": "Escuchar el texto permite participar en la historia aunque aún no lea.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      6
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-4-normas",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Explica de forma directa las normas que no se dicen",
+    "como": [
+      "Di o escribe qué se espera en cada situación: turnos, recreo, trabajo en grupo.",
+      "Usa ejemplos concretos o pequeñas dramatizaciones.",
+      "Repásalas antes de una situación nueva."
+    ],
+    "porque": "Las expectativas implícitas generan ansiedad; dichas en forma clara, se pueden cumplir.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      4,
+      3
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-4-recreo",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ofrece opciones estructuradas para recreos y tiempos libres",
+    "como": [
+      "Propón actividades o juegos con reglas claras en el recreo.",
+      "Ofrece un lugar tranquilo como alternativa.",
+      "Acuerda con quién puede acudir si necesita ayuda."
+    ],
+    "porque": "Los momentos sin estructura y con mucho estímulo son de los más difíciles de manejar.",
+    "areas": [
+      "comunicacion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      4,
+      5,
+      7
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-6-braille",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Ofrece el material en Braille, en relieve o en audio",
+    "como": [
+      "Coordina con el equipo de apoyo la transcripción a Braille.",
+      "Usa gráficos táctiles o en relieve para imágenes y mapas.",
+      "Entrega en audio o digital lo que no se pueda transcribir a tiempo."
+    ],
+    "porque": "El Decreto 83 nombra el Braille, los gráficos táctiles y los textos hablados como formas de presentar la información.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-6-audicion",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Habla de frente y apoya lo que dices con texto o señas",
+    "como": [
+      "Habla de frente, sin tapar tu boca, para permitir la lectura labial.",
+      "Escribe en la pizarra las instrucciones y palabras clave.",
+      "Coordina el intérprete de lengua de señas o el equipo de amplificación si los usa."
+    ],
+    "porque": "Si no escucha bien, necesita ver la información para no quedar fuera.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      6,
+      3
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-7-luz",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ajusta la luz, el ruido y los estímulos de la sala",
+    "como": [
+      "Evita luces muy intensas o parpadeantes cerca de su puesto.",
+      "Reduce los carteles y adornos en la pared que mira.",
+      "Baja el ruido con normas de volumen o protección auditiva."
+    ],
+    "porque": "El Decreto 83 incluye adecuar el ruido y la luz; la sobrecarga sensorial dificulta concentrarse.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      1
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-7-desfogue",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Organiza momentos breves de movimiento o distensión",
+    "como": [
+      "Planifica pausas activas o encargos que impliquen moverse.",
+      "Acuerda una señal para pedir un momento de distensión.",
+      "Define dónde y por cuánto tiempo."
+    ],
+    "porque": "El Decreto 83 nombra los espacios de distensión como parte de la organización del tiempo.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      5,
+      1
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-8-materiales",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Adapta los materiales para que pueda tomarlos y usarlos",
+    "como": [
+      "Usa lápices engrosados, tijeras adaptadas o atriles.",
+      "Fija las hojas a la mesa si se mueven.",
+      "Pregunta qué le acomoda y prueba antes de la clase."
+    ],
+    "porque": "Con el material adecuado puede participar en la actividad con más autonomía.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "nccd-2026"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-8-transcribe",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Permite que otra persona escriba lo que el estudiante responde",
+    "como": [
+      "Asigna a un adulto que escriba exactamente lo que dicta.",
+      "Lee lo escrito en voz alta para que lo confirme.",
+      "Aplícalo cuando la escritura a mano no es lo que se evalúa."
+    ],
+    "porque": "El Decreto 83 considera la transcripción de respuestas como una forma de respuesta.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      8,
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ccsso-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-8-desplazamiento",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Despeja los recorridos y facilita los desplazamientos",
+    "como": [
+      "Deja pasillos amplios y sin mochilas en el suelo.",
+      "Ubica su puesto cerca de la puerta si le ayuda.",
+      "Permite salir unos minutos antes en los cambios de sala."
+    ],
+    "porque": "El Decreto 83 pide favorecer el acceso y el desplazamiento personal y de equipos.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-9-jornada",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Permite rendir una evaluación en otro momento de la jornada",
+    "como": [
+      "Acuerda el horario en que suele estar con más energía.",
+      "Mueve la evaluación a ese momento, con el mismo nivel de exigencia.",
+      "Avísale con anticipación el cambio."
+    ],
+    "porque": "El Decreto 83 incluye cambiar la jornada de una evaluación como adecuación de tiempo.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      1,
+      5
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-9-cuidados",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Coordina con la familia y el equipo los cuidados de salud en la sala",
+    "como": [
+      "Conoce qué cuidados necesita y quién los entrega.",
+      "Acuerda dónde y cuándo se hacen, con privacidad.",
+      "Ten claro qué hacer si se siente mal."
+    ],
+    "porque": "Atender la salud con un plan acordado evita interrupciones y riesgos.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "nccd-2026",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-10-cultura",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Incluye contenidos de su cultura o su pueblo en los materiales",
+    "como": [
+      "Usa ejemplos, nombres e imágenes de su cultura o de su pueblo originario.",
+      "Invita a compartir saberes de su familia.",
+      "Revisa que no aparezcan estereotipos."
+    ],
+    "porque": "El Decreto 83 menciona materiales con contenidos de los pueblos originarios como forma de presentar la información.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-extranjeros-2017"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-10-familia",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Comunícate con la familia en su lengua o con apoyo",
+    "como": [
+      "Pregunta en qué lengua prefiere recibir la información.",
+      "Usa mensajes breves, con imágenes o con apoyo de un intérprete.",
+      "Confirma que se entendió lo importante."
+    ],
+    "porque": "La comunicación con la familia es tarea de la comunidad, no solo del estudiante.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      11
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-intercultural-2022",
+      "mineduc-extranjeros-2017"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-11-ayudas",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Asegura que tenga la ayuda técnica o la tecnología que necesita",
+    "como": [
+      "Revisa con el equipo qué ayudas técnicas usa o necesita.",
+      "Comprueba que estén disponibles y funcionando antes de la clase.",
+      "Enséñale a usarlas en la sala, no solo en apoyo."
+    ],
+    "porque": "Sin la ayuda técnica disponible, la adecuación existe solo en el papel.",
+    "areas": [
+      "contexto",
+      "sensorial"
+    ],
+    "dimensiones": [
+      11,
+      8,
+      6
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-grupos",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Da opciones en trabajos grupales y presentaciones orales",
+    "como": [
+      "Ofrece formar grupos con criterios claros o con apoyo del docente.",
+      "Permite presentar a un grupo pequeño o en video.",
+      "Mantén los mismos criterios de evaluación."
+    ],
+    "porque": "Así se evalúa el resultado de aprendizaje y no la exposición social.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5,
+      3
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545",
+      "udl-on-campus"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-sensorial",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Permite regular el ruido, la luz y la ubicación en clases y evaluaciones",
+    "como": [
+      "Acepta el uso de protección auditiva o lentes con filtro.",
+      "Deja elegir un asiento lejos del ruido o de la luz directa.",
+      "Acuerda poder salir unos minutos para regularse."
+    ],
+    "porque": "La sobrecarga sensorial reduce la concentración y el rendimiento.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      5,
+      1
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545",
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-pausas",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda pausas en clases largas y evaluaciones",
+    "como": [
+      "Define si las pausas suman tiempo o no a la evaluación.",
+      "Acuerda una forma discreta de pedirlas.",
+      "Aplícalo también en evaluaciones en línea."
+    ],
+    "porque": "Una pausa breve permite sostener el esfuerzo cuando hay fatiga, dolor o sobrecarga.",
+    "areas": [
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      7,
+      5
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422",
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-vision",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Entrega material ampliado, en Braille o con descripción de imágenes",
+    "como": [
+      "Acuerda el formato con el estudiante y la unidad de inclusión.",
+      "Describe en texto los gráficos e imágenes importantes.",
+      "Entrega el material con anticipación para su transcripción."
+    ],
+    "porque": "Sin un formato accesible, el contenido visual queda fuera de su alcance.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-20422",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-audicion",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Usa micrófono, subtítulos y deja visible tu cara",
+    "como": [
+      "Usa micrófono si la sala es grande o hay equipo de amplificación.",
+      "Activa subtítulos en videos y clases en línea.",
+      "Repite las preguntas del curso antes de responder."
+    ],
+    "porque": "Si no escucha bien, necesita ver o leer la información para seguir la clase.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      6,
+      3
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422",
+      "ofs-uk"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-remoto",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Ofrece seguir la clase a distancia durante tratamientos o licencias",
+    "como": [
+      "Comparte grabaciones o materiales de las clases perdidas.",
+      "Acuerda tutorías breves para resolver dudas.",
+      "Ajusta los plazos de entrega durante ese período."
+    ],
+    "porque": "Mantener el vínculo con el curso evita que una ausencia de salud termine en abandono.",
+    "areas": [
+      "contexto",
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      11
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422",
+      "ofs-uk"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-tecnologia",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Coordina la tecnología de apoyo con la unidad de inclusión",
+    "como": [
+      "Pregunta qué programas o equipos usa: lector de pantalla, dictado, ampliación.",
+      "Revisa que funcionen en la plataforma y en las evaluaciones.",
+      "Permite usarlos en clases y en pruebas."
+    ],
+    "porque": "Las ayudas técnicas solo sirven si también funcionan cuando se evalúa.",
+    "areas": [
+      "cognicion",
+      "contexto",
+      "sensorial"
+    ],
+    "dimensiones": [
+      11,
+      2,
+      6,
+      8
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-20422",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-expectativas",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Deja por escrito lo que se espera en cada actividad",
+    "como": [
+      "Explica por escrito cómo se trabaja en clases, en grupos y en las evaluaciones.",
+      "Indica cómo y cuándo hacer consultas.",
+      "Avisa por escrito cualquier cambio."
+    ],
+    "porque": "Las expectativas implícitas generan ansiedad; escritas, se pueden cumplir.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      4,
+      1,
+      3
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545",
+      "udl-on-campus"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-referente",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ofrece una persona de contacto para consultas y dificultades",
+    "como": [
+      "Indica a quién acudir: tú, un ayudante o la unidad de inclusión.",
+      "Acuerda un canal y un horario para consultas.",
+      "Revisa a mitad de semestre cómo va."
+    ],
+    "porque": "Tener a quién acudir facilita pedir ayuda a tiempo y sostener la trayectoria.",
+    "areas": [
+      "comunicacion",
+      "contexto",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5,
+      11
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-calma",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Indica un lugar tranquilo del campus para regularse",
+    "como": [
+      "Averigua qué espacios tranquilos existen en la institución.",
+      "Acuerda que pueda salir de la clase a ese lugar si lo necesita.",
+      "Define cómo retomará la actividad."
+    ],
+    "porque": "Poder retirarse a un lugar tranquilo previene la sobrecarga y facilita volver a la clase.",
+    "areas": [
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      5
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-intercultural",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Incluye otras lenguas, culturas y saberes en ejemplos y bibliografía",
+    "como": [
+      "Usa ejemplos y casos de distintos contextos culturales.",
+      "Incluye autores y fuentes diversas cuando sea posible.",
+      "Valora los aportes desde la experiencia de cada estudiante."
+    ],
+    "porque": "La Ley 21.091 incluye la interculturalidad y la no discriminación entre los principios de la educación superior.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      11
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-21091",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]
