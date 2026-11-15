@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="t">
+  <title id="t">Prizma</title>
+  <rect x="16" y="16" width="68" height="13" fill="#18213f"/>
+  <polygon points="66,29 84,29 34,69 16,69" fill="#18213f"/>
+  <rect x="16" y="69" width="68" height="4.6" fill="#b0145a"/>
+  <rect x="16" y="76.2" width="68" height="4.6" fill="#00727d"/>
+  <rect x="16" y="83.4" width="68" height="4.6" fill="#5a33a8"/>
+</svg>

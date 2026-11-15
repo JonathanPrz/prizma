@@ -1,0 +1,11 @@
+# Refracción sobria
+
+Una sola línea entra. Tres salen. Todo lo que este movimiento dice cabe en ese gesto: la forma no ilustra la idea, **es** la idea. No hay ornamento que explique, ni brillo que prometa. Hay una trayectoria que se quiebra con precisión y, al quebrarse, se multiplica. El dibujo debe sentirse inevitable, como si la geometría lo hubiera encontrado sola después de muchísimas horas de ajuste paciente, el trabajo de alguien que domina su oficio.
+
+El espacio manda. Las formas son pocas y enteras: barras de grosor exacto y una diagonal de pendiente medida. Alrededor, un vacío generoso que deja respirar a cada pieza. La composición se construye sobre una retícula visible solo para quien la busca: líneas finísimas, marcas de registro, cotas discretas que delatan la obsesión del oficio sin robar protagonismo. Cada alineación es fruto de una calibración minuciosa, nunca del azar.
+
+El color es información, no decoración. La tinta, un azul casi noche, carga la línea única. Tres tonos saturados pero serios aparecen solo en el punto de división: un magenta profundo, un verde azulado y un violeta. No se mezclan ni se degradan. Son planos limpios, puestos uno junto al otro con la disciplina de un muestrario de imprenta. La paleta es corta a propósito, y cada tono se elige con la paciencia de quien mezcla pigmentos durante días.
+
+La escala crea ritmo. Lo grande es casi monumental y lo pequeño casi un susurro: rótulos diminutos, finos, clínicos, que nombran sin explicar. Entre ambos extremos no hay nada intermedio que distraiga. La misma figura se repite a distintos tamaños, como en una lámina de estudio, para probar que funciona igual de nítida en lo enorme y en lo mínimo. Es la verificación de un maestro, no un adorno.
+
+La jerarquía es silenciosa y absoluta. Primero se ve el gesto, luego el color, al final las palabras. El texto aparece como una huella técnica: pocas palabras, bien espaciadas, integradas en la arquitectura de la lámina. El resultado debe parecer una pieza de archivo de una disciplina imaginaria que estudia cómo una sola luz se vuelve muchas. Debe ser el producto evidente de una ejecución meticulosa, revisada una y otra vez hasta que no sobre ni falte nada.
