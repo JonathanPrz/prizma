@@ -52,7 +52,7 @@ try {
         </label>
     <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
-      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos específicos</button>
+      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos individualizados</button>
     </div>
   </div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
@@ -118,7 +118,7 @@ try {
   </section>
   <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="0" hidden>
     <div class="cabecera-intro">
-      <h1 id="t-estudiante">Apoyos específicos para un estudiante</h1>
+      <h1 id="t-estudiante">Apoyos individualizados para un estudiante</h1>
       <p id="bajada-apoyos" class="bajada">Elige los que le sirvan. Prizma no reemplaza al equipo de apoyo: te ofrece un menú, cada apoyo con su fuente.</p>
     </div>
     <div id="lugar-filtros-apoyos" class="lugar-filtros">
@@ -128,6 +128,7 @@ try {
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
+        <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Tiene talleres, laboratorios o actividades en terreno</label>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
         <label for="estudiante-voz">¿Qué dicen el estudiante y su familia?<textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
       </div>
@@ -143,10 +144,13 @@ try {
       <div id="apoyos-resultados"></div>
       <details id="objetivos" class="bloque-apoyo">
         <summary>Si los apoyos de acceso no bastan: adecuaciones en los objetivos</summary>
+        <label id="asignatura-campo" class="asignatura" for="asignatura">Asignatura
+          <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
+        </label>
         <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
         <p id="objetivos-parvularia" class="ayuda" hidden>En educación parvularia, preferentemente no se adecuan los objetivos (Decreto 83). Usa los apoyos de acceso.</p>
         <p id="objetivos-superior" class="ayuda" hidden>En educación superior no se adecuan los objetivos de aprendizaje: se hacen ajustes razonables que mantienen los resultados de aprendizaje.</p>
-        <ul id="objetivos-tarjetas" class="tarjetas"></ul>
+        <div id="objetivos-tarjetas" class="grupos-momentos"></div>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
         <summary>Si se desregula</summary>

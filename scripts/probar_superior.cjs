@@ -17,6 +17,7 @@ for (const clave of ['clase', 'curso', 'estudiantes']) assert.equal(ejecutar(`vo
 vm.runInContext('estado.seleccion = {"sup-tiempo":"Examen", "sup-coordinar":"Acuerdo", "acc-1-partes":"Escolar", "obj-priorizacion":"Objetivos", "dec-durante-validar":"DEC"};', contexto);
 assert.deepEqual(ejecutar('elegidasOrdenadas().map(r => r.id)'), ['sup-coordinar', 'sup-tiempo']);
 const doc = ejecutar('documento()');
+assert.equal(doc.grupos[0].nombre, "Ajustes razonables para un estudiante");
 assert.equal(doc.grupos[0].subtitulo, 'Propuesta para acordar con el estudiante y la unidad de inclusión');
 assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split('. Respaldo:')[0]), ['Ajuste razonable: Apoyo adicional', 'Ajuste razonable: Organización del tiempo y el horario']);
 assert(!ejecutar('JSON.stringify(definicionPdf())').includes('Decreto 83'));
