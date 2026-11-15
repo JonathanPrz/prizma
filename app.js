@@ -114,11 +114,12 @@ function pintarControles() {
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
-    const b = el("button", { type: "button", class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
+    const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
       el("span", { class: "tri", "aria-hidden": "true" }), p.nombre);
     b.addEventListener("click", () => {
       estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
       guardar(); pintarControles(); pintarTarjetas();
+      document.getElementById("proposito-" + id).focus();
     });
     chips.append(b);
   }
@@ -126,7 +127,7 @@ function pintarControles() {
 
 function tarjeta(r) {
   const prop = proposito(r), elegida = r.id in estado.seleccion;
-  const boton = el("button", { type: "button", class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
+  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
@@ -158,8 +159,12 @@ function pintarTarjetas() {
 }
 
 function alternar(id) {
+  const foco = document.activeElement.id;
   if (id in estado.seleccion) delete estado.seleccion[id]; else estado.seleccion[id] = "";
   guardar(); pintarTarjetas(); pintarSeleccion();
+  if (foco.startsWith("elegir-") || foco.startsWith("quitar-")) {
+    (document.getElementById(foco) || $("#sel-lista .quitar") || $("#t-seleccion")).focus();
+  }
 }
 
 function elegidasOrdenadas() {
@@ -186,7 +191,7 @@ function pintarSeleccion() {
       el("span", { class: "sel-momento", text: nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: r.titulo }),
       nota,
-      el("button", { type: "button", class: "quitar", onclick: () => alternar(r.id), text: "Quitar" }));
+      el("button", { type: "button", class: "quitar", id: "quitar-" + r.id, onclick: () => alternar(r.id), text: "Quitar" }));
   }));
 }
 
@@ -375,6 +380,12 @@ function mostrarAvisoPrivacidad() {
 }
 
 async function iniciar() {
+  const tema = $("#tema");
+  tema.value = document.documentElement.dataset.tema;
+  tema.addEventListener("change", () => {
+    document.documentElement.dataset.tema = tema.value;
+    try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
+  });
   try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
   $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(); });
   $("#privacidad-entendido").addEventListener("click", () => {

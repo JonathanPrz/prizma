@@ -1,8 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-tema="dispositivo">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+try {
+  const tema = localStorage.getItem("prizma.tema");
+  if (["claro", "oscuro"].includes(tema)) document.documentElement.dataset.tema = tema;
+} catch (e) { /* sin almacenamiento: se usa el tema del dispositivo */ }
+</script>
 <title>Prizma</title>
 <meta name="description" content="Acciones con fuente para que todo tu curso pueda aprender. Basado en DUA 3.0 y la normativa chilena.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +24,32 @@
 
 <header class="cabecera">
   <div class="marco">
-    <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="14.00,81.18 38.00,81.18 26.00,60.39" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 50.00,60.39 26.00,60.39" fill="#e7a3c1" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 62.00,81.18 50.00,60.39" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 74.00,60.39 50.00,60.39" fill="#8fd0d6" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 86.00,81.18 74.00,60.39" fill="#5a33a8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="26.00,60.39 50.00,60.39 38.00,39.61" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 62.00,39.61 38.00,39.61" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 74.00,60.39 62.00,39.61" fill="#c3b2e8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,39.61 62.00,39.61 50.00,18.82" fill="currentColor" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/></svg>Prizma</p>
-    <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
-    <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+    <div class="cabecera-barra">
+      <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="14.00,81.18 38.00,81.18 26.00,60.39" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 50.00,60.39 26.00,60.39" fill="#e7a3c1" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 62.00,81.18 50.00,60.39" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 74.00,60.39 50.00,60.39" fill="#8fd0d6" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 86.00,81.18 74.00,60.39" fill="#5a33a8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="26.00,60.39 50.00,60.39 38.00,39.61" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 62.00,39.61 38.00,39.61" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 74.00,60.39 62.00,39.61" fill="#c3b2e8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,39.61 62.00,39.61 50.00,18.82" fill="currentColor" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/></svg>Prizma</p>
+      <nav class="atajos" aria-label="Secciones de la página">
+        <a href="#t-perfil">Tu <span data-voc="clase">clase</span></a>
+        <a href="#acciones">Acciones</a>
+        <a href="#seleccion">Mi selección</a>
+      </nav>
+      <label class="tema" for="tema">Tema
+        <select id="tema" name="tema">
+          <option value="dispositivo">Según mi dispositivo</option>
+          <option value="claro">Claro</option>
+          <option value="oscuro">Oscuro</option>
+        </select>
+      </label>
+    </div>
+    <div class="cabecera-intro">
+      <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
+      <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+    </div>
   </div>
 </header>
 
 <main class="marco disposicion">
   <div class="principal">
     <section class="perfil" aria-labelledby="t-perfil">
-      <h2 id="t-perfil">Tu <span data-voc="clase">clase</span></h2>
+      <h2 id="t-perfil" tabindex="-1">Tu <span data-voc="clase">clase</span></h2>
       <p class="ayuda">Todo es opcional. Sirve para ordenar las acciones y aparece en tu PDF.</p>
       <form id="perfil" class="perfil-campos">
         <label>Nivel
@@ -57,14 +79,14 @@
           <label><input type="checkbox" name="evidencia" value="grupo" aria-describedby="evidencia-ayuda"> En grupo</label>
           <label><input type="checkbox" name="evidencia" value="observacion" aria-describedby="evidencia-ayuda"> Observaré mientras trabajan</label>
         </fieldset>
-        <label class="meta">¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?
+        <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
           <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
           <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
         </label>
       </form>
     </section>
 
-    <section id="acciones" class="acciones" aria-labelledby="t-acciones">
+    <section id="acciones" tabindex="-1" class="acciones" aria-labelledby="t-acciones">
       <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
 
       <fieldset class="momentos">
@@ -82,8 +104,8 @@
     </section>
   </div>
 
-  <aside class="seleccion" id="seleccion" aria-labelledby="t-seleccion">
-    <h2 id="t-seleccion">Mi selección <span id="n-sel" class="n-sel">0</span></h2>
+  <aside class="seleccion" id="seleccion" tabindex="-1" aria-labelledby="t-seleccion">
+    <h2 id="t-seleccion" tabindex="-1">Mi selección <span id="n-sel" class="n-sel">0</span></h2>
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
     <ol id="sel-lista" class="sel-lista"></ol>
     <div class="sel-botones">
