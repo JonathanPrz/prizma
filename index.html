@@ -60,6 +60,7 @@ try {
             <option value="basica">Educación básica</option>
             <option value="media-ch">Media científico-humanista</option>
             <option value="media-tp">Media técnico-profesional</option>
+            <option value="superior">Educación superior (universidad, IP o CFT)</option>
           </select>
         </label>
         <fieldset class="perfil-opciones">
@@ -117,13 +118,16 @@ try {
         <div><h3>Paso 2: ¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
       </div>
-      <p class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
+      <p id="aviso-acceso-escolar" class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
+      <p id="aviso-acceso-superior" class="ayuda" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
+      <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
       <div id="apoyos-resultados"></div>
       <details id="objetivos" class="bloque-apoyo">
         <summary>Si los apoyos de acceso no bastan: adecuaciones en los objetivos</summary>
-        <p class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
+        <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
         <p id="objetivos-parvularia" class="ayuda" hidden>En educación parvularia, preferentemente no se adecuan los objetivos (Decreto 83). Usa los apoyos de acceso.</p>
+        <p id="objetivos-superior" class="ayuda" hidden>En educación superior no se adecuan los objetivos de aprendizaje: se hacen ajustes razonables que mantienen los resultados de aprendizaje.</p>
         <ul id="objetivos-tarjetas" class="tarjetas"></ul>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
@@ -131,6 +135,7 @@ try {
         <div id="desregulacion-resultados"></div>
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
+      <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
     </section>
   </div>
 
@@ -141,7 +146,7 @@ try {
     <ol id="sel-lista" class="sel-lista"></ol>
     <section id="sel-estudiante" hidden aria-labelledby="sel-estudiante-titulo">
       <h3 id="sel-estudiante-titulo"></h3>
-      <p class="ayuda">Propuesta para conversar con el equipo de apoyo</p>
+      <p id="sel-estudiante-subtitulo" class="ayuda">Propuesta para conversar con el equipo de apoyo</p>
       <p id="sel-estudiante-ayuda" class="ayuda"></p>
       <ol id="sel-apoyos" class="sel-lista"></ol>
     </section>

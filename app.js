@@ -32,7 +32,7 @@ const CONSIDERACIONES = {
   "8.1": "Aclarar el significado y el propósito de las metas", "8.2": "Optimizar los desafíos y el apoyo", "8.3": "Fomentar la colaboración, la interdependencia y el aprendizaje colectivo", "8.4": "Fomentar la pertenencia y la comunidad", "8.5": "Ofrecer retroalimentación orientada a la acción",
   "9.1": "Reconocer expectativas, creencias y motivaciones", "9.2": "Desarrollar la conciencia de sí mismo y de los demás", "9.3": "Promover la reflexión individual y colectiva", "9.4": "Cultivar la empatía y las prácticas restaurativas",
 };
-const NIVELES = { parvularia: "Educación parvularia", basica: "Educación básica", "media-ch": "Media científico-humanista", "media-tp": "Media técnico-profesional" };
+const NIVELES = { parvularia: "Educación parvularia", basica: "Educación básica", "media-ch": "Media científico-humanista", "media-tp": "Media técnico-profesional", superior: "Educación superior (universidad, IP o CFT)" };
 
 const AREAS = [
   ["Cognición y aprendizaje", [1, 2]], ["Comunicación e interacción", [3, 4]],
@@ -56,7 +56,7 @@ const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
 const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
 const TIPOS_OBJETIVOS = { graduacion: "Graduación de la complejidad", priorizacion: "Priorización", temporalizacion: "Temporalización", enriquecimiento: "Enriquecimiento", eliminacion: "Eliminación" };
 const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar", despues: "Después: reparar" };
-const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación" };
+const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales" };
 function normalizarEstudiante(valor) {
   const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
@@ -66,13 +66,18 @@ function normalizarEstudiante(valor) {
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
   };
 }
+function esSuperior() { return estado.perfil.nivel === "superior"; }
+function subtituloEstudiante() { return esSuperior() ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
 function tituloEstudiante() { return "Apoyos para " + (estado.estudiante.iniciales || "un estudiante"); }
 function tipoOficial(r) {
+  if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
+  if (r.tipo === "adicional") return "Apoyo adicional";
   if (r.tipo === "acceso") return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`;
   if (r.tipo === "objetivos") return `Adecuación en los objetivos: ${TIPOS_OBJETIVOS[r.subtipo]} (Decreto 83)`;
   return `Apoyo ante desregulación: ${MOMENTOS_DEC[r.subtipo]}`;
 }
 function ordenApoyo(r) {
+  if (r.tipo === "adicional") return -1;
   const subtipos = r.tipo === "acceso" ? TIPOS_ACCESO : r.tipo === "objetivos" ? TIPOS_OBJETIVOS : MOMENTOS_DEC;
   return Object.keys(GRUPOS_APOYOS).indexOf(r.tipo) * 10 + Object.keys(subtipos).indexOf(r.subtipo);
 }
@@ -83,6 +88,17 @@ function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.
 function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
 function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
 function pintarApoyos() {
+  const superior = esSuperior();
+  $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos para un estudiante";
+  $("#aviso-acceso-escolar").hidden = superior;
+  $("#aviso-acceso-superior").hidden = !superior;
+  $("#objetivos-aviso").hidden = superior;
+  $("#objetivos-superior").hidden = !superior;
+  $("#desregulacion").hidden = superior;
+  $("#crisis-superior").hidden = !superior;
+  const adicionales = catalogo.filter((r) => r.tipo === "adicional" && aplica(r));
+  $("#apoyos-adicionales").hidden = !adicionales.length;
+  $("#apoyos-adicionales").replaceChildren(...adicionales.map(tarjeta));
   const lista = accesosVisibles();
   $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
@@ -304,7 +320,7 @@ function alternar(id) {
 
 function elegidasOrdenadas() {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
-  return catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id in estado.seleccion)
+  return catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id in estado.seleccion && aplica(r))
     .sort((a, b) => (orden[a.momento] ?? 4) - (orden[b.momento] ?? 4) || (a.tipo !== "dua" && b.tipo !== "dua" ? ordenApoyo(a) - ordenApoyo(b) : 0) || (a.consideracion || a.id).localeCompare(b.consideracion || b.id, "es", { numeric: true }));
 }
 
@@ -319,6 +335,7 @@ function pintarSeleccion() {
   const apoyos = sel.filter((r) => r.tipo !== "dua");
   $("#sel-estudiante").hidden = !apoyos.length;
   $("#sel-estudiante-titulo").textContent = tituloEstudiante();
+  $("#sel-estudiante-subtitulo").textContent = subtituloEstudiante();
   $("#sel-estudiante-ayuda").textContent = estado.estudiante.ayuda ? "Le ayuda: " + estado.estudiante.ayuda : "";
   $("#sel-apoyos").replaceChildren(...apoyos.map(itemSeleccion));
   function itemSeleccion(r) {
@@ -434,9 +451,9 @@ function documento() {
         dato: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
       })),
     })).concat(sel.some((r) => r.tipo !== "dua") ? [{
-      nombre: tituloEstudiante(), subtitulo: "Propuesta para conversar con el equipo de apoyo",
+      nombre: tituloEstudiante(), subtitulo: subtituloEstudiante(),
       ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
-      acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
+      acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: esSuperior() && r.tipo === "acceso" ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
     }] : []),
     fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
   };
