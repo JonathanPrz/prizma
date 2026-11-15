@@ -1,6 +1,6 @@
 # Tarea 013 · Nivel «Educación superior»
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/013-educacion-superior`
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/013-educacion-superior`
 
 ## Para qué
 
