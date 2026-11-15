@@ -1,0 +1,27 @@
+# Prizma
+
+Planificador de clases inclusivas para docentes de todos los niveles:
+parvularia, básica, media, técnico-profesional y superior.
+
+Una clase, muchas formas de aprender.
+El Diseño Universal para el Aprendizaje (DUA) funciona aquí como un menú de opciones.
+No es una lista de cotejo.
+
+## Principios
+
+- **Privacidad por defecto.** Sin servidor ni cuentas. Los datos se quedan en tu navegador. Los estudiantes se registran con iniciales.
+- **Lenguaje claro.** Pensado para docentes sin formación en inclusión.
+- **Accesible.** Meta: WCAG 2.2 AA. Funciona en computador, tablet y teléfono.
+- **Contenido propio.** Todo se redacta desde fuentes públicas y se cita.
+
+## Fuentes
+
+Se citan en `docs/fuentes.md` (pendiente):
+Pautas DUA 3.0 (CAST, 2024), CIF (OMS), Decreto 83/2015, Decreto 170/2009,
+Ley 20.422, Ley 21.091 y Ley 21.545.
+
+## Estado
+
+En diseño. Todavía no hay código.
+
+Proyecto personal, no institucional.
