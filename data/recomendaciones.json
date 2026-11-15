@@ -1476,7 +1476,7 @@
     "subtipo": "tiempo",
     "titulo": "Da tiempo adicional en tareas con mucha lectura o escritura",
     "como": [
-      "Acuerda cuánto tiempo extra, por ejemplo la mitad del tiempo original.",
+      "Acuerda cuánto tiempo extra necesita, sin una cifra fija para todos.",
       "Avisa antes de empezar, no durante la tarea.",
       "Revisa si el tiempo extra se está usando."
     ],
@@ -1495,7 +1495,8 @@
     "respaldo": "orientacion-oficial",
     "fuentes": [
       "decreto-83",
-      "ccsso-2016"
+      "ccsso-2016",
+      "ofqual-2025"
     ],
     "destacada": false,
     "revision": null
@@ -1727,7 +1728,7 @@
     "como": [
       "Acuerda el mejor lugar según cómo ve u oye.",
       "Cuida la luz: sin reflejos ni contraluz.",
-      "Habla de frente y sin tapar tu boca."
+      "Revisa con el estudiante si el lugar le sigue sirviendo."
     ],
     "porque": "La distancia, la luz y el ruido cambian cuánto se percibe.",
     "areas": [
@@ -2715,7 +2716,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "ofs-uk",
       "udl-on-campus"
@@ -3736,13 +3737,13 @@
     "id": "acc-7-luz",
     "tipo": "acceso",
     "subtipo": "entorno",
-    "titulo": "Ajusta la luz, el ruido y los estímulos de la sala",
+    "titulo": "Ajusta la luz y los estímulos visuales de la sala",
     "como": [
       "Evita luces muy intensas o parpadeantes cerca de su puesto.",
       "Reduce los carteles y adornos en la pared que mira.",
-      "Baja el ruido con normas de volumen o protección auditiva."
+      "Deja en su mesa solo el material que necesita en ese momento."
     ],
-    "porque": "El Decreto 83 incluye adecuar el ruido y la luz; la sobrecarga sensorial dificulta concentrarse.",
+    "porque": "El Decreto 83 incluye adecuar la luminosidad; el exceso de estímulos visuales dificulta concentrarse.",
     "areas": [
       "cognicion",
       "sensorial"
@@ -4078,7 +4079,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-21545",
       "udl-on-campus"
@@ -4111,7 +4112,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-21545",
       "ley-21091"
@@ -4143,7 +4144,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-20422",
       "ley-21091"
@@ -4203,7 +4204,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-20422",
       "ofs-uk"
@@ -4234,7 +4235,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-20422",
       "ofs-uk"
@@ -4300,7 +4301,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-21545",
       "udl-on-campus"
@@ -4333,7 +4334,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-21545",
       "mineduc-es-20422"
@@ -4364,7 +4365,7 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "mineduc-es-21545"
     ],
