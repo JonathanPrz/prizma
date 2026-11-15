@@ -11,7 +11,7 @@ const MOMENTOS = [
 const PROPOSITOS = {
   motivar: { nombre: "Motivar y sostener el interés", corto: "Motivar", principio: "Compromiso", directrices: ["7", "8", "9"] },
   presentar: { nombre: "Presentar la información", corto: "Presentar", principio: "Representación", directrices: ["1", "2", "3"] },
-  mostrar: { nombre: "Mostrar lo aprendido", corto: "Mostrar lo aprendido", principio: "Acción y expresión", directrices: ["4", "5", "6"] },
+  mostrar: { nombre: "Expresarse y organizarse", corto: "Expresarse y organizarse", principio: "Acción y expresión", directrices: ["4", "5", "6"] },
 };
 const RESPALDO = {
   "investigacion-solida": "Investigación sólida",
@@ -64,6 +64,7 @@ function normalizarEstudiante(valor) {
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}$/.test(e.iniciales) ? e.iniciales : "",
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|10|11)$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
+    voz: typeof e.voz === "string" ? e.voz.slice(0, 300) : "",
   };
 }
 function esSuperior() { return estado.perfil.nivel === "superior"; }
@@ -87,9 +88,14 @@ function objetivosVisibles() {
 function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.estudiante.dimensiones[d]); }
 function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
 function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
+function situacionesSinApoyos() {
+  return Object.keys(estado.estudiante.dimensiones).map(Number).filter((d) =>
+    !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && r.dimensiones.includes(d)));
+}
 function pintarApoyos() {
   const superior = esSuperior();
-  $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos para un estudiante";
+  $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos específicos para un estudiante";
+  $("#bajada-apoyos").textContent = `Elige los que le sirvan. Prizma no reemplaza ${superior ? "a la unidad de inclusión" : "al equipo de apoyo"}: te ofrece un menú, cada apoyo con su fuente.`;
   $("#aviso-acceso-escolar").hidden = superior;
   $("#aviso-acceso-superior").hidden = !superior;
   $("#objetivos-aviso").hidden = superior;
@@ -99,6 +105,9 @@ function pintarApoyos() {
   const adicionales = catalogo.filter((r) => r.tipo === "adicional" && aplica(r));
   $("#apoyos-adicionales").hidden = !adicionales.length;
   $("#apoyos-adicionales").replaceChildren(...adicionales.map(tarjeta));
+  $("#apoyos-sin-fichas").replaceChildren(...situacionesSinApoyos().map((d) =>
+    el("p", { class: "aviso-apoyos" }, `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
+      el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
   const lista = accesosVisibles();
   $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
@@ -112,6 +121,7 @@ function pintarApoyos() {
 function sincronizarEstudiante() {
   $("#iniciales").value = estado.estudiante.iniciales;
   $("#estudiante-ayuda").value = estado.estudiante.ayuda;
+  $("#estudiante-voz").value = estado.estudiante.voz;
   const areas = $("#areas"); areas.replaceChildren();
   const dimensiones = $("#dimensiones"); dimensiones.replaceChildren();
   AREAS.forEach(([nombre, ids], i) => {
@@ -147,7 +157,7 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
-  for (const [id, clave] of [["iniciales", "iniciales"], ["estudiante-ayuda", "ayuda"]]) {
+  for (const [id, clave] of [["iniciales", "iniciales"], ["estudiante-ayuda", "ayuda"], ["estudiante-voz", "voz"]]) {
     $("#" + id).addEventListener("input", (evento) => {
       const campo = evento.target, escribio = Boolean(campo.value);
       estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
@@ -164,13 +174,18 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
-let estado = { pestana: "dua", perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
+let estado = { pestana: "dua", perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
-  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante), momentos: normalizarMomentos(g.momentos) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  delete estado.momento;
 }
 function guardar() {
   try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
+}
+
+function normalizarMomentos(valor) {
+  return Array.isArray(valor) ? [...new Set(valor.filter((id) => MOMENTOS.some(([momento]) => momento === id)))] : [];
 }
 
 function normalizarPerfil(perfil) {
@@ -193,7 +208,7 @@ function voc(clave) {
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
-  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos adicionales";
+  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos específicos";
 }
 
 function mostrarPestana(id, enfocar = false) {
@@ -205,6 +220,7 @@ function mostrarPestana(id, enfocar = false) {
     tab.setAttribute("aria-selected", String(nombre === id));
     tab.tabIndex = nombre === id ? 0 : -1;
   }
+  $("#panel-" + id + " .cabecera-intro").append($("#abrir-filtros"));
   guardar(); actualizarConteoFiltros();
   if (enfocar) $("#tab-" + id).focus();
 }
@@ -242,10 +258,10 @@ function prepararPestanas() {
 
 function cantidadFiltros() {
   if (estado.pestana === "apoyos") return document.querySelectorAll("#areas input:checked").length +
-    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim()));
+    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim())) + Number(Boolean(estado.estudiante.voz.trim()));
   const p = estado.perfil;
   return (Array.isArray(estado.necesidades) ? estado.necesidades.length : 0) + estado.propositos.length + p.actividad.length + p.evidencia.length +
-    Number(Boolean(p.meta.trim())) + Number(estado.momento !== "antes");
+    Number(Boolean(p.meta.trim())) + estado.momentos.length;
 }
 
 function actualizarConteoFiltros() {
@@ -253,7 +269,7 @@ function actualizarConteoFiltros() {
 }
 
 function limpiarFiltros() {
-  estado.necesidades = []; estado.propositos = []; estado.momento = "antes";
+  estado.necesidades = []; estado.propositos = []; estado.momentos = [];
   estado.perfil = { ...estado.perfil, meta: "", actividad: [], evidencia: [] };
   guardar(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
 }
@@ -322,10 +338,11 @@ function etiqueta(valor) {
   return casilla ? casilla.closest("label").textContent.trim() : valor;
 }
 function visibles() {
+  const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
   return catalogo
-    .filter((r) => r.tipo === "dua" && r.momento === estado.momento && aplica(r))
+    .filter((r) => r.tipo === "dua" && (!estado.momentos.length || estado.momentos.includes(r.momento)) && aplica(r))
     .filter((r) => !estado.propositos.length || estado.propositos.includes(proposito(r)))
-    .sort((a, b) => (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
+    .sort((a, b) => (orden[a.momento] - orden[b.momento]) || (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
 }
 
 function el(tag, attrs = {}, ...hijos) {
@@ -352,10 +369,13 @@ function pintarControles() {
   for (const [id, nombre] of MOMENTOS) {
     const acciones = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r));
     const conteo = estado.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => coincidenciasNecesidades(r).length).length} para ti` : String(acciones.length);
-    const input = el("input", { type: "radio", name: "momento", value: id, id: "m-" + id });
-    input.checked = estado.momento === id;
-    input.addEventListener("change", () => { estado.momento = id; guardar(); pintarTarjetas(); actualizarConteoFiltros(); });
-    cont.append(el("label", { for: "m-" + id }, input, el("span", {}, nombreMomento(id, nombre) + " ", el("small", { text: `(${conteo})` }))));
+    cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(estado.momentos.includes(id)),
+      onclick: () => {
+        estado.momentos = estado.momentos.includes(id) ? estado.momentos.filter((m) => m !== id) : [...estado.momentos, id];
+        guardar(); pintarControles(); pintarTarjetas();
+        document.getElementById("m-" + id).focus();
+      },
+    }, nombreMomento(id, nombre) + " ", el("small", { text: `(${conteo})` })));
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
@@ -381,7 +401,7 @@ function tarjeta(r) {
     dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
     acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
-    el("h3", { text: r.titulo }),
+    el(dua ? "h4" : "h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
@@ -402,7 +422,10 @@ function fechaLocal() {
 
 function pintarTarjetas() {
   const lista = visibles();
-  $("#tarjetas").replaceChildren(...lista.map(tarjeta));
+  $("#tarjetas").replaceChildren(...MOMENTOS.filter(([id]) => lista.some((r) => r.momento === id)).map(([id, nombre]) =>
+    el("section", { "aria-labelledby": "t-momento-" + id },
+      el("h3", { id: "t-momento-" + id, text: nombreMomento(id, nombre) }),
+      el("ul", { class: "tarjetas" }, lista.filter((r) => r.momento === id).map(tarjeta)))));
   $("#conteo").textContent = plural(lista.length, "acción", "acciones");
 }
 
@@ -489,7 +512,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || Object.keys(estado.estudiante.dimensiones).length);
+  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || estado.estudiante.voz || estado.momentos.length || Object.keys(estado.estudiante.dimensiones).length);
 }
 
 function actualizarRespaldo() {
@@ -498,7 +521,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades };
+  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades, momentos: estado.momentos };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
@@ -519,7 +542,7 @@ function validarRespaldo(datos) {
   const ids = new Set(catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS)).map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
-  return { perfil, seleccion, necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
+  return { perfil, seleccion, momentos: normalizarMomentos(datos.momentos), necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
 }
 
 async function abrirRespaldo(evento) {
@@ -530,12 +553,12 @@ async function abrirRespaldo(evento) {
     let datos;
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
-    const { perfil, seleccion, estudiante, necesidades: elegidas, descartadas } = validarRespaldo(datos);
+    const { perfil, seleccion, estudiante, momentos, necesidades: elegidas, descartadas } = validarRespaldo(datos);
     if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y tu estudiante por los del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas;
+    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas; estado.momentos = momentos;
     guardar(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
       (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
@@ -562,11 +585,12 @@ function documento() {
       nombre: nombreMomento[id],
       acciones: sel.filter((r) => r.momento === id).map((r) => ({
         titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
-        dato: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
+        dato: `${PROPOSITOS[proposito(r)].corto}. ${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
       })),
-    })).concat(sel.some((r) => r.tipo !== "dua") ? [{
+    })).concat(sel.some((r) => r.tipo !== "dua") || estado.estudiante.voz.trim() ? [{
       nombre: tituloEstudiante(), subtitulo: subtituloEstudiante(),
       ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
+      voz: estado.estudiante.voz.trim() ? "¿Qué dicen el estudiante y su familia? " + estado.estudiante.voz.trim() : "",
       acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: esSuperior() && r.tipo === "acceso" ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
     }] : []),
     fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
@@ -584,6 +608,7 @@ function armarHoja() {
       el("h2", { text: g.nombre }),
       g.subtitulo ? el("p", { text: g.subtitulo }) : null,
       g.ayuda ? el("p", { text: g.ayuda }) : null,
+      g.voz ? el("p", { text: g.voz }) : null,
       ...g.acciones.flatMap((a, i) => [
         a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null,
         el("div", { class: "h-accion" },
@@ -613,12 +638,14 @@ function definicionPdf() {
       { text: g.nombre, style: "h2" }, linea,
       g.subtitulo ? { text: g.subtitulo, italics: true } : null,
       g.ayuda ? { text: g.ayuda } : null,
+      g.voz ? { text: g.voz } : null,
       ...g.acciones.flatMap((a, i) => [
         a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? { text: a.grupo, style: "h3", margin: [0, 10, 0, 4] } : null,
         {
         unbreakable: true, margin: [0, 0, 0, 10], stack: [
           { text: a.titulo, style: "h3" },
-          { ol: a.como, margin: [0, 2, 0, 2] },
+          // pdfmake reescribe la lista; la copia protege el catálogo.
+          { ol: [...a.como], margin: [0, 2, 0, 2] },
           { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] },
           { text: a.dato, style: "dato", margin: [0, 2, 0, 0] },
           a.nota ? { text: [{ text: "Mi nota: ", bold: true }, a.nota], margin: [0, 3, 0, 0] } : null,

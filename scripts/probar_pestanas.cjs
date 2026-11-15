@@ -23,6 +23,7 @@ function nodo(id) {
 }
 for (const id of ['panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos', '.saltar', 'abrir-filtros', 'filtros-dialogo', 'filtros-dialogo-cuerpo', 'ver-resultados', 't-filtros-dialogo', 'limpiar-filtros', 'abrir-mochila', 'cerrar-mochila', 'mochila', 't-seleccion']) nodos.set(id === '.saltar' ? id : '#' + id, nodo(id));
 for (const id of ['dua', 'apoyos']) {
+  nodos.set('#panel-' + id + ' .cabecera-intro', nodo('intro-' + id));
   nodos.set('#filtros-' + id, nodo('filtros-' + id));
   nodos.set('#lugar-filtros-' + id, nodo('lugar-filtros-' + id));
   nodos.get('#lugar-filtros-' + id).append(nodos.get('#filtros-' + id));
@@ -70,7 +71,7 @@ assert.equal(contexto.document.activeElement.id, 'tab-apoyos');
 nodos.get('#abrir-mochila').eventos.click(); assert.equal(nodos.get('#mochila').open, true);
 assert.equal(contexto.document.activeElement.id, 't-seleccion');
 nodos.get('#cerrar-mochila').eventos.click(); assert.equal(contexto.document.activeElement.id, 'abrir-mochila');
-ejecutar('estado.pestana="dua"; estado.necesidades=["a"]; estado.propositos=["motivar"]; estado.momento="durante"; estado.perfil={nivel:"basica", meta:"Meta", actividad:["crear"], evidencia:["grupo"]}; estado.seleccion={accion:"Nota"}; estado.estudiante=normalizarEstudiante({iniciales:"AB", dimensiones:{1:2}, ayuda:"Visual"})');
+ejecutar('estado.pestana="dua"; estado.necesidades=["a"]; estado.propositos=["motivar"]; estado.momentos=["durante"]; estado.perfil={nivel:"basica", meta:"Meta", actividad:["crear"], evidencia:["grupo"]}; estado.seleccion={accion:"Nota"}; estado.estudiante=normalizarEstudiante({iniciales:"AB", dimensiones:{1:2}, ayuda:"Visual"})');
 assert.equal(ejecutar('cantidadFiltros()'), 6);
 areas = [{checked: true}]; ejecutar('estado.pestana="apoyos"'); assert.equal(ejecutar('cantidadFiltros()'), 4);
 ejecutar('estado.pestana="dua"; sincronizarPerfil=()=>{}; pintarControles=actualizarConteoFiltros; pintarTarjetas=()=>{}; actualizarRespaldo=()=>{}; limpiarFiltros()');
@@ -79,7 +80,7 @@ assert.equal(ejecutar('estado.perfil.nivel'), 'basica');
 assert.equal(ejecutar('estado.seleccion.accion'), 'Nota');
 assert.equal(ejecutar('estado.estudiante.iniciales'), 'AB');
 assert.equal(ejecutar('estado.estudiante.dimensiones[1]'), 2);
-assert.equal(ejecutar('estado.momento'), 'antes');
+assert.equal(ejecutar('estado.momentos.length'), 0);
 contexto.localStorage.setItem = () => {throw new Error('bloqueado');};
 assert.doesNotThrow(() => ejecutar('mostrarPestana("apoyos")'));
 console.log('Correcto: inicio, hash e historial, pestañas y teclado, foco, estado, filtros sin duplicación, cambio de ancho, contador, limpieza sin perder nivel/mochila y almacenamiento bloqueado.');

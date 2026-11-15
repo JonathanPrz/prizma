@@ -52,33 +52,34 @@ try {
         </label>
     <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
-      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos adicionales</button>
+      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos específicos</button>
     </div>
   </div>
+  <p id="mochila-estado" class="solo-lectores" role="status"></p>
+  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0">
   <div class="cabecera-intro">
       <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
       <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+      <button type="button" id="abrir-filtros" class="boton" aria-haspopup="dialog" aria-controls="filtros-dialogo">Filtros (0)</button>
     </div>
-  <p id="mochila-estado" class="solo-lectores" role="status"></p>
-  <button type="button" id="abrir-filtros" class="boton" aria-haspopup="dialog" aria-controls="filtros-dialogo">Filtros (0)</button>
-  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0">
     <div id="lugar-filtros-dua" class="lugar-filtros">
       <aside id="filtros-dua" class="filtros perfil" aria-labelledby="t-filtros-dua">
         <h2 id="t-filtros-dua" tabindex="-1">Filtros</h2>
         <p class="ayuda">Todo es opcional. El nivel muestra las acciones que sirven en ese nivel. Tus otras respuestas ponen primero las más útiles para tu <span data-voc="clase">clase</span>. Todo aparece en tu PDF.</p>
         <form id="perfil" class="perfil-campos">
-          <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
-        <legend>¿Qué quieres resolver en esta clase? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
-        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
-        <div class="chips" id="necesidades"></div>
-      </fieldset>
           <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
           <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
           <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
         </label>
-          <fieldset class="momentos">
+          <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
+        <legend>¿Qué quieres resolver en esta <span data-voc="clase">clase</span>? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
+        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
+        <div class="chips" id="necesidades"></div>
+      </fieldset>
+          <fieldset class="momentos" aria-describedby="momentos-ayuda">
         <legend>¿Cuándo?</legend>
-        <div class="segmentos" id="momentos"></div>
+        <p id="momentos-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos</p>
+        <div class="chips" id="momentos"></div>
       </fieldset>
 
       <fieldset class="propositos">
@@ -112,10 +113,14 @@ try {
     <div id="acciones" class="resultados" tabindex="-1">
       <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
       <p class="conteo" id="conteo" aria-live="polite"></p>
-      <ul class="tarjetas" id="tarjetas"></ul>
+      <div id="tarjetas" class="grupos-momentos"></div>
     </div>
   </section>
   <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="0" hidden>
+    <div class="cabecera-intro">
+      <h1 id="t-estudiante">Apoyos específicos para un estudiante</h1>
+      <p id="bajada-apoyos" class="bajada">Elige los que le sirvan. Prizma no reemplaza al equipo de apoyo: te ofrece un menú, cada apoyo con su fuente.</p>
+    </div>
     <div id="lugar-filtros-apoyos" class="lugar-filtros">
       <aside id="filtros-apoyos" class="filtros perfil" aria-labelledby="t-filtros-apoyos">
         <h2 id="t-filtros-apoyos" tabindex="-1">Filtros</h2>
@@ -124,13 +129,15 @@ try {
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
+        <label for="estudiante-voz">¿Qué dicen el estudiante y su familia?<textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos</span></label>
       </div>
       </aside>
     </div>
     <div id="estudiante" class="resultados" tabindex="-1">
-      <h2 id="t-estudiante">Apoyos para un estudiante</h2>
+      <h2 class="solo-lectores">Resultados de apoyos</h2>
       <p id="aviso-acceso-escolar" class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
       <p id="aviso-acceso-superior" class="ayuda" hidden>Los ajustes razonables se acuerdan con el estudiante y la unidad de inclusión de tu institución (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p>
+      <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
       <div id="apoyos-resultados"></div>
