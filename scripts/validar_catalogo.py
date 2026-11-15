@@ -31,6 +31,9 @@ for r in R:
     errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]
 # Cada nivel debe tener al menos una acción por consideración DUA.
 SUBTIPOS_ACCESO = {"presentacion", "respuesta", "entorno", "tiempo"}  # Decreto 83
+SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}}
+errores += [f"{r['id']}: subtipo inválido para {r['tipo']}" for r in R if r["tipo"] in SUBTIPOS and r.get("subtipo") not in SUBTIPOS[r["tipo"]]]
+errores += [f"{r['id']}: objetivos no aplica a parvularia" for r in R if r["tipo"] == "objetivos" and (not r["niveles"] or "parvularia" in r["niveles"])]
 acceso = [r for r in R if r["tipo"] == "acceso"]
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
 sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso for d in r["dimensiones"]})

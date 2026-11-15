@@ -70,5 +70,11 @@
     "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
     "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903",
     "archivo": "docs/fuentes/normativa/ley-20422.md"
+  },
+  {
+    "id": "uk-restraint-2019",
+    "cita": "Department of Health and Social Care y Department for Education (2019). Reducing the Need for Restraint and Restrictive Intervention. Open Government Licence v3.0.",
+    "url": "https://www.gov.uk/government/publications/reducing-the-need-for-restraint-and-restrictive-intervention",
+    "archivo": "docs/fuentes/internacional/uk-reducing-restraint-2019.md"
   }
 ]

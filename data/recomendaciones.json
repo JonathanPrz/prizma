@@ -1983,5 +1983,405 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "obj-graduacion",
+    "tipo": "objetivos",
+    "subtipo": "graduacion",
+    "titulo": "Ajusta el nivel de complejidad sin perder lo esencial del objetivo",
+    "como": [
+      "Identifica lo esencial del objetivo de aprendizaje.",
+      "Ofrece una versión más concreta o con menos pasos.",
+      "Mantén el mismo contenido que trabaja el curso."
+    ],
+    "porque": "Permite avanzar en el mismo objetivo que el curso, a un nivel alcanzable.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "decreto-67"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-priorizacion",
+    "tipo": "objetivos",
+    "subtipo": "priorizacion",
+    "titulo": "Prioriza los objetivos esenciales para seguir aprendiendo",
+    "como": [
+      "Elige con el equipo los objetivos básicos imprescindibles.",
+      "Dedica más tiempo y apoyo a esos objetivos.",
+      "Posterga los secundarios en vez de eliminarlos."
+    ],
+    "porque": "Asegura lo que el estudiante necesita para seguir aprendiendo después.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "decreto-67"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-temporalizacion",
+    "tipo": "objetivos",
+    "subtipo": "temporalizacion",
+    "titulo": "Da más tiempo para lograr un objetivo",
+    "como": [
+      "Amplía el plazo de logro, por ejemplo de una unidad a un semestre.",
+      "Define metas intermedias.",
+      "Registra el avance para ajustar a tiempo."
+    ],
+    "porque": "Respeta un ritmo de aprendizaje distinto sin bajar la meta.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "decreto-67"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-enriquecimiento",
+    "tipo": "objetivos",
+    "subtipo": "enriquecimiento",
+    "titulo": "Agrega objetivos que profundicen o que el estudiante necesita",
+    "como": [
+      "Profundiza un tema para quien necesita más desafío.",
+      "O incorpora un aprendizaje necesario, como lengua de señas, Braille u otro sistema de comunicación.",
+      "Acuérdalo con el equipo y la familia."
+    ],
+    "porque": "Responde a necesidades que el currículo común no cubre.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "decreto-67"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-eliminacion",
+    "tipo": "objetivos",
+    "subtipo": "eliminacion",
+    "titulo": "Elimina un objetivo solo como último recurso",
+    "como": [
+      "Verifica que las otras adecuaciones no funcionaron.",
+      "Nunca elimines objetivos básicos imprescindibles.",
+      "Decide con el equipo y la familia, y regístralo en el PACI."
+    ],
+    "porque": "Eliminar limita futuras oportunidades: es la última opción, no la primera.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "decreto-67"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-antes-gatillantes",
+    "tipo": "desregulacion",
+    "subtipo": "antes",
+    "titulo": "Identifica qué situaciones lo alteran y qué lo calma",
+    "como": [
+      "Anota en qué momentos aparece el malestar.",
+      "Pregunta al estudiante y a su familia qué le ayuda.",
+      "Comparte lo que funciona con los adultos que lo acompañan."
+    ],
+    "porque": "Conocer los desencadenantes permite prevenir en vez de reaccionar.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5,
+      7
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-antes-refugio",
+    "tipo": "desregulacion",
+    "subtipo": "antes",
+    "titulo": "Acuerda un adulto de confianza y un espacio de calma",
+    "como": [
+      "Elige con el estudiante a quién acudir.",
+      "Prepara un lugar tranquilo con objetos que le ayuden.",
+      "Enséñale a pedirlo antes de que la emoción crezca."
+    ],
+    "porque": "Tener a quién y adónde acudir da seguridad y anticipa la ayuda.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-antes-demanda",
+    "tipo": "desregulacion",
+    "subtipo": "antes",
+    "titulo": "Regula la demanda en los momentos difíciles",
+    "como": [
+      "Ten lista una versión más corta de la tarea.",
+      "Ofrece pausas antes de que aparezca el malestar.",
+      "Avisa los cambios con anticipación."
+    ],
+    "porque": "Bajar la exigencia a tiempo evita que la tensión se acumule.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5,
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-durante-validar",
+    "tipo": "desregulacion",
+    "subtipo": "durante",
+    "titulo": "Valida la emoción con pocas palabras y voz calmada",
+    "como": [
+      "Nombra lo que ves: «Veo que estás muy enojado».",
+      "Habla poco, despacio y sin exigir.",
+      "No retes ni amenaces en ese momento."
+    ],
+    "porque": "En plena crisis, la calma del adulto ayuda más que las razones.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-durante-espacio",
+    "tipo": "desregulacion",
+    "subtipo": "durante",
+    "titulo": "Da espacio y reduce los estímulos",
+    "como": [
+      "Mantén distancia y no lo toques sin su permiso.",
+      "Baja el ruido y la luz si puedes.",
+      "Ofrece su objeto o su espacio de calma."
+    ],
+    "porque": "Menos estímulos y más espacio ayudan a recuperar el control.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5,
+      7
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-durante-dignidad",
+    "tipo": "desregulacion",
+    "subtipo": "durante",
+    "titulo": "Protege su dignidad: lleva al curso a otra actividad o lugar",
+    "como": [
+      "Pide a otro adulto que acompañe al curso.",
+      "Evita el público y los comentarios.",
+      "Sigue el protocolo DEC de tu establecimiento."
+    ],
+    "porque": "Nadie debería vivir una crisis frente a sus compañeros.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-despues-calma",
+    "tipo": "desregulacion",
+    "subtipo": "despues",
+    "titulo": "Acompaña a recuperar la calma antes de conversar",
+    "como": [
+      "Espera a que esté tranquilo.",
+      "Ofrece agua o un momento de descanso.",
+      "Conversa después, en privado."
+    ],
+    "porque": "Hablar antes de tiempo puede reactivar la crisis.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-despues-aprender",
+    "tipo": "desregulacion",
+    "subtipo": "despues",
+    "titulo": "Conversa qué pasó y qué ayudaría la próxima vez",
+    "como": [
+      "Pregunta qué sintió y qué lo provocó.",
+      "Acuerden una señal o un apoyo para la próxima vez.",
+      "Si es un estudiante autista, actualiza su PAEC con el equipo."
+    ],
+    "porque": "Cada episodio enseña qué ajustar para prevenir el siguiente.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dec-despues-otros",
+    "tipo": "desregulacion",
+    "subtipo": "despues",
+    "titulo": "Acompaña también a quienes vieron la situación y a los adultos",
+    "como": [
+      "Conversa con el curso sin exponer al estudiante.",
+      "Da un espacio de descanso a los adultos que intervinieron.",
+      "Registra lo ocurrido según el protocolo."
+    ],
+    "porque": "Una crisis afecta a todo el grupo, no solo a quien la vivió.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "supereduc-586",
+      "mineduc-autismo-2025",
+      "uk-restraint-2019"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]
