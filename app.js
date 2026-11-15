@@ -53,6 +53,9 @@ const DIMENSIONES = [
 ];
 const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
 const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
+const TIPOS_OBJETIVOS = { graduacion: "Graduación de la complejidad", priorizacion: "Priorización", temporalizacion: "Temporalización", enriquecimiento: "Enriquecimiento", eliminacion: "Eliminación" };
+const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar", despues: "Después: reparar" };
+const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación" };
 function normalizarEstudiante(valor) {
   const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
@@ -63,7 +66,18 @@ function normalizarEstudiante(valor) {
   };
 }
 function tituloEstudiante() { return "Apoyos para " + (estado.estudiante.iniciales || "un estudiante"); }
-function tipoOficial(r) { return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`; }
+function tipoOficial(r) {
+  if (r.tipo === "acceso") return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`;
+  if (r.tipo === "objetivos") return `Adecuación en los objetivos: ${TIPOS_OBJETIVOS[r.subtipo]} (Decreto 83)`;
+  return `Apoyo ante desregulación: ${MOMENTOS_DEC[r.subtipo]}`;
+}
+function ordenApoyo(r) {
+  const subtipos = r.tipo === "acceso" ? TIPOS_ACCESO : r.tipo === "objetivos" ? TIPOS_OBJETIVOS : MOMENTOS_DEC;
+  return Object.keys(GRUPOS_APOYOS).indexOf(r.tipo) * 10 + Object.keys(subtipos).indexOf(r.subtipo);
+}
+function objetivosVisibles() {
+  return catalogo.filter((r) => r.tipo === "objetivos" && aplica(r)).sort((a, b) => ordenApoyo(a) - ordenApoyo(b));
+}
 function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.estudiante.dimensiones[d]); }
 function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
 function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
@@ -71,6 +85,11 @@ function pintarApoyos() {
   const lista = accesosVisibles();
   $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
+  const objetivos = objetivosVisibles();
+  $("#objetivos-tarjetas").replaceChildren(...objetivos.map(tarjeta));
+  $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
+  $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
+    el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)).map(tarjeta)))));
   $("#apoyos-estado").textContent = Object.keys(estado.estudiante.dimensiones).length ? plural(lista.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
 }
 function sincronizarEstudiante() {
@@ -221,14 +240,15 @@ function pintarControles() {
 }
 
 function tarjeta(r) {
-  const acceso = r.tipo === "acceso", prop = acceso ? null : proposito(r), elegida = r.id in estado.seleccion;
+  const dua = r.tipo === "dua", acceso = r.tipo === "acceso", prop = dua ? proposito(r) : null, elegida = r.id in estado.seleccion;
   const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
-      acceso ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
-      acceso ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
-    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+      !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
+      !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
+    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+    r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     el("h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
@@ -265,8 +285,8 @@ function alternar(id) {
 
 function elegidasOrdenadas() {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
-  return catalogo.filter((r) => ["dua", "acceso"].includes(r.tipo) && r.id in estado.seleccion)
-    .sort((a, b) => (orden[a.momento] ?? 4) - (orden[b.momento] ?? 4) || (a.consideracion || a.id).localeCompare(b.consideracion || b.id, "es", { numeric: true }));
+  return catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id in estado.seleccion)
+    .sort((a, b) => (orden[a.momento] ?? 4) - (orden[b.momento] ?? 4) || (a.tipo !== "dua" && b.tipo !== "dua" ? ordenApoyo(a) - ordenApoyo(b) : 0) || (a.consideracion || a.id).localeCompare(b.consideracion || b.id, "es", { numeric: true }));
 }
 
 function pintarSeleccion() {
@@ -277,11 +297,11 @@ function pintarSeleccion() {
   actualizarRespaldo();
   const nombreMomento = nombresMomentos();
   $("#sel-lista").replaceChildren(...sel.filter((r) => r.tipo === "dua").map(itemSeleccion));
-  const accesos = sel.filter((r) => r.tipo === "acceso");
-  $("#sel-estudiante").hidden = !accesos.length;
+  const apoyos = sel.filter((r) => r.tipo !== "dua");
+  $("#sel-estudiante").hidden = !apoyos.length;
   $("#sel-estudiante-titulo").textContent = tituloEstudiante();
   $("#sel-estudiante-ayuda").textContent = estado.estudiante.ayuda ? "Le ayuda: " + estado.estudiante.ayuda : "";
-  $("#sel-apoyos").replaceChildren(...accesos.map(itemSeleccion));
+  $("#sel-apoyos").replaceChildren(...apoyos.map(itemSeleccion));
   function itemSeleccion(r) {
     const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
     nota.value = estado.seleccion[r.id] || "";
@@ -290,7 +310,7 @@ function pintarSeleccion() {
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad();
     });
     return el("li", {},
-      el("span", { class: "sel-momento", text: r.tipo === "acceso" ? tipoOficial(r) : nombreMomento[r.momento] }),
+      el("span", { class: "sel-momento", text: r.tipo !== "dua" ? tipoOficial(r) : nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: r.titulo }),
       nota,
       el("button", { type: "button", class: "quitar", id: "quitar-" + r.id, onclick: () => alternar(r.id), text: "Quitar" }));
@@ -346,7 +366,7 @@ function validarRespaldo(datos) {
     throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma.");
   }
   const perfil = normalizarPerfil(datos.perfil);
-  const ids = new Set(catalogo.filter((r) => ["dua", "acceso"].includes(r.tipo)).map((r) => r.id));
+  const ids = new Set(catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS)).map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
   return { perfil, seleccion, estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
@@ -393,10 +413,10 @@ function documento() {
         titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
         dato: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
       })),
-    })).concat(sel.some((r) => r.tipo === "acceso") ? [{
+    })).concat(sel.some((r) => r.tipo !== "dua") ? [{
       nombre: tituloEstudiante(), subtitulo: "Propuesta para conversar con el equipo de apoyo",
       ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
-      acciones: sel.filter((r) => r.tipo === "acceso").map((r) => ({ titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
+      acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
     }] : []),
     fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
   };
@@ -413,12 +433,14 @@ function armarHoja() {
       el("h2", { text: g.nombre }),
       g.subtitulo ? el("p", { text: g.subtitulo }) : null,
       g.ayuda ? el("p", { text: g.ayuda }) : null,
-      ...g.acciones.map((a) => el("div", { class: "h-accion" },
+      ...g.acciones.flatMap((a, i) => [
+        a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null,
+        el("div", { class: "h-accion" },
         el("h3", { text: a.titulo }),
         el("ol", {}, a.como.map((x) => el("li", { text: x }))),
         el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque),
         el("p", { class: "h-dato", text: a.dato }),
-        a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null)),
+        a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null)]),
     ]),
     el("h2", { text: "Fuentes" }),
     el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", { text: f }))),
@@ -440,7 +462,9 @@ function definicionPdf() {
       { text: g.nombre, style: "h2" }, linea,
       g.subtitulo ? { text: g.subtitulo, italics: true } : null,
       g.ayuda ? { text: g.ayuda } : null,
-      ...g.acciones.map((a) => ({
+      ...g.acciones.flatMap((a, i) => [
+        a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? { text: a.grupo, style: "h3", margin: [0, 10, 0, 4] } : null,
+        {
         unbreakable: true, margin: [0, 0, 0, 10], stack: [
           { text: a.titulo, style: "h3" },
           { ol: a.como, margin: [0, 2, 0, 2] },
@@ -448,7 +472,7 @@ function definicionPdf() {
           { text: a.dato, style: "dato", margin: [0, 2, 0, 0] },
           a.nota ? { text: [{ text: "Mi nota: ", bold: true }, a.nota], margin: [0, 3, 0, 0] } : null,
         ].filter(Boolean),
-      })),
+      }]),
     ]),
     { text: "Fuentes", style: "h2" }, linea,
     { ol: d.fuentes, style: "dato" },
@@ -513,7 +537,7 @@ async function iniciar() {
     $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";
     return;
   }
-  estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => ["dua", "acceso"].includes(r.tipo) && r.id === id)));
+  estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id === id)));
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   window.addEventListener("beforeprint", armarHoja);
   $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });

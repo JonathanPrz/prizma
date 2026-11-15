@@ -234,3 +234,10 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   #dimensiones > div:not([hidden]) { display: contents; }
   #dimensiones label { display: inline-flex; gap: .35rem; margin-right: .65rem; }
 }
+
+.bloque-apoyo { margin-top: 1rem; border-top: 1px solid var(--linea); padding-top: 1rem; }
+.bloque-apoyo > summary { font-weight: 600; cursor: pointer; min-height: 2.75rem; }
+.aviso-apoyos { margin-block: 1rem; padding: 1rem; border-left: 3px solid var(--tinta); background: var(--panel); }
+#desregulacion-resultados > section { margin-block: 1.5rem; }
+.ultimo-recurso { justify-self: start; padding: .2rem .5rem; border: 1px solid var(--tinta); }
+.hoja .h-grupo { margin-block: 1rem .5rem; }
