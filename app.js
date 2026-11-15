@@ -140,10 +140,19 @@ function tarjeta(r) {
       el("ul", {}, r.fuentes.map((f) => el("li", {}, el("a", { href: fuentes[f].url, rel: "noopener", target: "_blank", text: fuentes[f].cita }))))));
 }
 
+function plural(n, singular, plural) {
+  return `${n} ${n === 1 ? singular : plural}`;
+}
+
+function fechaLocal() {
+  const fecha = new Date();
+  return `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}-${String(fecha.getDate()).padStart(2, "0")}`;
+}
+
 function pintarTarjetas() {
   const lista = visibles();
   $("#tarjetas").replaceChildren(...lista.map(tarjeta));
-  $("#conteo").textContent = lista.length === 1 ? "1 acción" : `${lista.length} acciones`;
+  $("#conteo").textContent = plural(lista.length, "acción", "acciones");
 }
 
 function alternar(id) {
@@ -209,7 +218,7 @@ function guardarRespaldo() {
   const guardado = new Date().toISOString();
   const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
-  const enlace = el("a", { href: url, download: `prizma-respaldo-${guardado.slice(0, 10)}.json` });
+  const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
   enlace.click(); enlace.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -246,8 +255,8 @@ async function abrirRespaldo(evento) {
     }
     estado.perfil = perfil; estado.seleccion = seleccion;
     guardar(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
-    aviso.textContent = `Respaldo abierto: ${Object.keys(seleccion).length} acciones.` +
-      (descartadas ? ` ${descartadas} acciones ya no están en el catálogo y no se cargaron.` : "");
+    aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
+      (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
   } catch (e) { aviso.textContent = e.message; }
   finally { input.value = ""; }
 }
@@ -344,7 +353,7 @@ async function descargarPdf() {
   boton.disabled = true; aviso.textContent = "Preparando el PDF…";
   try {
     if (!window.pdfMake) { await cargarScript("vendor/pdfmake/pdfmake.min.js"); await cargarScript("vendor/pdfmake/vfs_fonts.js"); }
-    const fecha = new Date().toISOString().slice(0, 10);
+    const fecha = fechaLocal();
     window.pdfMake.createPdf(definicionPdf()).download(`prizma-mi-clase-${fecha}.pdf`);
     aviso.textContent = "PDF descargado. Búscalo en tu carpeta de descargas.";
   } catch (e) {
