@@ -30,6 +30,10 @@ Al dueño la página le parece desordenada, porque muestra todo a la vez en 3 co
 - [ ] Capturas de antes y después de los 3 pasos y de «Mi mochila», en escritorio y teléfono, en `docs/marca/014-pasos/`.
 - [ ] Pasan `python3 scripts/validar_catalogo.py` y todas las pruebas de `scripts/`. No hay cambios en `data/`, `docs/fuentes/` ni `.claude/`.
 
-## Marca
+## Marca y logo nuevo
 
-El nombre sigue siendo **Prizma** y el logo es el prisma de teselas triangulares que ya está en la cabecera. No cambies el logo ni el nombre.
+El nombre sigue siendo **Prizma**. El logo cambia al mosaico cuadrado **M1**, en `docs/marca/mosaico/mosaico-M1.svg`. Aplícalo así:
+1. **Cabecera:** reemplaza el prisma de triángulos por M1 como `<svg>` en línea, decorativo, de unos 2.75rem. Para que se vea en **modo oscuro**, las teselas azul tinta (`#18213f`) usan `fill="currentColor"`, que sigue a `var(--tinta)` y se vuelve clara en oscuro. Las teselas de color mantienen sus colores, pero en modo oscuro usa las variantes claras de `--motivar`, `--presentar` y `--mostrar` que ya existen en `styles.css`.
+2. **Ícono de la pestaña:** crea un `assets/favicon.svg` nuevo con un **ajuste óptico para 16 px**. Agranda las separaciones entre teselas (al menos 1 px real a 16 px) y el círculo, para que se distinga. Usa colores fijos que contrasten sobre fondo claro y oscuro, o una placa blanca redondeada detrás.
+3. **Ícono de app:** regenera `assets/apple-touch-icon.png`, de 180×180, con M1 centrado sobre fondo blanco.
+4. Guarda capturas del logo en la cabecera, en claro y oscuro, y del favicon a 16 y 32 px, en `docs/marca/014-pasos/`.
