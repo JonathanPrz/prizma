@@ -78,7 +78,9 @@ function nombresMomentos() {
 // Oculta lo que no aplica al perfil. Una lista vacía en la ficha significa "aplica siempre".
 function aplica(r) {
   const p = estado.perfil;
-  if (r.niveles.length && p.nivel && !r.niveles.includes(p.nivel)) return false;
+  // Sin nivel elegido se muestran las acciones de básica y media, para no duplicar las versiones de parvularia.
+  const nivel = p.nivel || "basica";
+  if (r.niveles.length && !r.niveles.includes(nivel)) return false;
   const ctx = [...p.actividad, ...p.evidencia];
   if (r.contextos.length && ctx.length && !ctx.some((c) => r.contextos.includes(c))) return false;
   return true;

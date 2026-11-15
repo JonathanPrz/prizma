@@ -62,9 +62,10 @@ Debe terminar con "Catálogo correcto".
 1. Lee la tarea completa en `docs/tareas/` y este archivo.
 2. Crea una rama `codex/<número>-<nombre-corto>`.
 3. Haz los commits en español.
-4. Abre un pull request con el título de la tarea. Incluye:
+4. Antes de abrir el pull request, revisa tu propio cambio con la skill `ponytail-review` (en `.agents/skills/`) y corrige lo que encuentre. Usa `ponytail` para mantener el cambio pequeño.
+5. Abre un pull request con el título de la tarea. Incluye:
    - qué cambiaste,
    - cómo lo probaste,
    - qué criterios de aceptación cumpliste,
    - **qué no hiciste o no pudiste probar**.
-5. No integres a `main`. Lo revisa Claude y lo aprueba el dueño del repositorio.
+6. No integres a `main`. Lo revisa Claude y lo aprueba el dueño del repositorio.
