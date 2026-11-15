@@ -163,7 +163,7 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
-let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
+let estado = { paso: 1, perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
@@ -192,6 +192,43 @@ function voc(clave) {
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
+}
+
+function pintarResumen() {
+  const partes = [NIVELES[estado.perfil.nivel], estado.perfil.meta];
+  const elegidas = necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto);
+  if (elegidas.length) partes.push("Quiere resolver: " + elegidas.join("; "));
+  $("#resumen-clase").textContent = partes.filter(Boolean).join(" · ") || `Tu ${voc("clase")} · Sin preferencias indicadas`;
+}
+
+function mostrarPaso(paso, enfocar = true) {
+  estado.paso = paso;
+  for (const numero of [1, 2, 3]) $("#paso-" + numero).hidden = numero !== paso;
+  document.querySelectorAll(".pasos a").forEach((enlace) => {
+    if (Number(enlace.dataset.paso) === paso) enlace.setAttribute("aria-current", "step");
+    else enlace.removeAttribute("aria-current");
+  });
+  pintarResumen(); guardar();
+  if (enfocar) {
+    $("#paso-" + paso + " h2").focus({ preventScroll: true });
+    $("#paso-" + paso).scrollIntoView({ block: "start" });
+  }
+}
+
+function prepararPasos() {
+  const desdeHash = (enfocar) => {
+    const paso = /^#paso-([123])$/.exec(location.hash);
+    if (!paso) history.replaceState(null, "", "#paso-1");
+    mostrarPaso(paso ? Number(paso[1]) : 1, enfocar);
+  };
+  document.querySelectorAll("[data-paso], .saltar").forEach((enlace) => enlace.addEventListener("click", (evento) => {
+    if (enlace.hash === location.hash) { evento.preventDefault(); mostrarPaso(Number(location.hash.slice(-1))); }
+  }));
+  window.addEventListener("hashchange", () => desdeHash(true));
+  desdeHash(false);
+  $("#abrir-mochila").addEventListener("click", () => $("#mochila").showModal());
+  $("#cerrar-mochila").addEventListener("click", () => $("#mochila").close());
+  $("#mochila").addEventListener("close", () => $("#abrir-mochila").focus());
 }
 
 function nombreMomento(id, nombre) {
@@ -242,6 +279,7 @@ function el(tag, attrs = {}, ...hijos) {
 }
 
 function pintarControles() {
+  pintarResumen();
   $("#necesidades-campo").hidden = !necesidades.length;
   $("#necesidades").replaceChildren(...necesidades.map((n) => el("button", {
     type: "button", id: "necesidad-" + n.id, class: "chip", "aria-pressed": String(estado.necesidades.includes(n.id)),
@@ -311,10 +349,21 @@ function pintarTarjetas() {
 
 function alternar(id) {
   const foco = document.activeElement.id;
-  if (id in estado.seleccion) delete estado.seleccion[id]; else estado.seleccion[id] = "";
+  const agregada = !(id in estado.seleccion);
+  if (!agregada) delete estado.seleccion[id]; else estado.seleccion[id] = "";
   guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
+  if (agregada) {
+    const contador = $("#n-sel");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      contador.getAnimations().forEach((animacion) => animacion.cancel());
+      contador.animate([{ transform: "scale(1)" }, { transform: "scale(1.25)" }, { transform: "scale(1)" }], { duration: 250 });
+    }
+    const aviso = $("#mochila-estado");
+    aviso.textContent = "";
+    requestAnimationFrame(() => { aviso.textContent = "Agregada a tu mochila"; });
+  }
   if (foco.startsWith("elegir-") || foco.startsWith("quitar-")) {
-    (document.getElementById(foco) || $("#sel-lista .quitar") || $("#t-seleccion")).focus();
+    (document.getElementById(foco) || $("#mochila .quitar") || $("#t-seleccion")).focus();
   }
 }
 
@@ -327,6 +376,8 @@ function elegidasOrdenadas() {
 function pintarSeleccion() {
   const sel = elegidasOrdenadas();
   $("#n-sel").textContent = sel.length;
+  $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(sel.length, "elegida", "elegidas")}`);
+  $("#sel-curso-titulo").hidden = !sel.some((r) => r.tipo === "dua");
   $("#sel-vacia").hidden = sel.length > 0;
   $("#pdf").disabled = sel.length === 0;
   actualizarRespaldo();
@@ -334,7 +385,7 @@ function pintarSeleccion() {
   $("#sel-lista").replaceChildren(...sel.filter((r) => r.tipo === "dua").map(itemSeleccion));
   const apoyos = sel.filter((r) => r.tipo !== "dua");
   $("#sel-estudiante").hidden = !apoyos.length;
-  $("#sel-estudiante-titulo").textContent = tituloEstudiante();
+  $("#sel-estudiante-titulo").textContent = "Para " + (estado.estudiante.iniciales || "un estudiante");
   $("#sel-estudiante-subtitulo").textContent = subtituloEstudiante();
   $("#sel-estudiante-ayuda").textContent = estado.estudiante.ayuda ? "Le ayuda: " + estado.estudiante.ayuda : "";
   $("#sel-apoyos").replaceChildren(...apoyos.map(itemSeleccion));
@@ -559,7 +610,11 @@ function prepararGuiaDUA() {
     $("#guia-dua").close("empezar");
   });
   $("#guia-dua").addEventListener("close", () => {
-    const destino = $("#guia-dua").returnValue === "empezar" ? ($("#necesidades button") || $("#acciones")) : origenGuiaDUA;
+    if ($("#guia-dua").returnValue === "empezar") {
+      if (location.hash !== "#paso-1") history.pushState(null, "", "#paso-1");
+      mostrarPaso(1, false);
+    }
+    const destino = $("#guia-dua").returnValue === "empezar" ? ($("#necesidades button") || $("#t-perfil")) : origenGuiaDUA;
     if (privacidadPendiente) {
       privacidadPendiente = false;
       mostrarAvisoPrivacidad(origenAvisoPrivacidad);
@@ -580,6 +635,9 @@ function mostrarAvisoPrivacidad(origen = document.activeElement) {
 }
 
 async function iniciar() {
+  new ResizeObserver(([entrada]) => {
+    document.documentElement.style.setProperty("--cabecera-alto", `${entrada.target.getBoundingClientRect().height}px`);
+  }).observe($(".cabecera"));
   const tema = $("#tema");
   tema.value = document.documentElement.dataset.tema;
   tema.addEventListener("change", () => {
@@ -595,8 +653,9 @@ async function iniciar() {
   $("#aviso-privacidad").addEventListener("close", () => {
     if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
   });
-  prepararGuiaDUA();
   cargar();
+  prepararPasos();
+  prepararGuiaDUA();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
     return r.json();
@@ -628,6 +687,7 @@ async function iniciar() {
   $("#borrar").addEventListener("click", () => {
     if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección, tus notas y los datos del estudiante de este navegador?`)) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }
+    history.replaceState(null, "", "#paso-1");
     location.reload();
   });
 }
