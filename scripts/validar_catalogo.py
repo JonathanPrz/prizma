@@ -23,7 +23,7 @@ for r in R:
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
     if r.get("destacada") and r.get("respaldo") != "investigacion-solida": errores.append(f"{i}: destacada sin investigación sólida")
 NIVELES = ["parvularia", "basica", "media-ch", "media-tp", "superior"]
-CONTEXTOS = {"escuchar-leer", "conversar", "experimentar", "crear", "moverse", "escribiendo", "hablando", "haciendo", "grupo", "observacion"}
+CONTEXTOS = {"practica", "escuchar-leer", "conversar", "experimentar", "crear", "moverse", "escribiendo", "hablando", "haciendo", "grupo", "observacion"}
 for r in R:
     errores += [f"{r['id']}: contexto desconocido {c}" for c in r.get("contextos", []) if c not in CONTEXTOS]
 for r in R:
@@ -34,7 +34,13 @@ SUBTIPOS_ACCESO = {"presentacion", "respuesta", "entorno", "tiempo"}  # Decreto 
 SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}}
 errores += [f"{r['id']}: subtipo inválido para {r['tipo']}" for r in R if r["tipo"] in SUBTIPOS and r.get("subtipo") not in SUBTIPOS[r["tipo"]]]
 errores += [f"{r['id']}: objetivos no aplica a parvularia ni a superior" for r in R if r["tipo"] == "objetivos" and (not r["niveles"] or {"parvularia", "superior"} & set(r["niveles"]))]
+ASIGNATURAS = {"", "lenguaje", "matematica", "ciencias", "historia"}
+errores += [f"{r['id']}: asignatura inválida" for r in R if "asignatura" in r and (r["tipo"] != "objetivos" or r["asignatura"] not in ASIGNATURAS)]
 acceso = [r for r in R if r["tipo"] == "acceso"]
+# Cada nivel debe tener al menos un apoyo para cada situación que se puede marcar.
+for n in ["parvularia", "basica", "media-ch", "media-tp", "superior"]:
+    vacias = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or n in r["niveles"] for d in r["dimensiones"]})
+    errores += [f"{n}: situaciones sin apoyos {vacias}"] if vacias else []
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
 sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or "basica" in r["niveles"] for d in r["dimensiones"]})
 if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso: {sin_acceso}")

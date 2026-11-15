@@ -36,7 +36,7 @@ assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Apoyos para ÁÑ
 console.log('Correcto: respaldo antiguo y validado, documento separado y definición PDF con tipos oficiales.');
 
 vm.runInContext('estado.perfil.nivel = "basica";', contexto);
-assert.deepEqual(ejecutar('objetivosVisibles().map(r => r.subtipo)'), ['graduacion', 'priorizacion', 'temporalizacion', 'enriquecimiento', 'eliminacion']);
+assert.deepEqual([...new Set(ejecutar('objetivosVisibles().map(r => r.subtipo)'))], ['graduacion', 'priorizacion', 'temporalizacion', 'enriquecimiento', 'eliminacion']);
 vm.runInContext('estado.perfil.nivel = "parvularia";', contexto);
 assert.deepEqual(ejecutar('objetivosVisibles()'), []);
 for (const nivel of ['', 'parvularia', 'basica', 'media-ch', 'media-tp']) {

@@ -2966,5 +2966,235 @@
     "contextos": [],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "obj-graduacion-matematica",
+    "tipo": "objetivos",
+    "subtipo": "graduacion",
+    "asignatura": "matematica",
+    "titulo": "Ejemplo en Matemática: resolver problemas con números más pequeños y material concreto",
+    "como": [
+      "Mantén el objetivo: resolver problemas de la vida diaria.",
+      "Usa números de un ámbito menor, con material concreto o dibujos.",
+      "Amplía el ámbito cuando lo logre de forma estable."
+    ],
+    "porque": "El Decreto 83 permite secuenciar el logro en metas más pequeñas sin cambiar el objetivo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-graduacion-lenguaje",
+    "tipo": "objetivos",
+    "subtipo": "graduacion",
+    "asignatura": "lenguaje",
+    "titulo": "Ejemplo en Lenguaje: comprender un texto más breve del mismo tipo",
+    "como": [
+      "Mantén el objetivo, por ejemplo, identificar la idea principal de un texto informativo.",
+      "Usa un texto más corto, con vocabulario simple e imágenes.",
+      "Pide la idea principal con opciones o con un organizador."
+    ],
+    "porque": "Se gradúa el texto y la forma de responder, no lo que se quiere aprender.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-priorizacion-lenguaje",
+    "tipo": "objetivos",
+    "subtipo": "priorizacion",
+    "asignatura": "lenguaje",
+    "titulo": "Ejemplo en Lenguaje: priorizar la comunicación y la lectura funcional",
+    "como": [
+      "Da prioridad a comunicarse, de forma oral o gestual, y a leer y escribir.",
+      "Posterga los objetivos de análisis más complejos.",
+      "Retómalos cuando lo esencial esté logrado."
+    ],
+    "porque": "El Decreto 83 considera fundamentales los aspectos comunicativos y funcionales del lenguaje.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-priorizacion-matematica",
+    "tipo": "objetivos",
+    "subtipo": "priorizacion",
+    "asignatura": "matematica",
+    "titulo": "Ejemplo en Matemática: priorizar las operaciones para problemas cotidianos",
+    "como": [
+      "Da prioridad a las operaciones que usa a diario, como comprar o medir.",
+      "Posterga los contenidos que no son base de lo que viene.",
+      "Revisa la priorización cada semestre con el equipo."
+    ],
+    "porque": "El Decreto 83 pone entre lo fundamental usar operaciones para resolver problemas de la vida diaria.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-temporalizacion-lenguaje",
+    "tipo": "objetivos",
+    "subtipo": "temporalizacion",
+    "asignatura": "lenguaje",
+    "titulo": "Ejemplo en Lenguaje: más tiempo para consolidar la lectura inicial",
+    "como": [
+      "Mantén la secuencia: primero decodificar, después leer con fluidez.",
+      "Extiende el plazo, por ejemplo, hasta el año siguiente.",
+      "Fija metas intermedias y revísalas cada mes."
+    ],
+    "porque": "Respeta su ritmo sin alterar el orden en que se aprende, como pide el Decreto 83.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-temporalizacion-ciencias",
+    "tipo": "objetivos",
+    "subtipo": "temporalizacion",
+    "asignatura": "ciencias",
+    "titulo": "Ejemplo en Ciencias: más tiempo para aprender a planificar una investigación",
+    "como": [
+      "Mantén el objetivo, por ejemplo, planificar un experimento simple.",
+      "Extiende el plazo a la unidad siguiente y practícalo con otros temas.",
+      "Registra cada intento para ver el avance."
+    ],
+    "porque": "Más tiempo y práctica consolidan el aprendizaje sin bajar la meta.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-enriquecimiento-comunicacion",
+    "tipo": "objetivos",
+    "subtipo": "enriquecimiento",
+    "asignatura": "",
+    "titulo": "Ejemplo en todas las asignaturas: incorporar un sistema de comunicación o una lengua",
+    "como": [
+      "Incorpora lengua de señas chilena, Braille, la lengua de su pueblo o un sistema alternativo de comunicación.",
+      "Planifícalo con el equipo y la familia.",
+      "Úsalo en todas las asignaturas, no solo en una."
+    ],
+    "porque": "El Decreto 83 lo prevé cuando ese aprendizaje es de primera importancia para su desempeño académico y social.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "obj-enriquecimiento-historia",
+    "tipo": "objetivos",
+    "subtipo": "enriquecimiento",
+    "asignatura": "historia",
+    "titulo": "Ejemplo en Historia: profundizar con un proyecto que integra asignaturas",
+    "como": [
+      "Ofrece una pregunta de investigación más amplia sobre la unidad.",
+      "Intégrala con otra asignatura, por ejemplo, escribir un reportaje en Lenguaje.",
+      "Acuerda metas y la forma de presentar el resultado."
+    ],
+    "porque": "El Decreto 83 incluye profundizar integrando asignaturas para quien necesita más desafío.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]
