@@ -20,18 +20,13 @@ try {
 <script src="app.js" defer></script>
 </head>
 <body>
-<a class="saltar" href="#acciones">Ir a las acciones</a>
+<a class="saltar" href="#paso-1">Ir al contenido</a>
 
 <header class="cabecera">
   <div class="marco">
     <div class="cabecera-barra">
-      <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="14.00,81.18 38.00,81.18 26.00,60.39" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 50.00,60.39 26.00,60.39" fill="#e7a3c1" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,81.18 62.00,81.18 50.00,60.39" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 74.00,60.39 50.00,60.39" fill="#8fd0d6" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.00,81.18 86.00,81.18 74.00,60.39" fill="#5a33a8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="26.00,60.39 50.00,60.39 38.00,39.61" fill="#b0145a" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 62.00,39.61 38.00,39.61" fill="#00727d" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="50.00,60.39 74.00,60.39 62.00,39.61" fill="#c3b2e8" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="38.00,39.61 62.00,39.61 50.00,18.82" fill="currentColor" stroke="var(--superficie)" stroke-width="1.6" stroke-linejoin="round"/></svg>Prizma</p>
-      <nav class="atajos" aria-label="Secciones de la página">
-        <a href="#t-perfil">Tu <span data-voc="clase">clase</span></a>
-        <a href="#acciones">Acciones</a>
-        <a href="#estudiante">Un estudiante</a>
-        <a href="#seleccion">Mi selección</a>
-      </nav>
+      <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="14" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="39" y="14" width="22" height="22" rx="1.6" fill="var(--motivar)"/><rect x="64" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="14" y="39" width="22" height="22" rx="1.6" fill="var(--presentar)"/><rect x="39" y="39" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="64" y="39" width="22" height="22" rx="1.6" fill="var(--mostrar)"/><rect x="14" y="64" width="22" height="22" rx="1.6" fill="currentColor"/><circle cx="50" cy="75" r="11" fill="var(--presentar)"/><rect x="64" y="64" width="22" height="22" rx="1.6" fill="currentColor"/></svg>Prizma</p>
+      <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a>
       <label class="tema" for="tema">Tema
         <select id="tema" name="tema">
           <option value="dispositivo">Según mi dispositivo</option>
@@ -39,17 +34,24 @@ try {
           <option value="oscuro">Oscuro</option>
         </select>
       </label>
-    </div>
-    <div class="cabecera-intro">
-      <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
-      <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+      <button type="button" id="abrir-mochila" class="boton" aria-haspopup="dialog" aria-controls="mochila" aria-label="Mi mochila: 0 elegidas">Mi mochila <span id="n-sel" class="n-sel" aria-hidden="true">0</span></button>
     </div>
   </div>
 </header>
+    <div class="cabecera-intro marco">
+      <h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1>
+      <p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p>
+    </div>
 
 <main class="marco disposicion">
+  <nav class="pasos" aria-label="Pasos para preparar tu clase">
+    <a href="#paso-1" data-paso="1" aria-current="step">1. Tu <span data-voc="clase">clase</span></a>
+    <a href="#paso-2" data-paso="2">2. Para todos</a>
+    <a href="#paso-3" data-paso="3">3. Para un estudiante (opcional)</a>
+  </nav>
+  <p id="mochila-estado" class="solo-lectores" role="status"></p>
   <div class="principal">
-    <section class="perfil" aria-labelledby="t-perfil">
+    <section id="paso-1" class="perfil paso" aria-labelledby="t-perfil">
       <h2 id="t-perfil" tabindex="-1">Tu <span data-voc="clase">clase</span></h2>
       <p class="ayuda">Todo es opcional. El nivel muestra las acciones que sirven en ese nivel. Tus otras respuestas ponen primero las más útiles para tu <span data-voc="clase">clase</span>. Todo aparece en tu PDF.</p>
       <form id="perfil" class="perfil-campos">
@@ -63,6 +65,16 @@ try {
             <option value="superior">Educación superior (universidad, IP o CFT)</option>
           </select>
         </label>
+        <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
+          <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
+          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
+        </label>
+      <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
+        <legend>¿Qué quieres resolver en esta clase? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
+        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
+        <div class="chips" id="necesidades"></div>
+      </fieldset>
+        <details class="mas-detalles"><summary>Más detalles (opcional)</summary>
         <fieldset class="perfil-opciones">
           <legend>¿Qué harán principalmente?</legend>
           <p id="actividad-ayuda" class="ayuda">Puedes marcar varias.</p>
@@ -81,21 +93,15 @@ try {
           <label><input type="checkbox" name="evidencia" value="grupo" aria-describedby="evidencia-ayuda"> En grupo</label>
           <label><input type="checkbox" name="evidencia" value="observacion" aria-describedby="evidencia-ayuda"> Observaré mientras trabajan</label>
         </fieldset>
-        <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
-          <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
-          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
-        </label>
+        </details>
       </form>
+      <a class="boton boton-principal siguiente" href="#paso-2" data-paso="2">Ver acciones para el curso</a>
     </section>
 
-    <section id="acciones" tabindex="-1" class="acciones" aria-labelledby="t-acciones">
-      <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
-
-      <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
-        <legend>¿Qué quieres resolver en esta clase? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
-        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
-        <div class="chips" id="necesidades"></div>
-      </fieldset>
+    <section id="paso-2" class="acciones paso" aria-labelledby="t-acciones" hidden>
+      <p class="resumen"><span id="resumen-clase"></span> <a href="#paso-1" data-paso="1">Cambiar</a></p>
+      <div id="acciones" tabindex="-1">
+      <h2 id="t-acciones" tabindex="-1">Acciones para todo el <span data-voc="curso">curso</span></h2>
 
       <fieldset class="momentos">
         <legend>¿Cuándo?</legend>
@@ -109,9 +115,12 @@ try {
 
       <p class="conteo" id="conteo" aria-live="polite"></p>
       <ul class="tarjetas" id="tarjetas"></ul>
+      </div>
+      <a class="boton siguiente" href="#paso-3" data-paso="3">Agregar apoyos para un estudiante (opcional)</a>
     </section>
+    <div id="paso-3" class="paso" hidden>
     <section id="estudiante" class="perfil" tabindex="-1" aria-labelledby="t-estudiante">
-      <h2 id="t-estudiante">Apoyos para un estudiante</h2>
+      <h2 id="t-estudiante" tabindex="-1">Apoyos para un estudiante</h2>
       <div class="perfil-campos">
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
         <fieldset class="perfil-opciones"><legend>Paso 1: ¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
@@ -137,12 +146,15 @@ try {
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
     </section>
+    </div>
   </div>
+</main>
 
-  <div class="seleccion-contenedor">
+<dialog id="mochila" class="mochila" aria-labelledby="t-seleccion">
   <aside class="seleccion" id="seleccion" tabindex="-1" aria-labelledby="t-seleccion">
-    <h2 id="t-seleccion" tabindex="-1">Mi selección <span id="n-sel" class="n-sel">0</span></h2>
+    <div class="mochila-barra"><h2 id="t-seleccion" tabindex="-1" autofocus>Mi mochila</h2><button type="button" id="cerrar-mochila" class="boton">Cerrar</button></div>
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
+    <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
     <ol id="sel-lista" class="sel-lista"></ol>
     <section id="sel-estudiante" hidden aria-labelledby="sel-estudiante-titulo">
       <h3 id="sel-estudiante-titulo"></h3>
@@ -164,8 +176,7 @@ try {
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
     </div>
   </aside>
-  </div>
-</main>
+</dialog>
 
 <footer class="pie">
   <div class="marco">
