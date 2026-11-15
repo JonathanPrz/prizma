@@ -29,6 +29,7 @@ try {
       <nav class="atajos" aria-label="Secciones de la página">
         <a href="#t-perfil">Tu <span data-voc="clase">clase</span></a>
         <a href="#acciones">Acciones</a>
+        <a href="#estudiante">Un estudiante</a>
         <a href="#seleccion">Mi selección</a>
       </nav>
       <label class="tema" for="tema">Tema
@@ -102,12 +103,31 @@ try {
       <p class="conteo" id="conteo" aria-live="polite"></p>
       <ul class="tarjetas" id="tarjetas"></ul>
     </section>
+    <section id="estudiante" class="perfil" tabindex="-1" aria-labelledby="t-estudiante">
+      <h2 id="t-estudiante">Apoyos para un estudiante</h2>
+      <div class="perfil-campos">
+        <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
+        <fieldset class="perfil-opciones"><legend>Paso 1: ¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
+        <div><h3>Paso 2: ¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
+        <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
+      </div>
+      <p class="ayuda">Antes de aplicar un apoyo, conversa con el estudiante y su familia. Las adecuaciones se acuerdan con el equipo de apoyo y se registran en el PACI.</p>
+      <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
+      <div id="apoyos-resultados"></div>
+    </section>
   </div>
 
+  <div class="seleccion-contenedor">
   <aside class="seleccion" id="seleccion" tabindex="-1" aria-labelledby="t-seleccion">
     <h2 id="t-seleccion" tabindex="-1">Mi selección <span id="n-sel" class="n-sel">0</span></h2>
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
     <ol id="sel-lista" class="sel-lista"></ol>
+    <section id="sel-estudiante" hidden aria-labelledby="sel-estudiante-titulo">
+      <h3 id="sel-estudiante-titulo"></h3>
+      <p class="ayuda">Propuesta para conversar con el equipo de apoyo</p>
+      <p id="sel-estudiante-ayuda" class="ayuda"></p>
+      <ol id="sel-apoyos" class="sel-lista"></ol>
+    </section>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
@@ -122,6 +142,7 @@ try {
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
     </div>
   </aside>
+  </div>
 </main>
 
 <footer class="pie">
