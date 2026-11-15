@@ -7,6 +7,23 @@ Una clase, muchas formas de aprender.
 El Diseño Universal para el Aprendizaje (DUA) funciona aquí como un menú de opciones.
 No es una lista de cotejo.
 
+## Cómo funciona
+
+Prizma no te dice cómo planificar tu clase.
+Te ofrece acciones para elegir.
+
+**Tiempo 1. DUA para todo el curso.**
+Eliges acciones para tu clase. Por ejemplo, para motivar.
+Las acciones están ordenadas en antes, durante y después de la clase.
+Cada acción explica por qué funciona, con respaldo de la neurociencia.
+
+**Tiempo 2. Casos específicos.**
+1. Apoyos adicionales: adecuaciones de acceso para un estudiante.
+2. Adecuaciones curriculares: solo cuando el acceso no basta.
+
+**Normativa.**
+Resumen claro de las leyes que respaldan los apoyos. Por ejemplo, la Ley TEA (Ley 21.545).
+
 ## Principios
 
 - **Privacidad por defecto.** Sin servidor ni cuentas. Los datos se quedan en tu navegador. Los estudiantes se registran con iniciales.
