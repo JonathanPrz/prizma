@@ -1,6 +1,6 @@
 # Tarea 020 · Unificar educación media y llevar «clase práctica» junto al nivel
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/020-media-unificada`
+Estado: **integrada** (PR #20) · Asignada a: Codex · Rama: `codex/020-media-unificada`
 
 ## Para qué
 
