@@ -217,3 +217,10 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .aviso-privacidad li + li { margin-top: .75rem; }
 
 .t-razon { margin: 0; font-size: .875rem; font-weight: 600; color: var(--solida); }
+
+/* Los apoyos individuales usan la misma superficie y controles del perfil. */
+#estudiante { margin-top: 2rem; }
+#iniciales { font: inherit; color: var(--tinta); background: var(--superficie); border: 1px solid var(--borde-control); border-radius: .35rem; padding: .55rem .7rem; min-height: 2.75rem; width: 100%; box-sizing: border-box; }
+#dimensiones fieldset { margin-bottom: 1rem; }
+#apoyos-resultados > section { margin-block: 1.5rem; }
+#sel-estudiante { margin-top: 1rem; }

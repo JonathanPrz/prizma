@@ -33,15 +33,103 @@ const CONSIDERACIONES = {
 };
 const NIVELES = { parvularia: "Educación parvularia", basica: "Educación básica", "media-ch": "Media científico-humanista", "media-tp": "Media técnico-profesional" };
 
+const AREAS = [
+  ["Cognición y aprendizaje", [1, 2]], ["Comunicación e interacción", [3, 4]],
+  ["Social, emocional y salud mental", [5]], ["Sensorial y física", [6, 7, 8, 9]],
+  ["Contexto e identidad", [10, 11]],
+];
+const DIMENSIONES = [
+  ["Atención y organización", "instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad"],
+  ["Lectura, escritura y cálculo", "textos largos, copiar de la pizarra, escribir a mano, cálculo mental"],
+  ["Comunicación y lenguaje", "instrucciones solo orales, lenguaje figurado, responder en voz alta"],
+  ["Interacción social", "trabajo en grupo, normas que no se dicen, exponer en público"],
+  ["Emociones y regulación", "evaluaciones, imprevistos, frustración, desregulación"],
+  ["Visión y audición", "ver la pizarra, escuchar con ruido"],
+  ["Sensibilidad sensorial", "ruido, luz, multitudes, texturas, olores"],
+  ["Movimiento y motricidad", "escribir, manipular materiales, desplazarse"],
+  ["Salud y energía", "fatiga, dolor, ausencias por tratamiento"],
+  ["Identidad, lengua y pertenencia", "otra lengua materna, pueblo originario, migración, sentirse parte del curso"],
+  ["Espacio, tiempo y actitudes", "sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa"],
+];
+const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
+const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
+function normalizarEstudiante(valor) {
+  const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
+  const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
+  return {
+    iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}$/.test(e.iniciales) ? e.iniciales : "",
+    dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|10|11)$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
+    ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
+  };
+}
+function tituloEstudiante() { return "Apoyos para " + (estado.estudiante.iniciales || "un estudiante"); }
+function tipoOficial(r) { return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`; }
+function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.estudiante.dimensiones[d]); }
+function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
+function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
+function pintarApoyos() {
+  const lista = accesosVisibles();
+  $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
+    el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
+  $("#apoyos-estado").textContent = Object.keys(estado.estudiante.dimensiones).length ? plural(lista.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
+}
+function sincronizarEstudiante() {
+  $("#iniciales").value = estado.estudiante.iniciales;
+  $("#estudiante-ayuda").value = estado.estudiante.ayuda;
+  const areas = $("#areas"); areas.replaceChildren();
+  const dimensiones = $("#dimensiones"); dimensiones.replaceChildren();
+  AREAS.forEach(([nombre, ids], i) => {
+    const grupo = el("div");
+    const casilla = el("input", { type: "checkbox", id: `area-${i}`, "aria-controls": `dim-area-${i}` });
+    casilla.checked = ids.some((d) => estado.estudiante.dimensiones[d]);
+    grupo.id = `dim-area-${i}`; grupo.hidden = !casilla.checked;
+    casilla.addEventListener("change", () => {
+      grupo.hidden = !casilla.checked;
+      if (!casilla.checked) {
+        ids.forEach((d) => { delete estado.estudiante.dimensiones[d]; grupo.querySelector(`input[name="dimension-${d}"][value="0"]`).checked = true; });
+        guardar(); pintarApoyos(); actualizarRespaldo();
+      }
+    });
+    areas.append(el("label", {}, casilla, nombre));
+    ids.forEach((d) => {
+      const [titulo, ayuda] = DIMENSIONES[d - 1];
+      const campo = el("fieldset", { class: "perfil-opciones", "aria-describedby": `ayuda-d-${d}` }, el("legend", { text: titulo }), el("p", { class: "ayuda", id: `ayuda-d-${d}`, text: ayuda }));
+      FRECUENCIAS.forEach((texto, valor) => {
+        const radio = el("input", { type: "radio", name: `dimension-${d}`, value: valor });
+        radio.checked = (estado.estudiante.dimensiones[d] || 0) === valor;
+        radio.addEventListener("change", () => {
+          if (valor) estado.estudiante.dimensiones[d] = valor; else delete estado.estudiante.dimensiones[d];
+          guardar(); pintarApoyos(); actualizarRespaldo();
+        });
+        campo.append(el("label", {}, radio, texto));
+      });
+      grupo.append(campo);
+    });
+    dimensiones.append(grupo);
+  });
+  pintarApoyos();
+}
+function escucharEstudiante() {
+  for (const [id, clave] of [["iniciales", "iniciales"], ["estudiante-ayuda", "ayuda"]]) {
+    $("#" + id).addEventListener("input", (evento) => {
+      const campo = evento.target, escribio = Boolean(campo.value);
+      estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
+      campo.value = estado.estudiante[clave];
+      guardar(); pintarSeleccion();
+      if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad();
+    });
+  }
+}
+
 const $ = (s) => document.querySelector(s);
 const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].directrices.includes(r.consideracion.split(".")[0]));
 
 let catalogo = [], fuentes = {};
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
-let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], seleccion: {} };
+let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
-  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
 }
 function guardar() {
   try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
@@ -133,14 +221,14 @@ function pintarControles() {
 }
 
 function tarjeta(r) {
-  const prop = proposito(r), elegida = r.id in estado.seleccion;
+  const acceso = r.tipo === "acceso", prop = acceso ? null : proposito(r), elegida = r.id in estado.seleccion;
   const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
-      el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
-      el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
-    coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+      acceso ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
+      acceso ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
+    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     el("h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
@@ -169,7 +257,7 @@ function pintarTarjetas() {
 function alternar(id) {
   const foco = document.activeElement.id;
   if (id in estado.seleccion) delete estado.seleccion[id]; else estado.seleccion[id] = "";
-  guardar(); pintarTarjetas(); pintarSeleccion();
+  guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
   if (foco.startsWith("elegir-") || foco.startsWith("quitar-")) {
     (document.getElementById(foco) || $("#sel-lista .quitar") || $("#t-seleccion")).focus();
   }
@@ -177,8 +265,8 @@ function alternar(id) {
 
 function elegidasOrdenadas() {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
-  return catalogo.filter((r) => r.id in estado.seleccion)
-    .sort((a, b) => orden[a.momento] - orden[b.momento] || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
+  return catalogo.filter((r) => ["dua", "acceso"].includes(r.tipo) && r.id in estado.seleccion)
+    .sort((a, b) => (orden[a.momento] ?? 4) - (orden[b.momento] ?? 4) || (a.consideracion || a.id).localeCompare(b.consideracion || b.id, "es", { numeric: true }));
 }
 
 function pintarSeleccion() {
@@ -188,7 +276,13 @@ function pintarSeleccion() {
   $("#pdf").disabled = sel.length === 0;
   actualizarRespaldo();
   const nombreMomento = nombresMomentos();
-  $("#sel-lista").replaceChildren(...sel.map((r) => {
+  $("#sel-lista").replaceChildren(...sel.filter((r) => r.tipo === "dua").map(itemSeleccion));
+  const accesos = sel.filter((r) => r.tipo === "acceso");
+  $("#sel-estudiante").hidden = !accesos.length;
+  $("#sel-estudiante-titulo").textContent = tituloEstudiante();
+  $("#sel-estudiante-ayuda").textContent = estado.estudiante.ayuda ? "Le ayuda: " + estado.estudiante.ayuda : "";
+  $("#sel-apoyos").replaceChildren(...accesos.map(itemSeleccion));
+  function itemSeleccion(r) {
     const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
     nota.value = estado.seleccion[r.id] || "";
     nota.addEventListener("input", () => {
@@ -196,11 +290,11 @@ function pintarSeleccion() {
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad();
     });
     return el("li", {},
-      el("span", { class: "sel-momento", text: nombreMomento[r.momento] }),
+      el("span", { class: "sel-momento", text: r.tipo === "acceso" ? tipoOficial(r) : nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: r.titulo }),
       nota,
       el("button", { type: "button", class: "quitar", id: "quitar-" + r.id, onclick: () => alternar(r.id), text: "Quitar" }));
-  }));
+  }
 }
 
 function sincronizarPerfil() {
@@ -219,13 +313,13 @@ function escucharPerfil() {
       actividad: [...document.querySelectorAll('input[name="actividad"]:checked')].map((c) => c.value),
       evidencia: [...document.querySelectorAll('input[name="evidencia"]:checked')].map((c) => c.value),
     };
-    guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+    guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
   });
 }
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length);
+  return Boolean(p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || Object.keys(estado.estudiante.dimensiones).length);
 }
 
 function actualizarRespaldo() {
@@ -234,7 +328,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion };
+  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
@@ -252,10 +346,10 @@ function validarRespaldo(datos) {
     throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma.");
   }
   const perfil = normalizarPerfil(datos.perfil);
-  const ids = new Set(catalogo.map((r) => r.id));
+  const ids = new Set(catalogo.filter((r) => ["dua", "acceso"].includes(r.tipo)).map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
-  return { perfil, seleccion, descartadas: entradas.length - Object.keys(seleccion).length };
+  return { perfil, seleccion, estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
 }
 
 async function abrirRespaldo(evento) {
@@ -266,13 +360,13 @@ async function abrirRespaldo(evento) {
     let datos;
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
-    const { perfil, seleccion, descartadas } = validarRespaldo(datos);
-    if (hayDatos() && !window.confirm(`Esto reemplaza tu ${voc("clase")} y tu selección actuales por las del respaldo. ¿Continuar?`)) {
+    const { perfil, seleccion, estudiante, descartadas } = validarRespaldo(datos);
+    if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y tu estudiante por los del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado.perfil = perfil; estado.seleccion = seleccion;
-    guardar(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante;
+    guardar(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
       (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
   } catch (e) { aviso.textContent = e.message; }
@@ -299,7 +393,11 @@ function documento() {
         titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
         dato: `${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
       })),
-    })),
+    })).concat(sel.some((r) => r.tipo === "acceso") ? [{
+      nombre: tituloEstudiante(), subtitulo: "Propuesta para conversar con el equipo de apoyo",
+      ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
+      acciones: sel.filter((r) => r.tipo === "acceso").map((r) => ({ titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
+    }] : []),
     fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
   };
 }
@@ -313,6 +411,8 @@ function armarHoja() {
     d.meta ? el("p", {}, el("strong", { text: "Meta de aprendizaje: " }), d.meta, el("br"), el("em", { text: "Quita las barreras, no el desafío de aprender esto." })) : null,
     ...d.grupos.flatMap((g) => [
       el("h2", { text: g.nombre }),
+      g.subtitulo ? el("p", { text: g.subtitulo }) : null,
+      g.ayuda ? el("p", { text: g.ayuda }) : null,
       ...g.acciones.map((a) => el("div", { class: "h-accion" },
         el("h3", { text: a.titulo }),
         el("ol", {}, a.como.map((x) => el("li", { text: x }))),
@@ -338,6 +438,8 @@ function definicionPdf() {
     d.meta ? { text: "Quita las barreras, no el desafío de aprender esto.", italics: true, margin: [0, 0, 0, 6] } : null,
     ...d.grupos.flatMap((g) => [
       { text: g.nombre, style: "h2" }, linea,
+      g.subtitulo ? { text: g.subtitulo, italics: true } : null,
+      g.ayuda ? { text: g.ayuda } : null,
       ...g.acciones.map((a) => ({
         unbreakable: true, margin: [0, 0, 0, 10], stack: [
           { text: a.titulo, style: "h3" },
@@ -411,8 +513,8 @@ async function iniciar() {
     $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";
     return;
   }
-  estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => r.id === id)));
-  sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+  estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => ["dua", "acceso"].includes(r.tipo) && r.id === id)));
+  sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   window.addEventListener("beforeprint", armarHoja);
   $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });
   $("#guardar-respaldo").addEventListener("click", guardarRespaldo);
@@ -421,7 +523,7 @@ async function iniciar() {
   $("#imprimir").addEventListener("click", () => window.print());
   $("#cerrar").addEventListener("click", () => $("#vista").close());
   $("#borrar").addEventListener("click", () => {
-    if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección y tus notas de este navegador?`)) return;
+    if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección, tus notas y los datos del estudiante de este navegador?`)) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }
     location.reload();
   });
