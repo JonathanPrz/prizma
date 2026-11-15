@@ -1,6 +1,6 @@
 # Tarea 011 · Entrada «¿Qué quieres resolver en esta clase?»
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/011-necesidades` · Hazla **después** de integrar la tarea 010.
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/011-necesidades` · Hazla **después** de integrar la tarea 010.
 
 ## Para qué
 

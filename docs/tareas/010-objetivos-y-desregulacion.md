@@ -1,6 +1,6 @@
 # Tarea 010 · Adecuaciones en los objetivos y apoyos ante desregulación
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/010-objetivos-desregulacion` · Hazla **después** de integrar la tarea 009.
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/010-objetivos-desregulacion` · Hazla **después** de integrar la tarea 009.
 
 ## Para qué
 
