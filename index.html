@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prizma</title>
+<meta name="description" content="Acciones con fuente para que todo tu curso pueda aprender. Basado en DUA 3.0 y la normativa chilena.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="saltar" href="#acciones">Ir a las acciones</a>
+
+<header class="cabecera">
+  <div class="marco">
+    <p class="marca"><span class="prisma" aria-hidden="true"></span>Prizma</p>
+    <h1>Acciones para que todo tu curso pueda aprender</h1>
+    <p class="bajada">Elige las que te sirvan. Prizma no planifica tu clase: te ofrece un menú, cada acción con su fuente.</p>
+  </div>
+</header>
+
+<main class="marco disposicion">
+  <div class="principal">
+    <section class="perfil" aria-labelledby="t-perfil">
+      <h2 id="t-perfil">Tu clase</h2>
+      <p class="ayuda">Todo es opcional. Sirve para ordenar las acciones y aparece en tu PDF.</p>
+      <form id="perfil" class="perfil-campos">
+        <label>Nivel
+          <select id="nivel" name="nivel">
+            <option value="">Sin indicar</option>
+            <option value="parvularia">Educación parvularia</option>
+            <option value="basica">Educación básica</option>
+            <option value="media-ch">Media científico-humanista</option>
+            <option value="media-tp">Media técnico-profesional</option>
+          </select>
+        </label>
+        <label>Tipo de clase
+          <select id="tipo" name="tipo">
+            <option value="">Sin indicar</option>
+            <option value="teorica">Teórica</option>
+            <option value="practica">Práctica</option>
+            <option value="taller">Taller o laboratorio</option>
+            <option value="terreno">En terreno</option>
+            <option value="en-linea">En línea</option>
+          </select>
+        </label>
+        <fieldset class="evaluacion">
+          <legend>Evaluación</legend>
+          <label><input type="checkbox" name="evaluacion" value="individual"> Individual</label>
+          <label><input type="checkbox" name="evaluacion" value="grupal"> Grupal</label>
+          <label><input type="checkbox" name="evaluacion" value="escrita"> Escrita</label>
+          <label><input type="checkbox" name="evaluacion" value="oral"> Oral</label>
+          <label><input type="checkbox" name="evaluacion" value="practica"> Práctica</label>
+        </fieldset>
+        <label class="meta">¿Qué quieres que aprendan en esta clase?
+          <textarea id="meta" name="meta" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
+          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
+        </label>
+      </form>
+    </section>
+
+    <section id="acciones" class="acciones" aria-labelledby="t-acciones">
+      <h2 id="t-acciones">Acciones para todo el curso</h2>
+
+      <fieldset class="momentos">
+        <legend>¿Cuándo?</legend>
+        <div class="segmentos" id="momentos"></div>
+      </fieldset>
+
+      <fieldset class="propositos">
+        <legend>¿Para qué? <span class="ayuda">Si no eliges ninguno, se muestran todos.</span></legend>
+        <div class="chips" id="propositos"></div>
+      </fieldset>
+
+      <p class="conteo" id="conteo" aria-live="polite"></p>
+      <ul class="tarjetas" id="tarjetas"></ul>
+    </section>
+  </div>
+
+  <aside class="seleccion" id="seleccion" aria-labelledby="t-seleccion">
+    <h2 id="t-seleccion">Mi selección <span id="n-sel" class="n-sel">0</span></h2>
+    <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
+    <ol id="sel-lista" class="sel-lista"></ol>
+    <div class="sel-botones">
+      <button type="button" id="pdf" class="boton boton-principal">Descargar PDF</button>
+      <p class="ayuda">Se abre la ventana de impresión: elige «Guardar como PDF».</p>
+      <button type="button" id="borrar" class="boton boton-sutil">Borrar todo</button>
+      <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="pie">
+  <div class="marco">
+    <p><strong>Orientación pedagógica.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento.</p>
+    <p>Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
+  </div>
+</footer>
+
+<section id="hoja" class="hoja" aria-hidden="true"></section>
+<noscript><p class="marco">Prizma necesita JavaScript activado para mostrar las acciones.</p></noscript>
+</body>
+</html>
