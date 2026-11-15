@@ -1,6 +1,6 @@
 # Tarea 012 · Aviso emergente «Cómo usar el DUA en tu clase»
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/012-guia-dua` · Hazla **después** de integrar la tarea 011.
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/012-guia-dua` · Hazla **después** de integrar la tarea 011.
 
 ## Para qué
 
