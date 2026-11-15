@@ -2770,7 +2770,8 @@
     "areas": [],
     "dimensiones": [
       3,
-      6
+      6,
+      10
     ],
     "niveles": [
       "superior"
@@ -2811,5 +2812,159 @@
     "destacada": false,
     "revision": null,
     "subtipo": "entorno"
+  },
+  {
+    "id": "acc-2-concreto",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Usa objetos concretos para contar y para las primeras letras",
+    "como": [
+      "Ofrece objetos para contar, agrupar y comparar.",
+      "Muestra letras grandes, con una imagen y su sonido.",
+      "Deja que los toquen y manipulen mientras aprenden."
+    ],
+    "porque": "Lo que se puede tocar y mover da otra entrada a símbolos que todavía son nuevos.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2,
+      1
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "decreto-83",
+      "cast-dua-3"
+    ],
+    "contextos": [],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-2-registro",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Acepta dibujos, señas o dictado al adulto como registro",
+    "como": [
+      "Ofrece dibujar, señalar imágenes o dictarte la idea.",
+      "Escribe lo que dice y léeselo en voz alta.",
+      "Valora la idea, no el trazo."
+    ],
+    "porque": "A esta edad lo importante es comunicar la idea; el trazo todavía se está desarrollando.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      8
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "decreto-83",
+      "cast-dua-3"
+    ],
+    "contextos": [],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-lengua",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Facilita el vocabulario técnico a estudiantes de otra lengua",
+    "como": [
+      "Publica con anticipación un glosario de los términos clave.",
+      "Permite diccionario o traductor cuando lo evaluado no es el idioma.",
+      "Revisa que los ejemplos no supongan referencias que no todos conocen."
+    ],
+    "porque": "Así se evalúa el resultado de aprendizaje y no el dominio del español.",
+    "areas": [
+      "contexto",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-21091",
+      "cast-dua-3"
+    ],
+    "contextos": [],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-confidencial",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Aplica los ajustes sin exponer al estudiante",
+    "como": [
+      "No menciones su situación ni sus ajustes frente al curso.",
+      "Coordina los detalles en privado o por escrito.",
+      "Detén los comentarios discriminatorios y avisa a la unidad que corresponda."
+    ],
+    "porque": "La ley protege la privacidad y prohíbe la discriminación; un ajuste que expone puede no usarse.",
+    "areas": [
+      "contexto",
+      "emocional"
+    ],
+    "dimensiones": [
+      11,
+      10,
+      5
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "cdpd",
+      "ley-21091",
+      "ley-20422"
+    ],
+    "contextos": [],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-recursos",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Asegura que las tareas se puedan hacer con los recursos de la institución",
+    "como": [
+      "Indica qué computadores, biblioteca o préstamos de equipos pueden usar.",
+      "Prefiere programas gratuitos o disponibles en el campus.",
+      "Considera el acceso a internet al fijar plazos y formatos."
+    ],
+    "porque": "Si la tarea exige recursos que no todos tienen, mide el acceso y no el aprendizaje.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-21091",
+      "cast-dua-3"
+    ],
+    "contextos": [],
+    "destacada": false,
+    "revision": null
   }
 ]

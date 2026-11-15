@@ -68,12 +68,14 @@ assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Prefiere explica
 vm.runInContext('estado.seleccion = Object.fromEntries([[catalogo.find(r=>r.tipo==="dua").id, ""]]);', contexto);
 assert.equal(ejecutar('documento().grupos.at(-1).voz'), '¿Qué dicen el estudiante y su familia? Prefiere explicar con dibujos');
 assert.equal(ejecutar('documento().grupos.at(-1).acciones.length'), 0);
-vm.runInContext('estado.perfil.nivel="superior"; estado.estudiante=normalizarEstudiante({dimensiones:{10:2,11:3}})', contexto);
-assert.deepEqual(ejecutar('situacionesSinApoyos()'), [10,11]);
-vm.runInContext('estado.perfil.nivel="parvularia"; estado.estudiante=normalizarEstudiante({dimensiones:{1:1,2:2}})', contexto);
-assert.deepEqual(ejecutar('situacionesSinApoyos()'), [2]);
-vm.runInContext('estado.perfil.nivel="basica"', contexto);
-assert.deepEqual(ejecutar('situacionesSinApoyos()'), []);
+// Sin vacíos en el catálogo actual; se simula uno para probar el aviso sin depender del contenido.
+for (const nivel of ['parvularia', 'basica', 'superior']) {
+  vm.runInContext(`estado.perfil.nivel="${nivel}"; estado.estudiante=normalizarEstudiante({dimensiones:{1:1,2:2,10:2,11:3}})`, contexto);
+  assert.deepEqual(ejecutar('situacionesSinApoyos()'), [], nivel);
+}
+vm.runInContext('var catalogoReal = catalogo; catalogo = catalogo.filter(r => !(r.tipo === "acceso" && r.dimensiones.includes(11)))', contexto);
+assert.deepEqual(ejecutar('situacionesSinApoyos()'), [11]);
+vm.runInContext('catalogo = catalogoReal', contexto);
 console.log('Correcto: voz validada y respaldada, PDF con voz incluso sin fichas individuales, y vacíos por situación/nivel.');
 const pasosOriginales = ejecutar('catalogo.find(r=>r.id===Object.keys(estado.seleccion)[0]).como');
 vm.runInContext('definicionPdf().content.find(b=>b.stack?.some(n=>n.ol)).stack.find(n=>n.ol).ol[0]={text:"Objeto que inserta pdfmake"}', contexto);

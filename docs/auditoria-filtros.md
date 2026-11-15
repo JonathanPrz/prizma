@@ -62,3 +62,4 @@ Fichas de acceso por situación: entre 0 y 4. Es poco para un repositorio con fi
 
 - Tarea 017 (código, Codex): A1–A6, B1, B3 y B4.
 - Tarea de contenido (Claude): C1, después C2 y C3.
+- **C1 hecho** (15 nov 2026): 5 fichas nuevas (`acc-2-concreto`, `acc-2-registro`, `sup-lengua`, `sup-confidencial`, `sup-recursos`) y `sup-senas` suma la situación 10 (Ley 20.422 reconoce a la comunidad sorda como minoría lingüística y cultural). Ningún nivel queda con situaciones sin apoyos.
