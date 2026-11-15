@@ -13,14 +13,14 @@ const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, con
 assert.deepEqual(ejecutar('normalizarNecesidades(["tareas-largas", "inventada", 1, {}, "tareas-largas"])'), ['tareas-largas']);
 for (const invalido of ['null', '{}', '"tareas-largas"', '42']) assert.deepEqual(ejecutar(`normalizarNecesidades(${invalido})`), []);
 for (const nivel of ['basica', 'parvularia']) {
-  vm.runInContext(`estado.perfil.nivel = "${nivel}"; estado.momento = "durante"; estado.necesidades = [];`, contexto);
+  vm.runInContext(`estado.perfil.nivel = "${nivel}"; estado.momentos = ["durante"]; estado.necesidades = [];`, contexto);
   const todos = ejecutar('visibles().map(r => r.id).sort()');
   vm.runInContext('estado.necesidades = ["tareas-largas"];', contexto);
   assert.equal(ejecutar('visibles()[0].consideracion'), '5.3');
   assert.deepEqual(ejecutar('visibles().map(r => r.id).sort()'), todos);
   assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0])[0].texto'), 'Se pierden en tareas largas o con muchos pasos');
 }
-vm.runInContext('estado.perfil.nivel = "basica"; estado.momento = "toda-la-clase"; estado.necesidades = ["participacion", "clima"]; estado.perfil.actividad = ["conversar"];', contexto);
+vm.runInContext('estado.perfil.nivel = "basica"; estado.momentos = ["toda-la-clase"]; estado.necesidades = ["participacion", "clima"]; estado.perfil.actividad = ["conversar"];', contexto);
 assert.equal(ejecutar('visibles()[0].consideracion'), '8.4');
 assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0]).length'), 2);
 const puntuaciones = ejecutar('visibles().map(r => coincidenciasNecesidades(r).length)');

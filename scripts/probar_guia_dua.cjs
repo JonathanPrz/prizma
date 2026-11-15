@@ -13,6 +13,7 @@ function nodo(id) {
   return {id, isConnected: true, open: false, returnValue: '', eventos: {},
     addEventListener(tipo, fn) {this.eventos[tipo] = fn;},
     setAttribute() {},
+    append() {},
     focus() {contexto.document.activeElement = this;},
     showModal() {this.open = true; nodos.get(this.id === 'guia-dua' ? '#t-guia-dua' : '#t-privacidad').focus();},
     close(valor) {this.open = false; if (valor !== undefined) this.returnValue = valor; this.eventos.close?.();},
@@ -20,6 +21,7 @@ function nodo(id) {
   };
 }
 for (const id of ['guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos']) nodos.set('#' + id, nodo(id));
+for (const id of ['dua', 'apoyos']) nodos.set('#panel-' + id + ' .cabecera-intro', nodo('intro-' + id));
 nodos.set('#necesidades button', nodo('primera-necesidad'));
 const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
