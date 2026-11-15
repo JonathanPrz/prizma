@@ -66,6 +66,18 @@ Hay 6 cambios de prioridad alta:
 | C10 | **Nueva.** La Ley 21.545 pide "lenguaje claro y sencillo" (art. 3 a) y reconoce la autonomía progresiva (art. 3 b) y la neurodiversidad (art. 3 f). | Respalda la lectura fácil, la voz del estudiante y el lenguaje no deficitario de Prizma. | Media | Nueva |
 | C11 | **Nueva.** La definición de ajustes necesarios de la Ley 20.422 (art. 8) incluye el ambiente social y de actitud. | Respalda incluir las actitudes en el contexto (B3). | Baja | Nueva |
 
+## C2. Orientaciones oficiales y fuentes internacionales (agregado el 15-nov-2026)
+
+| # | Observación | Propuesta | Prioridad |
+|---|---|---|---|
+| C12 | La Circular 586 obliga a tener un PAEC por cada estudiante autista y un protocolo DEC para todo el estudiantado. | El módulo de desregulación sirve para cualquier estudiante. Si el estudiante es autista, agrega "Revisa su PAEC". Prizma no reemplaza ninguno de los dos documentos. | Alta |
+| C13 | La Circular 586 y Mineduc nombran elementos de prevención y estrategias para la crisis. La guía del Reino Unido de 2019 coincide en los principios. | El módulo de desregulación se arma en 3 momentos: antes, durante y después de la crisis. Su respaldo es la Circular 586, Mineduc 2025 y la guía del Reino Unido de 2019. | Alta |
+| C14 | La Circular 586 prohíbe suspender, reducir la jornada, condicionar la matrícula y, en parvularia, sancionar. | Prizma nunca recomienda esas medidas. | Alta |
+| C15 | Mineduc recomienda decir "estudiante autista", no "estudiante con TEA". | Agregarlo a las reglas de redacción. | Media |
+| C16 | Los documentos de Mineduc mezclan prácticas con evidencia sólida y otras con evidencia débil, como los chalecos con peso. | Cada recomendación declara su tipo de respaldo. Las de evidencia débil o dudosa no entran, o entran marcadas como "orientación oficial". | Alta |
+| C17 | La EEF y el *SEND Code of Practice* usan 4 grandes áreas de necesidad. | Agrupar las 10 dimensiones en esas 4 áreas, más el contexto, para acortar la encuesta (D1). | Media |
+| C18 | La EEF identifica 5 estrategias de enseñanza con buena evidencia: instrucción explícita, estrategias metacognitivas, andamiaje, agrupamiento flexible y tecnología. | Ponerlas como acciones destacadas del Tiempo 1, conectadas con su consideración DUA. | Media |
+
 ## D. Experiencia de uso
 
 | # | Observación | Propuesta | Prioridad |

@@ -19,11 +19,15 @@ Cada archivo `.md` de esta carpeta es un análisis o una copia de trabajo de una
 | Decreto 67/2018 (Evaluación) | `normativa/decreto-67-2018.md` | Copiada y analizada | Norma pública |
 | Convención sobre los Derechos de las Personas con Discapacidad (ONU) | `normativa/cdpd.md` | Copiada y analizada | Documento público de la ONU |
 | Orientaciones Mineduc: estrategias diversificadas para básica (2017) | `orientaciones/mineduc-orientaciones-d83-basica-2017.md` | Copiada, falta analizarla | Se autoriza su reproducción citando la fuente |
-| Orientaciones sobre desregulación emocional y conductual | `orientaciones/` | **Falta** (la subes tú) | Revisar el aviso de cada documento |
+| Circular 586 de la Superintendencia de Educación (2023) | `orientaciones/supereduc-circular-586-2023.md` | Copiada y analizada | Acto administrativo público |
+| Mineduc: Respuesta educativa y acompañamiento emocional del estudiantado autista (2025) | `orientaciones/mineduc-respuesta-educativa-autismo-2025.md` | Copiada y analizada | Documento público, sin licencia declarada |
+| Mineduc: Preguntas frecuentes sobre la Ley 21.545 (2025) | `orientaciones/mineduc-preguntas-frecuentes-autismo-2025.md` | Copiada y analizada | Documento público, sin licencia declarada |
+| Mineduc: Ajustes a los dispositivos de gestión (2024) | `orientaciones/mineduc-ajuste-dispositivos-gestion-2024.md` | Copiada y analizada | Documento público, sin licencia declarada |
+| Mineduc: Nota técnica de parvularia sobre autismo (2025) | `orientaciones/mineduc-nota-tecnica-parvularia-autismo-2025.md` | Copiada y analizada | Documento público, sin licencia declarada |
 | Reducing the Need for Restraint and Restrictive Intervention (Reino Unido, 2019) | `internacional/uk-reducing-restraint-2019.md` | Copiada y analizada | Open Government Licence v3.0 |
 | Special Educational Needs in Mainstream Schools (EEF, 2020) | `internacional/README.md` | Analizada | Sin licencia declarada. Solo análisis propio |
 
-Análisis de las normas: `normativa/README.md`. Análisis de las fuentes internacionales: `internacional/README.md`.
+Análisis de las normas: `normativa/README.md`. Análisis de las fuentes internacionales: `internacional/README.md`. Análisis de las orientaciones chilenas: `orientaciones/README.md`.
 
 ## Documentos que faltan
 
