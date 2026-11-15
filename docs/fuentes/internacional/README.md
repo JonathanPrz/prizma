@@ -80,12 +80,22 @@ Revisado el 15 de noviembre de 2026.
 
 ## 3. Evidencia sobre chalecos con peso
 
-Búsqueda del 15 de noviembre de 2026. Se leyeron los resúmenes, no los artículos completos.
-- **Stephenson, J. y Carter, M. (2009).** *The use of weighted vests with children with autism spectrum disorders and other disabilities.* Journal of Autism and Developmental Disorders. Revisa 7 estudios. Concluye que, aunque la investigación es poca y tiene debilidades, en conjunto los chalecos con peso **no parecen ser eficaces**. También advierte un posible riesgo de lesión. https://researchers.mq.edu.au/en/publications/the-use-of-weighted-vests-with-children-with-autism-spectrum-diso/
-- **Taylor, C. J., Spriggs, A. D. y otros (2017).** *A systematic review of weighted vests with individuals with autism spectrum disorder.* Usa los estándares del What Works Clearinghouse con 32 estudios. Concluye que los chalecos con peso **no son una práctica basada en evidencia**. https://uknowledge.uky.edu/edsrc_etds/20
-- **Resumen de la Association for Science in Autism Treatment (ASAT):** https://asatonline.org/research-treatment/research-synopses/the-use-and-the-efficacy-of-weighted-vests/
+Revisado el 15 de noviembre de 2026 sobre los **textos completos**. Los 3 documentos tienen derechos de autor, por eso aquí va solo el análisis propio con citas cortas.
 
-**Consecuencia para Prizma:** los chalecos con peso no entran al catálogo como recomendación. Si los indicó un profesional tratante, el tema se conversa en el PAEC con la familia. Prizma no los prohíbe.
+| Fuente | Qué revisó | Conclusión |
+|---|---|---|
+| **Stephenson, J. y Carter, M. (2009).** The use of weighted vests with children with autism spectrum disorders and other disabilities. *Journal of Autism and Developmental Disorders, 39*, 105–114. doi:10.1007/s10803-008-0605-3 | 7 estudios con 20 niños de 2 a 11 años, con autismo, TDAH u otras condiciones | En 4 estudios no hubo efecto. Los 2 que dicen haber encontrado efectos usan diseños débiles, y al revisar sus datos los efectos casi desaparecen. El tercero tiene errores en sus datos. Conclusión textual: "weighted vests cannot be recommended for clinical application" (no se pueden recomendar para su uso clínico). |
+| **Taylor, C. J. (2015).** *A systematic review of using weighted vests with individuals with autism spectrum disorder.* Tesis de magíster, University of Kentucky, dirigida por A. D. Spriggs. https://uknowledge.uky.edu/edsrc_etds/20 | 32 estudios, evaluados con los estándares del What Works Clearinghouse | Solo 10 tenían una calidad aceptable. De ellos, 6 no muestran efecto. Los 4 que sí muestran efecto vienen de 2 equipos y suman solo 4 participantes, y el estándar exige 5 estudios, 3 equipos y 20 participantes. Conclusión: **no es una práctica basada en evidencia**. |
+| **ASAT (2011).** Reseña de Stephenson y Carter (2009), por K. Moran. *Science in Autism Treatment, 8*(1). https://asatonline.org/research-treatment/research-synopses/the-use-and-the-efficacy-of-weighted-vests/ | Resumen divulgativo | Coincide: los chalecos no han mostrado efectos positivos y "may not be safe" (podrían no ser seguros). |
+
+**Riesgo físico.** Stephenson y Carter comparan el peso de los chalecos con el límite recomendado para las mochilas escolares, que es de alrededor del 10 % del peso corporal. Los chalecos de los estudios llegan a ese límite y se usan por más tiempo. Los autores señalan que algún efecto aparente podría deberse al cansancio.
+
+**Límites de esta evidencia.** Los estudios son pocos, pequeños y de diseños débiles. Por eso la conclusión es que **no hay evidencia de que funcionen**, no que esté probado que hacen daño. Stephenson y Carter no descartan que les sirvan a algunas personas con características muy específicas, pero los estudios no permiten saber a quiénes.
+
+**Consecuencia para Prizma:**
+- Los chalecos con peso **no entran al catálogo** como recomendación.
+- Si la familia o un profesional tratante los pide, Prizma responde que la evidencia muestra que no son eficaces, que hay que cuidar el peso y el tiempo de uso, y que la decisión se conversa en el PAEC con la familia y el profesional. Prizma no los prohíbe.
+- **Alternativas con mejor respaldo**, que vienen de la Circular 586 y de Mineduc 2025: anticipación, manejo de los estímulos sensoriales del ambiente, espacios de calma y pausas.
 
 ## 4. Fuentes revisadas que no se pudieron usar
 
