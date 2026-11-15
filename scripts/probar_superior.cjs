@@ -8,7 +8,9 @@ const contexto = vm.createContext({document: {querySelector: () => ({options: op
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
 vm.runInContext(`catalogo = ${leer('data/recomendaciones.json')}; estado.perfil.nivel = "superior"; estado.estudiante.dimensiones = {2: 2}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));`, contexto);
 const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, contexto)));
-assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-coordinar":"Acuerdo"}}).perfil.nivel'), 'superior');
+assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-digital":"Acuerdo"}}).perfil.nivel'), 'superior');
+assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-coordinar":"Acuerdo","sup-digital":"Material"}}).descartadas'), 1);
+assert.deepEqual(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-coordinar":"Acuerdo","sup-digital":"Material"}}).seleccion'), {"sup-digital":"Material"});
 // Con la situación 2 marcada en superior se ven todas y solo las fichas de superior con esa situación.
 assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id).sort()'), ejecutar('catalogo.filter(r => r.tipo === "acceso" && r.niveles.includes("superior") && !r.contextos.includes("practica") && r.dimensiones.includes(2)).map(r => r.id).sort()'));
 assert(ejecutar('accesosVisibles().length') > 0 && ejecutar('accesosVisibles().every(r => r.id.startsWith("sup-"))'));
@@ -16,19 +18,19 @@ assert.deepEqual(ejecutar('objetivosVisibles()'), []);
 assert.equal(ejecutar('catalogo.filter(r => r.tipo === "desregulacion" && aplica(r)).length'), 0);
 assert.equal(ejecutar('catalogo.filter(r => r.tipo === "dua" && aplica(r)).length'), 36);
 for (const clave of ['clase', 'curso', 'estudiantes']) assert.equal(ejecutar(`voc("${clave}")`), clave);
-vm.runInContext('estado.seleccion = {"sup-tiempo":"Examen", "sup-coordinar":"Acuerdo", "acc-1-partes":"Escolar", "obj-priorizacion":"Objetivos", "dec-durante-validar":"DEC"};', contexto);
-assert.deepEqual(ejecutar('elegidasOrdenadas().map(r => r.id)'), ['sup-coordinar', 'sup-tiempo']);
+vm.runInContext('estado.seleccion = {"sup-tiempo":"Examen", "sup-digital":"Acuerdo", "acc-1-partes":"Escolar", "obj-priorizacion":"Objetivos", "dec-durante-validar":"DEC"};', contexto);
+assert.deepEqual(ejecutar('elegidasOrdenadas().map(r => r.id)'), ['sup-digital', 'sup-tiempo']);
 const doc = ejecutar('documento()');
 assert.equal(doc.grupos[0].nombre, "Ajustes razonables para un estudiante");
 assert.equal(doc.grupos[0].subtitulo, 'Propuesta para acordar con el estudiante y la unidad de inclusión');
-assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split('. Respaldo:')[0]), ['Ajuste razonable: Apoyo adicional', 'Ajuste razonable: Organización del tiempo y el horario']);
+assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split('. Respaldo:')[0]), ['Ajuste razonable: Presentación de la información', 'Ajuste razonable: Organización del tiempo y el horario']);
 assert(!ejecutar('JSON.stringify(definicionPdf())').includes('Decreto 83'));
 vm.runInContext('estado.perfil.nivel = "basica";', contexto);
 assert.deepEqual(ejecutar('elegidasOrdenadas().map(r => r.id)'), ['acc-1-partes', 'obj-priorizacion', 'dec-durante-validar']);
 assert.equal(ejecutar('estado.seleccion["sup-tiempo"]'), 'Examen');
 assert.match(ejecutar('tipoOficial(catalogo.find(r => r.id === "acc-1-partes"))'), /Decreto 83/);
 assert.equal(ejecutar('subtituloEstudiante()'), 'Propuesta para conversar con el equipo de apoyo');
-console.log('Correcto: superior en respaldo, 36 DUA, ajustes filtrados, coordinación primero, PDF con rótulos propios y selección preservada al cambiar nivel.');
+console.log('Correcto: superior en respaldo, 36 DUA, ajustes filtrados, dos ajustes de acceso, PDF con rótulos propios y selección preservada al cambiar nivel.');
 
 assert.equal(ejecutar('tipoOficial({tipo: "adicional", niveles: ["basica", "superior"]})'), 'Apoyo adicional');
 vm.runInContext('estado.perfil.nivel = "superior";', contexto);

@@ -6,7 +6,7 @@ const nodos = new Map();
 const almacen = new Map();
 const contexto = vm.createContext({window: {matchMedia: () => ({matches: false})}, location: {hash: "#dua"}, history: {pushState() {}}, document: {
   activeElement: null,
-  querySelector: selector => nodos.get(selector) || null,
+  querySelector: selector => selector === "dialog[open]" ? [...nodos.values()].find(n => n.open) || null : nodos.get(selector) || null,
   querySelectorAll: () => enlaces,
 }, localStorage: {getItem: clave => almacen.get(clave), setItem: (clave, valor) => almacen.set(clave, valor)}});
 function nodo(id) {
@@ -27,7 +27,7 @@ const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
 vm.runInContext(archivo('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
 const guia = nodos.get('#guia-dua');
-vm.runInContext('prepararGuiaDUA()', contexto);
+vm.runInContext('prepararGuiaDUA(); mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);
 assert.equal(contexto.document.activeElement.id, 't-guia-dua');
 nodos.get('#guia-empezar').click();
@@ -55,7 +55,7 @@ enlaces[1].click();
 nodos.get('#guia-empezar').click();
 assert.equal(contexto.document.activeElement.id, 't-filtros-dua');
 contexto.localStorage.getItem = contexto.localStorage.setItem = () => {throw new Error('bloqueado');};
-vm.runInContext('prepararGuiaDUA()', contexto);
+vm.runInContext('prepararGuiaDUA(); mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);
 assert.doesNotThrow(() => nodos.get('#guia-empezar').click());
 const html = archivo('index.html').split('<dialog id="guia-dua"')[1].split('</dialog>')[0];
