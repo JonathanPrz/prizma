@@ -145,9 +145,9 @@ Más información da recomendaciones más precisas, pero con poca información l
 
 ## 10. Licencias
 
-Que sea gratis no basta: las licencias igual exigen condiciones.
+Corregido el 15 de noviembre de 2026. Ver `auditoria-plan.md`, observación A9.
 
-- **DUA 3.0 (CAST):** se usa con atribución. Si es CC BY-NC-SA, lo que derive de las pautas se comparte con la misma licencia. Se verifica en la Etapa 0.
-- **CIF (OMS):** se usan sus conceptos. No se copian códigos ni definiciones textuales.
-- **Normativa chilena:** es pública. Se cita con enlace a la Biblioteca del Congreso Nacional (bcn.cl).
-- **Propuesta:** el código con licencia MIT y el contenido con licencia CC BY-SA 4.0, o CC BY-NC-SA si DUA 3.0 lo exige.
+- **DUA 3.0 (CAST):** el sitio no tiene licencia abierta y sus derechos están reservados. Las acciones se redactan con palabras propias, citan la consideración de la que vienen y no copian texto. Se escribirá a CAST para contarle del proyecto.
+- **CIF (OMS):** derechos reservados. Se usa el modelo y no se copian códigos ni definiciones.
+- **Normativa chilena:** es pública. Se cita con enlace a bcn.cl.
+- **Propuesta para Prizma:** el código con licencia MIT y el contenido propio con licencia CC BY-SA 4.0.
