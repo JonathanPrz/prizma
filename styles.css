@@ -54,8 +54,8 @@ a { color: var(--enfoque); text-underline-offset: .2em; }
 .marca .logo { width: 2.75rem; height: 2.75rem; flex: none; }
 .atajos { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin-left: auto; }
 .atajos a { color: var(--tinta); font-size: .9375rem; padding-block: .5rem; text-decoration-thickness: 1px; }
-.tema { display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 600; }
-.tema select { width: auto; max-width: 100%; font-size: .875rem; min-height: 2.75rem; padding: .45rem .55rem; }
+.tema { min-width: 0; max-width: 100%; display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 600; }
+.tema select { min-width: 0; width: auto; max-width: 100%; font-size: .875rem; min-height: 2.75rem; padding: .45rem .55rem; }
 .cabecera-intro { display: grid; gap: .75rem; padding-block: 1.5rem; }
 .cabecera h1 { font: 800 2rem/1.2 var(--fuente); letter-spacing: -.025em; max-width: 40ch; }
 .bajada { max-width: 85ch; color: var(--tenue); font-size: 1rem; line-height: 1.65; }
@@ -100,7 +100,7 @@ input[type="checkbox"] { width: 1.2rem; height: 1.2rem; flex: none; accent-color
 .presentar .tri, .tri.presentar { background: var(--presentar); }
 .mostrar .tri, .tri.mostrar { background: var(--mostrar); }
 .conteo { color: var(--tenue); font-size: .9375rem; }
-.tarjetas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.tarjetas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.75rem), 1fr)); gap: 1rem; }
 .tarjeta { background: var(--superficie); border: 1px solid var(--linea); border-radius: .35rem; padding: 1.25rem; display: grid; gap: .9rem; align-content: start; overflow-wrap: anywhere; }
 .tarjeta.elegida { border-color: var(--tinta); box-shadow: inset 0 0 0 1px var(--tinta); }
 .t-arriba { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; font-size: .875rem; }
@@ -121,7 +121,8 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .boton-principal, .boton-sutil { width: 100%; }
 .boton-sutil { border-color: var(--borde-control); color: var(--tenue); }
 .boton:disabled { opacity: .5; cursor: not-allowed; }
-.seleccion { grid-column: 3; grid-row: 1; position: sticky; top: 1.5rem; background: var(--superficie); border: 1px solid var(--linea); border-top: 3px solid var(--tinta); border-radius: .35rem; padding: 1.1rem; display: grid; gap: 1rem; max-height: calc(100vh - 3rem); overflow: auto; scrollbar-gutter: stable; }
+.seleccion-contenedor { grid-column: 3; grid-row: 1; align-self: stretch; min-width: 0; }
+.seleccion { position: sticky; top: 1.5rem; background: var(--superficie); border: 1px solid var(--linea); border-top: 3px solid var(--tinta); border-radius: .35rem; padding: 1.1rem; display: grid; gap: 1rem; max-height: calc(100vh - 3rem); overflow: auto; scrollbar-gutter: stable; }
 .seleccion h2 { font-size: 1.25rem; }
 .n-sel { display: inline-grid; place-items: center; min-width: 1.6rem; height: 1.6rem; margin-left: .25rem; border-radius: 50%; background: var(--panel); color: var(--tinta); font: 600 .875rem/1 var(--fuente); vertical-align: middle; }
 .sel-lista { margin: 0; padding: 0; list-style: none; display: grid; gap: 1rem; }
@@ -142,8 +143,10 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .pie p { max-width: 85ch; }
 @media (max-width: 74rem) {
   .disposicion { grid-template-columns: 16rem minmax(0, 1fr); }
-  .seleccion { grid-column: 2; grid-row: 2; position: static; max-height: none; }
+  .seleccion-contenedor { grid-column: 2; grid-row: 2; }
+  .seleccion { position: static; max-height: none; }
   .perfil { grid-row: 1 / span 2; }
+  #estudiante { grid-row: 3; }
 }
 @media (max-width: 55rem) {
   .cabecera-barra { gap: .75rem 1.5rem; }
@@ -152,7 +155,8 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 }
 @media (max-width: 48rem) {
   .disposicion { display: flex; flex-direction: column; }
-  .perfil, .acciones, .seleccion { width: 100%; }
+  .tarjetas { grid-template-columns: minmax(0, 1fr); }
+  .perfil, .acciones, .seleccion-contenedor, .seleccion { width: 100%; }
   .seleccion { overflow: visible; scrollbar-gutter: auto; }
   .cabecera h1 { font-size: 1.75rem; }
   .perfil { padding: 1.25rem; }
@@ -219,8 +223,14 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .t-razon { margin: 0; font-size: .875rem; font-weight: 600; color: var(--solida); }
 
 /* Los apoyos individuales usan la misma superficie y controles del perfil. */
-#estudiante { margin-top: 2rem; }
+#estudiante { grid-column: 1 / -1; grid-row: 2; }
 #iniciales { font: inherit; color: var(--tinta); background: var(--superficie); border: 1px solid var(--borde-control); border-radius: .35rem; padding: .55rem .7rem; min-height: 2.75rem; width: 100%; box-sizing: border-box; }
 #dimensiones fieldset { margin-bottom: 1rem; }
 #apoyos-resultados > section { margin-block: 1.5rem; }
 #sel-estudiante { margin-top: 1rem; }
+
+@media (min-width: 64rem) {
+  #areas, #dimensiones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 2rem; }
+  #dimensiones > div:not([hidden]) { display: contents; }
+  #dimensiones label { display: inline-flex; gap: .35rem; margin-right: .65rem; }
+}
