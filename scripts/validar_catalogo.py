@@ -22,7 +22,7 @@ for r in R:
     if len(texto.split()) > 75: errores.append(f"{i}: {len(texto.split())} palabras, máximo 75")
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
     if r.get("destacada") and r.get("respaldo") != "investigacion-solida": errores.append(f"{i}: destacada sin investigación sólida")
-NIVELES = ["parvularia", "basica", "media-ch", "media-tp", "superior"]
+NIVELES = ["parvularia", "basica", "media", "superior"]
 CONTEXTOS = {"practica", "escuchar-leer", "conversar", "experimentar", "crear", "moverse", "escribiendo", "hablando", "haciendo", "grupo", "observacion"}
 for r in R:
     errores += [f"{r['id']}: contexto desconocido {c}" for c in r.get("contextos", []) if c not in CONTEXTOS]
@@ -38,7 +38,7 @@ ASIGNATURAS = {"", "lenguaje", "matematica", "ciencias", "historia"}
 errores += [f"{r['id']}: asignatura inválida" for r in R if "asignatura" in r and (r["tipo"] != "objetivos" or r["asignatura"] not in ASIGNATURAS)]
 acceso = [r for r in R if r["tipo"] == "acceso"]
 # Cada nivel debe tener al menos un apoyo para cada situación que se puede marcar.
-for n in ["parvularia", "basica", "media-ch", "media-tp", "superior"]:
+for n in ["parvularia", "basica", "media", "superior"]:
     vacias = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or n in r["niveles"] for d in r["dimensiones"]})
     errores += [f"{n}: situaciones sin apoyos {vacias}"] if vacias else []
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]

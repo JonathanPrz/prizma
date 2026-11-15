@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const leer = archivo => fs.readFileSync(path.join(__dirname, '..', archivo), 'utf8');
-const opciones = ['', 'parvularia', 'basica', 'media-ch', 'media-tp', 'superior'].map(value => ({value}));
+const opciones = ['', 'parvularia', 'basica', 'media', 'superior'].map(value => ({value}));
 const almacen = new Map();
 const contexto = vm.createContext({
   document: {querySelector: () => ({options: opciones}), querySelectorAll: () => []},
@@ -16,7 +16,7 @@ const momentos = ['antes', 'durante', 'despues', 'toda-la-clase'];
 assert.deepEqual(ejecutar('estado.momentos'), []);
 assert.deepEqual(ejecutar('normalizarMomentos(["despues", "antes", "despues", 1, {}, null, "inventado"])'), ['despues', 'antes']);
 for (const valor of ['null', '{}', '"antes"', '42', 'true']) assert.deepEqual(ejecutar(`normalizarMomentos(${valor})`), []);
-for (const nivel of ['', 'parvularia', 'basica', 'media-ch', 'media-tp', 'superior']) {
+for (const nivel of ['', 'parvularia', 'basica', 'media', 'superior']) {
   vm.runInContext(`estado.perfil.nivel=${JSON.stringify(nivel)}; estado.momentos=[]; estado.necesidades=[]; estado.propositos=[]`, contexto);
   assert.equal(ejecutar('visibles().length'), 36, nivel);
   assert.deepEqual(ejecutar('[...new Set(visibles().map(r=>r.momento))]'), momentos);

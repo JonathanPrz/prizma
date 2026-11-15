@@ -21,8 +21,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [],
@@ -89,8 +88,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -518,8 +516,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -615,8 +612,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -981,8 +977,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -1109,8 +1104,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -1405,8 +1399,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1437,8 +1430,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1467,8 +1459,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1498,8 +1489,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1530,8 +1520,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1562,8 +1551,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -1597,8 +1585,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1628,8 +1615,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1660,8 +1646,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1692,8 +1677,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1725,8 +1709,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1756,8 +1739,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1787,8 +1769,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1822,8 +1803,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1855,8 +1835,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1887,8 +1866,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -1919,8 +1897,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1951,8 +1928,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -1984,8 +1960,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "consenso-expertos",
@@ -2018,8 +1993,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "consenso-expertos",
@@ -2050,8 +2024,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "consenso-expertos",
@@ -2082,8 +2055,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "consenso-expertos",
@@ -2111,8 +2083,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -2140,8 +2111,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -2169,8 +2139,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -2198,8 +2167,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -2227,8 +2195,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -2260,8 +2227,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2293,8 +2259,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2327,8 +2292,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2360,8 +2324,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2394,8 +2357,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2427,8 +2389,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2460,8 +2421,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2493,8 +2453,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2526,8 +2485,7 @@
     "niveles": [
       "parvularia",
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -2994,8 +2952,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3023,8 +2980,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3052,8 +3008,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3081,8 +3036,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3137,8 +3091,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3166,8 +3119,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3195,8 +3147,7 @@
     "dimensiones": [],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp"
+      "media"
     ],
     "contextos": [],
     "respaldo": "norma-legal",
@@ -3230,8 +3181,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3267,8 +3217,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3303,8 +3252,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3337,8 +3285,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3372,8 +3319,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3408,8 +3354,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3445,8 +3390,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3483,8 +3427,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [
@@ -3520,8 +3463,7 @@
     ],
     "niveles": [
       "basica",
-      "media-ch",
-      "media-tp",
+      "media",
       "superior"
     ],
     "contextos": [

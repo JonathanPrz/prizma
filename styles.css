@@ -56,7 +56,7 @@ a { color: var(--enfoque); text-underline-offset: .2em; }
 .tema { margin-left: auto; min-width: 0; max-width: 100%; display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 600; }
 .tema select { min-width: 0; width: auto; max-width: 100%; font-size: .875rem; min-height: 2.75rem; padding: .45rem .55rem; }
 .cabecera-intro { grid-column: 1 / -1; display: grid; gap: .75rem; padding-block: 1.5rem; }
-.cabecera-intro h1 { font: 800 2rem/1.2 var(--fuente); letter-spacing: -.025em; max-width: 40ch; }
+.cabecera-intro h1 { overflow-wrap: anywhere; font: 800 2rem/1.2 var(--fuente); letter-spacing: -.025em; max-width: 40ch; }
 .bajada { max-width: 85ch; color: var(--tenue); font-size: 1rem; line-height: 1.65; }
 .disposicion { display: grid; gap: 1.5rem; padding-block: 1rem 4rem; }
 .contexto { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: end; }
@@ -244,8 +244,10 @@ legend .enlace-guia-dua { display: inline-block; font-size: .875rem; font-weight
 #apoyos-adicionales .tarjeta { border-inline-start: 4px solid var(--enfoque); }
 
 .asignatura { display: grid; gap: .35rem; max-width: 22rem; margin-block: 1rem; font-weight: 600; }
-.perfil-campos > .casilla-practica { display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; }
+.contexto > .casilla-practica { width: auto; max-width: 26rem; display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; }
 .tabla-cif { max-width: 100%; overflow-x: auto; margin-block: 1rem; }
 .tabla-cif table { border-collapse: collapse; width: 100%; min-width: 36rem; table-layout: fixed; }
 .tabla-cif th, .tabla-cif td { border: 1px solid var(--hoja-linea); padding: .5rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 @media print { .tabla-cif { overflow: visible; } .tabla-cif table { min-width: 0; } }
+
+@media (max-width: 48rem) { .contexto > .casilla-practica { width: 100%; max-width: none; } }
