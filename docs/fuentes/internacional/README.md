@@ -78,12 +78,21 @@ Revisado el 15 de noviembre de 2026.
 
 ---
 
-## 3. Fuentes revisadas que no se pudieron usar
+## 3. Evidencia sobre chalecos con peso
+
+Búsqueda del 15 de noviembre de 2026. Se leyeron los resúmenes, no los artículos completos.
+- **Stephenson, J. y Carter, M. (2009).** *The use of weighted vests with children with autism spectrum disorders and other disabilities.* Journal of Autism and Developmental Disorders. Revisa 7 estudios. Concluye que, aunque la investigación es poca y tiene debilidades, en conjunto los chalecos con peso **no parecen ser eficaces**. También advierte un posible riesgo de lesión. https://researchers.mq.edu.au/en/publications/the-use-of-weighted-vests-with-children-with-autism-spectrum-diso/
+- **Taylor, C. J., Spriggs, A. D. y otros (2017).** *A systematic review of weighted vests with individuals with autism spectrum disorder.* Usa los estándares del What Works Clearinghouse con 32 estudios. Concluye que los chalecos con peso **no son una práctica basada en evidencia**. https://uknowledge.uky.edu/edsrc_etds/20
+- **Resumen de la Association for Science in Autism Treatment (ASAT):** https://asatonline.org/research-treatment/research-synopses/the-use-and-the-efficacy-of-weighted-vests/
+
+**Consecuencia para Prizma:** los chalecos con peso no entran al catálogo como recomendación. Si los indicó un profesional tratante, el tema se conversa en el PAEC con la familia. Prizma no los prohíbe.
+
+## 4. Fuentes revisadas que no se pudieron usar
 
 - **U.S. Department of Education (2012). *Restraint and Seclusion: Resource Document*.** Es de dominio público y trae 15 principios. El servidor del Departamento rechaza la descarga automática. Si la quieres, ábrela desde tu navegador.
 - **Orientaciones de Mineduc sobre la Ley 21.545.** El sitio no responde desde este entorno. Las vas a subir tú.
 
-## 4. Pendiente para el catálogo de adecuaciones
+## 5. Pendiente para el catálogo de adecuaciones
 
 Ninguna fuente revisada hasta ahora trae un catálogo de **qué apoyo usar para cada barrera** con su evidencia. Candidatas por verificar:
 - **CCSSO y NCEO (2016). *Accommodations Manual*** (Estados Unidos). Clasifica las adecuaciones de acceso en la evaluación.

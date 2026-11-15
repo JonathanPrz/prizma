@@ -59,6 +59,17 @@ Revisa que el título de la página coincida con la norma, porque el número de 
 
 Si un documento no aparece, avisa y se busca otro camino.
 
+## Vacíos detectados al probar la skill asesor-inclusion (15-nov-2026)
+
+| Tema | Qué falta | Dónde buscar |
+|---|---|---|
+| Estudiantes que no hablan español | Orientaciones de Mineduc para estudiantes extranjeros: evaluación e ingreso | mineduc.cl, documentos sobre estudiantes migrantes o extranjeros |
+| Bases Curriculares | Objetivos de aprendizaje por asignatura y curso | curriculumnacional.cl |
+| Altas capacidades | Orientaciones de Mineduc, si existen | especial.mineduc.cl |
+| Reglamento interno y sanciones | Circular de la Superintendencia sobre reglamentos internos | supereduc.cl |
+| Talleres TP | Normas de seguridad y adecuaciones en talleres de especialidad | Mineduc TP |
+| Catálogo de apoyos por barrera, con evidencia | Ver `internacional/README.md`, sección 5 | |
+
 ## Reglas
 
 - Una recomendación sin fuente no entra a Prizma.
