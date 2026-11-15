@@ -1,0 +1,91 @@
+# Fuentes internacionales · Análisis para Prizma
+
+Revisado el 15 de noviembre de 2026.
+
+| Fuente | Archivo | Uso permitido |
+|---|---|---|
+| DHSC y DfE, Reino Unido (2019). *Reducing the Need for Restraint and Restrictive Intervention* | `uk-reducing-restraint-2019.md`: texto completo | Open Government Licence v3.0: se puede copiar citando la fuente |
+| Education Endowment Foundation, EEF (2020). *Special Educational Needs in Mainstream Schools* | Solo este análisis | El documento no declara licencia. Se trata como de derechos reservados: análisis propio y citas cortas |
+
+---
+
+## 1. Desregulación: *Reducing the Need for Restraint and Restrictive Intervention* (Reino Unido, 2019)
+
+- **Autores:** Department of Health and Social Care y Department for Education.
+- **Enlace:** https://www.gov.uk/government/publications/reducing-the-need-for-restraint-and-restrictive-intervention
+- **Por qué es un referente:** es la guía oficial del Reino Unido para niños y jóvenes con discapacidad intelectual, autismo o dificultades de salud mental. Su objetivo es prevenir las crisis y reducir al mínimo la contención física. La redactó el Council for Disabled Children y pasó por consulta pública. Se basa en la CDPD y en la Convención sobre los Derechos del Niño.
+- **Alcance:** salud, servicios sociales y **escuelas especiales**. Para las escuelas comunes, el gobierno abrió en 2019 una consulta aparte. Prizma la usa como referente de principios, no como norma.
+
+### Ideas clave (capítulos 3, 4 y anexo B)
+1. **Primero, un enfoque positivo y preventivo.** Se anticipan los desencadenantes y se usan técnicas de desescalada adecuadas a cada niño, para que la contención no sea necesaria.
+2. **La conducta comunica una necesidad no cubierta.** Hay que entender por qué ocurre y qué la predice, mirando la comunicación, la salud y el contexto.
+3. **Apoyo conductual positivo** (*Positive Behavioural Support*, PBS). Es el enfoque recomendado: adaptar el ambiente y enseñar nuevas formas de comunicar las necesidades.
+4. **Plan de apoyo conductual.** Se construye con el niño y su familia, a partir de una evaluación. En casos complejos, la evaluación la hace un especialista.
+5. **La contención física es el último recurso.** Solo para evitar un daño grave cuando no hay una opción menos restrictiva. Debe ser proporcional, durar lo mínimo, hacerla personal capacitado y nunca usarse como castigo.
+6. **Todo se registra y se revisa.** Después de un incidente se conversa con todos los involucrados, se aprende y se ajusta el plan.
+7. **La familia es socia.** Se la involucra en la planificación y en la revisión.
+
+### Qué significa para Prizma
+| Idea | En Prizma |
+|---|---|
+| La prevención va primero | El módulo de desregulación empieza por **antes de la crisis**: ambiente, anticipación, comunicación y señales tempranas. |
+| La conducta comunica una necesidad | Las preguntas de Prizma buscan los desencadenantes en la clase, no la "conducta problema". |
+| Hay un plan de apoyo, hecho con la familia | En Chile equivale al PAEC de la Circular 586. Prizma propone ideas para conversar, pero no hace el plan. |
+| Contención física solo como último recurso, con personal capacitado | **Prizma nunca da instrucciones de contención física.** Siempre remite al protocolo DEC del establecimiento. |
+| Revisión después de cada incidente | Agregar una ficha "Después de una crisis": reparar, conversar y ajustar. Coincide con DUA 9.4, prácticas restaurativas. |
+
+---
+
+## 2. Adecuaciones y apoyos: *Special Educational Needs in Mainstream Schools* (EEF, 2020)
+
+- **Autores:** Kath Davies y Peter Henderson, Education Endowment Foundation.
+- **Enlaces:** https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/send · copia en DERA: https://dera.ioe.ac.uk/37846/
+- **Por qué es un referente:** la EEF es la institución británica de referencia en evidencia educativa. Esta guía se basa en una revisión sistemática de la investigación internacional (Cullen y otros, 2020), con un panel de expertos y revisores externos.
+
+### Las 5 recomendaciones (títulos traducidos)
+1. Crear un ambiente positivo y de apoyo para todos los estudiantes, sin excepción.
+2. Construir una comprensión continua e integral de cada estudiante y sus necesidades.
+3. Asegurar que todos tengan acceso a una enseñanza de alta calidad.
+4. Complementar la enseñanza de alta calidad con intervenciones en grupos pequeños o individuales, elegidas con cuidado.
+5. Trabajar bien con los asistentes de aula.
+
+### Ideas clave
+- **Las necesidades vienen antes que el diagnóstico.** Según la EEF, la pregunta clave no es qué funciona para la dislexia, sino qué necesita este estudiante para desarrollarse bien.
+- **Las necesidades cambian con el tiempo.** Por eso, el lenguaje recomendado es "estudiante *con* NEE", no "estudiante NEE".
+- **El ambiente importa.** Las necesidades no son algo que el estudiante tenga que cambiar de sí mismo: es la escuela la que ajusta lo que pasa en la sala. Coincide con DUA 3.0 y la CIF.
+- **Las 4 grandes áreas de necesidad** del *SEND Code of Practice* británico:
+  - cognición y aprendizaje
+  - comunicación e interacción
+  - social, emocional y salud mental
+  - sensorial y física
+
+  La EEF advierte que estas áreas son solo un primer paso.
+- **5 estrategias con buena evidencia para la enseñanza de calidad** (recomendación 3):
+  - **instrucción explícita**, en pasos pequeños, con modelado y práctica guiada
+  - **estrategias cognitivas y metacognitivas**
+  - **andamiaje**, es decir, apoyo temporal que se retira poco a poco, como las listas visuales de tareas
+  - **agrupamiento flexible**
+  - **uso de tecnología**
+- **La EEF valora "inclusive by design not as an afterthought"**: incluir desde el diseño y no como algo que se agrega después. Es la misma idea del DUA.
+
+### Qué significa para Prizma
+| Idea | En Prizma |
+|---|---|
+| Necesidades antes que diagnóstico | Confirma que la condición es solo un atajo y que no se guarda. |
+| 4 grandes áreas | **Propuesta:** agrupar las 10 dimensiones de barreras en estas 4 áreas, más el contexto. El docente elige primero el área y después la dimensión. Así la encuesta es más corta. |
+| 5 estrategias con evidencia | Son la base del Tiempo 1. Cada una se conecta con consideraciones DUA: por ejemplo, el andamiaje con la 5.3 y la instrucción explícita con la 3.2. Su respaldo es "investigación educativa sólida". |
+| Lenguaje "estudiante con NEE" | Regla de redacción en toda la interfaz. |
+
+---
+
+## 3. Fuentes revisadas que no se pudieron usar
+
+- **U.S. Department of Education (2012). *Restraint and Seclusion: Resource Document*.** Es de dominio público y trae 15 principios. El servidor del Departamento rechaza la descarga automática. Si la quieres, ábrela desde tu navegador.
+- **Orientaciones de Mineduc sobre la Ley 21.545.** El sitio no responde desde este entorno. Las vas a subir tú.
+
+## 4. Pendiente para el catálogo de adecuaciones
+
+Ninguna fuente revisada hasta ahora trae un catálogo de **qué apoyo usar para cada barrera** con su evidencia. Candidatas por verificar:
+- **CCSSO y NCEO (2016). *Accommodations Manual*** (Estados Unidos). Clasifica las adecuaciones de acceso en la evaluación.
+- **Australia, NCCD.** Ejemplos de ajustes razonables por tipo de necesidad, según los *Disability Standards for Education 2005*.
+- **What Works Clearinghouse**, guías de práctica (Estados Unidos, dominio público). Califican la evidencia de cada estrategia.

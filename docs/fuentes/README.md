@@ -19,9 +19,11 @@ Cada archivo `.md` de esta carpeta es un análisis o una copia de trabajo de una
 | Decreto 67/2018 (Evaluación) | `normativa/decreto-67-2018.md` | Copiada y analizada | Norma pública |
 | Convención sobre los Derechos de las Personas con Discapacidad (ONU) | `normativa/cdpd.md` | Copiada y analizada | Documento público de la ONU |
 | Orientaciones Mineduc: estrategias diversificadas para básica (2017) | `orientaciones/mineduc-orientaciones-d83-basica-2017.md` | Copiada, falta analizarla | Se autoriza su reproducción citando la fuente |
-| Orientaciones sobre desregulación emocional y conductual | `orientaciones/` | **Falta** | Revisar el aviso de cada documento |
+| Orientaciones sobre desregulación emocional y conductual | `orientaciones/` | **Falta** (la subes tú) | Revisar el aviso de cada documento |
+| Reducing the Need for Restraint and Restrictive Intervention (Reino Unido, 2019) | `internacional/uk-reducing-restraint-2019.md` | Copiada y analizada | Open Government Licence v3.0 |
+| Special Educational Needs in Mainstream Schools (EEF, 2020) | `internacional/README.md` | Analizada | Sin licencia declarada. Solo análisis propio |
 
-Análisis de las normas: `normativa/README.md`.
+Análisis de las normas: `normativa/README.md`. Análisis de las fuentes internacionales: `internacional/README.md`.
 
 ## Documentos que faltan
 
