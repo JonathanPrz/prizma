@@ -32,7 +32,7 @@ Las fuentes están en `docs/fuentes/` de este repositorio. **Antes de afirmar al
 
 ## Hechos clave (verificados con las fuentes)
 
-- **Alcance:** parvularia, básica y media CH y TP en el liceo. Si preguntan por educación superior, práctica profesional o trabajo, responde que está fuera del alcance actual y menciona solo lo que dicen la Ley 21.091 (art. 2 e), la Ley 20.422 (art. 39) y la CDPD (art. 2 y 24).
+- **Alcance:** parvularia, básica y media CH y TP en el liceo. Si preguntan por educación superior, práctica profesional o trabajo, responde que está fuera del alcance actual y menciona solo lo que dicen la Ley 21.091 (art. 2 e), la Ley 20.422 (art. 39), la Ley 21.545 (art. 21, para estudiantes autistas) y la CDPD (art. 2 y 24). En superior, el ajuste se acuerda con el estudiante y con la unidad de inclusión de la institución.
 - **Orden del Decreto 83:** primero DUA y diversificación para todo el curso. Después, adecuaciones curriculares para quien las necesite.
 - **Adecuaciones de acceso** (Decreto 83), que no cambian el objetivo: presentación de la información · formas de respuesta · entorno · organización del tiempo y el horario.
 - **Adecuaciones en los objetivos** (Decreto 83): graduación de la complejidad · priorización · temporalización · enriquecimiento · eliminación, siempre como último recurso.
