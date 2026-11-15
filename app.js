@@ -83,15 +83,22 @@ function aplica(r) {
   // Sin nivel elegido se muestran las acciones de básica y media, para no duplicar las versiones de parvularia.
   const nivel = p.nivel || "basica";
   if (r.niveles.length && !r.niveles.includes(nivel)) return false;
-  const ctx = [...p.actividad, ...p.evidencia];
-  if (r.contextos.length && ctx.length && !ctx.some((c) => r.contextos.includes(c))) return false;
   return true;
+}
+// Las respuestas de actividad y evidencia no ocultan acciones: ponen primero las que coinciden.
+function coincidencias(r) {
+  const ctx = [...estado.perfil.actividad, ...estado.perfil.evidencia];
+  return r.contextos.filter((c) => ctx.includes(c));
+}
+function etiqueta(valor) {
+  const casilla = document.querySelector(`input[value="${valor}"]`);
+  return casilla ? casilla.closest("label").textContent.trim() : valor;
 }
 function visibles() {
   return catalogo
     .filter((r) => r.tipo === "dua" && r.momento === estado.momento && aplica(r))
     .filter((r) => !estado.propositos.length || estado.propositos.includes(proposito(r)))
-    .sort((a, b) => (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
+    .sort((a, b) => (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
 }
 
 function el(tag, attrs = {}, ...hijos) {
@@ -133,6 +140,7 @@ function tarjeta(r) {
     el("div", { class: "t-arriba" },
       el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
       el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
+    coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     el("h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),

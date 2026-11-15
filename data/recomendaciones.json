@@ -56,7 +56,10 @@
       10
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer",
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -88,7 +91,11 @@
       "media-ch",
       "media-tp"
     ],
-    "contextos": [],
+    "contextos": [
+      "experimentar",
+      "crear",
+      "haciendo"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -116,7 +123,10 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "hablando",
+      "observacion"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -146,7 +156,10 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "grupo",
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -176,7 +189,9 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "crear"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -205,7 +220,9 @@
       10
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -234,7 +251,10 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "moverse",
+      "grupo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -267,7 +287,9 @@
       11
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -298,7 +320,10 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escribiendo",
+      "haciendo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -327,7 +352,10 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "grupo",
+      "conversar"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -357,7 +385,11 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escribiendo",
+      "haciendo",
+      "observacion"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -414,7 +446,9 @@
       3
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "grupo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -445,7 +479,10 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "grupo",
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -479,7 +516,9 @@
       "media-ch",
       "media-tp"
     ],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -509,7 +548,9 @@
       6
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -537,7 +578,10 @@
       10
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer",
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -568,7 +612,10 @@
       "media-ch",
       "media-tp"
     ],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer",
+      "escribiendo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -597,7 +644,10 @@
       3
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "conversar",
+      "hablando"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -625,7 +675,10 @@
       11
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "conversar",
+      "hablando"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -655,7 +708,10 @@
       3
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer",
+      "experimentar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -683,7 +739,9 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -712,7 +770,10 @@
       2
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "haciendo",
+      "experimentar"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -742,7 +803,10 @@
       10
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "experimentar",
+      "moverse"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -769,7 +833,9 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "haciendo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -800,7 +866,11 @@
       2
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escribiendo",
+      "hablando",
+      "moverse"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -832,7 +902,10 @@
       8
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer",
+      "escribiendo"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -863,7 +936,12 @@
       3
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "escribiendo",
+      "hablando",
+      "haciendo",
+      "crear"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -897,7 +975,10 @@
       "media-ch",
       "media-tp"
     ],
-    "contextos": [],
+    "contextos": [
+      "escribiendo",
+      "crear"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -926,7 +1007,10 @@
       10
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "hablando",
+      "conversar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -1016,7 +1100,9 @@
       "media-ch",
       "media-tp"
     ],
-    "contextos": [],
+    "contextos": [
+      "escribiendo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -1043,7 +1129,10 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "haciendo",
+      "observacion"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -1070,7 +1159,9 @@
       11
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "grupo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -1131,7 +1222,11 @@
     "niveles": [
       "parvularia"
     ],
-    "contextos": [],
+    "contextos": [
+      "experimentar",
+      "crear",
+      "haciendo"
+    ],
     "respaldo": "investigacion-solida",
     "fuentes": [
       "eef-send-2020",
@@ -1163,7 +1258,9 @@
     "niveles": [
       "parvularia"
     ],
-    "contextos": [],
+    "contextos": [
+      "experimentar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -1195,7 +1292,9 @@
     "niveles": [
       "parvularia"
     ],
-    "contextos": [],
+    "contextos": [
+      "escuchar-leer"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -1227,7 +1326,9 @@
     "niveles": [
       "parvularia"
     ],
-    "contextos": [],
+    "contextos": [
+      "crear"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -1258,7 +1359,9 @@
     "niveles": [
       "parvularia"
     ],
-    "contextos": [],
+    "contextos": [
+      "experimentar"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",

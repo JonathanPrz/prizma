@@ -23,6 +23,9 @@ for r in R:
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
     if r.get("destacada") and r.get("respaldo") != "investigacion-solida": errores.append(f"{i}: destacada sin investigación sólida")
 NIVELES = ["parvularia", "basica", "media-ch", "media-tp"]
+CONTEXTOS = {"escuchar-leer", "conversar", "experimentar", "crear", "moverse", "escribiendo", "hablando", "haciendo", "grupo", "observacion"}
+for r in R:
+    errores += [f"{r['id']}: contexto desconocido {c}" for c in r.get("contextos", []) if c not in CONTEXTOS]
 for r in R:
     i = r["id"]
     errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]

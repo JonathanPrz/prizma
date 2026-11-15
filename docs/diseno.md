@@ -175,7 +175,8 @@ Una acción sube de nivel solo si se agrega una fuente que lo justifique. Si hay
 
 ## 6. Cómo se ordenan las recomendaciones
 
-1. **Filtrar (ocultar):** lo que no aplica al nivel o al contexto marcado.
+1. **Filtrar (ocultar):** solo lo que no aplica al nivel. Sin nivel, se muestran las acciones de básica y media.
+   Las respuestas de "¿Qué harán?" y "¿Cómo mostrarán?" **no ocultan**: suben las acciones que coinciden (campo `contextos`) y la tarjeta dice "Recomendada porque marcaste: …".
 2. **Priorizar (ordenar):** suben las que reducen más barreras marcadas, según su frecuencia, y las que coinciden con un facilitador.
 3. **Explicar:** cada tarjeta muestra por qué apareció.
 

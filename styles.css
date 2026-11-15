@@ -215,3 +215,5 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .aviso-privacidad { width: min(36rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; padding: 1.5rem; border: 1px solid var(--borde-control); border-radius: .35rem; background: var(--superficie); color: var(--tinta); }
 .aviso-privacidad ul { padding-left: 1.25rem; margin-block: 1.25rem; }
 .aviso-privacidad li + li { margin-top: .75rem; }
+
+.t-razon { margin: 0; font-size: .875rem; font-weight: 600; color: var(--solida); }
