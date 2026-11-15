@@ -155,6 +155,18 @@ Cada recomendación es un registro en `data/recomendaciones.json`:
 | `destacada` | sí para las 5 estrategias EEF [C18] |
 | `revision` | quién la revisó y cuándo [E2] |
 
+**Niveles de respaldo** (campo `respaldo`). Es una etiqueta del tipo de evidencia, no una tarea pendiente.
+
+| Valor | Significa | Ejemplo |
+|---|---|---|
+| `investigacion-solida` | Una revisión seria de muchos estudios encontró resultados consistentes. Basta con una revisión confiable, como las de la EEF o el What Works Clearinghouse. No hace falta leer cada estudio original. | Andamiaje (EEF 2020) |
+| `investigacion-moderada` | Hay estudios que la apoyan, pero son pocos o sus resultados no son consistentes. | |
+| `consenso-expertos` | La recomienda un marco reconocido, como DUA 3.0, pero no hay una revisión leída que la pruebe. | Compartir la meta de la clase (DUA 8.1) |
+| `orientacion-oficial` | La recomienda Mineduc o la Superintendencia de Educación. | Espacios de calma (Circular 586) |
+| `norma-legal` | La exige una ley o un decreto. | No eximir de asignaturas (Decreto 67, art. 5) |
+
+Una acción sube de nivel solo si se agrega una fuente que lo justifique. Si hay dudas, se usa el nivel más bajo.
+
 **Reglas del catálogo**
 - Sin fuente, una recomendación no entra.
 - Si su evidencia es débil o dudosa, no entra, o entra solo con `respaldo: orientacion-oficial` [C16].
