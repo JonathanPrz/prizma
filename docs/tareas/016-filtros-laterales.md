@@ -1,6 +1,6 @@
 # Tarea 016 · Dos pestañas, «DUA» y «Apoyos adicionales», con filtros a la izquierda
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/016-filtros-laterales`
+Estado: **integrada** (PR #16) · Asignada a: Codex · Rama: `codex/016-filtros-laterales`
 
 ## Para qué
 
