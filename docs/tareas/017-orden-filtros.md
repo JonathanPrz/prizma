@@ -1,6 +1,6 @@
 # Tarea 017 · Ordenar los filtros y mostrar todas las acciones
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/017-orden-filtros`
+Estado: **integrada** (PR #17) · Asignada a: Codex · Rama: `codex/017-orden-filtros`
 
 ## Para qué
 
