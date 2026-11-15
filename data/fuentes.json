@@ -76,5 +76,47 @@
     "cita": "Department of Health and Social Care y Department for Education (2019). Reducing the Need for Restraint and Restrictive Intervention. Open Government Licence v3.0.",
     "url": "https://www.gov.uk/government/publications/reducing-the-need-for-restraint-and-restrictive-intervention",
     "archivo": "docs/fuentes/internacional/uk-reducing-restraint-2019.md"
+  },
+  {
+    "id": "ofqual-2025",
+    "cita": "Ofqual (2025). Extra time in assessments: a review of the research literature. Open Government Licence v3.0.",
+    "url": "https://www.gov.uk/government/publications/extra-time-in-assessments/extra-time-in-assessments-a-review-of-the-research-literature-on-the-effect-of-extra-time-on-assessment-outcomes-for-different-students",
+    "archivo": "docs/fuentes/codex/superior/uk-ofqual-tiempo-adicional-2025.md"
+  },
+  {
+    "id": "wood-2018",
+    "cita": "Wood, S. G., Moxley, J. H., Tighe, E. L. y Wagner, R. K. (2018). Does use of text-to-speech and related read-aloud tools improve reading comprehension for students with reading disabilities? A meta-analysis. Journal of Learning Disabilities.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5494021/",
+    "archivo": "docs/fuentes/codex/superior/revision-wood-lectura-2018.md"
+  },
+  {
+    "id": "mineduc-es-20422",
+    "cita": "Mineduc (2026). Ley 20.422: orientaciones para su implementación en las instituciones de educación superior.",
+    "url": "https://educacionsuperior.mineduc.cl/wp-content/uploads/sites/49/2026/01/Orientaciones-Ley-20.422-educacion-superior.pdf",
+    "archivo": "docs/fuentes/codex/superior/chile-mineduc-orientaciones-20422.md"
+  },
+  {
+    "id": "mineduc-es-21545",
+    "cita": "Mineduc (2025). Ley 21.545: orientaciones para su implementación en educación superior.",
+    "url": "https://educacionsuperior.mineduc.cl/wp-content/uploads/sites/49/2025/03/Ley-21.545-Orientaciones-para-su-implementacion-en-Educacion-Superior.pdf",
+    "archivo": "docs/fuentes/codex/superior/chile-mineduc-orientaciones-21545.md"
+  },
+  {
+    "id": "udl-on-campus",
+    "cita": "CAST. UDL On Campus: Assessment and Universal Design for Learning. CC BY-SA 4.0.",
+    "url": "https://udloncampus.cast.org/page/assessment_udl",
+    "archivo": "docs/fuentes/codex/superior/cast-udl-on-campus-assessment.md"
+  },
+  {
+    "id": "ofs-uk",
+    "cita": "Office for Students. What to expect as a disabled student. Open Government Licence v3.0.",
+    "url": "https://www.officeforstudents.org.uk/for-students/equalities-and-support/support-for-disabled-students/what-to-expect/",
+    "archivo": "docs/fuentes/codex/superior/uk-ofs-apoyos-estudiantes-discapacidad.md"
+  },
+  {
+    "id": "ley-21091",
+    "cita": "Ley 21.091 (2018). Sobre Educación Superior.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=1118991",
+    "archivo": "docs/fuentes/normativa/ley-21091.md"
   }
 ]

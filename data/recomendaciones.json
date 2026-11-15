@@ -22,7 +22,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [],
     "respaldo": "consenso-expertos",
@@ -89,7 +90,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [
       "experimentar",
@@ -514,7 +516,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [
       "escuchar-leer"
@@ -610,7 +613,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [
       "escuchar-leer",
@@ -973,7 +977,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [
       "escribiendo",
@@ -1098,7 +1103,8 @@
     "niveles": [
       "basica",
       "media-ch",
-      "media-tp"
+      "media-tp",
+      "superior"
     ],
     "contextos": [
       "escribiendo"
@@ -1387,7 +1393,12 @@
     "dimensiones": [
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1414,7 +1425,12 @@
     "dimensiones": [
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1502,7 +1518,12 @@
     "dimensiones": [
       3
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1529,7 +1550,12 @@
     "dimensiones": [
       3
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
@@ -1559,7 +1585,12 @@
       4,
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1585,7 +1616,12 @@
     "dimensiones": [
       4
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1612,7 +1648,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1639,7 +1680,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1667,7 +1713,12 @@
     "dimensiones": [
       6
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1693,7 +1744,12 @@
     "dimensiones": [
       6
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1719,7 +1775,12 @@
     "dimensiones": [
       7
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1749,7 +1810,12 @@
       7,
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1809,7 +1875,12 @@
     "dimensiones": [
       8
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
@@ -1836,7 +1907,12 @@
     "dimensiones": [
       9
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1863,7 +1939,12 @@
     "dimensiones": [
       9
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -1891,7 +1972,12 @@
       10,
       3
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -1920,7 +2006,12 @@
       10,
       3
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -1947,7 +2038,12 @@
     "dimensiones": [
       11
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -1974,7 +2070,12 @@
     "dimensiones": [
       11
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -2147,7 +2248,12 @@
       5,
       7
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2175,7 +2281,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2204,7 +2315,12 @@
       5,
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2232,7 +2348,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2261,7 +2382,12 @@
       5,
       7
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2289,7 +2415,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2317,7 +2448,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2345,7 +2481,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2373,7 +2514,12 @@
     "dimensiones": [
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
@@ -2383,5 +2529,287 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "sup-coordinar",
+    "tipo": "adicional",
+    "titulo": "Acuerda los ajustes con el estudiante y la unidad de inclusión",
+    "como": [
+      "Pregunta al estudiante qué barreras encuentra y qué le ha servido antes.",
+      "Coordina con la unidad de inclusión o de apoyo de tu institución.",
+      "Deja por escrito el acuerdo y revísalo cada semestre."
+    ],
+    "porque": "Los ajustes razonables se definen caso a caso, con la persona y no por ella.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-21091",
+      "ley-20422",
+      "cdpd",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-tiempo",
+    "tipo": "acceso",
+    "titulo": "Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide",
+    "como": [
+      "Revisa si la velocidad es parte del resultado de aprendizaje.",
+      "Si no lo es, acuerda el tiempo adicional antes de la evaluación.",
+      "Aplícalo también a evaluaciones en línea y con plazo."
+    ],
+    "porque": "La evidencia muestra beneficios, sobre todo cuando el tiempo estándar no alcanza para trabajar al propio ritmo.",
+    "areas": [],
+    "dimensiones": [
+      1,
+      2,
+      9
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "investigacion-moderada",
+    "fuentes": [
+      "ofqual-2025",
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "tiempo"
+  },
+  {
+    "id": "sup-digital",
+    "tipo": "acceso",
+    "titulo": "Entrega textos y pruebas en formato digital accesible",
+    "como": [
+      "Usa documentos con texto real, no imágenes escaneadas.",
+      "Revisa que funcionen con lector de pantalla y texto a voz.",
+      "Publícalos con anticipación en la plataforma del curso."
+    ],
+    "porque": "El texto a voz mejora la comprensión lectora de estudiantes con dificultades de lectura.",
+    "areas": [],
+    "dimensiones": [
+      2,
+      6
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "investigacion-moderada",
+    "fuentes": [
+      "wood-2018",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "presentacion"
+  },
+  {
+    "id": "sup-sala",
+    "tipo": "acceso",
+    "titulo": "Ofrece rendir evaluaciones en una sala con menos estudiantes",
+    "como": [
+      "Reserva una sala tranquila y con buena luz.",
+      "Asigna a una persona que supervise.",
+      "Mantén las mismas condiciones de exigencia."
+    ],
+    "porque": "Menos estímulos y menos personas reducen la ansiedad y las distracciones.",
+    "areas": [],
+    "dimensiones": [
+      1,
+      5,
+      7
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "entorno"
+  },
+  {
+    "id": "sup-formatos",
+    "tipo": "acceso",
+    "titulo": "Permite formatos alternativos que midan el mismo resultado de aprendizaje",
+    "como": [
+      "Identifica qué resultado de aprendizaje mide la evaluación.",
+      "Ofrece otra forma de demostrarlo, por ejemplo oral en vez de escrita.",
+      "Usa la misma rúbrica para ambos formatos."
+    ],
+    "porque": "Así se evalúa el aprendizaje y no la habilidad para un formato en particular.",
+    "areas": [],
+    "dimensiones": [
+      2,
+      3,
+      4,
+      8
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "udl-on-campus",
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "respuesta"
+  },
+  {
+    "id": "sup-anticipar",
+    "tipo": "acceso",
+    "titulo": "Publica al inicio el programa, las rúbricas y las fechas de evaluación",
+    "como": [
+      "Comparte el calendario completo el primer día.",
+      "Explica cada rúbrica con un ejemplo.",
+      "Avisa los cambios con al menos una semana de anticipación."
+    ],
+    "porque": "Anticipar permite planificar, organizarse y pedir ajustes a tiempo.",
+    "areas": [],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "udl-on-campus",
+      "mineduc-es-21545"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "tiempo"
+  },
+  {
+    "id": "sup-plazos",
+    "tipo": "acceso",
+    "titulo": "Flexibiliza plazos y recuperaciones por razones de salud",
+    "como": [
+      "Acuerda nuevas fechas cuando hay ausencias justificadas.",
+      "Entrega el material de las clases perdidas.",
+      "Mantén el mismo nivel de exigencia."
+    ],
+    "porque": "Una condición de salud no debe impedir completar la formación.",
+    "areas": [],
+    "dimensiones": [
+      9
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-21091",
+      "ley-20422",
+      "cdpd",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "tiempo"
+  },
+  {
+    "id": "sup-apuntes",
+    "tipo": "acceso",
+    "titulo": "Comparte presentaciones y apuntes antes o después de la clase",
+    "como": [
+      "Sube las presentaciones a la plataforma.",
+      "Permite grabar el audio de la clase si el estudiante lo necesita.",
+      "Acuerda con el curso el uso de las grabaciones."
+    ],
+    "porque": "Tener el material disponible ayuda a quien toma notas con dificultad o procesa más lento.",
+    "areas": [],
+    "dimensiones": [
+      1,
+      2,
+      8
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "ofs-uk",
+      "udl-on-campus"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "presentacion"
+  },
+  {
+    "id": "sup-senas",
+    "tipo": "acceso",
+    "titulo": "Coordina intérprete de lengua de señas o subtítulos",
+    "como": [
+      "Solicita el intérprete a la unidad de inclusión con anticipación.",
+      "Usa videos subtitulados.",
+      "Habla de frente y por turnos en las discusiones."
+    ],
+    "porque": "La información debe llegar en la lengua y el formato que la persona usa.",
+    "areas": [],
+    "dimensiones": [
+      3,
+      6
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "cdpd",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "presentacion"
+  },
+  {
+    "id": "sup-espacios",
+    "tipo": "acceso",
+    "titulo": "Asegura el acceso a salas, laboratorios y talleres",
+    "como": [
+      "Revisa que el recorrido y el puesto de trabajo sean accesibles.",
+      "Ajusta la altura de mesas y equipos si hace falta.",
+      "Avisa a la unidad de inclusión si hay barreras físicas."
+    ],
+    "porque": "Un espacio accesible es condición para participar en igualdad.",
+    "areas": [],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-20422",
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null,
+    "subtipo": "entorno"
   }
 ]

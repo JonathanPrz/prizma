@@ -14,9 +14,9 @@ Prizma no planifica la clase.
 
 **Decisión del 15 de noviembre de 2026:** el dueño incluye la **educación superior**, universitaria y técnico-profesional (universidades, IP y CFT). Antes estaba fuera de la versión 1.
 
-| Incluido | En investigación | Fuera por ahora |
-|---|---|---|
-| Educación parvularia, básica y media (CH y TP, en el liceo) | Educación superior universitaria y técnico-profesional | Práctica profesional en empresas, ajustes en el trabajo |
+| Incluido | Fuera por ahora |
+|---|---|
+| Educación parvularia, básica, media (CH y TP) y superior (universidad, IP y CFT) | Práctica profesional en empresas, ajustes en el trabajo |
 
 En educación superior no hay adecuaciones curriculares del Decreto 83: rigen los **ajustes razonables o necesarios** de la Ley 21.091 (art. 2 e), la Ley 20.422 (art. 39), la Ley 21.545 (art. 21) y la CDPD (art. 2 y 24). Las fuentes las recopila Codex en `docs/fuentes/codex/superior/` y el contenido lo redacta Claude.
 
