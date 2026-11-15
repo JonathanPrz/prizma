@@ -242,3 +242,10 @@ legend .enlace-guia-dua { display: inline-block; font-size: .875rem; font-weight
 #guia-dua .ayuda { margin-bottom: 1rem; }
 
 #apoyos-adicionales .tarjeta { border-inline-start: 4px solid var(--enfoque); }
+
+.asignatura { display: grid; gap: .35rem; max-width: 22rem; margin-block: 1rem; font-weight: 600; }
+.perfil-campos > .casilla-practica { display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; }
+.tabla-cif { max-width: 100%; overflow-x: auto; margin-block: 1rem; }
+.tabla-cif table { border-collapse: collapse; width: 100%; min-width: 36rem; table-layout: fixed; }
+.tabla-cif th, .tabla-cif td { border: 1px solid var(--hoja-linea); padding: .5rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+@media print { .tabla-cif { overflow: visible; } .tabla-cif table { min-width: 0; } }

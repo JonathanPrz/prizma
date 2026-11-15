@@ -55,6 +55,10 @@ const DIMENSIONES = [
 const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
 const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
 const TIPOS_OBJETIVOS = { graduacion: "Graduación de la complejidad", priorizacion: "Priorización", temporalizacion: "Temporalización", enriquecimiento: "Enriquecimiento", eliminacion: "Eliminación" };
+const ASIGNATURAS = ["", "lenguaje", "matematica", "ciencias", "historia"];
+const CIF_TITULO = "Barreras y facilitadores (enfoque CIF)";
+const CIF_AVISO = "Las situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)";
+const CIF_COLUMNAS = ["Situación", "Frecuencia", "Apoyos elegidos para esa situación"];
 const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar", despues: "Después: reparar" };
 const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales" };
 function normalizarEstudiante(valor) {
@@ -65,11 +69,12 @@ function normalizarEstudiante(valor) {
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|10|11)$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
     voz: typeof e.voz === "string" ? e.voz.slice(0, 300) : "",
+    practica: e.practica === true,
   };
 }
 function esSuperior() { return estado.perfil.nivel === "superior"; }
 function subtituloEstudiante() { return esSuperior() ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
-function tituloEstudiante() { return "Apoyos para " + (estado.estudiante.iniciales || "un estudiante"); }
+function tituloEstudiante() { return (esSuperior() ? "Ajustes razonables para " : "Apoyos para ") + (estado.estudiante.iniciales || "un estudiante"); }
 function tipoOficial(r) {
   if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
   if (r.tipo === "adicional") return "Apoyo adicional";
@@ -83,18 +88,24 @@ function ordenApoyo(r) {
   return Object.keys(GRUPOS_APOYOS).indexOf(r.tipo) * 10 + Object.keys(subtipos).indexOf(r.subtipo);
 }
 function objetivosVisibles() {
-  return catalogo.filter((r) => r.tipo === "objetivos" && aplica(r)).sort((a, b) => ordenApoyo(a) - ordenApoyo(b));
+  return catalogo.filter((r) => r.tipo === "objetivos" && aplica(r) && (!estado.asignatura || !r.asignatura || r.asignatura === estado.asignatura))
+    .sort((a, b) => ordenApoyo(a) - ordenApoyo(b) || Number(Object.hasOwn(a, "asignatura")) - Number(Object.hasOwn(b, "asignatura")));
 }
 function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.estudiante.dimensiones[d]); }
 function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
-function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
+function esPractica(r) { return r.contextos.includes("practica"); }
+function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
+function practicasVisibles() {
+  return estado.estudiante.practica ? catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)).sort((a, b) => puntaje(b) - puntaje(a)) : [];
+}
+function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
 function situacionesSinApoyos() {
   return Object.keys(estado.estudiante.dimensiones).map(Number).filter((d) =>
-    !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && r.dimensiones.includes(d)));
+    !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.estudiante.practica) && r.dimensiones.includes(d)));
 }
 function pintarApoyos() {
   const superior = esSuperior();
-  $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos específicos para un estudiante";
+  $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos individualizados para un estudiante";
   $("#bajada-apoyos").textContent = `Elige los que le sirvan. Prizma no reemplaza ${superior ? "a la unidad de inclusión" : "al equipo de apoyo"}: te ofrece un menú, cada apoyo con su fuente.`;
   $("#aviso-acceso-escolar").hidden = superior;
   $("#aviso-acceso-superior").hidden = !superior;
@@ -108,20 +119,27 @@ function pintarApoyos() {
   $("#apoyos-sin-fichas").replaceChildren(...situacionesSinApoyos().map((d) =>
     el("p", { class: "aviso-apoyos" }, `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
-  const lista = accesosVisibles();
+  $("#practica-campo").hidden = !hayPracticas();
+  const lista = accesosVisibles(), practicas = practicasVisibles();
   $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
+  if (practicas.length) $("#apoyos-resultados").append(el("section", {},
+    el("h3", { text: "En talleres, laboratorios y terreno" }), el("ul", { class: "tarjetas" }, practicas.map(tarjeta))));
   const objetivos = objetivosVisibles();
-  $("#objetivos-tarjetas").replaceChildren(...objetivos.map(tarjeta));
+  $("#asignatura-campo").hidden = !catalogo.some((r) => r.tipo === "objetivos" && aplica(r));
+  $("#asignatura").value = estado.asignatura;
+  $("#objetivos-tarjetas").replaceChildren(...Object.entries(TIPOS_OBJETIVOS).filter(([tipo]) => objetivos.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
+    el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, objetivos.filter((r) => r.subtipo === tipo).map(tarjeta)))));
   $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)).map(tarjeta)))));
-  $("#apoyos-estado").textContent = Object.keys(estado.estudiante.dimensiones).length ? plural(lista.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
+  $("#apoyos-estado").textContent = Object.keys(estado.estudiante.dimensiones).length || practicas.length ? plural(lista.length + practicas.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
 }
 function sincronizarEstudiante() {
   $("#iniciales").value = estado.estudiante.iniciales;
   $("#estudiante-ayuda").value = estado.estudiante.ayuda;
   $("#estudiante-voz").value = estado.estudiante.voz;
+  $("#practica").checked = estado.estudiante.practica;
   const areas = $("#areas"); areas.replaceChildren();
   const dimensiones = $("#dimensiones"); dimensiones.replaceChildren();
   AREAS.forEach(([nombre, ids], i) => {
@@ -157,6 +175,14 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
+  $("#practica").addEventListener("change", (evento) => {
+    estado.estudiante.practica = evento.target.checked;
+    guardar(); pintarApoyos(); actualizarConteoFiltros(); actualizarRespaldo();
+  });
+  $("#asignatura").addEventListener("change", (evento) => {
+    estado.asignatura = normalizarAsignatura(evento.target.value);
+    guardar(); pintarApoyos(); actualizarRespaldo();
+  });
   for (const [id, clave] of [["iniciales", "iniciales"], ["estudiante-ayuda", "ayuda"], ["estudiante-voz", "voz"]]) {
     $("#" + id).addEventListener("input", (evento) => {
       const campo = evento.target, escribio = Boolean(campo.value);
@@ -174,15 +200,17 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
-let estado = { pestana: "dua", perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
+let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
-  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante), momentos: normalizarMomentos(g.momentos) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil), estudiante: normalizarEstudiante(g.estudiante), momentos: normalizarMomentos(g.momentos), asignatura: normalizarAsignatura(g.asignatura) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
   delete estado.momento;
 }
 function guardar() {
   try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
 }
+
+function normalizarAsignatura(valor) { return ASIGNATURAS.includes(valor) ? valor : ""; }
 
 function normalizarMomentos(valor) {
   return Array.isArray(valor) ? [...new Set(valor.filter((id) => MOMENTOS.some(([momento]) => momento === id)))] : [];
@@ -208,7 +236,7 @@ function voc(clave) {
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
-  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos específicos";
+  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos individualizados";
 }
 
 function mostrarPestana(id, enfocar = false) {
@@ -258,7 +286,7 @@ function prepararPestanas() {
 
 function cantidadFiltros() {
   if (estado.pestana === "apoyos") return document.querySelectorAll("#areas input:checked").length +
-    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim())) + Number(Boolean(estado.estudiante.voz.trim()));
+    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim())) + Number(Boolean(estado.estudiante.voz.trim())) + Number(estado.estudiante.practica && hayPracticas());
   const p = estado.perfil;
   return (Array.isArray(estado.necesidades) ? estado.necesidades.length : 0) + estado.propositos.length + p.actividad.length + p.evidencia.length +
     Number(Boolean(p.meta.trim())) + estado.momentos.length;
@@ -399,9 +427,9 @@ function tarjeta(r) {
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
     dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
-    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
-    el(dua ? "h4" : "h3", { text: r.titulo }),
+    el(dua || r.tipo === "objetivos" ? "h4" : "h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
@@ -512,7 +540,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || estado.estudiante.voz || estado.momentos.length || Object.keys(estado.estudiante.dimensiones).length);
+  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || estado.estudiante.voz || estado.estudiante.practica || estado.asignatura || estado.momentos.length || Object.keys(estado.estudiante.dimensiones).length);
 }
 
 function actualizarRespaldo() {
@@ -521,7 +549,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades, momentos: estado.momentos };
+  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
@@ -542,7 +570,7 @@ function validarRespaldo(datos) {
   const ids = new Set(catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS)).map((r) => r.id));
   const entradas = Object.entries(datos.seleccion);
   const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
-  return { perfil, seleccion, momentos: normalizarMomentos(datos.momentos), necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
+  return { perfil, seleccion, asignatura: normalizarAsignatura(datos.asignatura), momentos: normalizarMomentos(datos.momentos), necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
 }
 
 async function abrirRespaldo(evento) {
@@ -553,12 +581,12 @@ async function abrirRespaldo(evento) {
     let datos;
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
-    const { perfil, seleccion, estudiante, momentos, necesidades: elegidas, descartadas } = validarRespaldo(datos);
+    const { perfil, seleccion, estudiante, momentos, asignatura, necesidades: elegidas, descartadas } = validarRespaldo(datos);
     if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y tu estudiante por los del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas; estado.momentos = momentos;
+    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas; estado.momentos = momentos; estado.asignatura = asignatura;
     guardar(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
       (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
@@ -587,8 +615,10 @@ function documento() {
         titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
         dato: `${PROPOSITOS[proposito(r)].corto}. ${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
       })),
-    })).concat(sel.some((r) => r.tipo !== "dua") || estado.estudiante.voz.trim() ? [{
+    })).concat(sel.some((r) => r.tipo !== "dua") || estado.estudiante.voz.trim() || estado.estudiante.ayuda.trim() || Object.keys(estado.estudiante.dimensiones).length ? [{
       nombre: tituloEstudiante(), subtitulo: subtituloEstudiante(),
+      cif: Object.entries(estado.estudiante.dimensiones).map(([d, frecuencia]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[frecuencia],
+        sel.filter((r) => r.tipo !== "dua" && r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
       ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
       voz: estado.estudiante.voz.trim() ? "¿Qué dicen el estudiante y su familia? " + estado.estudiante.voz.trim() : "",
       acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: esSuperior() && r.tipo === "acceso" ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
@@ -607,6 +637,12 @@ function armarHoja() {
     ...d.grupos.flatMap((g) => [
       el("h2", { text: g.nombre }),
       g.subtitulo ? el("p", { text: g.subtitulo }) : null,
+      g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: CIF_AVISO }),
+        el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO },
+          el("table", {}, el("caption", { class: "solo-lectores", text: CIF_TITULO }),
+            el("thead", {}, el("tr", {}, CIF_COLUMNAS.map((texto) => el("th", { scope: "col", text: texto })))),
+            el("tbody", {}, (g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]]).map((fila) =>
+              el("tr", {}, fila.map((texto, i) => el(i ? "td" : "th", i ? { text: texto } : { scope: "row", text: texto })))))))) : null,
       g.ayuda ? el("p", { text: g.ayuda }) : null,
       g.voz ? el("p", { text: g.voz }) : null,
       ...g.acciones.flatMap((a, i) => [
@@ -637,6 +673,10 @@ function definicionPdf() {
     ...d.grupos.flatMap((g) => [
       { text: g.nombre, style: "h2" }, linea,
       g.subtitulo ? { text: g.subtitulo, italics: true } : null,
+      g.cif ? { text: CIF_TITULO, style: "h3", margin: [0, 8, 0, 2] } : null,
+      g.cif ? { text: CIF_AVISO, style: "dato", margin: [0, 0, 0, 5] } : null,
+      g.cif ? { table: { headerRows: 1, widths: ["*", 60, "*"], body: [CIF_COLUMNAS.map((text) => ({ text, bold: true })),
+        ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: "lightHorizontalLines", margin: [0, 0, 0, 8] } : null,
       g.ayuda ? { text: g.ayuda } : null,
       g.voz ? { text: g.voz } : null,
       ...g.acciones.flatMap((a, i) => [
