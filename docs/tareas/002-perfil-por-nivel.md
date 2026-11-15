@@ -1,6 +1,6 @@
 # Tarea 002 · Perfil de la clase y vocabulario según el nivel
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/002-perfil-por-nivel`
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/002-perfil-por-nivel`
 
 ## Para qué
 

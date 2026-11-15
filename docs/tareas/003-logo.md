@@ -1,6 +1,6 @@
 # Tarea 003 · Poner el logo «prisma de teselas» en la página
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/003-logo` · Hazla **después** de integrar la tarea 002.
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/003-logo` · Hazla **después** de integrar la tarea 002.
 
 ## Para qué
 

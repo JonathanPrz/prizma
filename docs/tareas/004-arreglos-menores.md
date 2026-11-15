@@ -1,6 +1,6 @@
 # Tarea 004 · Arreglos menores: singular y fecha local
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/004-arreglos-menores` · Hazla **después** de integrar la tarea 003.
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/004-arreglos-menores` · Hazla **después** de integrar la tarea 003.
 
 Detectados en la revisión de la tarea 001 ([JonathanPrz/prizma#1](https://github.com/JonathanPrz/prizma/pull/1)).
 

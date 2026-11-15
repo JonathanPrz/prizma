@@ -1,6 +1,6 @@
 # Tarea 001 · Guardar y abrir un respaldo de Mi selección
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/001-respaldo-json`
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/001-respaldo-json`
 
 ## Para qué
 
