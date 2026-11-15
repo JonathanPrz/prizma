@@ -16,5 +16,29 @@
     "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
     "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf",
     "archivo": "docs/fuentes/orientaciones/mineduc-respuesta-educativa-autismo-2025.md"
+  },
+  {
+    "id": "decreto-83",
+    "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511",
+    "archivo": "docs/fuentes/normativa/decreto-83-2015.md"
+  },
+  {
+    "id": "decreto-67",
+    "cita": "Mineduc (2018). Decreto 67: normas mínimas sobre evaluación, calificación y promoción.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=1127255",
+    "archivo": "docs/fuentes/normativa/decreto-67-2018.md"
+  },
+  {
+    "id": "supereduc-586",
+    "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+    "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/",
+    "archivo": "docs/fuentes/orientaciones/supereduc-circular-586-2023.md"
+  },
+  {
+    "id": "mineduc-faq-2025",
+    "cita": "Mineduc (2025). Preguntas frecuentes sobre la Ley 21.545.",
+    "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/PREGUNTAS-FRECUENTES-Ley-Autismo-21.545.pdf",
+    "archivo": "docs/fuentes/orientaciones/mineduc-preguntas-frecuentes-autismo-2025.md"
   }
 ]

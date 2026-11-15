@@ -11,12 +11,21 @@
       "Vuelve a la meta al cerrar la clase."
     ],
     "porque": "Saber qué se espera y para qué sirve ayuda a sostener el esfuerzo y reduce la incertidumbre.",
-    "areas": ["cognicion", "emocional"],
-    "dimensiones": [1, 5],
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
     "niveles": [],
     "contextos": [],
     "respaldo": "consenso-expertos",
-    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
     "destacada": false,
     "revision": null
   },
@@ -32,12 +41,23 @@
       "Déjalas visibles durante toda la clase."
     ],
     "porque": "El vocabulario desconocido es una barrera que no tiene que ver con lo que se quiere enseñar.",
-    "areas": ["cognicion", "comunicacion", "contexto"],
-    "dimensiones": [2, 3, 10],
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      2,
+      3,
+      10
+    ],
     "niveles": [],
     "contextos": [],
     "respaldo": "consenso-expertos",
-    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
     "destacada": false,
     "revision": null
   },
@@ -53,12 +73,19 @@
       "Cuando el curso domine la tarea, quita pasos o la lista completa."
     ],
     "porque": "El andamiaje es un apoyo temporal que permite hacer sola o solo lo que antes requería ayuda.",
-    "areas": ["cognicion"],
-    "dimensiones": [1],
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
     "niveles": [],
     "contextos": [],
     "respaldo": "investigacion-solida",
-    "fuentes": ["eef-send-2020", "cast-dua-3"],
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3"
+    ],
     "destacada": true,
     "revision": null
   },
@@ -74,12 +101,19 @@
       "Usa las respuestas para ajustar la próxima clase."
     ],
     "porque": "Pensar sobre la propia forma de aprender (metacognición) mejora el aprendizaje.",
-    "areas": ["cognicion"],
-    "dimensiones": [1],
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
     "niveles": [],
     "contextos": [],
     "respaldo": "investigacion-solida",
-    "fuentes": ["eef-send-2020", "cast-dua-3"],
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3"
+    ],
     "destacada": true,
     "revision": null
   },
@@ -95,12 +129,928 @@
       "Déjalas visibles y revísenlas cada cierto tiempo."
     ],
     "porque": "Las normas claras y construidas en conjunto dan seguridad y hacen sentir parte del grupo.",
-    "areas": ["comunicacion", "emocional"],
-    "dimensiones": [4, 5],
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5
+    ],
     "niveles": [],
     "contextos": [],
     "respaldo": "consenso-expertos",
-    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-7-1",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "7.1",
+    "titulo": "Ofrece 2 o 3 opciones para trabajar el mismo objetivo",
+    "como": [
+      "Deja elegir el tema del ejemplo, la herramienta o el orden de las tareas.",
+      "Mantén la meta igual para todo el curso.",
+      "Presenta las opciones al inicio, con un ejemplo de cada una."
+    ],
+    "porque": "Elegir dentro de límites claros aumenta el interés y la sensación de control.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-7-2",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "7.2",
+    "titulo": "Conecta el tema con la vida de tus estudiantes o de su comunidad",
+    "como": [
+      "Empieza con una situación real del barrio, la región o la actualidad.",
+      "Pregunta dónde han visto o usado eso.",
+      "Usa ejemplos de contextos distintos."
+    ],
+    "porque": "Lo que tiene sentido y utilidad para quien aprende capta y sostiene la atención.",
+    "areas": [
+      "cognicion",
+      "contexto"
+    ],
+    "dimensiones": [
+      1,
+      10
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-7-3",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "7.3",
+    "titulo": "Incluye un momento breve de juego o desafío",
+    "como": [
+      "Plantea 5 minutos de adivinanza, misterio o competencia por equipos.",
+      "Conéctalo con la meta de la clase.",
+      "Cuida que nadie quede eliminado ni expuesto."
+    ],
+    "porque": "El disfrute favorece la participación y baja la tensión ante lo difícil.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-7-4",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "7.4",
+    "titulo": "Reduce las distracciones y las amenazas en la sala",
+    "como": [
+      "Deja a la vista solo el material de la clase.",
+      "Ofrece un lugar más tranquilo a quien lo necesite.",
+      "Nunca ridiculices un error en público."
+    ],
+    "porque": "Sentirse seguro y tener menos estímulos alrededor deja más atención para aprender.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial",
+      "contexto"
+    ],
+    "dimensiones": [
+      1,
+      5,
+      7,
+      11
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-8-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "8.2",
+    "titulo": "Ofrece el mismo desafío con distintos niveles de apoyo",
+    "como": [
+      "Plantea una sola tarea para todo el curso.",
+      "Deja ejemplos resueltos o pistas numeradas para quien las pida.",
+      "Evita que una tarea «más fácil» quede a la vista de todos."
+    ],
+    "porque": "Un desafío alcanzable, con el apoyo justo, mantiene el esfuerzo sin frustrar.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      2,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-8-3",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "8.3",
+    "titulo": "Forma grupos distintos según la tarea y cámbialos seguido",
+    "como": [
+      "Agrupa por interés, por la habilidad a practicar o al azar, según el objetivo.",
+      "Asigna un rol claro a cada integrante.",
+      "Evita grupos fijos por nivel durante todo el año."
+    ],
+    "porque": "Agrupar de forma flexible permite apoyar lo que cada uno necesita sin etiquetar.",
+    "areas": [
+      "comunicacion",
+      "cognicion"
+    ],
+    "dimensiones": [
+      4,
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3"
+    ],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-8-5",
+    "tipo": "dua",
+    "momento": "despues",
+    "consideracion": "8.5",
+    "titulo": "Da retroalimentación que diga qué hacer después",
+    "como": [
+      "Nombra un logro concreto del trabajo.",
+      "Señala 1 cosa por mejorar, con el siguiente paso.",
+      "Da tiempo en clase para aplicarla."
+    ],
+    "porque": "Saber exactamente cómo mejorar ayuda más que una nota o un «bien».",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-9-1",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "9.1",
+    "titulo": "Anticipa lo que puede costar y muestra el error como parte de aprender",
+    "como": [
+      "Antes de una tarea difícil, di qué parte suele costar.",
+      "Cuenta un error tuyo y qué aprendiste de él.",
+      "Pide a cada uno una meta pequeña para hoy."
+    ],
+    "porque": "Esperar la dificultad y verla como normal reduce la ansiedad y el abandono.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-9-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "9.2",
+    "titulo": "Enseña a reconocer cómo se sienten y qué necesitan",
+    "como": [
+      "Usa una escala visual simple, por ejemplo de 3 colores, para indicar cómo están.",
+      "Enseña frases para pedir ayuda o una pausa.",
+      "Muestra cómo nombras tu propia emoción."
+    ],
+    "porque": "Reconocer la emoción es el primer paso para regularla y pedir ayuda a tiempo.",
+    "areas": [
+      "emocional",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      5,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "supereduc-586",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-9-4",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "9.4",
+    "titulo": "Repara el daño después de un conflicto, además de aplicar el reglamento",
+    "como": [
+      "Conversa en privado con los involucrados.",
+      "Pregunta qué pasó, a quién afectó y cómo se puede reparar.",
+      "Acuerden una acción concreta de reparación."
+    ],
+    "porque": "Reparar el daño ayuda a aprender de lo ocurrido y mantiene a todos en el grupo.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "supereduc-586"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-1-1",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "1.1",
+    "titulo": "Prepara materiales que se puedan ajustar",
+    "como": [
+      "Comparte el material digital para agrandar la letra, cambiar el contraste o escucharlo.",
+      "Usa una letra simple y de buen tamaño.",
+      "No transmitas información solo con colores."
+    ],
+    "porque": "Un material ajustable sirve a quien ve poco, lee lento o se cansa, sin hacer uno para cada caso.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      6
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-1-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "1.2",
+    "titulo": "Presenta la información por más de un sentido",
+    "como": [
+      "Acompaña lo que dices con algo escrito o una imagen.",
+      "Usa videos con subtítulos.",
+      "Describe en voz alta lo que muestras."
+    ],
+    "porque": "Si la información llega por un solo canal, quien tiene dificultad con ese canal se queda fuera.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      3,
+      6
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-1-3",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "1.3",
+    "titulo": "Usa ejemplos y personajes diversos",
+    "como": [
+      "Incluye mujeres, pueblos originarios, personas migrantes y con discapacidad en ejemplos e imágenes.",
+      "Evita los estereotipos.",
+      "Invita a tus estudiantes a aportar ejemplos de su cultura."
+    ],
+    "porque": "Verse representado en lo que se aprende favorece la pertenencia y el interés.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "2.2",
+    "titulo": "Lee en voz alta las instrucciones y los enunciados importantes",
+    "como": [
+      "Lee las instrucciones antes de empezar la tarea.",
+      "Ofrece el texto con audio o con lectura de un compañero.",
+      "En matemáticas, di cómo se lee cada símbolo nuevo."
+    ],
+    "porque": "Así la dificultad para leer no impide mostrar lo que se sabe del tema.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-3",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "2.3",
+    "titulo": "Valora y usa la lengua materna de tus estudiantes",
+    "como": [
+      "Permite usar su lengua para pensar o tomar apuntes.",
+      "Ten las palabras clave también en su lengua, con ayuda de la familia o un traductor.",
+      "Asigna un compañero de apoyo."
+    ],
+    "porque": "Apoyarse en la propia lengua ayuda a comprender mientras se aprende el español.",
+    "areas": [
+      "contexto",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-4",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "2.4",
+    "titulo": "Revisa que tu lenguaje no etiquete a nadie",
+    "como": [
+      "Describe la situación, no a la persona: «le cuesta leer textos largos», no «es lento».",
+      "Evita bromas sobre acento, cuerpo o capacidades.",
+      "Pregunta cómo prefiere que le nombren."
+    ],
+    "porque": "Las palabras pueden ser una barrera o un apoyo para participar.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      11
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-faq-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-5",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "2.5",
+    "titulo": "Explica los conceptos con imágenes, esquemas o material concreto",
+    "como": [
+      "Acompaña la explicación con un dibujo, un mapa conceptual o un video corto.",
+      "Usa objetos que se puedan manipular.",
+      "Deja el esquema visible."
+    ],
+    "porque": "Ver o manipular una idea, además de oírla, facilita comprenderla.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      2,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-3-1",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "3.1",
+    "titulo": "Parte la clase preguntando qué saben del tema",
+    "como": [
+      "Haz una pregunta o muestra una imagen ligada al tema.",
+      "Anota en la pizarra lo que digan.",
+      "Conecta lo nuevo con esas ideas durante la clase."
+    ],
+    "porque": "Lo nuevo se aprende mejor cuando se conecta con lo que ya se sabe.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-3-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "3.2",
+    "titulo": "Modela paso a paso y practiquen juntos antes del trabajo individual",
+    "como": [
+      "Muestra cómo se hace, pensando en voz alta.",
+      "Resuelvan un ejemplo juntos.",
+      "Recién entonces pide práctica individual, mientras recorres la sala."
+    ],
+    "porque": "Enseñar en pasos pequeños, con modelado y práctica guiada, reduce los errores al empezar.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1,
+      2
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3"
+    ],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-3-3",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "3.3",
+    "titulo": "Ofrece varios caminos para explorar el mismo contenido",
+    "como": [
+      "Propón leer, observar, experimentar o conversar sobre el tema.",
+      "Valora los saberes de las familias y la comunidad.",
+      "Compartan al final qué camino usó cada uno."
+    ],
+    "porque": "Varias entradas al mismo contenido aumentan las oportunidades de comprender.",
+    "areas": [
+      "cognicion",
+      "contexto"
+    ],
+    "dimensiones": [
+      1,
+      10
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-3-4",
+    "tipo": "dua",
+    "momento": "despues",
+    "consideracion": "3.4",
+    "titulo": "Pide aplicar lo aprendido a una situación nueva",
+    "como": [
+      "Plantea un caso distinto al de la clase.",
+      "Pregunta dónde más sirve lo aprendido.",
+      "Retoma el tema en las clases siguientes."
+    ],
+    "porque": "Usar lo aprendido en otros contextos ayuda a recordarlo y a transferirlo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-4-1",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "4.1",
+    "titulo": "Permite responder de más de una forma",
+    "como": [
+      "Acepta respuestas orales, escritas, dibujadas o señalando, si no cambia lo que evalúas.",
+      "Permite trabajar de pie o moverse.",
+      "Da tiempo antes de pedir una respuesta."
+    ],
+    "porque": "Si hay una sola forma de responder, la barrera puede estar en la forma y no en el aprendizaje.",
+    "areas": [
+      "comunicacion",
+      "sensorial",
+      "cognicion"
+    ],
+    "dimensiones": [
+      3,
+      8,
+      2
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-4-2",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "4.2",
+    "titulo": "Ten a mano herramientas que facilitan el acceso",
+    "como": [
+      "Prepara lector de voz, dictado, calculadora o tablero con pictogramas.",
+      "Enseña a usarlas a todo el curso.",
+      "Acuerda con el equipo de apoyo las que alguien necesite."
+    ],
+    "porque": "La tecnología bien elegida quita barreras para leer, escribir o comunicarse.",
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      3,
+      8
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-5-1",
+    "tipo": "dua",
+    "momento": "despues",
+    "consideracion": "5.1",
+    "titulo": "Deja mostrar lo aprendido en distintos formatos",
+    "como": [
+      "Ofrece elegir entre texto, presentación oral, dibujo, video o maqueta.",
+      "Usa la misma pauta para evaluar todos los formatos.",
+      "Deja claro qué se evalúa."
+    ],
+    "porque": "Así se evalúa el aprendizaje y no la habilidad para un formato en particular.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      2,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-67",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-5-2",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "5.2",
+    "titulo": "Ofrece herramientas para producir textos y trabajos",
+    "como": [
+      "Entrega plantillas con frases de inicio u organizadores gráficos.",
+      "Permite corrector o calculadora cuando no sea lo que evalúas.",
+      "Enseña cuándo usar cada herramienta."
+    ],
+    "porque": "Con las herramientas adecuadas, la atención va a las ideas y no a la mecánica.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2,
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-5-4",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "5.4",
+    "titulo": "Valora todas las formas de comunicarse",
+    "como": [
+      "Acepta gestos, pictogramas, dispositivos u otra lengua.",
+      "No corrijas en público el acento ni la forma de hablar.",
+      "Da el mismo valor a una idea dicha de distinta forma."
+    ],
+    "porque": "Cuando se valora una sola forma de expresarse, quien se comunica distinto queda fuera.",
+    "areas": [
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      3,
+      10
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-1",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "6.1",
+    "titulo": "Ayuda a que cada estudiante se ponga una meta pequeña",
+    "como": [
+      "Después de presentar la meta de la clase, pide que cada uno diga qué quiere lograr.",
+      "Da ejemplos de metas concretas.",
+      "Revísenlas al cierre."
+    ],
+    "porque": "Una meta propia y alcanzable orienta el esfuerzo y deja ver el avance.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-2",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "6.2",
+    "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+    "como": [
+      "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+      "Marca lo que ya hicieron.",
+      "Avisa con tiempo si algo cambia."
+    ],
+    "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "supereduc-586",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-3",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "6.3",
+    "titulo": "Enseña a organizar la información y el material",
+    "como": [
+      "Construye con el curso un organizador gráfico del tema.",
+      "Usa siempre la misma estructura para los apuntes.",
+      "Muestra cómo ordenar el cuaderno o la carpeta."
+    ],
+    "porque": "Una estructura clara libera memoria para pensar en el contenido.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-4",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "6.4",
+    "titulo": "Haz pausas para que revisen cómo van",
+    "como": [
+      "A mitad de la tarea, pide que marquen en qué paso están.",
+      "Acuerden una señal simple para pedir ayuda, como una tarjeta de color.",
+      "Da tiempo para corregir el rumbo."
+    ],
+    "porque": "Revisar el propio avance permite pedir ayuda a tiempo y no al final.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-5",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "6.5",
+    "titulo": "Revisa si alguna práctica de la clase deja a alguien fuera",
+    "como": [
+      "Pregúntate quién no participó y por qué.",
+      "Revisa reglas, horarios o formatos que excluyan.",
+      "Pide a tus estudiantes que propongan cambios."
+    ],
+    "porque": "Algunas barreras están en las prácticas de siempre: detectarlas es el primer paso para quitarlas.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
     "destacada": false,
     "revision": null
   }
