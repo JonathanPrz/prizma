@@ -2,6 +2,7 @@
 // Prizma, etapa 1: menú de acciones DUA para todo el curso. Sin servidor: los datos quedan en localStorage.
 const CLAVE = "prizma.v1";
 const CLAVE_PRIVACIDAD = "prizma.privacidad.v1";
+const CLAVE_GUIA_DUA = "prizma.guia-dua.v1";
 const VERSION_CATALOGO = "2026-11-15";
 
 const MOMENTOS = [
@@ -135,7 +136,7 @@ function escucharEstudiante() {
       estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
       campo.value = estado.estudiante[clave];
       guardar(); pintarSeleccion();
-      if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad();
+      if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad(campo);
     });
   }
 }
@@ -145,6 +146,7 @@ const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].direc
 
 let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
+let origenGuiaDUA = null, privacidadPendiente = false;
 let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
 
 function cargar() {
@@ -324,7 +326,7 @@ function pintarSeleccion() {
     nota.value = estado.seleccion[r.id] || "";
     nota.addEventListener("input", () => {
       estado.seleccion[r.id] = nota.value; guardar();
-      if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad();
+      if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad(nota);
     });
     return el("li", {},
       el("span", { class: "sel-momento", text: r.tipo !== "dua" ? tipoOficial(r) : nombreMomento[r.momento] }),
@@ -523,10 +525,39 @@ async function descargarPdf() {
   } finally { boton.disabled = false; }
 }
 
-function mostrarAvisoPrivacidad() {
+function mostrarGuiaDUA(origen = document.activeElement) {
+  const guia = $("#guia-dua");
+  if (guia.open) return;
+  origenGuiaDUA = origen;
+  guia.returnValue = "";
+  guia.showModal();
+}
+
+function prepararGuiaDUA() {
+  document.querySelectorAll(".enlace-guia-dua").forEach((enlace) => enlace.addEventListener("click", (evento) => {
+    evento.preventDefault(); mostrarGuiaDUA(enlace);
+  }));
+  $("#guia-empezar").addEventListener("click", () => {
+    try { localStorage.setItem(CLAVE_GUIA_DUA, "1"); } catch (e) { /* funciona sin almacenamiento */ }
+    $("#guia-dua").close("empezar");
+  });
+  $("#guia-dua").addEventListener("close", () => {
+    const destino = $("#guia-dua").returnValue === "empezar" ? ($("#necesidades button") || $("#acciones")) : origenGuiaDUA;
+    if (privacidadPendiente) {
+      privacidadPendiente = false;
+      mostrarAvisoPrivacidad(origenAvisoPrivacidad);
+    } else if (destino?.isConnected) destino.focus();
+  });
+  let vista = false;
+  try { vista = localStorage.getItem(CLAVE_GUIA_DUA) === "1"; } catch (e) { /* se muestra en esta visita */ }
+  if (!vista) mostrarGuiaDUA();
+}
+
+function mostrarAvisoPrivacidad(origen = document.activeElement) {
   const aviso = $("#aviso-privacidad");
   if (aviso.open) return;
-  origenAvisoPrivacidad = document.activeElement;
+  origenAvisoPrivacidad = origen;
+  if ($("#guia-dua").open) { privacidadPendiente = true; return; }
   aviso.showModal();
   privacidadAvisada = true;
 }
@@ -539,7 +570,7 @@ async function iniciar() {
     try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
   try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
-  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(); });
+  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(evento.currentTarget); });
   $("#privacidad-entendido").addEventListener("click", () => {
     try { localStorage.setItem(CLAVE_PRIVACIDAD, "1"); } catch (e) { /* la confirmación dura esta visita */ }
     $("#aviso-privacidad").close();
@@ -547,6 +578,7 @@ async function iniciar() {
   $("#aviso-privacidad").addEventListener("close", () => {
     if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
   });
+  prepararGuiaDUA();
   cargar();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
@@ -561,12 +593,14 @@ async function iniciar() {
     const [r, f, n] = await Promise.all([...["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })), cargaNecesidades]);
     catalogo = r; fuentes = Object.fromEntries(f.map((x) => [x.id, x])); necesidades = n;
   } catch (e) {
+    $("#guia-empezar").disabled = false;
     $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";
     return;
   }
   estado.necesidades = normalizarNecesidades(estado.necesidades);
   estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id === id)));
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
+  $("#guia-empezar").disabled = false;
   window.addEventListener("beforeprint", armarHoja);
   $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });
   $("#guardar-respaldo").addEventListener("click", guardarRespaldo);

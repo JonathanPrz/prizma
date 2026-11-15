@@ -91,7 +91,7 @@ try {
       <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
 
       <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
-        <legend>¿Qué quieres resolver en esta clase?</legend>
+        <legend>¿Qué quieres resolver en esta clase? <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></legend>
         <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
         <div class="chips" id="necesidades"></div>
       </fieldset>
@@ -166,9 +166,23 @@ try {
   <div class="marco">
     <p><strong>Orientación pedagógica.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento.</p>
     <p>Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
-    <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a></p>
+    <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a> · <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></p>
   </div>
 </footer>
+
+<dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
+  <h2 id="t-guia-dua" tabindex="-1" autofocus>Cómo usar el DUA en tu clase</h2>
+  <ol>
+    <li>Parte por la meta: ¿qué quieres que aprendan?</li>
+    <li>Piensa qué podría impedir que algunos lo logren. Eso es una barrera.</li>
+    <li>Elige qué quieres resolver. Prizma te mostrará primero las acciones que responden a eso.</li>
+    <li>Elige pocas acciones. El DUA es un menú: no necesitas usarlas todas.</li>
+    <li>Quita las barreras, no el desafío. Lo que quieres que aprendan se mantiene.</li>
+    <li>Después de la clase, mira qué funcionó y ajusta.</li>
+  </ol>
+  <p class="ayuda">Basado en las Pautas DUA 3.0 de CAST (2024).</p>
+  <button type="button" id="guia-empezar" class="boton boton-principal" disabled>Empezar</button>
+</dialog>
 
 <dialog id="aviso-privacidad" class="aviso-privacidad" aria-labelledby="t-privacidad">
   <h2 id="t-privacidad" tabindex="-1" autofocus>Cuida los datos de tus estudiantes</h2>
