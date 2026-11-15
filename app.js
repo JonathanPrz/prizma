@@ -1,6 +1,7 @@
 "use strict";
 // Prizma, etapa 1: menú de acciones DUA para todo el curso. Sin servidor: los datos quedan en localStorage.
 const CLAVE = "prizma.v1";
+const CLAVE_PRIVACIDAD = "prizma.privacidad.v1";
 const VERSION_CATALOGO = "2026-11-15";
 
 const MOMENTOS = [
@@ -36,6 +37,7 @@ const $ = (s) => document.querySelector(s);
 const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].directrices.includes(r.consideracion.split(".")[0]));
 
 let catalogo = [], fuentes = {};
+let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let estado = { perfil: { nivel: "", actividad: [], evidencia: [], meta: "" }, momento: "antes", propositos: [], seleccion: {} };
 
 function cargar() {
@@ -176,7 +178,10 @@ function pintarSeleccion() {
   $("#sel-lista").replaceChildren(...sel.map((r) => {
     const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
     nota.value = estado.seleccion[r.id] || "";
-    nota.addEventListener("input", () => { estado.seleccion[r.id] = nota.value; guardar(); });
+    nota.addEventListener("input", () => {
+      estado.seleccion[r.id] = nota.value; guardar();
+      if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad();
+    });
     return el("li", {},
       el("span", { class: "sel-momento", text: nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: r.titulo }),
@@ -361,7 +366,24 @@ async function descargarPdf() {
   } finally { boton.disabled = false; }
 }
 
+function mostrarAvisoPrivacidad() {
+  const aviso = $("#aviso-privacidad");
+  if (aviso.open) return;
+  origenAvisoPrivacidad = document.activeElement;
+  aviso.showModal();
+  privacidadAvisada = true;
+}
+
 async function iniciar() {
+  try { privacidadAvisada = localStorage.getItem(CLAVE_PRIVACIDAD) === "1"; } catch (e) { /* se avisa una vez durante esta visita */ }
+  $("#privacidad").addEventListener("click", (evento) => { evento.preventDefault(); mostrarAvisoPrivacidad(); });
+  $("#privacidad-entendido").addEventListener("click", () => {
+    try { localStorage.setItem(CLAVE_PRIVACIDAD, "1"); } catch (e) { /* la confirmación dura esta visita */ }
+    $("#aviso-privacidad").close();
+  });
+  $("#aviso-privacidad").addEventListener("close", () => {
+    if (origenAvisoPrivacidad?.isConnected) origenAvisoPrivacidad.focus();
+  });
   cargar();
   try {
     const [r, f] = await Promise.all(["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })));
