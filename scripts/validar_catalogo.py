@@ -22,8 +22,14 @@ for r in R:
     if len(texto.split()) > 75: errores.append(f"{i}: {len(texto.split())} palabras, máximo 75")
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
     if r.get("destacada") and r.get("respaldo") != "investigacion-solida": errores.append(f"{i}: destacada sin investigación sólida")
+NIVELES = ["parvularia", "basica", "media-ch", "media-tp"]
+for r in R:
+    i = r["id"]
+    errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]
+# Cada nivel debe tener al menos una acción por consideración DUA.
 dua = [r["consideracion"] for r in R if r["tipo"] == "dua"]
-faltan = sorted(CONS - set(dua))
-if faltan: print("Consideraciones DUA sin acción:", ", ".join(faltan))
+for n in NIVELES:
+    faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})
+    if faltan: errores.append(f"Nivel {n}: consideraciones DUA sin acción: {', '.join(faltan)}")
 print("\n".join(errores) or f"Catálogo correcto: {len(R)} recomendaciones, {len(set(dua))} de 36 consideraciones DUA.")
 sys.exit(1 if errores else 0)

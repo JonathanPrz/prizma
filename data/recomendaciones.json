@@ -19,7 +19,11 @@
       1,
       5
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -79,7 +83,11 @@
     "dimensiones": [
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "investigacion-solida",
     "fuentes": [
@@ -122,11 +130,11 @@
     "tipo": "dua",
     "momento": "toda-la-clase",
     "consideracion": "8.4",
-    "titulo": "Acuerda con el curso 3 normas de convivencia, escritas y a la vista",
+    "titulo": "Acuerda con el grupo 3 normas de convivencia, a la vista de todos",
     "como": [
-      "Pregunta al curso qué necesitan para aprender bien juntos.",
-      "Elijan 3 normas, escritas en positivo. Por ejemplo: «Esperamos nuestro turno para hablar».",
-      "Déjalas visibles y revísenlas cada cierto tiempo."
+      "Pregunta qué necesitan para aprender bien juntos.",
+      "Elijan 3 normas en positivo. Por ejemplo: «Esperamos nuestro turno para hablar».",
+      "Déjalas visibles, escritas o con imágenes, y revísenlas cada cierto tiempo."
     ],
     "porque": "Las normas claras y construidas en conjunto dan seguridad y hacen sentir parte del grupo.",
     "areas": [
@@ -421,13 +429,13 @@
     "tipo": "dua",
     "momento": "toda-la-clase",
     "consideracion": "9.4",
-    "titulo": "Repara el daño después de un conflicto, además de aplicar el reglamento",
+    "titulo": "Ante un conflicto, acompaña a reparar el daño",
     "como": [
-      "Conversa en privado con los involucrados.",
+      "Conversa en privado con quienes participaron.",
       "Pregunta qué pasó, a quién afectó y cómo se puede reparar.",
-      "Acuerden una acción concreta de reparación."
+      "Acuerden una acción concreta de reparación y revisen cómo resultó."
     ],
-    "porque": "Reparar el daño ayuda a aprender de lo ocurrido y mantiene a todos en el grupo.",
+    "porque": "Reparar el daño ayuda a aprender de lo ocurrido y mantiene a todos en el grupo, sin castigos que excluyen.",
     "areas": [
       "comunicacion",
       "emocional"
@@ -466,7 +474,11 @@
       2,
       6
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -551,7 +563,11 @@
     "dimensiones": [
       2
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -876,7 +892,11 @@
       2,
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -991,7 +1011,11 @@
     "dimensiones": [
       1
     ],
-    "niveles": [],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
@@ -1050,6 +1074,195 @@
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-8-1-parv",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "8.1",
+    "titulo": "Cuenta al inicio qué harán y para qué, con una imagen o un objeto",
+    "como": [
+      "Muestra una imagen o un objeto relacionado con la experiencia.",
+      "Di en una frase qué van a hacer y para qué sirve.",
+      "Al cerrar, vuelvan a la imagen y recuerden qué hicieron."
+    ],
+    "porque": "Saber qué viene y para qué da seguridad y ayuda a sostener la atención.",
+    "areas": [
+      "cognicion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      5
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-parvularia-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-5-3-parv",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "5.3",
+    "titulo": "Muestra los pasos de la actividad con imágenes y retíralas de a poco",
+    "como": [
+      "Prepara una secuencia de 3 o 4 imágenes o pictogramas con los pasos.",
+      "Déjala a la altura de sus ojos y señálala mientras avanzan.",
+      "Cuando ya conozcan la rutina, retira imágenes de a poco."
+    ],
+    "porque": "El andamiaje es un apoyo temporal que permite hacer de forma independiente lo que antes requería ayuda.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": [
+      "eef-send-2020",
+      "cast-dua-3",
+      "mineduc-parvularia-2025"
+    ],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-1-1-parv",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "1.1",
+    "titulo": "Prepara materiales grandes, con buen contraste y fáciles de tomar",
+    "como": [
+      "Usa imágenes grandes y nítidas, con fondos simples.",
+      "Ofrece materiales de distintos tamaños y texturas.",
+      "Ubícalos donde todos los puedan ver y alcanzar."
+    ],
+    "porque": "Un material fácil de ver y de tomar permite que más niños y niñas participen sin ayuda.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6,
+      8
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-parvularia-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-2-parv",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "2.2",
+    "titulo": "Acompaña con imágenes o pictogramas cada indicación importante",
+    "como": [
+      "Al dar una indicación, muestra una imagen o un pictograma que la represente.",
+      "Usa siempre la misma imagen para la misma acción.",
+      "Deja las imágenes a la vista mientras trabajan."
+    ],
+    "porque": "Una imagen estable ayuda a comprender y recordar lo que hay que hacer.",
+    "areas": [
+      "comunicacion",
+      "cognicion"
+    ],
+    "dimensiones": [
+      3,
+      1
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-parvularia-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-5-2-parv",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "5.2",
+    "titulo": "Ofrece herramientas variadas para crear",
+    "como": [
+      "Ten a mano lápices gruesos, timbres, plasticina, bloques y material reciclado.",
+      "Incluye herramientas adaptadas, como tijeras de apoyo o pinceles con mango grueso.",
+      "Deja que elijan con qué crear."
+    ],
+    "porque": "Con la herramienta adecuada, el esfuerzo va a la idea y no a la dificultad de manipular.",
+    "areas": [
+      "sensorial",
+      "cognicion"
+    ],
+    "dimensiones": [
+      8,
+      1
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-6-3-parv",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "6.3",
+    "titulo": "Ordena el material en lugares fijos, marcados con imágenes",
+    "como": [
+      "Guarda cada tipo de material siempre en el mismo lugar.",
+      "Marca cajas y repisas con una foto o un pictograma.",
+      "Invita a ordenar al terminar, usando las imágenes como guía."
+    ],
+    "porque": "Un ambiente ordenado y predecible facilita encontrar lo necesario y actuar con autonomía.",
+    "areas": [
+      "cognicion",
+      "contexto"
+    ],
+    "dimensiones": [
+      1,
+      11
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "mineduc-parvularia-2025"
     ],
     "destacada": false,
     "revision": null

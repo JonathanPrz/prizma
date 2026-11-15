@@ -40,5 +40,11 @@
     "cita": "Mineduc (2025). Preguntas frecuentes sobre la Ley 21.545.",
     "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/PREGUNTAS-FRECUENTES-Ley-Autismo-21.545.pdf",
     "archivo": "docs/fuentes/orientaciones/mineduc-preguntas-frecuentes-autismo-2025.md"
+  },
+  {
+    "id": "mineduc-parvularia-2025",
+    "cita": "Subsecretaría de Educación Parvularia (2025). Nota técnica: la inclusión de niños y niñas en el espectro autista en educación parvularia.",
+    "url": "https://parvularia.mineduc.cl/wp-content/uploads/2025/04/nota-te%CC%81cnica-2025.pdf",
+    "archivo": "docs/fuentes/orientaciones/mineduc-nota-tecnica-parvularia-autismo-2025.md"
   }
 ]
