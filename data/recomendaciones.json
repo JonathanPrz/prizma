@@ -1369,5 +1369,619 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "acc-1-partes",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Divide la tarea o la prueba en partes y entrégalas una a la vez",
+    "como": [
+      "Separa la tarea en bloques cortos.",
+      "Entrega el siguiente bloque cuando termine el anterior.",
+      "Mantén la misma exigencia en cada parte."
+    ],
+    "porque": "Ver menos a la vez ayuda a sostener la atención y a no abrumarse.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-1-ubicacion",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ubica al estudiante cerca de ti y lejos de puertas y ventanas",
+    "como": [
+      "Acuerda con el estudiante dónde se siente más cómodo.",
+      "Elige un lugar con pocas distracciones y a tu alcance.",
+      "Revisa el lugar cada cierto tiempo."
+    ],
+    "porque": "Menos estímulos alrededor y un adulto cerca facilitan concentrarse.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-2-audio",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Lee en voz alta los enunciados o entrégalos en audio",
+    "como": [
+      "Lee las preguntas sin explicar la respuesta.",
+      "Ofrece el texto con lector de voz si lo hay.",
+      "Aplícalo cuando lo que evalúas no es la lectura."
+    ],
+    "porque": "Así la dificultad para leer no impide mostrar lo que sabe del tema.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ccsso-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-2-tiempo",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Da tiempo adicional en tareas con mucha lectura o escritura",
+    "como": [
+      "Acuerda cuánto tiempo extra, por ejemplo la mitad del tiempo original.",
+      "Avisa antes de empezar, no durante la tarea.",
+      "Revisa si el tiempo extra se está usando."
+    ],
+    "porque": "Leer o escribir más lento no debería impedir terminar.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ccsso-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-3-escrito",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Da las instrucciones dichas, escritas y con apoyo visual",
+    "como": [
+      "Di la instrucción con frases cortas.",
+      "Déjala escrita o con imágenes a la vista.",
+      "Pide que la explique con sus palabras."
+    ],
+    "porque": "Una instrucción que se puede volver a mirar no depende de la memoria ni del oído.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-3-caa",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Acepta respuestas con apoyos de comunicación aumentativa",
+    "como": [
+      "Pregunta qué sistema usa: pictogramas, tablero o dispositivo.",
+      "Ten el apoyo disponible en todas las actividades.",
+      "Evalúa el contenido de la respuesta, no la forma."
+    ],
+    "porque": "Comunicarse de otra forma no debe impedir participar ni ser evaluado.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025",
+      "cdpd"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-4-exponer",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Ofrece alternativas a exponer frente al curso",
+    "como": [
+      "Permite presentar solo ante ti o un grupo pequeño.",
+      "Acepta una grabación en audio o video.",
+      "Mantén los mismos criterios de evaluación."
+    ],
+    "porque": "Si exponer en público no es lo que se evalúa, la forma no debe ser la barrera.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-4-roles",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "En trabajos grupales, asigna roles claros y un compañero de apoyo",
+    "como": [
+      "Define qué hace cada integrante.",
+      "Elige con el estudiante un compañero con quien se sienta cómodo.",
+      "Revisa cómo funciona el grupo a mitad de la tarea."
+    ],
+    "porque": "Las reglas explícitas reducen la incertidumbre de la interacción social.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      4
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-5-pausas",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda pausas breves y una señal para pedirlas",
+    "como": [
+      "Define con el estudiante una señal discreta, como una tarjeta.",
+      "Acuerda dónde va y cuánto dura la pausa.",
+      "Retoma la tarea sin reproches al volver."
+    ],
+    "porque": "Una pausa a tiempo ayuda a regularse antes de una crisis.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "supereduc-586"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-5-anticipar",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Avisa con anticipación las evaluaciones y los cambios",
+    "como": [
+      "Informa la fecha, el formato y qué se evaluará.",
+      "Avisa los cambios de sala, horario o docente.",
+      "Muestra un ejemplo de pregunta si es posible."
+    ],
+    "porque": "Saber qué viene reduce la ansiedad.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "supereduc-586",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-6-ampliar",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Amplía la letra y mejora el contraste del material",
+    "como": [
+      "Usa letra grande y simple, con buen espacio.",
+      "Imprime en alto contraste o comparte en digital para ampliar.",
+      "Describe en voz alta las imágenes importantes."
+    ],
+    "porque": "Si no se ve bien, no se puede aprender ni demostrar lo aprendido.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-6-ubicacion",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ubica al estudiante cerca de la pizarra y de quien habla",
+    "como": [
+      "Acuerda el mejor lugar según cómo ve u oye.",
+      "Cuida la luz: sin reflejos ni contraluz.",
+      "Habla de frente y sin tapar tu boca."
+    ],
+    "porque": "La distancia, la luz y el ruido cambian cuánto se percibe.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-7-tranquilo",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Ofrece un lugar más tranquilo o protección para el ruido",
+    "como": [
+      "Habilita un rincón con menos ruido y luz.",
+      "Permite audífonos o tapones si los usa.",
+      "Deja que elija cuándo usarlos."
+    ],
+    "porque": "Reducir la sobrecarga sensorial deja energía para aprender.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      7
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025",
+      "supereduc-586"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-7-transiciones",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Permite moverse antes o después de los demás en cambios y recreos",
+    "como": [
+      "Acuerda salir unos minutos antes o después.",
+      "Acompaña los cambios de sala si hace falta.",
+      "Avisa del cambio con un poco de anticipación."
+    ],
+    "porque": "Evitar las aglomeraciones reduce el estrés sensorial.",
+    "areas": [
+      "sensorial",
+      "emocional"
+    ],
+    "dimensiones": [
+      7,
+      5
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "mineduc-autismo-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-8-teclado",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Permite escribir en computador, dictar o marcar opciones",
+    "como": [
+      "Acuerda la forma de responder que le resulta posible.",
+      "Ten el recurso listo antes de la tarea.",
+      "Evalúa el contenido, no la letra."
+    ],
+    "porque": "Si escribir a mano no es lo que se evalúa, no debe ser la barrera.",
+    "areas": [
+      "sensorial",
+      "cognicion"
+    ],
+    "dimensiones": [
+      8,
+      2
+    ],
+    "niveles": [
+      "basica",
+      "media-ch",
+      "media-tp"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ccsso-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-8-accesible",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Asegura que el puesto y los materiales sean accesibles",
+    "como": [
+      "Revisa que pueda llegar y moverse sin obstáculos.",
+      "Ajusta la altura de la mesa o la silla.",
+      "Deja los materiales a su alcance."
+    ],
+    "porque": "Un espacio accesible permite participar con autonomía.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-83",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-9-plazos",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Ajusta plazos y ofrece recuperar evaluaciones por ausencias de salud",
+    "como": [
+      "Acuerda nuevas fechas con el estudiante y su familia.",
+      "Entrega el material de las clases perdidas.",
+      "Prioriza lo esencial para ponerse al día."
+    ],
+    "porque": "Una enfermedad o tratamiento no debe dejar a nadie atrás.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-9-descanso",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Permite pausas para descansar o atender necesidades de salud",
+    "como": [
+      "Acuerda cuándo y dónde puede descansar.",
+      "Ten un plan para tomar medicamentos o colaciones si se necesita.",
+      "Avisa a los adultos que lo necesitan saber."
+    ],
+    "porque": "El cansancio y el dolor afectan la atención y el aprendizaje.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-10-lengua",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Entrega las palabras clave también en su lengua",
+    "como": [
+      "Prepara un glosario con imágenes y traducción.",
+      "Pide apoyo a la familia o a un traductor.",
+      "Deja el glosario disponible en las evaluaciones."
+    ],
+    "porque": "Entender la pregunta es condición para mostrar lo que se sabe.",
+    "areas": [
+      "contexto",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "decreto-67",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-10-responder",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Permite responder en su lengua o con apoyo visual mientras aprende español",
+    "como": [
+      "Acepta respuestas en su lengua cuando evalúas contenidos, no español.",
+      "Usa dibujos, esquemas o señalar opciones.",
+      "Pide apoyo para traducir si hace falta."
+    ],
+    "porque": "Así se evalúa lo que sabe y no cuánto español domina todavía.",
+    "areas": [
+      "contexto",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "decreto-67",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-11-curso",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Explica al curso que cada uno recibe lo que necesita para aprender",
+    "como": [
+      "Habla de apoyos en general, sin nombrar a nadie.",
+      "Pon ejemplos cotidianos, como los lentes.",
+      "Detén las burlas apenas aparezcan."
+    ],
+    "porque": "Las actitudes del grupo pueden ser una barrera o un apoyo.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-20422",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-11-recursos",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Ofrece tiempo y recursos en el colegio cuando falta apoyo en casa",
+    "como": [
+      "Deja tiempo en clase para avanzar las tareas.",
+      "Presta materiales o acceso a computador.",
+      "Acuerda plazos realistas con el estudiante."
+    ],
+    "porque": "Las condiciones del hogar no deberían decidir quién puede aprender.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "decreto-67",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]

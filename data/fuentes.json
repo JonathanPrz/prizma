@@ -46,5 +46,29 @@
     "cita": "Subsecretaría de Educación Parvularia (2025). Nota técnica: la inclusión de niños y niñas en el espectro autista en educación parvularia.",
     "url": "https://parvularia.mineduc.cl/wp-content/uploads/2025/04/nota-te%CC%81cnica-2025.pdf",
     "archivo": "docs/fuentes/orientaciones/mineduc-nota-tecnica-parvularia-autismo-2025.md"
+  },
+  {
+    "id": "ccsso-2016",
+    "cita": "CCSSO (2016). CCSSO Accessibility Manual. Council of Chief State School Officers.",
+    "url": "https://ccsso.org/resource-library/ccsso-accessibility-manual-how-select-administer-and-evaluate-use-accessibility",
+    "archivo": "docs/fuentes/codex/ccsso-accesibilidad-2016-resumen.md"
+  },
+  {
+    "id": "nccd-2026",
+    "cita": "Commonwealth of Australia (2025). NCCD Guidelines: Effective 2026 Onward. CC BY 4.0.",
+    "url": "https://education.nsw.gov.au/content/dam/main-education/en/home/teaching-and-learning/disability-learning-and-support/nccddocumentsforintranet/NCCD_Guidelines.pdf",
+    "archivo": "docs/fuentes/codex/nccd-directrices-2026.md"
+  },
+  {
+    "id": "cdpd",
+    "cita": "Naciones Unidas (2006). Convención sobre los Derechos de las Personas con Discapacidad.",
+    "url": "https://www.ohchr.org/es/instruments-mechanisms/instruments/convention-rights-persons-disabilities",
+    "archivo": "docs/fuentes/normativa/cdpd.md"
+  },
+  {
+    "id": "ley-20422",
+    "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903",
+    "archivo": "docs/fuentes/normativa/ley-20422.md"
   }
 ]

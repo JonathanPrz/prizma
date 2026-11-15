@@ -30,6 +30,11 @@ for r in R:
     i = r["id"]
     errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]
 # Cada nivel debe tener al menos una acción por consideración DUA.
+SUBTIPOS_ACCESO = {"presentacion", "respuesta", "entorno", "tiempo"}  # Decreto 83
+acceso = [r for r in R if r["tipo"] == "acceso"]
+errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
+sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso for d in r["dimensiones"]})
+if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso: {sin_acceso}")
 dua = [r["consideracion"] for r in R if r["tipo"] == "dua"]
 for n in NIVELES:
     faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})
