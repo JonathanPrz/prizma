@@ -1,0 +1,107 @@
+[
+  {
+    "id": "dua-8-1-meta-visible",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "8.1",
+    "titulo": "Comparte la meta de la clase en una frase simple, dicha y escrita",
+    "como": [
+      "Escribe la meta en la pizarra con palabras de tus estudiantes. Por ejemplo: «Hoy vamos a aprender a…».",
+      "Explica en 1 frase para qué sirve aprender eso.",
+      "Vuelve a la meta al cerrar la clase."
+    ],
+    "porque": "Saber qué se espera y para qué sirve ayuda a sostener el esfuerzo y reduce la incertidumbre.",
+    "areas": ["cognicion", "emocional"],
+    "dimensiones": [1, 5],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-2-1-vocabulario",
+    "tipo": "dua",
+    "momento": "antes",
+    "consideracion": "2.1",
+    "titulo": "Presenta las palabras clave antes de usarlas, con una definición simple y un ejemplo",
+    "como": [
+      "Elige 3 a 5 palabras nuevas de la clase.",
+      "Para cada una, da una definición corta y un ejemplo cercano.",
+      "Déjalas visibles durante toda la clase."
+    ],
+    "porque": "El vocabulario desconocido es una barrera que no tiene que ver con lo que se quiere enseñar.",
+    "areas": ["cognicion", "comunicacion", "contexto"],
+    "dimensiones": [2, 3, 10],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "dua-5-3-andamiaje-lista",
+    "tipo": "dua",
+    "momento": "durante",
+    "consideracion": "5.3",
+    "titulo": "Entrega una lista de pasos de la tarea y retírala de a poco",
+    "como": [
+      "Divide la tarea en pasos cortos, numerados, con un verbo cada uno.",
+      "Entrega la lista impresa o déjala en la pizarra.",
+      "Cuando el curso domine la tarea, quita pasos o la lista completa."
+    ],
+    "porque": "El andamiaje es un apoyo temporal que permite hacer sola o solo lo que antes requería ayuda.",
+    "areas": ["cognicion"],
+    "dimensiones": [1],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": ["eef-send-2020", "cast-dua-3"],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-9-3-reflexion-cierre",
+    "tipo": "dua",
+    "momento": "despues",
+    "consideracion": "9.3",
+    "titulo": "Cierra con una pregunta sobre cómo aprendieron, no solo sobre qué aprendieron",
+    "como": [
+      "Pregunta: «¿Qué te ayudó hoy a entender?» o «¿Qué harías distinto la próxima vez?».",
+      "Ofrece varias formas de responder: decirlo, escribirlo o marcar una opción.",
+      "Usa las respuestas para ajustar la próxima clase."
+    ],
+    "porque": "Pensar sobre la propia forma de aprender (metacognición) mejora el aprendizaje.",
+    "areas": ["cognicion"],
+    "dimensiones": [1],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "investigacion-solida",
+    "fuentes": ["eef-send-2020", "cast-dua-3"],
+    "destacada": true,
+    "revision": null
+  },
+  {
+    "id": "dua-8-4-pertenencia",
+    "tipo": "dua",
+    "momento": "toda-la-clase",
+    "consideracion": "8.4",
+    "titulo": "Acuerda con el curso 3 normas de convivencia, escritas y a la vista",
+    "como": [
+      "Pregunta al curso qué necesitan para aprender bien juntos.",
+      "Elijan 3 normas, escritas en positivo. Por ejemplo: «Esperamos nuestro turno para hablar».",
+      "Déjalas visibles y revísenlas cada cierto tiempo."
+    ],
+    "porque": "Las normas claras y construidas en conjunto dan seguridad y hacen sentir parte del grupo.",
+    "areas": ["comunicacion", "emocional"],
+    "dimensiones": [4, 5],
+    "niveles": [],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": ["cast-dua-3", "mineduc-autismo-2025"],
+    "destacada": false,
+    "revision": null
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cast-dua-3",
+    "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+    "url": "https://udlguidelines.cast.org/es/",
+    "archivo": "docs/fuentes/dua-3.0.md"
+  },
+  {
+    "id": "eef-send-2020",
+    "cita": "Davies, K. y Henderson, P. (2020). Special Educational Needs in Mainstream Schools. Education Endowment Foundation.",
+    "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/send",
+    "archivo": "docs/fuentes/internacional/README.md"
+  },
+  {
+    "id": "mineduc-autismo-2025",
+    "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+    "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf",
+    "archivo": "docs/fuentes/orientaciones/mineduc-respuesta-educativa-autismo-2025.md"
+  }
+]
