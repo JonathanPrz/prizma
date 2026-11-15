@@ -45,11 +45,11 @@ try {
             <option value="">Sin indicar</option>
             <option value="parvularia">Educación parvularia</option>
             <option value="basica">Educación básica</option>
-            <option value="media-ch">Media científico-humanista</option>
-            <option value="media-tp">Media técnico-profesional</option>
+            <option value="media">Educación media (CH y TP)</option>
             <option value="superior">Educación superior (universidad, IP o CFT)</option>
           </select>
         </label>
+    <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase incluye taller, laboratorio o terreno</label>
     <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
       <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos individualizados</button>
@@ -128,7 +128,6 @@ try {
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
-        <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Tiene talleres, laboratorios o actividades en terreno</label>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
         <label for="estudiante-voz">¿Qué dicen el estudiante y su familia?<textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
       </div>
