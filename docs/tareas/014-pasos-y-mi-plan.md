@@ -1,6 +1,6 @@
 # Tarea 014 · Reorganizar la página en pasos y «Mi mochila»
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/014-pasos-y-mi-plan`
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/014-pasos-y-mi-plan`
 
 ## Para qué
 
