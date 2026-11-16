@@ -22,7 +22,7 @@ function visita(bloqueado = false, confirmada = false) {
       close(valor=''){this.returnValue=valor;this.open=false;this.emit('close');},append(){},setAttribute(){},
     };
   }
-  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura'])nodos.set('#'+id,nodo(id));
+  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura'])nodos.set('#'+id,nodo(id));
   for(const id of ['dua','apoyos'])nodos.set('#panel-'+id+' .acciones-intro',nodo('intro-'+id));
   vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
   const run = code => vm.runInContext(code,c), n = id => nodos.get('#'+id);
@@ -43,7 +43,7 @@ for(const bloqueado of [false,true]) {
 // La privacidad de la primera escritura no depende de haber abierto una guía.
 for(const campo of ['iniciales','estudiante-ayuda','estudiante-voz']){
  const v=visita(),{run,n}=v;
- run('pintarSeleccion=()=>{}; actualizarConteoFiltros=()=>{}; escucharEstudiante()');
+ run('pintarSeleccion=()=>{}; pintarSelectorEstudiantes=()=>{}; actualizarConteoFiltros=()=>{}; escucharEstudiante()');
  n(campo).value=campo==='iniciales'?'AB':'Apoyo visual';n(campo).emit('input');assert(n('aviso-privacidad').open);assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'Apoyos para AB':'Apoyos para un estudiante');n('privacidad-entendido').emit('click');assert.equal(v.almacen.get('prizma.privacidad.v1'),'1');n(campo).emit('input');assert.equal(v.abiertos().length,0);
  run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'Ajustes razonables para AB':'Ajustes razonables para un estudiante');
 }

@@ -27,8 +27,8 @@ const puntuaciones = ejecutar('visibles().map(r => coincidenciasNecesidades(r).l
 assert.ok(puntuaciones.every((n, i) => !i || puntuaciones[i - 1] >= n));
 assert.deepEqual(ejecutar('validarRespaldo({app:"prizma", version:1, perfil:{}, seleccion:{}, necesidades:["participacion","inventada","participacion","clima"]}).necesidades'), ['participacion', 'clima']);
 assert.deepEqual(ejecutar('validarRespaldo({app:"prizma", version:1, perfil:{}, seleccion:{}}).necesidades'), []);
-assert.match(ejecutar('documento().datos'), /Quiere resolver: Algunos no participan o les cuesta trabajar en grupo; El clima del curso dificulta aprender/);
-assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Quiere resolver:'));
+assert.match(ejecutar('documento().resumen.flat().join(": ")'), /Qué quiere resolver: Algunos no participan o les cuesta trabajar en grupo; El clima del curso dificulta aprender/);
+assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Qué quiere resolver'));
 vm.runInContext('necesidades = []; estado.necesidades = normalizarNecesidades(estado.necesidades);', contexto);
 assert.deepEqual(ejecutar('estado.necesidades'), []);
 assert.ok(ejecutar('visibles().length') > 0);

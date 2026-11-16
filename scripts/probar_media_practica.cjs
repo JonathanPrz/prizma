@@ -10,7 +10,7 @@ for(const viejo of ['media-ch','media-tp']){
  assert.equal(e(`normalizarPerfil({nivel:'${viejo}'}).nivel`),'media');
  const datos={app:'prizma',version:1,perfil:{nivel:viejo},estudiante:{practica:true},seleccion:{}};
  almacen.set('prizma.v1',JSON.stringify(datos));vm.runInContext('cargar();guardar()',c);
- assert.equal(e('estado.perfil.nivel'),'media');assert.equal(e('estado.perfil.practica'),true);assert.equal(e('Object.hasOwn(estado.estudiante,"practica")'),false);
+ assert.equal(e('estado.perfil.nivel'),'media');assert.equal(e('estado.perfil.practica'),true);assert.equal(e('Object.hasOwn(estudianteActual(),"practica")'),false);
  c.datos=datos;assert.equal(e('validarRespaldo(datos).perfil.practica'),true);assert.equal(e('validarRespaldo(datos).perfil.nivel'),'media');
 }
 assert.equal(e('normalizarPerfil({practica:false},true).practica'),false);
@@ -21,8 +21,8 @@ assert.equal(e('voc("clase")'),'clase');assert.equal(e('voc("curso")'),'curso');
 for(const pestana of ['dua','apoyos']){
  vm.runInContext(`estado.pestana='${pestana}'; estado.perfil.practica=false`,c);const n=e('cantidadFiltros()');vm.runInContext('estado.perfil.practica=true',c);assert.equal(e('cantidadFiltros()'),n);
 }
-for(const nivel of ['basica','media','superior']){vm.runInContext(`estado.perfil.nivel='${nivel}'`,c);assert.equal(e('hayPracticas()'),true);assert.equal(e('practicasVisibles().length'),9);assert.equal(e('visibles().length'),36);assert(e('documento().datos').includes('Clase con taller, laboratorio o terreno'));}
-vm.runInContext('estado.perfil.nivel="parvularia"',c);assert.equal(e('hayPracticas()'),false);assert.equal(e('practicaActiva()'),false);assert.equal(e('practicasVisibles().length'),0);assert(!e('documento().datos').includes('Clase con taller'));
+for(const nivel of ['basica','media','superior']){vm.runInContext(`estado.perfil.nivel='${nivel}'`,c);assert.equal(e('hayPracticas()'),true);assert.equal(e('practicasVisibles().length'),9);assert.equal(e('visibles().length'),36);assert(e('documento().resumen.flat().join(". ")').includes('Clase con taller, laboratorio o terreno'));}
+vm.runInContext('estado.perfil.nivel="parvularia"',c);assert.equal(e('hayPracticas()'),false);assert.equal(e('practicaActiva()'),false);assert.equal(e('practicasVisibles().length'),0);assert(!e('documento().resumen.flat().join(". ")').includes('Clase con taller'));
 vm.runInContext(`var original=catalogo;var modelo=catalogo.find(r=>r.tipo==='dua');catalogo=catalogo.filter(r=>r.tipo!=='dua').concat([
  {...modelo,id:'sim-practica',consideracion:'1.1',contextos:['practica'],destacada:false},
  {...modelo,id:'sim-necesidad',consideracion:'4.1',contextos:[],destacada:false},
