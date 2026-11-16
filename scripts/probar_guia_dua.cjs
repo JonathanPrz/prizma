@@ -20,7 +20,7 @@ function nodo(id) {
     click() {this.eventos.click({preventDefault() {}, currentTarget: this});},
   };
 }
-for (const id of ['guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos']) nodos.set('#' + id, nodo(id));
+for (const id of ['t-filtros-apoyos', 't-filtros-dialogo', 'guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos']) nodos.set('#' + id, nodo(id));
 for (const id of ['dua', 'apoyos']) nodos.set('#panel-' + id + ' .acciones-intro', nodo('intro-' + id));
 nodos.set('#necesidades button', nodo('primera-necesidad'));
 const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
