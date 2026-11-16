@@ -63,7 +63,9 @@ const CIF_TITULO = "Barreras y facilitadores (enfoque CIF)";
 const CIF_AVISO = "Las situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)";
 const CIF_COLUMNAS = ["Situación", "Frecuencia", "Apoyos elegidos para esa situación"];
 const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar", despues: "Después: reparar" };
-const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales" };
+const TIPOS_PRACTICA = { institucion: "Lo que hace la institución", centro: "Lo que puede hacer el centro de práctica", estudiante: "Preparar al estudiante para pedir ajustes" };
+const PIE_PRACTICA = "Documento preparado con el estudiante. Contiene solo lo que decidió compartir.";
+const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales", "practica-profesional": "Práctica profesional" };
 function normalizarEstudiante(valor) {
   const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
@@ -71,6 +73,7 @@ function normalizarEstudiante(valor) {
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}$/.test(e.iniciales) ? e.iniciales : "",
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
+    practicaProfesional: e.practicaProfesional === true,
     voz: typeof e.voz === "string" ? e.voz.slice(0, 300) : "",
   };
 }
@@ -78,7 +81,7 @@ let secuenciaEstudiante = 0;
 function nuevoIdEstudiante() { return typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `estudiante-${++secuenciaEstudiante}`; }
 function estudianteActual() { return estado.estudiantes.find((e) => e.id === estado.estudianteActivo) || estado.estudiantes[0]; }
 function nombreEstudiante(e) { return e.iniciales || `Estudiante ${estado.estudiantes.indexOf(e) + 1}`; }
-function datosEstudiante(e) { return Boolean(e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
+function datosEstudiante(e) { return Boolean(e.practicaProfesional || e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
 function seleccionValidada(valor, dua) {
   const v = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === "string" && catalogo.some((r) => r.id === id && (dua ? r.tipo === "dua" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));
@@ -158,7 +161,9 @@ function pintarRepeticiones() {
 function esSuperior() { return estado.perfil.nivel === "superior"; }
 function subtituloEstudiante() { return esSuperior() ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
 function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? "Ajustes razonables para " : "Apoyos para ") + (e.iniciales || "un estudiante"); }
+function nombreGrupoPractica(subtipo) { return subtipo === "institucion" && !esSuperior() ? "Lo que hace el liceo" : TIPOS_PRACTICA[subtipo]; }
 function tipoOficial(r) {
+  if (r.tipo === "practica-profesional") return "Práctica profesional: " + nombreGrupoPractica(r.subtipo);
   if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
   if (r.tipo === "adicional") return "Apoyo adicional";
   if (r.tipo === "acceso") return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`;
@@ -167,6 +172,7 @@ function tipoOficial(r) {
 }
 function ordenApoyo(r) {
   if (r.tipo === "adicional") return -1;
+  if (r.tipo === "practica-profesional") return 40 + Object.keys(TIPOS_PRACTICA).indexOf(r.subtipo);
   const subtipos = r.tipo === "acceso" ? TIPOS_ACCESO : r.tipo === "objetivos" ? TIPOS_OBJETIVOS : MOMENTOS_DEC;
   return Object.keys(GRUPOS_APOYOS).indexOf(r.tipo) * 10 + Object.keys(subtipos).indexOf(r.subtipo);
 }
@@ -205,7 +211,27 @@ function pintarTituloApoyos() {
   pintarContextoEstudiante(); pintarRevisionSituaciones();
   $("#t-apoyos").textContent = `${esSuperior() ? "Ajustes razonables" : "Apoyos"} para ${estudianteActual().iniciales || "un estudiante"}`;
 }
+function nivelPracticaProfesional() { return ["media", "superior"].includes(estado.perfil.nivel); }
+function fichasPracticaProfesional(subtipo) {
+  return catalogo.filter((r) => r.tipo === "practica-profesional" && r.subtipo === subtipo && aplica(r) &&
+    (subtipo !== "centro" || !r.dimensiones.length || puntaje(r) > 0)).sort(compararAcceso);
+}
+function elegidasCentro() {
+  return nivelPracticaProfesional() && estudianteActual().practicaProfesional ? elegidasOrdenadas(estudianteActual().seleccion)
+    .filter((r) => r.tipo === "practica-profesional" && r.subtipo === "centro") : [];
+}
+function pintarPracticaProfesional() {
+  $("#practica-profesional-campo").hidden = !nivelPracticaProfesional();
+  $("#practica-profesional").checked = estudianteActual().practicaProfesional;
+  const visible = nivelPracticaProfesional() && estudianteActual().practicaProfesional;
+  $("#bloque-practica-profesional").hidden = !visible;
+  $("#practica-profesional-grupos").replaceChildren(...(visible ? Object.keys(TIPOS_PRACTICA).map((subtipo) =>
+    el("section", {}, el("h3", { text: nombreGrupoPractica(subtipo) }), el("ul", { class: "tarjetas" }, fichasPracticaProfesional(subtipo).map(tarjeta)))) : []));
+  $("#preparar-centro").disabled = !elegidasCentro().length;
+  $("#centro-ayuda").textContent = elegidasCentro().length ? "El estudiante decide cuáles ajustes compartir." : "Primero elige los ajustes que puede hacer el centro";
+}
 function pintarApoyos() {
+  pintarPracticaProfesional();
   const superior = esSuperior();
   $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos individualizados para un estudiante";
   $("#bajada-apoyos").textContent = `Elige los que le sirvan. Prizma no reemplaza ${superior ? "a la unidad de inclusión" : "al equipo de apoyo"}: te ofrece un menú, cada apoyo con su fuente.`;
@@ -285,6 +311,10 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
+  $("#practica-profesional").addEventListener("change", (evento) => {
+    estudianteActual().practicaProfesional = evento.target.checked === true;
+    guardar(); pintarApoyos(); pintarSeleccion(); actualizarConteoFiltros();
+  });
   $("#revision-situaciones-entendido").addEventListener("click", () => {
     estado.versionSituaciones = 2; guardar(); pintarRevisionSituaciones();
     $("#t-apoyos").focus();
@@ -316,6 +346,7 @@ let origenGuiaApoyos = null, dialogoPrivacidad = null;
 const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} };
 let estado = { versionSituaciones: 2, asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
 let inclusionDocumento = null, solicitudDocumento = 0;
+let centroDocumento = null, origenCentro = null, origenGuiaPractica = null;
 
 function cargar() {
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = normalizarDatos(g); } catch (e) { /* sin almacenamiento: la página funciona igual */ }
@@ -402,7 +433,7 @@ function prepararPestanas() {
 
 function cantidadFiltros() {
   if (estado.pestana === "apoyos") return document.querySelectorAll("#areas input:checked").length +
-    Object.keys(estudianteActual().dimensiones).length + Number(Boolean(estudianteActual().iniciales)) + Number(Boolean(estudianteActual().ayuda.trim())) + Number(Boolean(estudianteActual().voz.trim()));
+    Object.keys(estudianteActual().dimensiones).length + Number(Boolean(estudianteActual().iniciales)) + Number(Boolean(estudianteActual().ayuda.trim())) + Number(Boolean(estudianteActual().voz.trim())) + Number(nivelPracticaProfesional() && estudianteActual().practicaProfesional);
   const p = estado.perfil;
   return (Array.isArray(estado.necesidades) ? estado.necesidades.length : 0) + estado.propositos.length + p.actividad.length + p.evidencia.length +
     Number(Boolean(p.meta.trim())) + estado.momentos.length;
@@ -551,7 +582,7 @@ function tarjeta(r) {
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: taller, laboratorio o terreno." }) : null,
     acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
-    el(dua || r.tipo === "objetivos" ? "h4" : "h3", { text: r.titulo }),
+    el(dua || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
     version ? el("div", { class: "version-curso", tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
       ofrecida ? el("p", { text: "También ofrecido a todo el curso" }) : null,
@@ -626,7 +657,8 @@ function pintarSeleccion() {
   $("#sel-lista").replaceChildren(...sel.map((r) => itemSeleccion(r)));
   $("#sel-estudiantes").replaceChildren(...estado.estudiantes.filter((e) => Object.keys(e.seleccion).length).map((e) =>
     el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante() }),
-      el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).map((r) => itemSeleccion(r, e))))));
+      ...Object.keys(GRUPOS_APOYOS).filter((tipo) => elegidasOrdenadas(e.seleccion).some((r) => r.tipo === tipo)).map((tipo) =>
+        el("div", {}, el("h4", { text: GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
   function itemSeleccion(r, e) {
     const seleccion = e ? e.seleccion : estado.seleccion;
     const nota = el("textarea", { rows: "2", maxlength: "2000", "aria-label": "Nota para: " + r.titulo + (e ? " · " + nombreEstudiante(e) : " · Curso"), placeholder: "Nota opcional: cómo la usarás" });
@@ -728,6 +760,7 @@ const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesio
 
 // Un solo modelo del documento para la vista previa, la impresión y el PDF descargable.
 function prepararDocumento() {
+  centroDocumento = null;
   solicitudDocumento++;
   $("#generar-documento").disabled = false;
   inclusionDocumento = { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] };
@@ -754,6 +787,59 @@ async function generarDocumento() {
   if (!$("#incluir-documento").open) return;
   armarHoja(); $("#incluir-documento").close(); $("#vista-estado").textContent = ""; $("#vista").showModal();
 }
+function documentoParaCentro(ids, decision) {
+  if (decision !== true || !elegidasCentro().length) return null;
+  const acciones = elegidasCentro().filter((r) => ids.includes(r.id)).map((r) => ({ titulo: r.titulo, como: [...r.como], porque: r.porque, dato: "" }));
+  if (!acciones.length) return null;
+  return { centro: true, titulo: "Ajustes acordados para la práctica", fecha: new Date().toLocaleDateString("es-CL"), logo: logoDocumento(),
+    resumen: ["Estudiante", "Centro de práctica", "Profesor tutor o coordinador", "Fecha"].map((t) => [t, "__________________________________"]), acciones };
+}
+function actualizarDecisionCentro() {
+  const tiene = document.querySelectorAll('input[name="compartir-centro"]:checked').length > 0;
+  $("#ver-centro").disabled = !tiene || !$("#decision-centro").checked;
+  $("#decision-centro-ayuda").textContent = !tiene ? "Marca al menos un ajuste para incluir." : !$("#decision-centro").checked ? "Para ver el documento, el estudiante debe revisarlo y decidir compartirlo." : "Se incluirán solo los ajustes marcados, sin datos personales ni notas.";
+}
+function prepararCentro() {
+  if (!elegidasCentro().length) return;
+  solicitudDocumento++;
+  origenCentro = document.activeElement;
+  $("#decision-centro").checked = false;
+  $("#opciones-centro").replaceChildren(...elegidasCentro().map((r) => {
+    const campo = el("input", { type: "checkbox", name: "compartir-centro", value: r.id });
+    campo.checked = true; campo.addEventListener("change", actualizarDecisionCentro);
+    return el("label", {}, campo, r.titulo);
+  }));
+  $("#error-centro").textContent = ""; actualizarDecisionCentro();
+  $("#documento-centro").showModal(); $("#t-documento-centro").focus();
+}
+async function verDocumentoCentro() {
+  if (!$("#documento-centro").open) return;
+  const ids = [...document.querySelectorAll('input[name="compartir-centro"]:checked')].map((c) => c.value);
+  const d = documentoParaCentro(ids, $("#decision-centro").checked), estudiante = estado.estudianteActivo;
+  if (!d) return;
+  const solicitud = ++solicitudDocumento;
+  $("#ver-centro").disabled = true; $("#error-centro").textContent = "Preparando documento…";
+  try { await prepararPdf(); }
+  catch (e) { if (solicitud === solicitudDocumento) { $("#error-centro").textContent = "No se pudo preparar el documento. Reintenta."; actualizarDecisionCentro(); } return; }
+  if (solicitud !== solicitudDocumento || !$("#documento-centro").open || estudiante !== estado.estudianteActivo || !$("#decision-centro").checked ||
+      JSON.stringify(ids) !== JSON.stringify([...document.querySelectorAll('input[name="compartir-centro"]:checked')].map((c) => c.value))) return;
+  centroDocumento = d; armarHoja(); $("#documento-centro").close();
+  $("#vista-estado").textContent = ""; $("#vista").showModal(); $("#cerrar").focus();
+}
+function prepararPracticaProfesional() {
+  $("#enlace-guia-practica").addEventListener("click", (evento) => {
+    evento.preventDefault(); origenGuiaPractica = evento.currentTarget;
+    $("#guia-practica-media").hidden = esSuperior(); $("#guia-practica-superior").hidden = !esSuperior();
+    $("#guia-practica").showModal(); $("#t-guia-practica").focus();
+  });
+  $("#guia-practica-entendido").addEventListener("click", () => $("#guia-practica").close());
+  $("#guia-practica").addEventListener("close", () => origenGuiaPractica?.focus());
+  $("#preparar-centro").addEventListener("click", prepararCentro);
+  $("#decision-centro").addEventListener("change", actualizarDecisionCentro);
+  $("#ver-centro").addEventListener("click", verDocumentoCentro);
+  $("#cancelar-centro").addEventListener("click", () => $("#documento-centro").close());
+  $("#documento-centro").addEventListener("close", () => { solicitudDocumento++; if (!centroDocumento) origenCentro?.focus(); });
+}
 function logoDocumento() {
   const svg = typeof document !== "undefined" ? $(".logo")?.outerHTML || "" : "";
   return svg.replace(/currentColor/g, "#18213f").replace(/var\(--motivar\)/g, "#b0145a").replace(/var\(--presentar\)/g, "#00727d").replace(/var\(--mostrar\)/g, "#5a33a8");
@@ -764,7 +850,7 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
   const accion = (r, seleccion) => ({ id: r.id, titulo: r.titulo, como: [...r.como], porque: r.porque, nota: (seleccion[r.id] || "").trim(),
     ofrecida: r.tipo !== "dua" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),
     dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.`,
-    grupo: r.tipo === "acceso" ? `${esSuperior() ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
+    grupo: r.tipo === "practica-profesional" ? "Práctica profesional · " + nombreGrupoPractica(r.subtipo) : r.tipo === "acceso" ? `${esSuperior() ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
   });
   const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].filter((c) => estado.perfil[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
@@ -788,12 +874,21 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
   };
 }
 function armarHoja() {
-  const d = documento();
+  const d = centroDocumento || documento();
   const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
     el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
   const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), el("ol", {}, a.como.map((t) => el("li", { text: t }))),
     el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : "") }),
     a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null);
+  if (d.centro) {
+    $("#hoja").replaceChildren(
+      el("div", { class: "h-marca" }, d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "44", height: "44", alt: "" }) : null, el("strong", { text: "Prizma" })),
+      el("h1", { text: d.titulo }), tabla(["Campo", "Completar a mano"], d.resumen, "h-resumen"),
+      ...d.acciones.map(ficha), el("div", { class: "h-acuerdos" }, el("h2", { text: "Acuerdos (para completar en la reunión)" }),
+        ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => el("p", { text: t + ": __________________________________" }))),
+      el("p", { class: "h-aviso", text: PIE_PRACTICA }));
+    return;
+  }
   $("#hoja").replaceChildren(...[
     el("div", { class: "h-marca" }, d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "44", height: "44", alt: "" }) : null, el("strong", { text: "Prizma" })),
     el("h1", { text: d.titulo }), tabla(["Resumen", "Información"], d.resumen, "h-resumen"),
@@ -808,14 +903,21 @@ function armarHoja() {
     el("section", { class: "h-fuentes-seccion" }, el("h2", { text: "Fuentes" }), el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", {}, f.cita, el("p", { class: "h-dato", text: f.url })))), el("p", { class: "h-aviso", text: AVISO }))].filter(Boolean));
 }
 function definicionPdf() {
-  const d = documento(), margen = 56.7, ancho = 595.28 - 2 * margen;
+  const d = centroDocumento || documento(), margen = 56.7, ancho = 595.28 - 2 * margen;
   const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
   const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
     { text: a.titulo, style: "h3" }, { ol: [...a.como], margin: [0, 4, 0, 4] },
     { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : ""), style: "dato", margin: [0, 4, 0, 0] },
     ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
   ] });
-  const contenido = [
+  const contenido = d.centro ? [
+    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
+    { text: d.titulo, style: "h1" },
+    { table: { widths: [150, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: fino, margin: [0, 12, 0, 18] },
+    ...d.acciones.map(ficha),
+    { unbreakable: true, stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h2" }, ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 12, 0, 0] }))] },
+    { text: PIE_PRACTICA, style: "dato", margin: [0, 18, 0, 0] },
+  ] : [
     { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
     { text: d.titulo, style: "h1" },
     { table: { widths: [110, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: { ...fino, vLineWidth: () => 0, hLineWidth: () => .3 }, margin: [0, 8, 0, 14] },
@@ -850,7 +952,7 @@ function definicionPdf() {
     footer: (actual, total) => {
       // pdfmake ya asignó posiciones al contenido antes de dibujar los pies.
       const primera = Math.min(...contenido.filter((n) => n.id?.startsWith("alumno-")).map((n) => n.positions?.[0]?.pageNumber ?? Infinity));
-      const fuentes = contenido.find((n) => n.id === "fuentes-documento").positions?.[0]?.pageNumber ?? Infinity;
+      const fuentes = contenido.find((n) => n.id === "fuentes-documento")?.positions?.[0]?.pageNumber ?? Infinity;
       return actual === 1 ? null : { columns: [
         { text: actual >= primera && actual < fuentes ? "Contiene datos de un estudiante. Guárdalo de forma segura." : "", width: "*" },
         { text: `Página ${actual} de ${total}`, alignment: "right", width: 95 },
@@ -882,11 +984,13 @@ function prepararPdf() {
 }
 async function descargarPdf() {
   const aviso = $("#vista-estado"), boton = $("#descargar");
+  const solicitud = solicitudDocumento, centro = centroDocumento;
   boton.disabled = true; aviso.textContent = "Preparando el PDF…";
   try {
     await prepararPdf();
+    if (!$("#vista").open || solicitud !== solicitudDocumento || centro !== centroDocumento) return;
     const fecha = fechaLocal();
-    window.pdfMake.createPdf(definicionPdf()).download(`prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
+    window.pdfMake.createPdf(definicionPdf()).download(centroDocumento ? `prizma-practica-${fecha}.pdf` : `prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
     aviso.textContent = "PDF descargado. Búscalo en tu carpeta de descargas.";
   } catch (e) {
     aviso.textContent = "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».";
@@ -991,7 +1095,7 @@ async function iniciar() {
     document.documentElement.dataset.tema = tema.value;
     try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
-  prepararAvisos();
+  prepararAvisos(); prepararPracticaProfesional();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
     return r.json();
@@ -1019,7 +1123,7 @@ async function iniciar() {
   $("#generar-documento").addEventListener("click", generarDocumento);
   $("#cancelar-documento").addEventListener("click", () => $("#incluir-documento").close());
   $("#incluir-documento").addEventListener("close", () => { if (!$("#vista").open) $("#abrir-mochila").focus(); });
-  $("#vista").addEventListener("close", () => $("#abrir-mochila").focus());
+  $("#vista").addEventListener("close", () => { const origen = centroDocumento ? origenCentro : $("#abrir-mochila"); centroDocumento = null; origen?.focus(); });
   $("#guardar-respaldo").addEventListener("click", guardarRespaldo);
   $("#abrir-respaldo").addEventListener("change", abrirRespaldo);
   $("#descargar").addEventListener("click", descargarPdf);
