@@ -53,8 +53,15 @@ a { color: var(--enfoque); text-underline-offset: .2em; }
 .cabecera-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; padding-block: 1.1rem; }
 .marca { display: flex; align-items: center; gap: .35rem; font-weight: 800; font-size: 1.5rem; letter-spacing: -.035em; }
 .marca .logo { width: 2.75rem; height: 2.75rem; flex: none; }
-.tema { margin-left: auto; min-width: 0; max-width: 100%; display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 600; }
-.tema select { min-width: 0; width: auto; max-width: 100%; font-size: .875rem; min-height: 2.75rem; padding: .45rem .55rem; }
+.tema { margin-left: auto; min-width: 2.75rem; min-height: 2.75rem; padding: .65rem; }
+.cabecera-barra .boton { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; }
+.cabecera-barra svg { flex: none; }
+.tema span { display: flex; }
+.tema .icono-sol, :root[data-tema="oscuro"] .tema .icono-luna { display: none; }
+:root[data-tema="oscuro"] .tema .icono-sol { display: flex; }
+@media (min-width: 40rem) {
+  .mochila-texto.solo-lectores { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
+}
 .cabecera-intro { grid-column: 1 / -1; display: grid; gap: .75rem; padding-block: 1.5rem; }
 .cabecera-intro h1 { overflow-wrap: anywhere; font: 800 2rem/1.2 var(--fuente); letter-spacing: -.025em; max-width: 40ch; }
 .bajada { max-width: 85ch; color: var(--tenue); font-size: 1rem; line-height: 1.65; }
@@ -150,8 +157,6 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .tarjetas { grid-template-columns: minmax(0, 1fr); }
   .cabecera-intro h1 { font-size: 1.75rem; }
   .cabecera-barra { gap: .5rem 1rem; padding-block: .5rem; }
-  .tema { margin-left: 0; flex: 1 1 10rem; }
-  .tema select { width: 100%; }
   #abrir-mochila { font-size: .875rem; padding-inline: .65rem; }
   .marco { padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right)); }
   .marca { font-size: 1.25rem; }
