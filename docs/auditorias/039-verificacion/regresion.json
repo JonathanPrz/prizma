@@ -1,0 +1,62 @@
+[
+  {
+    "ancho": 1280,
+    "tema": "light",
+    "areasConservanDatos": true,
+    "tallerDiferido": true,
+    "textosExactos": true,
+    "impresionComparada": [
+      "curso",
+      "centro",
+      "trabajo"
+    ],
+    "ventanaBloqueadaExplicada": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 1280,
+    "tema": "dark",
+    "areasConservanDatos": true,
+    "tallerDiferido": true,
+    "textosExactos": true,
+    "impresionComparada": [
+      "curso",
+      "centro",
+      "trabajo"
+    ],
+    "ventanaBloqueadaExplicada": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "light",
+    "areasConservanDatos": true,
+    "tallerDiferido": true,
+    "textosExactos": true,
+    "impresionComparada": [
+      "curso",
+      "centro",
+      "trabajo"
+    ],
+    "ventanaBloqueadaExplicada": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "dark",
+    "areasConservanDatos": true,
+    "tallerDiferido": true,
+    "textosExactos": true,
+    "impresionComparada": [
+      "curso",
+      "centro",
+      "trabajo"
+    ],
+    "ventanaBloqueadaExplicada": true,
+    "sinDesborde": true,
+    "errores": []
+  }
+]

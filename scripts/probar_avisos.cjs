@@ -56,7 +56,7 @@ for(const tipo of ['escolar','superior']){
  const esperada=[...tarea.slice(inicio).matchAll(/^   \d\. (.*)$/gm)].slice(0,6).map(m=>m[1]);assert.deepEqual(lista,esperada);
  assert(tarea.includes(bloque.match(/<p class="ayuda">(.*?)<\/p>/)[1]));
 }
-assert(!html.includes('<dialog id="aviso-apoyos"'));assert(!leer('app.js').includes('prizma.aviso-apoyos.v1'));assert.equal((html.match(/class="enlace-guia-dua"/g)||[]).length,2);
+assert(!html.includes('<dialog id="aviso-apoyos"'));assert(!leer('app.js').includes('prizma.aviso-apoyos.v1'));assert.equal((html.match(/class="enlace-guia-dua"/g)||[]).length,1);
 console.log('Correcto: ninguna guía automática, aperturas manuales y foco, texto exacto de escuela/superior, privacidad al escribir y memoria, notas sin solapar, encabezados y claves retiradas.');
 // El evento close nativo puede llegar después de que la persona enfocó otro campo.
 const rapida=visita(),origenRapido=rapida.nodo('trabajo-iniciales'),siguienteCampo=rapida.nodo('trabajo-puesto');

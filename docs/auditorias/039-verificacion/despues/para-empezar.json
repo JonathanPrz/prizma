@@ -1,0 +1,1508 @@
+[
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [],
+      "momentos": [],
+      "asignatura": "",
+      "propositos": [],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-6-2",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-7-4",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [],
+    "ordenDOM": [
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-6-2",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-7-4",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "visibles": [],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Sin información"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [],
+    "grupos": [
+      "Antes (11)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Durante (14)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Después (4)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "En toda la clase (7)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes"
+    ],
+    "conteo": "36 acciones",
+    "nombre": "sin-criterios",
+    "definiciones": []
+  },
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "momentos": [],
+      "asignatura": "",
+      "propositos": [],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-6-2",
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-5-3-andamiaje-lista",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-3-2",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-7-4",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-2",
+      "dua-6-3"
+    ],
+    "ordenDOM": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-2",
+      "dua-6-3",
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-6-4",
+      "dua-3-2",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-7-4",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "visibles": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-2",
+      "dua-6-3"
+    ],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [
+      "Responde a: Se pierden en tareas largas o con muchos pasos.",
+      "Responde a: Se pierden en tareas largas o con muchos pasos.",
+      "Responde a: Se pierden en tareas largas o con muchos pasos.",
+      "Responde a: Se pierden en tareas largas o con muchos pasos."
+    ],
+    "grupos": [
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Antes (10)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Durante (12)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Después (4)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "En toda la clase (7)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes"
+    ],
+    "conteo": "36 acciones",
+    "nombre": "necesidad",
+    "definiciones": [
+      "Las acciones que mejor responden a lo que describiste."
+    ]
+  },
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [],
+      "momentos": [
+        "durante"
+      ],
+      "asignatura": "",
+      "propositos": [],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [],
+    "ordenDOM": [
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2"
+    ],
+    "visibles": [],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Sin información"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [],
+    "grupos": [
+      "Durante (14)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes"
+    ],
+    "conteo": "14 acciones",
+    "nombre": "durante-sin-necesidad",
+    "definiciones": []
+  },
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "momentos": [
+        "durante"
+      ],
+      "asignatura": "",
+      "propositos": [],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-3-2",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-3",
+      "dua-6-4"
+    ],
+    "ordenDOM": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-3-2",
+      "dua-8-3",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-2-5",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2"
+    ],
+    "visibles": [
+      "dua-5-3-andamiaje-lista",
+      "dua-6-3",
+      "dua-6-4"
+    ],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [
+      "Responde a: Se pierden en tareas largas o con muchos pasos.",
+      "Responde a: Se pierden en tareas largas o con muchos pasos.",
+      "Responde a: Se pierden en tareas largas o con muchos pasos."
+    ],
+    "grupos": [
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Durante (11)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes"
+    ],
+    "conteo": "14 acciones",
+    "nombre": "durante-con-necesidad",
+    "definiciones": [
+      "Las acciones que mejor responden a lo que describiste."
+    ]
+  },
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "momentos": [
+        "despues"
+      ],
+      "asignatura": "",
+      "propositos": [
+        "presentar"
+      ],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-3-4"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [],
+    "ordenDOM": [
+      "dua-3-4"
+    ],
+    "visibles": [],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [],
+    "grupos": [
+      "Después (1)",
+      "Fuentes"
+    ],
+    "conteo": "1 acción",
+    "nombre": "una-accion",
+    "definiciones": []
+  },
+  {
+    "estado": {
+      "ambito": "educacion",
+      "trabajadores": [
+        {
+          "id": "laboral",
+          "iniciales": "AB",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "voz": "",
+          "descripcionGuardada": true,
+          "tipoPuesto": "",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "seleccion": {}
+        }
+      ],
+      "trabajadorActivo": "laboral",
+      "versionSituaciones": 2,
+      "perfil": {
+        "nivel": "basica",
+        "practica": true,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "seleccion": {},
+      "estudiantes": [
+        {
+          "id": "fijo",
+          "iniciales": "AA",
+          "dimensiones": {
+            "1": 2,
+            "2": 2
+          },
+          "ayuda": "",
+          "practicaProfesional": false,
+          "descripcionGuardada": true,
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "voz": "",
+          "seleccion": {}
+        }
+      ],
+      "estudianteActivo": "fijo",
+      "necesidades": [],
+      "momentos": [],
+      "asignatura": "",
+      "propositos": [],
+      "claseGuardada": false,
+      "mantenerIndividual": [],
+      "pestana": "dua"
+    },
+    "borrador": null,
+    "ofrecidos": [
+      "dua-6-2",
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-2-5",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-7-4",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "acceso": [
+      "acc-1-organizador",
+      "acc-1-ubicacion",
+      "acc-2-audio",
+      "acc-2-tiempo",
+      "acc-1-partes",
+      "acc-8-teclado",
+      "acc-2-pictogramas",
+      "acc-7-luz",
+      "acc-8-transcribe",
+      "acc-1-agenda",
+      "acc-7-desfogue",
+      "acc-9-jornada"
+    ],
+    "taller": [
+      "prac-procedimiento",
+      "prac-tiempo",
+      "prac-evaluar",
+      "prac-rotulos",
+      "prac-recorrido"
+    ],
+    "objetivos": [
+      "obj-graduacion",
+      "obj-graduacion-matematica",
+      "obj-graduacion-lenguaje",
+      "obj-priorizacion",
+      "obj-priorizacion-lenguaje",
+      "obj-priorizacion-matematica",
+      "obj-temporalizacion",
+      "obj-temporalizacion-lenguaje",
+      "obj-temporalizacion-ciencias",
+      "obj-enriquecimiento",
+      "obj-enriquecimiento-comunicacion",
+      "obj-enriquecimiento-historia",
+      "obj-eliminacion"
+    ],
+    "profesional": {},
+    "primeras": [
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3"
+    ],
+    "ordenDOM": [
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3",
+      "dua-6-2",
+      "dua-4-2",
+      "dua-1-1",
+      "dua-1-3",
+      "dua-2-1-vocabulario",
+      "dua-3-1",
+      "dua-6-1",
+      "dua-7-1",
+      "dua-7-2",
+      "dua-8-1-meta-visible",
+      "dua-9-1",
+      "dua-2-5",
+      "dua-6-3",
+      "dua-6-4",
+      "dua-1-2",
+      "dua-2-2",
+      "dua-3-3",
+      "dua-4-1",
+      "dua-5-2",
+      "dua-7-3",
+      "dua-8-2",
+      "dua-9-2",
+      "dua-9-3-reflexion-cierre",
+      "dua-3-4",
+      "dua-5-1",
+      "dua-8-5",
+      "dua-7-4",
+      "dua-2-3",
+      "dua-2-4",
+      "dua-5-4",
+      "dua-6-5",
+      "dua-8-4-pertenencia",
+      "dua-9-4"
+    ],
+    "visibles": [
+      "dua-3-2",
+      "dua-5-3-andamiaje-lista",
+      "dua-8-3"
+    ],
+    "documento": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Clase práctica",
+          "Clase con taller, laboratorio o terreno"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Sin información"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "estudiante": "fijo",
+          "acuerdo": {
+            "roles": [],
+            "fecha": "",
+            "revision": "",
+            "estado": "sin-acuerdos"
+          },
+          "estadoAcuerdo": "Sin acuerdos",
+          "nombre": "Apoyos para AA",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Seguido",
+              "Sin apoyo elegido"
+            ],
+            [
+              "Lectura, escritura y cálculo",
+              "Seguido",
+              "Sin apoyo elegido"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": []
+        }
+      ],
+      "fuentes": []
+    },
+    "razones": [
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno.",
+      "Responde a lo que marcaste: taller, laboratorio o terreno."
+    ],
+    "grupos": [
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Antes (11)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Durante (11)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Después (4)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "En toda la clase (7)",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes",
+      "Fuentes"
+    ],
+    "conteo": "36 acciones",
+    "nombre": "solo-taller",
+    "definiciones": [
+      "Las acciones que mejor responden a lo que describiste."
+    ]
+  }
+]

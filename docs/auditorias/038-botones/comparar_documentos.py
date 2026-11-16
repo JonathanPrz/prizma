@@ -1,10 +1,11 @@
 """Compara títulos del modelo, vista y PDF. No prueba una impresora nativa."""
+import os
 import json
 import re
 from pathlib import Path
 import fitz
 
-carpeta = Path(__file__).resolve().parent
+carpeta = Path(os.environ.get('AUDITORIA_SALIDA', Path(__file__).resolve().parent))
 normalizar = lambda texto: re.sub(r'\s+', ' ', texto).strip()
 resultados = []
 for archivo in sorted(carpeta.glob('*-modelo.json')):
