@@ -141,6 +141,7 @@ try {
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
+        <label id="practica-profesional-campo" hidden><input type="checkbox" id="practica-profesional"> Este estudiante hará su práctica profesional</label>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
         <label for="estudiante-voz">¿Qué dicen el estudiante y su familia?<textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
       </div>
@@ -170,6 +171,13 @@ try {
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
+      <section id="bloque-practica-profesional" class="bloque-apoyo" aria-labelledby="t-practica-profesional" hidden>
+        <h2 id="t-practica-profesional">Práctica profesional</h2>
+        <a id="enlace-guia-practica" href="#guia-practica" aria-haspopup="dialog" aria-controls="guia-practica">¿Quién hace qué en la práctica?</a>
+        <div id="practica-profesional-grupos"></div>
+        <p id="centro-ayuda" class="ayuda">Primero elige los ajustes que puede hacer el centro</p>
+        <button type="button" class="boton" id="preparar-centro" aria-describedby="centro-ayuda" aria-haspopup="dialog" aria-controls="documento-centro" disabled>Preparar documento para el centro</button>
+      </section>
     </div>
   </section>
 </main>
@@ -250,6 +258,43 @@ try {
     <p class="ayuda">Basado en la Ley 21.091, la Ley 20.422 y las orientaciones de la Subsecretaría de Educación Superior.</p>
   </div>
   <button type="button" id="guia-apoyos-entendido" class="boton boton-principal">Entendido</button>
+</dialog>
+
+<dialog id="guia-practica" class="aviso-privacidad" aria-labelledby="t-guia-practica">
+  <h2 id="t-guia-practica" tabindex="-1" autofocus>¿Quién hace qué en la práctica?</h2>
+  <section id="guia-practica-media">
+    <h3>En la media técnico-profesional</h3>
+    <ol>
+      <li>El liceo, el estudiante y el centro acuerdan por escrito el plan de práctica: tareas, jornada y ajustes (Decreto 2.516, art. 2).</li>
+      <li>El profesor tutor supervisa, visita el centro y registra el avance (art. 7).</li>
+      <li>El representante del centro evalúa las tareas y firma el informe con el tutor (art. 6).</li>
+      <li>Si hacen falta condiciones excepcionales, el liceo las solicita a la SEREMI (arts. 4 y 13).</li>
+    </ol>
+  </section>
+  <section id="guia-practica-superior" hidden>
+    <h3>En la educación superior</h3>
+    <ol>
+      <li>La institución mantiene su deber de hacer ajustes también durante la práctica (Ley 20.422, art. 39; Ley 21.091, art. 2 e).</li>
+      <li>La institución acuerda con el centro quién implementa cada ajuste, y lo deja por escrito.</li>
+    </ol>
+  </section>
+  <h3>En ambos casos</h3>
+  <ul>
+    <li>El estudiante decide qué información se comparte. Pedir un ajuste no autoriza entregar el diagnóstico ni el expediente (Ley 19.628; Ley 21.719 desde el 1 de diciembre de 2026).</li>
+    <li>El centro proporciona colación y movilización, o una compensación acordada (Código del Trabajo, art. 8).</li>
+  </ul>
+  <p class="ayuda">Orientación basada en la normativa citada. No es asesoría legal.</p>
+  <button type="button" id="guia-practica-entendido" class="boton boton-principal">Entendido</button>
+</dialog>
+
+<dialog id="documento-centro" class="aviso-privacidad" aria-labelledby="t-documento-centro">
+  <h2 id="t-documento-centro" tabindex="-1" autofocus>Preparar documento para el centro</h2>
+  <fieldset><legend>Ajustes que el estudiante decide compartir</legend><div id="opciones-centro"></div></fieldset>
+  <label><input type="checkbox" id="decision-centro" aria-describedby="decision-centro-ayuda"> El estudiante revisó este documento y decidió compartirlo</label>
+  <p id="decision-centro-ayuda" class="ayuda" role="status"></p>
+  <p id="error-centro" role="status"></p>
+  <button type="button" id="ver-centro" class="boton boton-principal" aria-describedby="decision-centro-ayuda" disabled>Ver documento</button>
+  <button type="button" id="cancelar-centro" class="boton">Cancelar</button>
 </dialog>
 
 <dialog id="aviso-privacidad" class="aviso-privacidad" aria-labelledby="t-privacidad">
