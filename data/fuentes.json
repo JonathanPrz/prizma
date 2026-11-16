@@ -232,5 +232,113 @@
     "cita": "Coñoman, G., Ávila, V. y Carmona, C. (2024). Initiatives to support the school-to-work transition of people with intellectual disabilities: A systematic review.",
     "url": "https://doi.org/10.3109/13668250.2024.2317799",
     "archivo": "docs/fuentes/codex/practica-laboral/revision-conoman-2024.md"
+  },
+  {
+    "id": "jan-lectura",
+    "cita": "Job Accommodation Network. Reading. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Reading.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-lectura.md"
+  },
+  {
+    "id": "jan-expresion",
+    "cita": "Job Accommodation Network. Oral/Verbal Language/Speaking. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Oral-Verbal-Language-Speaking.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-expresion.md"
+  },
+  {
+    "id": "jan-aprendizaje",
+    "cita": "Job Accommodation Network. Learning. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Learning.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-aprendizaje.md"
+  },
+  {
+    "id": "jan-interaccion",
+    "cita": "Job Accommodation Network. Social Skills. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Social-Skills.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-interaccion.md"
+  },
+  {
+    "id": "jan-estres",
+    "cita": "Job Accommodation Network. Stress Intolerance. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Stress-Intolerance.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-estres.md"
+  },
+  {
+    "id": "jan-vision",
+    "cita": "Job Accommodation Network. Vision Impairment. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Vision-Impairment.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-vision.md"
+  },
+  {
+    "id": "jan-audicion",
+    "cita": "Job Accommodation Network. Hearing Impairment. U.S. Department of Labor.",
+    "url": "https://askjan.org/disabilities/Hearing-Impairment.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-audicion.md"
+  },
+  {
+    "id": "jan-sensorial",
+    "cita": "Job Accommodation Network. Autism Spectrum (sensibilidad sensorial). U.S. Department of Labor.",
+    "url": "https://askjan.org/disabilities/autism-spectrum.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-sensorial.md"
+  },
+  {
+    "id": "jan-movimiento",
+    "cita": "Job Accommodation Network. Motor. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/MOTOR.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-movimiento.md"
+  },
+  {
+    "id": "jan-fatiga",
+    "cita": "Job Accommodation Network. Decreased Stamina/Fatigue. U.S. Department of Labor.",
+    "url": "https://askjan.org/limitations/Decreased-Stamina-Fatigue.cfm",
+    "archivo": "docs/fuentes/codex/trabajo/jan-fatiga.md"
+  },
+  {
+    "id": "hse-lengua",
+    "cita": "Health and Safety Executive (2026). Employing migrant workers: Help with language issues. Open Government Licence v3.0.",
+    "url": "https://www.hse.gov.uk/migrantworkers/employer/help-with-language-issues.htm",
+    "archivo": "docs/fuentes/codex/trabajo/hse-lengua.md"
+  },
+  {
+    "id": "schlegler-2022",
+    "cita": "Schlegler, M. (2022). Systematic Literature Review: Professional Situation of Gifted Adults. Frontiers in Psychology.",
+    "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2022.736487/full",
+    "archivo": "docs/fuentes/codex/trabajo/revision-schlegler-2022.md"
+  },
+  {
+    "id": "codigo-trabajo",
+    "cita": "Código del Trabajo (DFL 1, 2002).",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+    "archivo": "docs/fuentes/codex/practica-laboral/chile-codigo-trabajo.md"
+  },
+  {
+    "id": "dt-541-24",
+    "cita": "Dirección del Trabajo. ORD. 541/24: discriminación, datos personales y ofertas de empleo.",
+    "url": "https://www.dt.gob.cl/legislacion/1624/w3-article-128171.html",
+    "archivo": "docs/fuentes/codex/trabajo/chile-dt-541-24.md"
+  },
+  {
+    "id": "dt-693-26",
+    "cita": "Dirección del Trabajo. ORD. 693/26: alcance de la Ley 21.690.",
+    "url": "https://www.dt.gob.cl/legislacion/1624/w3-article-126809.html",
+    "archivo": "docs/fuentes/codex/trabajo/chile-dt-693-26.md"
+  },
+  {
+    "id": "servicio-civil-adp",
+    "cita": "Dirección Nacional del Servicio Civil. Protocolo de selección preferente y ajustes en procesos de Alta Dirección Pública.",
+    "url": "https://www.serviciocivil.cl/",
+    "archivo": "docs/fuentes/codex/trabajo/chile-servicio-civil-adp.md"
+  },
+  {
+    "id": "mintrab-tutela",
+    "cita": "Ministerio del Trabajo y Previsión Social. Derechos de los y las trabajadoras.",
+    "url": "https://www.mintrab.gob.cl/empleo/derechos-de-los-trabajadores/",
+    "archivo": "docs/fuentes/codex/trabajo/chile-mintrab-tutela.md"
+  },
+  {
+    "id": "whitworth-2024",
+    "cita": "Whitworth, A., Baxter, S., Cullingworth, J. y Clowe, M. (2024). Individual Placement and Support (IPS) beyond severe mental health. Preventive Medicine Reports.",
+    "url": "https://doi.org/10.1016/j.pmedr.2024.102786",
+    "archivo": "docs/fuentes/codex/trabajo/revision-whitworth-2024.md"
   }
 ]

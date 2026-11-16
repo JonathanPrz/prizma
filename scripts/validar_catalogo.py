@@ -3,7 +3,7 @@ import json, sys
 R = json.load(open("data/recomendaciones.json"))
 F = {f["id"] for f in json.load(open("data/fuentes.json"))}
 CONS = {f"{g}.{i}" for g, n in {1:3, 2:5, 3:4, 4:2, 5:4, 6:5, 7:4, 8:5, 9:4}.items() for i in range(1, n + 1)}
-ENUM = {"tipo": {"dua", "acceso", "objetivos", "desregulacion", "adicional", "practica-profesional"},
+ENUM = {"tipo": {"dua", "acceso", "objetivos", "desregulacion", "adicional", "practica-profesional", "trabajo"},
         "momento": {"antes", "durante", "despues", "toda-la-clase"},
         "respaldo": {"investigacion-solida", "investigacion-moderada", "consenso-expertos", "orientacion-oficial", "norma-legal"}}
 PROHIBIDO = ["estilo de aprendizaje", "estilos de aprendizaje", "contención física", "chaleco", "suspend", "neurociencia demuestra"]
@@ -28,10 +28,10 @@ for r in R:
     errores += [f"{r['id']}: contexto desconocido {c}" for c in r.get("contextos", []) if c not in CONTEXTOS]
 for r in R:
     i = r["id"]
-    errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]
+    errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES + ["trabajo"]]
 # Cada nivel debe tener al menos una acción por consideración DUA.
 SUBTIPOS_ACCESO = {"presentacion", "respuesta", "entorno", "tiempo"}  # Decreto 83
-SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}, "practica-profesional": {"institucion", "centro", "estudiante"}}
+SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}, "practica-profesional": {"institucion", "centro", "estudiante"}, "trabajo": {"informacion", "comunicacion", "puesto", "tiempo", "proceso"}}
 errores += [f"{r['id']}: subtipo inválido para {r['tipo']}" for r in R if r["tipo"] in SUBTIPOS and r.get("subtipo") not in SUBTIPOS[r["tipo"]]]
 errores += [f"{r['id']}: objetivos no aplica a parvularia ni a superior" for r in R if r["tipo"] == "objetivos" and (not r["niveles"] or {"parvularia", "superior"} & set(r["niveles"]))]
 ASIGNATURAS = {"", "lenguaje", "matematica", "ciencias", "historia"}
@@ -50,6 +50,11 @@ for r in R:
     if "dua" in r:
         if r["tipo"] != "acceso" or r["dua"] not in CONS: errores.append(f"{r['id']}: relación DUA inválida")
         else: errores += [f"{r['id']}: sin acción DUA {r['dua']} en {n}" for n in r["niveles"] if not any(x["tipo"] == "dua" and x["consideracion"] == r["dua"] and (not x["niveles"] or n in x["niveles"]) for x in R)]
+# El trabajo usa el nivel propio «trabajo» y necesita al menos 4 ajustes por situación.
+trabajo = [r for r in R if r["tipo"] == "trabajo"]
+errores += [f"{r['id']}: el trabajo solo usa el nivel trabajo" for r in trabajo if r["niveles"] != ["trabajo"]]
+pocas_trabajo = [d for d in range(1, 15) if sum(d in r["dimensiones"] for r in trabajo if r["subtipo"] != "proceso") < 4] if trabajo else []
+errores += [f"trabajo: situaciones con menos de 4 ajustes {pocas_trabajo}"] if pocas_trabajo else []
 NEC = json.load(open("data/necesidades.json"))
 for n in NEC:
     errores += [f"necesidad {n['id']}: consideración inválida {c}" for c in n["consideraciones"] if c not in CONS]

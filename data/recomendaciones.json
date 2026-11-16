@@ -5539,5 +5539,1848 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "tr-etapas",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Divide los encargos largos en etapas visibles",
+    "como": [
+      "Escribe las etapas de cada encargo en orden.",
+      "Marca qué etapa va ahora y cuál sigue.",
+      "Revisen juntos el avance al cerrar cada etapa."
+    ],
+    "porque": "Ver el encargo por partes ayuda a empezar y a no perder el hilo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-prioridades",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda una lista priorizada al iniciar la jornada",
+    "como": [
+      "Al comenzar, define con la persona las 3 tareas más importantes del día.",
+      "Déjalas por escrito a la vista.",
+      "Avisa si cambian las prioridades durante el día."
+    ],
+    "porque": "Saber qué va primero reduce la carga de decidir y organizarse.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-recordatorios",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Permite temporizadores o recordatorios elegidos con la persona",
+    "como": [
+      "Pregunta qué tipo de recordatorio le sirve: alarma, calendario o lista.",
+      "Acuerda los recordatorios de reuniones y plazos.",
+      "Revisa si siguen siendo útiles."
+    ],
+    "porque": "Un recordatorio externo sostiene la memoria de plazos y tareas.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-distractores",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Reduce los distractores del puesto de trabajo",
+    "como": [
+      "Ofrece un puesto alejado del paso de personas o del ruido.",
+      "Permite audífonos o separadores si no afectan la seguridad.",
+      "Acuerda horarios sin interrupciones para el trabajo concentrado."
+    ],
+    "porque": "Menos interrupciones dejan más energía para la tarea.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      1,
+      7
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-texto-digital",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Entrega los documentos en texto digital que se pueda escuchar o ampliar",
+    "como": [
+      "Comparte archivos con texto real, no imágenes escaneadas.",
+      "Comprueba que funcionen con lector de voz.",
+      "Ofrece una versión impresa ampliada si la prefiere."
+    ],
+    "porque": "El texto digital permite escuchar, ampliar o buscar la información.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-lectura"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-formato-lectura",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Ajusta la letra, el espaciado y la extensión de los textos",
+    "como": [
+      "Usa letra simple, de buen tamaño y con espacio entre líneas.",
+      "Resalta lo importante al inicio.",
+      "Acompaña los textos largos con un resumen."
+    ],
+    "porque": "Un texto más legible reduce el esfuerzo de lectura.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-lectura"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-formularios",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Reemplaza los formularios en papel por formularios digitales accesibles",
+    "como": [
+      "Ofrece el formulario en un formato que se pueda completar en computador.",
+      "Revisa que funcione con lector de pantalla y dictado.",
+      "Permite guardar y continuar después."
+    ],
+    "porque": "Un formulario accesible evita depender de la escritura a mano.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      2,
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-lectura"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-respuesta-oral",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Permite informar en forma oral cuando escribir no es la función",
+    "como": [
+      "Identifica si la escritura es esencial en esa tarea.",
+      "Si no lo es, acepta un informe oral o un audio.",
+      "Registra lo acordado por escrito para ambos."
+    ],
+    "porque": "Así se evalúa el trabajo y no la habilidad para escribir.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      2
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-expresion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-una-tarea",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Enseña una tarea a la vez",
+    "como": [
+      "Explica y practica una tarea antes de pasar a la siguiente.",
+      "Comprueba que la domine.",
+      "Agrega la siguiente cuando esté lista."
+    ],
+    "porque": "Aprender una cosa a la vez evita confundir procedimientos.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      3,
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-aprendizaje"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-formatos-formacion",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Ofrece la capacitación en más de un formato",
+    "como": [
+      "Combina explicación, demostración y material escrito o en video.",
+      "Entrega el material para revisarlo después.",
+      "Pregunta qué formato le sirve más."
+    ],
+    "porque": "Distintos formatos dan más de una entrada a la misma información.",
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      3,
+      2,
+      13
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-aprendizaje"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-entrenamiento",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Amplía el período de entrenamiento",
+    "como": [
+      "Acuerda un plazo de aprendizaje más largo para las tareas nuevas.",
+      "Define metas intermedias.",
+      "Revisen el avance cada semana."
+    ],
+    "porque": "Más tiempo de práctica guiada reduce errores y ansiedad.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      3,
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-aprendizaje"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-apoyo-puesto",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Ofrece entrenamiento individual con apoyo en el puesto",
+    "como": [
+      "Asigna a alguien que enseñe la tarea en el lugar donde se hace.",
+      "Retira el apoyo de a poco.",
+      "Coordina con programas de empleo con apoyo si existen."
+    ],
+    "porque": "El apoyo en el puesto es parte de los programas de empleo con mejor evidencia.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      3,
+      1,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jan-aprendizaje",
+      "senadis-avanza-2021",
+      "whitworth-2024"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-teclear",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Permite aportar por escrito o tecleando en las reuniones",
+    "como": [
+      "Habilita el chat o un documento compartido en las reuniones.",
+      "Lee en voz alta sus aportes si lo desea.",
+      "No exijas intervenir oralmente."
+    ],
+    "porque": "Participar por escrito permite aportar sin depender del habla.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-expresion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-respuesta-escrita",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Acepta respuestas escritas en las tareas que lo permitan",
+    "como": [
+      "Identifica qué comunicaciones pueden hacerse por escrito.",
+      "Usa correo o mensajes para esas tareas.",
+      "Mantén un canal claro para consultas."
+    ],
+    "porque": "Responder por escrito da tiempo para expresar bien la idea.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-expresion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-lengua-senas",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Habilita un canal en lengua de señas chilena cuando sea el preferido",
+    "como": [
+      "Pregunta qué forma de comunicarse prefiere.",
+      "Coordina intérprete para reuniones e inducciones.",
+      "Usa también apoyos escritos."
+    ],
+    "porque": "Comunicarse en su lengua permite participar en igualdad.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      12,
+      13
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-expresion",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-preparar-comunicacion",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Ofrece mentoría para preparar las comunicaciones del puesto",
+    "como": [
+      "Identifica qué comunicaciones orales exige el cargo.",
+      "Asigna a alguien que ayude a prepararlas.",
+      "Practiquen antes las situaciones importantes."
+    ],
+    "porque": "Preparar con apoyo reduce la carga de las situaciones orales.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-expresion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-escrita-revisable",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Permite la comunicación escrita que se pueda revisar",
+    "como": [
+      "Confirma por escrito los acuerdos de las conversaciones.",
+      "Usa mensajes claros y directos.",
+      "Responde dudas por el mismo canal."
+    ],
+    "porque": "Un registro escrito evita malentendidos en la interacción.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      4,
+      3
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-interaccion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-uno-a-uno",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Da las instrucciones importantes en conversaciones uno a uno, en un lugar tranquilo",
+    "como": [
+      "Elige un espacio privado y sin ruido.",
+      "Ve al punto y confirma lo entendido.",
+      "Deja un resumen escrito."
+    ],
+    "porque": "Un espacio tranquilo facilita entender y preguntar.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      4,
+      7
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-interaccion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-bloques-tiempo",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda bloques de tiempo para comunicarse",
+    "como": [
+      "Define momentos fijos para reuniones y consultas.",
+      "Protege el resto del tiempo para el trabajo individual.",
+      "Avisa con anticipación las reuniones extra."
+    ],
+    "porque": "Saber cuándo habrá interacción permite prepararse.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      4,
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-interaccion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-pausas-interaccion",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Permite pausas durante las interacciones largas",
+    "como": [
+      "Acuerda una forma discreta de pedir una pausa.",
+      "Planifica pausas en reuniones largas.",
+      "Retoma sin reproches."
+    ],
+    "porque": "Una pausa a tiempo ayuda a sostener la interacción.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      4,
+      5
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-interaccion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-estresores",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Identifica con la persona qué situaciones le generan estrés y redúcelas",
+    "como": [
+      "Conversen qué momentos o tareas le cuestan más.",
+      "Busquen juntos cambios concretos.",
+      "Revisa si los cambios funcionan."
+    ],
+    "porque": "Reducir estresores concretos previene la sobrecarga.",
+    "areas": [
+      "emocional"
+    ],
+    "dimensiones": [
+      5
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-estres"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-horario-flexible",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Flexibiliza el horario de entrada y salida",
+    "como": [
+      "Evalúa si el puesto permite otro horario.",
+      "Acuerda un horario que reduzca el estrés del traslado.",
+      "Déjalo por escrito."
+    ],
+    "porque": "Un traslado menos estresante mejora el inicio de la jornada.",
+    "areas": [
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      5,
+      9
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-estres"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-pausas-distribuidas",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda pausas más frecuentes o distribuidas",
+    "como": [
+      "Define cuántas pausas y de qué duración.",
+      "Permite usarlas cuando las necesite.",
+      "Mantén el total de horas acordado."
+    ],
+    "porque": "Pausas distribuidas ayudan a regularse durante la jornada.",
+    "areas": [
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      5,
+      9,
+      7
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-estres"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-supervision",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Mantén reuniones de supervisión regulares y una retroalimentación respetuosa",
+    "como": [
+      "Fija reuniones breves y periódicas.",
+      "Comenta lo que funciona y lo que se puede mejorar, con ejemplos.",
+      "Evita las correcciones frente a otros."
+    ],
+    "porque": "Una supervisión predecible y respetuosa reduce la ansiedad.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      5,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-estres"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-digital-lector",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Entrega los materiales en formatos compatibles con lector de pantalla",
+    "como": [
+      "Usa documentos con títulos y texto real.",
+      "Describe las imágenes y gráficos importantes.",
+      "Comprueba la compatibilidad antes de enviarlos."
+    ],
+    "porque": "El material accesible permite trabajar con autonomía.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-vision"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-ocr",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Facilita convertir documentos impresos a texto digital",
+    "como": [
+      "Ofrece un escáner con reconocimiento de texto.",
+      "Digitaliza los documentos impresos frecuentes.",
+      "Prefiere enviar versiones digitales desde el origen."
+    ],
+    "porque": "Convertir lo impreso permite leerlo con ampliación o voz.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      6,
+      2
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-vision"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-lector-braille",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Facilita lector de pantalla, ampliación o línea Braille según prefiera",
+    "como": [
+      "Pregunta qué tecnología usa.",
+      "Coordina su instalación con soporte informático.",
+      "Revisa que funcione con los sistemas de la empresa."
+    ],
+    "porque": "La tecnología adecuada da acceso a la información del trabajo.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-vision",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-formularios-voz",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Permite tomar notas y completar formularios con salida de voz o Braille",
+    "como": [
+      "Revisa qué formularios usa en su trabajo.",
+      "Asegura que se puedan completar con su tecnología.",
+      "Ofrece alternativas para los que no se puedan adaptar."
+    ],
+    "porque": "Completar registros sin barreras permite cumplir todas las funciones.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-vision"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-subtitulos",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Subtitula las reuniones y las capacitaciones",
+    "como": [
+      "Activa subtítulos automáticos o profesionales.",
+      "Comparte los videos con subtítulos.",
+      "Entrega un resumen escrito."
+    ],
+    "porque": "Leer lo que se dice permite seguir la reunión.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      13
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-audicion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-interprete",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Coordina intérprete de lengua de señas cuando la persona lo prefiera",
+    "como": [
+      "Pregunta si usa lengua de señas chilena.",
+      "Agenda al intérprete para reuniones e inducciones.",
+      "Dale el material con anticipación."
+    ],
+    "porque": "La información debe llegar en la lengua que la persona usa.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      13
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-audicion",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-mensajes-escritos",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Envía las instrucciones y avisos por un canal escrito",
+    "como": [
+      "Confirma por escrito las instrucciones importantes.",
+      "Usa chat o correo para avisos urgentes.",
+      "Habla de frente cuando converses en persona."
+    ],
+    "porque": "El canal escrito evita perder información.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      13,
+      3
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-audicion"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-alertas-visuales",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Instala alertas visuales o vibratorias de seguridad",
+    "como": [
+      "Revisa qué alarmas existen en el lugar.",
+      "Agrega señales luminosas o avisos al celular.",
+      "Inclúyelo en los simulacros."
+    ],
+    "porque": "Si no escucha una alarma, necesita verla o sentirla.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      13,
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-audicion",
+      "codigo-trabajo"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-ruido",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Controla el ruido rediseñando el espacio",
+    "como": [
+      "Identifica las fuentes de ruido cercanas.",
+      "Reubica equipos o usa materiales que absorban el sonido.",
+      "Revisa el cambio con la persona."
+    ],
+    "porque": "Menos ruido reduce la sobrecarga y mejora la concentración.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      7
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-sensorial"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-proteccion-auditiva",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Permite protección auditiva, comprobando que se escuchen las alarmas",
+    "como": [
+      "Acepta audífonos o tapones si los usa.",
+      "Comprueba que pueda percibir las alarmas de seguridad.",
+      "Agrega alertas visuales si hace falta."
+    ],
+    "porque": "La protección reduce el estrés sin poner en riesgo la seguridad.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      7
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-sensorial",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-iluminacion",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Ajusta la iluminación del puesto",
+    "como": [
+      "Evita luces muy intensas o parpadeantes.",
+      "Ofrece luz natural o una lámpara regulable.",
+      "Revisa los reflejos en las pantallas."
+    ],
+    "porque": "Una luz adecuada reduce la fatiga y la molestia sensorial.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      6
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-sensorial"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-reubicar",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Reubica el puesto lejos de las fuentes de estímulos",
+    "como": [
+      "Busca un lugar con menos ruido, paso de personas y luz directa.",
+      "Pregunta a la persona qué lugar le acomoda.",
+      "Mantén el acceso a lo que necesita para trabajar."
+    ],
+    "porque": "Un puesto más tranquilo permite sostener la jornada.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      7,
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-sensorial"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-mesa-regulable",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Ofrece un puesto o una mesa de altura regulable",
+    "como": [
+      "Revisa la altura y el espacio bajo la mesa.",
+      "Ajusta silla, pantalla y teclado.",
+      "Prueba el ajuste con la persona."
+    ],
+    "porque": "Un puesto ajustado permite trabajar sin dolor ni sobreesfuerzo.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jan-movimiento",
+      "jobaccess-2025"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-traslado-materiales",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Facilita carros u otras ayudas para mover materiales",
+    "como": [
+      "Identifica qué cargas mueve en su trabajo.",
+      "Ofrece carros o ayudas mecánicas.",
+      "Reorganiza el almacenamiento para reducir traslados."
+    ],
+    "porque": "Reducir el esfuerzo físico previene lesiones y fatiga.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8,
+      9
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-movimiento"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-herramientas",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Ofrece herramientas de alcance o de manipulación asistida",
+    "como": [
+      "Revisa qué herramientas usa a diario.",
+      "Ofrece versiones adaptadas o con mejor agarre.",
+      "Ubica lo necesario a su alcance."
+    ],
+    "porque": "La herramienta adecuada permite hacer la tarea con autonomía.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-movimiento"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-espacio-movilidad",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Asegura espacio para circular con dispositivos de movilidad",
+    "como": [
+      "Revisa accesos, pasillos, baños y puertas.",
+      "Despeja los recorridos habituales.",
+      "Corrige las barreras que encuentres."
+    ],
+    "porque": "Un espacio accesible es condición para trabajar en igualdad.",
+    "areas": [
+      "contexto",
+      "sensorial"
+    ],
+    "dimensiones": [
+      8,
+      11
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jobaccess-2025",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-pausas-descanso",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda pausas periódicas de descanso",
+    "como": [
+      "Define pausas breves durante la jornada.",
+      "Ofrece un lugar donde descansar.",
+      "Mantén el total de horas acordado."
+    ],
+    "porque": "Descansar a tiempo previene el agotamiento.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-fatiga"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-horario-energia",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Ajusta el horario a los momentos de mayor energía",
+    "como": [
+      "Pregunta en qué momentos rinde más.",
+      "Ubica ahí las tareas más exigentes.",
+      "Revisa el ajuste cada cierto tiempo."
+    ],
+    "porque": "Aprovechar los momentos de mayor energía mejora el desempeño.",
+    "areas": [
+      "cognicion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      1
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-fatiga"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-tareas-marginales",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Redistribuye las tareas secundarias para cuidar la energía",
+    "como": [
+      "Identifica qué tareas son esenciales y cuáles secundarias.",
+      "Redistribuye algunas secundarias en el equipo.",
+      "Mantén las funciones esenciales del cargo."
+    ],
+    "porque": "Cuidar la energía en lo secundario permite cumplir lo esencial.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-fatiga"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-ergonomia",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Ofrece un puesto ergonómico que reduzca el esfuerzo",
+    "como": [
+      "Evalúa la postura y los movimientos repetidos.",
+      "Ajusta silla, apoyos y equipos.",
+      "Permite alternar posturas."
+    ],
+    "porque": "Un puesto ergonómico reduce el dolor y la fatiga.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      9,
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-fatiga"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-interprete-lengua",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Usa interpretación profesional en las comunicaciones necesarias",
+    "como": [
+      "Identifica qué comunicaciones son críticas: contrato, seguridad, evaluaciones.",
+      "Coordina un intérprete para esas instancias.",
+      "Entrega también la información por escrito en su lengua."
+    ],
+    "porque": "Entender las comunicaciones críticas protege derechos y seguridad.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      10
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "hse-lengua"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-par-idioma",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Ofrece el apoyo de un compañero que hable su idioma",
+    "como": [
+      "Pregunta si hay alguien en el equipo que hable su lengua.",
+      "Acuerda que pueda apoyarle en las primeras semanas.",
+      "No lo uses para las comunicaciones legales o de seguridad."
+    ],
+    "porque": "Un par del mismo idioma facilita la integración en el equipo.",
+    "areas": [
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "hse-lengua"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-no-verbal",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Usa señales, videos y demostraciones, no solo palabras",
+    "como": [
+      "Muestra cómo se hace la tarea antes de explicarla.",
+      "Usa pictogramas y señalética clara.",
+      "Comprueba la comprensión pidiendo que lo muestre."
+    ],
+    "porque": "Lo visual no depende del dominio del idioma.",
+    "areas": [
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "hse-lengua"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-lenguaje-claro",
+    "tipo": "trabajo",
+    "subtipo": "informacion",
+    "titulo": "Usa lenguaje claro y capacita a quienes supervisan",
+    "como": [
+      "Escribe instrucciones con frases cortas y palabras comunes.",
+      "Evita modismos y siglas.",
+      "Capacita a las jefaturas para comunicarse con claridad."
+    ],
+    "porque": "El lenguaje claro ayuda a todo el equipo, no solo a quien aprende el idioma.",
+    "areas": [
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      10,
+      3
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "hse-lengua",
+      "dt-541-24"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-acceso-fisico",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Asegura el acceso físico al puesto y a los espacios comunes",
+    "como": [
+      "Recorre con la persona la entrada, el puesto, el baño y el comedor.",
+      "Identifica las barreras.",
+      "Define quién y cuándo las corrige."
+    ],
+    "porque": "Sin acceso físico no hay participación en igualdad.",
+    "areas": [
+      "contexto",
+      "sensorial"
+    ],
+    "dimensiones": [
+      11,
+      8
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jobaccess-2025",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-analisis-puesto",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Ajusta la disposición del puesto según un análisis de sus funciones",
+    "como": [
+      "Revisa qué funciones, equipos y espacios tiene el cargo.",
+      "Identifica qué podría ser una barrera.",
+      "Acuerda los cambios con la persona."
+    ],
+    "porque": "Partir del puesto, y no del diagnóstico, permite ajustes precisos.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-formacion-equipo",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Capacita al equipo sobre barreras e inclusión",
+    "como": [
+      "Organiza una capacitación breve sobre barreras y ajustes.",
+      "Habla de ajustes en general, sin exponer a nadie.",
+      "Incluye a las jefaturas."
+    ],
+    "porque": "Las actitudes del equipo pueden ser una barrera o un apoyo.",
+    "areas": [
+      "comunicacion",
+      "contexto"
+    ],
+    "dimensiones": [
+      11,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "codigo-trabajo",
+      "dt-693-26"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-seguimiento-entorno",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Define un seguimiento conjunto de los apoyos y los problemas del entorno",
+    "como": [
+      "Acuerda revisiones periódicas con la persona.",
+      "Registra los problemas del entorno que aparezcan.",
+      "Define quién los resuelve."
+    ],
+    "porque": "El seguimiento permite corregir a tiempo lo que no funciona.",
+    "areas": [
+      "contexto"
+    ],
+    "dimensiones": [
+      11
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-autonomia",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda más autonomía para organizar las tareas",
+    "como": [
+      "Define los resultados esperados y deja que la persona organice cómo lograrlos.",
+      "Revisen el avance en reuniones periódicas.",
+      "Ajusta según funcione."
+    ],
+    "porque": "La autonomía se asocia con mayor satisfacción en adultos con altas capacidades.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "schlegler-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-responsabilidades",
+    "tipo": "trabajo",
+    "subtipo": "puesto",
+    "titulo": "Revisa responsabilidades que permitan un aporte significativo",
+    "como": [
+      "Conversen qué tareas le resultan repetitivas o poco desafiantes.",
+      "Busquen responsabilidades que aprovechen sus intereses.",
+      "Revisa la carga total."
+    ],
+    "porque": "Un trabajo con sentido sostiene el compromiso.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "schlegler-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-desarrollo",
+    "tipo": "trabajo",
+    "subtipo": "tiempo",
+    "titulo": "Ofrece oportunidades de aprendizaje y desarrollo",
+    "como": [
+      "Informa sobre cursos, proyectos o rotaciones disponibles.",
+      "Acuerda metas de desarrollo.",
+      "Revisa el avance cada semestre."
+    ],
+    "porque": "Aprender cosas nuevas sostiene la motivación en el trabajo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "schlegler-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-mentoria-desafio",
+    "tipo": "trabajo",
+    "subtipo": "comunicacion",
+    "titulo": "Explora una mentoría elegida con la persona",
+    "como": [
+      "Pregunta si le interesa una mentoría y en qué área.",
+      "Busquen juntos a alguien adecuado.",
+      "Acuerden la frecuencia de los encuentros."
+    ],
+    "porque": "Una mentoría elegida puede abrir nuevos desafíos.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      14,
+      4
+    ],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "schlegler-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-pedir",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Ten un canal claro para pedir ajustes",
+    "como": [
+      "Informa a quién y cómo se pide un ajuste.",
+      "Acepta la petición con palabras simples, sin términos legales.",
+      "Responde dentro de un plazo razonable."
+    ],
+    "porque": "La ley exige ajustes necesarios; sin un canal claro, nadie los pide (Ley 20.422, art. 8).",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-20422",
+      "codigo-trabajo"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-analizar",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Analiza el ajuste con la persona, a partir de las funciones del cargo",
+    "como": [
+      "Identifiquen la tarea, la barrera y las alternativas.",
+      "Separa las funciones esenciales de las secundarias.",
+      "No pidas el diagnóstico ni la ficha clínica."
+    ],
+    "porque": "El análisis centrado en el puesto permite decidir bien y respeta la privacidad.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021",
+      "dt-541-24"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-decidir",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Define quién autoriza, quién implementa y cuándo se revisa",
+    "como": [
+      "Nombra a la persona que autoriza los recursos.",
+      "Nombra a quien implementa el ajuste.",
+      "Fija la fecha de revisión."
+    ],
+    "porque": "El empleador mantiene la responsabilidad; el gestor de inclusión facilita, no reemplaza.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "codigo-trabajo",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-documentar",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Registra el ajuste con lo mínimo necesario",
+    "como": [
+      "Anota la barrera de la tarea, el ajuste, el responsable y las fechas.",
+      "No incluyas diagnósticos.",
+      "Guarda el registro con acceso restringido."
+    ],
+    "porque": "El Código del Trabajo exige reserva de los datos privados (art. 154 ter).",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "codigo-trabajo",
+      "ley-19628"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-revisar",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Revisa si el ajuste funciona y cámbialo si hace falta",
+    "como": [
+      "Pregunta a la persona si el ajuste le permite hacer la tarea.",
+      "Revisa cuando cambien el puesto, las tareas o el equipo.",
+      "Ajusta sin convertirlo en vigilancia del desempeño."
+    ],
+    "porque": "Un ajuste que funcionó al inicio puede dejar de servir.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-rechazo",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Si no se puede hacer un ajuste, explica por qué y ofrece alternativas",
+    "como": [
+      "Explica por escrito las razones.",
+      "Propón otras alternativas que resuelvan la barrera.",
+      "Informa que puede consultar a la Dirección del Trabajo."
+    ],
+    "porque": "La persona puede reclamar ante la Dirección del Trabajo o pedir tutela laboral (Código del Trabajo, arts. 485 y 486).",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "codigo-trabajo",
+      "mintrab-tutela"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-seleccion",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Ofrece ajustes en la postulación y las entrevistas",
+    "como": [
+      "Indica en la oferta cómo pedir ajustes para postular.",
+      "Ofrece formatos accesibles, interpretación o más tiempo en las pruebas.",
+      "Evalúa lo que el cargo realmente exige."
+    ],
+    "porque": "La Ley 20.422 exige adaptar los instrumentos de selección (art. 24).",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-20422",
+      "codigo-trabajo",
+      "servicio-civil-adp"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "tr-privacidad",
+    "tipo": "trabajo",
+    "subtipo": "proceso",
+    "titulo": "Pregunta por la tarea, no por el diagnóstico",
+    "como": [
+      "Pregunta qué tarea presenta una barrera y qué ayuda.",
+      "Comparte con el equipo solo la instrucción necesaria para el ajuste.",
+      "Respeta si la persona decide no contar su situación."
+    ],
+    "porque": "Los datos de salud son sensibles; desde el 1 de diciembre de 2026 la Ley 21.719 refuerza su protección en el trabajo.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "trabajo"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "dt-541-24",
+      "ley-19628",
+      "ley-21719"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]

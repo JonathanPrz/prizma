@@ -1,6 +1,6 @@
 # Tarea 030 · Investigación: ajustes en el trabajo para empleadores que reciben trabajadores con discapacidad
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/030-ajustes-trabajo` · **Empieza después de la tarea 029**
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/030-ajustes-trabajo` · **Empieza después de la tarea 029**
 
 ## Para qué
 El dueño decidió sumar a Prizma ajustes para el trabajo, dirigidos a instituciones y empresas que reciben trabajadores con discapacidad. Será una pestaña nueva, «Trabajo», con el mismo formato de 3 pasos que DUA y apoyos: describir, ajustes y acuerdos.

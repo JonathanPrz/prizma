@@ -19,14 +19,15 @@ DIMENSIONES = ["Atención y organización", "Lectura, escritura y cálculo", "Co
                "Salud y energía", "Identidad, lengua y pertenencia", "Espacio, tiempo y actitudes",
                "Expresarse oralmente", "Audición", "Necesita más desafío"]
 TIPOS = {"dua": "DUA (todo el curso)", "acceso": "Adecuación de acceso", "objetivos": "Adecuación en los objetivos",
-         "desregulacion": "Desregulación", "adicional": "Apoyo adicional", "practica-profesional": "Práctica profesional"}
+         "desregulacion": "Desregulación", "adicional": "Apoyo adicional", "practica-profesional": "Práctica profesional", "trabajo": "Trabajo"}
 SUBTIPOS = {"presentacion": "Presentación", "respuesta": "Respuesta", "entorno": "Entorno", "tiempo": "Tiempo",
             "graduacion": "Graduación", "priorizacion": "Priorización", "temporalizacion": "Temporalización",
             "enriquecimiento": "Enriquecimiento", "eliminacion": "Eliminación",
+            "informacion": "Información", "comunicacion": "Comunicación", "puesto": "Puesto y entorno", "proceso": "Proceso",
             "institucion": "Liceo o institución", "centro": "Centro de práctica", "estudiante": "Preparar al estudiante",
             "antes": "Antes: prevenir", "durante": "Durante: acompañar", "despues": "Después: reparar"}
 MOMENTOS = {"antes": "Antes", "durante": "Durante", "despues": "Después", "toda-la-clase": "En toda la clase"}
-NIVELES = {"parvularia": "Parvularia", "basica": "Básica", "media": "Media", "superior": "Superior"}
+NIVELES = {"parvularia": "Parvularia", "basica": "Básica", "media": "Media", "superior": "Superior", "trabajo": "Trabajo"}
 RESPALDO = {"investigacion-solida": "Investigación sólida", "investigacion-moderada": "Investigación moderada",
             "consenso-expertos": "Consenso de expertos", "orientacion-oficial": "Orientación oficial", "norma-legal": "Norma legal"}
 

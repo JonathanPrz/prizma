@@ -607,14 +607,16 @@ function validarCatalogo(datos, referencias) {
   const contextos = ["practica", ...["actividad", "evidencia"].flatMap((nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].map((c) => c.value))];
   const listaTexto = (v) => Array.isArray(v) && v.every((t) => typeof t === "string" && t.trim());
   if (!Array.isArray(datos) || new Set(datos.map((r) => r?.id)).size !== datos.length || datos.some((r) =>
-    !r || typeof r.id !== "string" || !r.id.trim() || !["dua", ...Object.keys(GRUPOS_APOYOS)].includes(r.tipo) ||
+    !r || typeof r.id !== "string" || !r.id.trim() || !["dua", "trabajo", ...Object.keys(GRUPOS_APOYOS)].includes(r.tipo) ||
     typeof r.titulo !== "string" || !r.titulo.trim() || !listaTexto(r.como) || !r.como.length || typeof r.porque !== "string" || !r.porque.trim() ||
     !listaTexto(r.fuentes) || !r.fuentes.length || r.fuentes.some((id) => !Object.hasOwn(referencias, id)) ||
-    !listaTexto(r.niveles) || r.niveles.some((n) => !Object.hasOwn(NIVELES, n)) || !listaTexto(r.contextos) || r.contextos.some((c) => !contextos.includes(c)) ||
+    !listaTexto(r.niveles) || r.niveles.some((n) => !Object.hasOwn(NIVELES, n) && n !== "trabajo") || !listaTexto(r.contextos) || r.contextos.some((c) => !contextos.includes(c)) ||
     !Array.isArray(r.dimensiones) || r.dimensiones.some((d) => !Number.isInteger(d) || d < 1 || d > DIMENSIONES.length) ||
     typeof r.destacada !== "boolean" || !Object.hasOwn(RESPALDO, r.respaldo) ||
     (r.tipo === "dua" && (!Object.hasOwn(CONSIDERACIONES, r.consideracion) || !MOMENTOS.some(([id]) => id === r.momento))) ||
     (r.dua !== undefined && !Object.hasOwn(CONSIDERACIONES, r.dua)) ||
+    // Las fichas de trabajo se validan desde ya, aunque su pestaña aún no existe: nunca aplican a un nivel escolar.
+    (r.tipo === "trabajo" && (!["informacion", "comunicacion", "puesto", "tiempo", "proceso"].includes(r.subtipo) || r.niveles.join() !== "trabajo")) ||
     (r.tipo === "acceso" && !Object.hasOwn(TIPOS_ACCESO, r.subtipo)) ||
     (r.tipo === "objetivos" && (!Object.hasOwn(TIPOS_OBJETIVOS, r.subtipo) || (r.asignatura !== undefined && !ASIGNATURAS.includes(r.asignatura)))) ||
     (r.tipo === "desregulacion" && !Object.hasOwn(MOMENTOS_DEC, r.subtipo)) ||

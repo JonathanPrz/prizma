@@ -1,6 +1,6 @@
 # Tarea 031 · Tema con sol y luna, e ícono de mochila
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/031-iconos` · **Empieza después de la tarea 029**
+Estado: **integrada** · Asignada a: Codex · Rama: `codex/031-iconos` · **Empieza después de la tarea 029**
 
 ## Para qué
 El dueño quiere una cabecera más limpia:
