@@ -1,6 +1,6 @@
 # Tarea 029 · Pasos en DUA y apoyos, casos con acuerdos, prioridad y avisos cruzados
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/029-flujo-avisos`
+Estado: **integrada** (PR #29) · Asignada a: Codex · Rama: `codex/029-flujo-avisos`
 
 ## Para qué
 El dueño usó la página y propone cuatro mejoras:

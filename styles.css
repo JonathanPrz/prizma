@@ -281,3 +281,5 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
   #dimensiones { grid-template-columns: minmax(0, 1fr); }
   .opciones-acuerdo { flex-direction: column; }
 }
+.paso-guia { margin: 0 0 .75rem; }
+.paso-guia a { display: inline-block; min-height: 1.5rem; }
