@@ -75,16 +75,6 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
         <div class="chips" id="necesidades"></div>
       </fieldset>
-          <fieldset class="momentos" aria-describedby="momentos-ayuda">
-        <legend>¿Cuándo?</legend>
-        <p id="momentos-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos.</p>
-        <div class="chips" id="momentos"></div>
-      </fieldset>
-
-      <fieldset class="propositos">
-        <legend>¿Para qué? <span class="ayuda">Si no eliges ninguno, se muestran todos.</span></legend>
-        <div class="chips" id="propositos"></div>
-      </fieldset>
           <details class="mas-detalles"><summary>Más detalles (opcional)</summary>
         <fieldset class="perfil-opciones">
           <legend>¿Qué harán principalmente?</legend>
@@ -110,7 +100,14 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         </form></div>
 </section>
     <section id="acciones" class="paso resultados" tabindex="-1">
-      <h2 id="t-acciones">2. Acciones sugeridas</h2><p class="conteo" id="conteo" aria-live="polite"></p>
+      <h2 id="t-acciones">2. Acciones sugeridas</h2>
+      <div id="filtros-vista" class="filtros-vista">
+        <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
+        <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
+        <p id="filtros-vista-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos</p>
+        <a href="#acciones" id="limpiar-filtros">Limpiar filtros</a>
+      </div>
+      <p class="conteo" id="conteo" aria-live="polite" aria-atomic="true"></p>
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
       <div id="tarjetas" class="grupos-momentos"></div>
     </section>
