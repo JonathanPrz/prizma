@@ -291,3 +291,6 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
 
 #trabajo-puesto, #trabajo-iniciales { font: inherit; color: var(--tinta); background: var(--superficie); border: 1px solid var(--borde-control); border-radius: .35rem; padding: .55rem .7rem; min-height: 2.75rem; width: 100%; }
 #opciones-documento label { display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; }
+
+.identidad { min-width: 0; max-width: 100%; }
+@media (max-width: 39.999rem) { .subtitulo-marca { display: none; } }

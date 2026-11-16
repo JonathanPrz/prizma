@@ -1,6 +1,6 @@
 # Tarea 033 · Presentación general: aprender y trabajar en igualdad
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/033-presentacion`
+Estado: **integrada** (PR #33) · Asignada a: Codex · Rama: `codex/033-presentacion`
 
 ## Para qué
 Prizma ya no es solo para docentes: también sirve a instituciones y empleadores que reciben trabajadores con discapacidad. Los textos generales deben decirlo. Es un cambio solo de textos. **No cambies `data/`, `docs/fuentes/` ni `.claude/`.**
