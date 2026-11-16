@@ -8,7 +8,9 @@
       "7.3",
       "8.1"
     ],
-    "dimensiones": []
+    "dimensiones": [
+      14
+    ]
   },
   {
     "id": "comprension",
@@ -21,7 +23,7 @@
     ],
     "dimensiones": [
       3,
-      6
+      13
     ]
   },
   {
@@ -61,7 +63,8 @@
       "1.1"
     ],
     "dimensiones": [
-      2
+      2,
+      6
     ]
   },
   {
@@ -74,6 +77,7 @@
       "9.3"
     ],
     "dimensiones": [
+      12,
       8
     ]
   },

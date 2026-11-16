@@ -6,7 +6,7 @@ vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
 const run=s=>vm.runInContext(s,c), e=s=>JSON.parse(JSON.stringify(run(s)));
 run(`catalogo=${leer('data/recomendaciones.json')}; necesidades=${leer('data/necesidades.json')}; fuentes=Object.fromEntries(${leer('data/fuentes.json')}.map(f=>[f.id,f]));`);
 const dua=e('catalogo.find(r=>r.tipo==="dua"&&aplica(r)).id');
-c.legado={app:'prizma',version:1,perfil:{nivel:'media-tp'},estudiante:{iniciales:'JP',dimensiones:{1:3,12:1},ayuda:'Apoyo visual',voz:'Prefiere avisos',practica:true},seleccion:{[dua]:'Curso','acc-1-agenda':'Solo JP','retirada':'No existe'}};
+c.legado={app:'prizma',version:1,perfil:{nivel:'media-tp'},estudiante:{iniciales:'JP',dimensiones:{1:3,15:1},ayuda:'Apoyo visual',voz:'Prefiere avisos',practica:true},seleccion:{[dua]:'Curso','acc-1-agenda':'Solo JP','retirada':'No existe'}};
 const migrado=e('validarRespaldo(legado)');assert.equal(migrado.perfil.nivel,'media');assert(migrado.perfil.practica);assert.deepEqual(migrado.seleccion,{[dua]:'Curso'});assert.deepEqual(migrado.estudiantes[0].seleccion,{'acc-1-agenda':'Solo JP'});assert.deepEqual(migrado.estudiantes[0].dimensiones,{'1':3});assert.equal(migrado.descartadas,1);assert.equal(migrado.estudiantes[0].voz,'Prefiere avisos');assert.equal(migrado.estudianteActivo,migrado.estudiantes[0].id);assert(!('estudiante' in migrado));
 almacen.set('prizma.v1',JSON.stringify(c.legado));run('cargar(); guardar()');assert.deepEqual(e('estudianteActual().seleccion'),{'acc-1-agenda':'Solo JP'});assert.deepEqual(JSON.parse(almacen.get('prizma.v1')).seleccion,{[dua]:'Curso'});assert(!('estudiante' in JSON.parse(almacen.get('prizma.v1'))));
 assert.equal(e('normalizarDatos({estudiante:{},seleccion:{}}).estudiantes.length'),1);

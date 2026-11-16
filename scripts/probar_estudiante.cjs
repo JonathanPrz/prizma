@@ -5,7 +5,7 @@ const path = require('node:path');
 const contexto = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''), contexto);
 const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, contexto)));
-assert.deepEqual(ejecutar('normalizarEstudiante({ iniciales: "A1", dimensiones: {1: 3, 6: 2, 0: 1, 12: 2, "01": 1, 3: "2", 4: 4}, ayuda: "x".repeat(301) })'), { iniciales: '', dimensiones: {1: 3, 6: 2}, ayuda: 'x'.repeat(300), voz: '' });
+assert.deepEqual(ejecutar('normalizarEstudiante({ iniciales: "A1", dimensiones: {1: 3, 6: 2, 0: 1, 15: 2, "01": 1, 3: "2", 4: 4}, ayuda: "x".repeat(301) })'), { iniciales: '', dimensiones: {1: 3, 6: 2}, ayuda: 'x'.repeat(300), voz: '' });
 for (const valor of ['ABCDE', '<svg>', '12', null]) assert.equal(ejecutar(`normalizarEstudiante({iniciales: ${JSON.stringify(valor)}}).iniciales`), '');
 assert.equal(ejecutar('normalizarEstudiante({iniciales: "ÁÑ"}).iniciales'), 'ÁÑ');
 assert.deepEqual(ejecutar('normalizarEstudiante()'), {iniciales: '', dimensiones: {}, ayuda: '', voz: ''});
@@ -24,7 +24,7 @@ contexto.document = {
   querySelectorAll: () => [],
 };
 assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}}).estudiantes[0])'), {iniciales: '', dimensiones: {}, ayuda: '', voz: ''});
-assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}, estudiante: {iniciales: "AB12", dimensiones: {6: 3, 12: 2}, ayuda: "x".repeat(301)}}).estudiantes[0])'), {iniciales: '', dimensiones: {6: 3}, ayuda: 'x'.repeat(300), voz: ''});
+assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}, estudiante: {iniciales: "AB12", dimensiones: {6: 3, 15: 2}, ayuda: "x".repeat(301)}}).estudiantes[0])'), {iniciales: '', dimensiones: {6: 3}, ayuda: 'x'.repeat(300), voz: ''});
 vm.runInContext('estudianteActual().iniciales = "ÁÑ"; estudianteActual().ayuda = "Apoyos visuales"; estudianteActual().seleccion = {"acc-1-partes": "Una nota"}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));', contexto);
 const doc = ejecutar('documento()');
 assert.equal(doc.grupos.length, 1);

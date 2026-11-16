@@ -1391,10 +1391,12 @@
     ],
     "porque": "Ver menos a la vez ayuda a sostener la atención y a no abrumarse.",
     "areas": [
-      "cognicion"
+      "cognicion",
+      "comunicacion"
     ],
     "dimensiones": [
-      1
+      1,
+      3
     ],
     "niveles": [
       "parvularia",
@@ -1516,10 +1518,12 @@
     ],
     "porque": "Una instrucción que se puede volver a mirar no depende de la memoria ni del oído.",
     "areas": [
-      "comunicacion"
+      "comunicacion",
+      "sensorial"
     ],
     "dimensiones": [
-      3
+      3,
+      13
     ],
     "niveles": [
       "parvularia",
@@ -1551,7 +1555,7 @@
       "comunicacion"
     ],
     "dimensiones": [
-      3
+      12
     ],
     "niveles": [
       "parvularia",
@@ -1586,7 +1590,8 @@
     ],
     "dimensiones": [
       4,
-      5
+      5,
+      12
     ],
     "niveles": [
       "parvularia",
@@ -1744,7 +1749,8 @@
       "sensorial"
     ],
     "dimensiones": [
-      6
+      6,
+      13
     ],
     "niveles": [
       "parvularia",
@@ -1962,12 +1968,10 @@
     ],
     "porque": "Entender la pregunta es condición para mostrar lo que se sabe.",
     "areas": [
-      "contexto",
-      "comunicacion"
+      "contexto"
     ],
     "dimensiones": [
-      10,
-      3
+      10
     ],
     "niveles": [
       "parvularia",
@@ -1996,12 +2000,10 @@
     ],
     "porque": "Así se evalúa lo que sabe y no cuánto español domina todavía.",
     "areas": [
-      "contexto",
-      "comunicacion"
+      "contexto"
     ],
     "dimensiones": [
-      10,
-      3
+      10
     ],
     "niveles": [
       "parvularia",
@@ -2610,10 +2612,14 @@
       "Usa la misma rúbrica para ambos formatos."
     ],
     "porque": "Así se evalúa el aprendizaje y no la habilidad para un formato en particular.",
-    "areas": [],
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
     "dimensiones": [
       2,
-      3,
+      12,
       4,
       8
     ],
@@ -2641,10 +2647,15 @@
       "Avisa los cambios con al menos una semana de anticipación."
     ],
     "porque": "Anticipar permite planificar, organizarse y pedir ajustes a tiempo.",
-    "areas": [],
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "emocional"
+    ],
     "dimensiones": [
       1,
-      5
+      5,
+      3
     ],
     "niveles": [
       "superior"
@@ -2699,10 +2710,16 @@
       "Acuerda con el curso el uso de las grabaciones."
     ],
     "porque": "Tener el material disponible ayuda a quien toma notas con dificultad o procesa más lento.",
-    "areas": [],
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
     "dimensiones": [
       1,
       2,
+      3,
+      6,
       8
     ],
     "niveles": [
@@ -2730,11 +2747,11 @@
       "Habla de frente y por turnos en las discusiones."
     ],
     "porque": "La información debe llegar en la lengua y el formato que la persona usa.",
-    "areas": [],
+    "areas": [
+      "sensorial"
+    ],
     "dimensiones": [
-      3,
-      6,
-      10
+      13
     ],
     "niveles": [
       "superior"
@@ -2820,11 +2837,13 @@
     "porque": "A esta edad lo importante es comunicar la idea; el trazo todavía se está desarrollando.",
     "areas": [
       "cognicion",
+      "comunicacion",
       "sensorial"
     ],
     "dimensiones": [
       2,
-      8
+      8,
+      12
     ],
     "niveles": [
       "parvularia"
@@ -2851,12 +2870,10 @@
     ],
     "porque": "Así se evalúa el resultado de aprendizaje y no el dominio del español.",
     "areas": [
-      "contexto",
-      "comunicacion"
+      "contexto"
     ],
     "dimensiones": [
-      10,
-      3
+      10
     ],
     "niveles": [
       "superior"
@@ -3243,11 +3260,12 @@
     ],
     "porque": "Si no puede leer o escuchar una advertencia, no puede protegerse.",
     "areas": [
-      "sensorial",
-      "cognicion"
+      "cognicion",
+      "sensorial"
     ],
     "dimensiones": [
       6,
+      13,
       2
     ],
     "niveles": [
@@ -3380,12 +3398,13 @@
     ],
     "porque": "Un plan acordado antes evita improvisar cuando hay peligro.",
     "areas": [
-      "sensorial",
-      "emocional"
+      "emocional",
+      "sensorial"
     ],
     "dimensiones": [
       8,
       6,
+      13,
       5
     ],
     "niveles": [
@@ -3422,7 +3441,7 @@
     "dimensiones": [
       1,
       2,
-      3,
+      12,
       8
     ],
     "niveles": [
@@ -3491,11 +3510,13 @@
     "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
     "areas": [
       "cognicion",
+      "comunicacion",
       "emocional"
     ],
     "dimensiones": [
       1,
-      5
+      5,
+      3
     ],
     "niveles": [
       "parvularia",
@@ -3717,12 +3738,10 @@
     ],
     "porque": "Si no escucha bien, necesita ver la información para no quedar fuera.",
     "areas": [
-      "comunicacion",
       "sensorial"
     ],
     "dimensiones": [
-      6,
-      3
+      13
     ],
     "niveles": [
       "parvularia",
@@ -4046,7 +4065,8 @@
     "dimensiones": [
       11,
       8,
-      6
+      6,
+      13
     ],
     "niveles": [
       "parvularia",
@@ -4081,7 +4101,7 @@
     "dimensiones": [
       4,
       5,
-      3
+      12
     ],
     "niveles": [
       "superior"
@@ -4203,12 +4223,10 @@
     ],
     "porque": "Si no escucha bien, necesita ver o leer la información para seguir la clase.",
     "areas": [
-      "comunicacion",
       "sensorial"
     ],
     "dimensiones": [
-      6,
-      3
+      13
     ],
     "niveles": [
       "superior"
@@ -4274,6 +4292,7 @@
       11,
       2,
       6,
+      13,
       8
     ],
     "niveles": [
@@ -4341,7 +4360,8 @@
     "dimensiones": [
       4,
       5,
-      11
+      11,
+      10
     ],
     "niveles": [
       "superior"
@@ -4444,6 +4464,436 @@
     "respaldo": "orientacion-oficial",
     "fuentes": [
       "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-12-tiempo",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Da tiempo para responder y no exijas una respuesta oral inmediata",
+    "como": [
+      "Espera unos segundos después de preguntar.",
+      "Acepta que responda más tarde, por escrito o señalando.",
+      "No le pidas repetir en voz alta frente al curso."
+    ],
+    "porque": "El Decreto 83 pide formas de respuesta que no sean una barrera; responder sin apuro permite mostrar lo que sabe.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-12-opciones",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Ofrece opciones para señalar o elegir al responder",
+    "como": [
+      "Prepara tarjetas, imágenes u opciones escritas para que señale.",
+      "Usa preguntas de sí o no cuando sirva.",
+      "Amplía las opciones a medida que avance."
+    ],
+    "porque": "El Decreto 83 incluye la ilustración y los ordenadores visuales entre las formas de respuesta.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12,
+      3
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "5.4"
+  },
+  {
+    "id": "sup-caa",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Acepta comunicación aumentativa o escrita en clases y evaluaciones",
+    "como": [
+      "Pregunta qué sistema usa: tablero, aplicación o texto escrito.",
+      "Permite usarlo al participar, preguntar y responder.",
+      "Evalúa el contenido, no la vía de comunicación."
+    ],
+    "porque": "La guía de la Ley 20.422 incluye la comunicación aumentativa alternativa entre los ajustes necesarios.",
+    "areas": [
+      "comunicacion"
+    ],
+    "dimensiones": [
+      12
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "5.4"
+  },
+  {
+    "id": "sup-oral-progresivo",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Da tiempo para responder y gradúa las exigencias orales",
+    "como": [
+      "Permite responder por escrito o más tarde cuando la oralidad no es lo evaluado.",
+      "Si exponer es parte del resultado de aprendizaje, avanza de a poco: grupo pequeño primero.",
+      "Acuerda estas condiciones con el estudiante."
+    ],
+    "porque": "La guía de la Ley 21.545 recomienda evaluar de forma progresiva las presentaciones orales.",
+    "areas": [
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      12,
+      5
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-21545",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-instrucciones",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Da las instrucciones por escrito y comprueba que se entendieron",
+    "como": [
+      "Entrega por escrito las instrucciones de cada actividad y evaluación.",
+      "Pide que confirme qué tiene que hacer.",
+      "Responde las dudas antes de empezar."
+    ],
+    "porque": "La guía de la Ley 20.422 pide asegurar que las instrucciones se comprendan.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      3,
+      13
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "1.2"
+  },
+  {
+    "id": "acc-14-extension",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Ten listas actividades de profundización para cuando termine",
+    "como": [
+      "Prepara una pregunta o problema más complejo sobre el mismo tema.",
+      "Ofrécelo cuando muestre que domina lo básico, no como más de lo mismo.",
+      "Revisa y valora ese trabajo igual que el resto."
+    ],
+    "porque": "El Decreto 83 considera materiales y actividades de profundización para quien lo necesita.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-83",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "8.2"
+  },
+  {
+    "id": "acc-14-eleccion",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Déjale elegir cómo profundizar y mostrar lo aprendido",
+    "como": [
+      "Ofrece opciones: investigar, crear, explicar a otros o resolver un problema abierto.",
+      "Acuerda una meta y un plazo.",
+      "Invítalo a compartir el resultado con el curso."
+    ],
+    "porque": "Elegir dentro de un desafío real sostiene el interés y el esfuerzo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "7.1"
+  },
+  {
+    "id": "acc-14-pares",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Permite trabajar a veces con compañeros de intereses o ritmo similar",
+    "como": [
+      "Forma grupos flexibles según la tarea.",
+      "Cámbialos seguido para que no se vuelvan fijos.",
+      "Asegura que también trabaje con todo el curso."
+    ],
+    "porque": "Agrupar de forma flexible permite desafiar sin separar del curso.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      14,
+      4
+    ],
+    "niveles": [
+      "parvularia",
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "8.3"
+  },
+  {
+    "id": "acc-14-compactar",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "No le pidas repetir lo que ya domina",
+    "como": [
+      "Comprueba al inicio de la unidad qué sabe, con una tarea breve.",
+      "Si ya lo domina, cambia la práctica repetida por una tarea de mayor desafío.",
+      "Mantén las evaluaciones del curso."
+    ],
+    "porque": "Repetir lo ya aprendido desmotiva; un desafío a su medida sostiene el esfuerzo.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "basica",
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "acc-14-abiertos",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Ofrece materiales abiertos que inviten a explorar más",
+    "como": [
+      "Deja a disposición materiales que se puedan combinar de muchas formas.",
+      "Haz preguntas que inviten a ir más allá: «¿y si…?».",
+      "Anota lo que descubre para proponerle el siguiente desafío."
+    ],
+    "porque": "Los materiales abiertos permiten que cada niño o niña avance hasta donde pueda.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "parvularia"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "cast-dua-3",
+      "decreto-83"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "3.3"
+  },
+  {
+    "id": "sup-profundizar",
+    "tipo": "acceso",
+    "subtipo": "presentacion",
+    "titulo": "Ofrece lecturas o problemas de profundización opcionales",
+    "como": [
+      "Prepara una lista breve de lecturas o problemas avanzados por unidad.",
+      "Ofrécela a quien termine antes o pida más.",
+      "Conversa sus avances en horario de consulta."
+    ],
+    "porque": "La Ley 21.091 entiende la educación superior como el espacio para desarrollar los talentos de cada estudiante.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-21091",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "8.2"
+  },
+  {
+    "id": "sup-proyecto",
+    "tipo": "acceso",
+    "subtipo": "respuesta",
+    "titulo": "Permite un trabajo de mayor alcance que mida el mismo resultado",
+    "como": [
+      "Acuerda un proyecto o formato más amplio en vez de una tarea estándar.",
+      "Usa la misma rúbrica, con criterios de mayor profundidad.",
+      "Fija hitos para revisar el avance."
+    ],
+    "porque": "Así se evalúa el mismo resultado de aprendizaje con un desafío a su medida.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "udl-on-campus",
+      "cast-dua-3"
+    ],
+    "destacada": false,
+    "revision": null,
+    "dua": "5.1"
+  },
+  {
+    "id": "sup-investigacion",
+    "tipo": "acceso",
+    "subtipo": "entorno",
+    "titulo": "Invita a ayudantías, semilleros o proyectos de investigación",
+    "como": [
+      "Informa qué ayudantías, semilleros o proyectos existen en tu unidad.",
+      "Recomiéndalo a quien coordine esas instancias.",
+      "Acompaña los primeros pasos."
+    ],
+    "porque": "Participar en la producción de conocimiento ofrece un desafío real dentro de la institución.",
+    "areas": [
+      "cognicion",
+      "contexto"
+    ],
+    "dimensiones": [
+      14,
+      11
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-21091"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "sup-ritmo",
+    "tipo": "acceso",
+    "subtipo": "tiempo",
+    "titulo": "Acuerda avanzar más rápido cuando ya domina el contenido",
+    "como": [
+      "Revisa qué permite tu institución: exámenes de conocimientos relevantes o convalidación.",
+      "Si no aplica, reemplaza actividades repetidas por desafíos del mismo resultado.",
+      "Deja el acuerdo por escrito."
+    ],
+    "porque": "Repetir lo ya dominado desmotiva; avanzar a su ritmo sostiene el compromiso.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      14
+    ],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ley-21091",
+      "udl-on-campus"
     ],
     "destacada": false,
     "revision": null

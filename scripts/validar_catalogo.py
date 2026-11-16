@@ -17,7 +17,7 @@ for r in R:
     if not r.get("fuentes"): errores.append(f"{i}: sin fuentes")
     errores += [f"{i}: fuente inexistente {f}" for f in r.get("fuentes", []) if f not in F]
     if r["tipo"] == "dua" and r.get("consideracion") not in CONS: errores.append(f"{i}: consideración DUA inválida")
-    if not all(1 <= d <= 11 for d in r.get("dimensiones", [])): errores.append(f"{i}: dimensión fuera de 1 a 11")
+    if not all(1 <= d <= 14 for d in r.get("dimensiones", [])): errores.append(f"{i}: dimensión fuera de 1 a 14")
     texto = " ".join([r["titulo"], r["porque"], *r["como"]])
     if len(texto.split()) > 75: errores.append(f"{i}: {len(texto.split())} palabras, máximo 75")
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
@@ -40,10 +40,10 @@ acceso = [r for r in R if r["tipo"] == "acceso"]
 # Cada nivel debe tener al menos 4 apoyos de acceso (sin contar los prácticos) para cada situación que se puede marcar.
 for n in ["parvularia", "basica", "media", "superior"]:
     generales = [r for r in acceso if (not r["niveles"] or n in r["niveles"]) and "practica" not in r["contextos"]]
-    pocas = [d for d in range(1, 12) if sum(d in r["dimensiones"] for r in generales) < 4]
+    pocas = [d for d in range(1, 15) if sum(d in r["dimensiones"] for r in generales) < 4]
     errores += [f"{n}: situaciones con menos de 4 apoyos {pocas}"] if pocas else []
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
-sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or "basica" in r["niveles"] for d in r["dimensiones"]})
+sin_acceso = sorted(set(range(1, 15)) - {d for r in acceso if not r["niveles"] or "basica" in r["niveles"] for d in r["dimensiones"]})
 if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso: {sin_acceso}")
 # «dua» apunta a la consideración DUA que es la versión para todo el curso de un apoyo individual.
 for r in R:
@@ -53,7 +53,7 @@ for r in R:
 NEC = json.load(open("data/necesidades.json"))
 for n in NEC:
     errores += [f"necesidad {n['id']}: consideración inválida {c}" for c in n["consideraciones"] if c not in CONS]
-    errores += [f"necesidad {n['id']}: situación inválida {d}" for d in n.get("dimensiones", []) if d not in range(1, 12)]
+    errores += [f"necesidad {n['id']}: situación inválida {d}" for d in n.get("dimensiones", []) if d not in range(1, 15)]
 dua = [r["consideracion"] for r in R if r["tipo"] == "dua"]
 for n in NIVELES:
     faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})
