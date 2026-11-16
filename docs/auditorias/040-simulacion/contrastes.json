@@ -1,0 +1,1816 @@
+[
+  {
+    "pregunta": 1,
+    "caso": 1,
+    "campo": "meta",
+    "a": "Evaluar decodificación lectora.",
+    "b": "Evaluar comprensión del contenido, no decodificación.",
+    "entradaBase": {
+      "id": 1,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "dimensiones": {
+        "2": 3
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "basica",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "2": 3
+      },
+      "meta": "Evaluar decodificación lectora.",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "basica",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "2": 3
+      },
+      "meta": "Evaluar comprensión del contenido, no decodificación.",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-5-2",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2"
+      ],
+      "apoyos": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-8-transcribe",
+        "acc-2-pictogramas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "nucleo": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-2-pictogramas",
+        "acc-8-transcribe"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-5-2",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2"
+      ],
+      "apoyos": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-8-transcribe",
+        "acc-2-pictogramas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "nucleo": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-2-pictogramas",
+        "acc-8-transcribe"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 2,
+    "caso": 7,
+    "dimensiones": {
+      "6": 3
+    },
+    "campo": "ayuda",
+    "a": "Usa Braille para acceder al texto.",
+    "b": "Usa lupa y ampliación para acceder al texto.",
+    "entradaBase": {
+      "id": 7,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "dimensiones": {
+        "6": 3
+      },
+      "dua": [
+        "4.1",
+        "4.2"
+      ],
+      "incluir": [
+        "acc-8-accesible",
+        "acc-8-desplazamiento",
+        "acc-8-teclado",
+        "acc-8-transcribe",
+        "acc-8-materiales"
+      ],
+      "excluir": [
+        "acc-6-braille"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "basica",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "6": 3
+      },
+      "meta": "",
+      "ayuda": "Usa Braille para acceder al texto.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "basica",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "6": 3
+      },
+      "meta": "",
+      "ayuda": "Usa lupa y ampliación para acceder al texto.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [],
+      "apoyos": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion",
+        "acc-11-ayudas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion"
+      ],
+      "nucleo": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion",
+        "acc-11-ayudas"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [],
+      "apoyos": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion",
+        "acc-11-ayudas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion"
+      ],
+      "nucleo": [
+        "acc-6-ampliar",
+        "acc-6-braille",
+        "acc-6-ubicacion",
+        "acc-11-ayudas"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 3,
+    "caso": 5,
+    "campo": "ayuda",
+    "a": "Ya domina el contenido, comprobado en una tarea.",
+    "b": "Todavía no domina el contenido.",
+    "entradaBase": {
+      "id": 5,
+      "nivel": "media",
+      "ambito": "educacion",
+      "necesidades": [
+        "motivacion"
+      ],
+      "dimensiones": {
+        "14": 3
+      },
+      "dua": [
+        "8.2",
+        "7.1"
+      ],
+      "incluir": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ],
+      "excluir": [
+        "acc-1-partes",
+        "acc-2-tiempo"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "media",
+      "necesidades": [
+        "motivacion"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "14": 3
+      },
+      "meta": "",
+      "ayuda": "Ya domina el contenido, comprobado en una tarea.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "media",
+      "necesidades": [
+        "motivacion"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "14": 3
+      },
+      "meta": "",
+      "ayuda": "Todavía no domina el contenido.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-7-1",
+        "dua-7-2",
+        "dua-7-3",
+        "dua-8-1-meta-visible",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-7-1",
+        "dua-7-2",
+        "dua-7-3"
+      ],
+      "apoyos": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar"
+      ],
+      "nucleo": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-7-1",
+        "dua-7-2",
+        "dua-7-3",
+        "dua-8-1-meta-visible",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-7-1",
+        "dua-7-2",
+        "dua-7-3"
+      ],
+      "apoyos": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar"
+      ],
+      "nucleo": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 4,
+    "caso": 8,
+    "campo": "tipoPuesto",
+    "a": "Bodega con grúas horquilla y alarmas solo sonoras.",
+    "b": "Oficina sin maquinaria ni alarmas sonoras.",
+    "entradaBase": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "13": 3
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "13": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": "Bodega con grúas horquilla y alarmas solo sonoras."
+    },
+    "normalizadaB": {
+      "nivel": "",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "13": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": "Oficina sin maquinaria ni alarmas sonoras."
+    },
+    "salidasA": {
+      "dua": null,
+      "paraEmpezarDua": [],
+      "apoyos": null,
+      "trabajo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-formatos-formacion",
+        "tr-lengua-senas",
+        "tr-pedir",
+        "tr-analizar",
+        "tr-decidir",
+        "tr-documentar",
+        "tr-revisar",
+        "tr-rechazo",
+        "tr-seleccion",
+        "tr-privacidad"
+      ],
+      "paraEmpezarPersonal": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales"
+      ],
+      "nucleo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-lengua-senas",
+        "tr-formatos-formacion"
+      ]
+    },
+    "salidasB": {
+      "dua": null,
+      "paraEmpezarDua": [],
+      "apoyos": null,
+      "trabajo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-formatos-formacion",
+        "tr-lengua-senas",
+        "tr-pedir",
+        "tr-analizar",
+        "tr-decidir",
+        "tr-documentar",
+        "tr-revisar",
+        "tr-rechazo",
+        "tr-seleccion",
+        "tr-privacidad"
+      ],
+      "paraEmpezarPersonal": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales"
+      ],
+      "nucleo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-lengua-senas",
+        "tr-formatos-formacion"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 5,
+    "caso": 3,
+    "campo": "ayuda",
+    "a": "Existe PAEC y protocolo DEC acordado.",
+    "b": "No hay PAEC ni protocolo DEC informado.",
+    "entradaBase": {
+      "id": 3,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "dimensiones": {
+        "5": 3,
+        "7": 3
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "parvularia",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "5": 3,
+        "7": 3
+      },
+      "meta": "",
+      "ayuda": "Existe PAEC y protocolo DEC acordado.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "parvularia",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "5": 3,
+        "7": 3
+      },
+      "meta": "",
+      "ayuda": "No hay PAEC ni protocolo DEC informado.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1-parv",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-parv",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-parv",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2-parv",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2-parv",
+        "dua-6-3-parv",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [],
+      "apoyos": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue",
+        "acc-5-pausas",
+        "acc-5-anticipar",
+        "acc-9-rutina",
+        "acc-7-tranquilo",
+        "acc-7-luz",
+        "acc-4-exponer",
+        "acc-1-agenda",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue"
+      ],
+      "nucleo": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue",
+        "acc-5-pausas",
+        "acc-5-anticipar",
+        "acc-7-tranquilo",
+        "acc-7-luz",
+        "acc-4-exponer",
+        "acc-1-agenda",
+        "acc-9-rutina"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1-parv",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-parv",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-parv",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2-parv",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2-parv",
+        "dua-6-3-parv",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [],
+      "apoyos": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue",
+        "acc-5-pausas",
+        "acc-5-anticipar",
+        "acc-9-rutina",
+        "acc-7-tranquilo",
+        "acc-7-luz",
+        "acc-4-exponer",
+        "acc-1-agenda",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue"
+      ],
+      "nucleo": [
+        "acc-7-transiciones",
+        "acc-4-recreo",
+        "acc-7-desfogue",
+        "acc-5-pausas",
+        "acc-5-anticipar",
+        "acc-7-tranquilo",
+        "acc-7-luz",
+        "acc-4-exponer",
+        "acc-1-agenda",
+        "acc-9-rutina"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 6,
+    "caso": 8,
+    "campo": "voz",
+    "a": "Decide compartir solo los ajustes con su jefatura.",
+    "b": "No autoriza compartir antecedentes.",
+    "entradaBase": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "13": 3
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "13": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "Decide compartir solo los ajustes con su jefatura.",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "",
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "13": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "No autoriza compartir antecedentes.",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": null,
+      "paraEmpezarDua": [],
+      "apoyos": null,
+      "trabajo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-formatos-formacion",
+        "tr-lengua-senas",
+        "tr-pedir",
+        "tr-analizar",
+        "tr-decidir",
+        "tr-documentar",
+        "tr-revisar",
+        "tr-rechazo",
+        "tr-seleccion",
+        "tr-privacidad"
+      ],
+      "paraEmpezarPersonal": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales"
+      ],
+      "nucleo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-lengua-senas",
+        "tr-formatos-formacion"
+      ]
+    },
+    "salidasB": {
+      "dua": null,
+      "paraEmpezarDua": [],
+      "apoyos": null,
+      "trabajo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-formatos-formacion",
+        "tr-lengua-senas",
+        "tr-pedir",
+        "tr-analizar",
+        "tr-decidir",
+        "tr-documentar",
+        "tr-revisar",
+        "tr-rechazo",
+        "tr-seleccion",
+        "tr-privacidad"
+      ],
+      "paraEmpezarPersonal": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales"
+      ],
+      "nucleo": [
+        "tr-subtitulos",
+        "tr-interprete",
+        "tr-mensajes-escritos",
+        "tr-alertas-visuales",
+        "tr-lengua-senas",
+        "tr-formatos-formacion"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 7,
+    "caso": 4,
+    "campo": "voz",
+    "a": "La familia necesita intérprete de creole.",
+    "b": "La familia participa en español sin intérprete.",
+    "entradaBase": {
+      "id": 4,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [
+        "lengua-cultura"
+      ],
+      "dimensiones": {
+        "3": 2,
+        "10": 3
+      },
+      "dua": [
+        "2.3",
+        "1.3",
+        "2.1"
+      ],
+      "incluir": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-familia",
+        "acc-10-cultura"
+      ],
+      "excluir": [
+        "acc-3-caa",
+        "acc-12-tiempo"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "basica",
+      "necesidades": [
+        "lengua-cultura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "3": 2,
+        "10": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "La familia necesita intérprete de creole.",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "basica",
+      "necesidades": [
+        "lengua-cultura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "3": 2,
+        "10": 3
+      },
+      "meta": "",
+      "ayuda": "",
+      "voz": "La familia participa en español sin intérprete.",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-1-3",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-1-3",
+        "dua-2-3",
+        "dua-2-4"
+      ],
+      "apoyos": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura",
+        "acc-10-familia",
+        "acc-1-partes",
+        "acc-3-escrito",
+        "acc-2-pictogramas",
+        "acc-4-normas",
+        "acc-1-agenda",
+        "acc-12-opciones",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura"
+      ],
+      "nucleo": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura",
+        "acc-10-familia",
+        "acc-1-partes",
+        "acc-3-escrito",
+        "acc-2-pictogramas",
+        "acc-4-normas",
+        "acc-12-opciones",
+        "acc-1-agenda"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-1-3",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-1-3",
+        "dua-2-3",
+        "dua-2-4"
+      ],
+      "apoyos": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura",
+        "acc-10-familia",
+        "acc-1-partes",
+        "acc-3-escrito",
+        "acc-2-pictogramas",
+        "acc-4-normas",
+        "acc-1-agenda",
+        "acc-12-opciones",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura"
+      ],
+      "nucleo": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-cultura",
+        "acc-10-familia",
+        "acc-1-partes",
+        "acc-3-escrito",
+        "acc-2-pictogramas",
+        "acc-4-normas",
+        "acc-12-opciones",
+        "acc-1-agenda"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 8,
+    "caso": 1,
+    "campo": "ayuda",
+    "a": "Criterio: inicia cuatro de cinco tareas sin recordatorio.",
+    "b": "Sin criterio de logro acordado.",
+    "entradaBase": {
+      "id": 1,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "dimensiones": {
+        "2": 3
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ]
+    },
+    "normalizadaA": {
+      "nivel": "basica",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "2": 3
+      },
+      "meta": "comprender un texto informativo",
+      "ayuda": "Criterio: inicia cuatro de cinco tareas sin recordatorio.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "basica",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {
+        "2": 3
+      },
+      "meta": "comprender un texto informativo",
+      "ayuda": "Sin criterio de logro acordado.",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-5-2",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2"
+      ],
+      "apoyos": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-8-transcribe",
+        "acc-2-pictogramas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "nucleo": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-2-pictogramas",
+        "acc-8-transcribe"
+      ]
+    },
+    "salidasB": {
+      "dua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-9-1",
+        "dua-5-2",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5",
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-4"
+      ],
+      "paraEmpezarDua": [
+        "dua-4-2",
+        "dua-1-1",
+        "dua-2-2"
+      ],
+      "apoyos": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-8-transcribe",
+        "acc-2-pictogramas",
+        "obj-graduacion",
+        "obj-graduacion-matematica",
+        "obj-graduacion-lenguaje",
+        "obj-priorizacion",
+        "obj-priorizacion-lenguaje",
+        "obj-priorizacion-matematica",
+        "obj-temporalizacion",
+        "obj-temporalizacion-lenguaje",
+        "obj-temporalizacion-ciencias",
+        "obj-enriquecimiento",
+        "obj-enriquecimiento-comunicacion",
+        "obj-enriquecimiento-historia",
+        "obj-eliminacion",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "dec-antes-demanda",
+        "dec-durante-validar",
+        "dec-durante-espacio",
+        "dec-durante-dignidad",
+        "dec-despues-calma",
+        "dec-despues-aprender",
+        "dec-despues-otros"
+      ],
+      "trabajo": null,
+      "paraEmpezarPersonal": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "nucleo": [
+        "acc-2-audio",
+        "acc-2-tiempo",
+        "acc-8-teclado",
+        "acc-1-organizador",
+        "acc-2-pictogramas",
+        "acc-8-transcribe"
+      ]
+    },
+    "listasIguales": true
+  },
+  {
+    "pregunta": 9,
+    "caso": 9,
+    "campo": "meta",
+    "a": "Conflictos sostenidos del curso: revisar el diseño.",
+    "b": "Crisis puntual: activar el protocolo DEC.",
+    "entradaBase": {
+      "id": 9,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [
+        "clima"
+      ],
+      "dimensiones": {},
+      "dua": [
+        "7.4",
+        "8.4",
+        "9.4",
+        "9.2"
+      ],
+      "incluir": [],
+      "excluir": []
+    },
+    "normalizadaA": {
+      "nivel": "basica",
+      "necesidades": [
+        "clima"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {},
+      "meta": "Conflictos sostenidos del curso: revisar el diseño.",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "normalizadaB": {
+      "nivel": "basica",
+      "necesidades": [
+        "clima"
+      ],
+      "practica": false,
+      "practicaProfesional": false,
+      "dimensiones": {},
+      "meta": "Crisis puntual: activar el protocolo DEC.",
+      "ayuda": "",
+      "voz": "",
+      "tipoPuesto": null
+    },
+    "salidasA": {
+      "dua": [
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-1",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-9-4",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5"
+      ],
+      "paraEmpezarDua": [
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-1"
+      ],
+      "apoyos": null,
+      "trabajo": null,
+      "paraEmpezarPersonal": [],
+      "nucleo": []
+    },
+    "salidasB": {
+      "dua": [
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-1",
+        "dua-4-2",
+        "dua-1-1",
+        "dua-1-3",
+        "dua-2-1-vocabulario",
+        "dua-3-1",
+        "dua-6-1",
+        "dua-6-2",
+        "dua-7-1",
+        "dua-7-2",
+        "dua-8-1-meta-visible",
+        "dua-3-2",
+        "dua-5-3-andamiaje-lista",
+        "dua-8-3",
+        "dua-1-2",
+        "dua-2-2",
+        "dua-2-5",
+        "dua-3-3",
+        "dua-4-1",
+        "dua-5-2",
+        "dua-6-3",
+        "dua-6-4",
+        "dua-7-3",
+        "dua-8-2",
+        "dua-9-2",
+        "dua-9-3-reflexion-cierre",
+        "dua-3-4",
+        "dua-5-1",
+        "dua-8-5",
+        "dua-9-4",
+        "dua-2-3",
+        "dua-2-4",
+        "dua-5-4",
+        "dua-6-5"
+      ],
+      "paraEmpezarDua": [
+        "dua-7-4",
+        "dua-8-4-pertenencia",
+        "dua-9-1"
+      ],
+      "apoyos": null,
+      "trabajo": null,
+      "paraEmpezarPersonal": [],
+      "nucleo": []
+    },
+    "listasIguales": true
+  }
+]

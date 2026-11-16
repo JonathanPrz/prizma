@@ -1,0 +1,22 @@
+{
+  "reproducible": true,
+  "archivosComparados": [
+    "resultados.jsonl",
+    "pares.jsonl",
+    "conteos.json",
+    "oraculo.json",
+    "sensibilidad.json",
+    "importancia.json",
+    "agrupamientos.json",
+    "contrastes.json",
+    "metodo.json",
+    "semillas.md",
+    "importancia.md"
+  ],
+  "semillas": 9,
+  "variantes": 720,
+  "pares": 1235,
+  "grupos": 268,
+  "huellasIntactas": true,
+  "metricasRecontadas": true
+}

@@ -1,0 +1,26 @@
+{
+  "base": "5ed5d0ad8cc53720d42fbce4ab353ad076a02e30",
+  "node": "v24.22.1",
+  "semillaAleatoria": 400040,
+  "semillas": 9,
+  "variantes": 720,
+  "pares": 1235,
+  "anclas": 45,
+  "grupos": 268,
+  "huellas": {
+    "AGENTS.md": "3445d74ab2550ef81114434dab8e65bd8227ce42961635978d6977b91f85dd4c",
+    "app.js": "c4744340f19d33d9c75752eee15e2a55ab130ec417f1654e9da0e54f6a37a1e7",
+    "index.html": "82e8a8960ad5de26fe6fac04cae555301ada29a15c2ee4474d024abb0dd68186",
+    "styles.css": "b6aa040c6af1b92e96b5d005f3afb96f36e332acbe5e3a955fe45a71e4418565",
+    "data/recomendaciones.json": "ea9b76ede117a339f021b61a3c355d92c24d22d1bef5c3003db5a0cf4e236e57",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f",
+    "data/fuentes.json": "7969ab9952af529b78dffcc5a055e31e59963fb0e1c88c53530bb13b5b6d3fed",
+    "docs/casos/casos-semilla.json": "cd193fc1de32a9feb7c239a95ac3239d8b4a8bfd59a1faeb44d07808dec25c83",
+    "docs/casos/asesoria-claude.md": "e11004614b91bb987184b7ac0cbaee2fe295567d99b22739343cd4d4fd8b837f",
+    "docs/marca/040-flujo/flujo.png": "4824641d87942c61d7a211e20a2d92965a62fb85bf9f0441bee45108844088cc",
+    "docs/tareas/040-simulacion-y-asistente.md": "53bff6e0e9aa1459477fd5c47ec72842ca405243ce30a69b71b041071e2507b5",
+    "docs/auditorias/040-simulacion/simular.cjs": "fd26e9606aa4ab3c8151ec51c95d9986277d7176673c1e6f3fb5d2b9c84bb256"
+  },
+  "red": "No se importan módulos de red ni se exponen fetch/require a vm; se omite iniciar().",
+  "metodoAgrupacion": "Representante fijo, primer grupo compatible, mismo ámbito y Jaccard de núcleo >= .65; orden V1-01…V9-80."
+}
