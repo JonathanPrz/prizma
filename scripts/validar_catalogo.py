@@ -45,6 +45,11 @@ for n in ["parvularia", "basica", "media", "superior"]:
 errores += [f"{r['id']}: subtipo de acceso inválido" for r in acceso if r.get("subtipo") not in SUBTIPOS_ACCESO]
 sin_acceso = sorted(set(range(1, 12)) - {d for r in acceso if not r["niveles"] or "basica" in r["niveles"] for d in r["dimensiones"]})
 if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso: {sin_acceso}")
+# «dua» apunta a la consideración DUA que es la versión para todo el curso de un apoyo individual.
+for r in R:
+    if "dua" in r:
+        if r["tipo"] != "acceso" or r["dua"] not in CONS: errores.append(f"{r['id']}: relación DUA inválida")
+        else: errores += [f"{r['id']}: sin acción DUA {r['dua']} en {n}" for n in r["niveles"] if not any(x["tipo"] == "dua" and x["consideracion"] == r["dua"] and (not x["niveles"] or n in x["niveles"]) for x in R)]
 NEC = json.load(open("data/necesidades.json"))
 for n in NEC:
     errores += [f"necesidad {n['id']}: consideración inválida {c}" for c in n["consideraciones"] if c not in CONS]
