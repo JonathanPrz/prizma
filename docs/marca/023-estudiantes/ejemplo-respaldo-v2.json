@@ -1,0 +1,75 @@
+{
+  "app": "prizma",
+  "version": 2,
+  "catalogo": "2026-11-15",
+  "asignatura": "",
+  "pestana": "dua",
+  "perfil": {
+    "nivel": "basica",
+    "practica": true,
+    "meta": "Explicar cómo cambia el entorno y proponer acciones para cuidarlo.",
+    "actividad": [],
+    "evidencia": []
+  },
+  "momentos": [],
+  "propositos": [],
+  "necesidades": [
+    "tareas-largas",
+    "evaluar"
+  ],
+  "seleccion": {
+    "dua-6-2": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-4-2": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-1-1": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-5-3-andamiaje-lista": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-6-3": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-6-4": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-9-3-reflexion-cierre": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-5-1": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-8-5": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-7-4": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-2-3": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó.",
+    "dua-2-4": "Ofrecer estas opciones a todo el curso y revisar al cerrar la clase qué funcionó."
+  },
+  "estudiantes": [
+    {
+      "id": "c37dfa96-1599-4c4e-a163-360e18042376",
+      "iniciales": "JP",
+      "dimensiones": {
+        "1": 1,
+        "2": 2,
+        "6": 3
+      },
+      "ayuda": "Usar apoyos visuales y dividir las tareas en pasos breves.",
+      "voz": "Le sirve conocer el propósito y acordar una señal para pedir una pausa.",
+      "seleccion": {
+        "acc-1-partes": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-1-ubicacion": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-2-audio": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-2-tiempo": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-3-escrito": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-3-caa": "Acuerdo de ejemplo para JP: preparar el apoyo antes de la clase y revisarlo con el equipo."
+      }
+    },
+    {
+      "id": "c2e1cca8-13a6-466e-ad46-0d6fb2bd7fc0",
+      "iniciales": "AM",
+      "dimensiones": {
+        "1": 2,
+        "2": 2,
+        "6": 3
+      },
+      "ayuda": "Anticipar las instrucciones por escrito y trabajar en un lugar con menos ruido.",
+      "voz": "Prefiere explicar con un dibujo antes de responder por escrito.",
+      "seleccion": {
+        "acc-1-partes": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-1-ubicacion": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-2-audio": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-2-tiempo": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-3-escrito": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo.",
+        "acc-3-caa": "Acuerdo de ejemplo para AM: preparar el apoyo antes de la clase y revisarlo con el equipo."
+      }
+    }
+  ],
+  "estudianteActivo": "c37dfa96-1599-4c4e-a163-360e18042376"
+}

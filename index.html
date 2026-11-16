@@ -115,6 +115,7 @@ try {
     <div id="acciones" class="resultados" tabindex="-1">
       <h2 id="t-acciones">Acciones para todo el <span data-voc="curso">curso</span></h2>
       <p class="conteo" id="conteo" aria-live="polite"></p>
+      <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
       <div id="tarjetas" class="grupos-momentos"></div>
     </div>
   </section>
@@ -128,6 +129,10 @@ try {
       <aside id="filtros-apoyos" class="filtros perfil" aria-labelledby="t-filtros-apoyos">
         <h2 id="t-filtros-apoyos" tabindex="-1">Filtros</h2>
         <div class="perfil-campos">
+        <fieldset class="selector-estudiantes"><legend>Estudiantes</legend><div id="lista-estudiantes" class="chips"></div>
+          <button type="button" class="boton" id="agregar-estudiante">+ Agregar estudiante</button>
+          <button type="button" class="boton boton-sutil" id="quitar-estudiante">Quitar a Estudiante 1</button>
+        </fieldset>
         <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="4" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}" aria-describedby="iniciales-ayuda" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. No escribas el nombre.</span></label>
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
@@ -177,12 +182,7 @@ try {
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
     <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
     <ol id="sel-lista" class="sel-lista"></ol>
-    <section id="sel-estudiante" hidden aria-labelledby="sel-estudiante-titulo">
-      <h3 id="sel-estudiante-titulo"></h3>
-      <p id="sel-estudiante-subtitulo" class="ayuda">Propuesta para conversar con el equipo de apoyo</p>
-      <p id="sel-estudiante-ayuda" class="ayuda"></p>
-      <ol id="sel-apoyos" class="sel-lista"></ol>
-    </section>
+    <div id="sel-estudiantes"></div>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
@@ -258,6 +258,14 @@ try {
     <li>Este aviso es una orientación, no una asesoría legal.</li>
   </ul>
   <button type="button" id="privacidad-entendido" class="boton boton-principal">Entendido</button>
+</dialog>
+
+<dialog id="incluir-documento" class="aviso-privacidad" aria-labelledby="t-incluir-documento">
+  <h2 id="t-incluir-documento" tabindex="-1" autofocus>¿Qué quieres incluir en el documento?</h2>
+  <fieldset><legend>Contenido</legend><div id="opciones-documento"></div></fieldset>
+  <p id="error-documento" role="status"></p>
+  <button type="button" class="boton boton-principal" id="generar-documento">Ver documento</button>
+  <button type="button" class="boton" id="cancelar-documento">Cancelar</button>
 </dialog>
 
 <dialog id="vista" class="vista" aria-labelledby="t-vista">

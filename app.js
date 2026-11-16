@@ -70,9 +70,89 @@ function normalizarEstudiante(valor) {
     voz: typeof e.voz === "string" ? e.voz.slice(0, 300) : "",
   };
 }
+let secuenciaEstudiante = 0;
+function nuevoIdEstudiante() { return typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `estudiante-${++secuenciaEstudiante}`; }
+function estudianteActual() { return estado.estudiantes.find((e) => e.id === estado.estudianteActivo) || estado.estudiantes[0]; }
+function nombreEstudiante(e) { return e.iniciales || `Estudiante ${estado.estudiantes.indexOf(e) + 1}`; }
+function datosEstudiante(e) { return Boolean(e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
+function seleccionValidada(valor, dua) {
+  const v = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
+  return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === "string" && catalogo.some((r) => r.id === id && (dua ? r.tipo === "dua" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));
+}
+function normalizarDatos(datos) {
+  const g = datos && typeof datos === "object" && !Array.isArray(datos) ? datos : {};
+  const actuales = Array.isArray(g.estudiantes);
+  const lista = actuales ? g.estudiantes.slice(0, 10) : [{ ...normalizarEstudiante(g.estudiante), seleccion: g.seleccion }];
+  const ids = new Set();
+  const estudiantes = (lista.length ? lista : [{}]).map((e) => {
+    let id = typeof e?.id === "string" && /^[a-zA-Z0-9-]{1,80}$/.test(e.id) && !ids.has(e.id) ? e.id : nuevoIdEstudiante();
+    while (ids.has(id)) id = nuevoIdEstudiante();
+    ids.add(id);
+    return { id, ...normalizarEstudiante(e), seleccion: seleccionValidada(e?.seleccion, false) };
+  });
+  return {
+    perfil: normalizarPerfil(g.perfil, g.estudiante?.practica), seleccion: seleccionValidada(g.seleccion, true), estudiantes,
+    estudianteActivo: estudiantes.some((e) => e.id === g.estudianteActivo) ? g.estudianteActivo : estudiantes[0].id,
+    necesidades: normalizarNecesidades(g.necesidades), momentos: normalizarMomentos(g.momentos), asignatura: normalizarAsignatura(g.asignatura),
+    propositos: Array.isArray(g.propositos) ? [...new Set(g.propositos.filter((p) => Object.hasOwn(PROPOSITOS, p)))] : [],
+    pestana: g.pestana === "apoyos" ? "apoyos" : "dua",
+  };
+}
+function pintarSelectorEstudiantes() {
+  $("#lista-estudiantes").replaceChildren(...estado.estudiantes.map((e) => el("button", {
+    type: "button", class: "chip", id: `estudiante-${e.id}`, "aria-pressed": String(e.id === estado.estudianteActivo), text: nombreEstudiante(e),
+    onclick: () => {
+      estado.estudianteActivo = e.id; guardar(); sincronizarEstudiante(); pintarSeleccion(); actualizarConteoFiltros();
+      document.getElementById(`estudiante-${e.id}`).focus();
+    },
+  })));
+  $("#agregar-estudiante").disabled = estado.estudiantes.length >= 10;
+  $("#agregar-estudiante").textContent = estado.estudiantes.length >= 10 ? "Máximo 10 estudiantes" : "+ Agregar estudiante";
+  $("#quitar-estudiante").textContent = "Quitar a " + nombreEstudiante(estudianteActual());
+}
+function agregarEstudiante() {
+  if (estado.estudiantes.length >= 10) return;
+  let id = nuevoIdEstudiante();
+  while (estado.estudiantes.some((e) => e.id === id)) id = nuevoIdEstudiante();
+  const e = { id, ...normalizarEstudiante(), seleccion: {} };
+  estado.estudiantes.push(e); estado.estudianteActivo = e.id;
+  guardar(); sincronizarEstudiante(); pintarSeleccion(); actualizarConteoFiltros();
+  document.getElementById(`estudiante-${e.id}`).focus();
+}
+function quitarEstudiante() {
+  if (!window.confirm("Se borran sus datos y apoyos de este navegador. ¿Continuar?")) return;
+  const indice = estado.estudiantes.findIndex((e) => e.id === estado.estudianteActivo);
+  estado.estudiantes.splice(indice, 1);
+  if (!estado.estudiantes.length) estado.estudiantes.push({ id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} });
+  estado.estudianteActivo = estado.estudiantes[Math.min(indice, estado.estudiantes.length - 1)].id;
+  guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarTarjetas(); actualizarConteoFiltros();
+  document.getElementById(`estudiante-${estado.estudianteActivo}`).focus();
+}
+function versionCurso(r) { return r.dua ? catalogo.find((a) => a.tipo === "dua" && a.consideracion === r.dua && aplica(a)) : null; }
+function barrerasRepetidas() {
+  return DIMENSIONES.map(([nombre], i) => ({ dimension: i + 1, nombre, cantidad: estado.estudiantes.filter((e) => e.dimensiones[i + 1]).length }))
+    .filter((b) => b.cantidad >= 2);
+}
+function pintarRepeticiones() {
+  const lista = barrerasRepetidas(), caja = $("#barreras-repetidas");
+  caja.hidden = !lista.length;
+  caja.replaceChildren(el("h3", { text: "Barreras que se repiten en tu curso" }), ...lista.map((b) => {
+    const n = necesidades.find((n) => n.dimensiones?.includes(b.dimension));
+    return el("div", {}, el("p", { text: `${b.nombre}: ${b.cantidad} estudiantes` }), n ? el("button", {
+      type: "button", class: "boton", id: `barrera-${b.dimension}`, text: estado.necesidades.includes(n.id) ? "Ya lo estás considerando" : "Ver acciones para esto",
+      "aria-pressed": String(estado.necesidades.includes(n.id)),
+      onclick: () => {
+        if (!estado.necesidades.includes(n.id)) estado.necesidades.push(n.id);
+        guardar(); pintarControles(); pintarTarjetas(); actualizarRespaldo();
+        document.getElementById(`barrera-${b.dimension}`).focus();
+      },
+    }) : null);
+  }));
+}
+
 function esSuperior() { return estado.perfil.nivel === "superior"; }
 function subtituloEstudiante() { return esSuperior() ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
-function tituloEstudiante() { return (esSuperior() ? "Ajustes razonables para " : "Apoyos para ") + (estado.estudiante.iniciales || "un estudiante"); }
+function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? "Ajustes razonables para " : "Apoyos para ") + (e.iniciales || "un estudiante"); }
 function tipoOficial(r) {
   if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
   if (r.tipo === "adicional") return "Apoyo adicional";
@@ -89,8 +169,8 @@ function objetivosVisibles() {
   return catalogo.filter((r) => r.tipo === "objetivos" && aplica(r) && (!estado.asignatura || !r.asignatura || r.asignatura === estado.asignatura))
     .sort((a, b) => ordenApoyo(a) - ordenApoyo(b) || Number(Object.hasOwn(a, "asignatura")) - Number(Object.hasOwn(b, "asignatura")));
 }
-function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estado.estudiante.dimensiones[d]); }
-function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estado.estudiante.dimensiones[d], 0); }
+function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estudianteActual().dimensiones[d]); }
+function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estudianteActual().dimensiones[d], 0); }
 function esPractica(r) { return r.contextos.includes("practica"); }
 function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
 function practicaActiva() { return estado.perfil.practica && hayPracticas(); }
@@ -99,11 +179,11 @@ function practicasVisibles() {
 }
 function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
 function situacionesSinApoyos() {
-  return Object.keys(estado.estudiante.dimensiones).map(Number).filter((d) =>
+  return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
 function pintarTituloApoyos() {
-  $("#t-apoyos").textContent = `${esSuperior() ? "Ajustes razonables" : "Apoyos"} para ${estado.estudiante.iniciales || "un estudiante"}`;
+  $("#t-apoyos").textContent = `${esSuperior() ? "Ajustes razonables" : "Apoyos"} para ${estudianteActual().iniciales || "un estudiante"}`;
 }
 function pintarApoyos() {
   const superior = esSuperior();
@@ -138,24 +218,25 @@ function pintarApoyos() {
   $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)).map(tarjeta)))));
-  $("#apoyos-estado").textContent = Object.keys(estado.estudiante.dimensiones).length || practicas.length ? plural(lista.length + practicas.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
+  $("#apoyos-estado").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? plural(lista.length + practicas.length, "apoyo", "apoyos") : "Marca al menos una situación para ver apoyos.";
 }
 function sincronizarEstudiante() {
-  $("#iniciales").value = estado.estudiante.iniciales;
-  $("#estudiante-ayuda").value = estado.estudiante.ayuda;
-  $("#estudiante-voz").value = estado.estudiante.voz;
+  pintarSelectorEstudiantes();
+  $("#iniciales").value = estudianteActual().iniciales;
+  $("#estudiante-ayuda").value = estudianteActual().ayuda;
+  $("#estudiante-voz").value = estudianteActual().voz;
   const areas = $("#areas"); areas.replaceChildren();
   const dimensiones = $("#dimensiones"); dimensiones.replaceChildren();
   AREAS.forEach(([nombre, ids], i) => {
     const grupo = el("div");
     const casilla = el("input", { type: "checkbox", id: `area-${i}`, "aria-controls": `dim-area-${i}` });
-    casilla.checked = ids.some((d) => estado.estudiante.dimensiones[d]);
+    casilla.checked = ids.some((d) => estudianteActual().dimensiones[d]);
     grupo.id = `dim-area-${i}`; grupo.hidden = !casilla.checked;
     casilla.addEventListener("change", () => {
       grupo.hidden = !casilla.checked;
       if (!casilla.checked) {
-        ids.forEach((d) => { delete estado.estudiante.dimensiones[d]; grupo.querySelector(`input[name="dimension-${d}"][value="0"]`).checked = true; });
-        guardar(); pintarApoyos(); actualizarRespaldo();
+        ids.forEach((d) => { delete estudianteActual().dimensiones[d]; grupo.querySelector(`input[name="dimension-${d}"][value="0"]`).checked = true; });
+        guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo();
       }
       actualizarConteoFiltros();
     });
@@ -165,10 +246,10 @@ function sincronizarEstudiante() {
       const campo = el("fieldset", { class: "perfil-opciones", "aria-describedby": `ayuda-d-${d}` }, el("legend", { text: titulo }), el("p", { class: "ayuda", id: `ayuda-d-${d}`, text: ayuda }));
       FRECUENCIAS.forEach((texto, valor) => {
         const radio = el("input", { type: "radio", name: `dimension-${d}`, value: valor });
-        radio.checked = (estado.estudiante.dimensiones[d] || 0) === valor;
+        radio.checked = (estudianteActual().dimensiones[d] || 0) === valor;
         radio.addEventListener("change", () => {
-          if (valor) estado.estudiante.dimensiones[d] = valor; else delete estado.estudiante.dimensiones[d];
-          guardar(); pintarApoyos(); actualizarRespaldo(); actualizarConteoFiltros();
+          if (valor) estudianteActual().dimensiones[d] = valor; else delete estudianteActual().dimensiones[d];
+          guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo(); actualizarConteoFiltros();
         });
         campo.append(el("label", {}, radio, texto));
       });
@@ -179,16 +260,18 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
+  $("#agregar-estudiante").addEventListener("click", agregarEstudiante);
+  $("#quitar-estudiante").addEventListener("click", quitarEstudiante);
   $("#asignatura").addEventListener("change", (evento) => {
     estado.asignatura = normalizarAsignatura(evento.target.value);
-    guardar(); pintarApoyos(); actualizarRespaldo();
+    guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo();
   });
   for (const [id, clave] of [["iniciales", "iniciales"], ["estudiante-ayuda", "ayuda"], ["estudiante-voz", "voz"]]) {
     $("#" + id).addEventListener("input", (evento) => {
       const campo = evento.target, escribio = Boolean(campo.value);
-      estado.estudiante[clave] = normalizarEstudiante({ ...estado.estudiante, [clave]: campo.value })[clave];
-      campo.value = estado.estudiante[clave];
-      guardar(); pintarTituloApoyos(); pintarSeleccion(); actualizarConteoFiltros();
+      estudianteActual()[clave] = normalizarEstudiante({ ...estudianteActual(), [clave]: campo.value })[clave];
+      campo.value = estudianteActual()[clave];
+      guardar(); pintarTituloApoyos(); pintarSelectorEstudiantes(); pintarSeleccion(); actualizarConteoFiltros();
       if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad(campo);
     });
   }
@@ -201,11 +284,12 @@ let catalogo = [], fuentes = {}, necesidades = [];
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
 let origenGuiaApoyos = null, dialogoPrivacidad = null;
-let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiante: normalizarEstudiante() };
+const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} };
+let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
+let inclusionDocumento = null, solicitudDocumento = 0;
 
 function cargar() {
-  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = { ...estado, ...g, perfil: normalizarPerfil(g.perfil, g.estudiante?.practica), estudiante: normalizarEstudiante(g.estudiante), momentos: normalizarMomentos(g.momentos), asignatura: normalizarAsignatura(g.asignatura) }; } catch (e) { /* sin almacenamiento: la página funciona igual */ }
-  delete estado.momento;
+  try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = normalizarDatos(g); } catch (e) { /* sin almacenamiento: la página funciona igual */ }
 }
 function guardar() {
   try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
@@ -289,7 +373,7 @@ function prepararPestanas() {
 
 function cantidadFiltros() {
   if (estado.pestana === "apoyos") return document.querySelectorAll("#areas input:checked").length +
-    Object.keys(estado.estudiante.dimensiones).length + Number(Boolean(estado.estudiante.iniciales)) + Number(Boolean(estado.estudiante.ayuda.trim())) + Number(Boolean(estado.estudiante.voz.trim()));
+    Object.keys(estudianteActual().dimensiones).length + Number(Boolean(estudianteActual().iniciales)) + Number(Boolean(estudianteActual().ayuda.trim())) + Number(Boolean(estudianteActual().voz.trim()));
   const p = estado.perfil;
   return (Array.isArray(estado.necesidades) ? estado.necesidades.length : 0) + estado.propositos.length + p.actividad.length + p.evidencia.length +
     Number(Boolean(p.meta.trim())) + estado.momentos.length;
@@ -368,13 +452,15 @@ function etiqueta(valor) {
   const casilla = document.querySelector(`input[value="${valor}"]`);
   return casilla ? casilla.closest("label").textContent.trim() : valor;
 }
-function visibles() {
+function compararDua(a, b, practica = practicaActiva()) {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
+  return (orden[a.momento] - orden[b.momento]) || (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (Number(practica && esPractica(b)) - Number(practica && esPractica(a))) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true });
+}
+function visibles() {
   const practica = practicaActiva();
-  return catalogo
-    .filter((r) => r.tipo === "dua" && (!estado.momentos.length || estado.momentos.includes(r.momento)) && aplica(r))
+  return catalogo.filter((r) => r.tipo === "dua" && (!estado.momentos.length || estado.momentos.includes(r.momento)) && aplica(r))
     .filter((r) => !estado.propositos.length || estado.propositos.includes(proposito(r)))
-    .sort((a, b) => (orden[a.momento] - orden[b.momento]) || (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (Number(practica && esPractica(b)) - Number(practica && esPractica(a))) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true }));
+    .sort((a, b) => compararDua(a, b, practica));
 }
 
 function el(tag, attrs = {}, ...hijos) {
@@ -423,7 +509,9 @@ function pintarControles() {
 }
 
 function tarjeta(r) {
-  const dua = r.tipo === "dua", acceso = r.tipo === "acceso", prop = dua ? proposito(r) : null, elegida = r.id in estado.seleccion;
+  const dua = r.tipo === "dua", acceso = r.tipo === "acceso", prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : estudianteActual().seleccion);
+  const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
+  const repetida = estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
   const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
@@ -432,10 +520,15 @@ function tarjeta(r) {
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
     dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: taller, laboratorio o terreno." }) : null,
-    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estado.estudiante.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Recomendada porque marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     el(dua || r.tipo === "objetivos" ? "h4" : "h3", { text: r.titulo }),
     el("ol", {}, r.como.map((p) => el("li", { text: p }))),
+    version ? el("div", { class: "version-curso", tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
+      ofrecida ? el("p", { text: "También ofrecido a todo el curso" }) : null,
+      el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso",
+        onclick: () => { estado.seleccion[version.id] = ""; guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); document.getElementById("curso-" + r.id)?.closest(".version-curso").focus(); } })) : null,
+    repetida >= 2 ? el("p", { class: "aviso-apoyos", text: `Lo elegiste para ${repetida} estudiantes.` + (version ? " Considera agregar su versión para todo el curso." : "") }) : null,
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
       el("span", { class: "respaldo " + r.respaldo, text: RESPALDO[r.respaldo] }),
@@ -454,6 +547,7 @@ function fechaLocal() {
 }
 
 function pintarTarjetas() {
+  pintarRepeticiones();
   const lista = visibles();
   $("#tarjetas").replaceChildren(...MOMENTOS.filter(([id]) => lista.some((r) => r.momento === id)).map(([id, nombre]) =>
     el("section", { "aria-labelledby": "t-momento-" + id },
@@ -462,10 +556,14 @@ function pintarTarjetas() {
   $("#conteo").textContent = plural(lista.length, "acción", "acciones");
 }
 
-function alternar(id) {
+function alternar(id, estudianteId = estado.estudianteActivo) {
+  const r = catalogo.find((r) => r.id === id);
+  if (!r) return;
+  const seleccion = r.tipo === "dua" ? estado.seleccion : estado.estudiantes.find((e) => e.id === estudianteId)?.seleccion;
+  if (!seleccion) return;
   const foco = document.activeElement.id;
-  const agregada = !(id in estado.seleccion);
-  if (!agregada) delete estado.seleccion[id]; else estado.seleccion[id] = "";
+  const agregada = !Object.hasOwn(seleccion, id);
+  if (!agregada) delete seleccion[id]; else seleccion[id] = "";
   guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
   if (agregada) {
     const contador = $("#n-sel");
@@ -482,40 +580,35 @@ function alternar(id) {
   }
 }
 
-function elegidasOrdenadas() {
-  const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
-  return catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id in estado.seleccion && aplica(r))
-    .sort((a, b) => (orden[a.momento] ?? 4) - (orden[b.momento] ?? 4) || (a.tipo !== "dua" && b.tipo !== "dua" ? ordenApoyo(a) - ordenApoyo(b) : 0) || (a.consideracion || a.id).localeCompare(b.consideracion || b.id, "es", { numeric: true }));
+function elegidasOrdenadas(seleccion = estado.seleccion) {
+  return catalogo.filter((r) => Object.hasOwn(seleccion, r.id) && aplica(r))
+    .sort((a, b) => a.tipo === "dua" && b.tipo === "dua" ? compararDua(a, b) : ordenApoyo(a) - ordenApoyo(b) || a.id.localeCompare(b.id, "es", { numeric: true }));
 }
-
+function totalElegidas() { return Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0); }
 function pintarSeleccion() {
-  const sel = elegidasOrdenadas();
-  $("#n-sel").textContent = sel.length;
-  $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(sel.length, "elegida", "elegidas")}`);
-  $("#sel-curso-titulo").hidden = !sel.some((r) => r.tipo === "dua");
-  $("#sel-vacia").hidden = sel.length > 0;
-  $("#pdf").disabled = sel.length === 0;
+  const sel = elegidasOrdenadas(), total = totalElegidas();
+  $("#n-sel").textContent = total;
+  $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(total, "elegida", "elegidas")}`);
+  $("#sel-curso-titulo").hidden = !sel.length;
+  $("#sel-vacia").hidden = total > 0;
+  $("#pdf").disabled = !sel.length && !estado.estudiantes.some(datosEstudiante);
   actualizarRespaldo();
   const nombreMomento = nombresMomentos();
-  $("#sel-lista").replaceChildren(...sel.filter((r) => r.tipo === "dua").map(itemSeleccion));
-  const apoyos = sel.filter((r) => r.tipo !== "dua");
-  $("#sel-estudiante").hidden = !apoyos.length;
-  $("#sel-estudiante-titulo").textContent = "Para " + (estado.estudiante.iniciales || "un estudiante");
-  $("#sel-estudiante-subtitulo").textContent = subtituloEstudiante();
-  $("#sel-estudiante-ayuda").textContent = estado.estudiante.ayuda ? "Le ayuda: " + estado.estudiante.ayuda : "";
-  $("#sel-apoyos").replaceChildren(...apoyos.map(itemSeleccion));
-  function itemSeleccion(r) {
-    const nota = el("textarea", { rows: "2", "aria-label": "Nota para: " + r.titulo, placeholder: "Nota opcional: cómo la usarás" });
-    nota.value = estado.seleccion[r.id] || "";
+  $("#sel-lista").replaceChildren(...sel.map((r) => itemSeleccion(r)));
+  $("#sel-estudiantes").replaceChildren(...estado.estudiantes.filter((e) => Object.keys(e.seleccion).length).map((e) =>
+    el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante() }),
+      el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).map((r) => itemSeleccion(r, e))))));
+  function itemSeleccion(r, e) {
+    const seleccion = e ? e.seleccion : estado.seleccion;
+    const nota = el("textarea", { rows: "2", maxlength: "2000", "aria-label": "Nota para: " + r.titulo + (e ? " · " + nombreEstudiante(e) : " · Curso"), placeholder: "Nota opcional: cómo la usarás" });
+    nota.value = seleccion[r.id] || "";
     nota.addEventListener("input", () => {
-      estado.seleccion[r.id] = nota.value; guardar();
+      seleccion[r.id] = nota.value; guardar();
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad(nota);
     });
-    return el("li", {},
-      el("span", { class: "sel-momento", text: r.tipo !== "dua" ? tipoOficial(r) : nombreMomento[r.momento] }),
-      el("span", { class: "sel-titulo", text: r.titulo }),
-      nota,
-      el("button", { type: "button", class: "quitar", id: "quitar-" + r.id, onclick: () => alternar(r.id), text: "Quitar" }));
+    return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r) : nombreMomento[r.momento] }),
+      el("span", { class: "sel-titulo", text: r.titulo }), nota,
+      el("button", { type: "button", class: "quitar", id: "quitar-" + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, e?.id), text: "Quitar" }));
   }
 }
 
@@ -549,7 +642,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || Object.keys(estado.seleccion).length || estado.estudiante.iniciales || estado.estudiante.ayuda || estado.estudiante.voz || estado.perfil.practica || estado.asignatura || estado.momentos.length || Object.keys(estado.estudiante.dimensiones).length);
+  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || totalElegidas() || estado.estudiantes.some(datosEstudiante) || estado.estudiantes.length > 1 || estado.perfil.practica || estado.asignatura || estado.momentos.length);
 }
 
 function actualizarRespaldo() {
@@ -558,7 +651,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 1, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiante: estado.estudiante, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };
+  const datos = { app: "prizma", version: 2, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiantes: estado.estudiantes, estudianteActivo: estado.estudianteActivo, propositos: estado.propositos, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);
@@ -569,35 +662,34 @@ function guardarRespaldo() {
 
 function validarRespaldo(datos) {
   const objeto = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
-  if (!objeto(datos) || datos.app !== "prizma" || datos.version !== 1) {
-    throw new Error("Este archivo no es un respaldo de Prizma.");
-  }
-  if (!objeto(datos.perfil) || !objeto(datos.seleccion) || Object.values(datos.seleccion).some((nota) => typeof nota !== "string")) {
+  if (!objeto(datos) || datos.app !== "prizma" || ![1, 2].includes(datos.version)) throw new Error("Este archivo no es un respaldo de Prizma.");
+  const seleccion = (s) => objeto(s) && Object.values(s).every((nota) => typeof nota === "string");
+  if (!objeto(datos.perfil) || !seleccion(datos.seleccion) || (datos.version === 2 &&
+    (!Array.isArray(datos.estudiantes) || datos.estudiantes.length > 10 || datos.estudiantes.some((e) => !objeto(e) || !seleccion(e.seleccion))))) {
     throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma.");
   }
-  const perfil = normalizarPerfil(datos.perfil, datos.estudiante?.practica);
-  const ids = new Set(catalogo.filter((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS)).map((r) => r.id));
-  const entradas = Object.entries(datos.seleccion);
-  const seleccion = Object.fromEntries(entradas.filter(([id]) => ids.has(id)).map(([id, nota]) => [id, nota.slice(0, 2000)]));
-  return { perfil, seleccion, asignatura: normalizarAsignatura(datos.asignatura), momentos: normalizarMomentos(datos.momentos), necesidades: normalizarNecesidades(datos.necesidades), estudiante: normalizarEstudiante(datos.estudiante), descartadas: entradas.length - Object.keys(seleccion).length };
+  const normal = normalizarDatos(datos);
+  const cantidad = Object.keys(datos.seleccion).length + (datos.version === 2 ? datos.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0) : 0);
+  return { ...normal, descartadas: cantidad - Object.keys(normal.seleccion).length - normal.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0) };
 }
 
 async function abrirRespaldo(evento) {
   const input = evento.target, archivo = input.files[0], aviso = $("#respaldo-estado");
   if (!archivo) return;
   try {
-    if (archivo.size > 200 * 1024) throw new Error("El archivo es demasiado grande para ser un respaldo de Prizma.");
+    // Admite diez selecciones con notas de hasta 2000 caracteres, también en UTF-8.
+    if (archivo.size > 12 * 1024 * 1024) throw new Error("El archivo es demasiado grande para ser un respaldo de Prizma.");
     let datos;
     try { datos = JSON.parse(await archivo.text()); }
     catch (e) { throw new Error("El archivo no se pudo leer. Elige un respaldo guardado desde Prizma."); }
-    const { perfil, seleccion, estudiante, momentos, asignatura, necesidades: elegidas, descartadas } = validarRespaldo(datos);
-    if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y tu estudiante por los del respaldo. ¿Continuar?`)) {
+    const { descartadas, ...normal } = validarRespaldo(datos);
+    if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y todos tus estudiantes por los del respaldo. ¿Continuar?`)) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado.perfil = perfil; estado.seleccion = seleccion; estado.estudiante = estudiante; estado.necesidades = elegidas; estado.momentos = momentos; estado.asignatura = asignatura;
+    estado = { ...normal, pestana: estado.pestana }; inclusionDocumento = null;
     guardar(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
-    aviso.textContent = `Respaldo abierto: ${plural(Object.keys(seleccion).length, "acción", "acciones")}.` +
+    aviso.textContent = `Respaldo abierto: ${plural(totalElegidas(), "acción", "acciones")}.` +
       (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
   } catch (e) { aviso.textContent = e.message; }
   finally { input.value = ""; }
@@ -606,126 +698,168 @@ async function abrirRespaldo(evento) {
 const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.";
 
 // Un solo modelo del documento para la vista previa, la impresión y el PDF descargable.
-function documento() {
-  const p = estado.perfil, sel = elegidasOrdenadas(), nombreMomento = nombresMomentos();
+function prepararDocumento() {
+  solicitudDocumento++;
+  $("#generar-documento").disabled = false;
+  inclusionDocumento = { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] };
+  $("#opciones-documento").replaceChildren(...[["curso", "Acciones para todo el curso"], ...estado.estudiantes.filter(datosEstudiante).map((e) => ["alumno:" + e.id, tituloEstudiante(e)])].map(([id, texto]) => {
+    const c = el("input", { type: "checkbox", value: id, name: "incluir" });
+    c.checked = id === "curso" || id === "alumno:" + estado.estudianteActivo;
+    return el("label", {}, c, texto);
+  }));
+  $("#error-documento").textContent = "";
+  $("#mochila").close();
+  $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
+}
+async function generarDocumento() {
+  const ids = [...document.querySelectorAll('input[name="incluir"]:checked')].map((c) => c.value);
+  if (!ids.length) { $("#error-documento").textContent = "Elige el curso o al menos un estudiante."; return; }
+  inclusionDocumento = { curso: ids.includes("curso"), estudiantes: ids.filter((id) => id.startsWith("alumno:")).map((id) => id.slice(7)) };
+  const solicitud = solicitudDocumento;
+  const boton = $("#generar-documento");
+  boton.disabled = true; $("#error-documento").textContent = "Preparando documento…";
+  try { await prepararPdf(); }
+  catch (e) { if (solicitud === solicitudDocumento) { $("#error-documento").textContent = "No se pudo preparar el documento. Reintenta."; boton.disabled = false; } return; }
+  if (solicitud !== solicitudDocumento) return;
+  boton.disabled = false;
+  if (!$("#incluir-documento").open) return;
+  armarHoja(); $("#incluir-documento").close(); $("#vista-estado").textContent = ""; $("#vista").showModal();
+}
+function logoDocumento() {
+  const svg = typeof document !== "undefined" ? $(".logo")?.outerHTML || "" : "";
+  return svg.replace(/currentColor/g, "#18213f").replace(/var\(--motivar\)/g, "#b0145a").replace(/var\(--presentar\)/g, "#00727d").replace(/var\(--mostrar\)/g, "#5a33a8");
+}
+function documento(opciones = inclusionDocumento || { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] }) {
+  const sel = opciones.curso ? elegidasOrdenadas() : [], alumnos = estado.estudiantes.filter((e) => opciones.estudiantes.includes(e.id));
+  const usadas = [...sel, ...alumnos.flatMap((e) => elegidasOrdenadas(e.seleccion))];
+  const accion = (r, seleccion) => ({ id: r.id, titulo: r.titulo, como: [...r.como], porque: r.porque, nota: (seleccion[r.id] || "").trim(),
+    ofrecida: r.tipo !== "dua" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),
+    dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.`,
+    grupo: r.tipo === "acceso" ? `${esSuperior() ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
+  });
+  const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].filter((c) => estado.perfil[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
-  const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)]
-    .filter((c) => p[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
-  const datos = [p.nivel && NIVELES[p.nivel], practicaActiva() && "Clase con taller, laboratorio o terreno", p.actividad.length && "Harán: " + textos("actividad"),
-    p.evidencia.length && "Mostrarán lo aprendido: " + textos("evidencia"),
-    estado.necesidades.length && "Quiere resolver: " + necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto).join("; ")].filter(Boolean);
-  return {
-    fecha: `${fecha}. Generado con Prizma, catálogo del ${VERSION_CATALOGO}.`,
-    datos: datos.length ? datos.join(". ") + "." : "",
-    meta: p.meta.trim(),
-    grupos: MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).map(([id]) => ({
-      nombre: nombreMomento[id],
-      acciones: sel.filter((r) => r.momento === id).map((r) => ({
-        titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(),
-        dato: `${PROPOSITOS[proposito(r)].corto}. ${PROPOSITOS[proposito(r)].principio}. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}. Respaldo: ${RESPALDO[r.respaldo]}.`,
+  const titulo = alumnos.length ? "Plan de apoyos para el aprendizaje" : "Acciones para todo el curso";
+  const contenido = [opciones.curso ? "Curso" : "", alumnos.length ? plural(alumnos.length, "estudiante", "estudiantes") : ""].filter(Boolean).join(" y ");
+  return { titulo, fecha, logo: logoDocumento(), curso: opciones.curso,
+    resumen: [["Fecha", fecha], ["Nivel", NIVELES[estado.perfil.nivel] || "Sin indicar"], ...(practicaActiva() ? [["Clase práctica", "Clase con taller, laboratorio o terreno"]] : []),
+      ...(estado.perfil.actividad.length ? [["Actividad de la clase", textos("actividad")]] : []),
+      ...(estado.perfil.evidencia.length ? [["Cómo mostrarán lo aprendido", textos("evidencia")]] : []),
+      ["Meta de aprendizaje", estado.perfil.meta.trim() || "Sin información"],
+      ["Qué quiere resolver", necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto).join("; ") || "Sin información"], ["Contenido", contenido]],
+    grupos: MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).map(([id, nombre]) => ({ nombre: nombreMomento(id, nombre), acciones: sel.filter((r) => r.momento === id).map((r) => accion(r, estado.seleccion)) }))
+      .concat(alumnos.map((e) => {
+        const apoyos = elegidasOrdenadas(e.seleccion);
+        return { estudiante: e.id, nombre: tituloEstudiante(e), subtitulo: subtituloEstudiante(),
+          cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], apoyos.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
+          ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", acciones: apoyos.map((r) => accion(r, e.seleccion)),
+        };
       })),
-    })).concat(sel.some((r) => r.tipo !== "dua") || estado.estudiante.voz.trim() || estado.estudiante.ayuda.trim() || Object.keys(estado.estudiante.dimensiones).length ? [{
-      nombre: tituloEstudiante(), subtitulo: subtituloEstudiante(),
-      cif: Object.entries(estado.estudiante.dimensiones).map(([d, frecuencia]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[frecuencia],
-        sel.filter((r) => r.tipo !== "dua" && r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
-      ayuda: estado.estudiante.ayuda.trim() ? "Le ayuda: " + estado.estudiante.ayuda.trim() : "",
-      voz: estado.estudiante.voz.trim() ? "¿Qué dicen el estudiante y su familia? " + estado.estudiante.voz.trim() : "",
-      acciones: sel.filter((r) => r.tipo !== "dua").map((r) => ({ grupo: esSuperior() && r.tipo === "acceso" ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo], titulo: r.titulo, como: r.como, porque: r.porque, nota: (estado.seleccion[r.id] || "").trim(), dato: `${tipoOficial(r)}. Respaldo: ${RESPALDO[r.respaldo]}.` })),
-    }] : []),
-    fuentes: [...new Set(sel.flatMap((r) => r.fuentes))].map((f) => `${fuentes[f].cita} ${fuentes[f].url}`),
+    fuentes: [...new Set(usadas.flatMap((r) => r.fuentes))].map((id) => ({ cita: fuentes[id]?.cita || id, url: fuentes[id]?.url || "" })),
   };
 }
-
 function armarHoja() {
   const d = documento();
-  const partes = [
-    el("h1", { text: `Acciones para mi ${voc("clase")}` }),
-    el("p", { class: "h-meta", text: d.fecha }),
-    d.datos ? el("p", { text: d.datos }) : null,
-    d.meta ? el("p", {}, el("strong", { text: "Meta de aprendizaje: " }), d.meta, el("br"), el("em", { text: "Quita las barreras, no el desafío de aprender esto." })) : null,
-    ...d.grupos.flatMap((g) => [
-      el("h2", { text: g.nombre }),
-      g.subtitulo ? el("p", { text: g.subtitulo }) : null,
+  const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
+    el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
+  const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), el("ol", {}, a.como.map((t) => el("li", { text: t }))),
+    el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato }),
+    a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null,
+    a.ofrecida ? el("p", { text: "También ofrecido a todo el curso" }) : null);
+  $("#hoja").replaceChildren(...[
+    el("div", { class: "h-marca" }, d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "44", height: "44", alt: "" }) : null, el("strong", { text: "Prizma" })),
+    el("h1", { text: d.titulo }), tabla(["Resumen", "Información"], d.resumen, "h-resumen"),
+    d.curso ? el("h2", { text: "Acciones para todo el curso" }) : null,
+    ...d.grupos.map((g) => el("section", { class: g.estudiante ? "h-estudiante" : "h-momento" },
+      el(g.estudiante ? "h2" : "h3", { text: g.nombre }), g.subtitulo ? el("p", { text: g.subtitulo }) : null,
       g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: CIF_AVISO }),
-        el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO },
-          el("table", {}, el("caption", { class: "solo-lectores", text: CIF_TITULO }),
-            el("thead", {}, el("tr", {}, CIF_COLUMNAS.map((texto) => el("th", { scope: "col", text: texto })))),
-            el("tbody", {}, (g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]]).map((fila) =>
-              el("tr", {}, fila.map((texto, i) => el(i ? "td" : "th", i ? { text: texto } : { scope: "row", text: texto })))))))) : null,
-      g.ayuda ? el("p", { text: g.ayuda }) : null,
-      g.voz ? el("p", { text: g.voz }) : null,
-      ...g.acciones.flatMap((a, i) => [
-        a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null,
-        el("div", { class: "h-accion" },
-        el("h3", { text: a.titulo }),
-        el("ol", {}, a.como.map((x) => el("li", { text: x }))),
-        el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque),
-        el("p", { class: "h-dato", text: a.dato }),
-        a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null)]),
-    ]),
-    el("h2", { text: "Fuentes" }),
-    el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", { text: f }))),
-    el("p", { class: "h-aviso", text: AVISO }),
-  ];
-  $("#hoja").replaceChildren(...partes.filter(Boolean));
+        el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif")),
+        tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], ["Qué dicen el estudiante y su familia", g.voz]], "h-facilitadores")) : null,
+      ...g.acciones.flatMap((a, i) => [g.estudiante && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null, ficha(a)]),
+      g.estudiante ? el("div", { class: "h-acuerdos" }, el("h3", { text: "Acuerdos (para completar en la reunión)" }), ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => el("p", { text: t + ": __________________________________" }))) : null)),
+    el("section", { class: "h-fuentes-seccion" }, el("h2", { text: "Fuentes" }), el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", {}, f.cita, el("p", { class: "h-dato", text: f.url })))), el("p", { class: "h-aviso", text: AVISO }))].filter(Boolean));
 }
-
 function definicionPdf() {
-  const d = documento();
-  const linea = { canvas: [{ type: "line", x1: 0, y1: 0, x2: 505, y2: 0, lineWidth: 0.6, lineColor: "#888888" }], margin: [0, 0, 0, 6] };
+  const d = documento(), margen = 56.7, ancho = 595.28 - 2 * margen;
+  const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
+  const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
+    { text: a.titulo, style: "h3" }, { ol: [...a.como], margin: [0, 4, 0, 4] },
+    { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato, style: "dato", margin: [0, 4, 0, 0] },
+    ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
+    ...(a.ofrecida ? [{ text: "También ofrecido a todo el curso", bold: true, margin: [0, 4, 0, 0] }] : []),
+  ] });
   const contenido = [
-    { text: `Acciones para mi ${voc("clase")}`, style: "h1" },
-    { text: d.fecha, style: "dato", margin: [0, 0, 0, 4] },
-    d.datos ? { text: d.datos, margin: [0, 0, 0, 4] } : null,
-    d.meta ? { text: [{ text: "Meta de aprendizaje: ", bold: true }, d.meta], margin: [0, 4, 0, 0] } : null,
-    d.meta ? { text: "Quita las barreras, no el desafío de aprender esto.", italics: true, margin: [0, 0, 0, 6] } : null,
+    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
+    { text: d.titulo, style: "h1" },
+    { table: { widths: [110, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: { ...fino, vLineWidth: () => 0, hLineWidth: () => .3 }, margin: [0, 8, 0, 14] },
+    ...(d.curso && !d.grupos.some((g) => !g.estudiante) ? [{ text: "Acciones para todo el curso", style: "h2", headlineLevel: 1 }] : []),
     ...d.grupos.flatMap((g) => [
-      { text: g.nombre, style: "h2" }, linea,
-      g.subtitulo ? { text: g.subtitulo, italics: true } : null,
-      g.cif ? { text: CIF_TITULO, style: "h3", margin: [0, 8, 0, 2] } : null,
-      g.cif ? { text: CIF_AVISO, style: "dato", margin: [0, 0, 0, 5] } : null,
-      g.cif ? { table: { headerRows: 1, widths: ["*", 60, "*"], body: [CIF_COLUMNAS.map((text) => ({ text, bold: true })),
-        ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: "lightHorizontalLines", margin: [0, 0, 0, 8] } : null,
-      g.ayuda ? { text: g.ayuda } : null,
-      g.voz ? { text: g.voz } : null,
-      ...g.acciones.flatMap((a, i) => [
-        a.grupo && a.grupo !== g.acciones[i - 1]?.grupo ? { text: a.grupo, style: "h3", margin: [0, 10, 0, 4] } : null,
-        {
-        unbreakable: true, margin: [0, 0, 0, 10], stack: [
-          { text: a.titulo, style: "h3" },
-          // pdfmake reescribe la lista; la copia protege el catálogo.
-          { ol: [...a.como], margin: [0, 2, 0, 2] },
-          { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] },
-          { text: a.dato, style: "dato", margin: [0, 2, 0, 0] },
-          a.nota ? { text: [{ text: "Mi nota: ", bold: true }, a.nota], margin: [0, 3, 0, 0] } : null,
-        ].filter(Boolean),
-      }]),
+      ...(g.estudiante ? [{ id: "alumno-" + g.estudiante, text: g.nombre, style: "h2", headlineLevel: 1, pageBreak: "before", margin: [0, 8, 0, 6] }] : []),
+      ...(g.estudiante ? [
+        { text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] },
+        { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
+        { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [CIF_COLUMNAS.map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
+        { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: "Qué dicen el estudiante y su familia", bold: true }, g.voz]] }, layout: fino, margin: [0, 0, 0, 12] },
+      ] : []),
+      ...g.acciones.flatMap((a, i) => !g.estudiante && i === 0 ? [{ unbreakable: true, stack: [
+        ...(g === d.grupos[0] ? [{ text: "Acciones para todo el curso", style: "h2" }] : []),
+        { text: g.nombre, style: "h3", margin: [0, 8, 0, 6] }, ficha(a),
+      ] }] : g.estudiante && a.grupo !== g.acciones[i - 1]?.grupo ? [
+        { unbreakable: true, stack: [{ text: a.grupo, style: "h3", margin: [0, 8, 0, 5] }, ficha(a)] },
+      ] : [ficha(a)]),
+      ...(g.estudiante ? [{ unbreakable: true, margin: [0, 10, 0, 0], stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h3" }, ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 10, 0, 0] }))] }] : []),
     ]),
-    { text: "Fuentes", style: "h2" }, linea,
-    { ol: d.fuentes, style: "dato" },
-    { table: { widths: ["*"], body: [[{ text: AVISO, style: "dato", margin: [4, 4, 4, 4] }]] }, layout: { hLineColor: "#888888", vLineColor: "#888888" }, margin: [0, 14, 0, 0] },
-  ].filter(Boolean);
+    { id: "fuentes-documento", text: "Fuentes", style: "h2", pageBreak: "before", headlineLevel: 1 },
+    { ol: d.fuentes.map((f) => ({ stack: [{ text: f.cita }, { text: f.url, style: "dato", margin: [0, 2, 0, 8] }] })) },
+    { table: { widths: ["*"], body: [[{ text: AVISO, style: "dato", margin: [5, 5, 5, 5] }]] }, layout: fino, margin: [0, 14, 0, 0] },
+  ];
   return {
-    info: { title: `Acciones para mi ${voc("clase")}`, creator: "Prizma" },
-    pageSize: "LETTER", pageMargins: [54, 54, 54, 60],
-    content: contenido,
-    footer: (actual, total) => ({ text: `Página ${actual} de ${total}`, alignment: "right", fontSize: 8, color: "#555555", margin: [54, 20, 54, 0] }),
-    defaultStyle: { fontSize: 10.5, lineHeight: 1.25 },
-    styles: { h1: { fontSize: 18, bold: true, margin: [0, 0, 0, 2] }, h2: { fontSize: 13, bold: true, margin: [0, 12, 0, 3] }, h3: { fontSize: 11, bold: true }, dato: { fontSize: 8.5, color: "#444444" } },
+    info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [margen, margen, margen, margen], content: contenido,
+    pageBreakBefore: (n, siguientes) => Boolean(n.headlineLevel && siguientes.every((n) => n.headlineLevel)),
+    header: (actual) => actual === 1 ? null : { margin: [margen, 20, margen, 0], stack: [
+      { columns: [{ text: "Prizma · " + d.titulo, width: "*" }, { text: d.fecha, width: 115, alignment: "right" }], fontSize: 8, color: "#555555" },
+      { canvas: [{ type: "line", x1: 0, y1: 0, x2: ancho, y2: 0, lineWidth: .4, lineColor: "#aaaaaa" }], margin: [0, 5, 0, 0] },
+    ] },
+    footer: (actual, total) => {
+      // pdfmake ya asignó posiciones al contenido antes de dibujar los pies.
+      const primera = Math.min(...contenido.filter((n) => n.id?.startsWith("alumno-")).map((n) => n.positions?.[0]?.pageNumber ?? Infinity));
+      const fuentes = contenido.find((n) => n.id === "fuentes-documento").positions?.[0]?.pageNumber ?? Infinity;
+      return actual === 1 ? null : { columns: [
+        { text: actual >= primera && actual < fuentes ? "Contiene datos de un estudiante. Guárdalo de forma segura." : "", width: "*" },
+        { text: `Página ${actual} de ${total}`, alignment: "right", width: 95 },
+      ], fontSize: 8, color: "#555555", margin: [margen, 20, margen, 0] };
+    },
+    defaultStyle: { font: "Roboto", fontSize: 10.5, lineHeight: 1.2, color: "#111111" },
+    styles: { h1: { fontSize: 20, bold: true }, h2: { fontSize: 14, bold: true, margin: [0, 8, 0, 6] }, h3: { fontSize: 11.5, bold: true }, dato: { fontSize: 8.5, color: "#555555" } },
   };
 }
 
-// pdfmake pesa unos 2 MB: se carga solo cuando alguien pide descargar.
+// pdfmake pesa unos 2 MB: se carga al preparar el documento.
 function cargarScript(src) {
   return new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => mal(new Error(src)); document.head.append(s); });
+}
+let cargaPdf = null;
+function prepararPdf() {
+  if (!cargaPdf) cargaPdf = (async () => {
+    if (!window.pdfMake?.createPdf) await cargarScript("vendor/pdfmake/pdfmake.min.js");
+    if (!window.pdfMake.vfs) await cargarScript("vendor/pdfmake/vfs_fonts.js");
+    // La vista previa reutiliza las mismas fuentes locales del PDF, sin duplicar archivos.
+    if (typeof FontFace !== "undefined") {
+      await Promise.all([["Roboto-Regular.ttf", "normal", "400"], ["Roboto-Medium.ttf", "normal", "700"], ["Roboto-Italic.ttf", "italic", "400"], ["Roboto-MediumItalic.ttf", "italic", "700"]].map(async ([archivo, style, weight]) => {
+        const fuente = new FontFace("Roboto", `url(data:font/ttf;base64,${window.pdfMake.vfs[archivo]})`, { style, weight });
+        document.fonts.add(await fuente.load());
+      }));
+    }
+  })().catch((error) => { cargaPdf = null; throw error; });
+  return cargaPdf;
 }
 async function descargarPdf() {
   const aviso = $("#vista-estado"), boton = $("#descargar");
   boton.disabled = true; aviso.textContent = "Preparando el PDF…";
   try {
-    if (!window.pdfMake) { await cargarScript("vendor/pdfmake/pdfmake.min.js"); await cargarScript("vendor/pdfmake/vfs_fonts.js"); }
+    await prepararPdf();
     const fecha = fechaLocal();
-    window.pdfMake.createPdf(definicionPdf()).download(`prizma-mi-clase-${fecha}.pdf`);
+    window.pdfMake.createPdf(definicionPdf()).download(`prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
     aviso.textContent = "PDF descargado. Búscalo en tu carpeta de descargas.";
   } catch (e) {
     aviso.textContent = "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».";
@@ -830,15 +964,14 @@ async function iniciar() {
     document.documentElement.dataset.tema = tema.value;
     try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
-  cargar();
   prepararAvisos();
-  prepararPestanas(); prepararFiltros();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {
     if (!r.ok) throw new Error("necesidades");
     return r.json();
   }).then((datos) => {
     if (!Array.isArray(datos) || datos.some((n) =>
       !n || typeof n.id !== "string" || !n.id.trim() || typeof n.texto !== "string" || !n.texto.trim() ||
+      (n.dimensiones !== undefined && (!Array.isArray(n.dimensiones) || n.dimensiones.some((d) => !Number.isInteger(d) || d < 1 || d > 11))) ||
       !Array.isArray(n.consideraciones) || n.consideraciones.some((c) => typeof c !== "string" || !Object.hasOwn(CONSIDERACIONES, c)))) return [];
     return new Set(datos.map((n) => n.id)).size === datos.length ? datos : [];
   }).catch(() => []);
@@ -850,19 +983,23 @@ async function iniciar() {
     $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";
     return;
   }
-  estado.necesidades = normalizarNecesidades(estado.necesidades);
-  estado.seleccion = Object.fromEntries(Object.entries(estado.seleccion).filter(([id]) => catalogo.some((r) => (r.tipo === "dua" || r.tipo in GRUPOS_APOYOS) && r.id === id)));
+  cargar();
+  prepararPestanas(); prepararFiltros();
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   $("#guia-empezar").disabled = false;
   window.addEventListener("beforeprint", armarHoja);
-  $("#pdf").addEventListener("click", () => { armarHoja(); $("#vista-estado").textContent = ""; $("#vista").showModal(); });
+  $("#pdf").addEventListener("click", prepararDocumento);
+  $("#generar-documento").addEventListener("click", generarDocumento);
+  $("#cancelar-documento").addEventListener("click", () => $("#incluir-documento").close());
+  $("#incluir-documento").addEventListener("close", () => { if (!$("#vista").open) $("#abrir-mochila").focus(); });
+  $("#vista").addEventListener("close", () => $("#abrir-mochila").focus());
   $("#guardar-respaldo").addEventListener("click", guardarRespaldo);
   $("#abrir-respaldo").addEventListener("change", abrirRespaldo);
   $("#descargar").addEventListener("click", descargarPdf);
   $("#imprimir").addEventListener("click", () => window.print());
   $("#cerrar").addEventListener("click", () => $("#vista").close());
   $("#borrar").addEventListener("click", () => {
-    if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección, tus notas y los datos del estudiante de este navegador?`)) return;
+    if (!window.confirm(`¿Borrar tu ${voc("clase")}, tu selección, tus notas y los datos de todos los estudiantes de este navegador?`)) return;
     try { localStorage.removeItem(CLAVE); } catch (e) { /* idem */ }
     history.replaceState(null, "", "#dua");
     location.reload();
