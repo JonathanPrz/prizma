@@ -1,0 +1,677 @@
+[
+  {
+    "canal": "dua",
+    "entrada": "nivel",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 1.9969402460080468,
+    "gananciaMediaTotal": 0.23594336390470874,
+    "gananciaMediaPrimero": 0.013659514118706407
+  },
+  {
+    "canal": "dua",
+    "entrada": "taller",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.9968911817897432,
+    "gananciaMediaTotal": 0.0006025377452142536,
+    "gananciaMediaPrimero": 0.00870283134553977
+  },
+  {
+    "canal": "dua",
+    "entrada": "practicaProfesional",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.8161936656965703,
+    "gananciaMediaTotal": 0.03714323161623249,
+    "gananciaMediaPrimero": 0.001955393735174652
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:1",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.6236135627840309,
+    "gananciaMediaTotal": 0.0024267923289731375,
+    "gananciaMediaPrimero": 0.0023561890138389754
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:2",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.9804754644912328,
+    "gananciaMediaTotal": 0.0023621755351113105,
+    "gananciaMediaPrimero": 0.0021504824375171093
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:3",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.8082395210721224,
+    "gananciaMediaTotal": 0.0013178281259417066,
+    "gananciaMediaPrimero": 0.0021877687566947018
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:4",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.7203885767939845,
+    "gananciaMediaTotal": 0.001460233455539203,
+    "gananciaMediaPrimero": 0.002537717283421056
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:5",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.8067882202071083,
+    "gananciaMediaTotal": 0.0012970632641234722,
+    "gananciaMediaPrimero": 0.0020444388736476416
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:6",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.7275467472768161,
+    "gananciaMediaTotal": 0.0005144125637576634,
+    "gananciaMediaPrimero": 0.0023447028662191283
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:7",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.8032907110889875,
+    "gananciaMediaTotal": 0.000053082023606971464,
+    "gananciaMediaPrimero": 0.0027783781805240985
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:8",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.9341271208413899,
+    "gananciaMediaTotal": 0.0006165217010007305,
+    "gananciaMediaPrimero": 0.002912880595402705
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:9",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.9508366295247023,
+    "gananciaMediaTotal": 0.0002511294192845919,
+    "gananciaMediaPrimero": 0.0025518182092459244
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:10",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.8905424632461869,
+    "gananciaMediaTotal": 0.0012158209753214688,
+    "gananciaMediaPrimero": 0.002525073588595355
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:11",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.7058053888530365,
+    "gananciaMediaTotal": 0.0015560903055939729,
+    "gananciaMediaPrimero": 0.003618794549424724
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:12",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.6192738087721484,
+    "gananciaMediaTotal": 0.00012537513421270345,
+    "gananciaMediaPrimero": 0.0030147101779736773
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:13",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.863375663753742,
+    "gananciaMediaTotal": 0.003557203498856021,
+    "gananciaMediaPrimero": 0.0024093928203141185
+  },
+  {
+    "canal": "dua",
+    "entrada": "situacion:14",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.9451590210669384,
+    "gananciaMediaTotal": 0.00297944995858249,
+    "gananciaMediaPrimero": 0.0019905141616905213
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:motivacion",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.5693157059879392,
+    "gananciaMediaTotal": 0.000010777443394711333,
+    "gananciaMediaPrimero": 0.01951788492998587
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:comprension",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.5522734755445975,
+    "gananciaMediaTotal": 0.00006927152472178757,
+    "gananciaMediaPrimero": 0.030379824475385536
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:tareas-largas",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.5522734755445975,
+    "gananciaMediaTotal": 0.00001246014559076945,
+    "gananciaMediaPrimero": 0.026098701835593402
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:participacion",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.507410963664697,
+    "gananciaMediaTotal": 0.0006053315090922709,
+    "gananciaMediaPrimero": 0.02033938389549645
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:lectoescritura",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.5212220180699688,
+    "gananciaMediaTotal": 0.00031317538275699164,
+    "gananciaMediaPrimero": 0.033018892887769796
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:evaluar",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.4739291234809583,
+    "gananciaMediaTotal": 0.00003688056798816548,
+    "gananciaMediaPrimero": 0.025734279753886133
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:lengua-cultura",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.4932823329969297,
+    "gananciaMediaTotal": 0.0010210025652474769,
+    "gananciaMediaPrimero": 0.02577745799300591
+  },
+  {
+    "canal": "dua",
+    "entrada": "necesidad:clima",
+    "n": 640,
+    "ids": 42,
+    "entropiaEntrada": 0.4885001607588282,
+    "gananciaMediaTotal": 0.0001503138613116382,
+    "gananciaMediaPrimero": 0.013984720321730905
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "nivel",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 1.9969402460080468,
+    "gananciaMediaTotal": 0.26762641042038615,
+    "gananciaMediaPrimero": 0.02082799519155113
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "taller",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.9968911817897432,
+    "gananciaMediaTotal": 0.012673282375126509,
+    "gananciaMediaPrimero": 0.0026119735425575137
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "practicaProfesional",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.8161936656965703,
+    "gananciaMediaTotal": 0.10183087093042134,
+    "gananciaMediaPrimero": 0.0025390688752163007
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:1",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.6236135627840309,
+    "gananciaMediaTotal": 0.013821906734288273,
+    "gananciaMediaPrimero": 0.005312295301819566
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:2",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.9804754644912328,
+    "gananciaMediaTotal": 0.014199322610161333,
+    "gananciaMediaPrimero": 0.00798079213715321
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:3",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.8082395210721224,
+    "gananciaMediaTotal": 0.012689717617238668,
+    "gananciaMediaPrimero": 0.005666748591760333
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:4",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.7203885767939845,
+    "gananciaMediaTotal": 0.011333566133819155,
+    "gananciaMediaPrimero": 0.006894534498324653
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:5",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.8067882202071083,
+    "gananciaMediaTotal": 0.019332295202035162,
+    "gananciaMediaPrimero": 0.0074745307817409
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:6",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.7275467472768161,
+    "gananciaMediaTotal": 0.01395342662946017,
+    "gananciaMediaPrimero": 0.006172020489284307
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:7",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.8032907110889875,
+    "gananciaMediaTotal": 0.012191477372475407,
+    "gananciaMediaPrimero": 0.006724076663145196
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:8",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.9341271208413899,
+    "gananciaMediaTotal": 0.02010066621465201,
+    "gananciaMediaPrimero": 0.008784243178874511
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:9",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.9508366295247023,
+    "gananciaMediaTotal": 0.018039246700517615,
+    "gananciaMediaPrimero": 0.010051147248316817
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:10",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.8905424632461869,
+    "gananciaMediaTotal": 0.017068080843957778,
+    "gananciaMediaPrimero": 0.00715431597934488
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:11",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.7058053888530365,
+    "gananciaMediaTotal": 0.011123390301949827,
+    "gananciaMediaPrimero": 0.00647089646939869
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:12",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.6192738087721484,
+    "gananciaMediaTotal": 0.01291994443688584,
+    "gananciaMediaPrimero": 0.006270547752752059
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:13",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.863375663753742,
+    "gananciaMediaTotal": 0.01632105255285539,
+    "gananciaMediaPrimero": 0.007934251329816466
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "situacion:14",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.9451590210669384,
+    "gananciaMediaTotal": 0.02021535572749172,
+    "gananciaMediaPrimero": 0.009300571688556431
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:motivacion",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.5693157059879392,
+    "gananciaMediaTotal": 0.0008390668621650034,
+    "gananciaMediaPrimero": 0.0006378939676754521
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:comprension",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.5522734755445975,
+    "gananciaMediaTotal": 0.0013980746179036985,
+    "gananciaMediaPrimero": 0.0008466788286200593
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:tareas-largas",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.5522734755445975,
+    "gananciaMediaTotal": 0.002533716590178398,
+    "gananciaMediaPrimero": 0.0011367954835467303
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:participacion",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.507410963664697,
+    "gananciaMediaTotal": 0.0007931315590316798,
+    "gananciaMediaPrimero": 0.0005924830979362862
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:lectoescritura",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.5212220180699688,
+    "gananciaMediaTotal": 0.0007753902822929692,
+    "gananciaMediaPrimero": 0.0008035892796953419
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:evaluar",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.4739291234809583,
+    "gananciaMediaTotal": 0.0007920476136203505,
+    "gananciaMediaPrimero": 0.0007366993604720076
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:lengua-cultura",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.4932823329969297,
+    "gananciaMediaTotal": 0.0010185627049405282,
+    "gananciaMediaPrimero": 0.0008360080622128669
+  },
+  {
+    "canal": "apoyos",
+    "entrada": "necesidad:clima",
+    "n": 640,
+    "ids": 134,
+    "entropiaEntrada": 0.4885001607588282,
+    "gananciaMediaTotal": 0.0010638142507540887,
+    "gananciaMediaPrimero": 0.0008991457407425899
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "nivel",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "taller",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "practicaProfesional",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:1",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.7893330574316446,
+    "gananciaMediaTotal": 0.08016433182726346,
+    "gananciaMediaPrimero": 0.031421187949323005
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:2",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8942502899773348,
+    "gananciaMediaTotal": 0.06542924232953476,
+    "gananciaMediaPrimero": 0.02666234726755495
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:3",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.6451553387728703,
+    "gananciaMediaTotal": 0.049452709843853304,
+    "gananciaMediaPrimero": 0.01826076938571282
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:4",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.5548409973552599,
+    "gananciaMediaTotal": 0.048937512193053395,
+    "gananciaMediaPrimero": 0.02054156907901812
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:5",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.668907020396497,
+    "gananciaMediaTotal": 0.045303041759459796,
+    "gananciaMediaPrimero": 0.02467526557654056
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:6",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8964578919485178,
+    "gananciaMediaTotal": 0.06818737829995607,
+    "gananciaMediaPrimero": 0.033567396251058285
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:7",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8882701165478479,
+    "gananciaMediaTotal": 0.08012769812930086,
+    "gananciaMediaPrimero": 0.033142826260686147
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:8",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8709348421989376,
+    "gananciaMediaTotal": 0.07866570959836215,
+    "gananciaMediaPrimero": 0.03625977562497961
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:9",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8882701165478479,
+    "gananciaMediaTotal": 0.06671675130253979,
+    "gananciaMediaPrimero": 0.031033234753100127
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:10",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.7832052449857314,
+    "gananciaMediaTotal": 0.05237243204382702,
+    "gananciaMediaPrimero": 0.025037653696230833
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:11",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.5548409973552599,
+    "gananciaMediaTotal": 0.049389270879516646,
+    "gananciaMediaPrimero": 0.02398201563694593
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:12",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8882701165478479,
+    "gananciaMediaTotal": 0.06277900566920254,
+    "gananciaMediaPrimero": 0.028588010836960873
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:13",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 1.8715365461000688,
+    "gananciaMediaTotal": 0.08966001752223322,
+    "gananciaMediaPrimero": 0.04664822298801339
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "situacion:14",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0.8919012922410143,
+    "gananciaMediaTotal": 0.06419693772555927,
+    "gananciaMediaPrimero": 0.02685442296979121
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:motivacion",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:comprension",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:tareas-largas",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:participacion",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:lectoescritura",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:evaluar",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:lengua-cultura",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  },
+  {
+    "canal": "trabajo",
+    "entrada": "necesidad:clima",
+    "n": 80,
+    "ids": 64,
+    "entropiaEntrada": 0,
+    "gananciaMediaTotal": 0,
+    "gananciaMediaPrimero": 0
+  }
+]

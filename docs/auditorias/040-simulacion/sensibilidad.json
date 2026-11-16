@@ -1,0 +1,782 @@
+[
+  {
+    "entrada": "nivel",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 19,
+        "orden": 19
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 7,
+        "orden": 7
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 23,
+        "orden": 23
+      }
+    }
+  },
+  {
+    "entrada": "taller",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 31
+      },
+      "apoyos": {
+        "conjunto": 29,
+        "orden": 29
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 18,
+        "orden": 18
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 18,
+        "orden": 18
+      }
+    }
+  },
+  {
+    "entrada": "practicaProfesional",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 19,
+        "orden": 19
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:motivacion",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 21,
+        "orden": 21
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:comprension",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 40,
+        "orden": 40
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:tareas-largas",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 40,
+        "orden": 40
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:participacion",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 40,
+        "orden": 40
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:lectoescritura",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 37,
+        "orden": 37
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:evaluar",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 37,
+        "orden": 37
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:lengua-cultura",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 34,
+        "orden": 34
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "necesidad:clima",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 40
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 21,
+        "orden": 21
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "situacion:1",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 36,
+        "orden": 39
+      }
+    }
+  },
+  {
+    "entrada": "situacion:2",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 34,
+        "orden": 36
+      }
+    }
+  },
+  {
+    "entrada": "situacion:3",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 29,
+        "orden": 31
+      }
+    }
+  },
+  {
+    "entrada": "situacion:4",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 28,
+        "orden": 33
+      }
+    }
+  },
+  {
+    "entrada": "situacion:5",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 37,
+        "orden": 37
+      }
+    }
+  },
+  {
+    "entrada": "situacion:6",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 34,
+        "orden": 35
+      }
+    }
+  },
+  {
+    "entrada": "situacion:7",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 38,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 34,
+        "orden": 34
+      }
+    }
+  },
+  {
+    "entrada": "situacion:8",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 35,
+        "orden": 35
+      }
+    }
+  },
+  {
+    "entrada": "situacion:9",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 31,
+        "orden": 31
+      }
+    }
+  },
+  {
+    "entrada": "situacion:10",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 30,
+        "orden": 31
+      }
+    }
+  },
+  {
+    "entrada": "situacion:11",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 34,
+        "orden": 36
+      }
+    }
+  },
+  {
+    "entrada": "situacion:12",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 29,
+        "orden": 30
+      }
+    }
+  },
+  {
+    "entrada": "situacion:13",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 35,
+        "orden": 37
+      }
+    }
+  },
+  {
+    "entrada": "situacion:14",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 39,
+        "orden": 39
+      },
+      "trabajo": {
+        "conjunto": 5,
+        "orden": 5
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 17,
+        "orden": 17
+      }
+    }
+  },
+  {
+    "entrada": "frecuenciaPrimera",
+    "pares": 44,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 23
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 15,
+        "orden": 16
+      }
+    }
+  },
+  {
+    "entrada": "meta",
+    "pares": 40,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "ayuda",
+    "pares": 45,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "voz",
+    "pares": 45,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  },
+  {
+    "entrada": "tipoPuesto",
+    "pares": 5,
+    "efectos": {
+      "dua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "apoyos": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "trabajo": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarDua": {
+        "conjunto": 0,
+        "orden": 0
+      },
+      "paraEmpezarPersonal": {
+        "conjunto": 0,
+        "orden": 0
+      }
+    }
+  }
+]

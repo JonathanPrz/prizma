@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "enAsesoriaNoEnIncluir": [],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 2,
+    "enAsesoriaNoEnIncluir": [
+      "prac-procedimiento"
+    ],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 3,
+    "enAsesoriaNoEnIncluir": [
+      "acc-4-recreo"
+    ],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 4,
+    "enAsesoriaNoEnIncluir": [
+      "acc-2-pictogramas"
+    ],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 5,
+    "enAsesoriaNoEnIncluir": [
+      "obj-enriquecimiento-historia"
+    ],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 6,
+    "enAsesoriaNoEnIncluir": [
+      "sup-tiempo",
+      "pp-e-acuerdo"
+    ],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 7,
+    "enAsesoriaNoEnIncluir": [],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 8,
+    "enAsesoriaNoEnIncluir": [],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  },
+  {
+    "id": 9,
+    "enAsesoriaNoEnIncluir": [],
+    "enIncluirNoEnAsesoria": [],
+    "idsInexistentes": [],
+    "consideracionesSinCatalogo": []
+  }
+]
