@@ -1,8 +1,9 @@
-// Auditoría de lectura: solo escribe evidencia dentro de esta carpeta.
+// Verificación de la arquitectura 036; conserva la evidencia original de 034.
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 let chromium;try{({chromium}=require('playwright'));}catch{({chromium}=require('/opt/codex/cua_node/lib/node_modules/playwright'));}
-const raiz=path.resolve(__dirname,'../../..'),url=process.env.PRIZMA_URL||'http://127.0.0.1:8034';
-const leer=p=>fs.readFileSync(path.join(raiz,p),'utf8'),guardar=(p,x)=>fs.writeFileSync(path.join(__dirname,p),typeof x==='string'?x:JSON.stringify(x,null,2)+'\n');
+const raiz=path.resolve(__dirname,'../../..'),url=process.env.PRIZMA_URL||'http://127.0.0.1:8036';
+const salida=path.join(raiz,'docs/auditorias/036-verificacion'),capturas=path.join(raiz,'docs/marca/036-arquitectura');fs.mkdirSync(salida,{recursive:true});fs.mkdirSync(capturas,{recursive:true});
+const leer=p=>fs.readFileSync(path.join(raiz,p),'utf8'),guardar=(p,x)=>fs.writeFileSync(path.join(salida,p),typeof x==='string'?x:JSON.stringify(x,null,2)+'\n');
 const esc=s=>String(s??'').replace(/\|/g,'\\|').replace(/\r?\n/g,'<br>');
 const tabla=(titulos,filas)=>'| '+titulos.map(esc).join(' | ')+' |\n| '+titulos.map(()=>'---').join(' | ')+' |\n'+filas.map(f=>'| '+f.map(esc).join(' | ')+' |').join('\n')+'\n';
 const recomendaciones=JSON.parse(leer('data/recomendaciones.json')),referencias=JSON.parse(leer('data/fuentes.json')),necesidades=JSON.parse(leer('data/necesidades.json'));
@@ -26,9 +27,9 @@ async function inventariar(p,estado){
  for(const r of filas){const clave=JSON.stringify({...r,visibilidad:undefined,deshabilitado:undefined});if(!variantes.has(clave))variantes.set(clave,{...r,estados:[],visibleEn:[],deshabilitadoEn:[]});const v=variantes.get(clave);v.estados.push(estado);if(r.visibilidad)v.visibleEn.push(estado);if(r.deshabilitado)v.deshabilitadoEn.push(estado);}
  return filas;
 }
-async function pagina(b,ancho=1280){const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:'light',reducedMotion:'reduce'});await p.goto(url);await p.waitForSelector('#elegir-dua-6-2');return p;}
+async function pagina(b,ancho=1280){const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:'light',reducedMotion:'reduce'});await p.goto(url);await p.waitForFunction(()=>catalogo.length===240);p.on('dialog',d=>d.accept());return p;}
 async function matriz(b){
- const p=await pagina(b);const html=await p.evaluate(()=>new DOMParser().parseFromString(document.documentElement.outerHTML,'text/html').documentElement.outerHTML); // DOM inicial, también controles generados.
+ const p=await pagina(b);await p.click('#elegir-educacion');const html=await p.evaluate(()=>new DOMParser().parseFromString(document.documentElement.outerHTML,'text/html').documentElement.outerHTML); // DOM inicial, también controles generados.
  guardar('estructura-inicial.html',html);
  for(const nivel of ['parvularia','basica','media','superior']){
   await p.selectOption('#nivel',nivel);await inventariar(p,nivel+'-contexto');
@@ -44,15 +45,15 @@ async function matriz(b){
   if(['media','superior'].includes(nivel)){await p.click('#enlace-guia-practica');await inventariar(p,nivel+'-guiaPractica');await p.keyboard.press('Escape');}
   await p.click('#tab-dua');await p.waitForFunction(()=>estado.pestana==='dua');
  }
- await p.click('#tab-trabajo');await p.waitForFunction(()=>estado.pestana==='trabajo');
- datos.niveles.trabajo.runtime=await p.evaluate(()=>{const e=trabajadorActual();e.id='auditoria-trabajador-1';estado.trabajadorActivo=e.id;e.iniciales='AB';e.dimensiones=Object.fromEntries(DIMENSIONES.map((_,i)=>[i+1,3]));e.descripcionGuardada=true;sincronizarTrabajo();return {roles:Object.values(ROLES_TRABAJO),ajustes:ajustesTrabajo().map(r=>r.id),proceso:catalogo.filter(r=>r.tipo==='trabajo'&&r.subtipo==='proceso').map(r=>r.id)};});await inventariar(p,'trabajo-14situaciones');await p.evaluate(()=>scrollTo(0,0));await p.screenshot({path:path.join(__dirname,'trabajo-contexto-1280.png')});
+ await p.evaluate(()=>{location.hash='#trabajo';});await p.waitForFunction(()=>estado.pestana==='trabajo');
+ datos.niveles.trabajo.runtime=await p.evaluate(()=>{const e=trabajadorActual();e.id='auditoria-trabajador-1';estado.trabajadorActivo=e.id;e.iniciales='AB';e.dimensiones=Object.fromEntries(DIMENSIONES.map((_,i)=>[i+1,3]));e.descripcionGuardada=true;sincronizarTrabajo();return {roles:Object.values(ROLES_TRABAJO),ajustes:ajustesTrabajo().map(r=>r.id),proceso:catalogo.filter(r=>r.tipo==='trabajo'&&r.subtipo==='proceso').map(r=>r.id)};});await inventariar(p,'trabajo-14situaciones');await p.evaluate(()=>scrollTo(0,0));await p.screenshot({path:path.join(capturas,'trabajo-contexto-1280.png')});
  for(const id of ['enlace-guia-trabajo','privacidad']){await p.click('#'+id);await inventariar(p,'trabajo-'+id);await p.keyboard.press('Escape');}
  await p.click('#tema');await inventariar(p,'trabajo-oscuro');
  // Otros estados son fixtures explícitos, separados de los recorridos de primera vez.
  await p.evaluate(()=>{const e=trabajadorActual();e.seleccion={'tr-subtitulos':'Nota ficticia'};e.acuerdo={roles:['persona'],fecha:'2026-11-16',revision:'2026-12-01',estado:'completo'};pintarSeleccion();pintarEstadoTrabajo();});await inventariar(p,'trabajo-acuerdoCompleto');
  await p.evaluate(()=>{marcarRevision(trabajadorActual());pintarEstadoTrabajo();});await inventariar(p,'trabajo-porRevisar');
  await p.click('#documento-trabajo');await inventariar(p,'trabajo-elegirPersonas');await p.keyboard.press('Escape');
- await p.click('#tab-dua');await p.waitForFunction(()=>estado.pestana==='dua');
+ await p.evaluate(()=>{location.hash='#dua';});await p.waitForFunction(()=>estado.pestana==='dua');
  await p.evaluate(()=>{estado.perfil.nivel='basica';estado.seleccion={'dua-1-1':''};estado.estudiantes=[{id:'auditoria-estudiante-1',...normalizarEstudiante({iniciales:'JP',dimensiones:{1:3},descripcionGuardada:true}),seleccion:{'acc-1-agenda':''}},{id:'auditoria-estudiante-2',...normalizarEstudiante({iniciales:'JP',dimensiones:{1:3},descripcionGuardada:true}),seleccion:{'acc-1-agenda':''}}];estado.estudianteActivo=estado.estudiantes[0].id;sincronizarPerfil();sincronizarEstudiante();pintarTarjetas();pintarSeleccion();});await inventariar(p,'basica-apoyoRepetido-duplicado');
  await p.click('#abrir-mochila');await inventariar(p,'mochila-tresAmbitos');await p.click('#pdf');await inventariar(p,'documento-elegirCursoEstudiante');await p.keyboard.press('Escape');
  await p.evaluate(()=>{estado.seleccion={'dua-6-2':''};pintarTarjetas();pintarApoyos();pintarSeleccion();});await inventariar(p,'basica-versionDuaElegida');
@@ -68,31 +69,33 @@ async function recorrido(b,persona,ancho){
   else if(tipo==='nivel'){await p.selectOption(selector,valor);n=2;}
   clicks+=n;acciones.push({paso:acciones.length+1,tipo,selector,descripcion,clicksEquivalentes:n,antes,despues:await scroll()});
  }
- async function captura(nombre){await inventariar(p,`${persona}-${ancho}-${nombre}`);await p.screenshot({path:path.join(__dirname,`${persona}-${ancho}-${nombre}.png`)});}
+ async function captura(nombre){await inventariar(p,`${persona}-${ancho}-${nombre}`);await p.screenshot({path:path.join(capturas,`${persona}-${ancho}-${nombre}.png`)});}
  await captura('01-inicio');const inicial=await p.locator('body').innerText();
  if(persona==='basica'){
-  await paso('nivel','#nivel','Elegir Educación básica','basica');await paso('click','.enlace-guia-dua:first-child','Abrir Cómo usar el DUA');await paso('click','#guia-empezar','Empezar');
+  await paso('click','#elegir-educacion','Elegir Educación');
+  await paso('nivel','#nivel','Elegir Educación básica','basica');await paso('click','#panel-dua .enlace-guia-dua','Abrir Cómo usar el DUA');await paso('click','#guia-empezar','Empezar');
   await paso('fill','#meta','Anotar meta','Explicar el ciclo del agua.');await paso('click','#necesidad-tareas-largas','Elegir tareas largas');await paso('click','#guardar-clase','Guardar clase');await paso('click','#elegir-dua-6-2','Elegir agenda para el curso');
   await paso('click','#tab-apoyos','Cambiar a estudiante');await p.waitForFunction(()=>estado.pestana==='apoyos');await paso('fill','#iniciales','Escribir iniciales','JP');await p.waitForSelector('#aviso-privacidad[open]');await captura('02-privacidad');await paso('click','#privacidad-entendido','Entendido');await p.waitForFunction(()=>!document.querySelector('#aviso-privacidad').open);
-  await paso('check','#area-0','Abrir Cognición y aprendizaje');await paso('check','input[name="dimension-1"][value="3"]','Atención y organización: Casi siempre');await paso('fill','#estudiante-ayuda','Facilitador','Una agenda visible.');await paso('fill','#estudiante-voz','Voz del caso ficticio','Prefiere saber qué viene después.');await paso('click','#guardar-descripcion','Guardar descripción');await paso('click','#elegir-acc-1-agenda','Elegir agenda individual ya cubierta por DUA');await captura('03-apoyos');
-  await paso('click','#ir-acuerdos','Continuar a acuerdos');await paso('check','input[name="rol-acuerdo"][value="estudiante"]','Rol estudiante');await paso('fill','#fecha-acuerdo','Fecha del acuerdo','2026-11-16');await paso('fill','#revision-acuerdo','Próxima revisión','2026-12-01');await paso('click','#guardar-acuerdos','Guardar acuerdos');
-  await paso('click','#abrir-mochila','Abrir mochila');await paso('click','#pdf','Ver documento escolar');await paso('click','#generar-documento','Generar curso y estudiante activos');
+  await paso('check','#area-0','Abrir Cognición y aprendizaje');await paso('check','input[name="dimension-1"][value="3"]','Atención y organización: Casi siempre');await paso('fill','#estudiante-ayuda','Facilitador','Una agenda visible.');await paso('fill','#estudiante-voz','Voz del caso ficticio','Prefiere saber qué viene después.');await paso('click','#guardar-descripcion','Guardar descripción');await paso('click','#apoyos-resultados details:has(#elegir-acc-1-agenda) > summary','Abrir Presentación de la información');await paso('click','#elegir-acc-1-agenda','Elegir agenda individual ya cubierta por DUA');await captura('03-apoyos');
+  await paso('click',ancho===390?'#continuar':'#indicador-pasos a:nth-child(3)','Continuar a acuerdos');await paso('check','input[name="rol-acuerdo"][value="estudiante"]','Rol estudiante');await paso('fill','#fecha-acuerdo','Fecha del acuerdo','2026-11-16');await paso('fill','#revision-acuerdo','Próxima revisión','2026-12-01');await paso('click','#guardar-acuerdos','Guardar acuerdos');
+  await paso('click','#documento-estudiante','Ver documento escolar');await paso('click','#generar-documento','Generar curso y estudiante activos');
  }else if(persona==='instituto'){
+  await paso('click','#elegir-educacion','Elegir Educación');
   await paso('nivel','#nivel','Elegir Educación superior','superior');await paso('click','#tab-apoyos','Cambiar a Ajustes razonables');await p.waitForFunction(()=>estado.pestana==='apoyos');await paso('click','.enlace-guia-apoyos:first-child','Abrir guía de superior');await paso('click','#guia-apoyos-entendido','Entendido');
   await paso('fill','#iniciales','Iniciales del caso ficticio','IP');await p.waitForSelector('#aviso-privacidad[open]');await paso('click','#privacidad-entendido','Entendido');await p.waitForFunction(()=>!document.querySelector('#aviso-privacidad').open);
   await paso('check','#area-0','Abrir Cognición');await paso('check','input[name="dimension-1"][value="3"]','Atención y organización: Casi siempre');await paso('check','#practica-profesional','Este estudiante hará su práctica profesional');await paso('fill','#estudiante-voz','Voz del estudiante ficticio','Decide compartir instrucciones por pasos.');await paso('click','#guardar-descripcion','Guardar descripción');
-  await paso('click','#enlace-guia-practica','Abrir responsabilidades de la práctica');await captura('02-guia-practica');await paso('click','#guia-practica-entendido','Entendido');await paso('click','#elegir-pp-c-pasos','Elegir ajuste que puede hacer el centro');await captura('03-practica');
+  await paso('click','#enlace-guia-practica','Abrir responsabilidades de la práctica');await captura('02-guia-practica');await paso('click','#guia-practica-entendido','Entendido');await paso('click','#practica-profesional-grupos details:has(#elegir-pp-c-pasos) > summary','Abrir apoyos del centro');await paso('click','#elegir-pp-c-pasos','Elegir ajuste que puede hacer el centro');await captura('03-practica');
   await paso('click','#preparar-centro','Preparar documento para el centro');await paso('check','input[name="compartir-centro"][value="pp-c-pasos"]','Elegir solo el ajuste por pasos');await paso('check','#decision-centro','Confirmar decisión del estudiante');await captura('03b-decision-compartir');await paso('click','#ver-centro','Ver documento para el centro');
  }else{
-  await paso('click','#tab-trabajo','Cambiar a Para el trabajo');await p.waitForFunction(()=>estado.pestana==='trabajo');await captura('01b-trabajo');await paso('click','#enlace-guia-trabajo','Abrir Qué exige la ley');await paso('click','#guia-trabajo button','Entendido');
+  await paso('click','#elegir-trabajo','Elegir Trabajo');await p.waitForFunction(()=>estado.pestana==='trabajo');await captura('01b-trabajo');await paso('click','#enlace-guia-trabajo','Abrir Qué exige la ley');await paso('click','#guia-trabajo button','Entendido');
   await paso('fill','#trabajo-iniciales','Iniciales del caso ficticio','AB');await p.waitForSelector('#aviso-privacidad[open]');await captura('02-privacidad');await paso('click','#privacidad-entendido','Entendido');await p.waitForFunction(()=>!document.querySelector('#aviso-privacidad').open);
   await paso('fill','#trabajo-puesto','Tipo de puesto','Administrativo');await paso('check','#trabajo-area-3','Abrir Sensorial y física');await paso('check','input[name="trabajo-dimension-13"][value="3"]','Audición: Casi siempre');await paso('fill','#trabajo-ayuda','Facilitador','Mensajes escritos.');await paso('fill','#trabajo-voz','Voz de la persona ficticia','Prefiere subtítulos en reuniones.');await paso('click','#guardar-descripcion-trabajo','Guardar descripción');await paso('click','#elegir-tr-subtitulos','Elegir subtítulos');await captura('03-ajustes');
-  await paso('click','#trabajo-ir-acuerdos','Continuar a acuerdos');await paso('check','input[name="rol-trabajo"][value="persona"]','Rol Persona trabajadora');await paso('fill','#trabajo-fecha','Fecha del acuerdo','2026-11-16');await paso('fill','#trabajo-revision','Próxima revisión','2026-12-01');await paso('click','#guardar-acuerdos-trabajo','Guardar acuerdos');
+  await paso('click',ancho===390?'#continuar':'#indicador-pasos a:nth-child(3)','Continuar a acuerdos');await paso('check','input[name="rol-trabajo"][value="persona"]','Rol Persona trabajadora');await paso('fill','#trabajo-fecha','Fecha del acuerdo','2026-11-16');await paso('fill','#trabajo-revision','Próxima revisión','2026-12-01');await paso('click','#guardar-acuerdos-trabajo','Guardar acuerdos');
   await paso('click','#documento-trabajo','Ver documento de trabajo');await paso('check','#opciones-documento input','Elegir explícitamente a AB');await paso('click','#generar-documento','Generar documento laboral');
  }
  await p.waitForSelector('#vista[open]');await captura('04-documento');const clicksHastaVista=clicks;
  const textoDocumento=await p.locator('#hoja').innerText(),modelo=await p.evaluate(()=>modeloDocumento());
- const descargar=p.waitForEvent('download');await paso('click','#descargar','Descargar primer PDF');const pdf=await descargar;await pdf.saveAs(path.join(__dirname,`${persona}-${ancho}-documento.pdf`));
+ const descargar=p.waitForEvent('download');await paso('click','#descargar','Descargar primer PDF');const pdf=await descargar;await pdf.saveAs(path.join(salida,`${persona}-${ancho}-documento.pdf`));
  const resultado={persona,ancho,inicial,clicksHastaVista,clicksHastaPdf:clicks,acciones,ventanaMovimientos:acciones.filter(a=>a.antes.ventana!==a.despues.ventana).length,distanciaVentanaPx:acciones.reduce((n,a)=>n+Math.abs(a.despues.ventana-a.antes.ventana),0),dialogosMovimientos:acciones.filter(a=>Object.keys(a.antes.dialogos).some(id=>id in a.despues.dialogos&&a.antes.dialogos[id]!==a.despues.dialogos[id])).length,desborde:await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),textoDocumento,modelo,errores};
  assert.equal(resultado.desborde,false);assert.deepEqual(errores,[]);await p.close();return resultado;
 }

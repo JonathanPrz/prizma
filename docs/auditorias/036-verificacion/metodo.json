@@ -1,0 +1,16 @@
+{
+  "corte": "412edd0b88b642a3980f416e86c41e486e94c640",
+  "url": "http://127.0.0.1:8036",
+  "fecha": "2026-11-16T16:46:53.857Z",
+  "hashes": {
+    "app.js": "052afc5ed51cfd337ff92920022e3e07a2ca322920a70438b545d6a88b93ab60",
+    "index.html": "c0b6c480909793f33ce75fc4e25dc64901f918271bb041a436007b8552eabe6c",
+    "styles.css": "18779651ee2321797965ca69bf3c21db1ba94e2fbd54c4a5066f4938e5d0d0e8",
+    "data/recomendaciones.json": "ea9b76ede117a339f021b61a3c355d92c24d22d1bef5c3003db5a0cf4e236e57",
+    "data/fuentes.json": "7969ab9952af529b78dffcc5a055e31e59963fb0e1c88c53530bb13b5b6d3fed",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f"
+  },
+  "inventarioFilas": 942,
+  "recorridos": 6,
+  "versionChromium": "156.0.8078.79"
+}
