@@ -166,5 +166,71 @@
     "cita": "Mineduc y Universidad de Chile (2022). Guía metodológica para la comunicación intercultural con personas no hispanohablantes en las comunidades educativas.",
     "url": "https://estudiantesextranjeros.mineduc.cl/wp-content/uploads/sites/88/2024/01/6.4-Guia-metodologica-para-la-comunicacion-intercultural-con-personas-no-hispanohablantes-1.pdf",
     "archivo": "docs/fuentes/codex/mineduc-comunicacion-intercultural-2022-resumen.md"
+  },
+  {
+    "id": "decreto-2516",
+    "cita": "Mineduc (2007). Decreto Exento 2.516: práctica profesional y titulación de enseñanza media técnico-profesional.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=269348",
+    "archivo": "docs/fuentes/codex/practica-laboral/chile-decreto-2516.md"
+  },
+  {
+    "id": "ley-19628",
+    "cita": "Ley 19.628 (1999). Sobre protección de la vida privada.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=141599",
+    "archivo": "docs/fuentes/codex/practica-laboral/chile-ley-19628.md"
+  },
+  {
+    "id": "ley-21719",
+    "cita": "Ley 21.719 (2024). Regula la protección y el tratamiento de los datos personales.",
+    "url": "https://www.bcn.cl/leychile/navegar?idNorma=1209272",
+    "archivo": "docs/fuentes/codex/practica-laboral/chile-ley-21719.md"
+  },
+  {
+    "id": "jan-proceso",
+    "cita": "Job Accommodation Network. Accommodation Process. U.S. Department of Labor.",
+    "url": "https://askjan.org/topics/AccommodationProcess.cfm",
+    "archivo": "docs/fuentes/codex/practica-laboral/jan-proceso.md"
+  },
+  {
+    "id": "jan-funciones",
+    "cita": "Job Accommodation Network. Accommodation Solutions for Individuals with Executive Functioning Deficits. U.S. Department of Labor.",
+    "url": "https://askjan.org/articles/Executive-Functioning-Deficits.cfm",
+    "archivo": "docs/fuentes/codex/practica-laboral/jan-funciones-ejecutivas.md"
+  },
+  {
+    "id": "jobaccess-2025",
+    "cita": "JobAccess, Gobierno de Australia (2025). Guidelines on reasonable adjustments.",
+    "url": "https://www.jobaccess.gov.au/i-am-an-employer/know-rights-responsibilities/guidelines-reasonable-adjustment",
+    "archivo": "docs/fuentes/codex/practica-laboral/australia-jobaccess.md"
+  },
+  {
+    "id": "ahead-2022",
+    "cita": "Waters, B. y Rath, V. (2022). Students with Disabilities on Placement. AHEAD y DAWN, Irlanda.",
+    "url": "https://www.ahead.ie/userfiles/files/documents/Students%20with%20Disabilities%20on%20Placement%20digital_2-12-22.pdf",
+    "archivo": "docs/fuentes/codex/practica-laboral/irlanda-ahead-practicas.md"
+  },
+  {
+    "id": "oit-2016",
+    "cita": "OIT (2016). Promoting diversity and inclusion through workplace adjustments: A practical guide.",
+    "url": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/@ed_norm/@declaration/documents/publication/wcms_536630.pdf",
+    "archivo": "docs/fuentes/codex/practica-laboral/oit-ajustes-2016.md"
+  },
+  {
+    "id": "senadis-avanza-2021",
+    "cita": "AVANZA Inclusión y SENADIS (2021). Guía de Gestión para la Inclusión Laboral.",
+    "url": "https://www.senadis.gob.cl/descarga/i/6970/documento",
+    "archivo": "docs/fuentes/codex/practica-laboral/senadis-avanza-2021.md"
+  },
+  {
+    "id": "hennessy-2026",
+    "cita": "Hennessy, T., McMahon, J. y Doody, O. (2026). Informing the Design of Inclusive Post-Secondary Education. British Journal of Learning Disabilities.",
+    "url": "https://doi.org/10.1111/bld.70033",
+    "archivo": "docs/fuentes/codex/practica-laboral/hennessy-2026.md"
+  },
+  {
+    "id": "conoman-2024",
+    "cita": "Coñoman, G., Ávila, V. y Carmona, C. (2024). Initiatives to support the school-to-work transition of people with intellectual disabilities: A systematic review.",
+    "url": "https://doi.org/10.3109/13668250.2024.2317799",
+    "archivo": "docs/fuentes/codex/practica-laboral/revision-conoman-2024.md"
   }
 ]

@@ -1,6 +1,6 @@
 # Tarea 027 · Investigación profunda: apoyos en la práctica profesional y el trabajo
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/027-practica-laboral`
+Estado: **integrada** (PR #26) · Asignada a: Codex · Rama: `codex/027-practica-laboral`
 
 ## Para qué
 

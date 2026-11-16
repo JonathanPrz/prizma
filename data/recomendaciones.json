@@ -4897,5 +4897,635 @@
     ],
     "destacada": false,
     "revision": null
+  },
+  {
+    "id": "pp-plan",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Acuerda por escrito el plan de práctica con el estudiante y el centro",
+    "como": [
+      "Define tareas, competencias, jornada y cómo se harán los cambios.",
+      "Incluye los ajustes que el estudiante decidió pedir.",
+      "Entrega una copia al estudiante."
+    ],
+    "porque": "El Decreto 2.516 exige un plan de práctica acordado; los ajustes forman parte de ese acuerdo.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-2516",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-plan-superior",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Prepara con el estudiante un plan de ajustes para la práctica",
+    "como": [
+      "Revisen juntos las tareas del centro y las barreras posibles.",
+      "Acuerden los ajustes y quién los implementa.",
+      "Fijen una fecha para revisarlos."
+    ],
+    "porque": "La institución mantiene su deber de hacer ajustes también fuera del campus (Ley 20.422, art. 39).",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "mineduc-es-20422",
+      "ley-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-responsables",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Deja claro quién es quién y a quién avisar si algo falla",
+    "como": [
+      "Identifica al profesor tutor y a la persona responsable en el centro.",
+      "Acuerda reuniones de seguimiento.",
+      "Define a quién avisa el estudiante si un ajuste no funciona."
+    ],
+    "porque": "Sin responsables claros, los ajustes acordados se pierden entre la institución y el centro.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "decreto-2516",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-visita",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Visita el centro y conversa por separado con el estudiante y el centro",
+    "como": [
+      "Planifica al menos una visita en terreno.",
+      "Conversa a solas con el estudiante y después con el representante del centro.",
+      "Registra lo conversado y los ajustes revisados."
+    ],
+    "porque": "El Decreto 2.516 establece la supervisión en terreno del profesor tutor.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-2516"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-formatos",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Prepara las tareas y la evaluación de la práctica en formatos accesibles",
+    "como": [
+      "Entrega la pauta de evaluación en el formato que el estudiante usa.",
+      "Acuerda cómo demostrará cada competencia.",
+      "No rebajes las competencias exigidas."
+    ],
+    "porque": "La ley pide adaptar materiales y medios para que el estudiante pueda demostrar lo aprendido.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "ley-20422",
+      "mineduc-es-20422"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-seguridad",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Revisa con el centro la seguridad y el seguro antes de empezar",
+    "como": [
+      "Acuerda en el convenio cómo se supervisa la seguridad y qué hacer ante un accidente.",
+      "Verifica qué cubre el seguro en esa actividad.",
+      "Asegura que el estudiante reciba la inducción de seguridad en un formato que entienda."
+    ],
+    "porque": "El Decreto 2.516 pide que el convenio defina la seguridad y la respuesta ante accidentes.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-2516"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-horas",
+    "tipo": "practica-profesional",
+    "subtipo": "institucion",
+    "titulo": "Si necesita condiciones excepcionales, solicítalo a la SEREMI con fundamento",
+    "como": [
+      "Revisa si el caso requiere cambiar las horas mínimas u otras condiciones.",
+      "Presenta una solicitud fundada a la SEREMI.",
+      "Mientras se resuelve, mantén el plan acordado."
+    ],
+    "porque": "No hay reducción automática por discapacidad: el Decreto 2.516 permite modificaciones excepcionales solicitadas a la SEREMI.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "decreto-2516"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-puesto",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Adapta el puesto, el acceso y la iluminación",
+    "como": [
+      "Revisa la ruta de acceso y la altura de la mesa o el puesto.",
+      "Mejora la iluminación si hace falta.",
+      "Prueba el ajuste con el estudiante antes de empezar."
+    ],
+    "porque": "Un puesto accesible permite trabajar con autonomía y seguridad.",
+    "areas": [
+      "sensorial"
+    ],
+    "dimensiones": [
+      8,
+      6
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jobaccess-2025",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-tecnologia",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Permite el lector de pantalla, el intérprete o la tecnología que usa",
+    "como": [
+      "Pregunta qué tecnología o apoyo de comunicación usa.",
+      "Asegura que funcione con los sistemas del lugar.",
+      "Coordina el intérprete de lengua de señas en reuniones e inducciones."
+    ],
+    "porque": "Sin la tecnología o el intérprete, la información del trabajo no le llega.",
+    "areas": [
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      6,
+      13,
+      12
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "jobaccess-2025",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-pasos",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Divide las tareas largas en pasos, con una lista para marcar",
+    "como": [
+      "Escribe los pasos de cada tarea en orden.",
+      "Deja la lista en el puesto de trabajo.",
+      "Revisa la lista juntos al principio."
+    ],
+    "porque": "Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.",
+    "areas": [
+      "cognicion"
+    ],
+    "dimensiones": [
+      1
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-escritas",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Da las instrucciones por escrito o con un diagrama",
+    "como": [
+      "Acompaña la explicación oral con un texto breve o un esquema.",
+      "Usa fotos o diagramas para los procedimientos.",
+      "Deja las instrucciones a la vista."
+    ],
+    "porque": "Las instrucciones escritas no dependen de la memoria ni del oído.",
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "sensorial"
+    ],
+    "dimensiones": [
+      1,
+      3,
+      13
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-entrenamiento",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Da más tiempo de entrenamiento y repaso en tareas nuevas",
+    "como": [
+      "Muestra la tarea y luego pide que la haga con apoyo.",
+      "Repasa los pasos al día siguiente.",
+      "Retira el apoyo de a poco."
+    ],
+    "porque": "Aprender una tarea nueva con práctica guiada reduce errores.",
+    "areas": [
+      "cognicion",
+      "comunicacion"
+    ],
+    "dimensiones": [
+      1,
+      3,
+      2
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-ambiente",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Reduce los distractores y acuerda pausas, sin quitar las alarmas",
+    "como": [
+      "Ofrece un puesto más tranquilo si es posible.",
+      "Acuerda pausas breves en jornadas largas.",
+      "Mantén todas las alarmas y señales de seguridad."
+    ],
+    "porque": "Menos estímulos y pausas a tiempo ayudan a concentrarse y a sostener la jornada.",
+    "areas": [
+      "cognicion",
+      "emocional",
+      "sensorial"
+    ],
+    "dimensiones": [
+      1,
+      7,
+      9,
+      5
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones",
+      "oit-2016"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-referente",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Asigna una persona de referencia en el lugar de trabajo",
+    "como": [
+      "Elige a alguien que conozca bien las tareas.",
+      "Acuerda cuándo puede consultarle.",
+      "Pídele que avise al tutor si surge una dificultad."
+    ],
+    "porque": "Tener a quién preguntar ayuda a ordenar prioridades y a pedir ayuda a tiempo.",
+    "areas": [
+      "cognicion",
+      "comunicacion",
+      "emocional"
+    ],
+    "dimensiones": [
+      1,
+      4,
+      5
+    ],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-funciones",
+      "senadis-avanza-2021"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-analisis",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Analiza las funciones y los riesgos del puesto antes de acordar ajustes",
+    "como": [
+      "Revisa qué tareas, espacios y equipos tiene el puesto.",
+      "Identifica qué podría ser una barrera.",
+      "Acuerda los ajustes con el estudiante y el tutor."
+    ],
+    "porque": "Partir del puesto, y no del diagnóstico, permite ajustes precisos.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-c-seguimiento",
+    "tipo": "practica-profesional",
+    "subtipo": "centro",
+    "titulo": "Revisen los apoyos cuando cambien las tareas o los equipos",
+    "como": [
+      "Acuerda una revisión al cumplir unas semanas.",
+      "Vuelve a revisar si cambian las tareas, el lugar o las personas.",
+      "Registra los cambios acordados."
+    ],
+    "porque": "Un ajuste que sirvió al inicio puede dejar de servir si cambia el trabajo.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "orientacion-oficial",
+    "fuentes": [
+      "senadis-avanza-2021"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-barrera",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Ayúdale a describir la tarea, la barrera y lo que le ha servido",
+    "como": [
+      "Elijan una tarea concreta de la práctica.",
+      "Describan qué la dificulta, sin diagnósticos.",
+      "Anoten qué le ha servido antes en situaciones parecidas."
+    ],
+    "porque": "Una petición concreta es más fácil de entender y de acordar.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-proceso"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-donde",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Explícale a quién y cómo puede pedir un ajuste",
+    "como": [
+      "Indica quiénes son su tutor y su referente en el centro.",
+      "Explica que puede pedirlo con sus palabras, sin términos legales.",
+      "Practiquen cómo pedirlo."
+    ],
+    "porque": "Saber a quién acudir facilita pedir ayuda a tiempo.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-proceso",
+      "decreto-2516"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-conversar",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Conversen antes de la práctica sobre lo que exigirá y sus opciones",
+    "como": [
+      "Revisen juntos las tareas y el entorno del centro.",
+      "Piensen qué podría costarle y qué opciones hay.",
+      "Hagan esta conversación antes de llenar cualquier formulario."
+    ],
+    "porque": "Anticipar las exigencias permite pedir ajustes antes de que aparezcan los problemas.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "ahead-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-compartir",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Que el estudiante decida qué contar, a quién y para qué",
+    "como": [
+      "Explica para qué sirve cada dato y quién lo verá.",
+      "Comparte solo lo necesario para el ajuste, nunca el diagnóstico ni el expediente.",
+      "Respeta si decide no contar."
+    ],
+    "porque": "La ley protege los datos de salud: pedir un ajuste no autoriza entregar el expediente.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "norma-legal",
+    "fuentes": [
+      "ley-19628",
+      "ley-21719",
+      "ahead-2022"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-acuerdo",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Pide un acuerdo claro: qué ajuste, quién lo hace y cómo se sabrá si funciona",
+    "como": [
+      "Escriban el ajuste acordado con palabras simples.",
+      "Anoten quién es responsable de hacerlo.",
+      "Definan cómo y cuándo revisarán si funciona."
+    ],
+    "porque": "Un acuerdo claro evita malentendidos entre el estudiante, la institución y el centro.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-proceso"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-falla",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Acuerden cómo avisar si un apoyo no funciona",
+    "como": [
+      "Define a quién avisa y por qué medio.",
+      "Explícale que avisar no es un problema: sirve para mejorar.",
+      "Revisen juntos el ajuste después del aviso."
+    ],
+    "porque": "Los ajustes se mejoran con el uso; avisar a tiempo evita que la práctica se complique.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "jan-proceso"
+    ],
+    "destacada": false,
+    "revision": null
+  },
+  {
+    "id": "pp-e-intereses",
+    "tipo": "practica-profesional",
+    "subtipo": "estudiante",
+    "titulo": "Exploren sus intereses antes de elegir el lugar de práctica",
+    "como": [
+      "Conversen sobre qué le gusta hacer y dónde se ve trabajando.",
+      "Revisen opciones de centros según esos intereses.",
+      "Incluye a la familia si el estudiante lo desea."
+    ],
+    "porque": "La planificación centrada en la persona se asocia con mejores transiciones al trabajo.",
+    "areas": [],
+    "dimensiones": [],
+    "niveles": [
+      "media",
+      "superior"
+    ],
+    "contextos": [],
+    "respaldo": "consenso-expertos",
+    "fuentes": [
+      "conoman-2024",
+      "hennessy-2026"
+    ],
+    "destacada": false,
+    "revision": null
   }
 ]

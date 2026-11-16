@@ -19,10 +19,11 @@ DIMENSIONES = ["Atención y organización", "Lectura, escritura y cálculo", "Co
                "Salud y energía", "Identidad, lengua y pertenencia", "Espacio, tiempo y actitudes",
                "Expresarse oralmente", "Audición", "Necesita más desafío"]
 TIPOS = {"dua": "DUA (todo el curso)", "acceso": "Adecuación de acceso", "objetivos": "Adecuación en los objetivos",
-         "desregulacion": "Desregulación", "adicional": "Apoyo adicional"}
+         "desregulacion": "Desregulación", "adicional": "Apoyo adicional", "practica-profesional": "Práctica profesional"}
 SUBTIPOS = {"presentacion": "Presentación", "respuesta": "Respuesta", "entorno": "Entorno", "tiempo": "Tiempo",
             "graduacion": "Graduación", "priorizacion": "Priorización", "temporalizacion": "Temporalización",
             "enriquecimiento": "Enriquecimiento", "eliminacion": "Eliminación",
+            "institucion": "Liceo o institución", "centro": "Centro de práctica", "estudiante": "Preparar al estudiante",
             "antes": "Antes: prevenir", "durante": "Durante: acompañar", "despues": "Después: reparar"}
 MOMENTOS = {"antes": "Antes", "durante": "Durante", "despues": "Después", "toda-la-clase": "En toda la clase"}
 NIVELES = {"parvularia": "Parvularia", "basica": "Básica", "media": "Media", "superior": "Superior"}

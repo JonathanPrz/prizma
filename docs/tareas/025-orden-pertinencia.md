@@ -1,6 +1,6 @@
 # Tarea 025 · Ordenar por pertinencia, práctica sin relleno y contexto del estudiante
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/025-orden-pertinencia`
+Estado: **integrada** (PR #25) · Asignada a: Codex · Rama: `codex/025-orden-pertinencia`
 
 ## Para qué
 Es la fase 2 de `docs/auditorias/024-estudiantes/estrategia.md`. Claude ya pasó las situaciones de 11 a 14 y reetiquetó el catálogo (fase 1). Quedan cuatro problemas de la auditoría 024:

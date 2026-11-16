@@ -3,7 +3,7 @@ import json, sys
 R = json.load(open("data/recomendaciones.json"))
 F = {f["id"] for f in json.load(open("data/fuentes.json"))}
 CONS = {f"{g}.{i}" for g, n in {1:3, 2:5, 3:4, 4:2, 5:4, 6:5, 7:4, 8:5, 9:4}.items() for i in range(1, n + 1)}
-ENUM = {"tipo": {"dua", "acceso", "objetivos", "desregulacion", "adicional"},
+ENUM = {"tipo": {"dua", "acceso", "objetivos", "desregulacion", "adicional", "practica-profesional"},
         "momento": {"antes", "durante", "despues", "toda-la-clase"},
         "respaldo": {"investigacion-solida", "investigacion-moderada", "consenso-expertos", "orientacion-oficial", "norma-legal"}}
 PROHIBIDO = ["estilo de aprendizaje", "estilos de aprendizaje", "contención física", "chaleco", "suspend", "neurociencia demuestra"]
@@ -31,7 +31,7 @@ for r in R:
     errores += [f"{i}: nivel desconocido {n}" for n in r.get("niveles", []) if n not in NIVELES]
 # Cada nivel debe tener al menos una acción por consideración DUA.
 SUBTIPOS_ACCESO = {"presentacion", "respuesta", "entorno", "tiempo"}  # Decreto 83
-SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}}
+SUBTIPOS = {"acceso": SUBTIPOS_ACCESO, "objetivos": {"graduacion", "priorizacion", "temporalizacion", "enriquecimiento", "eliminacion"}, "desregulacion": {"antes", "durante", "despues"}, "practica-profesional": {"institucion", "centro", "estudiante"}}
 errores += [f"{r['id']}: subtipo inválido para {r['tipo']}" for r in R if r["tipo"] in SUBTIPOS and r.get("subtipo") not in SUBTIPOS[r["tipo"]]]
 errores += [f"{r['id']}: objetivos no aplica a parvularia ni a superior" for r in R if r["tipo"] == "objetivos" and (not r["niveles"] or {"parvularia", "superior"} & set(r["niveles"]))]
 ASIGNATURAS = {"", "lenguaje", "matematica", "ciencias", "historia"}
