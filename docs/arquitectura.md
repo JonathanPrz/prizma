@@ -3,7 +3,7 @@
 Versión 0.1 · 16 de noviembre de 2026 · Claude, a partir de la auditoría `docs/auditorias/034-arquitectura/`.
 Los códigos entre corchetes, como [A1], remiten a los problemas de esa auditoría.
 
-**Estado: propuesta.** No se implementa hasta que el dueño la apruebe.
+**Estado: aprobada por el dueño el 16 de noviembre de 2026**, con las 5 decisiones recomendadas (sección 6). Se implementa en la tarea 036.
 
 ## 1. Principios
 1. **Primero el ámbito, después el detalle.** Quien llega elige si viene por educación o por trabajo. Nunca ve lo del otro ámbito mientras no cambie. [A1, M6, B4]
@@ -115,9 +115,9 @@ Después, los 6 pasos actuales de «Cómo usar los apoyos».
 
 **Parte 2:** el texto actual de «¿Qué exige la ley al empleador?».
 
-## 6. Preguntas abiertas para el dueño
-1. ¿Pantalla de inicio con la elección de ámbito, o dos botones permanentes arriba sin pantalla de inicio?
-2. ¿Un nivel para todo Educación con aviso al cambiarlo, o un nivel por estudiante?
-3. ¿Mochila separada por ámbito?
-4. ¿Documento con «Borrador» cuando faltan acuerdos, o bloquear el documento hasta completarlos?
-5. ¿Los grupos después de «Para empezar» se muestran plegados?
+## 6. Decisiones del dueño (16-11-2026)
+1. **Pantalla de inicio** con la elección de ámbito, recordada, con «Cambiar ámbito».
+2. **Un nivel para todo Educación**, siempre visible. Cambiarlo con casos guardados pide confirmación.
+3. **Mochila separada por ámbito.** El respaldo sigue siendo uno solo.
+4. **El documento se permite sin acuerdos,** marcado como «Borrador: acuerdos sin completar».
+5. **Grupos plegados con su conteo** después de «Para empezar».

@@ -1,6 +1,6 @@
 # Tarea 034 · Auditoría de arquitectura de información: qué hay, dónde está y de qué depende
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/034-auditoria-arquitectura`
+Estado: **integrada** (PR #34) · Asignada a: Codex · Rama: `codex/034-auditoria-arquitectura`
 
 ## Para qué
 El dueño quiere separar Prizma en dos mundos, **Educación** y **Trabajo**, y sumar dos explicaciones: «¿Qué es el DUA?» y «¿Qué son los apoyos para un estudiante?». Antes de decidir dónde va cada cosa, Claude necesita un inventario exacto de cómo está hoy.
