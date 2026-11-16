@@ -1,7 +1,7 @@
 # Prizma
 
-Planificador de clases inclusivas para docentes de educación parvularia, básica y media, incluida la técnico-profesional.
-La educación superior queda para una versión futura.
+Apoyos con fuente para aprender y trabajar en igualdad.
+Para docentes de parvularia, básica, media y educación superior, y para instituciones y empleadores que reciben trabajadores con discapacidad, en Chile.
 
 Una clase, muchas formas de aprender.
 El Diseño Universal para el Aprendizaje (DUA) funciona aquí como un menú de opciones.

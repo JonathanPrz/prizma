@@ -1,6 +1,6 @@
 # Tarea 032 · Pestaña «Trabajo»: ajustes para personas trabajadoras con discapacidad
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/032-trabajo`
+Estado: **integrada** (PR #32) · Asignada a: Codex · Rama: `codex/032-trabajo`
 
 ## Para qué
 El dueño decidió que Prizma también sirva a empresas e instituciones que reciben trabajadores con discapacidad. La investigación está en `docs/fuentes/codex/trabajo/README.md`.

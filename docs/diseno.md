@@ -12,6 +12,8 @@ Prizma no planifica la clase.
 
 ## 2. Alcance
 
+**Decisión del 16 de noviembre de 2026:** el dueño suma la **práctica profesional** (tarea 028) y los **ajustes en el trabajo** para empleadores (tareas 030 y 032), porque «la discapacidad no termina al estudiar». La tabla de abajo queda como registro histórico: ninguna de esas dos áreas sigue fuera de alcance. Prizma no asesora sobre el cumplimiento legal de la cuota de la Ley 21.015.
+
 **Decisión del 15 de noviembre de 2026:** el dueño incluye la **educación superior**, universitaria y técnico-profesional (universidades, IP y CFT). Antes estaba fuera de la versión 1.
 
 | Incluido | Fuera por ahora |
