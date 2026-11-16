@@ -1,6 +1,6 @@
 # Tarea 035 · Auditoría del nombre
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/035-auditoria-nombre` · **Empieza después de la tarea 034**
+Estado: **integrada** (PR #36) · Asignada a: Codex · Rama: `codex/035-auditoria-nombre` · **Empieza después de la tarea 034**
 
 ## Para qué
 Prizma creció. Ahora sirve al curso, a cada estudiante, la práctica profesional y el trabajo. El dueño duda del nombre y quiere decidir con información.

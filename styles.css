@@ -317,3 +317,7 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
   .barra-continuar { display: block; position: fixed; bottom: 0; left: 0; right: 0; padding: .75rem .75rem calc(.75rem + env(safe-area-inset-bottom)); background: var(--superficie); border-top: 1px solid var(--linea); z-index: 20; }
   .barra-continuar button { width: 100%; }
 }
+
+/* La casilla de taller vive ahora en el paso 1: casilla y texto en la misma línea, la ayuda debajo del texto. */
+.paso-cuerpo .casilla-practica { display: grid; grid-template-columns: auto 1fr; gap: .25rem .6rem; align-items: center; min-height: 2.75rem; }
+.paso-cuerpo .casilla-practica .ayuda { grid-column: 2; }

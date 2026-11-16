@@ -1,6 +1,6 @@
 # Tarea 036 · Nueva arquitectura: Educación y Trabajo, con explicaciones y glosario
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/036-arquitectura`
+Estado: **integrada** (PR #35) · Asignada a: Codex · Rama: `codex/036-arquitectura`
 
 ## Para qué
 El dueño aprobó la propuesta de `docs/arquitectura.md`. **Léela completa: es la especificación de esta tarea.** Resuelve los problemas A1–A3, M1–M8 y B1–B4 de la auditoría `docs/auditorias/034-arquitectura/`.
