@@ -34,22 +34,26 @@ const CONSIDERACIONES = {
 const NIVELES = { parvularia: "Educación parvularia", basica: "Educación básica", media: "Educación media (CH y TP)", superior: "Educación superior (universidad, IP o CFT)" };
 
 const AREAS = [
-  ["Cognición y aprendizaje", [1, 2]], ["Comunicación e interacción", [3, 4]],
-  ["Social, emocional y salud mental", [5]], ["Sensorial y física", [6, 7, 8, 9]],
+  ["Cognición y aprendizaje", [1, 2, 14]], ["Comunicación e interacción", [3, 12, 4]],
+  ["Social, emocional y salud mental", [5]], ["Sensorial y física", [6, 13, 7, 8, 9]],
   ["Contexto e identidad", [10, 11]],
 ];
 const DIMENSIONES = [
   ["Atención y organización", "instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad"],
   ["Lectura, escritura y cálculo", "textos largos, copiar de la pizarra, escribir a mano, cálculo mental"],
-  ["Comunicación y lenguaje", "instrucciones solo orales, lenguaje figurado, responder en voz alta"],
+  ["Comprender lo que se dice o se lee", "instrucciones largas o solo orales, lenguaje figurado, vocabulario nuevo"],
   ["Interacción social", "trabajo en grupo, normas que no se dicen, exponer en público"],
   ["Emociones y regulación", "evaluaciones, imprevistos, frustración, desregulación"],
-  ["Visión y audición", "ver la pizarra, escuchar con ruido"],
+  ["Visión", "ver la pizarra, leer letra pequeña, imágenes y gráficos"],
   ["Sensibilidad sensorial", "ruido, luz, multitudes, texturas, olores"],
   ["Movimiento y motricidad", "escribir, manipular materiales, desplazarse"],
   ["Salud y energía", "fatiga, dolor, ausencias por tratamiento"],
   ["Identidad, lengua y pertenencia", "otra lengua materna, pueblo originario, migración, sentirse parte del curso"],
   ["Espacio, tiempo y actitudes", "sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa"],
+  // 12 a 14 se agregaron después: los números no se reordenan para no romper datos guardados.
+  ["Expresarse oralmente", "responder en voz alta, explicar con palabras, hablar frente a otros"],
+  ["Audición", "escuchar al docente, escuchar con ruido, videos sin subtítulos"],
+  ["Necesita más desafío", "termina antes, se aburre con la práctica repetida, pide ir más allá"],
 ];
 const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
 const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
@@ -65,7 +69,7 @@ function normalizarEstudiante(valor) {
   const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
   return {
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}$/.test(e.iniciales) ? e.iniciales : "",
-    dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|10|11)$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
+    dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
     voz: typeof e.voz === "string" ? e.voz.slice(0, 300) : "",
   };
