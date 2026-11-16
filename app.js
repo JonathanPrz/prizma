@@ -74,6 +74,7 @@ const APOYOS_FORMA = ["acc-2-audio", "acc-8-teclado", "acc-8-transcribe", "acc-2
 const IDS_SEGURIDAD = ["prac-rotulos", "prac-evacuacion"];
 function modalidadValida(valor) { return typeof valor === "string" && Object.hasOwn(MODALIDADES, valor) ? valor : ""; }
 function compatibleModalidad(r, e = estudianteActual()) { return !(EXCLUSIONES_MODALIDAD[modalidadValida(e?.modalidad)] || []).includes(r.id); }
+function seleccionIncompatible(e, trabajo = false) { return catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && (trabajo ? r.tipo === "trabajo" : aplica(r)) && !compatibleModalidad(r, e)); }
 function seguridadActiva(e, trabajo = false) { return Boolean(e && [6, 13, 8].some(d => e.dimensiones[d]) && (trabajo || practicaActiva() || nivelPracticaProfesional() && e.practicaProfesional)); }
 function textoModalidad(texto, r, e) {
   if (e?.modalidad !== "ampliacion") return texto;
@@ -262,7 +263,7 @@ function erroresAcuerdo(e, trabajo = false) {
   if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) errores.push("Guarda una descripción con al menos una situación.");
   if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length) errores.push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
   if (typeof a.criterio !== "string" || !a.criterio.trim() || a.criterio.length > 200) errores.push("Indica cómo sabremos que funciona (máximo 200 caracteres).");
-  if (catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && !compatibleModalidad(r, e))) errores.push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
+  if (seleccionIncompatible(e, trabajo)) errores.push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
   if (!a.roles.some((r) => roles.includes(r))) errores.push("Elige al menos un rol.");
   if (a.roles.some((r) => !roles.includes(r))) errores.push("Revisa los roles para este nivel.");
   if (!fechaValida(a.fecha)) errores.push("Indica una fecha del acuerdo válida.");
@@ -447,7 +448,7 @@ function pintarApoyos() {
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
     grupoPlegado(nombre, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)), "Qué hacer antes, durante y después de una crisis.")));
   for (const id of ["protocolo-objetivos", "protocolo-dec"]) $("#" + id).checked = estudianteActual().protocolo;
-  $("#modalidad-revisar").textContent = catalogo.some(r => Object.hasOwn(estudianteActual().seleccion, r.id) && !compatibleModalidad(r)) ? "Revisa los apoyos elegidos para la modalidad actual en Mi mochila." : "";
+  $("#modalidad-revisar").textContent = seleccionIncompatible(estudianteActual()) ? "Revisa los apoyos elegidos para la modalidad actual en Mi mochila." : "";
   pintarSeguridad();
   $("#apoyos-estado").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? `${lista.length + practicas.length} ${superior ? "ajustes razonables sugeridos" : "adecuaciones de acceso sugeridas"}` : "Marca al menos una situación para ver apoyos.";
 }

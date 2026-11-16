@@ -26,7 +26,7 @@ Esta es la única exclusión por modalidad. No se inventan incompatibilidades pa
 
 La lista queda visible para la revisión de Claude en el PR. No se afirma que esa revisión de contenido ya haya ocurrido. No se agregaron etiquetas a `data/`.
 
-Si un apoyo antes elegido pasa a estar excluido, **se conserva junto con su nota**. La página y la mochila piden revisarlo, no se puede completar el acuerdo con esa incompatibilidad y el documento general lo señala como borrador con un aviso en la acción. La persona puede quitarlo desde la mochila. No hay borrado silencioso de datos anteriores.
+Si un apoyo antes elegido pasa a estar excluido, **se conserva junto con su nota**. La página y la mochila piden revisarlo, no se puede completar el acuerdo con esa incompatibilidad y el documento general lo señala como borrador con un aviso en la acción. La validación considera solo apoyos aplicables al nivel actual: una selección de otro nivel no queda oculta bloqueando el acuerdo. Una prueba conserva ese ID antiguo al pasar de básica a superior. La persona puede quitar un apoyo aplicable desde la mochila. No hay borrado silencioso de datos anteriores.
 
 ## Datos anteriores y privacidad
 

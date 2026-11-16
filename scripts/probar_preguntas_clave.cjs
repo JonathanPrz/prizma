@@ -24,6 +24,7 @@ run('estado=normalizarDatos({ambito:"educacion",perfil:{nivel:"basica"},estudian
 assert(!run('accesosVisibles().some(r=>r.id==="acc-6-braille")'));assert.equal(run('estudianteActual().seleccion["acc-6-braille"]'),'NOTA ANTIGUA');assert(run('erroresAcuerdo(estudianteActual()).some(x=>x.includes("modalidad"))'));
 run('pintarApoyos();pintarSeleccion()');assert(n('#modalidad-revisar').textContent.includes('mochila'));
 assert(run('documento({curso:false,estudiantes:["uno"]}).grupos[0].acciones[0].revisionModalidad'));
+run('estado.perfil.nivel="superior";estudianteActual().seleccion["sup-vision"]=""');assert(!run('seleccionIncompatible(estudianteActual())'),'Un ID que ya no aplica al nivel no bloquea la modalidad');assert.equal(run('estudianteActual().seleccion["acc-6-braille"]'),'NOTA ANTIGUA');run('estado.perfil.nivel="basica"');
 run('estado.estudianteActivo="dos"');assert(run('pasosApoyo(catalogo.find(r=>r.id==="acc-6-audicion"),estudianteActual())[0].includes("intérprete")'));
 run('estado.perfil.nivel="superior"');assert(run('pasosApoyo(catalogo.find(r=>r.id==="sup-audicion"),estudianteActual())[0].includes("intérprete")'));
 run('estado.perfil.nivel="media";estudianteActual().practicaProfesional=true;pintarApoyos()');assert.equal(n('#estudiante-seguridad').hidden,false);assert(run('practicasVisibles().some(r=>r.id==="prac-evacuacion")'));
