@@ -1,10 +1,10 @@
-# Tarea 029 · Un estudiante a la vez, prioridad en DUA y avisos cruzados entre DUA y apoyos
+# Tarea 029 · Casos en 3 pasos, prioridad en DUA y avisos cruzados entre DUA y apoyos
 
 Estado: **pendiente** · Asignada a: Codex · Rama: `codex/029-flujo-avisos`
 
 ## Para qué
 El dueño usó la página y propone cuatro mejoras:
-1. **Un estudiante a la vez.** Hoy «+ Agregar estudiante» está arriba, antes de completar al primero. Tiene más sentido completar sus filtros y, al final, agregar otro. Las iniciales aceptan solo 4 letras, y dos estudiantes con iniciales iguales no se distinguen.
+1. **Cada estudiante, un caso completo.** Los filtros laterales de apoyos no convencen al dueño. Propone un recorrido por caso: describir al estudiante, elegir sus apoyos y completar los acuerdos. Solo después se agrega el caso siguiente, para darle a cada caso su importancia. Las iniciales aceptan solo 4 letras, y dos estudiantes con iniciales iguales no se distinguen.
 2. **Los filtros deben priorizar, además de ocultar,** también en DUA: primero lo más pertinente.
 3. **Avisos cruzados.**
    - Si una acción DUA elegida cubre un apoyo individual, la tarjeta del apoyo debe decirlo.
@@ -29,13 +29,32 @@ Escribe `docs/auditorias/029-flujos/README.md`. Con un script o Playwright, reco
 Por cada paso anota qué muestra hoy la página, qué esperaría el docente según esta tarea y la brecha. Agrega también cualquier otro dato que la página descarte en silencio, como pasó con las necesidades. Revisa todas las validaciones de `app.js` contra los datos reales.
 
 ## Parte B · Cambios
-1. **Flujo de un estudiante a la vez:**
-   - Arriba de los filtros de apoyos queda el selector de estudiantes, solo si hay 2 o más, para cambiar de uno a otro. «Quitar a <iniciales>» queda junto al selector.
-   - Al final de los filtros, después de la voz y la casilla de práctica, va el botón «+ Agregar otro estudiante».
-   - El botón se habilita cuando el estudiante actual tiene al menos una situación marcada. Si no, muestra la ayuda: «Marca al menos una situación de este estudiante antes de agregar otro».
-   - Al agregar, el foco va a las iniciales del nuevo estudiante y aparece el selector.
-   - Las iniciales aceptan **hasta 4 letras y un número final opcional** (por ejemplo, «JP2»). Ajusta `normalizarEstudiante()`, el `pattern` y la ayuda: «Solo iniciales. Si se repiten, agrega un número: JP2».
-   - Si dos estudiantes tienen las mismas iniciales, avisa bajo el campo: «Ya hay un estudiante JP. Agrega un número para distinguirlos».
+1. **Cada estudiante es un caso, en 3 pasos (reemplaza los filtros laterales en la pestaña de apoyos).** El dueño decidió que en apoyos no haya columna de filtros ni diálogo «Filtros» en el teléfono. La pestaña DUA mantiene sus filtros como están. La página queda a todo el ancho, en este orden:
+   - **Arriba, «Casos»:** un botón por estudiante, con su estado en texto: «Acuerdos completos», «Sin acuerdos» o «Por revisar». Sirve para cambiar de caso. «Quitar a <iniciales>» va junto a la lista.
+   - **Paso 1, «Describe la situación de <iniciales>»:**
+     - Es un bloque que se despliega con un botón. Contiene las iniciales, las situaciones, «¿Qué le ayuda?», la voz y la casilla de práctica profesional.
+     - «Guardar descripción» exige al menos una situación marcada.
+     - Al guardar, se pliega y muestra un resumen (situaciones con su frecuencia y qué le ayuda) con el botón «Editar».
+   - **Paso 2, «Apoyos sugeridos»:**
+     - Aparece después de guardar el paso 1.
+     - Muestra los resultados de hoy: «Para empezar», los grupos, los objetivos, la desregulación y la práctica profesional. Se eligen igual que hoy.
+   - **Paso 3, «Acuerdos»:**
+     - «¿Con quiénes se acordó?»: casillas de roles, no nombres. Son Estudiante, Familia o apoderado, Equipo de apoyo y Otro docente. En superior: Estudiante, Unidad de inclusión y Otro docente.
+     - «Fecha del acuerdo» y «Próxima revisión»: campos de fecha. La revisión debe ser posterior al acuerdo.
+     - «Guardar acuerdos» exige al menos un apoyo elegido, un rol y las dos fechas, y explica lo que falta.
+     - Al guardar, se pliega con un resumen y «Editar».
+   - **Cuando el caso cambia después del acuerdo:** si cambian los apoyos elegidos o la descripción, el caso pasa a «Por revisar» y el paso 3 muestra «Cambiaste el caso después del acuerdo. Revisa los acuerdos».
+   - **«+ Agregar otro caso»:**
+     - Aparece después del paso 3. Se habilita solo si **todos** los casos tienen «Acuerdos completos». Si no, explica cuáles faltan: «Completa los acuerdos de: JP».
+     - Al agregar, crea el caso, abre su paso 1, lleva la vista al inicio y pone el foco en las iniciales.
+     - El máximo sigue siendo 10.
+   - **Datos:** los acuerdos se guardan en cada estudiante como `acuerdo: { roles, fecha, revision, estado }`, validados y respaldados.
+     - Los datos antiguos cargan con el paso 1 guardado si tienen situaciones, y con «Sin acuerdos».
+     - En el PDF, el bloque «Acuerdos» de cada estudiante muestra los roles y las fechas si existen. Si no, deja las líneas en blanco como hoy.
+   - **Iniciales:** aceptan hasta 4 letras y un número final opcional (por ejemplo, «JP2»).
+     - Ajusta `normalizarEstudiante()`, el `pattern` y la ayuda: «Solo iniciales. Si se repiten, agrega un número: JP2».
+     - Si dos casos tienen las mismas iniciales, avisa bajo el campo: «Ya hay un estudiante JP. Agrega un número para distinguirlos».
+   - **Lo que no cambia:** el aviso de privacidad sigue abriéndose la primera vez que se escriben datos. «¿Qué datos puedo escribir?» queda bajo las iniciales.
 2. **Prioridad en DUA:**
    - Si hay al menos una necesidad, un contexto de «Más detalles» o la casilla de práctica marcados, agrega arriba de los grupos por momento la sección «Para empezar», con las 3 acciones más pertinentes de todos los momentos.
    - Usa el mismo orden de hoy: necesidades, después práctica, contextos y destacadas.
@@ -58,7 +77,12 @@ Por cada paso anota qué muestra hoy la página, qué esperaría el docente seg�
 
 ## Criterios de aceptación
 - [ ] La auditoría de la parte A documenta cada recorrido y las validaciones revisadas.
-- [ ] Con un estudiante sin situaciones, «+ Agregar otro estudiante» está desactivado y explica por qué. El selector aparece desde el segundo estudiante.
+- [ ] La pestaña de apoyos no tiene columna de filtros ni diálogo «Filtros». La pestaña DUA sigue igual.
+- [ ] Un caso recorre los 3 pasos. Cada paso guardado se pliega con un resumen y «Editar».
+- [ ] «Guardar acuerdos» no deja guardar sin un apoyo, un rol y las dos fechas válidas, y dice qué falta.
+- [ ] «+ Agregar otro caso» está bloqueado mientras algún caso no tenga «Acuerdos completos». Al agregar, la vista vuelve al paso 1.
+- [ ] Cambiar los apoyos después del acuerdo deja el caso en «Por revisar».
+- [ ] Los acuerdos aparecen en el PDF y en el respaldo. Los datos antiguos cargan como «Sin acuerdos».
 - [ ] «JP2» se acepta. Dos «JP» muestran el aviso.
 - [ ] Con «Se pierden en tareas largas» marcada, DUA muestra «Para empezar» con 3 acciones que responden a esa necesidad, sin repetirlas abajo.
 - [ ] Elegir `dua-6-2` y después `acc-1-agenda` muestra en el apoyo «Ya está considerado en el DUA: …». La tarjeta de `dua-6-2` dice «Responde también a apoyos individuales de 1 estudiante».
