@@ -1,0 +1,1517 @@
+{
+  "lectura/basica/acc-2-audio": {
+    "clase": "Adecuada",
+    "justificacion": "La comprensión oral está conservada: leer el enunciado elimina la barrera de decodificación, salvo cuando se evalúa lectura.",
+    "causa": null
+  },
+  "lectura/basica/acc-2-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "El esfuerzo y la lentitud de lectura/escritura descritos hacen pertinente acordar más tiempo sin reducir la exigencia.",
+    "causa": null
+  },
+  "lectura/basica/acc-8-teclado": {
+    "clase": "Adecuada",
+    "justificacion": "La dificultad es registrar una respuesta que sí conoce; teclado, dictado o transcripción son vías alternativas directamente pertinentes.",
+    "causa": null
+  },
+  "lectura/basica/acc-8-transcribe": {
+    "clase": "Adecuada",
+    "justificacion": "La dificultad es registrar una respuesta que sí conoce; teclado, dictado o transcripción son vías alternativas directamente pertinentes.",
+    "causa": null
+  },
+  "lectura/basica/acc-1-organizador": {
+    "clase": "Adecuada",
+    "justificacion": "Puede apoyar el registro de ideas; la ficha exige acordar la ayuda y no usarla si constituye lo evaluado.",
+    "causa": null
+  },
+  "lectura/basica/acc-2-pictogramas": {
+    "clase": "Discutible",
+    "justificacion": "Añadir imágenes puede apoyar consignas, pero no se describió dificultad para comprender el vocabulario ni necesidad de pictogramas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/sup-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null
+  },
+  "lectura/superior/sup-digital": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null
+  },
+  "lectura/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null
+  },
+  "lectura/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null
+  },
+  "lectura/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null
+  },
+  "vision/basica/acc-6-ampliar": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null
+  },
+  "vision/basica/acc-6-ubicacion": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null
+  },
+  "vision/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null
+  },
+  "vision/basica/acc-6-braille": {
+    "clase": "Inadecuada",
+    "justificacion": "Aunque el título ofrece alternativas, el primer paso pide coordinar transcripción a Braille. Este perfil lee con lupa y declara no usar Braille; el audio no justifica ese paso.",
+    "causa": "una situación demasiado amplia"
+  },
+  "vision/basica/acc-6-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "La ficha se centra en lectura labial, intérprete y amplificación. El perfil oye las explicaciones y no declara esa barrera.",
+    "causa": "una situación demasiado amplia"
+  },
+  "vision/superior/sup-digital": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null
+  },
+  "vision/superior/sup-vision": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null
+  },
+  "vision/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null
+  },
+  "vision/superior/sup-senas": {
+    "clase": "Inadecuada",
+    "justificacion": "Intérprete, subtítulos o micrófono se ofrecen por compartir la dimensión 6, aunque la barrera descrita es visual y la audición está conservada.",
+    "causa": "una situación demasiado amplia"
+  },
+  "vision/superior/sup-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "Intérprete, subtítulos o micrófono se ofrecen por compartir la dimensión 6, aunque la barrera descrita es visual y la audición está conservada.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/basica/acc-6-audicion": {
+    "clase": "Adecuada",
+    "justificacion": "La coordinación de señas y de los apoyos que utiliza responde al acceso a las explicaciones, sin suponer que necesita amplificación.",
+    "causa": null
+  },
+  "senas/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "La coordinación de señas y de los apoyos que utiliza responde al acceso a las explicaciones, sin suponer que necesita amplificación.",
+    "causa": null
+  },
+  "senas/basica/acc-6-ubicacion": {
+    "clase": "Discutible",
+    "justificacion": "Ver a quien interpreta puede depender del lugar, pero la ficha prioriza pizarra y hablante y no identifica al intérprete como referencia.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/basica/acc-6-ampliar": {
+    "clase": "Inadecuada",
+    "justificacion": "El perfil ve la pizarra y el material; ampliación, Braille y descripción oral no resuelven su acceso al habla. Braille añade una vía no utilizada.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/basica/acc-6-braille": {
+    "clase": "Inadecuada",
+    "justificacion": "El perfil ve la pizarra y el material; ampliación, Braille y descripción oral no resuelven su acceso al habla. Braille añade una vía no utilizada.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/superior/sup-senas": {
+    "clase": "Adecuada",
+    "justificacion": "La ficha ofrece intérprete/subtítulos y turnos visibles, pertinentes para acceder al discurso. El micrófono por sí solo no sustituye señas.",
+    "causa": null
+  },
+  "senas/superior/sup-audicion": {
+    "clase": "Adecuada",
+    "justificacion": "La ficha ofrece intérprete/subtítulos y turnos visibles, pertinentes para acceder al discurso. El micrófono por sí solo no sustituye señas.",
+    "causa": null
+  },
+  "senas/superior/sup-digital": {
+    "clase": "Discutible",
+    "justificacion": "Puede servir como acceso escrito o tecnología acordada, pero los pasos priorizan lector de pantalla/texto a voz, que no responde a lo descrito.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/superior/sup-tecnologia": {
+    "clase": "Discutible",
+    "justificacion": "Puede servir como acceso escrito o tecnología acordada, pero los pasos priorizan lector de pantalla/texto a voz, que no responde a lo descrito.",
+    "causa": "una situación demasiado amplia"
+  },
+  "senas/superior/sup-vision": {
+    "clase": "Inadecuada",
+    "justificacion": "La ficha trata ampliación, Braille y descripción de imágenes, pese a que el perfil accede visualmente al material.",
+    "causa": "una situación demasiado amplia"
+  },
+  "oral/basica/acc-3-caa": {
+    "clase": "Adecuada",
+    "justificacion": "El tablero en español y el tiempo para expresar la respuesta coinciden con la comunicación aumentativa descrita.",
+    "causa": null
+  },
+  "oral/basica/acc-3-escrito": {
+    "clase": "Discutible",
+    "justificacion": "Estas fichas ayudan a entender consignas, palabras o normas; el perfil comprende instrucciones en español y describe una barrera de expresión, no de comprensión.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/basica/acc-2-pictogramas": {
+    "clase": "Discutible",
+    "justificacion": "Estas fichas ayudan a entender consignas, palabras o normas; el perfil comprende instrucciones en español y describe una barrera de expresión, no de comprensión.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/basica/acc-4-normas": {
+    "clase": "Discutible",
+    "justificacion": "Estas fichas ayudan a entender consignas, palabras o normas; el perfil comprende instrucciones en español y describe una barrera de expresión, no de comprensión.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/basica/acc-10-lengua": {
+    "clase": "Inadecuada",
+    "justificacion": "La traducción y responder en otra lengua mientras aprende español contradicen el perfil: español es su lengua materna y lo comprende.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/basica/acc-10-responder": {
+    "clase": "Inadecuada",
+    "justificacion": "La traducción y responder en otra lengua mientras aprende español contradicen el perfil: español es su lengua materna y lo comprende.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/basica/acc-6-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "Lectura labial, amplificación o intérprete no responden a una dificultad para producir habla con comprensión conservada; no se declaró barrera auditiva.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Permite una forma de respuesta diferente; es pertinente si se elige una vía no oral, manteniendo el resultado evaluado.",
+    "causa": null
+  },
+  "oral/superior/sup-grupos": {
+    "clase": "Discutible",
+    "justificacion": "Grupo pequeño o instrucciones escritas pueden servir en ciertos contextos, pero no garantizan disponer del tablero y de tiempo para expresarse.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/sup-expectativas": {
+    "clase": "Discutible",
+    "justificacion": "Grupo pequeño o instrucciones escritas pueden servir en ciertos contextos, pero no garantizan disponer del tablero y de tiempo para expresarse.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/sup-senas": {
+    "clase": "Inadecuada",
+    "justificacion": "No se describió pérdida de acceso al habla ni uso de señas; el perfil usa un tablero para expresarse. La dimensión 3 no distingue estas vías.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/superior/sup-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "No se describió pérdida de acceso al habla ni uso de señas; el perfil usa un tablero para expresarse. La dimensión 3 no distingue estas vías.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "oral/superior/sup-lengua": {
+    "clase": "Inadecuada",
+    "justificacion": "El glosario para otra lengua y el traductor no corresponden a quien comprende su español materno.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "lengua/basica/acc-10-lengua": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null
+  },
+  "lengua/basica/acc-10-responder": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null
+  },
+  "lengua/basica/acc-3-escrito": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null
+  },
+  "lengua/basica/acc-2-pictogramas": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null
+  },
+  "lengua/basica/acc-10-familia": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null
+  },
+  "lengua/basica/acc-3-caa": {
+    "clase": "Discutible",
+    "justificacion": "Un tablero podría servir transitoriamente, pero el estudiante ya se comunica oralmente en su lengua; no consta que necesite un sistema aumentativo.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/acc-4-normas": {
+    "clase": "Discutible",
+    "justificacion": "Normas explícitas o referentes culturales pueden apoyar acogida, pero el obstáculo señalado es entender español; estos pasos sin traducción no lo resuelven por sí solos.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/acc-10-cultura": {
+    "clase": "Discutible",
+    "justificacion": "Normas explícitas o referentes culturales pueden apoyar acogida, pero el obstáculo señalado es entender español; estos pasos sin traducción no lo resuelven por sí solos.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/acc-6-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "Hablar de frente, lectura labial y amplificación no traducen el español. No se declaró una barrera de audición.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "lengua/superior/sup-lengua": {
+    "clase": "Adecuada",
+    "justificacion": "Glosario/traductor y vías alternativas, cuando el idioma no es lo evaluado, permiten participar con conocimientos en su lengua.",
+    "causa": null
+  },
+  "lengua/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Glosario/traductor y vías alternativas, cuando el idioma no es lo evaluado, permiten participar con conocimientos en su lengua.",
+    "causa": null
+  },
+  "lengua/superior/sup-confidencial": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/sup-grupos": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/sup-expectativas": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/sup-intercultural": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/sup-senas": {
+    "clase": "Inadecuada",
+    "justificacion": "La lengua oral de origen no es lengua de señas. Intérprete de señas, micrófono y subtítulos en español no resuelven necesariamente la barrera lingüística.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "lengua/superior/sup-audicion": {
+    "clase": "Inadecuada",
+    "justificacion": "La lengua oral de origen no es lengua de señas. Intérprete de señas, micrófono y subtítulos en español no resuelven necesariamente la barrera lingüística.",
+    "causa": "una etiqueta de situación mal puesta en la ficha"
+  },
+  "tareas/basica/acc-1-partes": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null
+  },
+  "tareas/basica/acc-1-ubicacion": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null
+  },
+  "tareas/basica/acc-1-agenda": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null
+  },
+  "tareas/basica/acc-1-organizador": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/acc-7-luz": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/acc-7-desfogue": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/acc-9-jornada": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/sup-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null
+  },
+  "tareas/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null
+  },
+  "tareas/superior/sup-expectativas": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null
+  },
+  "tareas/superior/sup-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/sup-sala": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/sup-sensorial": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/basica/acc-8-teclado": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/basica/acc-8-accesible": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/basica/acc-8-materiales": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/basica/acc-8-transcribe": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/basica/acc-8-desplazamiento": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null
+  },
+  "movimiento/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null
+  },
+  "movimiento/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null
+  },
+  "movimiento/superior/sup-espacios": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null
+  },
+  "movimiento/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null
+  },
+  "ruido/basica/acc-7-transiciones": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-4-recreo": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-7-tranquilo": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-5-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-5-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-1-agenda": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null
+  },
+  "ruido/basica/acc-7-desfogue": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/acc-7-luz": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/acc-4-exponer": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/acc-9-jornada": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/sup-sala": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-sensorial": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-calma": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-referente": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null
+  },
+  "ruido/superior/sup-confidencial": {
+    "clase": "Discutible",
+    "justificacion": "Proteger la privacidad es una regla útil y cambiar el grupo podría ayudar, pero no se describieron exposición de datos ni barrera grupal como motivo del malestar.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/sup-grupos": {
+    "clase": "Discutible",
+    "justificacion": "Proteger la privacidad es una regla útil y cambiar el grupo podría ayudar, pero no se describieron exposición de datos ni barrera grupal como motivo del malestar.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/acc-9-plazos": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null
+  },
+  "fatiga/basica/acc-9-descanso": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null
+  },
+  "fatiga/basica/acc-9-jornada": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null
+  },
+  "fatiga/basica/acc-9-cuidados": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null
+  },
+  "fatiga/superior/sup-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null
+  },
+  "fatiga/superior/sup-plazos": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null
+  },
+  "fatiga/superior/sup-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null
+  },
+  "fatiga/superior/sup-remoto": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null
+  },
+  "desafio/basica/acc-1-partes": {
+    "clase": "Inadecuada",
+    "justificacion": "Fraccionar y retener el siguiente bloque hasta terminar el anterior no aporta profundidad a quien ya resuelve rápido; puede prolongar la espera que origina la desconexión.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-1-ubicacion": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-1-agenda": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-1-organizador": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-7-luz": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-7-desfogue": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/acc-9-jornada": {
+    "clase": "Discutible",
+    "justificacion": "La ficha no aporta mayor desafío. Aparece porque la desconexión durante la espera se expresa en la misma situación de atención que la dificultad para empezar tareas.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-tiempo": {
+    "clase": "Inadecuada",
+    "justificacion": "Tiempo adicional no responde a terminar antes de tiempo y puede reforzar una interpretación opuesta al problema observado.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-sala": {
+    "clase": "Discutible",
+    "justificacion": "La ficha puede beneficiar al curso, pero no profundiza las tareas ya dominadas ni responde al aburrimiento durante la espera.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-anticipar": {
+    "clase": "Discutible",
+    "justificacion": "La ficha puede beneficiar al curso, pero no profundiza las tareas ya dominadas ni responde al aburrimiento durante la espera.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-apuntes": {
+    "clase": "Discutible",
+    "justificacion": "La ficha puede beneficiar al curso, pero no profundiza las tareas ya dominadas ni responde al aburrimiento durante la espera.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-sensorial": {
+    "clase": "Discutible",
+    "justificacion": "La ficha puede beneficiar al curso, pero no profundiza las tareas ya dominadas ni responde al aburrimiento durante la espera.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/sup-expectativas": {
+    "clase": "Discutible",
+    "justificacion": "La ficha puede beneficiar al curso, pero no profundiza las tareas ya dominadas ni responde al aburrimiento durante la espera.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Imágenes y pasos ayudan a acceder al procedimiento pese al esfuerzo lector.",
+    "causa": null
+  },
+  "lectura/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Permite tiempo para leer y registrar el trabajo sin reducir su desempeño.",
+    "causa": null
+  },
+  "lectura/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar lo aprendido sin depender de escritura extensa.",
+    "causa": null
+  },
+  "lectura/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Imágenes y pasos ayudan a acceder al procedimiento pese al esfuerzo lector.",
+    "causa": null
+  },
+  "lectura/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Permite tiempo para leer y registrar el trabajo sin reducir su desempeño.",
+    "causa": null
+  },
+  "lectura/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lectura/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar lo aprendido sin depender de escritura extensa.",
+    "causa": null
+  },
+  "lectura/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite conocer el recorrido y localizar equipos con su acceso visual.",
+    "causa": null
+  },
+  "vision/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "Letra grande y contraste coinciden con usar lupa; las alternativas táctiles no deben interpretarse como obligatorias.",
+    "causa": null
+  },
+  "vision/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo localizar y recorrer la salida responde a no distinguir referencias visuales a distancia.",
+    "causa": null
+  },
+  "vision/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite conocer el recorrido y localizar equipos con su acceso visual.",
+    "causa": null
+  },
+  "vision/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "Letra grande y contraste coinciden con usar lupa; las alternativas táctiles no deben interpretarse como obligatorias.",
+    "causa": null
+  },
+  "vision/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo localizar y recorrer la salida responde a no distinguir referencias visuales a distancia.",
+    "causa": null
+  },
+  "vision/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "vision/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo se comunicarán y localizar las salidas visualmente es pertinente en la práctica.",
+    "causa": null
+  },
+  "senas/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "La alarma visual además de sonora responde directamente al acceso a avisos.",
+    "causa": null
+  },
+  "senas/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar avisos y apoyo en una emergencia responde al acceso por señas/señales visuales.",
+    "causa": null
+  },
+  "senas/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo se comunicarán y localizar las salidas visualmente es pertinente en la práctica.",
+    "causa": null
+  },
+  "senas/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "La alarma visual además de sonora responde directamente al acceso a avisos.",
+    "causa": null
+  },
+  "senas/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar avisos y apoyo en una emergencia responde al acceso por señas/señales visuales.",
+    "causa": null
+  },
+  "senas/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "senas/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a explicaciones en lengua de señas, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite ajustar la forma de demostrar, usando el tablero en lugar del habla.",
+    "causa": null
+  },
+  "oral/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "oral/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite ajustar la forma de demostrar, usando el tablero en lugar del habla.",
+    "causa": null
+  },
+  "oral/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe expresarse sin depender del habla, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite acordar una vía de comunicación antes de usar equipos; no equivale por sí solo a traducir toda la sesión.",
+    "causa": null
+  },
+  "lengua/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Las imágenes y demostración ofrecen una vía inicial además del español escrito.",
+    "causa": null
+  },
+  "lengua/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar el desempeño sin que dominar español sea una exigencia añadida.",
+    "causa": null
+  },
+  "lengua/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite acordar una vía de comunicación antes de usar equipos; no equivale por sí solo a traducir toda la sesión.",
+    "causa": null
+  },
+  "lengua/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Las imágenes y demostración ofrecen una vía inicial además del español escrito.",
+    "causa": null
+  },
+  "lengua/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "lengua/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar el desempeño sin que dominar español sea una exigencia añadida.",
+    "causa": null
+  },
+  "lengua/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar mientras aprende español, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible por pasos responde a perder el inicio y la secuencia de la tarea.",
+    "causa": null
+  },
+  "tareas/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparar y ordenar con tiempo acordado responde a no terminar procedimientos de varios pasos.",
+    "causa": null
+  },
+  "tareas/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible por pasos responde a perder el inicio y la secuencia de la tarea.",
+    "causa": null
+  },
+  "tareas/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparar y ordenar con tiempo acordado responde a no terminar procedimientos de varios pasos.",
+    "causa": null
+  },
+  "tareas/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "tareas/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite revisar el acceso en silla de ruedas antes de la sesión.",
+    "causa": null
+  },
+  "movimiento/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/basica/prac-puesto": {
+    "clase": "Adecuada",
+    "justificacion": "La altura y alcance del puesto responden a la mesa inaccesible.",
+    "causa": null
+  },
+  "movimiento/basica/prac-asistente": {
+    "clase": "Adecuada",
+    "justificacion": "Permite dirigir la ejecución cuando la manipulación no sea lo evaluado, conservando las decisiones del estudiante.",
+    "causa": null
+  },
+  "movimiento/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparación y registro manual exigen más esfuerzo; el tiempo acordado es pertinente.",
+    "causa": null
+  },
+  "movimiento/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar acceso y acompañamiento en la salida responde a la barrera de desplazamiento.",
+    "causa": null
+  },
+  "movimiento/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Distingue el desempeño esencial de la forma de registrar o manipular.",
+    "causa": null
+  },
+  "movimiento/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite revisar el acceso en silla de ruedas antes de la sesión.",
+    "causa": null
+  },
+  "movimiento/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "movimiento/superior/prac-puesto": {
+    "clase": "Adecuada",
+    "justificacion": "La altura y alcance del puesto responden a la mesa inaccesible.",
+    "causa": null
+  },
+  "movimiento/superior/prac-asistente": {
+    "clase": "Adecuada",
+    "justificacion": "Permite dirigir la ejecución cuando la manipulación no sea lo evaluado, conservando las decisiones del estudiante.",
+    "causa": null
+  },
+  "movimiento/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparación y registro manual exigen más esfuerzo; el tiempo acordado es pertinente.",
+    "causa": null
+  },
+  "movimiento/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar acceso y acompañamiento en la salida responde a la barrera de desplazamiento.",
+    "causa": null
+  },
+  "movimiento/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Distingue el desempeño esencial de la forma de registrar o manipular.",
+    "causa": null
+  },
+  "movimiento/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder al puesto y escribir, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Conocer previamente el lugar puede reducir el efecto de cambios inesperados.",
+    "causa": null
+  },
+  "ruido/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible anticipa lo que ocurrirá.",
+    "causa": null
+  },
+  "ruido/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar el apoyo durante una alarma o cambio brusco responde a los desencadenantes descritos.",
+    "causa": null
+  },
+  "ruido/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Conocer previamente el lugar puede reducir el efecto de cambios inesperados.",
+    "causa": null
+  },
+  "ruido/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible anticipa lo que ocurrirá.",
+    "causa": null
+  },
+  "ruido/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar el apoyo durante una alarma o cambio brusco responde a los desencadenantes descritos.",
+    "causa": null
+  },
+  "ruido/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "ruido/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas y tiempos distribuidos responden al cansancio en sesiones largas.",
+    "causa": null
+  },
+  "fatiga/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas y tiempos distribuidos responden al cansancio en sesiones largas.",
+    "causa": null
+  },
+  "fatiga/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "fatiga/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe continuar con ausencias y cansancio, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-procedimiento": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que se pierda la secuencia del procedimiento o no se pueda acceder a su explicación. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-puesto": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una barrera de altura, alcance o paso físico. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que el tiempo de preparar, terminar u ordenar sea la barrera específica. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-evacuacion": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara una necesidad concreta de ayuda para recibir el aviso o desplazarse en la emergencia. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  },
+  "desafio/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe seguir aprendiendo después de terminar, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "entradaSha": {
+    "app.js": "474851f7ea0b88cea9f4a6387ebc3c4ddcb8e5188340a561ad2cbbaf94109e30",
+    "index.html": "0e7bb54fb8e559348ac24abb71f267b26c0bd2daf1798367b7a9105378a3dd78",
+    "styles.css": "f5a8de32fd8033f23f536f42cfe281bfb5fb5dfa582ad736d41b973dbbc5f6f9",
+    "data/recomendaciones.json": "387d61b5878a3308fdd5639d99767a4c703ae1316080aae1977074f5ace4a29f",
+    "data/necesidades.json": "93dd521db6671bd36977c1b5309cfb4464a533cee32200a650912d190343d22f",
+    "data/fuentes.json": "94763960564920081ac4a5e417332987d094e19555270464fbc02e0480c33d5c",
+    "docs/auditorias/024-estudiantes/perfiles.json": "49e2d6bcc77cfa8c4e1f80fecd564df0ba7909f6852851cef63af34b53235c0a"
+  },
+  "mediciones": [
+    {
+      "n": 4,
+      "ancho": 1280,
+      "activo": "oral",
+      "titulo": "Apoyos para CO",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\" [pressed]",
+      "errores": []
+    },
+    {
+      "n": 4,
+      "ancho": 390,
+      "activo": "oral",
+      "titulo": "Apoyos para CO",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\" [pressed]",
+      "errores": [],
+      "contextoAlFinal": {
+        "tituloDialogo": "Filtros",
+        "inicialesEnPantalla": false,
+        "selectorEnPantalla": false
+      }
+    },
+    {
+      "n": 10,
+      "ancho": 1280,
+      "activo": "desafio",
+      "titulo": "Apoyos para DE",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\"\n- button \"ID\"\n- button \"TA\"\n- button \"MO\"\n- button \"RU\"\n- button \"FA\"\n- button \"DE\" [pressed]",
+      "errores": [],
+      "recuadroDua": "Barreras que se repiten en tu curso\n\nAtención y organización: 2 estudiantes\n\nVer acciones para esto\n\nComunicación y lenguaje: 2 estudiantes\n\nVer acciones para esto\n\nVisión y audición: 2 estudiantes\n\nVer acciones para esto",
+      "necesidadMarcada": "true"
+    },
+    {
+      "n": 10,
+      "ancho": 390,
+      "activo": "desafio",
+      "titulo": "Apoyos para DE",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\"\n- button \"ID\"\n- button \"TA\"\n- button \"MO\"\n- button \"RU\"\n- button \"FA\"\n- button \"DE\" [pressed]",
+      "errores": [],
+      "contextoAlFinal": {
+        "tituloDialogo": "Filtros",
+        "inicialesEnPantalla": false,
+        "selectorEnPantalla": false
+      },
+      "recuadroDua": "Barreras que se repiten en tu curso\n\nAtención y organización: 2 estudiantes\n\nVer acciones para esto\n\nComunicación y lenguaje: 2 estudiantes\n\nVer acciones para esto\n\nVisión y audición: 2 estudiantes\n\nVer acciones para esto",
+      "necesidadMarcada": "true"
+    }
+  ]
+}
