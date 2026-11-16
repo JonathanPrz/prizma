@@ -321,3 +321,11 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
 /* La casilla de taller vive ahora en el paso 1: casilla y texto en la misma línea, la ayuda debajo del texto. */
 .paso-cuerpo .casilla-practica { display: grid; grid-template-columns: auto 1fr; gap: .25rem .6rem; align-items: center; min-height: 2.75rem; }
 .paso-cuerpo .casilla-practica .ayuda { grid-column: 2; }
+
+.filtros-vista { display: grid; gap: .75rem; padding: 1rem; border: 1px solid var(--linea); border-radius: .35rem; background: var(--panel); }
+.filtros-vista legend { font-weight: 800; margin-bottom: .5rem; }
+.filtros-vista > a { justify-self: start; min-height: 1.5rem; }
+@media (max-width: 48rem) {
+  .filtros-vista .chips { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; padding: .4rem; scroll-padding-inline: .4rem; }
+  .filtros-vista .chip { flex: 0 0 auto; width: auto; }
+}

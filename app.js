@@ -289,18 +289,18 @@ function guardarAcuerdos() {
   abrirPaso("paso-acuerdos", false); $("#paso-acuerdos-editar").focus();
 }
 function abrirClase() {
-  if (!borradorDua) borradorDua = { perfil: { ...estado.perfil, actividad: [...estado.perfil.actividad], evidencia: [...estado.perfil.evidencia] }, necesidades: [...estado.necesidades], momentos: [...estado.momentos], propositos: [...estado.propositos] };
+  if (!borradorDua) borradorDua = { perfil: { ...estado.perfil, actividad: [...estado.perfil.actividad], evidencia: [...estado.perfil.evidencia] }, necesidades: [...estado.necesidades] };
   abrirPaso("paso-clase", true);
 }
 function editarClase() { abrirClase(); sincronizarPerfil(); pintarControles(); }
 function resumenClase() {
-  const detalles = [estado.perfil.meta.trim(), ...necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto), ...estado.momentos.map((id) => nombresMomentos()[id]), ...estado.propositos.map((id) => PROPOSITOS[id].nombre), ...[...estado.perfil.actividad, ...estado.perfil.evidencia].map(etiqueta), ...(practicaActiva() ? ["Taller, laboratorio o terreno"] : [])].filter(Boolean);
-  $("#paso-clase-texto").textContent = detalles.join(" · ") || (estado.propositos.length || estado.perfil.actividad.length || estado.perfil.evidencia.length ? "Guardaste las opciones de tu clase." : "Sin filtros: verás todas las acciones");
+  const detalles = [estado.perfil.meta.trim(), ...necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto), ...[...estado.perfil.actividad, ...estado.perfil.evidencia].map(etiqueta), ...(practicaActiva() ? ["Taller, laboratorio o terreno"] : [])].filter(Boolean);
+  $("#paso-clase-texto").textContent = detalles.join(" · ") || "Sin detalles de la clase.";
 }
 function guardarClase() {
   if (borradorDua) {
     estado.perfil = normalizarPerfil({ ...borradorDua.perfil, nivel: estado.perfil.nivel, practica: estado.perfil.practica, reflexion: estado.perfil.reflexion });
-    estado.necesidades = normalizarNecesidades(borradorDua.necesidades); estado.momentos = normalizarMomentos(borradorDua.momentos); estado.propositos = [...borradorDua.propositos];
+    estado.necesidades = normalizarNecesidades(borradorDua.necesidades);
   }
   borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso("paso-clase", false);
   pintarControles(); pintarTarjetas(); pintarSeleccion(); $("#acciones").focus(); actualizarPaso(2);
@@ -325,7 +325,8 @@ function prepararPasos() {
   });
   $("#reflexion").value = estado.perfil.reflexion || "";
   $("#reflexion").addEventListener("input", (evento) => { estado.perfil.reflexion = evento.target.value.slice(0, 500); guardar(); actualizarRespaldo(); $("#documento-clase").disabled = !elegidasOrdenadas().length && !estado.perfil.reflexion; if (!privacidadAvisada && evento.target.value) mostrarAvisoPrivacidad(evento.target); });
-  $("#limpiar-clase").addEventListener("click", (evento) => { evento.preventDefault(); limpiarFiltros(); });
+  $("#limpiar-clase").addEventListener("click", (evento) => { evento.preventDefault(); limpiarClase(); });
+  $("#limpiar-filtros").addEventListener("click", (evento) => { evento.preventDefault(); limpiarFiltrosVista(); });
   $("#documento-clase").addEventListener("click", prepararDocumento);
   if (!estado.claseGuardada) editarClase(); else { abrirPaso("paso-clase", false); resumenClase(); }
 }
@@ -777,9 +778,9 @@ function prepararPestanas() {
   $("#documento-estudiante").addEventListener("click", prepararDocumento);
 }
 
-function limpiarFiltros() {
+function limpiarClase() {
   if (!borradorDua) editarClase();
-  borradorDua.necesidades = []; borradorDua.propositos = []; borradorDua.momentos = [];
+  borradorDua.necesidades = [];
   borradorDua.perfil = { ...borradorDua.perfil, meta: "", actividad: [], evidencia: [] };
   sincronizarPerfil(); pintarControles();
 }
@@ -856,7 +857,7 @@ function compararDua(a, b, practica = practicaActiva()) {
   return orden[a.momento] - orden[b.momento] || compararPertinenciaDua(a, b, practica);
 }
 function primerasDua(lista = visibles()) {
-  return estado.necesidades.length || estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva() ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
+  return lista.length > 3 && (estado.necesidades.length || estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva()) ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
 }
 function visibles() {
   const practica = practicaActiva();
@@ -958,25 +959,36 @@ function pintarControles() {
       document.getElementById("necesidad-" + n.id).focus();
     }, text: n.texto,
   })));
+  pintarFiltrosVista();
+}
+
+function actualizarVistaDua() {
+  guardar(); pintarFiltrosVista(); pintarTarjetas(); actualizarRespaldo();
+}
+function limpiarFiltrosVista() {
+  estado.momentos = []; estado.propositos = [];
+  actualizarVistaDua();
+}
+function pintarFiltrosVista() {
   const cont = $("#momentos"); cont.replaceChildren();
   for (const [id, nombre] of MOMENTOS) {
     const acciones = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r));
-    const conteo = configuracion.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => necesidades.some((n) => configuracion.necesidades.includes(n.id) && n.consideraciones.includes(r.consideracion))).length} para ti` : String(acciones.length);
-    cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(configuracion.momentos.includes(id)),
+    const conteo = estado.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => necesidades.some((n) => estado.necesidades.includes(n.id) && n.consideraciones.includes(r.consideracion))).length} para ti` : String(acciones.length);
+    cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(estado.momentos.includes(id)),
       onclick: () => {
-        configuracion.momentos = configuracion.momentos.includes(id) ? configuracion.momentos.filter((m) => m !== id) : [...configuracion.momentos, id];
-        pintarControles();
+        estado.momentos = estado.momentos.includes(id) ? estado.momentos.filter((m) => m !== id) : [...estado.momentos, id];
+        actualizarVistaDua();
         document.getElementById("m-" + id).focus();
       },
-    }, nombreMomento(id, nombre) + " ", el("small", { text: `(${conteo})` })));
+    }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase") })) : nombre, " ", el("small", { text: `(${conteo})` })));
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
-    const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(configuracion.propositos.includes(id)), title: "Principio DUA: " + p.principio },
-      el("span", { class: "tri", "aria-hidden": "true" }), p.nombre);
+    const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
+      el("span", { class: "tri", "aria-hidden": "true" }), p.corto);
     b.addEventListener("click", () => {
-      configuracion.propositos = configuracion.propositos.includes(id) ? configuracion.propositos.filter((x) => x !== id) : [...configuracion.propositos, id];
-      pintarControles();
+      estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
+      actualizarVistaDua();
       document.getElementById("proposito-" + id).focus();
     });
     chips.append(b);
@@ -1152,7 +1164,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || totalElegidas() || estado.estudiantes.some(datosEstudiante) || (estado.trabajadores || []).some(datosTrabajador) || estado.estudiantes.length > 1 || estado.perfil.practica || estado.perfil.reflexion || estado.asignatura || estado.momentos.length);
+  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || totalElegidas() || estado.estudiantes.some(datosEstudiante) || (estado.trabajadores || []).some(datosTrabajador) || estado.estudiantes.length > 1 || estado.perfil.practica || estado.perfil.reflexion || estado.asignatura || estado.momentos.length || estado.propositos.length);
 }
 
 function actualizarRespaldo() {
@@ -1629,7 +1641,14 @@ async function iniciar() {
     requestAnimationFrame(() => {
       pendienteScroll = false;
       const borde = $("#indicador-pasos").getBoundingClientRect().bottom + 32;
-      const visibles = pasosActuales().map((id, i) => ({ nodo: $("#" + id), numero: i + 1 })).filter(({ nodo }) => !nodo.hidden && nodo.getBoundingClientRect().top <= borde);
+      // scrollIntoView suma el padding del documento y el margen de cada paso.
+      const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const alFinal = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight;
+      const visibles = pasosActuales().map((id, i) => ({ nodo: $("#" + id), numero: i + 1 })).filter(({ nodo }) => {
+        const arriba = nodo.getBoundingClientRect().top;
+        const margen = padding + (parseFloat(getComputedStyle(nodo).scrollMarginTop) || 0);
+        return !nodo.hidden && (arriba <= Math.max(borde, margen + 1) || alFinal && arriba < window.innerHeight);
+      });
       if (visibles.length) actualizarPaso(visibles[visibles.length - 1].numero);
     });
   }, { passive: true });

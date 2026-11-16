@@ -1,0 +1,14 @@
+- group "Momento":
+  - text: Momento
+  - button "Antes (11 · 1 para ti)"
+  - button "Durante (14 · 3 para ti)" [pressed]
+  - button "Después (4 · 0 para ti)"
+  - button "En toda la clase (7 · 0 para ti)"
+- group "Para qué":
+  - text: Para qué
+  - button "Motivar" [pressed]
+  - button "Presentar"
+  - button "Expresarse y organizarse"
+- paragraph: Si no eliges ninguno, se muestran todos
+- link "Limpiar filtros":
+  - /url: "#acciones"
