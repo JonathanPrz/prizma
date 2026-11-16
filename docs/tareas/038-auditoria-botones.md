@@ -1,6 +1,6 @@
 # Tarea 038 · Auditoría de todos los botones: de la primera selección al documento impreso
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/038-auditoria-botones`
+Estado: **integrada** (PR #38) · Asignada a: Codex · Rama: `codex/038-auditoria-botones`
 
 ## Para qué
 El dueño quiere saber si cada botón y opción de Educación funciona y se entiende, desde que se arma una selección hasta el documento imprimible, en las dos pestañas: «Para el curso (DUA)» y «Para un estudiante». Además, quiere entender la función de **todos los filtros** de Prizma, también en «Para el trabajo» (sección 4). No le queda claro:
