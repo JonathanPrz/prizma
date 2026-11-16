@@ -1104,7 +1104,7 @@ async function iniciar() {
   }).then((datos) => {
     if (!Array.isArray(datos) || datos.some((n) =>
       !n || typeof n.id !== "string" || !n.id.trim() || typeof n.texto !== "string" || !n.texto.trim() ||
-      (n.dimensiones !== undefined && (!Array.isArray(n.dimensiones) || n.dimensiones.some((d) => !Number.isInteger(d) || d < 1 || d > 11))) ||
+      (n.dimensiones !== undefined && (!Array.isArray(n.dimensiones) || n.dimensiones.some((d) => !Number.isInteger(d) || d < 1 || d > DIMENSIONES.length))) ||
       !Array.isArray(n.consideraciones) || n.consideraciones.some((c) => typeof c !== "string" || !Object.hasOwn(CONSIDERACIONES, c)))) return [];
     return new Set(datos.map((n) => n.id)).size === datos.length ? datos : [];
   }).catch(() => []);
