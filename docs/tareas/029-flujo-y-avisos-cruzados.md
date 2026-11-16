@@ -1,4 +1,4 @@
-# Tarea 029 · Casos en 3 pasos, prioridad en DUA y avisos cruzados entre DUA y apoyos
+# Tarea 029 · Pasos en DUA y apoyos, casos con acuerdos, prioridad y avisos cruzados
 
 Estado: **pendiente** · Asignada a: Codex · Rama: `codex/029-flujo-avisos`
 
@@ -29,7 +29,7 @@ Escribe `docs/auditorias/029-flujos/README.md`. Con un script o Playwright, reco
 Por cada paso anota qué muestra hoy la página, qué esperaría el docente según esta tarea y la brecha. Agrega también cualquier otro dato que la página descarte en silencio, como pasó con las necesidades. Revisa todas las validaciones de `app.js` contra los datos reales.
 
 ## Parte B · Cambios
-1. **Cada estudiante es un caso, en 3 pasos (reemplaza los filtros laterales en la pestaña de apoyos).** El dueño decidió que en apoyos no haya columna de filtros ni diálogo «Filtros» en el teléfono. La pestaña DUA mantiene sus filtros como están. La página queda a todo el ancho, en este orden:
+1. **Cada estudiante es un caso, en 3 pasos (reemplaza los filtros laterales en la pestaña de apoyos).** El dueño decidió que en apoyos no haya columna de filtros ni diálogo «Filtros» en el teléfono. La página queda a todo el ancho, en este orden:
    - **Arriba, «Casos»:** un botón por estudiante, con su estado en texto: «Acuerdos completos», «Sin acuerdos» o «Por revisar». Sirve para cambiar de caso. «Quitar a <iniciales>» va junto a la lista.
    - **Paso 1, «Describe la situación de <iniciales>»:**
      - Es un bloque que se despliega con un botón. Contiene las iniciales, las situaciones, «¿Qué le ayuda?», la voz y la casilla de práctica profesional.
@@ -55,6 +55,18 @@ Por cada paso anota qué muestra hoy la página, qué esperaría el docente seg�
      - Ajusta `normalizarEstudiante()`, el `pattern` y la ayuda: «Solo iniciales. Si se repiten, agrega un número: JP2».
      - Si dos casos tienen las mismas iniciales, avisa bajo el campo: «Ya hay un estudiante JP. Agrega un número para distinguirlos».
    - **Lo que no cambia:** el aviso de privacidad sigue abriéndose la primera vez que se escriben datos. «¿Qué datos puedo escribir?» queda bajo las iniciales.
+1b. **La pestaña DUA usa el mismo formato de pasos (también sin filtros laterales).** El dueño prefiere que las dos pestañas funcionen igual. Se eliminan la columna de filtros, el botón «Filtros (n)» y el diálogo `#filtros-dialogo`. El nivel y la casilla de práctica siguen en la barra de contexto.
+   - **Paso 1, «Describe tu clase»:**
+     - Es un bloque que se despliega con un botón. Contiene, en el orden de hoy, la meta, «¿Qué quieres resolver?», «¿Cuándo?», «¿Para qué?» y «Más detalles».
+     - «Guardar» no exige nada: todo es opcional, como hoy.
+     - Al guardar, se pliega con un resumen (meta, necesidades y momentos elegidos, o «Sin filtros: verás todas las acciones») y «Editar».
+     - En la primera visita aparece desplegado.
+   - **Paso 2, «Acciones sugeridas»:** a todo el ancho. Arriba «Para empezar» (punto 2) y después los grupos por momento. Las acciones se eligen como hoy. Los resultados se actualizan al guardar el paso 1, no a cada clic.
+   - **Paso 3, «Tu selección»:**
+     - Muestra las acciones DUA elegidas, ordenadas por momento, con su nota.
+     - Tiene el botón «Ver documento» y una línea opcional: «Después de la clase: ¿qué funcionó?». Es un texto de máximo 500 caracteres, que se guarda en `estado.perfil.reflexion` (validado y respaldado) y va al PDF bajo las acciones del curso.
+   - **Estilo común:** usa en las dos pestañas los mismos componentes para paso, resumen y «Editar». La guía «¿Cómo usar el DUA?» queda junto al paso 1.
+   - Ajusta las pruebas que dependían del diálogo de filtros o de `#abrir-filtros`, sin debilitar lo que comprueban.
 2. **Prioridad en DUA:**
    - Si hay al menos una necesidad, un contexto de «Más detalles» o la casilla de práctica marcados, agrega arriba de los grupos por momento la sección «Para empezar», con las 3 acciones más pertinentes de todos los momentos.
    - Usa el mismo orden de hoy: necesidades, después práctica, contextos y destacadas.
@@ -77,7 +89,8 @@ Por cada paso anota qué muestra hoy la página, qué esperaría el docente seg�
 
 ## Criterios de aceptación
 - [ ] La auditoría de la parte A documenta cada recorrido y las validaciones revisadas.
-- [ ] La pestaña de apoyos no tiene columna de filtros ni diálogo «Filtros». La pestaña DUA sigue igual.
+- [ ] Ninguna pestaña tiene columna de filtros ni diálogo «Filtros». DUA y apoyos usan los mismos componentes de paso, resumen y «Editar».
+- [ ] En DUA, el paso 1 se guarda sin exigir nada, se pliega con su resumen y los resultados se actualizan al guardar. El paso 3 muestra la selección y la reflexión, que va al PDF.
 - [ ] Un caso recorre los 3 pasos. Cada paso guardado se pliega con un resumen y «Editar».
 - [ ] «Guardar acuerdos» no deja guardar sin un apoyo, un rol y las dos fechas válidas, y dice qué falta.
 - [ ] «+ Agregar otro caso» está bloqueado mientras algún caso no tenga «Acuerdos completos». Al agregar, la vista vuelve al paso 1.
