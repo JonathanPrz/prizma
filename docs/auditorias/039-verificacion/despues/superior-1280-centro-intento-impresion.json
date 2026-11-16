@@ -1,0 +1,14 @@
+[
+  {
+    "evento": "pdfmake.print"
+  },
+  {
+    "evento": "beforeprint"
+  },
+  {
+    "evento": "afterprint"
+  },
+  {
+    "evento": "pdfmake.print"
+  }
+]

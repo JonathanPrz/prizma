@@ -1,0 +1,284 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación superior (universidad, IP o CFT)"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 2 estudiantes"
+    ]
+  ],
+  "grupos": [
+    {
+      "nombre": "Antes",
+      "acciones": [
+        {
+          "id": "dua-1-1",
+          "titulo": "Prepara materiales que se puedan ajustar",
+          "como": [
+            "Comparte el material digital para agrandar la letra, cambiar el contraste o escucharlo.",
+            "Usa una letra simple y de buen tamaño.",
+            "No transmitas información solo con colores."
+          ],
+          "porque": "Un material ajustable sirve a quien ve poco, lee lento o se cansa, sin hacer uno para cada caso.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 1.1: Apoyar las oportunidades para personalizar la presentación de información. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 1 estudiante."
+        },
+        {
+          "id": "dua-6-2",
+          "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+          "como": [
+            "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+            "Marca lo que ya hicieron.",
+            "Avisa con tiempo si algo cambia."
+          ],
+          "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 2 estudiantes."
+        }
+      ]
+    },
+    {
+      "estudiante": "c6b89ecb-82e0-4d89-add5-7afa1abb3fed",
+      "acuerdo": {
+        "roles": [
+          "estudiante",
+          "inclusion"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Ajustes razonables para IP",
+      "subtitulo": "Propuesta para acordar con el estudiante y la unidad de inclusión",
+      "cif": [
+        [
+          "Atención y organización",
+          "Casi siempre",
+          "Publica al inicio el programa, las rúbricas y las fechas de evaluación; Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide; Divide las tareas largas en pasos, con una lista para marcar"
+        ],
+        [
+          "Lectura, escritura y cálculo",
+          "Seguido",
+          "Entrega textos y pruebas en formato digital accesible; Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide"
+        ]
+      ],
+      "ayuda": "APOYO: lista visible.",
+      "voz": "VOZ: decide compartir instrucciones por pasos.",
+      "acciones": [
+        {
+          "id": "sup-digital",
+          "titulo": "Entrega textos y pruebas en formato digital accesible",
+          "como": [
+            "Usa documentos con texto real, no imágenes escaneadas.",
+            "Revisa que funcionen con lector de pantalla y texto a voz.",
+            "Publícalos con anticipación en la plataforma del curso."
+          ],
+          "porque": "El texto a voz mejora la comprensión lectora de estudiantes con dificultades de lectura.",
+          "nota": "",
+          "ofrecida": true,
+          "dato": "Ajuste razonable: Presentación de la información. Versión DUA 3.0, consideración 1.1. Respaldo: Investigación moderada.",
+          "grupo": "Ajustes razonables · Presentación de la información"
+        },
+        {
+          "id": "sup-anticipar",
+          "titulo": "Publica al inicio el programa, las rúbricas y las fechas de evaluación",
+          "como": [
+            "Comparte el calendario completo el primer día.",
+            "Explica cada rúbrica con un ejemplo.",
+            "Avisa los cambios con al menos una semana de anticipación."
+          ],
+          "porque": "Anticipar permite planificar, organizarse y pedir ajustes a tiempo.",
+          "nota": "",
+          "ofrecida": true,
+          "dato": "Ajuste razonable: Organización del tiempo y el horario. Versión DUA 3.0, consideración 6.2. Respaldo: Consenso de expertos.",
+          "grupo": "Ajustes razonables · Organización del tiempo y el horario"
+        },
+        {
+          "id": "sup-tiempo",
+          "titulo": "Acuerda tiempo adicional en evaluaciones cuando la rapidez no es lo que se mide",
+          "como": [
+            "Revisa si la velocidad es parte del resultado de aprendizaje.",
+            "Si no lo es, acuérdalo antes de la evaluación. El Mineduc sugiere como referencia un 50% más.",
+            "Aplícalo también a evaluaciones en línea y con plazo."
+          ],
+          "porque": "La evidencia muestra beneficios, sobre todo cuando el tiempo estándar no alcanza para trabajar al propio ritmo.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Ajuste razonable: Organización del tiempo y el horario. Respaldo: Investigación moderada.",
+          "grupo": "Ajustes razonables · Organización del tiempo y el horario"
+        },
+        {
+          "id": "pp-plan-superior",
+          "titulo": "Prepara con el estudiante un plan de ajustes para la práctica",
+          "como": [
+            "Revisen juntos las tareas del centro y las barreras posibles.",
+            "Acuerden los ajustes y quién los implementa.",
+            "Fijen una fecha para revisarlos."
+          ],
+          "porque": "La institución mantiene su deber de hacer ajustes también fuera del campus (Ley 20.422, art. 39).",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo para la práctica: Lo que hace la institución. Respaldo: Orientación oficial.",
+          "grupo": "Práctica profesional · Lo que hace la institución"
+        },
+        {
+          "id": "pp-c-pasos",
+          "titulo": "Divide las tareas largas en pasos, con una lista para marcar",
+          "como": [
+            "Escribe los pasos de cada tarea en orden.",
+            "Deja la lista en el puesto de trabajo.",
+            "Revisa la lista juntos al principio."
+          ],
+          "porque": "Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo para la práctica: Lo que puede hacer el centro de práctica. Respaldo: Consenso de expertos.",
+          "grupo": "Práctica profesional · Lo que puede hacer el centro de práctica"
+        },
+        {
+          "id": "pp-e-compartir",
+          "titulo": "Que el estudiante decida qué contar, a quién y para qué",
+          "como": [
+            "Explica para qué sirve cada dato y quién lo verá.",
+            "Comparte solo lo necesario para el ajuste, nunca el diagnóstico ni el expediente.",
+            "Respeta si decide no contar."
+          ],
+          "porque": "La ley protege los datos de salud: pedir un ajuste no autoriza entregar el expediente.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes. Respaldo: Norma legal.",
+          "grupo": "Práctica profesional · Preparar al estudiante para pedir ajustes"
+        }
+      ]
+    },
+    {
+      "estudiante": "fea5aa85-1b2e-41d7-8f61-c4b55a07aeed",
+      "acuerdo": {
+        "roles": [
+          "estudiante",
+          "inclusion"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Ajustes razonables para IP2",
+      "subtitulo": "Propuesta para acordar con el estudiante y la unidad de inclusión",
+      "cif": [
+        [
+          "Atención y organización",
+          "Casi siempre",
+          "Publica al inicio el programa, las rúbricas y las fechas de evaluación"
+        ],
+        [
+          "Lectura, escritura y cálculo",
+          "Seguido",
+          "Sin apoyo elegido"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "acciones": [
+        {
+          "id": "sup-anticipar",
+          "titulo": "Publica al inicio el programa, las rúbricas y las fechas de evaluación",
+          "como": [
+            "Comparte el calendario completo el primer día.",
+            "Explica cada rúbrica con un ejemplo.",
+            "Avisa los cambios con al menos una semana de anticipación."
+          ],
+          "porque": "Anticipar permite planificar, organizarse y pedir ajustes a tiempo.",
+          "nota": "",
+          "ofrecida": true,
+          "dato": "Ajuste razonable: Organización del tiempo y el horario. Versión DUA 3.0, consideración 6.2. Respaldo: Consenso de expertos.",
+          "grupo": "Ajustes razonables · Organización del tiempo y el horario"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    },
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+      "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+    },
+    {
+      "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+      "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+    },
+    {
+      "cita": "Wood, S. G., Moxley, J. H., Tighe, E. L. y Wagner, R. K. (2018). Does use of text-to-speech and related read-aloud tools improve reading comprehension for students with reading disabilities? A meta-analysis. Journal of Learning Disabilities.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5494021/"
+    },
+    {
+      "cita": "Mineduc (2026). Ley 20.422: orientaciones para su implementación en las instituciones de educación superior.",
+      "url": "https://educacionsuperior.mineduc.cl/wp-content/uploads/sites/49/2026/01/Orientaciones-Ley-20.422-educacion-superior.pdf"
+    },
+    {
+      "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903"
+    },
+    {
+      "cita": "CAST. UDL On Campus: Assessment and Universal Design for Learning. CC BY-SA 4.0.",
+      "url": "https://udloncampus.cast.org/page/assessment_udl"
+    },
+    {
+      "cita": "Mineduc (2025). Ley 21.545: orientaciones para su implementación en educación superior.",
+      "url": "https://educacionsuperior.mineduc.cl/wp-content/uploads/sites/49/2025/03/Ley-21.545-Orientaciones-para-su-implementacion-en-Educacion-Superior.pdf"
+    },
+    {
+      "cita": "Ofqual (2025). Extra time in assessments: a review of the research literature. Open Government Licence v3.0.",
+      "url": "https://www.gov.uk/government/publications/extra-time-in-assessments/extra-time-in-assessments-a-review-of-the-research-literature-on-the-effect-of-extra-time-on-assessment-outcomes-for-different-students"
+    },
+    {
+      "cita": "Ley 21.091 (2018). Sobre Educación Superior.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1118991"
+    },
+    {
+      "cita": "Job Accommodation Network. Accommodation Solutions for Individuals with Executive Functioning Deficits. U.S. Department of Labor.",
+      "url": "https://askjan.org/articles/Executive-Functioning-Deficits.cfm"
+    },
+    {
+      "cita": "Ley 19.628 (1999). Sobre protección de la vida privada.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=141599"
+    },
+    {
+      "cita": "Ley 21.719 (2024). Regula la protección y el tratamiento de los datos personales.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1209272"
+    },
+    {
+      "cita": "Waters, B. y Rath, V. (2022). Students with Disabilities on Placement. AHEAD y DAWN, Irlanda.",
+      "url": "https://www.ahead.ie/userfiles/files/documents/Students%20with%20Disabilities%20on%20Placement%20digital_2-12-22.pdf"
+    }
+  ],
+  "borrador": false
+}

@@ -1,0 +1,108 @@
+{
+  "limpiar": {
+    "antes": {
+      "perfil": {
+        "nivel": "basica",
+        "practica": true,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "Interpretar tablas.",
+        "reflexion": ""
+      },
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "borrador": {
+        "perfil": {
+          "nivel": "basica",
+          "practica": true,
+          "actividad": [],
+          "evidencia": [],
+          "meta": "Interpretar tablas.",
+          "reflexion": ""
+        },
+        "necesidades": [
+          "tareas-largas"
+        ]
+      },
+      "primeras": [
+        "dua-5-3-andamiaje-lista",
+        "dua-6-2",
+        "dua-6-3"
+      ],
+      "foco": "meta"
+    },
+    "despues": {
+      "perfil": {
+        "nivel": "basica",
+        "practica": true,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "Interpretar tablas.",
+        "reflexion": ""
+      },
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "borrador": {
+        "perfil": {
+          "nivel": "basica",
+          "practica": false,
+          "actividad": [],
+          "evidencia": [],
+          "meta": "",
+          "reflexion": ""
+        },
+        "necesidades": []
+      },
+      "primeras": [
+        "dua-5-3-andamiaje-lista",
+        "dua-6-2",
+        "dua-6-3"
+      ],
+      "foco": "limpiar-clase"
+    }
+  },
+  "repetida": {
+    "antes": {
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "necesidades": [],
+      "borrador": null,
+      "primeras": [],
+      "foco": "limpiar-clase"
+    },
+    "texto": "Ver acciones para esto",
+    "despues": {
+      "perfil": {
+        "nivel": "basica",
+        "practica": false,
+        "actividad": [],
+        "evidencia": [],
+        "meta": "",
+        "reflexion": ""
+      },
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "borrador": null,
+      "primeras": [
+        "dua-5-3-andamiaje-lista",
+        "dua-6-2",
+        "dua-6-3"
+      ],
+      "foco": "t-dua-empezar"
+    }
+  },
+  "focoVista": {
+    "vistaAbierta": true,
+    "tag": "BUTTON",
+    "id": "descargar"
+  }
+}

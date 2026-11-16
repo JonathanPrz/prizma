@@ -1,0 +1,62 @@
+{
+  "corte": "503db217e6e2abe1c58821f9aa2a5668cb08d3d1",
+  "fecha": "2026-11-16T19:55:30.982Z",
+  "chromium": "156.0.8078.79",
+  "huellas": {
+    "AGENTS.md": "0a54051f9350be32ac9bb1897df79c78544ef63ebf9fbbddbc7f5919866ebb31",
+    "docs/tareas/038-auditoria-botones.md": "3ea71c40e851b438902447fc0f9577bad4d98d168d9ab8d93ac0db4105610442",
+    "app.js": "c4744340f19d33d9c75752eee15e2a55ab130ec417f1654e9da0e54f6a37a1e7",
+    "index.html": "82e8a8960ad5de26fe6fac04cae555301ada29a15c2ee4474d024abb0dd68186",
+    "styles.css": "b6aa040c6af1b92e96b5d005f3afb96f36e332acbe5e3a955fe45a71e4418565",
+    "docs/arquitectura.md": "62fe3002d330f1f6d7d34f542125137549384526914387e94579eedd1e3d699e",
+    "data/recomendaciones.json": "ea9b76ede117a339f021b61a3c355d92c24d22d1bef5c3003db5a0cf4e236e57",
+    "data/fuentes.json": "7969ab9952af529b78dffcc5a055e31e59963fb0e1c88c53530bb13b5b6d3fed",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f"
+  },
+  "recorridos": [
+    {
+      "tipo": "dua",
+      "ancho": 1280,
+      "acciones": 25,
+      "desplazamientoTotal": 6600,
+      "errores": []
+    },
+    {
+      "tipo": "dua",
+      "ancho": 390,
+      "acciones": 25,
+      "desplazamientoTotal": 16235,
+      "errores": []
+    },
+    {
+      "tipo": "basica",
+      "ancho": 1280,
+      "acciones": 49,
+      "desplazamientoTotal": 24983,
+      "errores": []
+    },
+    {
+      "tipo": "basica",
+      "ancho": 390,
+      "acciones": 49,
+      "desplazamientoTotal": 42999,
+      "errores": []
+    },
+    {
+      "tipo": "superior",
+      "ancho": 1280,
+      "acciones": 58,
+      "desplazamientoTotal": 28555,
+      "errores": []
+    },
+    {
+      "tipo": "superior",
+      "ancho": 390,
+      "acciones": 58,
+      "desplazamientoTotal": 53920,
+      "errores": []
+    }
+  ],
+  "controles": 1501,
+  "filtros": 145
+}

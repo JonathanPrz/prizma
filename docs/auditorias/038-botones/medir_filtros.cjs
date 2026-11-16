@@ -1,5 +1,6 @@
 // Pares controlados: cada cambio parte de nuevo del mismo caso ficticio.
 module.exports = async function medir(p, guardar, tabla) {
+  const salida=process.env.AUDITORIA_SALIDA||__dirname;
   const filas=[];
   p.on('dialog', d=>d.accept());
   async function base(ambito,nivel) {
@@ -33,19 +34,19 @@ module.exports = async function medir(p, guardar, tabla) {
     if(operacion==='radio') {
       const nombre=selector.includes('trabajo-')?'trabajo-':'';
       const area=await p.locator(selector).evaluate(n=>{let d=n;while(d&&!/^dim-area-|^trabajo-area-d-/.test(d.id))d=d.parentElement;return d?.id.match(/(\d+)$/)?.[1];});
-      if(area!==undefined)await p.locator('#'+nombre+'area-'+area).check();
+      if(area!==undefined&&await p.locator('#'+nombre+'area-'+area).getAttribute('aria-expanded')==='false')await p.locator('#'+nombre+'area-'+area).click();
     }
     if(selector.includes('#perfil input')&&!await p.locator('#perfil details').evaluate(d=>d.open))await p.locator('#perfil details > summary').click();
     const antes=await fotoEstado();
     const l=p.locator(selector).first(), declarado=await l.evaluate(n=>({texto:n.labels?[...n.labels].map(l=>l.textContent.trim()).join(' / '):n.textContent.trim(),ayuda:n.getAttribute('aria-describedby')?.split(' ').map(id=>document.getElementById(id)?.textContent).join(' ')||n.closest('fieldset')?.querySelector('legend')?.textContent||''}));
-    if(selector==='#practica'&&ambito==='apoyos'){await p.click('#tab-dua');await l.check();await p.click('#tab-apoyos');}
+    if(selector==='#practica'&&ambito==='apoyos'){await p.click('#tab-dua');await p.evaluate(()=>editarClase());await l.check();await p.click('#guardar-clase');await p.click('#tab-apoyos');}
     else if(operacion==='check')await l.check();
     if(operacion==='uncheck')await l.uncheck();
     if(operacion==='click')await l.click();
     if(operacion==='fill')await l.fill(valor);
     if(operacion==='select')await l.selectOption(valor);
     if(operacion==='radio')await l.check();
-    if(ambito==='dua'&&(operacion==='fill'||selector.startsWith('#necesidad-')||selector.includes('[name=')))await p.click('#guardar-clase');
+    if(ambito==='dua'&&(operacion==='fill'||selector==='#practica'||selector.startsWith('#necesidad-')||selector.includes('[name=')))await p.click('#guardar-clase');
     const despues=await fotoEstado(), a=antes.ofrecidos,b=despues.ofrecidos;
     const oa=antes.ordenDOM,ob=despues.ordenDOM;
     const suben=ob.flatMap((id,i)=>oa.includes(id)&&oa.indexOf(id)>i?[{id,antes:oa.indexOf(id)+1,despues:i+1}]:[]);
@@ -56,7 +57,7 @@ module.exports = async function medir(p, guardar, tabla) {
   await par('dua','basica','Meta','#meta','fill','Interpretar gráficos.','Qué quieres que aprendan.','Solo documento','Resumen guardado/PDF; no razón nueva en tarjetas.','Sí; no es buscador por texto.','Más detalles/necesidades sí ordenan, la meta no.');
   const necesidades=await p.evaluate(()=>necesidades.map(n=>({id:n.id,texto:n.texto})));
   for(const n of necesidades)await par('dua','basica','Necesidad: '+n.texto,'#necesidad-'+n.id,'click',null,'Qué quieres resolver.','Priorizar','Razón «Responde a» y grupo Para empezar.','Sí, después de Guardar.','Mayor prioridad que taller y detalles; no excluye.');
-  await par('dua','basica','Taller','#practica','check',null,'Mi clase tiene taller, laboratorio o terreno.','Priorizar','Razón específica en acciones prácticas; mismos IDs elegibles.','En parte; no anuncia efecto sobre estudiantes.','Habilita acceso de taller global, distinto de práctica profesional.');
+  await par('dua','basica','Taller','#practica','check',null,'Mi clase tiene taller, laboratorio o terreno.','Priorizar','Razón específica en acciones prácticas; mismos IDs elegibles.','Sí; ayuda declara el efecto en casos, después de Guardar.','Habilita acceso de taller global, distinto de práctica profesional.');
   await par('dua','basica','Más detalles','#perfil details > summary','click',null,'Más detalles (opcional).','Agrupar o recorrer','Abre preguntas; no cambia por sí solo la lista.','Sí.','Sus casillas, no el summary, priorizan.');
   for(const nombre of ['actividad','evidencia']) {
     const opciones=await p.locator('#perfil input[name="'+nombre+'"]').evaluateAll(ns=>ns.map(n=>({valor:n.value,texto:n.closest('label').textContent.trim()})));
@@ -70,9 +71,9 @@ module.exports = async function medir(p, guardar, tabla) {
   for(const nivel of niveles) {
     await par('apoyos',nivel,'Nivel global','#nivel','select',nivel==='basica'?'superior':'basica','Nivel de Educación.','Mostrar u ocultar','Cambia elegibilidad y roles; los IDs elegidos no se borran del estado.','Sí con confirmación.','Es el mismo nivel que usa DUA para todos los casos.');
     await par('apoyos',nivel,'Caso activo','#estudiante-otro','click',null,'Elegir el caso BB con Audición Casi siempre.','Mostrar u ocultar, Agrupar o recorrer','Cambia formulario, lista, selección visible y caso predeterminado del documento.','Sí.','El nivel se conserva; las situaciones son por persona.');
-    await par('apoyos',nivel,'Taller heredado del curso','#practica','check',null,'Propiedad de la clase.','Activar una sección, Mostrar u ocultar','El control está en DUA; se mide el efecto en el caso.','En parte; efecto cruzado no explicado.','Distinto de práctica profesional.');
+    await par('apoyos',nivel,'Taller heredado del curso','#practica','check',null,'Propiedad de la clase.','Activar una sección, Mostrar u ocultar','El control está en DUA; se mide el efecto en el caso.','Sí; cruce explicado en la ayuda.','Distinto de práctica profesional.');
     for(let i=0;i<5;i++) {
-      await par('apoyos',nivel,'Área '+i,'#area-'+i,i===0?'uncheck':'check',null,'En qué áreas encuentra barreras.','Activar una sección, Mostrar u ocultar','Marcar abre radios sin agregar situación; desmarcar Cognición elimina sus situaciones y apoyos.','En parte: plegar puede borrar datos.','Frecuencias determinan la lista; las áreas no priorizan por sí mismas.');
+      await par('apoyos',nivel,'Área '+i,'#area-'+i,'click',null,'En qué áreas encuentra barreras.','Agrupar o recorrer','Abrir/cerrar muestra u oculta preguntas; frecuencias y fichas ofrecidas se conservan.','Sí; no borra.','Frecuencias determinan la lista; las áreas no priorizan por sí mismas.');
     }
     for(let d=1;d<=14;d++)await par('apoyos',nivel,'Situación '+d+' / Casi siempre',`input[name="dimension-${d}"][value="3"]`,'radio',null,'Frecuencia de la situación.','Mostrar u ocultar, Priorizar','Razón y orden por coincidencia; no filtra objetivos ni DEC.','Sí para acceso; alcance parcial entre bloques.','Combinación aditiva de dimensiones y frecuencia.');
     await par('apoyos',nivel,'Iniciales','#iniciales','fill','ZZ','Iniciales para identificar el caso.','Solo documento','Renombra caso y documento; no interpreta iniciales como filtro.','Sí.','Caso activo distinto de nivel global.');
@@ -83,7 +84,7 @@ module.exports = async function medir(p, guardar, tabla) {
     await par('apoyos',nivel,'Grupo de acceso plegado','#apoyos-resultados details > summary','click',null,'Nombre y conteo del grupo.','Agrupar o recorrer','Visibilidad de tarjetas; conjunto ofrecido intacto.','Sí.','No es un filtro excluyente.');
   }
   await par('trabajo','basica','Caso activo laboral','#trabajador-otro','click',null,'Elegir otra persona con Audición Casi siempre.','Mostrar u ocultar, Agrupar o recorrer','Cambia caso laboral activo y sus ajustes; estudiantes intactos.','Sí.','La frecuencia pertenece a la persona, no al tipo de puesto.');
-  for(let i=0;i<5;i++)await par('trabajo','basica','Área laboral '+i,'#trabajo-area-'+i,i===0?'uncheck':'check',null,'En qué áreas encuentra barreras.','Activar una sección, Mostrar u ocultar','Misma mecánica que estudiante: abrir no selecciona frecuencia, cerrar elimina las de esa área.','En parte: efecto destructivo no descrito como tal.','Radios laborales filtran realmente.');
+  for(let i=0;i<5;i++)await par('trabajo','basica','Área laboral '+i,'#trabajo-area-'+i,'click',null,'En qué áreas encuentra barreras.','Agrupar o recorrer','Abrir/cerrar no cambia frecuencias ni fichas ofrecidas.','Sí; no borra.','Radios laborales filtran realmente.');
   for(let d=1;d<=14;d++)await par('trabajo','basica','Situación laboral '+d,`input[name="trabajo-dimension-${d}"][value="3"]`,'radio',null,'Frecuencia en tareas del trabajo.','Mostrar u ocultar, Priorizar','Razón en tarjetas; ocho de proceso permanecen.','Sí para ajustes; no excluye proceso.','Mismos IDs de dimensiones, estado separado del estudiante.');
   for(const [id,valor] of [['iniciales','ZZ'],['puesto','Bodega'],['ayuda','Mensajes escritos.'],['voz','Prefiere subtítulos.']])await par('trabajo','basica',id,'#trabajo-'+id,'fill',valor,id==='puesto'?'Tipo de puesto, por ejemplo administrativo o bodega.':id==='voz'?'Qué dice la persona.':'Qué le ayuda.','Solo documento','Cambia el documento, no la lista.','Sí como registro; no es buscador de ajustes por puesto.','Solo las situaciones y frecuencias determinan ajustes.');
   await par('trabajo','basica','Grupo laboral plegado','#trabajo-tarjetas details > summary','click',null,'Tipo y número de ajustes.','Agrupar o recorrer','Despliega; no elimina ni prioriza.','Sí.','Para empezar no duplica opciones del resto.');
@@ -92,7 +93,7 @@ module.exports = async function medir(p, guardar, tabla) {
     ['sin-criterios',[],[],[],false],['necesidad',['tareas-largas'],[],[],false],['durante-sin-necesidad',[],['durante'],[],false],['durante-con-necesidad',['tareas-largas'],['durante'],[],false],['una-accion',['tareas-largas'],['despues'],['presentar'],false],['solo-taller',[],[],[],true]
   ]){
     await base('dua','basica');await p.evaluate(c=>{estado.necesidades=c.necesidades;estado.momentos=c.momentos;estado.propositos=c.propositos;estado.perfil.practica=c.practica;borradorDua=null;pintarControles();pintarTarjetas();document.querySelector('#acciones').scrollIntoView();},{necesidades,momentos,propositos,practica});
-    const e=await fotoEstado();e.nombre=nombre;e.definiciones=await p.locator('#tarjetas .ayuda').allTextContents();empezar.push(e);await p.screenshot({path:require('node:path').join(__dirname,'capturas/empezar-'+nombre+'.png')});
+    const e=await fotoEstado();e.nombre=nombre;e.definiciones=await p.locator('#tarjetas .ayuda').allTextContents();empezar.push(e);await p.screenshot({path:require('node:path').join(salida,'capturas/empezar-'+nombre+'.png')});
   }
   guardar('para-empezar.json',empezar);
   for(const f of filas)assertDelta(f);

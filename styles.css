@@ -195,7 +195,7 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   @page { margin: 18mm 16mm; }
   body { background: var(--hoja); padding-bottom: 0; }
   .saltar, .cabecera, .disposicion, .pie, noscript, .vista-barra, .aviso-privacidad, .mochila, .cabecera-intro { display: none !important; }
-  .vista { display: block !important; position: static; width: auto; max-height: none; overflow: visible; background: var(--hoja); border: 0; }
+  .vista { display: block !important; position: absolute; inset: 0; margin: 0; width: auto; max-width: none; max-height: none; overflow: visible; background: var(--hoja); border: 0; }
   .hoja { margin: 0; padding: 0; box-shadow: none; font-size: 11pt; }
 }
 
@@ -329,3 +329,5 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
   .filtros-vista .chips { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; padding: .4rem; scroll-padding-inline: .4rem; }
   .filtros-vista .chip { flex: 0 0 auto; width: auto; }
 }
+
+#areas, #trabajo-areas { display: flex; flex-wrap: wrap; gap: .5rem; }

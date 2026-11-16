@@ -1,8 +1,10 @@
 // Solo escribe evidencia aquí. Las mutaciones de estado ocurren en contextos de prueba aislados.
 const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), cp = require('node:child_process'), crypto = require('node:crypto'), assert = require('node:assert/strict');
 let chromium; try { ({chromium} = require('playwright')); } catch { ({chromium} = require('/opt/codex/cua_node/lib/node_modules/playwright')); }
+const salida=process.env.AUDITORIA_SALIDA||__dirname;
+fs.mkdirSync(require('node:path').join(salida,'capturas'),{recursive:true});
 const raiz = path.resolve(__dirname, '../../..');
-const guardar = (p, d) => fs.writeFileSync(path.join(__dirname, p), typeof d === 'string' ? d : JSON.stringify(d, null, 2) + '\n');
+const guardar = (p, d) => fs.writeFileSync(path.join(salida, p), typeof d === 'string' ? d : JSON.stringify(d, null, 2) + '\n');
 const leer = p => fs.readFileSync(path.join(raiz, p), 'utf8');
 const catalogo = JSON.parse(leer('data/recomendaciones.json'));
 const esc = x => String(x ?? '').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
@@ -62,6 +64,7 @@ async function recorrido(b, tipo, ancho) {
     try {
       const l=p.locator(selector);
       if(operacion==='click')await l.click();
+      if(selector==='#generar-documento'||selector==='#ver-centro')await p.waitForSelector('#vista[open]');
       if(operacion==='fill')await l.fill(valor);
       if(operacion==='check')await l.check();
       if(operacion==='select')await l.selectOption(valor);
@@ -73,7 +76,7 @@ async function recorrido(b, tipo, ancho) {
     acciones.push({numero:acciones.length+1,operacion,selector,esperaria,valor,antes,despues,desplazamiento:Math.abs(despues.scroll.ventana-antes.scroll.ventana),problema});
     if(problema)throw Error(prefijo+' '+selector+' '+problema);
   }
-  async function foto(etapa) {const nombre='capturas/'+prefijo+'-'+etapa+'.png';await p.screenshot({path:path.join(__dirname,nombre)});fotos.push(nombre);await inventariar(p,prefijo+'-'+etapa);}
+  async function foto(etapa) {const nombre='capturas/'+prefijo+'-'+etapa+'.png';await p.screenshot({path:path.join(salida,nombre)});fotos.push(nombre);await inventariar(p,prefijo+'-'+etapa);}
   async function elegir(id) {
     const grupos=await p.locator('#elegir-'+id).evaluate(n=>{const ds=[];for(let d=n.parentElement;d;d=d.parentElement)if(d.matches('details')&&!d.open)ds.unshift(d.id?'#'+d.id+' > summary':'details[data-grupo='+JSON.stringify(d.dataset.grupo)+'] > summary');return ds;});
     for(const s of grupos)await accion('click',s,'Abrir el grupo para ver sus apoyos.');
@@ -91,11 +94,16 @@ async function recorrido(b, tipo, ancho) {
     await p.waitForSelector('#vista[open]');await foto('vista-'+sufijo);
     const texto=await p.locator('#hoja').innerText();guardar(prefijo+'-'+sufijo+'-vista.txt',texto);
     const modelo=await p.evaluate(()=>modeloDocumento());guardar(prefijo+'-'+sufijo+'-modelo.json',modelo);
-    const d=p.waitForEvent('download');await accion('click','#descargar','Descargar el PDF con lo que muestra la vista previa.');await (await d).saveAs(path.join(__dirname,prefijo+'-'+sufijo+'.pdf'));
+    const d=p.waitForEvent('download');await accion('click','#descargar','Descargar el PDF con lo que muestra la vista previa.');await (await d).saveAs(path.join(salida,prefijo+'-'+sufijo+'.pdf'));
+    await p.evaluate(()=>{
+      if(window.__pdfAuditada)return;window.__pdfAuditada=true;
+      const crear=pdfMake.createPdf.bind(pdfMake);
+      pdfMake.createPdf=(...args)=>{const pdf=crear(...args),imprimir=pdf.print.bind(pdf);pdf.print=(...opciones)=>{window.__impresiones.push({evento:'pdfmake.print'});return imprimir(...opciones);};return pdf;};
+    });
     await accion('click','#imprimir','Abrir el diálogo de impresión, sin confirmar un envío.');
     const impresion=await p.evaluate(()=>window.__impresiones);guardar(prefijo+'-'+sufijo+'-intento-impresion.json',impresion);
-    await p.emulateMedia({media:'print'});await p.screenshot({path:path.join(__dirname,'capturas/'+prefijo+'-css-impresion-'+sufijo+'.png')});
-    await p.pdf({path:path.join(__dirname,prefijo+'-'+sufijo+'-impresion-css.pdf'),format:'A4',printBackground:true});
+    await p.emulateMedia({media:'print'});await p.screenshot({path:path.join(salida,'capturas/'+prefijo+'-css-impresion-'+sufijo+'.png')});
+    await p.pdf({path:path.join(salida,prefijo+'-'+sufijo+'-impresion-css.pdf'),format:'A4',printBackground:true});
     await p.emulateMedia({media:'screen'});
     await accion('click','#cerrar','Cerrar la vista y volver al origen.');
   }
@@ -118,7 +126,7 @@ async function recorrido(b, tipo, ancho) {
     } else {
       const sup=tipo==='superior', repetido=sup?'sup-anticipar':'acc-1-agenda';
       await accion('click','#tab-apoyos','Abrir los apoyos de un estudiante.');await iniciales(sup?'IP':'JP');
-      await accion('check','#area-0','Abrir Cognición y aprendizaje.');await accion('check','input[name="dimension-1"][value="3"]','Indicar atención y organización casi siempre.');await accion('check','input[name="dimension-2"][value="2"]','Indicar lectura/escritura seguido.');
+      await accion('click','#area-0','Abrir Cognición y aprendizaje.');await accion('check','input[name="dimension-1"][value="3"]','Indicar atención y organización casi siempre.');await accion('check','input[name="dimension-2"][value="2"]','Indicar lectura/escritura seguido.');
       if(sup)await accion('check','#practica-profesional','Este estudiante realizará práctica profesional.');
       await accion('fill','#estudiante-ayuda','Anotar qué le ayuda.','APOYO: lista visible.');await accion('fill','#estudiante-voz','Registrar la voz del estudiante.','VOZ: decide compartir instrucciones por pasos.');await foto('descripcion');
       await accion('click','#guardar-descripcion','Guardar las dos situaciones.');await foto('sugeridos');
@@ -130,7 +138,7 @@ async function recorrido(b, tipo, ancho) {
       await foto('apoyos-elegidos');await acuerdo(sup);await foto('acuerdos');
       const primero=await p.evaluate(()=>estado.estudianteActivo);
       await accion('click','#agregar-estudiante','Crear otro caso sin borrar el primero.');await iniciales(sup?'IP2':'JP2');
-      await accion('check','#area-0','Abrir Cognición para el segundo caso.');await accion('check','input[name="dimension-1"][value="3"]','Registrar la misma situación.');await accion('check','input[name="dimension-2"][value="2"]','Registrar una segunda situación.');
+      await accion('click','#area-0','Abrir Cognición para el segundo caso.');await accion('check','input[name="dimension-1"][value="3"]','Registrar la misma situación.');await accion('check','input[name="dimension-2"][value="2"]','Registrar una segunda situación.');
       await accion('click','#guardar-descripcion','Guardar el segundo caso.');await elegir(repetido);await foto('apoyo-repetido');
       await accion('click',(sup?'#curso-':'#individual-')+repetido,sup?'Agregar al curso la versión que necesitan dos estudiantes.':'Mantener el apoyo individual pese a la coincidencia.');
       await acuerdo(sup);await foto('segundo-completo');
@@ -175,14 +183,14 @@ function efecto(r) {
   if(tipo==='summary')return ['Abre las fuentes de '+ficha.id+'; no cambia selección ni documento.','Sí.'];
   if(tipo==='a')return ['Abre fuente externa en otra pestaña: '+r.href+'; no cambia datos.','Sí por código; no se visitó cada destino.'];
  }
- if(id.startsWith('#barrera-'))return ['Marca una necesidad en el borrador DUA y enfoca Guardar; no actualiza acciones hasta guardar.','En parte: Ver acciones para esto lleva a editar la clase, sin resultado nuevo inmediato.'];
+ if(id.startsWith('#barrera-'))return ['Marca y guarda la necesidad de inmediato; actualiza resultados y enfoca Para empezar.','Sí; sin guardado intermedio.'];
  if(id.startsWith('#m-')||id.startsWith('#proposito-'))return ['Filtra de inmediato momentos/propósitos de estado, guarda y repinta acciones/conteo. No modifica la descripción ni las elegidas.','Sí; selección múltiple y vacío = todos.'];
  if(id.startsWith('#necesidad-'))return ['Alterna necesidades del borrador; solo Guardar cambia prioridad/razones. No excluye acciones.','Sí, con guardado diferido indicado en el paso 1.'];
  if(id==='#nivel')return ['Cambia nivel global educativo y elegibilidad, vocabulario y roles; confirma si hay casos con datos. No elimina selecciones almacenadas.','En parte: global para todos los casos.'];
- if(id==='#practica')return ['Activa taller global: prioriza DUA y habilita accesos de práctica que coincidan con las situaciones; afecta resumen del documento.','En parte: efecto sobre casos no se explica en esta casilla.'];
+ if(id==='#practica')return ['Cambia taller en el borrador; Guardar confirma la prioridad DUA, acceso práctico y resumen documental.','Sí; ayuda explica efecto en casos.'];
  if(id==='#practica-profesional')return ['Activa práctica profesional solo del estudiante, en media/superior. No activa taller global.','Sí; no son la misma práctica.'];
  if(id==='#asignatura')return ['Filtra únicamente objetivos aplicables por asignatura; genéricos permanecen.','Sí; no filtra acceso ni DUA.'];
- if(id.startsWith('#area-')||/name/.test(id)&&r.tipo==='radio'||r.tipo==='radio')return ['Área abre dimensiones; desmarcar elimina sus frecuencias. Radio guarda la frecuencia del caso y cambia acceso/prioridad; No aplica la elimina.','En parte: cerrar un área borra valores, no solo pliega.'];
+ if(id.startsWith('#area-')||/name/.test(id)&&r.tipo==='radio'||r.tipo==='radio')return ['Área solo abre/cierra preguntas y muestra conteo; las frecuencias se conservan. Radio cambia acceso/prioridad; No aplica elimina esa situación.','Sí; cerrar no borra frecuencias.'];
  if(id==='#meta')return ['Escribe meta en borrador de perfil; después de Guardar va al resumen/PDF. No lee su significado para filtrar.','Sí; no es un filtro semántico.'];
  if(id==='#estudiante-ayuda'||id==='#estudiante-voz')return ['Guarda facilitadores/voz del caso de inmediato; aparece en resumen/PDF y marca acuerdo Por revisar si estaba completo. No filtra ni prioriza.','Sí; texto personal, no consulta al catálogo.'];
  if(id==='#iniciales')return ['Valida/guarda iniciales del caso, renombra su selector y documento; puede abrir privacidad.','Sí; no altera recomendaciones.'];
@@ -196,13 +204,13 @@ function efecto(r) {
  if(id.startsWith('#estudiante-')&&tipo==='button')return ['Cambia estudiante activo, formulario, sugerencias y acuerdos; no mezcla casos.','Sí.'];
  if(id==='#agregar-estudiante')return ['Crea un caso solo si los anteriores tienen acuerdos completos; máximo diez.','Sí; bloqueo explicado en ayuda.'];
  if(id==='#quitar-estudiante')return ['Pide confirmación y quita el caso activo completo; conserva al menos un caso vacío.','Sí.'];
- if(id==='#limpiar-clase')return ['Vacía meta/necesidades/actividad/evidencia del borrador; no cambia filtros ni resultados hasta Guardar; conserva taller global.','En parte: Limpiar respuestas no limpia la casilla de taller.'];
+ if(id==='#limpiar-clase')return ['Vacía meta/necesidades/actividad/evidencia del borrador; no cambia filtros ni resultados hasta Guardar; desmarca taller en el borrador.','Sí; incluye taller.'];
  if(id==='#limpiar-filtros')return ['Limpia solo momentos/propósitos de inmediato.','Sí.'];
  if(id==='#guardar-clase')return ['Confirma borrador de clase; prioriza acciones, pliega paso y enfoca resultados; conserva filtros.','Sí.'];
  if(id==='#guardar-descripcion')return ['Exige situación positiva, marca descripción guardada, pliega formulario y habilita resultados/acuerdos.','Sí.'];
  if(id==='#guardar-acuerdos')return ['Valida descripción, elección, rol y fechas; marca acuerdos completos, habilita siguiente caso.','Sí.'];
  if(id==='#ir-acuerdos')return ['Abre paso 3 y enfoca roles; no guarda acuerdos por sí mismo.','Sí.'];
- if(id==='#continuar')return ['Paso 1 envía formulario; paso 2 va al 3; paso 3 pide documento/guarda acuerdos según pestaña.','En parte: mismo texto para tres efectos.'];
+ if(id==='#continuar')return ['Guardar y ver acciones/apoyos envía formulario; Ir a acuerdos/tu selección va al paso 3; Ver documento valida acuerdos cuando corresponde.','Sí; texto visible y accesible declara el destino.'];
  if(id.startsWith('#indicador-pasos'))return ['Abre/enfoca el paso enlazado y desplaza a él; sin guardar al recorrer DUA.','Sí.'];
  if(id.includes('-toggle')||id.includes('-editar'))return ['Abre/cierra o edita ese paso; no borra su estado ni guarda por sí mismo.','Sí.'];
  if(id==='#tab-dua'||id==='#tab-apoyos')return ['Cambia pestaña educativa/hash y foco, conservando los datos.','Sí.'];
@@ -217,7 +225,7 @@ function efecto(r) {
  if(id==='#preparar-centro')return ['Abre revisión de ajustes del centro seleccionados; omite notas y datos personales del caso.','Sí; requiere al menos un ajuste del centro.'];
  if(id==='#ver-centro')return ['Genera documento específico si hay ajustes marcados y decisión confirmada.','Sí.'];
  if(id==='#descargar')return ['Descarga PDF pdfmake local del modelo de la vista; no abre impresión.','Sí, probado con descargas.'];
- if(id==='#imprimir')return ['Llama window.print con CSS de impresión; la política del entorno bloquea el diálogo.','No verificable el diálogo aquí; llamada observada.'];
+ if(id==='#imprimir')return ['Usa la misma definición pdfmake que Descargar; avisa si se bloquea la ventana.','PDF pdfmake observado; diálogo del sistema bloqueado por política del entorno.'];
  if(id==='#cerrar'||id.startsWith('#cancelar-'))return ['Cierra vista/selector y devuelve foco al origen; no quita datos guardados.','Sí.'];
  if(id.includes('entendido')||id==='#guia-empezar')return ['Cierra guía/aviso; privacidad recuerda aceptación, guías no se aceptan permanentemente; Empezar vuelve al paso 1.','Sí.'];
  if(r.href.startsWith('#guia-')||r.href==='#aviso-privacidad')return ['Abre guía o privacidad manual; no cambia la selección. Escape cierra y devuelve foco.','Sí por código/apertura observada.'];
@@ -244,7 +252,7 @@ function efecto(r) {
     for(const r of recorridos)guardar(r.tipo+'-'+r.ancho+'-acciones.md','# Recorrido '+r.tipo+' a '+r.ancho+' px\n\nExpectativas: inferencias de inspección, no testimonios de usuarios. «Anuncio» es el texto mutado de regiones ARIA, no audio de un lector. Distancia = suma de cambios absolutos de scrollY por acción; no gestos humanos. Estado completo antes/después en recorridos.json.\n\n'+tabla(['Paso','Acción / expectativa','Qué pasó','Foco después','Texto anunciado por regiones ARIA','Desplazamiento px'],r.acciones.map(a=>[a.numero,a.operacion+' '+a.selector+' / '+a.esperaria,a.problema||`Mochila ${a.antes.botonesElegidos}→${a.despues.botonesElegidos}; lista DUA ${a.antes.conteos.dua}→${a.despues.conteos.dua}; acceso ${a.antes.conteos.acceso}→${a.despues.conteos.acceso}`,JSON.stringify(a.despues.foco),[...new Set(a.despues.avisos.filter(m=>m.visible).map(m=>m.texto))].join(' / ')||'Sin cambio de texto en región ARIA',a.desplazamiento])));
     assert.deepEqual(huellas(),original);
     guardar('metodo.json',{corte:cp.execFileSync('git',['rev-parse','HEAD'],{cwd:raiz,encoding:'utf8'}).trim(),fecha:new Date().toISOString(),chromium:b.version(),huellas:original,recorridos:recorridos.map(r=>({tipo:r.tipo,ancho:r.ancho,acciones:r.acciones.length,desplazamientoTotal:r.desplazamientoTotal,errores:r.errores})),controles:[...inventario.values()].length,filtros:filtros.length});
-    if(fs.existsSync(path.join(__dirname,'recorridos-parciales.json')))fs.unlinkSync(path.join(__dirname,'recorridos-parciales.json'));
+    if(fs.existsSync(path.join(salida,'recorridos-parciales.json')))fs.unlinkSync(path.join(salida,'recorridos-parciales.json'));
     console.log('Completado',JSON.stringify({recorridos:recorridos.length,controles:inventario.size,filtros:filtros.length}));
   } finally {await b.close();await new Promise(ok=>servidor.close(ok));}
 })().catch(e=>{console.error(e);process.exitCode=1;});
