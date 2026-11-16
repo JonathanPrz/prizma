@@ -1,0 +1,366 @@
+{
+  "fecha": "2026-11-16",
+  "metodo": "Consultas individuales con el servicio web disponible. Orden de los cinco primeros resultados devueltos, no posiciones garantizadas en Google Chile. Comillas en el nombre; no se exigió que DUA se interpretara como Diseño Universal para el Aprendizaje.",
+  "consultas": [
+    {
+      "consulta": "\"Prizma\" inclusión",
+      "resultados": [
+        {
+          "titulo": "Inclusion Networks Across Teck",
+          "url": "https://www.teck.com/news/stories/2025/inclusion-networks-across-teck",
+          "referencia": "turn324634search0"
+        },
+        {
+          "titulo": "#chile | Teck Resources Limited",
+          "url": "https://es.linkedin.com/posts/teck-resources-limited_chile-activity-7211737616331759616-Mest",
+          "referencia": "turn324634search1"
+        },
+        {
+          "titulo": "“Teck Chile’s employee group PRIZMA was created to promote a safe workplace and a space where 2SLGBTQ+ employees and allies can share ideas, receive professional development, and build a sense of… | Teck Resources Limited | 18 comments",
+          "url": "https://www.linkedin.com/posts/teck-resources-limited_teck-chiles-employee-group-prizma-was-created-activity-7211437081602981889-4WvP",
+          "referencia": "turn324634search2"
+        },
+        {
+          "titulo": "Authors of the join report on Barriers and needs for inclusion of girls and young women are:",
+          "url": "https://dirros.openscience.si/Dokument.php?id=27354&lang=slv",
+          "referencia": "turn324634search12"
+        },
+        {
+          "titulo": "Háttér_National Report_English_Templated",
+          "url": "https://hatter.hu/sites/default/files/dokumentum/kiadvany/inclusion4all-national-report-hungary-en.pdf",
+          "referencia": "turn324634search13"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Prizma\" DUA",
+      "resultados": [
+        {
+          "titulo": "Državna geodetska uprava - Geodetsko informatički rječnik",
+          "url": "https://dgu.gov.hr/rjecnik/163?slovo=p",
+          "referencia": "turn767869search0"
+        },
+        {
+          "titulo": "prizma | Struna | Hrvatsko strukovno nazivlje",
+          "url": "https://struna.ihjj.hr/naziv/prizma/30235/",
+          "referencia": "turn767869search1"
+        },
+        {
+          "titulo": "Telegram: Launch @prizmaapp_bot",
+          "url": "https://t.me/prizmaapp_bot",
+          "referencia": "turn767869search2"
+        },
+        {
+          "titulo": "**PRIZMA Kragujevac d.o.o.**",
+          "url": "https://www.prizma.rs/media/wysiwyg/manual/Uputstvo%20za%20upotrebu%20-%20Pulsni%20oksimetar.pdf",
+          "referencia": "turn767869search12"
+        },
+        {
+          "titulo": "Televizioni T7",
+          "url": "https://www.televizioni7.com/page/3/",
+          "referencia": "turn767869search3"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Faro\" inclusión Chile",
+      "resultados": [
+        {
+          "titulo": "Colegio",
+          "url": "https://colegioelfaro.cl/colegio/",
+          "referencia": "turn275830search0"
+        },
+        {
+          "titulo": "Faro UDD - Núcleo de Humanidades y Ciencias Sociales",
+          "url": "https://faro.udd.cl/",
+          "referencia": "turn275830search1"
+        },
+        {
+          "titulo": "Ley Chile - Decreto 433 Exento (29-ene-2011) M. de Justicia - Biblioteca del Congreso Nacional de Chile",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1022490",
+          "referencia": "turn275830search2"
+        },
+        {
+          "titulo": "Nuevo: Olimpiadas especiales Chile lanza “Pacto Invisible” junto a Loca y Faro Comunicaciones | Adlatina",
+          "url": "https://www.adlatina.com/publicidad/nuevo-olimpiadas-especiales-chile-lanza-pacto-invisible-junto-a-loca-y-faro-comunicaciones",
+          "referencia": "turn275830search3"
+        },
+        {
+          "titulo": "#hablemosdeideas #pensarenchile #hablemosdeideas #faroudd #hablemosdeideas #altadirecciónpública #modernizacióndelestado #instituciones #políticaspúblicas #serviciocivil | Faro UDD",
+          "url": "https://es.linkedin.com/posts/faro-udd_hablemosdeideas-pensarenchile-hablemosdeideas-activity-7478936506108166144-AMCX",
+          "referencia": "turn275830search4"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Faro\" DUA",
+      "resultados": [
+        {
+          "titulo": "new arrivals",
+          "url": "https://callide-l.hr/wp-content/uploads/2022/10/Faro-New-Arrivals-Leaflet.pdf",
+          "referencia": "turn734912search12"
+        },
+        {
+          "titulo": "LP_ENR_2_2_en.fm",
+          "url": "https://ais.nav.pt/wp-content/uploads/AIS_Files/eAIP_Current/eAIP_Online/eAIP/pdf/LP_ENR_2_2_en.pdf",
+          "referencia": "turn734912search13"
+        },
+        {
+          "titulo": "AmdtCoverPage.fm",
+          "url": "https://ais.nav.pt/wp-content/uploads/AIS_Files/eAIP_Current/eAIP_Online/LP_Amdt_A_2026_002_en.pdf",
+          "referencia": "turn734912search14"
+        },
+        {
+          "titulo": "Locais_Prescricao_CRD_20190227.xlsx",
+          "url": "https://www.ccf.min-saude.pt/portal/page/portal/estrutura/documentacaoPublica/ACSS/Locais_Prescricao_CRD_20190304.pdf",
+          "referencia": "turn734912search15"
+        },
+        {
+          "titulo": "Locais_Prescricao_20190204.xlsx",
+          "url": "https://www.ccf.min-saude.pt/portal/page/portal/estrutura/documentacaoPublica/ACSS/Locais_Prescricao_20190204.pdf",
+          "referencia": "turn734912search16"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Haz\" inclusión Chile",
+      "resultados": [
+        {
+          "titulo": "ACHS-Guia_Inclusion",
+          "url": "https://www.achs.cl/docs/librariesprovider2/inclusi%C3%B3n/achs_guia_inclusion-para-generar-lugares-de-trabajo-inclusivos-2023.pdf",
+          "referencia": "turn341486search12"
+        },
+        {
+          "titulo": "AVANZA Inclusión - Avanzando hacia una sociedad más inclusiva",
+          "url": "https://avanzainclusion.cl/",
+          "referencia": "turn341486search0"
+        },
+        {
+          "titulo": "Inicio - Incluye-te",
+          "url": "https://www.incluye-te.cl/",
+          "referencia": "turn341486search1"
+        },
+        {
+          "titulo": "\"Haz que la democracia suene bien\": Naciones Unidas y organizaciones sociales hacen llamado a ir a votar en las próximas elecciones El Ciudadano",
+          "url": "https://www.elciudadano.com/chile/haz-que-la-democracia-suene-bien-naciones-unidas-y-organizaciones-sociales-hacen-llamado-a-ir-a-votar-en-las-proximas-elecciones/11/04/",
+          "referencia": "turn341486search2"
+        },
+        {
+          "titulo": "Empresas - AVANZA Inclusión",
+          "url": "https://avanzainclusion.cl/empresas/",
+          "referencia": "turn341486search3"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Haz\" DUA",
+      "resultados": [
+        {
+          "titulo": "Dualar son",
+          "url": "https://dijital.diyanet.gov.tr/File/Download?id=365&path=kutsal_iklimde_dua.pdf",
+          "referencia": "turn329785search12"
+        },
+        {
+          "titulo": "DİYANET İŞLERİ BAŞKANLIĞI",
+          "url": "https://www.vakfetur.com/img/kitaplar/kdua.pdf",
+          "referencia": "turn329785search13"
+        },
+        {
+          "titulo": "DUA:dua.qxd.qxd",
+          "url": "https://dijital.diyanet.gov.tr/File/Download?id=4572&path=4572_1.pdf",
+          "referencia": "turn329785search14"
+        },
+        {
+          "titulo": "HAZ TU AULA INCLUSIVA CON DUA-A",
+          "url": "https://mediateca.educa.madrid.org/streaming.php?documentos=1&ext=.pdf&id=96kr43clkg474x3p",
+          "referencia": "turn329785search15"
+        },
+        {
+          "titulo": "DUA HAZ�NES� KENZ�L DUAI FETH�YYE F� ESRAR�L HURUF�YYE kitabı",
+          "url": "https://www.nadirkitap.com/kitapara_sonuc.php?kelime=DUA+HAZ%EF%BF%BDNES%EF%BF%BD+KENZ%EF%BF%BDL+DUAI+FETH%EF%BF%BDYYE+F%EF%BF%BD+ESRAR%EF%BF%BDL+HURUF%EF%BF%BDYYE",
+          "referencia": "turn329785search0"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Ruta\" inclusión Chile",
+      "resultados": [
+        {
+          "titulo": "Vota por tu mural favorito · Ruta del Encuentro",
+          "url": "https://rutadelencuentro.cl/votacion/",
+          "referencia": "turn275979search0"
+        },
+        {
+          "titulo": "Vota por tu mural favorito · Ruta del Encuentro",
+          "url": "https://www.rutadelencuentro.cl/votacion/",
+          "referencia": "turn275979search1"
+        },
+        {
+          "titulo": "#educacióninclusiva #enseñanzadelfrancés #neurodiversidad #diversificacióndelaenseñanza #umce | Carola Hernández ♾️",
+          "url": "https://es.linkedin.com/posts/carola-hern%C3%A1ndez-%E2%99%BE%EF%B8%8F-80a674262_educaci%C3%B3ninclusiva-ense%C3%B1anzadelfranc%C3%A9s-neurodiversidad-activity-7524616775251095552-kClT",
+          "referencia": "turn275979search2"
+        },
+        {
+          "titulo": "Carola Hernández ♾️ - Fundadora de Ruta Inclusión. Encargada de Diversidad e Inclusión en el CAA de la UMCE. Gestora de Inclusión Laboral. Discapacidad, Apoyos, Neurodivergencia, Autismo. @rutainclusion #Relatora | LinkedIn",
+          "url": "https://cl.linkedin.com/in/carola-hern%C3%A1ndez-%E2%99%BE%EF%B8%8F-80a674262",
+          "referencia": "turn275979search3"
+        },
+        {
+          "titulo": "Nuevo curso: \"Diversificación de la enseñanza y adecuaciones curriculares\" Tras la reciente consulta realizada a nuestra comunidad, hemos definido la temática de nuestra próxima jornada de… | Carola Hernández ♾️",
+          "url": "https://es.linkedin.com/posts/carola-hern%C3%A1ndez-%E2%99%BE%EF%B8%8F-80a674262_nuevo-curso-diversificaci%C3%B3n-de-la-ense%C3%B1anza-activity-7459692066994958336-XAGo",
+          "referencia": "turn275979search4"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Ruta\" DUA",
+      "resultados": [
+        {
+          "titulo": "# DUA – Documento Principal",
+          "url": "https://www.aduanas.gub.uy/innovaportal/file/25690/1/examen-practico-despachante-de-aduana-2023.pdf",
+          "referencia": "turn373242search12"
+        },
+        {
+          "titulo": "Manual de usuario del portal de",
+          "url": "https://www.duca.sieca.int/PortalAdminDUCA/Content/Manual%20de%20usuario%20-%20Admin%20DUCA.pdf",
+          "referencia": "turn373242search13"
+        },
+        {
+          "titulo": "# Paso 4: Ruta de tránsito",
+          "url": "https://tramites.ana.gob.pa/Duca/assets/docs/Manual%20de%20captura%20DUCA-T%20v4.4.pdf",
+          "referencia": "turn373242search14"
+        },
+        {
+          "titulo": "63. **Actuación Aduanera**",
+          "url": "https://www.comunidadandina.org/StaticFiles/201165201031libro_atrc_dua.pdf",
+          "referencia": "turn373242search15"
+        },
+        {
+          "titulo": "<visual_element id=\"e1\">",
+          "url": "https://www.hacienda.go.cr/docs/MH-DGA-RES-1455-2023.pdf",
+          "referencia": "turn373242search16"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Sendero\" inclusión",
+      "resultados": [
+        {
+          "titulo": "# Respeto a los Colaboradores",
+          "url": "https://www.sendero.cl/wp-content/uploads/Manual_codigo_etica_23092024.pdf",
+          "referencia": "turn754389search12"
+        },
+        {
+          "titulo": "Consejería de Inclusión Social, Juventud,",
+          "url": "https://www.juntadeandalucia.es/haciendayadministracionpublica/rpa-icms-doc/icmsDescargaDoc.do?id=1e3a7a5b0c5428031b9dcd1f325a8ccd&tipo=f2626012f07b32ea34d457f56542e743",
+          "referencia": "turn754389search13"
+        },
+        {
+          "titulo": "Fundacion Sendero Azul",
+          "url": "https://fundacionsenderoazul.org/",
+          "referencia": "turn754389search0"
+        },
+        {
+          "titulo": "Noticias Sendero - Sendero",
+          "url": "https://www.sendero.cl/noticias-sendero",
+          "referencia": "turn754389search1"
+        },
+        {
+          "titulo": "José Segura – Responsable de la Institución: “Había chicos que estaban excluidos hasta de su propia familia”",
+          "url": "https://revistalacolumna.com.ar/jose-segura-responsable-de-la-institucion-habia-chicos-que-estaban-excluidos-hasta-de-su-propia-familia_3850.html",
+          "referencia": "turn754389search2"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Sendero\" DUA",
+      "resultados": [
+        {
+          "titulo": "Matük – Sendero – One Eye Witness",
+          "url": "https://distribution.one-eye-witness.com/product/matuk-sendero/",
+          "referencia": "turn132198search0"
+        },
+        {
+          "titulo": "18072200005",
+          "url": "https://www.juntadeandalucia.es/medioambiente/portal/documents/20151/6c590330-1980-7bd5-ecb8-1a18d6916cf8",
+          "referencia": "turn132198search12"
+        },
+        {
+          "titulo": "Sendero | Spotify",
+          "url": "https://open.spotify.com/artist/62P96rholFuQIk5GcYkfbw",
+          "referencia": "turn132198search1"
+        },
+        {
+          "titulo": "‎Sendero - Apple Music",
+          "url": "https://music.apple.com/us/artist/sendero/261097378",
+          "referencia": "turn132198search2"
+        },
+        {
+          "titulo": "CONTRALORÍA DE BOGOTÁ, D.C.",
+          "url": "https://www.ambientebogota.gov.co/documents/893475/1998950/Informe%2Bfinal%2Bauditoria%2Bregularidad%2B%2BSDA%2Bcod%2B69%2BPAD%2B2020%2Bvigencia%2B2019.pdf/27cb6b14-e176-4cbf-a23c-f06d8aadbb85?version=1.0",
+          "referencia": "turn132198search13"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Mente Autista\" inclusión",
+      "resultados": [
+        {
+          "titulo": "Querida Mente Official: Instagram | Linktree",
+          "url": "https://linktr.ee/holaqueridamente",
+          "referencia": "turn586318search0"
+        },
+        {
+          "titulo": "Sobre Autismo Baleares - Inclusión y Apoyo",
+          "url": "https://www.autismobaleares.com/quienes-somos/",
+          "referencia": "turn586318search1"
+        },
+        {
+          "titulo": "Autodeterminación autista, Anabel Cornago 2025.cdr",
+          "url": "https://img1.wsimg.com/blobby/go/0573bf74-211e-4b39-9795-380b9d5cfc1a/downloads/7178a27a-b952-44b0-a2dc-0f8c59d3be2f/Autodeterminaci%C3%B3n%20autista%2C%20Anabel%20Cornago%202025.pdf?ver=1779931717526",
+          "referencia": "turn586318search12"
+        },
+        {
+          "titulo": "Consejería de Educación, Cultura  y Deportes",
+          "url": "https://con-autrade.centros.castillalamancha.es/sites/con-autrade.centros.castillalamancha.es/files/documentos/PROGRAMA%20SAAE%20AUTRADE%20OCTUBRE%2024%20%281%29_0.pdf",
+          "referencia": "turn586318search13"
+        },
+        {
+          "titulo": "Manual da Mente Autista - Meu Mundo Atípico | Hotmart",
+          "url": "https://hotmart.com/pt-br/marketplace/produtos/manual-da-mente-autista/H104271136C",
+          "referencia": "turn586318search2"
+        }
+      ]
+    },
+    {
+      "consulta": "\"Mente Autista\" DUA",
+      "resultados": [
+        {
+          "titulo": "Manual da Mente Autista - Meu Mundo Atípico | Hotmart",
+          "url": "https://hotmart.com/pt-br/marketplace/produtos/manual-da-mente-autista/H104271136C",
+          "referencia": "turn677339search0"
+        },
+        {
+          "titulo": "Catavento - B2B",
+          "url": "https://cataventobr.com.br/index.php?id_categoria=0A5D21A711CE61C3E61D5B2ACE6E801F&opcao=categoria",
+          "referencia": "turn677339search1"
+        },
+        {
+          "titulo": "2 Abril: Día mundial de concientización sobre el autismo – MUD",
+          "url": "https://www.unidaddocente.cl/2-abril-dia-mundial-de-concientizacion-sobre-el-autismo/",
+          "referencia": "turn677339search2"
+        },
+        {
+          "titulo": "Ser Diferente Es Genial - song and lyrics by Súper Mente Autista, Bilingual Learn & Play | Spotify",
+          "url": "https://open.spotify.com/track/72KXeKlKv82dtg8PfeZ1JF",
+          "referencia": "turn677339search3"
+        },
+        {
+          "titulo": "Compreendendo a Mente Autista: Um Guia Abrangente | Hotmart",
+          "url": "https://hotmart.com/pt-br/marketplace/produtos/compreendendo-a-mente-autista-um-guia-abrangente/A107183810R",
+          "referencia": "turn677339search4"
+        }
+      ]
+    }
+  ]
+}
