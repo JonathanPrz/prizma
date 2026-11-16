@@ -257,7 +257,9 @@ function pintarApoyos() {
   const resto = lista.filter((r) => !destacadas.has(r.id)), restoPracticas = practicas.filter((r) => !destacadas.has(r.id));
   $("#apoyos-resultados").replaceChildren(
     ...(primeras.length ? [el("section", { "aria-labelledby": "t-para-empezar" }, el("h3", { id: "t-para-empezar", text: "Para empezar" }), el("ul", { class: "tarjetas" }, primeras.map(tarjeta)))] : []),
-    ...Object.entries(TIPOS_ACCESO).filter(([tipo]) => resto.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
+    ...Object.entries(TIPOS_ACCESO).filter(([tipo]) => resto.some((r) => r.subtipo === tipo))
+      // Cada grupo se ubica según su ficha más pertinente; así no queda una buena ficha debajo de grupos peores.
+      .sort(([a], [b]) => compararAcceso(resto.find((r) => r.subtipo === a), resto.find((r) => r.subtipo === b))).map(([tipo, nombre]) =>
       el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, resto.filter((r) => r.subtipo === tipo).map(tarjeta)))));
   if (restoPracticas.length) $("#apoyos-resultados").append(el("section", {},
     el("h3", { text: "En talleres, laboratorios y terreno" }), el("ul", { class: "tarjetas" }, restoPracticas.map(tarjeta))));

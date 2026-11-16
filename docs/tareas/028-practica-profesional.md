@@ -1,6 +1,6 @@
 # Tarea 028 · Práctica profesional: sección por estudiante, guía y documento para el centro
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/028-practica-profesional`
+Estado: **integrada** (PR #27) · Asignada a: Codex · Rama: `codex/028-practica-profesional`
 
 ## Para qué
 El dueño quiere apoyar a los estudiantes también en su práctica profesional: «la discapacidad no termina al estudiar». La investigación de la tarea 027 está en `docs/fuentes/codex/practica-laboral/README.md`.

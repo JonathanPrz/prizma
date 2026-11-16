@@ -1,6 +1,6 @@
 # Tarea 026 · Reauditoría: comparar antes y después
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/026-reauditoria` (después de integrar la 025)
+Estado: **integrada** (PR #28) · Asignada a: Codex · Rama: `codex/026-reauditoria` (después de integrar la 025)
 
 ## Para qué
 Es la fase 3 de `docs/auditorias/024-estudiantes/estrategia.md`. Hay que medir con el mismo método si las fases 1 y 2 resolvieron los hallazgos de la auditoría 024.

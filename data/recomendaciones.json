@@ -2615,13 +2615,15 @@
     "areas": [
       "cognicion",
       "comunicacion",
+      "contexto",
       "sensorial"
     ],
     "dimensiones": [
       2,
       12,
       4,
-      8
+      8,
+      10
     ],
     "niveles": [
       "superior"
@@ -3185,14 +3187,21 @@
     ],
     "porque": "Conocer el espacio antes mejora la seguridad y permite resolver barreras a tiempo.",
     "areas": [
-      "sensorial",
       "cognicion",
-      "contexto"
+      "comunicacion",
+      "contexto",
+      "emocional",
+      "sensorial"
     ],
     "dimensiones": [
       8,
       6,
+      13,
       1,
+      3,
+      5,
+      7,
+      10,
       11
     ],
     "niveles": [
@@ -3224,12 +3233,14 @@
     "porque": "Una guía que se puede volver a mirar reduce errores y riesgos.",
     "areas": [
       "cognicion",
-      "comunicacion"
+      "comunicacion",
+      "emocional"
     ],
     "dimensiones": [
       1,
       2,
-      3
+      3,
+      5
     ],
     "niveles": [
       "basica",
@@ -3367,6 +3378,7 @@
     ],
     "dimensiones": [
       1,
+      2,
       8,
       9
     ],
@@ -3436,13 +3448,15 @@
     "areas": [
       "cognicion",
       "comunicacion",
+      "contexto",
       "sensorial"
     ],
     "dimensiones": [
       1,
       2,
       12,
-      8
+      8,
+      10
     ],
     "niveles": [
       "basica",
@@ -3700,13 +3714,13 @@
     "id": "acc-6-braille",
     "tipo": "acceso",
     "subtipo": "presentacion",
-    "titulo": "Ofrece el material en Braille, en relieve o en audio",
+    "titulo": "Ofrece el material en el formato que el estudiante usa: ampliado, Braille o audio",
     "como": [
-      "Coordina con el equipo de apoyo la transcripción a Braille.",
-      "Usa gráficos táctiles o en relieve para imágenes y mapas.",
-      "Entrega en audio o digital lo que no se pueda transcribir a tiempo."
+      "Pregunta qué formato usa: letra ampliada, Braille, relieve o audio.",
+      "Coordina con el equipo la ampliación o la transcripción con anticipación.",
+      "Describe o entrega en relieve las imágenes y los mapas importantes."
     ],
-    "porque": "El Decreto 83 nombra el Braille, los gráficos táctiles y los textos hablados como formas de presentar la información.",
+    "porque": "El Decreto 83 nombra la ampliación, el Braille, los gráficos táctiles y los textos hablados como formas de presentar la información.",
     "areas": [
       "sensorial"
     ],
@@ -4573,12 +4587,10 @@
     ],
     "porque": "La guía de la Ley 21.545 recomienda evaluar de forma progresiva las presentaciones orales.",
     "areas": [
-      "comunicacion",
-      "emocional"
+      "comunicacion"
     ],
     "dimensiones": [
-      12,
-      5
+      12
     ],
     "niveles": [
       "superior"

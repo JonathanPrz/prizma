@@ -35,3 +35,10 @@ Comparar el antes y el después: pares idénticos, fichas inadecuadas y discutib
 
 ## Fuera de alcance
 «¿Qué le ayuda?» y la voz no cambian las recomendaciones. Interpretar texto libre con datos de estudiantes sería poco fiable y riesgoso. Siguen siendo para el acuerdo y el PDF.
+
+## Después de la reauditoría 026 (Claude, 16-11-2026)
+- A1: `acc-6-braille` pasa a "formato que el estudiante usa: ampliado, Braille o audio", como `sup-vision`.
+- N1: se agregan situaciones a `prac-tiempo`, `prac-recorrido`, `prac-procedimiento`, `prac-evaluar` y `sup-formatos` para recuperar las 13 combinaciones adecuadas que se perdieron.
+- N2: `sup-oral-progresivo` queda solo en "Expresarse oralmente".
+- A4: los grupos por tipo se ordenan según su ficha más pertinente.
+- Pendientes aceptados: M3 (el texto libre no cambia recomendaciones) y B1 (las secciones condicionales de objetivos y desregulación son generales).
