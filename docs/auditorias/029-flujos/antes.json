@@ -1,0 +1,216 @@
+{
+  "commit": "0220e2d",
+  "huellas": {
+    "app.js": "881e466030b66257a158b2e38047d1ac9720ef318930fc92792049d3d549f8bf",
+    "index.html": "302e0994f44e1974dd91d3ece990ac6e31cbf286055c7059aba5b073ed1d129b",
+    "data/recomendaciones.json": "c44bd6b2627f3233f477b9197c621a01a4d19e36341f4da3b6a55e16f9780425",
+    "data/fuentes.json": "0d03d9f747ab7e4742f60c5878d0995132320f6c8b3c74a5cf63dbed7a3c5792",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f"
+  },
+  "necesidad": {
+    "cantidad": 8,
+    "primeras": [
+      {
+        "id": "dua-6-2",
+        "momento": "antes",
+        "coincidencias": 1
+      },
+      {
+        "id": "dua-4-2",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-1-1",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-1-3",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-2-1-vocabulario",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-3-1",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-6-1",
+        "momento": "antes",
+        "coincidencias": 0
+      },
+      {
+        "id": "dua-7-1",
+        "momento": "antes",
+        "coincidencias": 0
+      }
+    ],
+    "paraEmpezar": false
+  },
+  "duaPrimero": "Adecuación de acceso: Presentación de la información (Decreto 83)\n\nPorque marcaste: Atención y organización (casi siempre).\n\nDale una agenda visual y la lista de pasos de cada tarea\nMuestra los momentos del día o de la clase con imágenes o palabras.\nEntrega los pasos de la tarea en una tarjeta en su mesa.\nMarquen juntos lo que ya está hecho.\n\nVersión para todo el curso: Anticipa la agenda de la clase y avisa los cambios\n\nTambién ofrecido a todo el curso\n\nYa está en el curso\n\nPor qué funciona: Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\n\nOrientación oficial\nElegir\nFuentes",
+  "apoyoDespues": "Expresarse y organizarseDUA 6.2Responde a: Se pierden en tareas largas o con muchos pasos.Anticipa la agenda de la clase y avisa los cambiosMuestra al inicio los momentos de la clase, con palabras o imágenes.Marca lo que ya hicieron.Avisa con tiempo si algo cambia.Por qué funciona: Saber qué viene reduce la ansiedad y ayuda a organizarse.Consenso de expertosElegidaFuentesCAST (2024). Universal Design for Learning Guidelines version 3.0.Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+  "repetido": "Adecuación de acceso: Presentación de la información (Decreto 83)\n\nPorque marcaste: Atención y organización (casi siempre).\n\nDale una agenda visual y la lista de pasos de cada tarea\nMuestra los momentos del día o de la clase con imágenes o palabras.\nEntrega los pasos de la tarea en una tarjeta en su mesa.\nMarquen juntos lo que ya está hecho.\n\nVersión para todo el curso: Anticipa la agenda de la clase y avisa los cambios\n\nAgregar al curso\n\nLo elegiste para 2 estudiantes. Considera agregar su versión para todo el curso.\n\nPor qué funciona: Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\n\nOrientación oficial\nElegida\nFuentes",
+  "validacionGui": {
+    "maxLength": 4,
+    "pattern": "[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}",
+    "ayuda": "Solo iniciales. No escribas el nombre.",
+    "botones": [
+      "JP",
+      "JP"
+    ]
+  },
+  "pdf": {
+    "modelo": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Sin información"
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 2 estudiantes"
+        ]
+      ],
+      "grupos": [
+        {
+          "nombre": "Antes",
+          "acciones": [
+            {
+              "id": "dua-6-2",
+              "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+              "como": [
+                "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+                "Marca lo que ya hicieron.",
+                "Avisa con tiempo si algo cambia."
+              ],
+              "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+              "nota": "",
+              "ofrecida": false,
+              "dato": "Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos."
+            }
+          ]
+        },
+        {
+          "estudiante": "aa1b3830-8313-49d6-a784-4e05e2f6ab5b",
+          "nombre": "Apoyos para JP",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Casi siempre",
+              "Dale una agenda visual y la lista de pasos de cada tarea"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": [
+            {
+              "id": "acc-1-agenda",
+              "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+              "como": [
+                "Muestra los momentos del día o de la clase con imágenes o palabras.",
+                "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+                "Marquen juntos lo que ya está hecho."
+              ],
+              "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+              "nota": "",
+              "ofrecida": true,
+              "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+              "grupo": "Adecuaciones de acceso · Presentación de la información"
+            }
+          ]
+        },
+        {
+          "estudiante": "919011b2-c38f-45d8-ba43-85f704c7212f",
+          "nombre": "Apoyos para JP",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Casi siempre",
+              "Dale una agenda visual y la lista de pasos de cada tarea"
+            ]
+          ],
+          "ayuda": "Sin información",
+          "voz": "Sin información",
+          "acciones": [
+            {
+              "id": "acc-1-agenda",
+              "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+              "como": [
+                "Muestra los momentos del día o de la clase con imágenes o palabras.",
+                "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+                "Marquen juntos lo que ya está hecho."
+              ],
+              "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+              "nota": "",
+              "ofrecida": true,
+              "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+              "grupo": "Adecuaciones de acceso · Presentación de la información"
+            }
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+          "url": "https://udlguidelines.cast.org/es/"
+        },
+        {
+          "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+          "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+        },
+        {
+          "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+          "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+        },
+        {
+          "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+        }
+      ]
+    },
+    "definicion": "{\"info\":{\"title\":\"Plan de apoyos para el aprendizaje\",\"creator\":\"Prizma\"},\"pageSize\":\"A4\",\"pageMargins\":[56.7,56.7,56.7,56.7],\"content\":[{\"columns\":[{\"svg\":\"<svg class=\\\"logo\\\" aria-hidden=\\\"true\\\" focusable=\\\"false\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 100 100\\\"><rect x=\\\"14\\\" y=\\\"14\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#18213f\\\"></rect><rect x=\\\"39\\\" y=\\\"14\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#b0145a\\\"></rect><rect x=\\\"64\\\" y=\\\"14\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#18213f\\\"></rect><rect x=\\\"14\\\" y=\\\"39\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#00727d\\\"></rect><rect x=\\\"39\\\" y=\\\"39\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#18213f\\\"></rect><rect x=\\\"64\\\" y=\\\"39\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#5a33a8\\\"></rect><rect x=\\\"14\\\" y=\\\"64\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#18213f\\\"></rect><circle cx=\\\"50\\\" cy=\\\"75\\\" r=\\\"11\\\" fill=\\\"#00727d\\\"></circle><rect x=\\\"64\\\" y=\\\"64\\\" width=\\\"22\\\" height=\\\"22\\\" rx=\\\"1.6\\\" fill=\\\"#18213f\\\"></rect></svg>\",\"width\":36},{\"text\":\"Prizma\",\"style\":\"h1\",\"margin\":[6,6,0,0]}],\"margin\":[0,0,0,8]},{\"text\":\"Plan de apoyos para el aprendizaje\",\"style\":\"h1\"},{\"table\":{\"widths\":[110,\"*\"],\"body\":[[{\"text\":\"Fecha\",\"bold\":true},\"16 de noviembre de 2026\"],[{\"text\":\"Nivel\",\"bold\":true},\"Educación básica\"],[{\"text\":\"Meta de aprendizaje\",\"bold\":true},\"Sin información\"],[{\"text\":\"Qué quiere resolver\",\"bold\":true},\"Se pierden en tareas largas o con muchos pasos\"],[{\"text\":\"Contenido\",\"bold\":true},\"Curso y 2 estudiantes\"]]},\"layout\":{},\"margin\":[0,8,0,14]},{\"unbreakable\":true,\"stack\":[{\"text\":\"Acciones para todo el curso\",\"style\":\"h2\"},{\"text\":\"Antes\",\"style\":\"h3\",\"margin\":[0,8,0,6]},{\"unbreakable\":true,\"margin\":[0,0,0,12],\"stack\":[{\"text\":\"Anticipa la agenda de la clase y avisa los cambios\",\"style\":\"h3\"},{\"ol\":[\"Muestra al inicio los momentos de la clase, con palabras o imágenes.\",\"Marca lo que ya hicieron.\",\"Avisa con tiempo si algo cambia.\"],\"margin\":[0,4,0,4]},{\"text\":[{\"text\":\"Por qué funciona: \",\"bold\":true},\"Saber qué viene reduce la ansiedad y ayuda a organizarse.\"]},{\"text\":\"Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos.\",\"style\":\"dato\",\"margin\":[0,4,0,0]}]}]},{\"id\":\"alumno-aa1b3830-8313-49d6-a784-4e05e2f6ab5b\",\"text\":\"Apoyos para JP\",\"style\":\"h2\",\"headlineLevel\":1,\"pageBreak\":\"before\",\"margin\":[0,8,0,6]},{\"text\":\"Propuesta para conversar con el equipo de apoyo\",\"italics\":true,\"margin\":[0,0,0,8]},{\"text\":\"Barreras y facilitadores (enfoque CIF)\",\"style\":\"h3\",\"headlineLevel\":2},{\"text\":\"Las situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)\",\"style\":\"dato\",\"margin\":[0,3,0,5]},{\"table\":{\"headerRows\":1,\"widths\":[170.1144,73.7384,199.0272],\"body\":[[{\"text\":\"Situación\",\"bold\":true,\"fillColor\":\"#eeeeee\"},{\"text\":\"Frecuencia\",\"bold\":true,\"fillColor\":\"#eeeeee\"},{\"text\":\"Apoyos elegidos para esa situación\",\"bold\":true,\"fillColor\":\"#eeeeee\"}],[\"Atención y organización\",\"Casi siempre\",\"Dale una agenda visual y la lista de pasos de cada tarea\"]]},\"layout\":{},\"margin\":[0,0,0,10]},{\"table\":{\"widths\":[125,\"*\"],\"body\":[[{\"text\":\"Le ayuda\",\"bold\":true},\"Sin información\"],[{\"text\":\"Qué dicen el estudiante y su familia\",\"bold\":true},\"Sin información\"]]},\"layout\":{},\"margin\":[0,0,0,12]},{\"unbreakable\":true,\"stack\":[{\"text\":\"Adecuaciones de acceso · Presentación de la información\",\"style\":\"h3\",\"margin\":[0,8,0,5]},{\"unbreakable\":true,\"margin\":[0,0,0,12],\"stack\":[{\"text\":\"Dale una agenda visual y la lista de pasos de cada tarea\",\"style\":\"h3\"},{\"ol\":[\"Muestra los momentos del día o de la clase con imágenes o palabras.\",\"Entrega los pasos de la tarea en una tarjeta en su mesa.\",\"Marquen juntos lo que ya está hecho.\"],\"margin\":[0,4,0,4]},{\"text\":[{\"text\":\"Por qué funciona: \",\"bold\":true},\"Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\"]},{\"text\":\"Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial. También ofrecido a todo el curso.\",\"style\":\"dato\",\"margin\":[0,4,0,0]}]}]},{\"unbreakable\":true,\"margin\":[0,10,0,0],\"stack\":[{\"text\":\"Acuerdos (para completar en la reunión)\",\"style\":\"h3\"},{\"text\":\"Acordado con: __________________________________________________\",\"margin\":[0,10,0,0]},{\"text\":\"Fecha: __________________________________________________\",\"margin\":[0,10,0,0]},{\"text\":\"Próxima revisión: __________________________________________________\",\"margin\":[0,10,0,0]}]},{\"id\":\"alumno-919011b2-c38f-45d8-ba43-85f704c7212f\",\"text\":\"Apoyos para JP\",\"style\":\"h2\",\"headlineLevel\":1,\"pageBreak\":\"before\",\"margin\":[0,8,0,6]},{\"text\":\"Propuesta para conversar con el equipo de apoyo\",\"italics\":true,\"margin\":[0,0,0,8]},{\"text\":\"Barreras y facilitadores (enfoque CIF)\",\"style\":\"h3\",\"headlineLevel\":2},{\"text\":\"Las situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)\",\"style\":\"dato\",\"margin\":[0,3,0,5]},{\"table\":{\"headerRows\":1,\"widths\":[170.1144,73.7384,199.0272],\"body\":[[{\"text\":\"Situación\",\"bold\":true,\"fillColor\":\"#eeeeee\"},{\"text\":\"Frecuencia\",\"bold\":true,\"fillColor\":\"#eeeeee\"},{\"text\":\"Apoyos elegidos para esa situación\",\"bold\":true,\"fillColor\":\"#eeeeee\"}],[\"Atención y organización\",\"Casi siempre\",\"Dale una agenda visual y la lista de pasos de cada tarea\"]]},\"layout\":{},\"margin\":[0,0,0,10]},{\"table\":{\"widths\":[125,\"*\"],\"body\":[[{\"text\":\"Le ayuda\",\"bold\":true},\"Sin información\"],[{\"text\":\"Qué dicen el estudiante y su familia\",\"bold\":true},\"Sin información\"]]},\"layout\":{},\"margin\":[0,0,0,12]},{\"unbreakable\":true,\"stack\":[{\"text\":\"Adecuaciones de acceso · Presentación de la información\",\"style\":\"h3\",\"margin\":[0,8,0,5]},{\"unbreakable\":true,\"margin\":[0,0,0,12],\"stack\":[{\"text\":\"Dale una agenda visual y la lista de pasos de cada tarea\",\"style\":\"h3\"},{\"ol\":[\"Muestra los momentos del día o de la clase con imágenes o palabras.\",\"Entrega los pasos de la tarea en una tarjeta en su mesa.\",\"Marquen juntos lo que ya está hecho.\"],\"margin\":[0,4,0,4]},{\"text\":[{\"text\":\"Por qué funciona: \",\"bold\":true},\"Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\"]},{\"text\":\"Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial. También ofrecido a todo el curso.\",\"style\":\"dato\",\"margin\":[0,4,0,0]}]}]},{\"unbreakable\":true,\"margin\":[0,10,0,0],\"stack\":[{\"text\":\"Acuerdos (para completar en la reunión)\",\"style\":\"h3\"},{\"text\":\"Acordado con: __________________________________________________\",\"margin\":[0,10,0,0]},{\"text\":\"Fecha: __________________________________________________\",\"margin\":[0,10,0,0]},{\"text\":\"Próxima revisión: __________________________________________________\",\"margin\":[0,10,0,0]}]},{\"id\":\"fuentes-documento\",\"text\":\"Fuentes\",\"style\":\"h2\",\"pageBreak\":\"before\",\"headlineLevel\":1},{\"ol\":[{\"stack\":[{\"text\":\"CAST (2024). Universal Design for Learning Guidelines version 3.0.\"},{\"text\":\"https://udlguidelines.cast.org/es/\",\"style\":\"dato\",\"margin\":[0,2,0,8]}]},{\"stack\":[{\"text\":\"Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.\"},{\"text\":\"https://www.supereduc.cl/contenidos-de-interes/circular-no-586/\",\"style\":\"dato\",\"margin\":[0,2,0,8]}]},{\"stack\":[{\"text\":\"Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.\"},{\"text\":\"https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf\",\"style\":\"dato\",\"margin\":[0,2,0,8]}]},{\"stack\":[{\"text\":\"Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.\"},{\"text\":\"https://www.bcn.cl/leychile/navegar?idNorma=1074511\",\"style\":\"dato\",\"margin\":[0,2,0,8]}]}]},{\"table\":{\"widths\":[\"*\"],\"body\":[[{\"text\":\"Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.\",\"style\":\"dato\",\"margin\":[5,5,5,5]}]]},\"layout\":{},\"margin\":[0,14,0,0]}],\"defaultStyle\":{\"font\":\"Roboto\",\"fontSize\":10.5,\"lineHeight\":1.2,\"color\":\"#111111\"},\"styles\":{\"h1\":{\"fontSize\":20,\"bold\":true},\"h2\":{\"fontSize\":14,\"bold\":true,\"margin\":[0,8,0,6]},\"h3\":{\"fontSize\":11.5,\"bold\":true},\"dato\":{\"fontSize\":8.5,\"color\":\"#555555\"}}}"
+  },
+  "validaciones": {
+    "catalogo": 176,
+    "tipos": {
+      "dua": 42,
+      "acceso": 89,
+      "objetivos": 13,
+      "desregulacion": 9,
+      "practica-profesional": 23
+    },
+    "fuentes": 39,
+    "necesidades": 8,
+    "seleccionesDua": 42,
+    "seleccionesApoyo": 134,
+    "dimensiones": 14,
+    "jp2": "",
+    "meta600": 500,
+    "rolesAcuerdo": null
+  },
+  "errores": []
+}
