@@ -121,3 +121,10 @@ Después, los 6 pasos actuales de «Cómo usar los apoyos».
 3. **Mochila separada por ámbito.** El respaldo sigue siendo uno solo.
 4. **El documento se permite sin acuerdos,** marcado como «Borrador: acuerdos sin completar».
 5. **Grupos plegados con su conteo** después de «Para empezar».
+
+## 7. Ajuste del dueño (16-11-2026): describir frente a filtrar
+En la pestaña «Para el curso (DUA)» hay dos tipos de preguntas:
+- **Describir y priorizar** (paso 1): meta, «¿Qué quieres resolver?», la casilla de taller y «Más detalles». Se contestan al inicio y se guardan.
+- **Filtrar la vista** (paso 2): «Momento» y «Para qué». Sirven para recorrer las acciones por partes y se cambian muchas veces. Funcionan al instante, sin guardar.
+
+Se implementa en la tarea 037.
