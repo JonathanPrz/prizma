@@ -1,6 +1,6 @@
 # Tarea 037 · DUA: «Momento» y «Para qué» pasan a ser filtros de vista en el paso 2
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/037-filtros-vista`
+Estado: **integrada** (PR #37) · Asignada a: Codex · Rama: `codex/037-filtros-vista`
 
 ## Para qué
 El dueño observó que «¿Cuándo?» y «¿Para qué?» no describen la clase. Son filtros para recorrer las acciones por partes, y se cambian varias veces mientras se planifica. Hoy están en el paso 1, que exige «Guardar», y eso obliga a reabrirlo cada vez. Ver `docs/arquitectura.md`, sección 7.
