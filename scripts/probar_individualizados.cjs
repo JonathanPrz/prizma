@@ -17,7 +17,7 @@ for(const asignatura of ['','lenguaje','matematica','ciencias','historia']){
 assert.equal(e('hayPracticas()'),false);
 vm.runInContext(`catalogo=catalogo.concat([{...catalogo.find(r=>r.tipo==='acceso'),id:'sim-practica',contextos:['practica'],dimensiones:[1],niveles:['basica']},{...catalogo.find(r=>r.tipo==='acceso'),id:'sim-practica-otra',contextos:['practica'],dimensiones:[6],niveles:['basica']}]); Object.assign(estudianteActual(), normalizarEstudiante({dimensiones:{1:3}}))`,c);
 assert.equal(e('hayPracticas()'),true);assert.deepEqual(e('practicasVisibles()'),[]);assert(!e('accesosVisibles().some(esPractica)'));
-vm.runInContext('estado.perfil.practica=true',c);assert.deepEqual(e('practicasVisibles().map(r=>r.id)'),['sim-practica','sim-practica-otra']);assert(!e('accesosVisibles().some(esPractica)'));
+vm.runInContext('estado.perfil.practica=true',c);assert.deepEqual(e('practicasVisibles().map(r=>r.id)'),['sim-practica']);assert(!e('accesosVisibles().some(esPractica)'));
 vm.runInContext('estado.perfil.nivel="superior"',c);assert.equal(e('hayPracticas()'),false);assert.deepEqual(e('practicasVisibles()'),[]);
 assert.equal(e('validarRespaldo({app:"prizma",version:1,perfil:{},seleccion:{}}).perfil.practica'),false);assert.equal(e('validarRespaldo({app:"prizma",version:1,perfil:{},seleccion:{}}).asignatura'),'');
 assert.equal(e('validarRespaldo({app:"prizma",version:1,perfil:{},seleccion:{},asignatura:"ciencias",estudiante:{practica:true}}).asignatura'),'ciencias');

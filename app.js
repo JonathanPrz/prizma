@@ -95,6 +95,7 @@ function normalizarDatos(datos) {
     return { id, ...normalizarEstudiante(e), seleccion: seleccionValidada(e?.seleccion, false) };
   });
   return {
+    versionSituaciones: g.versionSituaciones === 2 || !estudiantes.some((e) => e.dimensiones[3] || e.dimensiones[6]) ? 2 : 1,
     perfil: normalizarPerfil(g.perfil, g.estudiante?.practica), seleccion: seleccionValidada(g.seleccion, true), estudiantes,
     estudianteActivo: estudiantes.some((e) => e.id === g.estudianteActivo) ? g.estudianteActivo : estudiantes[0].id,
     necesidades: normalizarNecesidades(g.necesidades), momentos: normalizarMomentos(g.momentos), asignatura: normalizarAsignatura(g.asignatura),
@@ -175,18 +176,33 @@ function objetivosVisibles() {
 }
 function dimensionesCoincidentes(r) { return r.dimensiones.filter((d) => estudianteActual().dimensiones[d]); }
 function puntaje(r) { return dimensionesCoincidentes(r).reduce((suma, d) => suma + estudianteActual().dimensiones[d], 0); }
+function compararAcceso(a, b) {
+  const proporcion = (r) => r.dimensiones.length ? dimensionesCoincidentes(r).length / r.dimensiones.length : 0;
+  return puntaje(b) - puntaje(a) || proporcion(b) - proporcion(a) || catalogo.indexOf(a) - catalogo.indexOf(b);
+}
 function esPractica(r) { return r.contextos.includes("practica"); }
 function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
 function practicaActiva() { return estado.perfil.practica && hayPracticas(); }
 function practicasVisibles() {
-  return estado.perfil.practica ? catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)).sort((a, b) => puntaje(b) - puntaje(a)) : [];
+  return estado.perfil.practica ? catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && esPractica(r) && puntaje(r) > 0).sort(compararAcceso) : [];
 }
-function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && puntaje(r)).sort((a, b) => puntaje(b) - puntaje(a)); }
+function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && puntaje(r)).sort(compararAcceso); }
 function situacionesSinApoyos() {
   return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
+function pintarContextoEstudiante() {
+  const texto = "Filtros · " + nombreEstudiante(estudianteActual());
+  $("#t-filtros-apoyos").textContent = texto;
+  $("#t-filtros-dialogo").textContent = estado.pestana === "apoyos" ? texto : "Filtros";
+}
+function pintarRevisionSituaciones() {
+  const pendientes = estado.versionSituaciones !== 2 ? estado.estudiantes.filter((e) => e.dimensiones[3] || e.dimensiones[6]) : [];
+  $("#revision-situaciones").hidden = !pendientes.length;
+  $("#revision-situaciones-texto").textContent = 'Separamos algunas situaciones: "Visión" y "Audición", y "Comprender" y "Expresarse oralmente". Revisa las situaciones de: ' + pendientes.map(nombreEstudiante).join(", ") + ".";
+}
 function pintarTituloApoyos() {
+  pintarContextoEstudiante(); pintarRevisionSituaciones();
   $("#t-apoyos").textContent = `${esSuperior() ? "Ajustes razonables" : "Apoyos"} para ${estudianteActual().iniciales || "un estudiante"}`;
 }
 function pintarApoyos() {
@@ -210,10 +226,15 @@ function pintarApoyos() {
     el("p", { class: "aviso-apoyos" }, `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
   const lista = accesosVisibles(), practicas = practicasVisibles();
-  $("#apoyos-resultados").replaceChildren(...Object.entries(TIPOS_ACCESO).filter(([tipo]) => lista.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
-    el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, lista.filter((r) => r.subtipo === tipo).map(tarjeta)))));
-  if (practicas.length) $("#apoyos-resultados").append(el("section", {},
-    el("h3", { text: "En talleres, laboratorios y terreno" }), el("ul", { class: "tarjetas" }, practicas.map(tarjeta))));
+  const todas = [...lista, ...practicas].sort(compararAcceso), primeras = todas.length > 3 ? todas.slice(0, 3) : [];
+  const destacadas = new Set(primeras.map((r) => r.id));
+  const resto = lista.filter((r) => !destacadas.has(r.id)), restoPracticas = practicas.filter((r) => !destacadas.has(r.id));
+  $("#apoyos-resultados").replaceChildren(
+    ...(primeras.length ? [el("section", { "aria-labelledby": "t-para-empezar" }, el("h3", { id: "t-para-empezar", text: "Para empezar" }), el("ul", { class: "tarjetas" }, primeras.map(tarjeta)))] : []),
+    ...Object.entries(TIPOS_ACCESO).filter(([tipo]) => resto.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
+      el("section", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, resto.filter((r) => r.subtipo === tipo).map(tarjeta)))));
+  if (restoPracticas.length) $("#apoyos-resultados").append(el("section", {},
+    el("h3", { text: "En talleres, laboratorios y terreno" }), el("ul", { class: "tarjetas" }, restoPracticas.map(tarjeta))));
   const objetivos = objetivosVisibles();
   $("#asignatura-campo").hidden = !catalogo.some((r) => r.tipo === "objetivos" && aplica(r));
   $("#asignatura").value = estado.asignatura;
@@ -264,6 +285,10 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
+  $("#revision-situaciones-entendido").addEventListener("click", () => {
+    estado.versionSituaciones = 2; guardar(); pintarRevisionSituaciones();
+    $("#t-apoyos").focus();
+  });
   $("#agregar-estudiante").addEventListener("click", agregarEstudiante);
   $("#quitar-estudiante").addEventListener("click", quitarEstudiante);
   $("#asignatura").addEventListener("change", (evento) => {
@@ -289,7 +314,7 @@ let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
 let origenGuiaApoyos = null, dialogoPrivacidad = null;
 const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} };
-let estado = { asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
+let estado = { versionSituaciones: 2, asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
 let inclusionDocumento = null, solicitudDocumento = 0;
 
 function cargar() {
@@ -340,7 +365,7 @@ function mostrarPestana(id, enfocar = false) {
     tab.tabIndex = nombre === id ? 0 : -1;
   }
   $("#panel-" + id + " .acciones-intro").append($("#abrir-filtros"));
-  guardar(); actualizarConteoFiltros();
+  guardar(); actualizarConteoFiltros(); pintarContextoEstudiante();
   if (enfocar) $("#tab-" + id).focus();
 }
 
@@ -655,7 +680,7 @@ function actualizarRespaldo() {
 
 function guardarRespaldo() {
   const guardado = new Date().toISOString();
-  const datos = { app: "prizma", version: 2, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiantes: estado.estudiantes, estudianteActivo: estado.estudianteActivo, propositos: estado.propositos, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };
+  const datos = { app: "prizma", version: 2, versionSituaciones: estado.versionSituaciones, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, seleccion: estado.seleccion, estudiantes: estado.estudiantes, estudianteActivo: estado.estudianteActivo, propositos: estado.propositos, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };
   const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" }));
   const enlace = el("a", { href: url, download: `prizma-respaldo-${fechaLocal()}.json` });
   document.body.append(enlace);

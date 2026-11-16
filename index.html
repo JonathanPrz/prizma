@@ -123,6 +123,10 @@ try {
     <div class="cabecera-intro">
       <h1 id="t-estudiante">Apoyos individualizados para un estudiante</h1>
       <p id="bajada-apoyos" class="bajada">Elige los que le sirvan. Prizma no reemplaza al equipo de apoyo: te ofrece un menú, cada apoyo con su fuente.</p>
+      <div id="revision-situaciones" class="aviso-apoyos" role="region" aria-label="Revisa las situaciones guardadas" hidden>
+        <p id="revision-situaciones-texto"></p>
+        <button type="button" id="revision-situaciones-entendido" class="boton">Entendido</button>
+      </div>
       <div class="acciones-intro"><a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></div>
     </div>
     <div id="lugar-filtros-apoyos" class="lugar-filtros">
@@ -143,7 +147,7 @@ try {
       </aside>
     </div>
     <div id="estudiante" class="resultados" tabindex="-1">
-      <h2 id="t-apoyos">Apoyos para un estudiante</h2>
+      <h2 id="t-apoyos" tabindex="-1">Apoyos para un estudiante</h2>
       <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo.</p>
       <p id="aviso-acceso-superior" class="ayuda" hidden>Los apoyos se acuerdan con el estudiante y la unidad de inclusión.</p>
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
