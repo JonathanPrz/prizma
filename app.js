@@ -528,7 +528,7 @@ function tarjeta(r) {
       ofrecida ? el("p", { text: "También ofrecido a todo el curso" }) : null,
       el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso",
         onclick: () => { estado.seleccion[version.id] = ""; guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); document.getElementById("curso-" + r.id)?.closest(".version-curso").focus(); } })) : null,
-    repetida >= 2 ? el("p", { class: "aviso-apoyos", text: `Lo elegiste para ${repetida} estudiantes.` + (version ? " Considera agregar su versión para todo el curso." : "") }) : null,
+    repetida >= 2 ? el("p", { class: "aviso-apoyos", text: `Lo elegiste para ${repetida} estudiantes.` + (version && !ofrecida ? " Considera agregar su versión para todo el curso." : "") }) : null,
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
       el("span", { class: "respaldo " + r.respaldo, text: RESPALDO[r.respaldo] }),
@@ -763,9 +763,8 @@ function armarHoja() {
   const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
     el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
   const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), el("ol", {}, a.como.map((t) => el("li", { text: t }))),
-    el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato }),
-    a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null,
-    a.ofrecida ? el("p", { text: "También ofrecido a todo el curso" }) : null);
+    el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : "") }),
+    a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null);
   $("#hoja").replaceChildren(...[
     el("div", { class: "h-marca" }, d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "44", height: "44", alt: "" }) : null, el("strong", { text: "Prizma" })),
     el("h1", { text: d.titulo }), tabla(["Resumen", "Información"], d.resumen, "h-resumen"),
@@ -784,9 +783,8 @@ function definicionPdf() {
   const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
   const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
     { text: a.titulo, style: "h3" }, { ol: [...a.como], margin: [0, 4, 0, 4] },
-    { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato, style: "dato", margin: [0, 4, 0, 0] },
+    { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : ""), style: "dato", margin: [0, 4, 0, 0] },
     ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
-    ...(a.ofrecida ? [{ text: "También ofrecido a todo el curso", bold: true, margin: [0, 4, 0, 0] }] : []),
   ] });
   const contenido = [
     { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },

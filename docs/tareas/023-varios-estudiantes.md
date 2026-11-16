@@ -1,6 +1,6 @@
 # Tarea 023 · Varios estudiantes, y que sus barreras conversen con el DUA
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/023-varios-estudiantes`
+Estado: **integrada** (PR #23) · Asignada a: Codex · Rama: `codex/023-varios-estudiantes`
 
 ## Para qué
 
