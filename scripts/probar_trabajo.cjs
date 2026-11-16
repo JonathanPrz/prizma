@@ -39,7 +39,7 @@ const ids=todos(n('#trabajo-tarjetas')).filter(x=>x.id?.startsWith('elegir-')).m
 run('guardarAcuerdosTrabajo()');assert(n('#trabajo-acuerdos-error').textContent.includes('ajuste'));
 run('alternar("tr-subtitulos");guardarAcuerdosTrabajo()');assert(n('#trabajo-acuerdos-error').textContent.includes('rol'));
 run('trabajadorActual().acuerdo={roles:["persona"],fecha:"2026-11-16",revision:"2026-11-16",estado:"sin-acuerdos"};guardarAcuerdosTrabajo()');assert(n('#trabajo-acuerdos-error').textContent.includes('posterior'));
-run('trabajadorActual().acuerdo.revision="2026-12-01";guardarAcuerdosTrabajo()');assert.equal(run('estadoCaso(trabajadorActual(),true)'),'Acuerdos completos');assert.equal(n('#trabajo-acuerdo-cuerpo').hidden,true);
+run('trabajadorActual().acuerdo.revision="2026-12-01";trabajadorActual().acuerdo.criterio="Inicia cuatro de cinco tareas.";guardarAcuerdosTrabajo()');assert.equal(run('estadoCaso(trabajadorActual(),true)'),'Acuerdos completos');assert.equal(n('#trabajo-acuerdo-cuerpo').hidden,true);
 run('alternar("tr-pedir")');assert.equal(run('estadoCaso(trabajadorActual(),true)'),'Por revisar');assert(n('#agregar-trabajador').disabled);run('guardarAcuerdosTrabajo();agregarTrabajador()');assert.equal(run('estado.trabajadores.length'),2);assert.equal(c.document.activeElement,n('#trabajo-iniciales'));
 run('Object.assign(trabajadorActual(),normalizarTrabajador({iniciales:"AB2",dimensiones:{1:2}}));pintarEstadoTrabajo()');assert(n('#trabajo-duplicadas').textContent.includes('Ya hay una persona'));
 // No school data can enter the worker model, even with the same local case id.

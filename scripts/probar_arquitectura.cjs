@@ -21,7 +21,7 @@ run('estudianteActual().practicaProfesional=true;estudianteActual().seleccion={"
 assert.equal(run('documentoParaCentro(["pp-c-pasos"],false)'),null);
 assert.equal(run('documentoParaCentro(["pp-c-pasos"],true).borrador'),true);
 assert(!JSON.stringify(json('documentoParaCentro(["pp-c-pasos"],true)')).includes('NO COMPARTIR'));
-run('estudianteActual().acuerdo={roles:["estudiante"],fecha:"2026-11-16",revision:"2026-12-01",estado:"completo"}');
+run('estudianteActual().acuerdo={roles:["estudiante"],fecha:"2026-11-16",revision:"2026-12-01",criterio:"Inicia cuatro de cinco tareas.",estado:"completo"}');
 assert.equal(run('documentoParaCentro(["pp-c-pasos"],true).borrador'),false);
 assert.equal(run('modeloDocumento().borrador'),false);
 const prohibidos = [/\bapoyos individualizados\b/i, /\bfichas?\b/i, /\brecomendaci[oó]n(?:es)?\b/i];
@@ -48,7 +48,7 @@ async function navegador() {
   });
   await new Promise(ok => servidor.listen(0,'127.0.0.1',ok));
   const url = 'http://127.0.0.1:' + servidor.address().port;
-  const browser = await chromium.launch({executablePath:process.env.CHROMIUM_BIN || (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined),headless:true,args:['--no-sandbox']});
+  const browser = await chromium.launch({executablePath:process.env.CHROMIUM_BIN || undefined,headless:true,args:['--no-sandbox']});
   const capturas = path.join(raiz,'docs/marca/036-arquitectura'); fs.mkdirSync(capturas,{recursive:true});
   try {
     for (const width of [1280,390]) for (const colorScheme of ['light','dark']) {

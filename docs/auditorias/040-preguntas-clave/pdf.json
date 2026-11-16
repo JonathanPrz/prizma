@@ -1,0 +1,66 @@
+[
+  {
+    "archivo": "docs/marca/040-preguntas/estudiante-1280-dark.pdf",
+    "paginas": 4,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": true,
+    "compartir": null
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/estudiante-1280-light.pdf",
+    "paginas": 4,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": true,
+    "compartir": null
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/estudiante-390-dark.pdf",
+    "paginas": 4,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": true,
+    "compartir": null
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/estudiante-390-light.pdf",
+    "paginas": 4,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": true,
+    "compartir": null
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/trabajo-1280-dark.pdf",
+    "paginas": 3,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": null,
+    "compartir": true
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/trabajo-1280-light.pdf",
+    "paginas": 3,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": null,
+    "compartir": true
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/trabajo-390-dark.pdf",
+    "paginas": 3,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": null,
+    "compartir": true
+  },
+  {
+    "archivo": "docs/marca/040-preguntas/trabajo-390-light.pdf",
+    "paginas": 3,
+    "criterio": true,
+    "modalidad": true,
+    "protocolo": null,
+    "compartir": true
+  }
+]

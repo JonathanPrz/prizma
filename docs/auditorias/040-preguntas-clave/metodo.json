@@ -1,0 +1,20 @@
+{
+  "base": "484cf14",
+  "rama": "codex/040-preguntas-clave",
+  "pruebas": 21,
+  "pdf": 8,
+  "rutasProtegidasSinCambios": [
+    "data/",
+    "docs/fuentes/",
+    "docs/arquitectura.md",
+    "docs/casos/",
+    ".claude/"
+  ],
+  "huellas": {
+    "app.js": "7d1d0c1410deb454e15943f7d533e2cc310a5222ed1ea1b73b8dbe9bd0d40b05",
+    "index.html": "332b7e039bd42dab33ad14a55acfaf14057273fc24a38f6a211ab36453c30160",
+    "styles.css": "c7ef82451a40b73db09872be5a6b9b407cb9fc626298b52a1664f8cd969cca59",
+    "docs/casos/casos-semilla.json": "22f7a74655021657597d577218684432475a3b07770a280c0f0ac7f2dcbfb8ee",
+    "scripts/probar_preguntas_clave.cjs": "834babcbbf1a0f9d28c978f8f2a9d2b45945ca084cc332ac5d20ebea7356953d"
+  }
+}

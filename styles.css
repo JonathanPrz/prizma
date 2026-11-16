@@ -331,3 +331,5 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
 }
 
 #areas, #trabajo-areas { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.seguridad { display: grid; gap: .75rem; }

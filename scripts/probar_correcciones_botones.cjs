@@ -4,7 +4,7 @@ let chromium;try{({chromium}=require('playwright'));}catch{({chromium}=require('
 const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/039-correcciones');fs.mkdirSync(salida,{recursive:true});
 (async()=>{
  const servidor=http.createServer((q,r)=>{const archivo=path.resolve(raiz,'.'+new URL(q.url,'http://localhost').pathname.replace(/\/$/,'/index.html'));if(!archivo.startsWith(raiz+path.sep))return r.writeHead(403).end();fs.readFile(archivo,(e,c)=>{if(e)return r.writeHead(404).end();r.setHeader('Content-Type',({'.js':'text/javascript','.css':'text/css','.json':'application/json','.html':'text/html','.svg':'image/svg+xml'})[path.extname(archivo)]||'application/octet-stream');r.end(c);});});
- await new Promise(ok=>servidor.listen(0,'127.0.0.1',ok));const b=await chromium.launch({executablePath:process.env.CHROMIUM_BIN||(require('node:fs').existsSync('/usr/bin/chromium')?'/usr/bin/chromium':undefined),args:['--no-sandbox']});const resultados=[];
+ await new Promise(ok=>servidor.listen(0,'127.0.0.1',ok));const b=await chromium.launch({executablePath:process.env.CHROMIUM_BIN||undefined,args:['--no-sandbox']});const resultados=[];
  try{
   for(const ancho of [1280,390])for(const tema of ['light','dark']){
    const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:tema,reducedMotion:'reduce'}),errores=[];p.on('pageerror',e=>errores.push(e.message));

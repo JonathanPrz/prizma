@@ -1,0 +1,128 @@
+[
+  {
+    "script": "scripts/probar_arquitectura.cjs",
+    "codigo": 0,
+    "salida": "Correcto: migración del ámbito y respaldos, borrador general/centro y decisión de compartir, glosario sobre todo el catálogo real y HTML.\nCorrecto: ambos temas/ancho, teclado/foco, guías, confirmación de nivel, borradores, mochila/privacidad/borrado por ámbito, recarga, almacenamiento bloqueado y sin desborde.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_arreglos_menores.cjs",
+    "codigo": 0,
+    "salida": "Correcto: singular/plural y fecha local a las 23:30 en Santiago.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_avisos.cjs",
+    "codigo": 0,
+    "salida": "Correcto: ninguna guía automática, aperturas manuales y foco, texto exacto de escuela/superior, privacidad al escribir y memoria, notas sin solapar, encabezados y claves retiradas.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_correcciones_botones.cjs",
+    "codigo": 0,
+    "salida": "Correcto: áreas con teclado sin pérdida, No aplica, taller diferido, textos, cruces, PDF compartido y ventana bloqueada, pie y 390 px; claro/oscuro.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_datos_reales.cjs",
+    "codigo": 0,
+    "salida": "Correcto: 240 fichas, 57 fuentes y 8 necesidades reales pasan por los validadores de la página; nada se descarta, se renomina ni se recorta en el respaldo de todos los niveles.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_estudiante.cjs",
+    "codigo": 0,
+    "salida": "Correcto: validación del estudiante, puntaje, visión y audición y exclusión por nivel.\nCorrecto: respaldo antiguo y validado, documento separado y definición PDF con tipos oficiales.\nCorrecto: objetivos por nivel y orden, nueve apoyos DEC, selección, respaldo y tres grupos PDF.\nCorrecto: acciones DUA y apoyos individuales conviven en el documento.\nCorrecto: voz validada y respaldada, PDF con voz incluso sin fichas individuales, y vacíos por situación/nivel.\nCorrecto: la transformación de listas por pdfmake no modifica los pasos del catálogo.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_estudiantes.cjs",
+    "codigo": 0,
+    "salida": "Correcto: migración v1/localStorage, respaldo v2, selección aislada, ids/límites/entradas inválidas, repetición y versión DUA, exclusión de estudiantes, orden y estructura completa del PDF, pies por sección y catálogo inmutable.\nCorrecto: cancelar o reemplazar una generación pendiente no abre otro documento; reintentar sí lo genera.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_filtros_vista.cjs",
+    "codigo": 0,
+    "salida": "Correcto: filtros instantáneos con teclado, borrador independiente, top 3 y cruces reales, limpieza separada, resumen/PDF, recarga/respaldo, ambos temas/ancho y almacenamiento bloqueado.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_flujo_avisos.cjs",
+    "codigo": 0,
+    "salida": "Correcto: pasos y guardado diferido DUA, prioridad global sin duplicados, casos y acuerdos validados, revisión posterior, JP2/duplicados, Sí/No persistido, avisos con conteo único, PDF/reflexión/acuerdos y respaldo, roles por nivel.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_guia_dua.cjs",
+    "codigo": 0,
+    "salida": "Correcto: texto exacto, guía solo manual, Empezar y foco, reapertura, prioridad de privacidad y almacenamiento bloqueado.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_iconos.cjs",
+    "codigo": 0,
+    "salida": "Correcto: tema antes de pintar, dispositivo/elección/legado/almacenamiento bloqueado, alternancia y nombres accesibles; mochila conserva texto accesible.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_individualizados.cjs",
+    "codigo": 0,
+    "salida": "Correcto: asignatura validada y generales primero, práctica simulada/aislada por nivel, respaldos antiguos y tabla CIF con apoyos por dimensión y casos sin apoyo.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_media_practica.cjs",
+    "codigo": 0,
+    "salida": "Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > destacadas, práctica y limpieza independientes.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_momentos.cjs",
+    "codigo": 0,
+    "salida": "Correcto: 36 acciones por nivel, momentos múltiples/validados/ordenados, prioridad de necesidades por grupo, persistencia y respaldo antiguo sin filtro implícito.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_necesidades.cjs",
+    "codigo": 0,
+    "salida": "Correcto: necesidades válidas, orden sin ocultar, parvularia, coincidencias múltiples, respaldo, PDF y catálogo opcional ausente.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_orden.cjs",
+    "codigo": 0,
+    "salida": "Correcto: puntaje/proporción/catálogo, Para empezar sin duplicados y umbral, práctica con coincidencia positiva, revisión v1/v2 persistida y contexto activo.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_pestanas.cjs",
+    "codigo": 0,
+    "salida": "Correcto: hash, historial, pestañas y teclado, foco y persistencia; pasos en ambos anchos sin diálogo ni controles movidos, mochila y limpieza del borrador sin perder clase ni casos, almacenamiento bloqueado.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_practica_profesional.cjs",
+    "codigo": 0,
+    "salida": "Correcto: práctica por estudiante/nivel, booleanos y respaldos, grupos/pertinencia/orden, texto exacto, selección y PDF principal; modelo, vista y PDF del centro sin datos personales, decisión obligatoria y cancelación/revocación durante carga.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_preguntas_clave.cjs",
+    "codigo": 0,
+    "salida": "Correcto: 42/43 esperados actualizados (1 diferencia previa en S2), exclusiones, modalidades, seguridad, acuerdos y respaldo; PDF comparte contexto.\nCorrecto: preguntas clave en navegador, teclado de controles nativos, documentos, persistencia y separación de ámbitos; 1280/390 claro/oscuro.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_superior.cjs",
+    "codigo": 0,
+    "salida": "Correcto: superior en respaldo, 36 DUA, ajustes filtrados, dos ajustes de acceso, PDF con rótulos propios y selección preservada al cambiar nivel.\nCorrecto: rótulos de apoyos adicionales compartidos dependen del nivel actual.\n",
+    "error": ""
+  },
+  {
+    "script": "scripts/probar_trabajo.cjs",
+    "codigo": 0,
+    "salida": "Correcto: guía y 14 ejemplos exactos, tres pestañas, casos y selecciones separados, prioridad de Audición/proceso, acuerdos/revisión/bloqueo, respaldo anterior y actual, límites/roles, privacidad de ambos modelos PDF y elección de personas sin marcar.\n",
+    "error": ""
+  }
+]
