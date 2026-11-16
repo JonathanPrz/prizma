@@ -1,0 +1,45 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const leer=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8'),html=leer('index.html'),nodos=new Map(),almacen=new Map();
+const opciones=[...html.split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m=>({value:m[1]}));
+const controles=nombre=>[...html.matchAll(new RegExp('name="'+nombre+'" value="([^"]+)"','g'))].map(m=>({value:m[1]}));
+let c;
+function nodo(tag='div'){return {tag,id:'',hijos:[],eventos:{},options:opciones,value:'',isConnected:true,open:false,replaceChildren(...h){this.hijos=h;},append(...h){this.hijos.push(...h);},setAttribute(k,v){this[k]=String(v);if(k==='id')nodos.set('#'+v,this);},addEventListener(t,f){this.eventos[t]=f;},focus(){c.document.activeElement=this;},scrollIntoView(){}};}
+const n=s=>{if(!nodos.has(s))nodos.set(s,nodo());return nodos.get(s);};
+const todos=x=>(x?.hijos||[]).filter(h=>typeof h==='object').flatMap(h=>[h,...todos(h)]);
+c=vm.createContext({document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{
+ if(s==='#lista-estudiantes button')return n('#lista-estudiantes').hijos;
+ if(s==='input[name="rol-acuerdo"]:checked')return todos(n('#roles-acuerdo')).filter(x=>x.tag==='input'&&x.checked);
+ const name=s.match(/name="([^"]+)"/)?.[1];return name?controles(name):[];
+}},localStorage:{getItem:k=>almacen.get(k),setItem:(k,v)=>almacen.set(k,v)},window:{matchMedia:()=>({matches:true})},requestAnimationFrame:fn=>fn()});
+vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);const run=s=>vm.runInContext(s,c),json=s=>JSON.parse(JSON.stringify(run(s)));
+run(`catalogo=${leer('data/recomendaciones.json')};fuentes=Object.fromEntries(${leer('data/fuentes.json')}.map(f=>[f.id,f]));necesidades=${leer('data/necesidades.json')};estado.perfil.nivel='basica'`);
+assert.equal(run('normalizarEstudiante({iniciales:"JP2"}).iniciales'),'JP2');for(const valor of ['JP22','2JP','ABCDE','JP 2']){c.valor=valor;assert.equal(run('normalizarEstudiante({iniciales:valor}).iniciales'),'');}
+for(const fecha of ['2026-02-30','2025-02-29','ayer','2026-1-01',null]){c.fecha=fecha;assert(!run('fechaValida(fecha)'));}assert(run('fechaValida("2024-02-29")'));
+assert.equal(run('normalizarAcuerdo({roles:["nombre"],fecha:"2026-11-16",revision:"2026-12-01",estado:"completo"}).estado'),'sin-acuerdos');
+assert.equal(run('normalizarDatos({estudiante:{dimensiones:{1:2}}}).estudiantes[0].descripcionGuardada'),true);assert.equal(run('normalizarDatos({estudiante:{dimensiones:{1:2}}}).estudiantes[0].acuerdo.estado'),'sin-acuerdos');
+const ids=x=>todos(x).filter(x=>x.id?.startsWith('elegir-')).map(x=>x.id.slice(7));
+run('editarClase();pintarTarjetas()');const antes=ids(n('#tarjetas'));
+n('#necesidad-tareas-largas').eventos.click();assert.deepEqual(json('estado.necesidades'),[]);assert.deepEqual(ids(n('#tarjetas')),antes,'Un clic no actualiza los resultados guardados');
+run('guardarClase()');assert.equal(n('#paso-clase-cuerpo').hidden,true);assert.deepEqual(json('estado.necesidades'),['tareas-largas']);assert.equal(json('primerasDua().length'),3);assert(run('primerasDua().every(r=>coincidenciasNecesidades(r).length>0)'));
+const render=ids(n('#tarjetas'));assert.equal(new Set(render).size,render.length);assert.equal(render.length,run('visibles().length'));
+run('editarClase();limpiarFiltros()');assert.deepEqual(json('estado.necesidades'),['tareas-largas']);run('guardarClase()');assert.equal(run('primerasDua().length'),0);
+run('pintarEstadoCasos();guardarDescripcion()');assert(n('#descripcion-error').textContent.includes('al menos una situación'));run('agregarEstudiante()');assert.equal(run('estado.estudiantes.length'),1);
+run("Object.assign(estudianteActual(),normalizarEstudiante({iniciales:'JP',dimensiones:{1:3}}));guardarDescripcion();alternar('acc-1-agenda');guardarAcuerdos()");assert(n('#acuerdos-error').textContent.includes('rol'));assert(n('#acuerdos-error').textContent.includes('fecha del acuerdo'));
+run("estudianteActual().acuerdo={roles:['estudiante'],fecha:'2026-11-16',revision:'2026-11-16',estado:'sin-acuerdos'};guardarAcuerdos()");assert(n('#acuerdos-error').textContent.includes('posterior'));
+run("estudianteActual().acuerdo.revision='2026-12-01';guardarAcuerdos()");assert.equal(run('estadoCaso(estudianteActual())'),'Acuerdos completos');assert.equal(n('#paso-acuerdos-cuerpo').hidden,true);
+run('sincronizarEstudiante()');const radio=todos(n('#dimensiones')).find(x=>x.name==='dimension-1'&&x.value==='2');radio.eventos.change();assert.equal(run('estadoCaso(estudianteActual())'),'Por revisar');assert.equal(n('#acuerdos-revisar').hidden,false);assert(n('#agregar-estudiante').disabled);
+run('guardarAcuerdos();agregarEstudiante()');assert.equal(run('estado.estudiantes.length'),2);assert.equal(c.document.activeElement,n('#iniciales'));assert.equal(n('#paso-descripcion-cuerpo').hidden,false);
+run("Object.assign(estudianteActual(),normalizarEstudiante({iniciales:'JP',dimensiones:{1:3}}));guardarDescripcion();alternar('acc-1-agenda')");assert(n('#iniciales-duplicadas').textContent.includes('Ya hay un estudiante JP'));
+assert(n('#individual-acc-1-agenda'));n('#individual-acc-1-agenda').eventos.click();run('cargar()');assert.deepEqual(json('estado.mantenerIndividual'),['acc-1-agenda']);assert.equal(run('estado.estudiantes.filter(e=>Object.hasOwn(e.seleccion,"acc-1-agenda")).length'),2);
+run('estado.mantenerIndividual=[];pintarApoyos()');n('#curso-acc-1-agenda').eventos.click();assert(Object.hasOwn(json('estado.seleccion'),'dua-6-2'));assert.equal(run('estudiantesCubiertos(catalogo.find(r=>r.id==="dua-6-2"))'),2);
+run("estado.estudiantes[0].seleccion['acc-5-anticipar']='';pintarTarjetas()");assert.equal(run('estudiantesCubiertos(catalogo.find(r=>r.id==="dua-6-2"))'),2,'Cuenta estudiantes, no fichas');
+assert(run('avisoDua(catalogo.find(r=>r.id==="dua-6-2"))').includes('2 estudiantes'));
+const texto=x=>[x?.textContent||'',...(x?.hijos||[]).map(h=>typeof h==='string'?h:texto(h))].join(' ');
+const dua=todos(n('#tarjetas')).find(x=>x.tag==='li'&&todos(x).some(h=>h.id==='elegir-dua-6-2'));assert(!texto(dua).includes('JP'));assert(texto(dua).includes('Responde también a apoyos individuales de 2 estudiantes'));
+run("estudianteActual().iniciales='JP2';pintarEstadoCasos();estado.perfil.reflexion='La agenda ayudó a empezar.';estado.estudiantes[0].acuerdo={roles:['estudiante','familia'],fecha:'2026-11-16',revision:'2026-12-01',estado:'completo'};inclusionDocumento={curso:true,estudiantes:estado.estudiantes.map(e=>e.id)}");assert.equal(n('#iniciales-duplicadas').textContent,'');
+const d=json('documento()'),curso=d.grupos.filter(g=>!g.estudiante);assert(!JSON.stringify(curso).includes('JP'));assert(JSON.stringify(curso).includes('Responde también a apoyos individuales de 2 estudiantes.'));assert(JSON.stringify(curso).includes('La agenda ayudó'));
+assert(d.grupos.filter(g=>g.estudiante).every(g=>g.acciones.find(a=>a.id==='acc-1-agenda').ofrecida));assert(JSON.stringify(json('definicionPdf()')).includes('También ofrecido a todo el curso'));assert(JSON.stringify(json('definicionPdf()')).includes('Familia o apoderado'));
+run('guardar();cargar()');assert.equal(run('estado.perfil.reflexion'),'La agenda ayudó a empezar.');assert.deepEqual(json('estado.estudiantes[0].acuerdo.roles'),['estudiante','familia']);
+c.entrada={app:'prizma',version:2,...json('estado')};const vuelta=json('validarRespaldo(entrada)');assert.equal(vuelta.descartadas,0);assert.deepEqual(vuelta.estudiantes,json('estado.estudiantes'));assert.deepEqual(vuelta.mantenerIndividual,json('estado.mantenerIndividual'));
+run("estado.perfil.nivel='superior'");assert.deepEqual(json('rolesPermitidos()'),['estudiante','inclusion','docente']);assert.notEqual(run('estadoCaso(estado.estudiantes[0])'),'Acuerdos completos');
+console.log('Correcto: pasos y guardado diferido DUA, prioridad global sin duplicados, casos y acuerdos validados, revisión posterior, JP2/duplicados, Sí/No persistido, avisos con conteo único, PDF/reflexión/acuerdos y respaldo, roles por nivel.');

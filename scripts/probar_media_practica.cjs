@@ -19,7 +19,7 @@ assert.equal(e('normalizarPerfil({},true).practica'),true);assert.equal(e('norma
 vm.runInContext('estado.perfil=normalizarPerfil({nivel:"media"}); estado.pestana="dua"',c);
 assert.equal(e('voc("clase")'),'clase');assert.equal(e('voc("curso")'),'curso');
 for(const pestana of ['dua','apoyos']){
- vm.runInContext(`estado.pestana='${pestana}'; estado.perfil.practica=false`,c);const n=e('cantidadFiltros()');vm.runInContext('estado.perfil.practica=true',c);assert.equal(e('cantidadFiltros()'),n);
+ vm.runInContext(`estado.pestana='${pestana}'; estado.perfil.practica=false`,c);assert(!e('practicaActiva()'));vm.runInContext('estado.perfil.practica=true',c);assert(e('practicaActiva()'));
 }
 for(const nivel of ['basica','media','superior']){vm.runInContext(`estado.perfil.nivel='${nivel}'; estudianteActual().dimensiones={2:3}`,c);assert.equal(e('hayPracticas()'),true);assert.equal(e('practicasVisibles().length'),e('catalogo.filter(r=>r.tipo==="acceso"&&aplica(r)&&esPractica(r)&&puntaje(r)>0).length'));assert(e('practicasVisibles().every(r=>puntaje(r)>0)'));assert.equal(e('visibles().length'),36);assert(e('documento().resumen.flat().join(". ")').includes('Clase con taller, laboratorio o terreno'));}
 vm.runInContext('estado.perfil.nivel="parvularia"',c);assert.equal(e('hayPracticas()'),false);assert.equal(e('practicaActiva()'),false);assert.equal(e('practicasVisibles().length'),0);assert(!e('documento().resumen.flat().join(". ")').includes('Clase con taller'));
@@ -31,5 +31,5 @@ vm.runInContext(`var original=catalogo;var modelo=catalogo.find(r=>r.tipo==='dua
 ]);estado.perfil={nivel:'media',practica:true,actividad:['crear'],evidencia:['grupo'],meta:''};estado.necesidades=['evaluar'];estado.momentos=[];estado.propositos=[]`,c);
 assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-practica','sim-detalles','sim-destacada']);
 vm.runInContext('estado.perfil.practica=false',c);assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-detalles','sim-destacada','sim-practica']);
-vm.runInContext('catalogo=original; estado.perfil.practica=true; sincronizarPerfil=()=>{};pintarControles=()=>{};pintarTarjetas=()=>{};actualizarRespaldo=()=>{};limpiarFiltros()',c);assert.equal(e('estado.perfil.practica'),true);
-console.log('Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > destacadas, contador y limpieza independientes.');
+vm.runInContext('catalogo=original; estado.perfil.practica=true; sincronizarPerfil=()=>{};pintarControles=()=>{};pintarTarjetas=()=>{};actualizarRespaldo=()=>{};borradorDua={perfil:{...estado.perfil},necesidades:[],propositos:[],momentos:[]};limpiarFiltros()',c);assert.equal(e('estado.perfil.practica'),true);
+console.log('Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > destacadas, práctica y limpieza independientes.');
