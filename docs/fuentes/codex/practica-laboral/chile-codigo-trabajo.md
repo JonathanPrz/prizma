@@ -21,4 +21,4 @@ El art. 154 ter protege información privada del trabajador. Estas reglas labora
 
 ## Localizadores y límites
 
-Arts. 2, 8 inciso tercero, 153, 154 N°7, 154 ter, 157 bis, 157 quáter y 157 quinquies. El consolidado mantiene 1% en el art. 157 bis; revisar el evento transitorio de la Ley 21.690 antes de afirmar 2%. Las anotaciones permiten comprobar las reformas 21.015, 21.275 y 21.690 sin presentar las dos primeras leyes originales como obtenidas completas.
+Arts. 2, 8 inciso tercero, 153, 154 N°7, 154 ter, 157 bis, 157 quáter y 157 quinquies. El consolidado mantiene 1% en el art. 157 bis; revisar el evento transitorio de la Ley 21.690 antes de afirmar 2%. Las anotaciones permiten contrastar las reformas 21.015, 21.275 y 21.690. Las copias aportadas de [21.015](chile-ley-21015.md) y [21.275](chile-ley-21275.md) se conservan separadas: una ley modificatoria no reemplaza el Código consolidado.

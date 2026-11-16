@@ -7,24 +7,21 @@
 - **Fecha de consulta:** 2026-11-16
 - **Licencia:** Síntesis original CC BY-SA 4.0; las fuentes conservan sus derechos. La adaptación de UNESCO se identifica por separado con CC BY-SA 3.0 IGO.
 
-## Documentos para completar la investigación
+## Documentos recibidos y pendientes resueltos
 
-**Necesito estos documentos en .md:**
+**Los documentos solicitados fueron aportados por el dueño en Markdown el 16-11-2026. No quedan documentos de esa lista por pedir.** Se completaron las leyes 21.015 y 21.275, la guía AVANZA/SENADIS y la revisión de Coñoman y otras (2024). Se agregan además dos estudios aportados: Hennessy y otros (2026), cualitativo, y Blanck y otros (2025), longitudinal observacional.
 
-1. **Ley 21.015 — Incentiva la inclusión de personas con discapacidad al mundo laboral** — https://www.bcn.cl/leychile/navegar?idNorma=1103997 — para contrastar el original y sus transitorios con las disposiciones laborales consolidadas. BCN devolvió un aviso de proceso demorado sin texto utilizable.
-2. **Ley 21.275 — Modifica el Código del Trabajo, para exigir de las empresas pertinentes la adopción de medidas que faciliten la inclusión laboral de los trabajadores con discapacidad** — https://www.bcn.cl/leychile/navegar?idNorma=1150763 — para verificar el original íntegro y sus transitorios; se obtuvo su interpretación por DT, no la ley completa. Mismo aviso de proceso demorado.
-3. **Guía de Gestión para la Inclusión Laboral: Un comienzo en el camino de la inclusión (AVANZA Inclusión, 2021; alojada por SENADIS)** — https://www.senadis.gob.cl/descarga/i/6970/documento — para revisar el desarrollo de análisis de puesto, ajustes, seguimiento y seguridad inclusiva. Se identificaron créditos e índice; la consulta posterior del cuerpo respondió 403.
-4. **Initiatives to support the school-to-work transition of people with intellectual disabilities: a systematic review (2024)** — https://www.tandfonline.com/doi/full/10.3109/13668250.2024.2317799 — para evaluar método, intervenciones y límites específicos de transición con discapacidad intelectual. La editorial respondió 403; no se usan conclusiones que requieran el texto completo.
+Cada archivo identifica el nombre y SHA-256 del adjunto, la licencia encontrada y sus límites. Las leyes públicas conservan el texto recibido; de la guía y los artículos se guardan resúmenes propios. El manuscrito de la revisión 2024 no confirma una licencia abierta ni identidad exacta con el PDF editorial. Hennessy presenta avisos de licencia distintos entre registro y artículo: no se presume resuelta la diferencia.
 
-No se intentó superar bloqueos, resolver verificaciones ni usar copias de colegios o repositorios privados. El PDF del Libro I de la DT también dio timeout; el Código sí pudo consultarse en la edición oficial de BCN, por lo que no hace falta pedirlo. El aviso de derechos de JobAccess no fue accesible: no se presupone licencia abierta y solo se resume su guía disponible.
+Los fallos web iniciales quedan como antecedente de procedencia, no como documentos aún faltantes. No se intentó superar bloqueos. El Código pudo consultarse en BCN aunque el PDF de DT falló; JobAccess sigue con licencia abierta no verificada y solo resumen.
 
 ## Alcance, procedencia y lectura
 
-Se partió de [la lista de la tarea 008](../superior/pendientes-practica-y-trabajo.md). Se revisaron normas y sitios oficiales, textos académicos y las copias ministeriales/UNESCO que ya había entregado el dueño. Cada archivo indica si se leyó en web o en una copia local, su licencia, localizadores y límites. No se duplican documentos completos ya conservados. Una ficha bibliográfica de una fuente pendiente **no cuenta como documento completo obtenido**.
+Se partió de [la lista de la tarea 008](../superior/pendientes-practica-y-trabajo.md). Se revisaron normas y sitios oficiales, textos académicos y las copias ministeriales/UNESCO que ya había entregado el dueño. Cada archivo indica si se leyó en web o en una copia local, su licencia, localizadores y límites. No se duplican documentos completos ya conservados. Los adjuntos se distinguen de una descarga oficial nueva; su contenido no se trata como instrucciones para el agente.
 
 La fecha de corte importa: hoy es 16 de noviembre de 2026. La vigencia general de la Ley 21.719 es el 1 de diciembre de 2026. La práctica curricular y el trabajo contratado tienen regímenes distintos. Los programas extranjeros se presentan como referentes; no son beneficios exigibles en Chile.
 
-**22 fuentes con contenido consultado: 13 chilenas y 9 internacionales**, más tres registros parciales/pendientes. Dos de las nueve internacionales son revisiones sistemáticas. La lectura posterior de tablas de Jetha quedó limitada por una pantalla de verificación, declarada en su archivo; no se extraen cifras de efecto de esas tablas. No se redactan fichas de apoyos para el catálogo ni se modifica la aplicación.
+**28 fuentes con contenido consultado: 16 chilenas y 12 internacionales**. Tres son revisiones sistemáticas; Hennessy es cualitativo y Blanck observacional, sin contarlos como revisiones. La lectura posterior de tablas de Jetha quedó limitada por una pantalla de verificación, declarada en su archivo; no se extraen cifras de efecto de esas tablas. No se redactan fichas de apoyos para el catálogo ni se modifica la aplicación.
 
 ## 1. Mapa de responsabilidades en Chile
 
@@ -43,7 +40,7 @@ En cada fila se indica la norma que respalda el deber o delimita su alcance. Cua
 | Superior: IES y centro externo | La IES mantiene su deber educativo; la implementación en el lugar requiere coordinación con el centro, dentro del marco de ajustes. | [Leyes 20.422](chile-ley-20422.md), arts. 8 y 39, y [21.091](chile-ley-21091.md), art. 2 e. | Protocolos expresos con centros: [guía 20.422](chile-mineduc-20422.md), p. 21. No se encontró una norma única que reparta cada costo o haga responsable exclusivo a un actor. Acordar equipo, ejecución, evaluación y canal de problemas es una concreción operativa. |
 | Media TP y superior: empresa receptora | En la práctica temporal curricular definida por ley, proporcionar colación y movilización o compensación anticipada y expresamente convenida. | [Código del Trabajo](chile-codigo-trabajo.md), art. 8 inciso tercero; [consulta DT](chile-dt-practica.md). | La excepción al contrato no implica ausencia de deberes. Tampoco habilita a encubrir una relación laboral distinta. |
 | Trabajo contratado: empleador | No discriminar; incorporar accesibilidad y ajustes en el reglamento interno cuando corresponde; reservar información privada. | [Código del Trabajo](chile-codigo-trabajo.md), arts. 2, 153, 154 N°7 y 154 ter; reforma [21.690](chile-ley-21690.md), art. 1. | Diez trabajadores permanentes para el reglamento del art. 153; no confundir con cien para las obligaciones de cuota. |
-| Trabajo: empresas del art. 157 bis | Cuota y registro, persona de RR.HH. con conocimientos certificados, políticas/capacitación y protocolo; ajustes de selección. | [Código](chile-codigo-trabajo.md), arts. 157 bis, quáter y quinquies; [Ley 21.690](chile-ley-21690.md), art. 1 y transitorios; [DT 1583](chile-dt-1583.md). | La DT aplica 1% en [ORD. 503/2026](chile-dt-503.md). El paso a 2% es condicionado; una práctica sin contrato no es automáticamente una contratación computable. Originales de 21.015 y 21.275 pendientes, contenido laboral contrastado por consolidado. |
+| Trabajo: empresas del art. 157 bis | Cuota y registro, persona de RR.HH. con conocimientos certificados, políticas/capacitación y protocolo; ajustes de selección. | [Código](chile-codigo-trabajo.md), arts. 157 bis, quáter y quinquies; [Ley 21.690](chile-ley-21690.md), art. 1 y transitorios; [DT 1583](chile-dt-1583.md). | La DT aplica 1% en [ORD. 503/2026](chile-dt-503.md). El paso a 2% es condicionado; una práctica sin contrato no es automáticamente una contratación computable. Leyes [21.015](chile-ley-21015.md) y [21.275](chile-ley-21275.md) aportadas; se contrastan sus disposiciones con el consolidado y reformas posteriores. |
 | Ambos niveles: institución que entrega y centro que recibe datos | Identificar finalidad, habilitación y destinatarios; proteger información y respetar reglas de datos sensibles. | Hasta el 30-11-2026: [Ley 19.628](chile-ley-19628.md), arts. 4, 7, 9, 10 y 20. Desde vigencia general: [reforma 21.719](chile-ley-21719.md), nuevos arts. 3, 12, 16, 16 bis y 16 quáter. | Pedir ajustes no autoriza entregar un expediente. Consentimiento genérico no vence la restricción especial de datos de salud. |
 
 ## 2. Fuentes por tipo y nivel
@@ -74,13 +71,16 @@ Las referencias remiten a un archivo por documento, con URL oficial/académica y
 | [UNESCO-UNEVOC](unesco-unevoc-2025.md) | Orientación de organismo internacional | Formación TP y transición al trabajo | CC BY-SA 3.0 IGO; copia existente, adaptación atribuida. |
 | [Jetha y otros, 2019](revision-jetha-2019.md) | Investigación: revisión sistemática | Jóvenes y transición laboral | CC BY-NC 4.0; limitación de nueva comprobación declarada. |
 | [Weld-Blundell y otros, 2021](revision-weld-blundell-2021.md) | Investigación: revisión sistemática | Adultos; subgrupo de jóvenes autistas | CC BY 4.0; resultados y riesgo de sesgo. |
-| [Ley 21.015, pendiente](pendiente-ley-21015.md) | Norma, original pendiente | Empleo | Pública; original no obtenido. No cuenta como fuente completa. |
-| [Ley 21.275, pendiente](pendiente-ley-21275.md) | Norma, original pendiente | Empleo | Pública; original no obtenido. No cuenta como fuente completa. |
-| [AVANZA / SENADIS, parcial](senadis-avanza-pendiente.md) | Guía técnica, desarrollo pendiente | Empleo | Derechos reservados; créditos e índice, luego 403. No cuenta como completa. |
+| [Ley 21.015](chile-ley-21015.md) | Norma Chile | Empleo público y privado | Pública; copia BCN aportada, resumen y texto. Contrastar con Código actual. |
+| [Ley 21.275](chile-ley-21275.md) | Norma Chile | Empleo | Pública; copia aportada, artículo único y transitorio. |
+| [AVANZA / SENADIS](senadis-avanza-2021.md) | Guía técnica chilena | Empleo; aplicación a práctica según vínculo | Derechos reservados; resumen de capítulos aportados. |
+| [Coñoman y otras, 2024](revision-conoman-2024.md) | Investigación: revisión sistemática | Transición 14–30 años, discapacidad intelectual | Licencia abierta no identificada; resumen del manuscrito aportado. |
+| [Hennessy y otros, 2026](hennessy-2026.md) | Investigación cualitativa | Educación postsecundaria y aspiraciones laborales, Irlanda | Avisos CC distintos; solo resumen propio. |
+| [Blanck y otros, 2025](blanck-2025.md) | Investigación longitudinal observacional | Jóvenes y entrada laboral, Europa | CC BY 4.0; resumen del artículo aportado. |
 
-La revisión sistemática de 2024 solicitada arriba se registra como pendiente, sin archivo de resumen de conclusiones no leídas.
+La revisión de 2024 ya se leyó en el adjunto. Sus 45 estudios incluyen diseños heterogéneos; no es un metaanálisis ni permite afirmar eficacia uniforme de las medidas.
 
-## 3. Veintiún apoyos documentados para la futura redacción
+## 3. Veinticuatro apoyos documentados para la futura redacción
 
 Inventario de prácticas descritas o derivadas de fuentes, **sin redactar fichas del catálogo**. La naturaleza se indica por fila. Los ejemplos extranjeros deben acordarse según la tarea, la seguridad y el régimen chileno; no autorizan reducir automáticamente las competencias de egreso. Las revisiones respaldan programas de empleo con apoyo, no el efecto aislado de cada una de estas medidas.
 
@@ -107,22 +107,27 @@ Inventario de prácticas descritas o derivadas de fuentes, **sin redactar fichas
 | 12 | Dar tiempo de entrenamiento adicional y repaso para tareas nuevas. | [JAN](jan-funciones-ejecutivas.md), «Memory». | Guía experta; aprendizaje del puesto. |
 | 13 | Reducir distractores y programar pausas por fatiga, conservando alarmas y seguridad. | [JAN](jan-funciones-ejecutivas.md), «Concentration»; [OIT](oit-ajustes-2016.md), p. 27. | Guía experta + orientación OIT; cautela de aplicación. |
 | 14 | Asignar un mentor que ayude a organizar prioridades del trabajo. | [JAN](jan-funciones-ejecutivas.md), «Organization and Prioritization». | Guía experta; no se presume que sustituya a tutor académico o apoyo especializado. |
+| 15 | Analizar funciones, accesos y riesgos del puesto antes de acordar ajustes individuales. | [AVANZA/SENADIS](senadis-avanza-2021.md), pp. 43–45 y 72–74. | Guía técnica chilena de 2021; no ensayo de eficacia ni sustituto de la norma actual. |
+| 16 | Acordar seguimiento de apoyos y revisarlo si cambian tareas, equipos o compañeros de apoyo. | [AVANZA/SENADIS](senadis-avanza-2021.md), pp. 63–65. | Guía técnica; seguimiento de apoyos, no vigilancia adicional del desempeño. |
 
 ### C. Preparar al estudiante para pedir ajustes
 
 | N° | Apoyo concreto | Fuente y localizador | Naturaleza |
 |---|---|---|---|
-| 15 | Identificar una tarea, la barrera y una alternativa que le haya servido. | [JAN](jan-proceso.md), Steps 2 y 4. | Guía experta; autodeterminación. |
-| 16 | Informar dónde y a quién puede solicitar un cambio, sin exigir palabras jurídicas. | [JAN](jan-proceso.md), Step 1. | Guía experta; el efecto legal descrito por JAN es estadounidense. |
-| 17 | Conversar antes de la práctica sobre demandas y opciones, en vez de limitarse a llenar un formulario. | [AHEAD](irlanda-ahead-practicas.md), p. 93 impresa. | Guía experta con consulta cualitativa; no ensayo de eficacia. |
-| 18 | Explicar finalidad y destinatarios de la información antes de decidir qué compartir. | [AHEAD](irlanda-ahead-practicas.md), p. 95 impresa; [Ley 19.628](chile-ley-19628.md), arts. 4 y 10; [reforma 21.719](chile-ley-21719.md), arts. 12 y 16 bis incorporados. | Guía + normas Chile, con vigencia distinguida. No autorización genérica de antecedentes clínicos. |
-| 19 | Pedir un acuerdo claro sobre ajuste, responsable y prueba de funcionamiento. | [JAN](jan-proceso.md), Steps 4–5. | Guía experta; participación en la solución. |
-| 20 | Saber cómo avisar que un apoyo falló y volver a revisarlo. | [JAN](jan-proceso.md), Steps 5–6. | Guía experta; seguimiento, sin plazo universal inventado. |
-| 21 | Preparar una petición centrada en barreras y apoyos, evitando difundir diagnósticos innecesarios. | [OIT](oit-ajustes-2016.md), pp. 34–35; [reforma 21.719](chile-ley-21719.md), art. 16 bis incorporado. | Orientación internacional + límite normativo Chile. Información funcional también puede revelar salud. |
+| 17 | Identificar una tarea, la barrera y una alternativa que le haya servido. | [JAN](jan-proceso.md), Steps 2 y 4. | Guía experta; autodeterminación. |
+| 18 | Informar dónde y a quién puede solicitar un cambio, sin exigir palabras jurídicas. | [JAN](jan-proceso.md), Step 1. | Guía experta; el efecto legal descrito por JAN es estadounidense. |
+| 19 | Conversar antes de la práctica sobre demandas y opciones, en vez de limitarse a llenar un formulario. | [AHEAD](irlanda-ahead-practicas.md), p. 93 impresa. | Guía experta con consulta cualitativa; no ensayo de eficacia. |
+| 20 | Explicar finalidad y destinatarios de la información antes de decidir qué compartir. | [AHEAD](irlanda-ahead-practicas.md), p. 95 impresa; [Ley 19.628](chile-ley-19628.md), arts. 4 y 10; [reforma 21.719](chile-ley-21719.md), arts. 12 y 16 bis incorporados. | Guía + normas Chile, con vigencia distinguida. No autorización genérica de antecedentes clínicos. |
+| 21 | Pedir un acuerdo claro sobre ajuste, responsable y prueba de funcionamiento. | [JAN](jan-proceso.md), Steps 4–5. | Guía experta; participación en la solución. |
+| 22 | Saber cómo avisar que un apoyo falló y volver a revisarlo. | [JAN](jan-proceso.md), Steps 5–6. | Guía experta; seguimiento, sin plazo universal inventado. |
+| 23 | Preparar una petición centrada en barreras y apoyos, evitando difundir diagnósticos innecesarios. | [OIT](oit-ajustes-2016.md), pp. 34–35; [reforma 21.719](chile-ley-21719.md), art. 16 bis incorporado. | Orientación internacional + límite normativo Chile. Información funcional también puede revelar salud. |
+| 24 | Explorar intereses formativos y laborales con la persona antes de definir su trayectoria y experiencias de trabajo. | [Hennessy](hennessy-2026.md), 3.2.3.2–3.2.3.3; [Coñoman](revision-conoman-2024.md), «Career and vocational guidance». | Estudio cualitativo + revisión sistemática heterogénea. No prueba causal de un ajuste ni selección de destinos por diagnóstico. |
 
 ## 4. Revelación, consentimiento y autodeterminación
 
 AHEAD analiza el temor a discriminación y propone diálogo seguro antes y durante las prácticas; no convierte la revelación en trámite automático. La OIT centra la conversación en limitaciones funcionales y apoyos. Estas orientaciones justifican preparar decisiones con la persona; no habilitan al docente a comunicar un diagnóstico por iniciativa propia ni establecen una obligación chilena universal de revelarlo.
+
+La [guía AVANZA/SENADIS](senadis-avanza-2021.md), pp. 51 y 64–65, plantea acordar ajustes y seguimiento con la persona. Es participación en el apoyo, no autorización para circular antecedentes de salud. La [revisión 2024](revision-conoman-2024.md), síntesis «School-to-work transition», recoge planificación centrada en la persona y autodirección; sus resultados no hacen obligatoria la revelación del diagnóstico.
 
 Conviene distinguir tres decisiones: solicitar un ajuste; comunicar lo indispensable para ejecutarlo; transferir antecedentes personales o de salud. Son decisiones distintas, aunque ocurran en la misma reunión. El mapa anterior identifica las normas chilenas para el intercambio. No debe presentarse «consentimiento» como una casilla que legitima cualquier cesión.
 
@@ -138,30 +143,33 @@ No se elaboró un formulario de consentimiento ni se determinó una habilitació
 |---|---|---|
 | [Jetha 2019](revision-jetha-2019.md) | Revisión sistemática, diez estudios, jóvenes con condiciones crónicas discapacitantes. | Respaldo para programas adaptados de empleo con apoyo; poca cobertura de permanencia y avance. No aísla el efecto de un ajuste de puesto. Nueva comprobación de tablas interrumpida. |
 | [Weld-Blundell 2021](revision-weld-blundell-2021.md) | Revisión de 26 ensayos: 23 psicosociales, tres de autismo, ninguno de discapacidad intelectual; ninguno con sesgo bajo. | Resultados de IPS y algún respaldo para Project SEARCH con apoyos en jóvenes autistas. No generalizar a todas las poblaciones ni asumir eficacia idéntica en Chile. |
+| [Coñoman 2024](revision-conoman-2024.md) | Revisión de 45 estudios: 29 cuantitativos, 12 cualitativos, cuatro mixtos; solo dos con control. | Orientación, competencias, transición y aprendizaje en el trabajo; heterogeneidad y concentración de participantes en un estudio impiden tratarla como estimación causal uniforme. |
+| [Hennessy 2026](hennessy-2026.md) | Grupo focal, seis personas de 20–32 años en Irlanda rural; análisis temático. | Aporta intereses y barreras desde la voz de participantes. No mide efectos de prácticas ni permite generalizar a toda la población. |
+| [Blanck 2025](blanck-2025.md) | Secuencias longitudinales de 13.634 jóvenes en 31 países europeos. | Asociaciones entre trayectorias, apoyos y segregación; no causalidad ni evaluación de cada ajuste. No distingue empleo protegido de apoyado. |
 | [AHEAD 2022](irlanda-ahead-practicas.md) | Estudio cualitativo, guía y experiencias en prácticas acreditadas. | Problemas y criterios de organización/revelación. No prueba causal de una intervención. |
 | OIT, JAN, JobAccess, Access to Work, UNESCO y Mineduc | Orientaciones, métodos, ejemplos o programas oficiales. | Fundan opciones y procedimientos; no equivalen a revisiones sistemáticas de eficacia. |
 
 ## 6. Vacíos y límites
 
-- Falta completar los cuatro documentos solicitados al inicio. No se cuentan los originales pendientes como leídos ni se atribuyen resultados a la revisión de 2024 a partir de su título.
-- La lectura del Código consolidado y los pronunciamientos DT permite verificar contenidos de 21.015 y 21.275, pero no resuelve la falta de sus originales completos. Una reforma debe revisarse en el texto vigente, no solo en su redacción de origen.
+- Los cuatro pendientes se resolvieron con los adjuntos. Quedan límites de edición y licencia: el manuscrito 2024 difiere internamente en el rango de años de búsqueda, y Hennessy presenta avisos distintos. No se reconstruyen metadatos ausentes ni se copian obras reservadas.
+- Las leyes 21.015 y 21.275 ya están disponibles. Sus disposiciones modificatorias no reflejan necesariamente las reformas posteriores del Código; se conserva el contraste con el consolidado y 21.690. La guía de 2021 tampoco actualiza por sí sola el marco laboral de 2024 o de datos de 2026.
 - Se identificaron modificaciones sustantivas del D. 2.516 y su excepción de 2023. No se encontró en el texto consultado una regla específica de discapacidad/NEE ni una prórroga general de 180 horas para 2026. La ausencia en esta búsqueda no prueba que no existan actos particulares de SEREMI.
 - No se encontró una norma nacional única que asigne cada equipo, costo, ajuste y responsable entre IES y todo tipo de centro. Las leyes educativas y las orientaciones respaldan coordinación; no se usa una regla irlandesa para declarar responsable exclusivo a un actor chileno.
 - No se investigaron en profundidad regímenes de prácticas clínicas, estatutos públicos especiales, seguro escolar/accidentes, licencias profesionales, convenios particulares ni instrumentos de financiamiento SENADIS vigentes en cada región. No se promete financiamiento automático.
 - La cuota de 2% tiene un evento de activación; el Código consultado y la DT de octubre de 2026 mantienen 1%. Revisar novedades antes de reutilizar este informe después de la fecha de corte.
 - El régimen general de 21.719 aún no rige a la fecha de consulta. No se emite asesoría jurídica ni se valida el intercambio de datos de un caso concreto.
-- Los programas de empleo con apoyo combinan componentes y su evidencia no prueba por separado cada uno de los 21 apoyos. Falta evidencia chilena específica y más investigación de continuidad laboral y discapacidad intelectual.
+- Los programas de empleo con apoyo combinan componentes y su evidencia no prueba por separado cada uno de los 24 apoyos. Falta evidencia chilena específica y más investigación de continuidad laboral y discapacidad intelectual.
 - Access to Work, EAF, ADA y normas irlandesas tienen jurisdicción y requisitos propios. No se trasladan fondos, condiciones o derechos extranjeros al catálogo chileno.
 - Todas las obras reservadas se resumen con palabras propias. No se copian tablas, fotos ni anexos; no se añadió texto de CAST, OMS o EEF.
 
 ## 7. Comprobación y ponytail-review
 
-Comprobaciones realizadas: 26 archivos Markdown con metadatos; enlaces relativos resueltos; 21 apoyos numerados sin saltos; norma y localizador en cada fila del mapa; distinción de 22 fuentes consultadas y registros pendientes. `python3 scripts/validar_catalogo.py`: catálogo correcto, 153 recomendaciones. Se revisó el alcance del diff y los espacios en blanco. No se añadieron dependencias, código ejecutable ni pruebas de aplicación a esta entrega documental.
+Comprobaciones realizadas: 29 archivos Markdown con metadatos; enlaces relativos resueltos; 24 apoyos numerados sin saltos por grupo; norma y localizador en cada fila del mapa; 28 fuentes consultadas, incluidos los seis adjuntos. Se verificaron las huellas SHA-256 y la conservación exacta del contenido aportado en ambas leyes públicas. `python3 scripts/validar_catalogo.py`: catálogo correcto, 153 recomendaciones. Cambios solo dentro de la carpeta autorizada. No se añadieron dependencias ni código de aplicación.
 
-What this change does: It records sources about practice placements and work. It maps Chilean duties, lists 21 supported options and keeps missing documents separate.
+What this change does: It completes the four missing sources with files supplied by the owner. It adds two research papers and updates the evidence table and 24 support options.
 
 Looks good. Ship.
 
-Checked: The full document set and the existing sources it cites. I checked source types, rights notices, page and section references, legal dates, the quota condition, data sharing limits and the difference between guidance and research. I also checked all local links, file metadata, support numbering and the allowed paths. Expected use is one editor reading static Markdown files. No app data or runtime behavior changes.
+Checked: All six supplied files, source records, local links, rights notices and references to missing documents. The laws keep the supplied text and are read with the current Labour Code. The new studies are kept separate by design: a review, a focus group and an observational analysis. I checked sample sizes, limits, source counts and the allowed paths. Expected use is one editor reading static Markdown files. No app behavior or user data changes.
 
-Not checked: Four requested documents are still missing or partial. Jetha's tables could not be checked again after a browser challenge. This is not a legal review of a real placement agreement or a real transfer of health data. No browser tests were run for this documentation-only branch.
+Not checked: Exact identity of the 2024 manuscript with the publisher edition, the conflicting Hennessy licence notices, and Jetha's tables after the earlier browser challenge. No new legal review of a real placement or health-data transfer. No browser tests for this documentation-only update.

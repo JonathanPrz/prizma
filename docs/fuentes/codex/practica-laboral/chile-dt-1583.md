@@ -15,7 +15,7 @@ Lectura del texto en el sitio oficial durante esta tarea. No se guardan imágene
 
 Interpreta el artículo 157 quáter incorporado por la Ley 21.275. Las empresas de 100 o más trabajadores deben contar con al menos una persona de recursos humanos con conocimientos específicos certificados en inclusión, promover políticas y ejecutar capacitación anual. Explica su entrada en vigencia el 1 de noviembre de 2022.
 
-Es un respaldo oficial para analizar esa ley mientras su original queda pendiente. Debe leerse junto con las modificaciones de la Ley 21.690: el dictamen de 2022 no incorpora por anticipado cambios posteriores ni impone a todo centro pequeño un gestor certificado.
+Es un respaldo oficial para contrastar la [ley aportada por el dueño](chile-ley-21275.md). Debe leerse junto con las modificaciones de la Ley 21.690: el dictamen de 2022 no incorpora por anticipado cambios posteriores ni impone a todo centro pequeño un gestor certificado.
 
 ## Localizadores y límites
 
