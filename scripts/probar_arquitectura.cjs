@@ -48,7 +48,7 @@ async function navegador() {
   });
   await new Promise(ok => servidor.listen(0,'127.0.0.1',ok));
   const url = 'http://127.0.0.1:' + servidor.address().port;
-  const browser = await chromium.launch({executablePath:process.env.CHROMIUM_BIN || '/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+  const browser = await chromium.launch({executablePath:process.env.CHROMIUM_BIN || (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined),headless:true,args:['--no-sandbox']});
   const capturas = path.join(raiz,'docs/marca/036-arquitectura'); fs.mkdirSync(capturas,{recursive:true});
   try {
     for (const width of [1280,390]) for (const colorScheme of ['light','dark']) {
