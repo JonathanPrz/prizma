@@ -1,0 +1,332 @@
+{
+  "NIVELES": {
+    "parvularia": "Educación parvularia",
+    "basica": "Educación básica",
+    "media": "Educación media (CH y TP)",
+    "superior": "Educación superior (universidad, IP o CFT)"
+  },
+  "AREAS": [
+    [
+      "Cognición y aprendizaje",
+      [
+        1,
+        2,
+        14
+      ]
+    ],
+    [
+      "Comunicación e interacción",
+      [
+        3,
+        12,
+        4
+      ]
+    ],
+    [
+      "Social, emocional y salud mental",
+      [
+        5
+      ]
+    ],
+    [
+      "Sensorial y física",
+      [
+        6,
+        13,
+        7,
+        8,
+        9
+      ]
+    ],
+    [
+      "Contexto e identidad",
+      [
+        10,
+        11
+      ]
+    ]
+  ],
+  "DIMENSIONES": [
+    [
+      "Atención y organización",
+      "instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad"
+    ],
+    [
+      "Lectura, escritura y cálculo",
+      "textos largos, copiar de la pizarra, escribir a mano, cálculo mental"
+    ],
+    [
+      "Comprender lo que se dice o se lee",
+      "instrucciones largas o solo orales, lenguaje figurado, vocabulario nuevo"
+    ],
+    [
+      "Interacción social",
+      "trabajo en grupo, normas que no se dicen, exponer en público"
+    ],
+    [
+      "Emociones y regulación",
+      "evaluaciones, imprevistos, frustración, desregulación"
+    ],
+    [
+      "Visión",
+      "ver la pizarra, leer letra pequeña, imágenes y gráficos"
+    ],
+    [
+      "Sensibilidad sensorial",
+      "ruido, luz, multitudes, texturas, olores"
+    ],
+    [
+      "Movimiento y motricidad",
+      "escribir, manipular materiales, desplazarse"
+    ],
+    [
+      "Salud y energía",
+      "fatiga, dolor, ausencias por tratamiento"
+    ],
+    [
+      "Identidad, lengua y pertenencia",
+      "otra lengua materna, pueblo originario, migración, sentirse parte del curso"
+    ],
+    [
+      "Espacio, tiempo y actitudes",
+      "sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa"
+    ],
+    [
+      "Expresarse oralmente",
+      "responder en voz alta, explicar con palabras, hablar frente a otros"
+    ],
+    [
+      "Audición",
+      "escuchar al docente, escuchar con ruido, videos sin subtítulos"
+    ],
+    [
+      "Necesita más desafío",
+      "termina antes, se aburre con la práctica repetida, pide ir más allá"
+    ]
+  ],
+  "EJEMPLOS_TRABAJO": [
+    "encargos largos, varias tareas a la vez, plazos, interrupciones",
+    "manuales, correos largos, formularios, registros escritos",
+    "instrucciones verbales, capacitaciones, procedimientos nuevos",
+    "reuniones, trabajo en equipo, atención de público, normas que no se dicen",
+    "presión de tiempo, cambios imprevistos, conflictos, evaluaciones",
+    "pantallas, documentos impresos, señalética",
+    "ruido, luz intensa, espacios concurridos, olores",
+    "desplazarse, cargar, manipular herramientas, posturas",
+    "fatiga, dolor, controles médicos, jornadas largas",
+    "otra lengua materna, migración, sentirse parte del equipo",
+    "acceso al lugar, horarios, actitudes del equipo o de la jefatura",
+    "reuniones, llamadas, presentaciones, atención telefónica",
+    "reuniones, llamadas, alarmas, ruido de fondo",
+    "tareas repetitivas, pocas responsabilidades, ganas de aprender más"
+  ],
+  "FRECUENCIAS": [
+    "No aplica",
+    "A veces",
+    "Seguido",
+    "Casi siempre"
+  ],
+  "TIPOS_ACCESO": {
+    "presentacion": "Presentación de la información",
+    "respuesta": "Formas de respuesta",
+    "entorno": "Entorno",
+    "tiempo": "Organización del tiempo y el horario"
+  },
+  "TIPOS_OBJETIVOS": {
+    "graduacion": "Graduación de la complejidad",
+    "priorizacion": "Priorización",
+    "temporalizacion": "Temporalización",
+    "enriquecimiento": "Enriquecimiento",
+    "eliminacion": "Eliminación"
+  },
+  "TIPOS_PRACTICA": {
+    "institucion": "Lo que hace la institución",
+    "centro": "Lo que puede hacer el centro de práctica",
+    "estudiante": "Preparar al estudiante para pedir ajustes"
+  },
+  "TIPOS_TRABAJO": {
+    "informacion": "Información",
+    "comunicacion": "Comunicación",
+    "puesto": "Puesto y entorno",
+    "tiempo": "Tiempo y organización",
+    "proceso": "Cómo pedir, decidir y revisar ajustes"
+  },
+  "ROLES_ACUERDO": {
+    "estudiante": "Estudiante",
+    "familia": "Familia o apoderado",
+    "equipo": "Equipo de apoyo",
+    "docente": "Otro docente",
+    "inclusion": "Unidad de inclusión"
+  },
+  "ROLES_TRABAJO": {
+    "persona": "Persona trabajadora",
+    "jefatura": "Jefatura directa",
+    "gestor": "Gestor o gestora de inclusión",
+    "rrhh": "Recursos humanos",
+    "prevencion": "Prevención de riesgos"
+  },
+  "AVISO": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.",
+  "AVISO_TRABAJO": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.",
+  "PIE_PRACTICA": "Documento preparado con el estudiante. Contiene solo lo que decidió compartir.",
+  "PIE_TRABAJO": "Contiene datos de una persona trabajadora. Guárdalo con reserva (Código del Trabajo, art. 154 ter).",
+  "PROPOSITOS": {
+    "motivar": {
+      "nombre": "Motivar y sostener el interés",
+      "corto": "Motivar",
+      "principio": "Compromiso",
+      "directrices": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "presentar": {
+      "nombre": "Presentar la información",
+      "corto": "Presentar",
+      "principio": "Representación",
+      "directrices": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "mostrar": {
+      "nombre": "Expresarse y organizarse",
+      "corto": "Expresarse y organizarse",
+      "principio": "Acción y expresión",
+      "directrices": [
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
+  "MOMENTOS": [
+    [
+      "antes",
+      "Antes"
+    ],
+    [
+      "durante",
+      "Durante"
+    ],
+    [
+      "despues",
+      "Después"
+    ],
+    [
+      "toda-la-clase",
+      "En toda la clase"
+    ]
+  ],
+  "necesidades": [
+    {
+      "id": "motivacion",
+      "texto": "Les cuesta motivarse o se desconectan",
+      "consideraciones": [
+        "7.1",
+        "7.2",
+        "7.3",
+        "8.1"
+      ],
+      "dimensiones": [
+        14
+      ]
+    },
+    {
+      "id": "comprension",
+      "texto": "No entienden las explicaciones o las instrucciones",
+      "consideraciones": [
+        "1.2",
+        "2.1",
+        "2.5",
+        "3.2"
+      ],
+      "dimensiones": [
+        3,
+        13
+      ]
+    },
+    {
+      "id": "tareas-largas",
+      "texto": "Se pierden en tareas largas o con muchos pasos",
+      "consideraciones": [
+        "5.3",
+        "6.2",
+        "6.3",
+        "6.4"
+      ],
+      "dimensiones": [
+        1
+      ]
+    },
+    {
+      "id": "participacion",
+      "texto": "Algunos no participan o les cuesta trabajar en grupo",
+      "consideraciones": [
+        "8.3",
+        "8.4",
+        "5.4",
+        "9.2"
+      ],
+      "dimensiones": [
+        4,
+        11
+      ]
+    },
+    {
+      "id": "lectoescritura",
+      "texto": "Hay estudiantes que leen o escriben con dificultad",
+      "consideraciones": [
+        "2.2",
+        "4.2",
+        "5.2",
+        "1.1"
+      ],
+      "dimensiones": [
+        2,
+        6
+      ]
+    },
+    {
+      "id": "evaluar",
+      "texto": "Quiero evaluar de formas distintas",
+      "consideraciones": [
+        "5.1",
+        "4.1",
+        "8.5",
+        "9.3"
+      ],
+      "dimensiones": [
+        12,
+        8
+      ]
+    },
+    {
+      "id": "lengua-cultura",
+      "texto": "Hay estudiantes de otra lengua o cultura",
+      "consideraciones": [
+        "2.3",
+        "1.3",
+        "2.4"
+      ],
+      "dimensiones": [
+        10
+      ]
+    },
+    {
+      "id": "clima",
+      "texto": "El clima del curso dificulta aprender",
+      "consideraciones": [
+        "7.4",
+        "8.4",
+        "9.1",
+        "9.4"
+      ],
+      "dimensiones": [
+        5,
+        7
+      ]
+    }
+  ]
+}

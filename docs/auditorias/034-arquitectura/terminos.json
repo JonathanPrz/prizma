@@ -1,0 +1,2994 @@
+{
+  "apoyos": {
+    "interfaz": [
+      {
+        "selector": "html > body:nth-child(2) > header:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > p:nth-child(2)",
+        "zona": "cabecera",
+        "texto": "Apoyos con fuente para aprender y trabajar en igualdad",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-estudiante",
+        "zona": "panel-apoyos",
+        "texto": "Apoyos individualizados para un estudiante",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#panel-apoyos > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#descripcion-caso > label:nth-child(7)",
+        "zona": "panel-apoyos",
+        "texto": "¿Qué le ayuda?Por ejemplo: apoyos visuales, trabajar con un compañero.",
+        "visibleEn": [
+          "basica-1280-02-privacidad",
+          "basica-390-02-privacidad"
+        ]
+      },
+      {
+        "selector": "#estudiante-ayuda",
+        "zona": "panel-apoyos",
+        "texto": "¿Qué le ayuda?Por ejemplo: apoyos visuales, trabajar con un compañero.",
+        "visibleEn": [
+          "basica-1280-02-privacidad",
+          "basica-390-02-privacidad"
+        ]
+      },
+      {
+        "selector": "#t-apoyos",
+        "zona": "panel-apoyos",
+        "texto": "2. Apoyos sugeridos para Estudiante 1",
+        "visibleEn": []
+      },
+      {
+        "selector": "#aviso-acceso-escolar",
+        "zona": "panel-apoyos",
+        "texto": "Los apoyos se acuerdan con el estudiante, su familia y el equipo.",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#aviso-acceso-superior",
+        "zona": "panel-apoyos",
+        "texto": "Los apoyos se acuerdan con el estudiante y la unidad de inclusión.",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "Marca al menos una situación para ver apoyos.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#objetivos > summary:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "Si los apoyos de acceso no bastan: adecuaciones en los objetivos",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#objetivos-parvularia",
+        "zona": "panel-apoyos",
+        "texto": "En educación parvularia, preferentemente no se adecuan los objetivos (Decreto 83). Usa los apoyos de acceso.",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(3)",
+        "zona": "pie",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-guia-apoyos",
+        "zona": "guia-apoyos",
+        "texto": "Cómo usar los apoyos individualizados",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(5)",
+        "zona": "guia-apoyos",
+        "texto": "Acuerda los apoyos con el estudiante, su familia y el equipo de apoyo, y regístralos en el PACI.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#t-apoyos",
+        "zona": "panel-apoyos",
+        "texto": "2. Apoyos sugeridos para JP",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "43 apoyos",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "54 apoyos",
+        "visibleEn": [
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "53 apoyos",
+        "visibleEn": [
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "39 apoyos",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "11 apoyos",
+        "visibleEn": []
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(1) > h3:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(2) > h3:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(3)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(3) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      },
+      {
+        "selector": "#estudiante-ayuda",
+        "zona": "panel-apoyos",
+        "texto": "¿Qué le ayuda?Por ejemplo: apoyos visuales, trabajar con un compañero.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "7 apoyos",
+        "visibleEn": [
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": []
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Apoyos para JP",
+        "visibleEn": []
+      },
+      {
+        "selector": "#t-apoyos",
+        "zona": "panel-apoyos",
+        "texto": "2. Apoyos sugeridos para IP",
+        "visibleEn": [
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#apoyos-estado",
+        "zona": "panel-apoyos",
+        "texto": "6 apoyos",
+        "visibleEn": [
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      }
+    ],
+    "fichas": [
+      "acc-3-caa",
+      "acc-11-curso",
+      "pp-c-seguimiento",
+      "tr-lengua-senas",
+      "tr-ergonomia",
+      "tr-seguimiento-entorno"
+    ],
+    "codigo": [
+      {
+        "linea": 28,
+        "texto": "  \"5.1\": \"Usar múltiples medios para la comunicación\", \"5.2\": \"Usar múltiples herramientas para la construcción, la composición y la creatividad\", \"5.3\": \"Desarrollar fluidez con apoyos graduados para la práctica y el desempeño\", \"5.4\": \"Abordar sesgos relacionados con los modos de expresión y comunicación\","
+      },
+      {
+        "linea": 64,
+        "texto": "const CIF_COLUMNAS = [\"Situación\", \"Frecuencia\", \"Apoyos elegidos para esa situación\"];"
+      },
+      {
+        "linea": 68,
+        "texto": "const GRUPOS_APOYOS = { acceso: \"Adecuaciones de acceso\", objetivos: \"Adecuaciones en los objetivos\", desregulacion: \"Apoyos ante desregulación\", adicional: \"Apoyos adicionales\", \"practica-profesional\": \"Práctica profesional\" };"
+      },
+      {
+        "linea": 102,
+        "texto": "  return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === \"string\" && catalogo.some((r) => r.id === id && (dua === \"trabajo\" ? r.tipo === \"trabajo\" : dua ? r.tipo === \"dua\" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));"
+      },
+      {
+        "linea": 125,
+        "texto": "    pestana: [\"apoyos\", \"trabajo\"].includes(g.pestana) ? g.pestana : \"dua\","
+      },
+      {
+        "linea": 149,
+        "texto": "  if (!window.confirm(\"Se borran sus datos y apoyos de este navegador. ¿Continuar?\")) return;"
+      },
+      {
+        "linea": 181,
+        "texto": "function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? \"Ajustes razonables para \" : \"Apoyos para \") + (e.iniciales || \"un estudiante\"); }"
+      },
+      {
+        "linea": 196,
+        "texto": "  return Object.keys(GRUPOS_APOYOS).indexOf(r.tipo) * 10 + Object.keys(subtipos).indexOf(r.subtipo);"
+      },
+      {
+        "linea": 215,
+        "texto": "function situacionesSinApoyos() {"
+      },
+      {
+        "linea": 277,
+        "texto": "  estudianteActual().descripcionGuardada = true; guardar(); pintarEstadoCasos(); pintarApoyos();"
+      },
+      {
+        "linea": 278,
+        "texto": "  $(\"#descripcion-error\").textContent = \"\"; abrirPaso(\"paso-descripcion\", false); $(\"#t-apoyos\").focus();"
+      },
+      {
+        "linea": 337,
+        "texto": "function pintarTituloApoyos() {"
+      },
+      {
+        "linea": 339,
+        "texto": "  $(\"#t-apoyos\").textContent = \"2. Apoyos sugeridos para \" + nombreEstudiante(estudianteActual());"
+      },
+      {
+        "linea": 360,
+        "texto": "function pintarApoyos() {"
+      },
+      {
+        "linea": 363,
+        "texto": "  $(\"#t-estudiante\").textContent = superior ? \"Ajustes razonables para un estudiante\" : \"Apoyos individualizados para un estudiante\";"
+      },
+      {
+        "linea": 364,
+        "texto": "  $(\"#bajada-apoyos\").textContent = `Elige los que le sirvan. Prizma no reemplaza ${superior ? \"a la unidad de inclusión\" : \"al equipo de apoyo\"}: te ofrece un menú, cada apoyo con su fuente.`;"
+      },
+      {
+        "linea": 365,
+        "texto": "  pintarTituloApoyos();"
+      },
+      {
+        "linea": 366,
+        "texto": "  document.querySelectorAll(\".enlace-guia-apoyos\").forEach((enlace) => {"
+      },
+      {
+        "linea": 367,
+        "texto": "    enlace.textContent = superior ? \"¿Cómo acordar ajustes razonables?\" : \"¿Cómo usar los apoyos individualizados?\";"
+      },
+      {
+        "linea": 376,
+        "texto": "  $(\"#apoyos-adicionales\").hidden = !adicionales.length;"
+      },
+      {
+        "linea": 377,
+        "texto": "  $(\"#apoyos-adicionales\").replaceChildren(...adicionales.map(tarjeta));"
+      },
+      {
+        "linea": 378,
+        "texto": "  $(\"#apoyos-sin-fichas\").replaceChildren(...situacionesSinApoyos().map((d) =>"
+      },
+      {
+        "linea": 379,
+        "texto": "    el(\"p\", { class: \"aviso-apoyos\" }, `Aún no hay apoyos para \"${DIMENSIONES[d - 1][0]}\" en este nivel. `,"
+      },
+      {
+        "linea": 385,
+        "texto": "  $(\"#apoyos-resultados\").replaceChildren("
+      },
+      {
+        "linea": 391,
+        "texto": "  if (restoPracticas.length) $(\"#apoyos-resultados\").append(el(\"section\", {},"
+      },
+      {
+        "linea": 401,
+        "texto": "  $(\"#apoyos-estado\").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? plural(lista.length + practicas.length, \"apoyo\", \"apoyos\") : \"Marca al menos una situación para ver apoyos.\";"
+      },
+      {
+        "linea": 420,
+        "texto": "        guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo();"
+      },
+      {
+        "linea": 434,
+        "texto": "          guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo(); pintarEstadoCasos();"
+      },
+      {
+        "linea": 445,
+        "texto": "  pintarApoyos();"
+      },
+      {
+        "linea": 451,
+        "texto": "    guardar(); pintarApoyos(); pintarSeleccion(); pintarEstadoCasos();"
+      },
+      {
+        "linea": 455,
+        "texto": "    $(\"#t-apoyos\").focus();"
+      },
+      {
+        "linea": 461,
+        "texto": "    guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo();"
+      },
+      {
+        "linea": 470,
+        "texto": "      guardar(); pintarTituloApoyos(); pintarSelectorEstudiantes(); pintarSeleccion(); pintarEstadoCasos();"
+      },
+      {
+        "linea": 659,
+        "texto": "let origenGuiaApoyos = null, dialogoPrivacidad = null;"
+      },
+      {
+        "linea": 702,
+        "texto": "  $(\"#tab-apoyos\").textContent = esSuperior() ? \"Ajustes razonables\" : \"Para un estudiante\";"
+      },
+      {
+        "linea": 707,
+        "texto": "  for (const nombre of [\"dua\", \"apoyos\", \"trabajo\"]) {"
+      },
+      {
+        "linea": 724,
+        "texto": "    const id = [\"#dua\", \"#apoyos\", \"#trabajo\"].includes(location.hash) ? location.hash.slice(1) :"
+      },
+      {
+        "linea": 725,
+        "texto": "      !location.hash && [\"dua\", \"apoyos\", \"trabajo\"].includes(estado.pestana) ? estado.pestana : \"dua\";"
+      },
+      {
+        "linea": 729,
+        "texto": "  for (const [indice, id] of [\"dua\", \"apoyos\", \"trabajo\"].entries()) {"
+      },
+      {
+        "linea": 739,
+        "texto": "      evento.preventDefault(); activar([\"dua\", \"apoyos\", \"trabajo\"][siguiente]);"
+      },
+      {
+        "linea": 797,
+        "texto": "    !r || typeof r.id !== \"string\" || !r.id.trim() || ![\"dua\", \"trabajo\", ...Object.keys(GRUPOS_APOYOS)].includes(r.tipo) ||"
+      },
+      {
+        "linea": 889,
+        "texto": "function avisoDua(r) { const n = estudiantesCubiertos(r); return n ? `Responde también a apoyos individuales de ${plural(n, \"estudiante\", \"estudiantes\")}` : \"\"; }"
+      },
+      {
+        "linea": 893,
+        "texto": "  guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();"
+      },
+      {
+        "linea": 922,
+        "texto": "            estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById(\"version-\" + r.id).focus();"
+      },
+      {
+        "linea": 924,
+        "texto": "    repetida >= 2 && !version ? el(\"p\", { class: \"aviso-apoyos\", role: \"status\", text: `Este apoyo lo eligieron ${repetida} estudiantes` }) : null,"
+      },
+      {
+        "linea": 963,
+        "texto": "  guardar(); if (trabajo) pintarTrabajo(); else { pintarTarjetas(); pintarApoyos(); } pintarSeleccion();"
+      },
+      {
+        "linea": 999,
+        "texto": "      ...Object.keys(GRUPOS_APOYOS).filter((tipo) => elegidasOrdenadas(e.seleccion).some((r) => r.tipo === tipo)).map((tipo) =>"
+      },
+      {
+        "linea": 1000,
+        "texto": "        el(\"div\", {}, el(\"h4\", { text: GRUPOS_APOYOS[tipo] }), el(\"ol\", { class: \"sel-lista\" }, elegidasOrdenadas(e.seleccion).filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));"
+      },
+      {
+        "linea": 1036,
+        "texto": "    guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); sincronizarAcuerdos(); resumenClase();"
+      },
+      {
+        "linea": 1098,
+        "texto": "    mostrarPestana(estado.pestana); guardar(); sincronizarTrabajo(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();"
+      },
+      {
+        "linea": 1232,
+        "texto": "    grupo: r.tipo === \"practica-profesional\" ? \"Práctica profesional · \" + nombreGrupoPractica(r.subtipo) : r.tipo === \"acceso\" ? `${esSuperior() ? \"Ajustes razonables\" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],"
+      },
+      {
+        "linea": 1236,
+        "texto": "  const titulo = alumnos.length ? \"Plan de apoyos para el aprendizaje\" : \"Acciones para todo el curso\";"
+      },
+      {
+        "linea": 1247,
+        "texto": "        const apoyos = elegidasOrdenadas(e.seleccion);"
+      },
+      {
+        "linea": 1249,
+        "texto": "          cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], apoyos.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join(\"; \") || \"Sin apoyo elegido\"]),"
+      },
+      {
+        "linea": 1250,
+        "texto": "          ayuda: e.ayuda.trim() || \"Sin información\", voz: e.voz.trim() || \"Sin información\", acciones: apoyos.map((r) => accion(r, e.seleccion)),"
+      },
+      {
+        "linea": 1433,
+        "texto": "function mostrarGuiaApoyos(origen = document.activeElement) {"
+      },
+      {
+        "linea": 1435,
+        "texto": "  origenGuiaApoyos = origen;"
+      },
+      {
+        "linea": 1436,
+        "texto": "  $(\"#t-guia-apoyos\").textContent = esSuperior() ? \"Cómo acordar ajustes razonables\" : \"Cómo usar los apoyos individualizados\";"
+      },
+      {
+        "linea": 1437,
+        "texto": "  $(\"#guia-apoyos-escolar\").hidden = esSuperior();"
+      },
+      {
+        "linea": 1438,
+        "texto": "  $(\"#guia-apoyos-superior\").hidden = !esSuperior();"
+      },
+      {
+        "linea": 1439,
+        "texto": "  $(\"#guia-apoyos\").showModal();"
+      },
+      {
+        "linea": 1440,
+        "texto": "  $(\"#t-guia-apoyos\").focus();"
+      },
+      {
+        "linea": 1462,
+        "texto": "  document.querySelectorAll(\".enlace-guia-apoyos\").forEach((enlace) => enlace.addEventListener(\"click\", (evento) => {"
+      },
+      {
+        "linea": 1463,
+        "texto": "    evento.preventDefault(); mostrarGuiaApoyos(enlace);"
+      },
+      {
+        "linea": 1465,
+        "texto": "  $(\"#guia-apoyos-entendido\").addEventListener(\"click\", () => $(\"#guia-apoyos\").close());"
+      },
+      {
+        "linea": 1466,
+        "texto": "  $(\"#guia-apoyos\").addEventListener(\"close\", () => {"
+      },
+      {
+        "linea": 1467,
+        "texto": "    if (origenGuiaApoyos?.isConnected) origenGuiaApoyos.focus();"
+      }
+    ]
+  },
+  "apoyos individualizados": {
+    "interfaz": [
+      {
+        "selector": "#t-estudiante",
+        "zona": "panel-apoyos",
+        "texto": "Apoyos individualizados para un estudiante",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#panel-apoyos > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(3)",
+        "zona": "pie",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-guia-apoyos",
+        "zona": "guia-apoyos",
+        "texto": "Cómo usar los apoyos individualizados",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      }
+    ],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 363,
+        "texto": "  $(\"#t-estudiante\").textContent = superior ? \"Ajustes razonables para un estudiante\" : \"Apoyos individualizados para un estudiante\";"
+      },
+      {
+        "linea": 367,
+        "texto": "    enlace.textContent = superior ? \"¿Cómo acordar ajustes razonables?\" : \"¿Cómo usar los apoyos individualizados?\";"
+      },
+      {
+        "linea": 1436,
+        "texto": "  $(\"#t-guia-apoyos\").textContent = esSuperior() ? \"Cómo acordar ajustes razonables\" : \"Cómo usar los apoyos individualizados\";"
+      }
+    ]
+  },
+  "apoyos adicionales": {
+    "interfaz": [],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 68,
+        "texto": "const GRUPOS_APOYOS = { acceso: \"Adecuaciones de acceso\", objetivos: \"Adecuaciones en los objetivos\", desregulacion: \"Apoyos ante desregulación\", adicional: \"Apoyos adicionales\", \"practica-profesional\": \"Práctica profesional\" };"
+      }
+    ]
+  },
+  "adecuaciones": {
+    "interfaz": [
+      {
+        "selector": "#objetivos > summary:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "Si los apoyos de acceso no bastan: adecuaciones en los objetivos",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#objetivos-aviso",
+        "zona": "panel-apoyos",
+        "texto": "Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(4)",
+        "zona": "guia-apoyos",
+        "texto": "Elige primero adecuaciones de acceso. Las adecuaciones en los objetivos son solo para cuando el acceso no basta.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(1) > div:nth-child(3) > h4:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Adecuaciones de acceso",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(2) > div:nth-child(3) > h4:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Adecuaciones de acceso",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      }
+    ],
+    "fichas": [
+      "obj-eliminacion"
+    ],
+    "codigo": [
+      {
+        "linea": 68,
+        "texto": "const GRUPOS_APOYOS = { acceso: \"Adecuaciones de acceso\", objetivos: \"Adecuaciones en los objetivos\", desregulacion: \"Apoyos ante desregulación\", adicional: \"Apoyos adicionales\", \"practica-profesional\": \"Práctica profesional\" };"
+      }
+    ]
+  },
+  "adecuaciones de acceso": {
+    "interfaz": [
+      {
+        "selector": "#objetivos-aviso",
+        "zona": "panel-apoyos",
+        "texto": "Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(4)",
+        "zona": "guia-apoyos",
+        "texto": "Elige primero adecuaciones de acceso. Las adecuaciones en los objetivos son solo para cuando el acceso no basta.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(1) > div:nth-child(3) > h4:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Adecuaciones de acceso",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(2) > div:nth-child(3) > h4:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Adecuaciones de acceso",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      }
+    ],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 68,
+        "texto": "const GRUPOS_APOYOS = { acceso: \"Adecuaciones de acceso\", objetivos: \"Adecuaciones en los objetivos\", desregulacion: \"Apoyos ante desregulación\", adicional: \"Apoyos adicionales\", \"practica-profesional\": \"Práctica profesional\" };"
+      }
+    ]
+  },
+  "adecuaciones en los objetivos": {
+    "interfaz": [
+      {
+        "selector": "#objetivos > summary:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "Si los apoyos de acceso no bastan: adecuaciones en los objetivos",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(4)",
+        "zona": "guia-apoyos",
+        "texto": "Elige primero adecuaciones de acceso. Las adecuaciones en los objetivos son solo para cuando el acceso no basta.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      }
+    ],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 68,
+        "texto": "const GRUPOS_APOYOS = { acceso: \"Adecuaciones de acceso\", objetivos: \"Adecuaciones en los objetivos\", desregulacion: \"Apoyos ante desregulación\", adicional: \"Apoyos adicionales\", \"practica-profesional\": \"Práctica profesional\" };"
+      }
+    ]
+  },
+  "ajustes": {
+    "interfaz": [
+      {
+        "selector": "#objetivos-superior",
+        "zona": "panel-apoyos",
+        "texto": "En educación superior no se adecuan los objetivos de aprendizaje: se hacen ajustes razonables que mantienen los resultados de aprendizaje.",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#centro-ayuda",
+        "zona": "panel-apoyos",
+        "texto": "Primero elige los ajustes que puede hacer el centro",
+        "visibleEn": [
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-390-02-guia-practica"
+        ]
+      },
+      {
+        "selector": "#panel-trabajo > div:nth-child(1) > h1:nth-child(1)",
+        "zona": "panel-trabajo",
+        "texto": "Ajustes para que cada persona pueda trabajar en igualdad",
+        "visibleEn": [
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-ajustes",
+        "zona": "panel-trabajo",
+        "texto": "2. Ajustes sugeridos",
+        "visibleEn": [
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#guia-trabajo > ol:nth-child(3) > li:nth-child(1)",
+        "zona": "guia-trabajo",
+        "texto": "No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).",
+        "visibleEn": [
+          "trabajo-enlace-guia-trabajo"
+        ]
+      },
+      {
+        "selector": "#guia-trabajo > ol:nth-child(5) > li:nth-child(1)",
+        "zona": "guia-trabajo",
+        "texto": "Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).",
+        "visibleEn": [
+          "trabajo-enlace-guia-trabajo"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-superior > ol:nth-child(1) > li:nth-child(4)",
+        "zona": "guia-apoyos",
+        "texto": "Elige ajustes que mantengan los resultados de aprendizaje: cambia la forma, no la exigencia.",
+        "visibleEn": [
+          "superior-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#guia-practica-media > ol:nth-child(2) > li:nth-child(1)",
+        "zona": "guia-practica",
+        "texto": "El liceo, el estudiante y el centro acuerdan por escrito el plan de práctica: tareas, jornada y ajustes (Decreto 2.516, art. 2).",
+        "visibleEn": [
+          "media-guiaPractica"
+        ]
+      },
+      {
+        "selector": "#guia-practica-superior > ol:nth-child(2) > li:nth-child(1)",
+        "zona": "guia-practica",
+        "texto": "La institución mantiene su deber de hacer ajustes también durante la práctica (Ley 20.422, art. 39; Ley 21.091, art. 2 e).",
+        "visibleEn": [
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-390-02-guia-practica"
+        ]
+      },
+      {
+        "selector": "#documento-centro > fieldset:nth-child(2) > legend:nth-child(1)",
+        "zona": "documento-centro",
+        "texto": "Ajustes que el estudiante decide compartir",
+        "visibleEn": [
+          "instituto-1280-03b-decision-compartir",
+          "instituto-390-03b-decision-compartir"
+        ]
+      },
+      {
+        "selector": "#practica-profesional-grupos > section:nth-child(3) > h3:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "Preparar al estudiante para pedir ajustes",
+        "visibleEn": [
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#tab-apoyos",
+        "zona": "barra de contexto / general",
+        "texto": "Ajustes razonables",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-estudiante",
+        "zona": "panel-apoyos",
+        "texto": "Ajustes razonables para un estudiante",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#panel-apoyos > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(3)",
+        "zona": "pie",
+        "texto": "¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-guia-apoyos",
+        "zona": "guia-apoyos",
+        "texto": "Cómo acordar ajustes razonables",
+        "visibleEn": [
+          "superior-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#trabajo-tarjetas > section:nth-child(6) > h3:nth-child(1)",
+        "zona": "panel-trabajo",
+        "texto": "Cómo pedir, decidir y revisar ajustes",
+        "visibleEn": [
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas"
+        ]
+      },
+      {
+        "selector": "#sel-trabajadores > section:nth-child(1) > h4:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Ajustes para AB",
+        "visibleEn": [
+          "mochila-tresAmbitos"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > p:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "La persona decide qué contar. Revisa con ella los datos, las notas y los ajustes antes de compartir el documento.",
+        "visibleEn": [
+          "trabajo-elegirPersonas"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2)",
+        "zona": "incluir-documento",
+        "texto": "Ajustes para AB",
+        "visibleEn": [
+          "trabajo-elegirPersonas"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Ajustes para AB",
+        "visibleEn": [
+          "trabajo-elegirPersonas"
+        ]
+      },
+      {
+        "selector": "#centro-ayuda",
+        "zona": "panel-apoyos",
+        "texto": "El estudiante decide cuáles ajustes compartir.",
+        "visibleEn": [
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(1) > h3:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Ajustes razonables para IP",
+        "visibleEn": []
+      },
+      {
+        "selector": "#decision-centro-ayuda",
+        "zona": "documento-centro",
+        "texto": "Se incluirán solo los ajustes marcados, sin datos personales ni notas.",
+        "visibleEn": [
+          "instituto-1280-03b-decision-compartir",
+          "instituto-390-03b-decision-compartir"
+        ]
+      },
+      {
+        "selector": "#trabajo-tarjetas > section:nth-child(1) > h3:nth-child(1)",
+        "zona": "panel-trabajo",
+        "texto": "Cómo pedir, decidir y revisar ajustes",
+        "visibleEn": []
+      },
+      {
+        "selector": "#trabajo-tarjetas > section:nth-child(4) > h3:nth-child(1)",
+        "zona": "panel-trabajo",
+        "texto": "Cómo pedir, decidir y revisar ajustes",
+        "visibleEn": [
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Ajustes para AB",
+        "visibleEn": []
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(2) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Ajustes para AB",
+        "visibleEn": []
+      }
+    ],
+    "fichas": [
+      "sup-anticipar",
+      "sup-confidencial",
+      "prac-recorrido",
+      "sup-caa",
+      "pp-plan",
+      "pp-plan-superior",
+      "pp-responsables",
+      "pp-visita",
+      "pp-c-analisis",
+      "pp-e-conversar",
+      "pp-e-falla",
+      "tr-analisis-puesto",
+      "tr-formacion-equipo",
+      "tr-pedir",
+      "tr-seleccion"
+    ],
+    "codigo": [
+      {
+        "linea": 66,
+        "texto": "const TIPOS_PRACTICA = { institucion: \"Lo que hace la institución\", centro: \"Lo que puede hacer el centro de práctica\", estudiante: \"Preparar al estudiante para pedir ajustes\" };"
+      },
+      {
+        "linea": 181,
+        "texto": "function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? \"Ajustes razonables para \" : \"Apoyos para \") + (e.iniciales || \"un estudiante\"); }"
+      },
+      {
+        "linea": 358,
+        "texto": "  $(\"#centro-ayuda\").textContent = elegidasCentro().length ? \"El estudiante decide cuáles ajustes compartir.\" : \"Primero elige los ajustes que puede hacer el centro\";"
+      },
+      {
+        "linea": 363,
+        "texto": "  $(\"#t-estudiante\").textContent = superior ? \"Ajustes razonables para un estudiante\" : \"Apoyos individualizados para un estudiante\";"
+      },
+      {
+        "linea": 367,
+        "texto": "    enlace.textContent = superior ? \"¿Cómo acordar ajustes razonables?\" : \"¿Cómo usar los apoyos individualizados?\";"
+      },
+      {
+        "linea": 476,
+        "texto": "const TIPOS_TRABAJO = { informacion: \"Información\", comunicacion: \"Comunicación\", puesto: \"Puesto y entorno\", tiempo: \"Tiempo y organización\", proceso: \"Cómo pedir, decidir y revisar ajustes\" };"
+      },
+      {
+        "linea": 495,
+        "texto": "const AVISO_TRABAJO = \"Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.\";"
+      },
+      {
+        "linea": 512,
+        "texto": "function tituloTrabajador(e) { return \"Ajustes para \" + nombreTrabajador(e); }"
+      },
+      {
+        "linea": 518,
+        "texto": "function ajustesTrabajo(e = trabajadorActual()) {"
+      },
+      {
+        "linea": 550,
+        "texto": "  const lista = ajustesTrabajo(e), primeras = lista.length > 4 ? lista.slice(0, 4) : [], ids = new Set(primeras.map((r) => r.id));"
+      },
+      {
+        "linea": 608,
+        "texto": "  abrirPaso(\"trabajo-descripcion\", false); $(\"#t-ajustes\").focus();"
+      },
+      {
+        "linea": 625,
+        "texto": "    if (!window.confirm(\"Se borran sus datos y ajustes de este navegador. ¿Continuar?\")) return;"
+      },
+      {
+        "linea": 702,
+        "texto": "  $(\"#tab-apoyos\").textContent = esSuperior() ? \"Ajustes razonables\" : \"Para un estudiante\";"
+      },
+      {
+        "linea": 1112,
+        "texto": "    el(\"p\", { class: \"ayuda\", text: \"La persona decide qué contar. Revisa con ella los datos, las notas y los ajustes antes de compartir el documento.\" }),"
+      },
+      {
+        "linea": 1121,
+        "texto": "  return { trabajo: true, titulo: \"Plan de ajustes en el trabajo\", fecha: new Date().toLocaleDateString(\"es-CL\"), logo: logoDocumento(),"
+      },
+      {
+        "linea": 1172,
+        "texto": "  return { centro: true, titulo: \"Ajustes acordados para la práctica\", fecha: new Date().toLocaleDateString(\"es-CL\"), logo: logoDocumento(),"
+      },
+      {
+        "linea": 1178,
+        "texto": "  $(\"#decision-centro-ayuda\").textContent = !tiene ? \"Marca al menos un ajuste para incluir.\" : !$(\"#decision-centro\").checked ? \"Para ver el documento, el estudiante debe revisarlo y decidir compartirlo.\" : \"Se incluirán solo los ajustes marcados, sin datos personales ni notas.\";"
+      },
+      {
+        "linea": 1232,
+        "texto": "    grupo: r.tipo === \"practica-profesional\" ? \"Práctica profesional · \" + nombreGrupoPractica(r.subtipo) : r.tipo === \"acceso\" ? `${esSuperior() ? \"Ajustes razonables\" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],"
+      },
+      {
+        "linea": 1283,
+        "texto": "        el(\"div\", { class: \"tabla-cif\", tabindex: \"0\", role: \"region\", \"aria-label\": CIF_TITULO }, tabla(d.trabajo ? [\"Situación\", \"Frecuencia\", \"Ajustes elegidos para esa situación\"] : CIF_COLUMNAS, g.cif.length ? g.cif : [[\"Sin situaciones indicadas\", \"—\", \"Sin apoyo elegido\"]], \"h-cif\")),"
+      },
+      {
+        "linea": 1317,
+        "texto": "        { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? [\"Situación\", \"Frecuencia\", \"Ajustes elegidos para esa situación\"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: \"#eeeeee\" })), ...(g.cif.length ? g.cif : [[\"Sin situaciones indicadas\", \"—\", \"Sin apoyo elegido\"]])] }, layout: fino, margin: [0, 0, 0, 10] },"
+      },
+      {
+        "linea": 1436,
+        "texto": "  $(\"#t-guia-apoyos\").textContent = esSuperior() ? \"Cómo acordar ajustes razonables\" : \"Cómo usar los apoyos individualizados\";"
+      }
+    ]
+  },
+  "ajustes razonables": {
+    "interfaz": [
+      {
+        "selector": "#objetivos-superior",
+        "zona": "panel-apoyos",
+        "texto": "En educación superior no se adecuan los objetivos de aprendizaje: se hacen ajustes razonables que mantienen los resultados de aprendizaje.",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#tab-apoyos",
+        "zona": "barra de contexto / general",
+        "texto": "Ajustes razonables",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-estudiante",
+        "zona": "panel-apoyos",
+        "texto": "Ajustes razonables para un estudiante",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#panel-apoyos > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(3)",
+        "zona": "pie",
+        "texto": "¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-guia-apoyos",
+        "zona": "guia-apoyos",
+        "texto": "Cómo acordar ajustes razonables",
+        "visibleEn": [
+          "superior-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#sel-estudiantes > section:nth-child(1) > h3:nth-child(1)",
+        "zona": "mochila",
+        "texto": "Ajustes razonables para IP",
+        "visibleEn": []
+      }
+    ],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 181,
+        "texto": "function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? \"Ajustes razonables para \" : \"Apoyos para \") + (e.iniciales || \"un estudiante\"); }"
+      },
+      {
+        "linea": 363,
+        "texto": "  $(\"#t-estudiante\").textContent = superior ? \"Ajustes razonables para un estudiante\" : \"Apoyos individualizados para un estudiante\";"
+      },
+      {
+        "linea": 367,
+        "texto": "    enlace.textContent = superior ? \"¿Cómo acordar ajustes razonables?\" : \"¿Cómo usar los apoyos individualizados?\";"
+      },
+      {
+        "linea": 702,
+        "texto": "  $(\"#tab-apoyos\").textContent = esSuperior() ? \"Ajustes razonables\" : \"Para un estudiante\";"
+      },
+      {
+        "linea": 1232,
+        "texto": "    grupo: r.tipo === \"practica-profesional\" ? \"Práctica profesional · \" + nombreGrupoPractica(r.subtipo) : r.tipo === \"acceso\" ? `${esSuperior() ? \"Ajustes razonables\" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],"
+      },
+      {
+        "linea": 1436,
+        "texto": "  $(\"#t-guia-apoyos\").textContent = esSuperior() ? \"Cómo acordar ajustes razonables\" : \"Cómo usar los apoyos individualizados\";"
+      }
+    ]
+  },
+  "ajustes necesarios": {
+    "interfaz": [
+      {
+        "selector": "#guia-trabajo > ol:nth-child(3) > li:nth-child(1)",
+        "zona": "guia-trabajo",
+        "texto": "No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).",
+        "visibleEn": [
+          "trabajo-enlace-guia-trabajo"
+        ]
+      }
+    ],
+    "fichas": [
+      "sup-caa",
+      "tr-pedir"
+    ],
+    "codigo": []
+  },
+  "acciones": {
+    "interfaz": [
+      {
+        "selector": "#panel-dua > div:nth-child(1) > h1:nth-child(1)",
+        "zona": "panel-dua",
+        "texto": "Acciones para que todo tu curso pueda aprender",
+        "visibleEn": [
+          "primera-visita",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#paso-clase-cuerpo > p:nth-child(1)",
+        "zona": "panel-dua",
+        "texto": "Todo es opcional. Guarda para actualizar las acciones sugeridas.",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#necesidades-ayuda",
+        "zona": "panel-dua",
+        "texto": "Elige una o más. Si no eliges, verás todas las acciones.",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#t-acciones",
+        "zona": "panel-dua",
+        "texto": "2. Acciones sugeridas",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#conteo",
+        "zona": "panel-dua",
+        "texto": "36 acciones",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#dua-seleccion-vacia",
+        "zona": "panel-dua",
+        "texto": "Todavía no eliges acciones DUA.",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#sel-vacia",
+        "zona": "mochila",
+        "texto": "Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#guia-dua > ol:nth-child(2) > li:nth-child(3)",
+        "zona": "guia-dua",
+        "texto": "Elige qué quieres resolver. Prizma te mostrará primero las acciones que responden a eso.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#guia-dua > ol:nth-child(2) > li:nth-child(4)",
+        "zona": "guia-dua",
+        "texto": "Elige pocas acciones. El DUA es un menú: no necesitas usarlas todas.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(1)",
+        "zona": "guia-apoyos",
+        "texto": "Parte por el DUA. Muchas barreras se resuelven con acciones para todo el curso.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > noscript:nth-child(14)",
+        "zona": "barra de contexto / general",
+        "texto": "<p class=\"marco\">Prizma necesita JavaScript activado para mostrar las acciones.</p>",
+        "visibleEn": []
+      },
+      {
+        "selector": "#panel-dua > div:nth-child(1) > h1:nth-child(1)",
+        "zona": "panel-dua",
+        "texto": "Acciones para que todo tu grupo pueda aprender",
+        "visibleEn": [
+          "parvularia-contexto"
+        ]
+      },
+      {
+        "selector": "#paso-clase-texto",
+        "zona": "panel-dua",
+        "texto": "Sin filtros: verás todas las acciones",
+        "visibleEn": []
+      },
+      {
+        "selector": "#barrera-1",
+        "zona": "panel-dua",
+        "texto": "Ver acciones para esto",
+        "visibleEn": [
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Acciones para todo el curso",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      },
+      {
+        "selector": "#opciones-documento > label:nth-child(1) > input:nth-child(1)",
+        "zona": "incluir-documento",
+        "texto": "Acciones para todo el curso",
+        "visibleEn": [
+          "documento-elegirCursoEstudiante"
+        ]
+      }
+    ],
+    "fichas": [
+      "dua-7-4",
+      "acc-1-ubicacion",
+      "sup-sala",
+      "tr-pausas-interaccion"
+    ],
+    "codigo": [
+      {
+        "linea": 2,
+        "texto": "// Prizma, etapa 1: menú de acciones DUA para todo el curso. Sin servidor: los datos quedan en localStorage."
+      },
+      {
+        "linea": 30,
+        "texto": "  \"7.1\": \"Optimizar la elección y la autonomía\", \"7.2\": \"Optimizar la relevancia, el valor y la autenticidad\", \"7.3\": \"Fomentar la alegría y el juego\", \"7.4\": \"Abordar los sesgos, las amenazas y las distracciones\","
+      },
+      {
+        "linea": 168,
+        "texto": "      type: \"button\", class: \"boton\", id: `barrera-${b.dimension}`, text: estado.necesidades.includes(n.id) ? \"Ya lo estás considerando\" : \"Ver acciones para esto\","
+      },
+      {
+        "linea": 294,
+        "texto": "  $(\"#paso-clase-texto\").textContent = detalles.join(\" · \") || (estado.propositos.length || estado.perfil.actividad.length || estado.perfil.evidencia.length ? \"Guardaste las opciones de tu clase.\" : \"Sin filtros: verás todas las acciones\");"
+      },
+      {
+        "linea": 302,
+        "texto": "  pintarControles(); pintarTarjetas(); pintarSeleccion(); $(\"#acciones\").focus();"
+      },
+      {
+        "linea": 380,
+        "texto": "      el(\"a\", { href: \"#dua\", text: \"Revisa las acciones DUA.\" }))));"
+      },
+      {
+        "linea": 771,
+        "texto": "  // Sin nivel elegido se muestran las acciones de básica y media, para no duplicar las versiones de parvularia."
+      },
+      {
+        "linea": 776,
+        "texto": "// Las respuestas de actividad y evidencia no ocultan acciones: ponen primero las que coinciden."
+      },
+      {
+        "linea": 863,
+        "texto": "    const acciones = catalogo.filter((r) => r.tipo === \"dua\" && r.momento === id && aplica(r));"
+      },
+      {
+        "linea": 864,
+        "texto": "    const conteo = configuracion.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => necesidades.some((n) => configuracion.necesidades.includes(n.id) && n.consideraciones.includes(r.consideracion))).length} para ti` : String(acciones.length);"
+      },
+      {
+        "linea": 919,
+        "texto": "        el(\"div\", { class: \"acciones-intro\" },"
+      },
+      {
+        "linea": 950,
+        "texto": "  $(\"#conteo\").textContent = plural(lista.length, \"acción\", \"acciones\");"
+      },
+      {
+        "linea": 1099,
+        "texto": "    aviso.textContent = `Respaldo abierto: ${plural(totalElegidas(), \"acción\", \"acciones\")}.` +"
+      },
+      {
+        "linea": 1100,
+        "texto": "      (descartadas ? ` ${plural(descartadas, \"acción\", \"acciones\")} ${descartadas === 1 ? \"ya no está en el catálogo y no se cargó.\" : \"ya no están en el catálogo y no se cargaron.\"}` : \"\");"
+      },
+      {
+        "linea": 1124,
+        "texto": "      const acciones = elegidasTrabajo(e);"
+      },
+      {
+        "linea": 1127,
+        "texto": "        cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], acciones.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join(\"; \") || \"Sin ajuste elegido\"]),"
+      },
+      {
+        "linea": 1128,
+        "texto": "        acciones: acciones.map((r) => ({ id: r.id, titulo: r.titulo, como: [...r.como], porque: r.porque, grupo: TIPOS_TRABAJO[r.subtipo], nota: e.seleccion[r.id].trim(), dato: tipoOficial(r) + \". Respaldo: \" + RESPALDO[r.respaldo] + \".\" })) };"
+      },
+      {
+        "linea": 1134,
+        "texto": "const AVISO = \"Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.\";"
+      },
+      {
+        "linea": 1144,
+        "texto": "  $(\"#opciones-documento\").replaceChildren(...[[\"curso\", \"Acciones para todo el curso\"], ...estado.estudiantes.filter(datosEstudiante).map((e) => [\"alumno:\" + e.id, tituloEstudiante(e)])].map(([id, texto]) => {"
+      },
+      {
+        "linea": 1170,
+        "texto": "  const acciones = elegidasCentro().filter((r) => ids.includes(r.id)).map((r) => ({ titulo: r.titulo, como: [...r.como], porque: r.porque, dato: \"\" }));"
+      },
+      {
+        "linea": 1171,
+        "texto": "  if (!acciones.length) return null;"
+      },
+      {
+        "linea": 1173,
+        "texto": "    resumen: [\"Estudiante\", \"Centro de práctica\", \"Profesor tutor o coordinador\", \"Fecha\"].map((t) => [t, \"__________________________________\"]), acciones };"
+      },
+      {
+        "linea": 1236,
+        "texto": "  const titulo = alumnos.length ? \"Plan de apoyos para el aprendizaje\" : \"Acciones para todo el curso\";"
+      },
+      {
+        "linea": 1244,
+        "texto": "    grupos: MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).map(([id, nombre]) => ({ nombre: nombreMomento(id, nombre), acciones: sel.filter((r) => r.momento === id).map((r) => accion(r, estado.seleccion)) }))"
+      },
+      {
+        "linea": 1245,
+        "texto": "      .concat(opciones.curso && estado.perfil.reflexion?.trim() ? [{ nombre: \"Después de la clase: ¿qué funcionó?\", reflexion: estado.perfil.reflexion.trim(), acciones: [] }] : [])"
+      },
+      {
+        "linea": 1250,
+        "texto": "          ayuda: e.ayuda.trim() || \"Sin información\", voz: e.voz.trim() || \"Sin información\", acciones: apoyos.map((r) => accion(r, e.seleccion)),"
+      },
+      {
+        "linea": 1271,
+        "texto": "      ...d.acciones.map(ficha), el(\"div\", { class: \"h-acuerdos\" }, el(\"h2\", { text: \"Acuerdos (para completar en la reunión)\" }),"
+      },
+      {
+        "linea": 1279,
+        "texto": "    d.curso ? el(\"h2\", { text: \"Acciones para todo el curso\" }) : null,"
+      },
+      {
+        "linea": 1286,
+        "texto": "      ...g.acciones.flatMap((a, i) => [(g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? el(\"h3\", { class: \"h-grupo\", text: a.grupo }) : null, ficha(a)]),"
+      },
+      {
+        "linea": 1302,
+        "texto": "    ...d.acciones.map(ficha),"
+      },
+      {
+        "linea": 1310,
+        "texto": "    ...(d.curso && !d.grupos.some((g) => !(g.estudiante || g.trabajador)) ? [{ text: \"Acciones para todo el curso\", style: \"h2\", headlineLevel: 1 }] : []),"
+      },
+      {
+        "linea": 1320,
+        "texto": "      ...g.acciones.flatMap((a, i) => !(g.estudiante || g.trabajador) && i === 0 ? [{ unbreakable: true, stack: ["
+      },
+      {
+        "linea": 1321,
+        "texto": "        ...(g === d.grupos[0] ? [{ text: \"Acciones para todo el curso\", style: \"h2\" }] : []),"
+      },
+      {
+        "linea": 1323,
+        "texto": "      ] }] : (g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? ["
+      }
+    ]
+  },
+  "DUA": {
+    "interfaz": [
+      {
+        "selector": "#tab-dua",
+        "zona": "barra de contexto / general",
+        "texto": "Para el curso (DUA)",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-01-inicio",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#paso-clase > p:nth-child(2)",
+        "zona": "panel-dua",
+        "texto": "¿Cómo usar el DUA?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#paso-clase > p:nth-child(2) > a:nth-child(1)",
+        "zona": "panel-dua",
+        "texto": "¿Cómo usar el DUA?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#dua-seleccion-vacia",
+        "zona": "panel-dua",
+        "texto": "Todavía no eliges acciones DUA.",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "basica-contexto",
+          "media-contexto",
+          "superior-contexto",
+          "basica-1280-01-inicio",
+          "basica-390-01-inicio",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-390-01-inicio"
+        ]
+      },
+      {
+        "selector": "#t-estudiante",
+        "zona": "panel-apoyos",
+        "texto": "Apoyos individualizados para un estudiante",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#panel-apoyos > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#objetivos-tarjetas > section:nth-child(1) > h3:nth-child(1)",
+        "zona": "panel-apoyos",
+        "texto": "Graduación de la complejidad",
+        "visibleEn": [
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(3)",
+        "zona": "pie",
+        "texto": "Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. Código y fuentes.",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-01-inicio",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(2)",
+        "zona": "pie",
+        "texto": "¿Cómo usar el DUA?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-01-inicio",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4) > a:nth-child(3)",
+        "zona": "pie",
+        "texto": "¿Cómo usar los apoyos individualizados?",
+        "visibleEn": [
+          "primera-visita",
+          "parvularia-contexto",
+          "parvularia-14situaciones-ambasPracticas",
+          "parvularia-guiaApoyos",
+          "basica-contexto",
+          "basica-14situaciones-ambasPracticas",
+          "basica-guiaApoyos",
+          "media-contexto",
+          "media-14situaciones-ambasPracticas",
+          "media-guiaApoyos",
+          "media-guiaPractica",
+          "basica-apoyoRepetido-duplicado",
+          "mochila-tresAmbitos",
+          "documento-elegirCursoEstudiante",
+          "basica-versionDuaElegida",
+          "basica-1280-01-inicio",
+          "basica-1280-02-privacidad",
+          "basica-1280-03-apoyos",
+          "basica-1280-04-documento",
+          "basica-390-01-inicio",
+          "basica-390-02-privacidad",
+          "basica-390-03-apoyos",
+          "basica-390-04-documento",
+          "instituto-1280-01-inicio",
+          "instituto-390-01-inicio",
+          "rrhh-1280-01-inicio",
+          "rrhh-1280-01b-trabajo",
+          "rrhh-1280-02-privacidad",
+          "rrhh-1280-03-ajustes",
+          "rrhh-1280-04-documento",
+          "rrhh-390-01-inicio",
+          "rrhh-390-01b-trabajo",
+          "rrhh-390-02-privacidad",
+          "rrhh-390-03-ajustes",
+          "rrhh-390-04-documento"
+        ]
+      },
+      {
+        "selector": "#t-guia-dua",
+        "zona": "guia-dua",
+        "texto": "Cómo usar el DUA en tu clase",
+        "visibleEn": []
+      },
+      {
+        "selector": "#guia-dua > ol:nth-child(2) > li:nth-child(4)",
+        "zona": "guia-dua",
+        "texto": "Elige pocas acciones. El DUA es un menú: no necesitas usarlas todas.",
+        "visibleEn": []
+      },
+      {
+        "selector": "#guia-dua > p:nth-child(3)",
+        "zona": "guia-dua",
+        "texto": "Basado en las Pautas DUA 3.0 de CAST (2024).",
+        "visibleEn": []
+      },
+      {
+        "selector": "#t-guia-apoyos",
+        "zona": "guia-apoyos",
+        "texto": "Cómo usar los apoyos individualizados",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "#guia-apoyos-escolar > ol:nth-child(1) > li:nth-child(1)",
+        "zona": "guia-apoyos",
+        "texto": "Parte por el DUA. Muchas barreras se resuelven con acciones para todo el curso.",
+        "visibleEn": [
+          "parvularia-guiaApoyos",
+          "basica-guiaApoyos",
+          "media-guiaApoyos"
+        ]
+      },
+      {
+        "selector": "html > body:nth-child(2) > footer:nth-child(5) > div:nth-child(1) > p:nth-child(4)",
+        "zona": "pie",
+        "texto": "Privacidad · ¿Cómo usar el DUA? · ¿Cómo acordar ajustes razonables?",
+        "visibleEn": [
+          "superior-contexto",
+          "superior-14situaciones-ambasPracticas",
+          "superior-guiaApoyos",
+          "superior-guiaPractica",
+          "trabajo-14situaciones",
+          "trabajo-enlace-guia-trabajo",
+          "trabajo-privacidad",
+          "trabajo-oscuro",
+          "trabajo-acuerdoCompleto",
+          "trabajo-porRevisar",
+          "trabajo-elegirPersonas",
+          "instituto-1280-02-guia-practica",
+          "instituto-1280-03-practica",
+          "instituto-1280-03b-decision-compartir",
+          "instituto-1280-04-documento",
+          "instituto-390-02-guia-practica",
+          "instituto-390-03-practica",
+          "instituto-390-03b-decision-compartir",
+          "instituto-390-04-documento"
+        ]
+      }
+    ],
+    "fichas": [
+      "dua-3-2",
+      "tr-apoyo-puesto",
+      "tr-bloques-tiempo"
+    ],
+    "codigo": [
+      {
+        "linea": 2,
+        "texto": "// Prizma, etapa 1: menú de acciones DUA para todo el curso. Sin servidor: los datos quedan en localStorage."
+      },
+      {
+        "linea": 22,
+        "texto": "// Títulos oficiales en español de las consideraciones DUA 3.0 (CAST, 2024), citados como referencia."
+      },
+      {
+        "linea": 28,
+        "texto": "  \"5.1\": \"Usar múltiples medios para la comunicación\", \"5.2\": \"Usar múltiples herramientas para la construcción, la composición y la creatividad\", \"5.3\": \"Desarrollar fluidez con apoyos graduados para la práctica y el desempeño\", \"5.4\": \"Abordar sesgos relacionados con los modos de expresión y comunicación\","
+      },
+      {
+        "linea": 32,
+        "texto": "  \"9.1\": \"Reconocer expectativas, creencias y motivaciones\", \"9.2\": \"Desarrollar la conciencia de sí mismo y de los demás\", \"9.3\": \"Promover la reflexión individual y colectiva\", \"9.4\": \"Cultivar la empatía y las prácticas restaurativas\","
+      },
+      {
+        "linea": 60,
+        "texto": "const TIPOS_OBJETIVOS = { graduacion: \"Graduación de la complejidad\", priorizacion: \"Priorización\", temporalizacion: \"Temporalización\", enriquecimiento: \"Enriquecimiento\", eliminacion: \"Eliminación\" };"
+      },
+      {
+        "linea": 100,
+        "texto": "function seleccionValidada(valor, dua) {"
+      },
+      {
+        "linea": 102,
+        "texto": "  return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === \"string\" && catalogo.some((r) => r.id === id && (dua === \"trabajo\" ? r.tipo === \"trabajo\" : dua ? r.tipo === \"dua\" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));"
+      },
+      {
+        "linea": 124,
+        "texto": "    mantenerIndividual: Array.isArray(g.mantenerIndividual) ? [...new Set(g.mantenerIndividual.filter((id) => typeof id === \"string\" && catalogo.some((r) => r.id === id && r.tipo !== \"dua\" && r.dua)))] : [],"
+      },
+      {
+        "linea": 125,
+        "texto": "    pestana: [\"apoyos\", \"trabajo\"].includes(g.pestana) ? g.pestana : \"dua\","
+      },
+      {
+        "linea": 157,
+        "texto": "function versionCurso(r) { return r.dua ? catalogo.find((a) => a.tipo === \"dua\" && a.consideracion === r.dua && aplica(a)) : null; }"
+      },
+      {
+        "linea": 171,
+        "texto": "        if (!borradorDua) editarClase();"
+      },
+      {
+        "linea": 172,
+        "texto": "        if (!borradorDua.necesidades.includes(n.id)) borradorDua.necesidades.push(n.id);"
+      },
+      {
+        "linea": 288,
+        "texto": "  if (!borradorDua) borradorDua = { perfil: { ...estado.perfil, actividad: [...estado.perfil.actividad], evidencia: [...estado.perfil.evidencia] }, necesidades: [...estado.necesidades], momentos: [...estado.momentos], propositos: [...estado.propositos] };"
+      },
+      {
+        "linea": 297,
+        "texto": "  if (borradorDua) {"
+      },
+      {
+        "linea": 298,
+        "texto": "    estado.perfil = normalizarPerfil({ ...borradorDua.perfil, nivel: estado.perfil.nivel, practica: estado.perfil.practica, reflexion: estado.perfil.reflexion });"
+      },
+      {
+        "linea": 299,
+        "texto": "    estado.necesidades = normalizarNecesidades(borradorDua.necesidades); estado.momentos = normalizarMomentos(borradorDua.momentos); estado.propositos = [...borradorDua.propositos];"
+      },
+      {
+        "linea": 301,
+        "texto": "  borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso(\"paso-clase\", false);"
+      },
+      {
+        "linea": 311,
+        "texto": "      if (id === \"paso-clase\" && abrir && !borradorDua) editarClase(); else abrirPaso(id, abrir);"
+      },
+      {
+        "linea": 363,
+        "texto": "  $(\"#t-estudiante\").textContent = superior ? \"Ajustes razonables para un estudiante\" : \"Apoyos individualizados para un estudiante\";"
+      },
+      {
+        "linea": 367,
+        "texto": "    enlace.textContent = superior ? \"¿Cómo acordar ajustes razonables?\" : \"¿Cómo usar los apoyos individualizados?\";"
+      },
+      {
+        "linea": 380,
+        "texto": "      el(\"a\", { href: \"#dua\", text: \"Revisa las acciones DUA.\" }))));"
+      },
+      {
+        "linea": 658,
+        "texto": "let origenGuiaDUA = null, privacidadPendiente = false;"
+      },
+      {
+        "linea": 661,
+        "texto": "let estado = { trabajadores: [], trabajadorActivo: \"\", claseGuardada: false, mantenerIndividual: [], versionSituaciones: 2, asignatura: \"\", pestana: \"dua\", perfil: { nivel: \"\", practica: false, actividad: [], evidencia: [], meta: \"\", reflexion: \"\" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };"
+      },
+      {
+        "linea": 664,
+        "texto": "let borradorDua = null;"
+      },
+      {
+        "linea": 707,
+        "texto": "  for (const nombre of [\"dua\", \"apoyos\", \"trabajo\"]) {"
+      },
+      {
+        "linea": 724,
+        "texto": "    const id = [\"#dua\", \"#apoyos\", \"#trabajo\"].includes(location.hash) ? location.hash.slice(1) :"
+      },
+      {
+        "linea": 725,
+        "texto": "      !location.hash && [\"dua\", \"apoyos\", \"trabajo\"].includes(estado.pestana) ? estado.pestana : \"dua\";"
+      },
+      {
+        "linea": 729,
+        "texto": "  for (const [indice, id] of [\"dua\", \"apoyos\", \"trabajo\"].entries()) {"
+      },
+      {
+        "linea": 739,
+        "texto": "      evento.preventDefault(); activar([\"dua\", \"apoyos\", \"trabajo\"][siguiente]);"
+      },
+      {
+        "linea": 754,
+        "texto": "  if (!borradorDua) editarClase();"
+      },
+      {
+        "linea": 755,
+        "texto": "  borradorDua.necesidades = []; borradorDua.propositos = []; borradorDua.momentos = [];"
+      },
+      {
+        "linea": 756,
+        "texto": "  borradorDua.perfil = { ...borradorDua.perfil, meta: \"\", actividad: [], evidencia: [] };"
+      },
+      {
+        "linea": 797,
+        "texto": "    !r || typeof r.id !== \"string\" || !r.id.trim() || ![\"dua\", \"trabajo\", ...Object.keys(GRUPOS_APOYOS)].includes(r.tipo) ||"
+      },
+      {
+        "linea": 803,
+        "texto": "    (r.tipo === \"dua\" && (!Object.hasOwn(CONSIDERACIONES, r.consideracion) || !MOMENTOS.some(([id]) => id === r.momento))) ||"
+      },
+      {
+        "linea": 804,
+        "texto": "    (r.dua !== undefined && !Object.hasOwn(CONSIDERACIONES, r.dua)) ||"
+      },
+      {
+        "linea": 824,
+        "texto": "function compararPertinenciaDua(a, b, practica = practicaActiva()) {"
+      },
+      {
+        "linea": 827,
+        "texto": "function compararDua(a, b, practica = practicaActiva()) {"
+      },
+      {
+        "linea": 829,
+        "texto": "  return orden[a.momento] - orden[b.momento] || compararPertinenciaDua(a, b, practica);"
+      },
+      {
+        "linea": 831,
+        "texto": "function primerasDua(lista = visibles()) {"
+      },
+      {
+        "linea": 832,
+        "texto": "  return estado.necesidades.length || estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva() ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];"
+      },
+      {
+        "linea": 836,
+        "texto": "  return catalogo.filter((r) => r.tipo === \"dua\" && (!estado.momentos.length || estado.momentos.includes(r.momento)) && aplica(r))"
+      },
+      {
+        "linea": 838,
+        "texto": "    .sort((a, b) => compararDua(a, b, practica));"
+      },
+      {
+        "linea": 851,
+        "texto": "  const configuracion = borradorDua || estado;"
+      },
+      {
+        "linea": 863,
+        "texto": "    const acciones = catalogo.filter((r) => r.tipo === \"dua\" && r.momento === id && aplica(r));"
+      },
+      {
+        "linea": 875,
+        "texto": "    const b = el(\"button\", { type: \"button\", id: \"proposito-\" + id, class: \"chip \" + id, \"aria-pressed\": String(configuracion.propositos.includes(id)), title: \"Principio DUA: \" + p.principio },"
+      },
+      {
+        "linea": 887,
+        "texto": "  return estado.estudiantes.filter((e) => catalogo.some((a) => Object.hasOwn(e.seleccion, a.id) && a.tipo !== \"dua\" && aplica(a) && versionCurso(a)?.id === r.id)).length;"
+      },
+      {
+        "linea": 889,
+        "texto": "function avisoDua(r) { const n = estudiantesCubiertos(r); return n ? `Responde también a apoyos individuales de ${plural(n, \"estudiante\", \"estudiantes\")}` : \"\"; }"
+      },
+      {
+        "linea": 897,
+        "texto": "  const dua = r.tipo === \"dua\", trabajo = r.tipo === \"trabajo\", acceso = r.tipo === \"acceso\", persona = trabajo ? trabajadorActual() : estudianteActual(), prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : persona.seleccion);"
+      },
+      {
+        "linea": 900,
+        "texto": "  const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);"
+      },
+      {
+        "linea": 905,
+        "texto": "      !dua ? el(\"span\", { class: \"t-proposito\", text: tipoOficial(r) }) : el(\"span\", { class: \"t-proposito \" + prop }, el(\"span\", { class: \"tri\", \"aria-hidden\": \"true\" }), PROPOSITOS[prop].corto),"
+      },
+      {
+        "linea": 906,
+        "texto": "      !dua ? null : el(\"abbr\", { class: \"t-dua\", title: \"Consideración DUA 3.0: \" + CONSIDERACIONES[r.consideracion] }, \"DUA \" + r.consideracion)),"
+      },
+      {
+        "linea": 907,
+        "texto": "    dua && destacarMomento ? el(\"p\", { class: \"t-momento\", text: nombresMomentos()[r.momento] }) : null,"
+      },
+      {
+        "linea": 908,
+        "texto": "    dua && coincidenciasNecesidades(r).length ? el(\"p\", { class: \"t-razon\", text: \"Responde a: \" + coincidenciasNecesidades(r).map((n) => n.texto).join(\"; \") + \".\" }) : null,"
+      },
+      {
+        "linea": 909,
+        "texto": "    dua && practicaActiva() && esPractica(r) ? el(\"p\", { class: \"t-razon\", text: \"Recomendada porque marcaste: taller, laboratorio o terreno.\" }) : null,"
+      },
+      {
+        "linea": 911,
+        "texto": "    acceso ? el(\"p\", { class: \"t-razon\", text: \"Porque marcaste: \" + (esPractica(r) ? \"actividades prácticas\" + (dimensionesCoincidentes(r).length ? \"; \" : \"\") : \"\") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(\", \") + \".\" }) : dua && coincidencias(r).length ? el(\"p\", { class: \"t-razon\", text: \"Recomendada porque marcaste: \" + coincidencias(r).map(etiqueta).join(\", \") + \".\" }) : null,"
+      },
+      {
+        "linea": 913,
+        "texto": "    el(dua || trabajo || [\"objetivos\", \"practica-profesional\"].includes(r.tipo) ? \"h4\" : \"h3\", { text: r.titulo }),"
+      },
+      {
+        "linea": 914,
+        "texto": "    ofrecida ? el(\"p\", { class: \"aviso-cruzado\", role: \"status\", text: \"Ya está considerado en el DUA: \" + version.titulo }) : null,"
+      },
+      {
+        "linea": 915,
+        "texto": "    dua && estudiantesCubiertos(r) ? el(\"p\", { class: \"aviso-cruzado\", role: \"status\", text: avisoDua(r) }) : null,"
+      },
+      {
+        "linea": 921,
+        "texto": "          el(\"button\", { type: \"button\", class: \"boton\", id: \"individual-\" + r.id, text: \"No, mantener individual\", onclick: () => {"
+      },
+      {
+        "linea": 922,
+        "texto": "            estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById(\"version-\" + r.id).focus();"
+      },
+      {
+        "linea": 944,
+        "texto": "  const lista = visibles(), primeras = primerasDua(lista), destacadas = new Set(primeras.map((r) => r.id)), resto = lista.filter((r) => !destacadas.has(r.id));"
+      },
+      {
+        "linea": 946,
+        "texto": "    ...(primeras.length ? [el(\"section\", { \"aria-labelledby\": \"t-dua-empezar\" }, el(\"h3\", { id: \"t-dua-empezar\", text: \"Para empezar\" }), el(\"ul\", { class: \"tarjetas\" }, primeras.map((r) => tarjeta(r, true))))] : []),"
+      },
+      {
+        "linea": 957,
+        "texto": "  const seleccion = r.tipo === \"dua\" ? estado.seleccion : persona?.seleccion;"
+      },
+      {
+        "linea": 959,
+        "texto": "  if (r.tipo !== \"dua\") marcarRevision(persona);"
+      },
+      {
+        "linea": 981,
+        "texto": "    .sort((a, b) => a.tipo === \"dua\" && b.tipo === \"dua\" ? compararDua(a, b) : ordenApoyo(a) - ordenApoyo(b) || a.id.localeCompare(b.id, \"es\", { numeric: true }));"
+      },
+      {
+        "linea": 994,
+        "texto": "  $(\"#dua-seleccion\").replaceChildren(...sel.map((r) => itemSeleccion(r, null, \"quitar-clase-\")));"
+      },
+      {
+        "linea": 995,
+        "texto": "  $(\"#dua-seleccion-vacia\").hidden = sel.length > 0;"
+      },
+      {
+        "linea": 1023,
+        "texto": "  const p = borradorDua?.perfil || estado.perfil;"
+      },
+      {
+        "linea": 1042,
+        "texto": "    if (!borradorDua) editarClase();"
+      },
+      {
+        "linea": 1043,
+        "texto": "    borradorDua.perfil.meta = $(\"#meta\").value.slice(0, 500);"
+      },
+      {
+        "linea": 1044,
+        "texto": "    for (const nombre of [\"actividad\", \"evidencia\"]) borradorDua.perfil[nombre] = [...document.querySelectorAll(`input[name=\"${nombre}\"]:checked`)].map((c) => c.value);"
+      },
+      {
+        "linea": 1059,
+        "texto": "  const datos = { app: \"prizma\", version: 2, versionSituaciones: estado.versionSituaciones, catalogo: VERSION_CATALOGO, guardado, perfil: estado.perfil, claseGuardada: estado.claseGuardada, mantenerIndividual: estado.mantenerIndividual, seleccion: estado.seleccion, trabajadores: estado.trabajadores, trabajadorActivo: estado.trabajadorActivo, estudiantes: estado.estudiantes, estudianteActivo: estado.estudianteActivo, propositos: estado.propositos, necesidades: estado.necesidades, momentos: estado.momentos, asignatura: estado.asignatura };"
+      },
+      {
+        "linea": 1096,
+        "texto": "    estado = { ...normal, pestana: estado.pestana }; inclusionDocumento = null; inclusionTrabajo = null; borradorDua = null;"
+      },
+      {
+        "linea": 1134,
+        "texto": "const AVISO = \"Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.\";"
+      },
+      {
+        "linea": 1230,
+        "texto": "    ofrecida: r.tipo !== \"dua\" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),"
+      },
+      {
+        "linea": 1231,
+        "texto": "    dato: (r.tipo === \"dua\" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + \".\" + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : \"\")) + ` Respaldo: ${RESPALDO[r.respaldo]}.` + (r.tipo === \"dua\" && avisoDua(r) ? \" \" + avisoDua(r) + \".\" : \"\"),"
+      },
+      {
+        "linea": 1387,
+        "texto": "function mostrarGuiaDUA(origen = document.activeElement) {"
+      },
+      {
+        "linea": 1388,
+        "texto": "  const guia = $(\"#guia-dua\");"
+      },
+      {
+        "linea": 1390,
+        "texto": "  origenGuiaDUA = origen;"
+      },
+      {
+        "linea": 1393,
+        "texto": "  $(\"#t-guia-dua\").focus();"
+      },
+      {
+        "linea": 1396,
+        "texto": "function prepararGuiaDUA() {"
+      },
+      {
+        "linea": 1397,
+        "texto": "  document.querySelectorAll(\".enlace-guia-dua\").forEach((enlace) => enlace.addEventListener(\"click\", (evento) => {"
+      },
+      {
+        "linea": 1398,
+        "texto": "    evento.preventDefault(); mostrarGuiaDUA(enlace);"
+      },
+      {
+        "linea": 1400,
+        "texto": "  $(\"#guia-empezar\").addEventListener(\"click\", () => $(\"#guia-dua\").close(\"empezar\"));"
+      },
+      {
+        "linea": 1401,
+        "texto": "  $(\"#guia-dua\").addEventListener(\"close\", () => {"
+      },
+      {
+        "linea": 1402,
+        "texto": "    if ($(\"#guia-dua\").returnValue === \"empezar\") {"
+      },
+      {
+        "linea": 1403,
+        "texto": "      if (location.hash !== \"#dua\") history.pushState(null, \"\", \"#dua\");"
+      },
+      {
+        "linea": 1404,
+        "texto": "      mostrarPestana(\"dua\");"
+      },
+      {
+        "linea": 1407,
+        "texto": "    const destino = $(\"#guia-dua\").returnValue === \"empezar\" ? ($(\"#necesidades button\") || $(\"#meta\")) : origenGuiaDUA;"
+      },
+      {
+        "linea": 1436,
+        "texto": "  $(\"#t-guia-apoyos\").textContent = esSuperior() ? \"Cómo acordar ajustes razonables\" : \"Cómo usar los apoyos individualizados\";"
+      },
+      {
+        "linea": 1461,
+        "texto": "  prepararGuiaDUA();"
+      },
+      {
+        "linea": 1527,
+        "texto": "    history.replaceState(null, \"\", \"#dua\");"
+      }
+    ]
+  },
+  "fichas": {
+    "interfaz": [],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 342,
+        "texto": "function fichasPracticaProfesional(subtipo) {"
+      },
+      {
+        "linea": 356,
+        "texto": "    el(\"section\", {}, el(\"h3\", { text: nombreGrupoPractica(subtipo) }), el(\"ul\", { class: \"tarjetas\" }, fichasPracticaProfesional(subtipo).map(tarjeta)))) : []));"
+      },
+      {
+        "linea": 378,
+        "texto": "  $(\"#apoyos-sin-fichas\").replaceChildren(...situacionesSinApoyos().map((d) =>"
+      },
+      {
+        "linea": 551,
+        "texto": "  const grupo = (titulo, fichas) => el(\"section\", {}, el(\"h3\", { text: titulo }), el(\"ul\", { class: \"tarjetas\" }, fichas.map((r) => tarjeta(r))));"
+      },
+      {
+        "linea": 555,
+        "texto": "      const fichas = lista.filter((r) => r.subtipo === id && !ids.has(r.id)); return fichas.length ? grupo(nombre, fichas) : null;"
+      },
+      {
+        "linea": 805,
+        "texto": "    // Las fichas de trabajo se validan desde ya, aunque su pestaña aún no existe: nunca aplican a un nivel escolar."
+      }
+    ]
+  },
+  "recomendaciones": {
+    "interfaz": [],
+    "fichas": [],
+    "codigo": [
+      {
+        "linea": 1502,
+        "texto": "    const [r, f, n] = await Promise.all([...[\"data/recomendaciones.json\", \"data/fuentes.json\"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })), cargaNecesidades]);"
+      }
+    ]
+  }
+}
