@@ -1,0 +1,82 @@
+{
+  "entradaSha": {
+    "app.js": "12d6261c665e19b68b4b26fe51bed6ebb2b8c617a4b874e609eaf8be540cd592",
+    "index.html": "18a399fc6bd64462a9ca0681da824a4f40788e359054e521731c513b537ae9ff",
+    "styles.css": "f5a8de32fd8033f23f536f42cfe281bfb5fb5dfa582ad736d41b973dbbc5f6f9",
+    "data/recomendaciones.json": "929957d362599045e41e93712101de94e9b218e807cb555b74463edb7d446a97",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f",
+    "data/fuentes.json": "0d03d9f747ab7e4742f60c5878d0995132320f6c8b3c74a5cf63dbed7a3c5792",
+    "docs/auditorias/024-estudiantes/perfiles.json": "49e2d6bcc77cfa8c4e1f80fecd564df0ba7909f6852851cef63af34b53235c0a",
+    "docs/auditorias/024-estudiantes/resultados.json": "3179ac558d808999efe5411c0edfb3feac5300565aaff36448719a16d9f03679",
+    "docs/auditorias/026-reauditoria/perfiles.json": "da7bddd99269601d49cb678aca7d58c25a4ade37e5afd6201fb2c53e138254b7",
+    "docs/auditorias/026-reauditoria/revision-acceso.json": "fedbd05508c4e8e6e8cbbb3efb603fba5ed91fa3bc18a7aae58419530af6f6f1"
+  },
+  "mediciones": [
+    {
+      "n": 4,
+      "ancho": 1280,
+      "activo": "oral",
+      "titulo": "Apoyos para CO",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\" [pressed]",
+      "errores": []
+    },
+    {
+      "n": 4,
+      "ancho": 390,
+      "activo": "oral",
+      "titulo": "Apoyos para CO",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\" [pressed]",
+      "errores": [],
+      "contextoAlFinal": {
+        "tituloDialogo": "Filtros · CO",
+        "tituloEnPantalla": true,
+        "inicialesEnPantalla": false,
+        "selectorEnPantalla": false
+      }
+    },
+    {
+      "n": 10,
+      "ancho": 1280,
+      "activo": "desafio",
+      "titulo": "Apoyos para DE",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\"\n- button \"ID\"\n- button \"TA\"\n- button \"MO\"\n- button \"RU\"\n- button \"FA\"\n- button \"DE\" [pressed]",
+      "errores": [],
+      "recuadroDuaVisible": false,
+      "recuadroDua": null,
+      "necesidadMarcada": null
+    },
+    {
+      "n": 10,
+      "ancho": 390,
+      "activo": "desafio",
+      "titulo": "Apoyos para DE",
+      "presionados": 1,
+      "tecladoConservaCampos": true,
+      "ordenVmCoincide": true,
+      "sinDesborde": true,
+      "arbolSelector": "- button \"LE\"\n- button \"VI\"\n- button \"SE\"\n- button \"CO\"\n- button \"ID\"\n- button \"TA\"\n- button \"MO\"\n- button \"RU\"\n- button \"FA\"\n- button \"DE\" [pressed]",
+      "errores": [],
+      "contextoAlFinal": {
+        "tituloDialogo": "Filtros · DE",
+        "tituloEnPantalla": true,
+        "inicialesEnPantalla": false,
+        "selectorEnPantalla": false
+      },
+      "recuadroDuaVisible": false,
+      "recuadroDua": null,
+      "necesidadMarcada": null
+    }
+  ]
+}
