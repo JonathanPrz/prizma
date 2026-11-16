@@ -1,0 +1,30 @@
+[
+  {
+    "ancho": 1280,
+    "tema": "claro",
+    "axe": [],
+    "desborde": false,
+    "errores": []
+  },
+  {
+    "ancho": 1280,
+    "tema": "oscuro",
+    "axe": [],
+    "desborde": false,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "claro",
+    "axe": [],
+    "desborde": false,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "oscuro",
+    "axe": [],
+    "desborde": false,
+    "errores": []
+  }
+]

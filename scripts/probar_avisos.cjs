@@ -10,7 +10,7 @@ function visita(bloqueado = false, confirmada = false) {
   const abiertos = () => ids.map(id => nodos.get('#'+id)).filter(n => n.open);
   const c = vm.createContext({document: {
     activeElement: null,
-    querySelector: s => s === 'dialog[open]' ? abiertos()[0] || null : nodos.get(s) || null,
+    querySelector: s => s === 'dialog[open]' ? abiertos()[0] || null : nodos.get(s) || (nodos.set(s,nodo(s.replace(/^#/,''))),nodos.get(s)),
     querySelectorAll: s => s === 'dialog' ? ids.map(id => nodos.get('#'+id)) : s === '.enlace-guia-dua' ? guias : s === '.enlace-guia-apoyos' ? apoyos : s === '#privacidad, .enlace-privacidad' ? privacidad : [],
   },localStorage: {getItem(k) {if(bloqueado)throw Error('bloqueado');return almacen.get(k);},setItem(k,v) {if(bloqueado)throw Error('bloqueado');almacen.set(k,v);}},window:{matchMedia:()=>({matches:false})},location:{hash:'#dua'},history:{pushState(){}}});
   function nodo(id) {
@@ -22,7 +22,7 @@ function visita(bloqueado = false, confirmada = false) {
       close(valor=''){this.returnValue=valor;this.open=false;this.emit('close');},append(){},setAttribute(){},
     };
   }
-  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-filtros-apoyos','t-filtros-dialogo','revision-situaciones','revision-situaciones-texto','revision-situaciones-entendido','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura','practica-profesional'])nodos.set('#'+id,nodo(id));
+  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-filtros-apoyos','t-filtros-dialogo','revision-situaciones','revision-situaciones-texto','revision-situaciones-entendido','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura','practica-profesional','paso-descripcion-toggle'])nodos.set('#'+id,nodo(id));
   for(const id of ['dua','apoyos'])nodos.set('#panel-'+id+' .acciones-intro',nodo('intro-'+id));
   vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
   const run = code => vm.runInContext(code,c), n = id => nodos.get('#'+id);
@@ -43,11 +43,11 @@ for(const bloqueado of [false,true]) {
 // La privacidad de la primera escritura no depende de haber abierto una guía.
 for(const campo of ['iniciales','estudiante-ayuda','estudiante-voz']){
  const v=visita(),{run,n}=v;
- run('pintarSeleccion=()=>{}; pintarSelectorEstudiantes=()=>{}; actualizarConteoFiltros=()=>{}; escucharEstudiante()');
- n(campo).value=campo==='iniciales'?'AB':'Apoyo visual';n(campo).emit('input');assert(n('aviso-privacidad').open);assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'Apoyos para AB':'Apoyos para un estudiante');n('privacidad-entendido').emit('click');assert.equal(v.almacen.get('prizma.privacidad.v1'),'1');n(campo).emit('input');assert.equal(v.abiertos().length,0);
- run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'Ajustes razonables para AB':'Ajustes razonables para un estudiante');
+ run('pintarSeleccion=()=>{}; pintarSelectorEstudiantes=()=>{}; escucharEstudiante()');
+ n(campo).value=campo==='iniciales'?'AB':'Apoyo visual';n(campo).emit('input');assert(n('aviso-privacidad').open);assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'2. Apoyos sugeridos para AB':'2. Apoyos sugeridos para Estudiante 1');n('privacidad-entendido').emit('click');assert.equal(v.almacen.get('prizma.privacidad.v1'),'1');n(campo).emit('input');assert.equal(v.abiertos().length,0);
+ run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'2. Apoyos sugeridos para AB':'2. Apoyos sugeridos para Estudiante 1');
 }
-const sinIniciales=visita();sinIniciales.run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(sinIniciales.n('t-apoyos').textContent,'Ajustes razonables para un estudiante');
+const sinIniciales=visita();sinIniciales.run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(sinIniciales.n('t-apoyos').textContent,'2. Apoyos sugeridos para Estudiante 1');
 const recordada=visita(false,true);assert(recordada.run('privacidadAvisada'));recordada.privacidad[1].emit('click');assert(recordada.n('aviso-privacidad').open);
 const mochila=visita();const nota=mochila.nodo('nota');nota.dialogo=mochila.n('mochila');mochila.c.nota=nota;mochila.n('mochila').showModal();mochila.run('mostrarAvisoPrivacidad(nota)');assert(mochila.n('aviso-privacidad').open&&!mochila.n('mochila').open);mochila.n('privacidad-entendido').emit('click');assert(mochila.n('mochila').open);assert.equal(mochila.c.document.activeElement,nota);
 const html=leer('index.html'),tarea=leer('docs/tareas/022-guias-sin-emergentes.md');

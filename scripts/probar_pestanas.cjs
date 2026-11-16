@@ -6,7 +6,7 @@ const eventos = {}, nodos = new Map(), almacen = new Map();
 const telefono = {matches: false, addEventListener(tipo, fn) {this.cambiar = fn;}};
 let areas = [];
 const contexto = vm.createContext({
-  document: {querySelector: selector => selector === '#filtros-dialogo-cuerpo .filtros' ? nodos.get('#filtros-dialogo-cuerpo').hijo : nodos.get(selector), querySelectorAll: selector => selector === '#areas input:checked' ? areas : []},
+  document: {querySelector: selector => nodos.get(selector), querySelectorAll: selector => selector === '#areas input:checked' ? areas : []},
   location: {hash: ''}, history: {replaceState(a, b, hash) {contexto.location.hash = hash;}},
   window: {addEventListener(tipo, fn) {eventos[tipo] = fn;}, matchMedia: () => telefono},
   localStorage: {setItem(clave, valor) {almacen.set(clave, JSON.parse(valor));}},
@@ -17,22 +17,16 @@ function nodo(id) {
     setAttribute(k, v) {this.atributos[k] = v;},
     addEventListener(tipo, fn) {this.eventos[tipo] = fn;},
     append(hijo) {if (hijo.padre) hijo.padre.hijo = null; this.hijo = hijo; hijo.padre = this;},
-    showModal() {this.open = true; nodos.get(this.id === 'mochila' ? '#t-seleccion' : '#t-filtros-dialogo').focus();},
+    showModal() {this.open = true; nodos.get('#t-seleccion').focus();},
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['t-filtros-apoyos', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos', '.saltar', 'abrir-filtros', 'filtros-dialogo', 'filtros-dialogo-cuerpo', 'ver-resultados', 't-filtros-dialogo', 'limpiar-filtros', 'abrir-mochila', 'cerrar-mochila', 'mochila', 't-seleccion']) nodos.set(id === '.saltar' ? id : '#' + id, nodo(id));
-for (const id of ['dua', 'apoyos']) {
-  nodos.set('#panel-' + id + ' .acciones-intro', nodo('intro-' + id));
-  nodos.set('#filtros-' + id, nodo('filtros-' + id));
-  nodos.set('#lugar-filtros-' + id, nodo('lugar-filtros-' + id));
-  nodos.get('#lugar-filtros-' + id).append(nodos.get('#filtros-' + id));
-}
+for (const id of ['paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
-ejecutar('prepararPestanas(); prepararFiltros()');
+ejecutar('prepararPestanas()');
 assert.equal(contexto.location.hash, '#dua');
-ejecutar('estado.necesidades=null'); assert.equal(ejecutar('cantidadFiltros()'), 0); ejecutar('estado.necesidades=[]');
+
 for (const id of ['apoyos', 'dua', 'apoyos', 'dua']) {
   contexto.location.hash = '#' + id; eventos.hashchange();
   assert.equal(contexto.document.activeElement.id, 'tab-' + id);
@@ -57,30 +51,21 @@ nodos.get('.saltar').eventos.click({preventDefault() {}});
 assert.equal(contexto.document.activeElement.id, 'panel-apoyos');
 ejecutar('estado.pestana = "apoyos"'); contexto.location.hash = ''; ejecutar('prepararPestanas()');
 assert.equal(contexto.location.hash, '#apoyos');
-telefono.matches = true;
-nodos.get('#abrir-filtros').eventos.click();
-const original = nodos.get('#filtros-apoyos');
-assert.equal(nodos.get('#filtros-dialogo-cuerpo').hijo, original);
-assert.equal(contexto.document.activeElement.id, 't-filtros-dialogo');
-nodos.get('#ver-resultados').eventos.click();
-assert.equal(nodos.get('#lugar-filtros-apoyos').hijo, original);
-assert.equal(contexto.document.activeElement.id, 'abrir-filtros');
-nodos.get('#abrir-filtros').eventos.click(); telefono.matches = false; telefono.cambiar();
-assert.equal(nodos.get('#filtros-dialogo').open, false);
-assert.equal(contexto.document.activeElement.id, 'tab-apoyos');
-nodos.get('#abrir-mochila').eventos.click(); assert.equal(nodos.get('#mochila').open, true);
-assert.equal(contexto.document.activeElement.id, 't-seleccion');
-nodos.get('#cerrar-mochila').eventos.click(); assert.equal(contexto.document.activeElement.id, 'abrir-mochila');
-ejecutar('estado.pestana="dua"; estado.necesidades=["a"]; estado.propositos=["motivar"]; estado.momentos=["durante"]; estado.perfil={nivel:"basica", meta:"Meta", actividad:["crear"], evidencia:["grupo"]}; estado.seleccion={accion:"Nota"}; Object.assign(estudianteActual(), normalizarEstudiante({iniciales:"AB", dimensiones:{1:2}, ayuda:"Visual"}))');
-assert.equal(ejecutar('cantidadFiltros()'), 6);
-areas = [{checked: true}]; ejecutar('estado.pestana="apoyos"'); assert.equal(ejecutar('cantidadFiltros()'), 4);
-ejecutar('estado.pestana="dua"; sincronizarPerfil=()=>{}; pintarControles=actualizarConteoFiltros; pintarTarjetas=()=>{}; actualizarRespaldo=()=>{}; limpiarFiltros()');
-assert.equal(ejecutar('cantidadFiltros()'), 0);
-assert.equal(ejecutar('estado.perfil.nivel'), 'basica');
-assert.equal(ejecutar('estado.seleccion.accion'), 'Nota');
-assert.equal(ejecutar('estudianteActual().iniciales'), 'AB');
-assert.equal(ejecutar('estudianteActual().dimensiones[1]'), 2);
-assert.equal(ejecutar('estado.momentos.length'), 0);
-contexto.localStorage.setItem = () => {throw new Error('bloqueado');};
-assert.doesNotThrow(() => ejecutar('mostrarPestana("apoyos")'));
-console.log('Correcto: inicio, hash e historial, pestañas y teclado, foco, estado, filtros sin duplicación, cambio de ancho, contador, limpieza sin perder nivel/mochila y almacenamiento bloqueado.');
+
+// Width no longer moves controls into a modal; tabs keep their own inline steps.
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+for(const id of ['filtros-dialogo','abrir-filtros','lugar-filtros-dua','lugar-filtros-apoyos'])assert(!html.includes('id="'+id+'"'),id);
+for(const ancho of [390,1280]){
+ telefono.matches=ancho===390; ejecutar('mostrarPestana("dua"); abrirPaso("paso-clase",true)');
+ assert.equal(nodos.get('#paso-clase-cuerpo').hidden,false);assert.equal(nodos.get('#paso-clase-toggle').atributos['aria-expanded'],'true');
+ ejecutar('abrirPaso("paso-clase",false)');assert.equal(nodos.get('#paso-clase-resumen').hidden,false);
+}
+ejecutar('var pintadas=0;pintarSeleccion=()=>pintadas++');
+nodos.get('#abrir-mochila').eventos.click();assert.equal(ejecutar('pintadas'),1);assert(nodos.get('#mochila').open);assert.equal(contexto.document.activeElement.id,'t-seleccion');
+nodos.get('#cerrar-mochila').eventos.click();assert.equal(contexto.document.activeElement.id,'abrir-mochila');
+ejecutar('estado.perfil={nivel:"basica",practica:true,meta:"Meta",actividad:["crear"],evidencia:["grupo"],reflexion:"Resultado"};estado.necesidades=["a"];estado.seleccion={accion:"Nota"};Object.assign(estudianteActual(),normalizarEstudiante({iniciales:"JP2",dimensiones:{1:2},ayuda:"Visual"}));sincronizarPerfil=()=>{};pintarControles=()=>{};borradorDua={perfil:{...estado.perfil},necesidades:["a"],propositos:["motivar"],momentos:["durante"]};limpiarFiltros()');
+assert.equal(ejecutar('estado.necesidades[0]'),'a','Limpiar el borrador no actualiza resultados guardados');
+assert.equal(ejecutar('borradorDua.necesidades.length'),0);assert.equal(ejecutar('borradorDua.perfil.actividad.length'),0);
+assert.equal(ejecutar('estado.perfil.nivel'),'basica');assert.equal(ejecutar('estado.perfil.practica'),true);assert.equal(ejecutar('estado.perfil.reflexion'),'Resultado');assert.equal(ejecutar('estado.seleccion.accion'),'Nota');assert.equal(ejecutar('estudianteActual().iniciales'),'JP2');
+contexto.localStorage.setItem=()=>{throw Error('bloqueado');};assert.doesNotThrow(()=>ejecutar('mostrarPestana("apoyos")'));
+console.log('Correcto: hash, historial, pestañas y teclado, foco y persistencia; pasos en ambos anchos sin diálogo ni controles movidos, mochila y limpieza del borrador sin perder clase ni casos, almacenamiento bloqueado.');
