@@ -1,0 +1,62 @@
+[
+  {
+    "ancho": 1280,
+    "tema": "light",
+    "modalidad": true,
+    "seguridad": true,
+    "criterioObligatorio": true,
+    "protocoloSincronizado": true,
+    "pdf": [
+      "estudiante",
+      "trabajo"
+    ],
+    "persistencia": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 1280,
+    "tema": "dark",
+    "modalidad": true,
+    "seguridad": true,
+    "criterioObligatorio": true,
+    "protocoloSincronizado": true,
+    "pdf": [
+      "estudiante",
+      "trabajo"
+    ],
+    "persistencia": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "light",
+    "modalidad": true,
+    "seguridad": true,
+    "criterioObligatorio": true,
+    "protocoloSincronizado": true,
+    "pdf": [
+      "estudiante",
+      "trabajo"
+    ],
+    "persistencia": true,
+    "sinDesborde": true,
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "dark",
+    "modalidad": true,
+    "seguridad": true,
+    "criterioObligatorio": true,
+    "protocoloSincronizado": true,
+    "pdf": [
+      "estudiante",
+      "trabajo"
+    ],
+    "persistencia": true,
+    "sinDesborde": true,
+    "errores": []
+  }
+]

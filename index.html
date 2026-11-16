@@ -133,6 +133,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <div id="paso-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-caso" class="perfil-campos">        <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" aria-describedby="iniciales-ayuda iniciales-duplicadas" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
         <p id="iniciales-duplicadas" class="ayuda" role="status"></p>
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
+        <label for="modalidad">¿Qué usa hoy para comunicarse o acceder?<select id="modalidad"><option value="">No aplica</option><option value="senas">Lengua de señas</option><option value="braille">Braille</option><option value="ampliacion">Lupa o ampliación</option><option value="caa">Tablero o comunicación aumentativa</option><option value="lengua">Otra lengua materna</option></select></label>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <label id="practica-profesional-campo" hidden><input type="checkbox" id="practica-profesional"> Este estudiante hará su práctica profesional<span class="ayuda">Práctica en una empresa o institución, fuera de las clases</span></label>
@@ -146,6 +147,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
+      <p id="modalidad-revisar" role="status"></p><div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
       <div id="apoyos-resultados"></div>
         <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83)</p>
         <p id="objetivos-superior" class="ayuda" hidden>En superior no se adecuan los objetivos: se hacen ajustes razonables</p>
@@ -155,10 +157,12 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
           <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
         </label>
         <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
+        <label><input type="checkbox" id="protocolo-objetivos"> ¿Existe un PAEC, un PACI o el protocolo DEC?</label>
         <div id="objetivos-tarjetas" class="grupos-momentos"></div>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
         <summary>Apoyos ante desregulación</summary><p>Qué hacer antes, durante y después de una crisis.</p>
+        <label><input type="checkbox" id="protocolo-dec"> ¿Existe un PAEC, un PACI o el protocolo DEC?</label>
         <div id="desregulacion-resultados"></div>
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
@@ -180,6 +184,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <fieldset><legend>¿Con quiénes se acordó?</legend><div id="roles-acuerdo" class="opciones-acuerdo"></div></fieldset>
     <label for="fecha-acuerdo">Fecha del acuerdo<input type="date" id="fecha-acuerdo" required></label>
     <label for="revision-acuerdo">Próxima revisión<input type="date" id="revision-acuerdo" required></label>
+    <label for="criterio-acuerdo">¿Cómo sabremos que funciona?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required></textarea></label>
     <p id="acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos" class="boton boton-principal">Guardar acuerdos</button>
   </form></div>
 </section>
@@ -197,12 +202,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <p id="trabajo-duplicadas" class="ayuda" role="status"></p>
 <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
 <label for="trabajo-puesto">Tipo de puesto<input type="text" id="trabajo-puesto" maxlength="60" aria-describedby="trabajo-puesto-ayuda"><span id="trabajo-puesto-ayuda" class="ayuda">Por ejemplo: administrativo, bodega, atención de público. No escribas el nombre de la empresa</span></label>
+<label for="trabajo-modalidad">¿Qué usa hoy para comunicarse o acceder?<select id="trabajo-modalidad"><option value="">No aplica</option><option value="senas">Lengua de señas</option><option value="braille">Braille</option><option value="ampliacion">Lupa o ampliación</option><option value="caa">Tablero o comunicación aumentativa</option><option value="lengua">Otra lengua materna</option></select></label>
 <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="trabajo-areas"></div></fieldset>
 <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="trabajo-dimensiones" class="dimensiones-casos"></div></div>
 <label for="trabajo-ayuda">¿Qué le ayuda?<textarea id="trabajo-ayuda" maxlength="300" rows="2"></textarea></label>
 <label for="trabajo-voz">¿Qué dice la persona?<textarea id="trabajo-voz" maxlength="300" rows="2" aria-describedby="trabajo-voz-ayuda"></textarea><span id="trabajo-voz-ayuda" class="ayuda">Lo que propone, lo que le preocupa. No escribas diagnósticos</span></label>
 <p id="trabajo-descripcion-error" role="alert"></p><button type="submit" id="guardar-descripcion-trabajo" class="boton boton-principal">Guardar descripción</button></form></div></section>
-<section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p class="ayuda">Sin diagnósticos: describe las tareas y las barreras. La persona decide qué contar.</p><div id="trabajo-tarjetas"></div><button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button></section>
+<section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p class="ayuda">Sin diagnósticos: describe las tareas y las barreras. La persona decide qué contar.</p><div id="trabajo-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div><div id="trabajo-tarjetas"></div><button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button></section>
 <p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden>Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
 <section id="trabajo-acuerdo" class="paso">
 <h2><button type="button" id="trabajo-acuerdo-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-acuerdo-cuerpo">3. Acuerdos</button></h2>
@@ -211,6 +217,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <fieldset><legend>¿Con quiénes se acordó?</legend><div id="trabajo-roles" class="opciones-acuerdo"></div></fieldset>
 <label for="trabajo-fecha">Fecha del acuerdo<input type="date" id="trabajo-fecha" required></label>
 <label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label>
+<label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label>
+<label for="trabajo-compartir">¿Qué decidió compartir la persona y con quién?<textarea id="trabajo-compartir" maxlength="300" rows="2"></textarea></label>
 <p id="trabajo-acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos-trabajo" class="boton boton-principal">Guardar acuerdos</button></form></div></section>
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>+ Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>

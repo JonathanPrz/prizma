@@ -19,7 +19,7 @@ async function probar() {
   const url = 'http://127.0.0.1:' + servidor.address().port;
   let navegador;
   try {
-    navegador = await chromium.launch({executablePath: process.env.CHROMIUM_BIN || (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined), headless: true, args: ['--no-sandbox']});
+    navegador = await chromium.launch({executablePath: process.env.CHROMIUM_BIN || undefined, headless: true, args: ['--no-sandbox']});
     const capturas = path.join(raiz, 'docs/marca/037-filtros'); fs.mkdirSync(capturas, {recursive: true});
     for (const width of [1280, 390]) for (const colorScheme of ['light', 'dark']) {
       const p = await navegador.newPage({viewport: {width, height: 900}, colorScheme, reducedMotion: 'reduce'}), errores = [];

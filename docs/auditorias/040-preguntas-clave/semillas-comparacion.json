@@ -1,0 +1,731 @@
+{
+  "base": "484cf14",
+  "fuenteAntes": "c4744340f19d33d9c75752eee15e2a55ab130ec417f1654e9da0e54f6a37a1e7",
+  "fuenteDespues": "394809c05de1be6562e1daa2e1e1095e23c027544e7d102ce5c1e27bcf2e6405",
+  "antes": [
+    {
+      "id": 1,
+      "esperados": {
+        "encontrados": [
+          "acc-2-audio",
+          "acc-2-pictogramas",
+          "acc-2-tiempo",
+          "acc-8-teclado"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-2-audio",
+          "acc-2-tiempo",
+          "acc-8-teclado"
+        ],
+        "ausentes": [
+          "acc-2-pictogramas"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "2.2",
+          "2.5",
+          "1.2",
+          "5.3"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "2.2"
+        ],
+        "ausentes": [
+          "2.5",
+          "1.2",
+          "5.3"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "esperados": {
+        "encontrados": [
+          "acc-6-audicion",
+          "acc-3-escrito",
+          "prac-rotulos",
+          "prac-recorrido"
+        ],
+        "ausentes": [
+          "prac-procedimiento"
+        ]
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-6-audicion",
+          "acc-3-escrito"
+        ],
+        "ausentes": [
+          "prac-rotulos",
+          "prac-recorrido",
+          "prac-procedimiento"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "1.2",
+          "3.2",
+          "2.5"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "3.2"
+        ],
+        "ausentes": [
+          "1.2",
+          "2.5"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "esperados": {
+        "encontrados": [
+          "acc-7-transiciones",
+          "acc-1-agenda",
+          "acc-7-tranquilo",
+          "dec-antes-gatillantes",
+          "dec-antes-refugio",
+          "acc-4-recreo"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-7-transiciones",
+          "acc-4-recreo"
+        ],
+        "ausentes": [
+          "acc-1-agenda",
+          "acc-7-tranquilo",
+          "dec-antes-gatillantes",
+          "dec-antes-refugio"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "6.2",
+          "7.4",
+          "9.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": [
+          "6.2",
+          "7.4",
+          "9.2"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "esperados": {
+        "encontrados": [
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-10-familia",
+          "acc-10-cultura",
+          "acc-2-pictogramas"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-10-cultura"
+        ],
+        "ausentes": [
+          "acc-10-familia",
+          "acc-2-pictogramas"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "2.3",
+          "1.3",
+          "2.1"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "2.3",
+          "1.3"
+        ],
+        "ausentes": [
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "esperados": {
+        "encontrados": [
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-compactar",
+          "acc-14-pares",
+          "obj-enriquecimiento-historia"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-compactar"
+        ],
+        "ausentes": [
+          "acc-14-pares",
+          "obj-enriquecimiento-historia"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "8.2",
+          "7.1"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "7.1"
+        ],
+        "ausentes": [
+          "8.2"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "esperados": {
+        "encontrados": [
+          "sup-plazos",
+          "sup-pausas",
+          "sup-remoto",
+          "pp-plan-superior",
+          "pp-c-ambiente",
+          "pp-e-compartir",
+          "sup-tiempo",
+          "pp-e-acuerdo"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "sup-plazos",
+          "sup-remoto",
+          "sup-tiempo"
+        ],
+        "ausentes": [
+          "sup-pausas",
+          "pp-plan-superior",
+          "pp-c-ambiente",
+          "pp-e-compartir",
+          "pp-e-acuerdo"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      }
+    },
+    {
+      "id": 7,
+      "esperados": {
+        "encontrados": [
+          "acc-8-accesible",
+          "acc-8-desplazamiento",
+          "acc-8-teclado",
+          "acc-8-transcribe",
+          "acc-8-materiales"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-8-accesible",
+          "acc-8-desplazamiento",
+          "acc-8-materiales"
+        ],
+        "ausentes": [
+          "acc-8-teclado",
+          "acc-8-transcribe"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "4.1",
+          "4.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": [
+          "4.1",
+          "4.2"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "esperados": {
+        "encontrados": [
+          "tr-alertas-visuales",
+          "tr-mensajes-escritos",
+          "tr-subtitulos",
+          "tr-analizar",
+          "tr-privacidad"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "tr-alertas-visuales",
+          "tr-mensajes-escritos",
+          "tr-subtitulos"
+        ],
+        "ausentes": [
+          "tr-analizar",
+          "tr-privacidad"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      }
+    },
+    {
+      "id": 9,
+      "esperados": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "7.4",
+          "8.4",
+          "9.4",
+          "9.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "7.4",
+          "8.4"
+        ],
+        "ausentes": [
+          "9.4",
+          "9.2"
+        ]
+      }
+    }
+  ],
+  "despues": [
+    {
+      "id": 1,
+      "esperados": {
+        "encontrados": [
+          "acc-2-audio",
+          "acc-2-pictogramas",
+          "acc-2-tiempo",
+          "acc-8-teclado"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-2-audio",
+          "acc-2-tiempo",
+          "acc-8-teclado"
+        ],
+        "ausentes": [
+          "acc-2-pictogramas"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "2.2",
+          "2.5",
+          "1.2",
+          "5.3"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "2.2"
+        ],
+        "ausentes": [
+          "2.5",
+          "1.2",
+          "5.3"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "esperados": {
+        "encontrados": [
+          "acc-6-audicion",
+          "acc-3-escrito",
+          "prac-rotulos",
+          "prac-recorrido"
+        ],
+        "ausentes": [
+          "prac-procedimiento"
+        ]
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-6-audicion",
+          "acc-3-escrito"
+        ],
+        "ausentes": [
+          "prac-rotulos",
+          "prac-recorrido",
+          "prac-procedimiento"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "1.2",
+          "3.2",
+          "2.5"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "3.2"
+        ],
+        "ausentes": [
+          "1.2",
+          "2.5"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "esperados": {
+        "encontrados": [
+          "acc-7-transiciones",
+          "acc-1-agenda",
+          "acc-7-tranquilo",
+          "dec-antes-gatillantes",
+          "dec-antes-refugio",
+          "acc-4-recreo"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-7-transiciones",
+          "acc-4-recreo"
+        ],
+        "ausentes": [
+          "acc-1-agenda",
+          "acc-7-tranquilo",
+          "dec-antes-gatillantes",
+          "dec-antes-refugio"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "6.2",
+          "7.4",
+          "9.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": [
+          "6.2",
+          "7.4",
+          "9.2"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "esperados": {
+        "encontrados": [
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-10-familia",
+          "acc-10-cultura",
+          "acc-2-pictogramas"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-10-cultura"
+        ],
+        "ausentes": [
+          "acc-10-familia",
+          "acc-2-pictogramas"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "2.3",
+          "1.3",
+          "2.1"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "2.3",
+          "1.3"
+        ],
+        "ausentes": [
+          "2.1"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "esperados": {
+        "encontrados": [
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-compactar",
+          "acc-14-pares",
+          "obj-enriquecimiento-historia"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-compactar"
+        ],
+        "ausentes": [
+          "acc-14-pares",
+          "obj-enriquecimiento-historia"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "8.2",
+          "7.1"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "7.1"
+        ],
+        "ausentes": [
+          "8.2"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "esperados": {
+        "encontrados": [
+          "sup-plazos",
+          "sup-pausas",
+          "sup-remoto",
+          "pp-plan-superior",
+          "pp-c-ambiente",
+          "pp-e-compartir",
+          "sup-tiempo",
+          "pp-e-acuerdo"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "sup-plazos",
+          "sup-remoto",
+          "sup-tiempo"
+        ],
+        "ausentes": [
+          "sup-pausas",
+          "pp-plan-superior",
+          "pp-c-ambiente",
+          "pp-e-compartir",
+          "pp-e-acuerdo"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      }
+    },
+    {
+      "id": 7,
+      "esperados": {
+        "encontrados": [
+          "acc-8-accesible",
+          "acc-8-desplazamiento",
+          "acc-8-teclado",
+          "acc-8-transcribe",
+          "acc-8-materiales"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "acc-8-accesible",
+          "acc-8-desplazamiento",
+          "acc-8-materiales"
+        ],
+        "ausentes": [
+          "acc-8-teclado",
+          "acc-8-transcribe"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "4.1",
+          "4.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": [
+          "4.1",
+          "4.2"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "esperados": {
+        "encontrados": [
+          "tr-alertas-visuales",
+          "tr-mensajes-escritos",
+          "tr-subtitulos",
+          "tr-analizar",
+          "tr-privacidad"
+        ],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [
+          "tr-alertas-visuales",
+          "tr-mensajes-escritos",
+          "tr-subtitulos"
+        ],
+        "ausentes": [
+          "tr-analizar",
+          "tr-privacidad"
+        ]
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      }
+    },
+    {
+      "id": 9,
+      "esperados": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "esperadosPrimero": {
+        "encontrados": [],
+        "ausentes": []
+      },
+      "excluidosPresentes": [],
+      "excluidosPrimero": [],
+      "dua": {
+        "encontrados": [
+          "7.4",
+          "8.4",
+          "9.4",
+          "9.2"
+        ],
+        "ausentes": []
+      },
+      "duaPrimero": {
+        "encontrados": [
+          "7.4",
+          "8.4"
+        ],
+        "ausentes": [
+          "9.4",
+          "9.2"
+        ]
+      }
+    }
+  ]
+}

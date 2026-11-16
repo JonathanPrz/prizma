@@ -67,6 +67,36 @@ const TIPOS_PRACTICA = { institucion: "Lo que hace la institución", centro: "Lo
 const PIE_PRACTICA = "Documento preparado con el estudiante. Contiene solo lo que decidió compartir.";
 const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales", "practica-profesional": "Apoyos para la práctica" };
 const ROLES_ACUERDO = { estudiante: "Estudiante", familia: "Familia o apoderado", equipo: "Equipo de apoyo", docente: "Otro docente", inclusion: "Unidad de inclusión" };
+const MODALIDADES = { "": "No aplica", senas: "Lengua de señas", braille: "Braille", ampliacion: "Lupa o ampliación", caa: "Tablero o comunicación aumentativa", lengua: "Otra lengua materna" };
+// Única exclusión de modalidad: requiere revisión de Claude; las fichas multiformato conservan sus alternativas.
+const EXCLUSIONES_MODALIDAD = { ampliacion: ["acc-6-braille"] };
+const APOYOS_FORMA = ["acc-2-audio", "acc-8-teclado", "acc-8-transcribe", "acc-2-tiempo", "prac-tiempo", "acc-9-jornada", "acc-12-tiempo", "acc-12-opciones", "acc-2-registro", "acc-1-organizador", "sup-tiempo", "sup-formatos", "sup-caa", "sup-oral-progresivo", "prac-evaluar", "prac-asistente", "tr-respuesta-oral"];
+const IDS_SEGURIDAD = ["prac-rotulos", "prac-evacuacion"];
+function modalidadValida(valor) { return typeof valor === "string" && Object.hasOwn(MODALIDADES, valor) ? valor : ""; }
+function compatibleModalidad(r, e = estudianteActual()) { return !(EXCLUSIONES_MODALIDAD[modalidadValida(e?.modalidad)] || []).includes(r.id); }
+function seguridadActiva(e, trabajo = false) { return Boolean(e && [6, 13, 8].some(d => e.dimensiones[d]) && (trabajo || practicaActiva() || nivelPracticaProfesional() && e.practicaProfesional)); }
+function textoModalidad(texto, r, e) {
+  if (e?.modalidad !== "ampliacion") return texto;
+  // Estas fichas ofrecen formatos alternativos; no se excluye su parte compatible con ampliación.
+  if (r.id === "sup-vision") return texto.replace("ampliado, en Braille o", "ampliado o");
+  if (r.id === "tr-lector-braille") return texto.replace("lector de pantalla, ampliación o línea Braille", "lector de pantalla o ampliación");
+  if (r.id === "tr-formularios-voz") return texto.replace("salida de voz o Braille", "salida de voz");
+  return texto;
+}
+function pasosApoyo(r, e) {
+  const pasos = r.como.map(t => textoModalidad(textoPublico(t), r, e));
+  return e?.modalidad === "senas" && ["acc-6-audicion", "sup-audicion"].includes(r.id) ? ["Coordina un intérprete de lengua de señas con el estudiante y el equipo de apoyo.", ...pasos] : pasos;
+}
+function pintarSeguridad(trabajo = false) {
+  const e = trabajo ? trabajadorActual() : estudianteActual(), caja = $(trabajo ? "#trabajo-seguridad" : "#estudiante-seguridad");
+  const activa = seguridadActiva(e, trabajo); caja.hidden = !activa;
+  const fichas = activa ? catalogo.filter(r => trabajo ? r.id === "tr-alertas-visuales" : aplica(r) && (IDS_SEGURIDAD.includes(r.id) || e.practicaProfesional && nivelPracticaProfesional() && r.id === "pp-seguridad")) : [];
+  caja.replaceChildren(...(activa ? [el("p", { text: "Revisa rótulos, evacuación y alertas antes de comenzar. Acuerda las medidas con la persona y con quienes están a cargo de la seguridad." }), ...fichas.map(r => el("button", { type: "button", class: "boton", text: "Revisar: " + textoModalidad(r.titulo, r, e), onclick: () => {
+    const destino = document.getElementById("elegir-" + r.id); if (!destino) return;
+    for (let n = destino.parentElement; n; n = n.parentElement) if (n.tagName === "DETAILS") n.open = true;
+    destino.focus(); destino.scrollIntoView({ block: "center" });
+  } }))] : []));
+}
 function fechaValida(valor) {
   return typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor) && Number.isFinite(Date.parse(valor)) && new Date(valor).toISOString().slice(0, 10) === valor;
 }
@@ -74,8 +104,10 @@ function normalizarAcuerdo(valor, permitidos = ROLES_ACUERDO) {
   const a = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   const roles = Array.isArray(a.roles) ? [...new Set(a.roles.filter((r) => Object.hasOwn(permitidos, r)))] : [];
   const fecha = fechaValida(a.fecha) ? a.fecha : "", revision = fechaValida(a.revision) ? a.revision : "";
-  const valido = roles.length && fecha && revision > fecha;
-  return { roles, fecha, revision, estado: a.estado === "por-revisar" ? "por-revisar" : valido && a.estado === "completo" ? "completo" : "sin-acuerdos" };
+  const criterio = typeof a.criterio === "string" ? a.criterio.slice(0, 200) : "";
+  const validoBase = roles.length && fecha && revision > fecha;
+  const valido = validoBase && criterio.trim();
+  return { roles, fecha, revision, criterio, estado: a.estado === "por-revisar" || a.estado === "completo" && validoBase && !criterio.trim() ? "por-revisar" : valido && a.estado === "completo" ? "completo" : "sin-acuerdos" };
 }
 function normalizarEstudiante(valor) {
   const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
@@ -84,6 +116,7 @@ function normalizarEstudiante(valor) {
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?$/.test(e.iniciales) ? e.iniciales : "",
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
+    modalidad: modalidadValida(e.modalidad), protocolo: e.protocolo === true,
     practicaProfesional: e.practicaProfesional === true,
     descripcionGuardada: typeof e.descripcionGuardada === "boolean" ? e.descripcionGuardada : Object.keys(dimensiones).some((k) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(dimensiones[k]) && dimensiones[k] >= 1 && dimensiones[k] <= 3),
     acuerdo: normalizarAcuerdo(e.acuerdo),
@@ -96,7 +129,7 @@ function estudianteActual() { return estado.estudiantes.find((e) => e.id === est
 function nombreEstudiante(e) { return e.iniciales || `Estudiante ${estado.estudiantes.indexOf(e) + 1}`; }
 // Mediodía evita que la zona horaria cambie el día de una fecha AAAA-MM-DD.
 function fechaLarga(iso) { return fechaValida(iso) ? new Date(iso + "T12:00:00").toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" }) : ""; }
-function datosEstudiante(e) { return Boolean(e.acuerdo?.roles.length || e.acuerdo?.fecha || e.practicaProfesional || e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
+function datosEstudiante(e) { return Boolean(e.modalidad || e.protocolo || e.acuerdo?.criterio || e.acuerdo?.roles.length || e.acuerdo?.fecha || e.practicaProfesional || e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
 function seleccionValidada(valor, dua) {
   const v = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === "string" && catalogo.some((r) => r.id === id && (dua === "trabajo" ? r.tipo === "trabajo" : dua ? r.tipo === "dua" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));
@@ -216,9 +249,9 @@ function esPractica(r) { return r.contextos.includes("practica"); }
 function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
 function practicaActiva() { return estado.perfil.practica && hayPracticas(); }
 function practicasVisibles() {
-  return estado.perfil.practica ? catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && esPractica(r) && puntaje(r) > 0).sort(compararAcceso) : [];
+  return catalogo.filter(r => r.tipo === "acceso" && aplica(r) && esPractica(r) && compatibleModalidad(r) && (estado.perfil.practica && puntaje(r) > 0 || seguridadActiva(estudianteActual()) && IDS_SEGURIDAD.includes(r.id))).sort(compararAcceso);
 }
-function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && puntaje(r)).sort(compararAcceso); }
+function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && compatibleModalidad(r) && puntaje(r)).sort(compararAcceso); }
 function situacionesSinApoyos() {
   return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
@@ -228,6 +261,8 @@ function erroresAcuerdo(e, trabajo = false) {
   const a = e.acuerdo || normalizarAcuerdo(), errores = [], roles = trabajo ? Object.keys(ROLES_TRABAJO) : rolesPermitidos();
   if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) errores.push("Guarda una descripción con al menos una situación.");
   if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length) errores.push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
+  if (typeof a.criterio !== "string" || !a.criterio.trim() || a.criterio.length > 200) errores.push("Indica cómo sabremos que funciona (máximo 200 caracteres).");
+  if (catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && !compatibleModalidad(r, e))) errores.push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
   if (!a.roles.some((r) => roles.includes(r))) errores.push("Elige al menos un rol.");
   if (a.roles.some((r) => !roles.includes(r))) errores.push("Revisa los roles para este nivel.");
   if (!fechaValida(a.fecha)) errores.push("Indica una fecha del acuerdo válida.");
@@ -276,6 +311,7 @@ function sincronizarAcuerdos() {
     });
     return el("label", {}, campo, ROLES_ACUERDO[id]);
   }));
+  $("#criterio-acuerdo").value = a.criterio;
   $("#fecha-acuerdo").value = a.fecha; $("#revision-acuerdo").value = a.revision;
   $("#acuerdos-error").textContent = ""; $("#descripcion-error").textContent = "";
 }
@@ -410,6 +446,9 @@ function pintarApoyos() {
   $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
     grupoPlegado(nombre, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)), "Qué hacer antes, durante y después de una crisis.")));
+  for (const id of ["protocolo-objetivos", "protocolo-dec"]) $("#" + id).checked = estudianteActual().protocolo;
+  $("#modalidad-revisar").textContent = catalogo.some(r => Object.hasOwn(estudianteActual().seleccion, r.id) && !compatibleModalidad(r)) ? "Revisa los apoyos elegidos para la modalidad actual en Mi mochila." : "";
+  pintarSeguridad();
   $("#apoyos-estado").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? `${lista.length + practicas.length} ${superior ? "ajustes razonables sugeridos" : "adecuaciones de acceso sugeridas"}` : "Marca al menos una situación para ver apoyos.";
 }
 function actualizarArea(boton, nombre, ids, persona) {
@@ -426,6 +465,7 @@ function botonArea(nombre, ids, persona, grupo, id) {
 function sincronizarEstudiante() {
   pintarSelectorEstudiantes();
   $("#iniciales").value = estudianteActual().iniciales;
+  $("#modalidad").value = estudianteActual().modalidad;
   $("#estudiante-ayuda").value = estudianteActual().ayuda;
   $("#estudiante-voz").value = estudianteActual().voz;
   const areas = $("#areas"); areas.replaceChildren();
@@ -459,6 +499,10 @@ function sincronizarEstudiante() {
   pintarApoyos();
 }
 function escucharEstudiante() {
+  $("#modalidad").addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e.modalidad = modalidadValida(ev.target.value); guardar(); pintarApoyos(); pintarSeleccion(); });
+  for (const id of ["protocolo-objetivos", "protocolo-dec"]) $("#" + id).addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e.protocolo = ev.target.checked; guardar(); pintarApoyos(); });
+  $("#criterio-acuerdo").addEventListener("input", ev => { const e = estudianteActual(); marcarRevision(e); e.acuerdo.criterio = ev.target.value.slice(0, 200); guardar(); pintarEstadoCasos(); if (!privacidadAvisada && ev.target.value) mostrarAvisoPrivacidad(ev.target); });
+
   $("#practica-profesional").addEventListener("change", (evento) => {
     marcarRevision(estudianteActual());
     estudianteActual().practicaProfesional = evento.target.checked === true;
@@ -509,7 +553,8 @@ const PIE_TRABAJO = "Contiene datos de una persona trabajadora. Guárdalo con re
 const AVISO_TRABAJO = "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.";
 function normalizarTrabajador(valor) {
   const e = normalizarEstudiante(valor);
-  return { iniciales: e.iniciales, dimensiones: e.dimensiones, ayuda: e.ayuda, voz: e.voz, descripcionGuardada: e.descripcionGuardada,
+  return { iniciales: e.iniciales, dimensiones: e.dimensiones, ayuda: e.ayuda, voz: e.voz, descripcionGuardada: e.descripcionGuardada, modalidad: e.modalidad,
+    compartir: typeof valor?.compartir === "string" ? valor.compartir.slice(0, 300) : "",
     tipoPuesto: typeof valor?.tipoPuesto === "string" ? valor.tipoPuesto.slice(0, 60) : "",
     acuerdo: normalizarAcuerdo(valor?.acuerdo, ROLES_TRABAJO), seleccion: seleccionValidada(valor?.seleccion, "trabajo") };
 }
@@ -524,7 +569,7 @@ function normalizarTrabajadores(lista) {
 function trabajadorActual() { return (estado.trabajadores || []).find((e) => e.id === estado.trabajadorActivo) || estado.trabajadores?.[0]; }
 function nombreTrabajador(e) { return e.iniciales || `Persona ${estado.trabajadores.indexOf(e) + 1}`; }
 function tituloTrabajador(e) { return "Ajustes para " + nombreTrabajador(e); }
-function datosTrabajador(e) { return Boolean(e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.acuerdo.roles.length || e.acuerdo.fecha); }
+function datosTrabajador(e) { return Boolean(e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.compartir || e.acuerdo.criterio || e.modalidad || e.acuerdo.roles.length || e.acuerdo.fecha); }
 function elegidasTrabajo(e) {
   return catalogo.filter((r) => r.tipo === "trabajo" && Object.hasOwn(e.seleccion, r.id))
     .sort((a, b) => Object.keys(TIPOS_TRABAJO).indexOf(a.subtipo) - Object.keys(TIPOS_TRABAJO).indexOf(b.subtipo) || catalogo.indexOf(a) - catalogo.indexOf(b));
@@ -535,7 +580,7 @@ function ajustesTrabajo(e = trabajadorActual()) {
   const auditivos = ["tr-subtitulos", "tr-interprete", "tr-mensajes-escritos", "tr-alertas-visuales"];
   const orden = Object.keys(e.dimensiones).length === 1 && e.dimensiones[13] ?
     [...auditivos.map((id) => catalogo.find((r) => r.id === id)).filter(Boolean), ...catalogo.filter((r) => !auditivos.includes(r.id))] : catalogo;
-  return catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo !== "proceso" && puntaje(r, e) > 0).sort((a, b) => compararAcceso(a, b, e, orden));
+  return catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo !== "proceso" && compatibleModalidad(r, e) && (puntaje(r, e) > 0 || seguridadActiva(e, true) && r.id === "tr-alertas-visuales")).sort((a, b) => compararAcceso(a, b, e, orden));
 }
 function pintarEstadoTrabajo() {
   const e = trabajadorActual(); if (!e) return;
@@ -569,6 +614,7 @@ function pintarTrabajo() {
       const fichas = lista.filter((r) => r.subtipo === id && !ids.has(r.id)); return fichas.length ? grupo(nombre, fichas) : null;
     }).filter(Boolean),
     grupo(TIPOS_TRABAJO.proceso, catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo === "proceso")));
+  pintarSeguridad(true);
   pintarEstadoTrabajo();
 }
 function sincronizarTrabajo() {
@@ -577,7 +623,7 @@ function sincronizarTrabajo() {
     "aria-pressed": String(e.id === estado.trabajadorActivo), text: nombreTrabajador(e) + " · " + estadoCaso(e, true), onclick: () => {
       estado.trabajadorActivo = e.id; guardar(); sincronizarTrabajo(); pintarSeleccion(); document.getElementById("trabajador-" + e.id).focus();
     } })));
-  for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"]]) $("#trabajo-" + id).value = e[clave];
+  for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"], ["compartir", "compartir"]]) $("#trabajo-" + id).value = e[clave];
   $("#trabajo-areas").replaceChildren(); $("#trabajo-dimensiones").replaceChildren();
   AREAS.forEach(([nombre, ids], i) => {
     const grupo = el("div", { id: "trabajo-area-d-" + i });
@@ -602,6 +648,7 @@ function sincronizarTrabajo() {
     campo.addEventListener("change", () => { marcarRevision(e); e.acuerdo.roles = [...document.querySelectorAll('input[name="rol-trabajo"]:checked')].map((c) => c.value); guardar(); pintarEstadoTrabajo(); });
     return el("label", {}, campo, nombre);
   }));
+  $("#trabajo-modalidad").value = e.modalidad; $("#trabajo-compartir").value = e.compartir; $("#trabajo-criterio").value = e.acuerdo.criterio;
   $("#trabajo-fecha").value = e.acuerdo.fecha; $("#trabajo-revision").value = e.acuerdo.revision;
   $("#trabajo-acuerdos-error").textContent = ""; $("#trabajo-descripcion-error").textContent = "";
   abrirPaso("trabajo-descripcion", !e.descripcionGuardada); abrirPaso("trabajo-acuerdo", estadoCaso(e, true) !== "Acuerdos completos"); pintarTrabajo();
@@ -624,6 +671,9 @@ function guardarAcuerdosTrabajo() {
   e.acuerdo.estado = "completo"; guardar(); pintarEstadoTrabajo(); abrirPaso("trabajo-acuerdo", false); $("#trabajo-acuerdo-editar").focus();
 }
 function prepararTrabajo() {
+  $("#trabajo-modalidad").addEventListener("change", ev => { const e = trabajadorActual(); marcarRevision(e); e.modalidad = modalidadValida(ev.target.value); guardar(); pintarTrabajo(); pintarSeleccion(); });
+  $("#trabajo-criterio").addEventListener("input", ev => { const e = trabajadorActual(); marcarRevision(e); e.acuerdo.criterio = ev.target.value.slice(0, 200); guardar(); pintarEstadoTrabajo(); if (!privacidadAvisada && ev.target.value) mostrarAvisoPrivacidad(ev.target); });
+
   for (const id of ["trabajo-descripcion", "trabajo-acuerdo"]) {
     $("#" + id + "-toggle").addEventListener("click", () => abrirPaso(id, $("#" + id + "-cuerpo").hidden));
     $("#" + id + "-editar").addEventListener("click", () => { abrirPaso(id, true); $(id === "trabajo-descripcion" ? "#trabajo-iniciales" : "#trabajo-roles input").focus(); });
@@ -638,7 +688,7 @@ function prepararTrabajo() {
     if (!estado.trabajadores.length) estado.trabajadores.push({ id: nuevoIdEstudiante(), ...normalizarTrabajador() });
     estado.trabajadorActivo = estado.trabajadores[0].id; guardar(); sincronizarTrabajo(); pintarSeleccion(); document.getElementById("trabajador-" + estado.trabajadorActivo).focus();
   });
-  for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"]]) $("#trabajo-" + id).addEventListener("input", (ev) => {
+  for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"], ["compartir", "compartir"]]) $("#trabajo-" + id).addEventListener("input", (ev) => {
     const e = trabajadorActual(), campo = ev.target, escribio = Boolean(campo.value); if (!e) return;
     const valor = normalizarTrabajador({ ...e, [clave]: campo.value })[clave]; if (e[clave] !== valor) marcarRevision(e);
     e[clave] = valor; campo.value = valor; guardar(); pintarEstadoTrabajo(); pintarSeleccion();
@@ -1024,13 +1074,14 @@ function tarjeta(r, destacarMomento = false) {
     dua && destacarMomento ? el("p", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null,
     dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
-    trabajo && r.dimensiones.length ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r, persona).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[persona.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : null,
+    trabajo && dimensionesCoincidentes(r, persona).length ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r, persona).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[persona.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : null,
     acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
-    el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: r.titulo }),
+    !dua && APOYOS_FORMA.includes(r.id) ? el("p", { class: "aviso-apoyos" }, el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
+    el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
     ofrecida ? el("p", { class: "aviso-cruzado", role: "status", text: "Ya está considerado en el DUA: " + version.titulo }) : null,
     dua && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status", text: avisoDua(r) }) : null,
-    el("ol", {}, r.como.map((p) => el("li", { text: textoPublico(p) }))),
+    el("ol", {}, (dua ? r.como.map(textoPublico) : pasosApoyo(r, persona)).map((p) => el("li", { text: p }))),
     version ? el("div", { class: "version-curso", id: "version-" + r.id, tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
       preguntar ? el("div", { role: "status" }, el("p", { text: `Este apoyo lo necesitan ${repetida} estudiantes. ¿Quieres agregar su versión a todo el curso?` }),
         el("div", { class: "acciones-intro" },
@@ -1123,7 +1174,7 @@ function pintarSeleccion() {
   function itemSeleccion(r, e, prefijo = "quitar-", trabajo = false) {
     const seleccion = e ? e.seleccion : estado.seleccion;
     const claveNota = (trabajo ? "trabajo:" + e.id : e ? e.id : "curso") + ":" + r.id;
-    const nota = el("textarea", { "data-nota-clave": claveNota, rows: "2", maxlength: "2000", "aria-label": "Nota para: " + r.titulo + (e ? " · " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) : " · Curso"), placeholder: "Nota opcional: cómo la usarás" });
+    const nota = el("textarea", { "data-nota-clave": claveNota, rows: "2", maxlength: "2000", "aria-label": "Nota para: " + textoModalidad(r.titulo, r, e) + (e ? " · " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) : " · Curso"), placeholder: "Nota opcional: cómo la usarás" });
     nota.value = seleccion[r.id] || "";
     nota.addEventListener("input", () => {
       if (e && seleccion[r.id] !== nota.value) marcarRevision(e);
@@ -1133,7 +1184,7 @@ function pintarSeleccion() {
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad(nota);
     });
     return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r) : nombreMomento[r.momento] }),
-      el("span", { class: "sel-titulo", text: r.titulo }), nota,
+      el("span", { class: "sel-titulo", text: textoModalidad(r.titulo, r, e) }), e && !compatibleModalidad(r, e) ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, nota,
       el("button", { type: "button", class: "quitar", id: prefijo + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, trabajo ? undefined : e?.id, trabajo ? e.id : undefined), text: "Quitar" }));
   }
 }
@@ -1244,10 +1295,10 @@ function documentoTrabajo(ids = inclusionTrabajo || []) {
     resumen: [["Fecha", new Date().toLocaleDateString("es-CL")], ["Contenido", personas.map(tituloTrabajador).join("; ") || "Sin personas elegidas"]],
     grupos: personas.map((e) => {
       const acciones = elegidasTrabajo(e);
-      return { trabajador: e.id, nombre: tituloTrabajador(e), subtitulo: "Tipo de puesto: " + (e.tipoPuesto.trim() || "Sin indicar"), ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información",
+      return { trabajador: e.id, nombre: tituloTrabajador(e), subtitulo: "Tipo de puesto: " + (e.tipoPuesto.trim() || "Sin indicar"), ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], compartir: (e.compartir || "").trim() || "No informado",
         acuerdo: normalizarAcuerdo(e.acuerdo, ROLES_TRABAJO), estadoAcuerdo: estadoCaso(e, true),
         cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], acciones.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin ajuste elegido"]),
-        acciones: acciones.map((r) => ({ id: r.id, titulo: r.titulo, como: r.como.map(textoPublico), porque: r.porque, grupo: TIPOS_TRABAJO[r.subtipo], nota: e.seleccion[r.id].trim(), dato: tipoOficial(r) + ". Respaldo: " + RESPALDO[r.respaldo] + "." })) };
+        acciones: acciones.map((r) => ({ id: r.id, titulo: textoModalidad(r.titulo, r, e), como: pasosApoyo(r, e), porque: r.porque, grupo: TIPOS_TRABAJO[r.subtipo], nota: e.seleccion[r.id].trim(), dato: tipoOficial(r) + ". Respaldo: " + RESPALDO[r.respaldo] + "." })) };
     }),
     fuentes: [...new Set(usadas.flatMap((r) => r.fuentes))].map((id) => ({ cita: fuentes[id].cita, url: fuentes[id].url })) };
 }
@@ -1351,9 +1402,10 @@ function logoDocumento() {
 function documento(opciones = inclusionDocumento || { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] }) {
   const sel = opciones.curso ? elegidasOrdenadas() : [], alumnos = estado.estudiantes.filter((e) => opciones.estudiantes.includes(e.id));
   const usadas = [...sel, ...alumnos.flatMap((e) => elegidasOrdenadas(e.seleccion))];
-  const accion = (r, seleccion) => ({ id: r.id, titulo: r.titulo, como: r.como.map(textoPublico), porque: r.porque, nota: (seleccion[r.id] || "").trim(),
+  const accion = (r, seleccion, persona) => ({ id: r.id, titulo: textoModalidad(r.titulo, r, persona), como: pasosApoyo(r, persona), porque: r.porque, nota: (seleccion[r.id] || "").trim(),
     ofrecida: r.tipo !== "dua" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),
     dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.` + (r.tipo === "dua" && avisoDua(r) ? " " + avisoDua(r) + "." : ""),
+    revisionModalidad: Boolean(persona && !compatibleModalidad(r, persona)),
     grupo: r.tipo === "practica-profesional" ? "Práctica profesional · " + nombreGrupoPractica(r.subtipo) : r.tipo === "acceso" ? `${esSuperior() ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
   });
   const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].filter((c) => estado.perfil[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
@@ -1372,21 +1424,24 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
         const apoyos = elegidasOrdenadas(e.seleccion);
         return { estudiante: e.id, acuerdo: normalizarAcuerdo(e.acuerdo), estadoAcuerdo: estadoCaso(e), nombre: tituloEstudiante(e), subtitulo: subtituloEstudiante(),
           cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], apoyos.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
-          ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", acciones: apoyos.map((r) => accion(r, e.seleccion)),
+          ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], protocolo: e.protocolo === true, acciones: apoyos.map((r) => accion(r, e.seleccion, e)),
         };
       })),
     fuentes: [...new Set(usadas.flatMap((r) => r.fuentes))].map((id) => ({ cita: fuentes[id]?.cita || id, url: fuentes[id]?.url || "" })),
   };
 }
+function datosContexto(g) {
+  return [["¿Qué usa hoy para comunicarse o acceder?", g.modalidad || "No aplica"], ...(g.trabajador ? [["¿Qué decidió compartir la persona y con quién?", g.compartir || "No informado"]] : esSuperior() ? [] : [["¿Existe un PAEC, un PACI o el protocolo DEC?", g.protocolo ? "Sí" : "No informado"]])];
+}
 function datosAcuerdo(g) {
   const a = g.acuerdo || normalizarAcuerdo(), roles = g.trabajador ? ROLES_TRABAJO : ROLES_ACUERDO;
-  return [["Acordado con", a.roles.map((r) => roles[r]).join(", ")], ["Fecha", fechaLarga(a.fecha)], ["Próxima revisión", fechaLarga(a.revision)]].map(([k, v]) => `${k}: ${v || "__________________________________"}`);
+  return [["Acordado con", a.roles.map((r) => roles[r]).join(", ")], ["Fecha", fechaLarga(a.fecha)], ["Próxima revisión", fechaLarga(a.revision)], ["¿Cómo sabremos que funciona?", a.criterio]].map(([k, v]) => `${k}: ${v || "__________________________________"}`);
 }
 function armarHoja() {
   const d = modeloDocumento();
   const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
     el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
-  const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), el("ol", {}, a.como.map((t) => el("li", { text: t }))),
+  const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), a.revisionModalidad ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, el("ol", {}, a.como.map((t) => el("li", { text: t }))),
     el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : "") }),
     a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null);
   if (d.centro) {
@@ -1394,7 +1449,7 @@ function armarHoja() {
       el("div", { class: "h-marca" }, d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "44", height: "44", alt: "" }) : null, el("strong", { text: "Prizma" })),
       el("h1", { text: d.titulo }), ...(d.borrador ? [el("p", { class: "aviso-apoyos", text: "Borrador: acuerdos sin completar" })] : []), tabla(["Campo", "Completar a mano"], d.resumen, "h-resumen"),
       ...d.acciones.map(ficha), el("div", { class: "h-acuerdos" }, el("h2", { text: "Acuerdos (para completar en la reunión)" }),
-        ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => el("p", { text: t + ": __________________________________" }))),
+        ...["Acordado con", "Fecha", "Próxima revisión", "¿Cómo sabremos que funciona?"].map((t) => el("p", { text: t + ": __________________________________" }))),
       el("p", { class: "h-aviso", text: PIE_PRACTICA }), el("p", { class: "h-aviso", text: AVISO }));
     return;
   }
@@ -1406,7 +1461,7 @@ function armarHoja() {
       el((g.estudiante || g.trabajador) ? "h2" : "h3", { text: g.nombre }), g.subtitulo ? el("p", { text: g.subtitulo }) : null,
       g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO }),
         el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif")),
-        tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz]], "h-facilitadores")) : null,
+        tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores")) : null,
       g.reflexion ? el("p", { text: g.reflexion }) : null,
       ...g.acciones.flatMap((a, i) => [(g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null, ficha(a)]),
       (g.estudiante || g.trabajador) ? el("div", { class: "h-acuerdos" }, el("h3", { text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)" }), ...datosAcuerdo(g).map((text) => el("p", { text })), g.estadoAcuerdo === "Por revisar" ? el("p", { text: "Por revisar: cambiaste el caso después del acuerdo." }) : null) : null)),
@@ -1416,7 +1471,7 @@ function definicionPdf() {
   const d = modeloDocumento(), margen = 56.7, ancho = 595.28 - 2 * margen;
   const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
   const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
-    { text: a.titulo, style: "h3" }, { ol: [...a.como], margin: [0, 4, 0, 4] },
+    { text: a.titulo, style: "h3" }, ...(a.revisionModalidad ? [{ text: "Revisa este apoyo: no corresponde a la modalidad actual.", bold: true }] : []), { ol: [...a.como], margin: [0, 4, 0, 4] },
     { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : ""), style: "dato", margin: [0, 4, 0, 0] },
     ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
   ] });
@@ -1426,7 +1481,7 @@ function definicionPdf() {
     ...(d.borrador ? [{ text: "Borrador: acuerdos sin completar", bold: true, margin: [0, 8, 0, 8] }] : []),
     { table: { widths: [150, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: fino, margin: [0, 12, 0, 18] },
     ...d.acciones.map(ficha),
-    { unbreakable: true, stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h2" }, ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 12, 0, 0] }))] },
+    { unbreakable: true, stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h2" }, ...["Acordado con", "Fecha", "Próxima revisión", "¿Cómo sabremos que funciona?"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 12, 0, 0] }))] },
     { text: PIE_PRACTICA, style: "dato", margin: [0, 18, 0, 0] },
     { text: AVISO, style: "dato", margin: [0, 14, 0, 0] },
   ] : [
@@ -1442,7 +1497,7 @@ function definicionPdf() {
         { text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] },
         { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
         { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
-        { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), bold: true }, g.voz]] }, layout: fino, margin: [0, 0, 0, 12] },
+        { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), bold: true }, g.voz], ...datosContexto(g)] }, layout: fino, margin: [0, 0, 0, 12] },
       ] : []),
       ...g.acciones.flatMap((a, i) => !(g.estudiante || g.trabajador) && i === 0 ? [{ unbreakable: true, stack: [
         ...(g === d.grupos[0] ? [{ text: "Acciones para todo el curso", style: "h2" }] : []),
