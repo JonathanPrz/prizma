@@ -1,6 +1,6 @@
 # Tarea 039 · Correcciones de la auditoría de botones y filtros
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/039-correcciones-botones`
+Estado: **integrada** (PR #39) · Asignada a: Codex · Rama: `codex/039-correcciones-botones`
 
 ## Para qué
 La auditoría `docs/auditorias/038-botones/` encontró controles que borran datos sin aviso, una impresión incompleta y textos que no explican lo que pasa. El dueño aprobó estas 7 correcciones.

@@ -38,6 +38,8 @@ python3 scripts/validar_catalogo.py
 ```
 Debe terminar con "Catálogo correcto".
 
+Las pruebas están en `scripts/probar_*.cjs` y deben pasar todas. Si una prueba abre Chromium, no fijes una ruta propia de tu entorno: usa `process.env.CHROMIUM_BIN` y, si no existe, el Chromium de Playwright, para que funcione en cualquier computador.
+
 ## Reglas que no se rompen
 
 1. **Privacidad.** Sin servidor, sin cuentas, sin analítica y sin enviar datos a ningún lado. Los datos viven solo en `localStorage` o en archivos que la persona descarga.
