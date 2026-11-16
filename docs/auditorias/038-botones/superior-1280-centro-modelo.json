@@ -1,0 +1,37 @@
+{
+  "centro": true,
+  "borrador": false,
+  "titulo": "Ajustes acordados para la práctica",
+  "fecha": "16-11-2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "resumen": [
+    [
+      "Estudiante",
+      "__________________________________"
+    ],
+    [
+      "Centro de práctica",
+      "__________________________________"
+    ],
+    [
+      "Profesor tutor o coordinador",
+      "__________________________________"
+    ],
+    [
+      "Fecha",
+      "__________________________________"
+    ]
+  ],
+  "acciones": [
+    {
+      "titulo": "Divide las tareas largas en pasos, con una lista para marcar",
+      "como": [
+        "Escribe los pasos de cada tarea en orden.",
+        "Deja la lista en el puesto de trabajo.",
+        "Revisa la lista juntos al principio."
+      ],
+      "porque": "Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.",
+      "dato": ""
+    }
+  ]
+}

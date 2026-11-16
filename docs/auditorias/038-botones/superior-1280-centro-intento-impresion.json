@@ -1,0 +1,26 @@
+[
+  {
+    "evento": "llamada-window.print"
+  },
+  {
+    "evento": "beforeprint"
+  },
+  {
+    "evento": "afterprint"
+  },
+  {
+    "evento": "beforeprint"
+  },
+  {
+    "evento": "afterprint"
+  },
+  {
+    "evento": "llamada-window.print"
+  },
+  {
+    "evento": "beforeprint"
+  },
+  {
+    "evento": "afterprint"
+  }
+]

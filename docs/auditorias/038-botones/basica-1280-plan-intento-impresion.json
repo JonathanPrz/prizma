@@ -1,0 +1,11 @@
+[
+  {
+    "evento": "llamada-window.print"
+  },
+  {
+    "evento": "beforeprint"
+  },
+  {
+    "evento": "afterprint"
+  }
+]

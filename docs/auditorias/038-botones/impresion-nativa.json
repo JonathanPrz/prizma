@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-11-16T19:27:43.837Z",
+  "paginaPrueba": "pagina-prueba.html",
+  "eventos": [
+    "llamada-window.print",
+    "window.print-retorno"
+  ],
+  "politicas": {
+    "PrintingEnabled": false,
+    "DisablePrintPreview": true
+  },
+  "objetivosImpresion": [],
+  "envioReal": false
+}

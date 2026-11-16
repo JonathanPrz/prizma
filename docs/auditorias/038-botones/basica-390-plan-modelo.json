@@ -1,0 +1,229 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 2 estudiantes"
+    ]
+  ],
+  "grupos": [
+    {
+      "nombre": "Durante",
+      "acciones": [
+        {
+          "id": "dua-5-3-andamiaje-lista",
+          "titulo": "Entrega una lista de pasos de la tarea y retírala de a poco",
+          "como": [
+            "Divide la tarea en pasos cortos, numerados, con un verbo cada uno.",
+            "Entrega la lista impresa o déjala en la pizarra.",
+            "Cuando el curso domine la tarea, quita pasos o la lista completa."
+          ],
+          "porque": "El andamiaje es un apoyo temporal que permite hacer sola o solo lo que antes requería ayuda.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 5.3: Desarrollar fluidez con apoyos graduados para la práctica y el desempeño. Respaldo: Investigación sólida. Responde también a apoyos individuales de 1 estudiante."
+        }
+      ]
+    },
+    {
+      "estudiante": "a032f3e8-f9ae-4211-9a01-7709f56418d6",
+      "acuerdo": {
+        "roles": [
+          "estudiante",
+          "familia"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para JP",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Atención y organización",
+          "Casi siempre",
+          "Dale una agenda visual y la lista de pasos de cada tarea; Permite usar organizadores gráficos, calculadora u otras ayudas al responder; Divide la tarea o la prueba en partes y entrégalas una a la vez"
+        ],
+        [
+          "Lectura, escritura y cálculo",
+          "Seguido",
+          "Permite usar organizadores gráficos, calculadora u otras ayudas al responder"
+        ]
+      ],
+      "ayuda": "APOYO: lista visible.",
+      "voz": "VOZ: decide compartir instrucciones por pasos.",
+      "acciones": [
+        {
+          "id": "acc-1-agenda",
+          "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+          "como": [
+            "Muestra los momentos del día o de la clase con imágenes o palabras.",
+            "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+            "Marquen juntos lo que ya está hecho."
+          ],
+          "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        },
+        {
+          "id": "acc-1-organizador",
+          "titulo": "Permite usar organizadores gráficos, calculadora u otras ayudas al responder",
+          "como": [
+            "Acuerda qué ayuda puede usar y en qué tareas.",
+            "Practiquen con ella antes de la evaluación.",
+            "Úsala solo cuando no sea lo que se evalúa."
+          ],
+          "porque": "El Decreto 83 incluye estas ayudas entre las formas de respuesta, sin bajar la exigencia.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Formas de respuesta (Decreto 83). Versión DUA 3.0, consideración 4.2. Respaldo: Orientación oficial.",
+          "grupo": "Adecuaciones de acceso · Formas de respuesta"
+        },
+        {
+          "id": "acc-1-partes",
+          "titulo": "Divide la tarea o la prueba en partes y entrégalas una a la vez",
+          "como": [
+            "Separa la tarea en bloques cortos.",
+            "Entrega el siguiente bloque cuando termine el anterior.",
+            "Mantén la misma exigencia en cada parte."
+          ],
+          "porque": "Ver menos a la vez ayuda a sostener la atención y a no abrumarse.",
+          "nota": "",
+          "ofrecida": true,
+          "dato": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83). Versión DUA 3.0, consideración 5.3. Respaldo: Orientación oficial.",
+          "grupo": "Adecuaciones de acceso · Organización del tiempo y el horario"
+        },
+        {
+          "id": "obj-graduacion",
+          "titulo": "Ajusta el nivel de complejidad sin perder lo esencial del objetivo",
+          "como": [
+            "Identifica lo esencial del objetivo de aprendizaje.",
+            "Ofrece una versión más concreta o con menos pasos.",
+            "Mantén el mismo contenido que trabaja el curso."
+          ],
+          "porque": "Permite avanzar en el mismo objetivo que el curso, a un nivel alcanzable.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83). Respaldo: Norma legal.",
+          "grupo": "Adecuaciones en los objetivos"
+        },
+        {
+          "id": "dec-antes-gatillantes",
+          "titulo": "Identifica qué situaciones lo alteran y qué lo calma",
+          "como": [
+            "Anota en qué momentos aparece el malestar.",
+            "Pregunta al estudiante y a su familia qué le ayuda.",
+            "Comparte lo que funciona con los adultos que lo acompañan."
+          ],
+          "porque": "Conocer los desencadenantes permite prevenir en vez de reaccionar.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo ante desregulación: Antes: prevenir. Respaldo: Orientación oficial.",
+          "grupo": "Apoyos ante desregulación"
+        }
+      ]
+    },
+    {
+      "estudiante": "9c570777-eb00-4e07-af8b-e14bb38085b1",
+      "acuerdo": {
+        "roles": [
+          "estudiante",
+          "familia"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para JP2",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Atención y organización",
+          "Casi siempre",
+          "Dale una agenda visual y la lista de pasos de cada tarea"
+        ],
+        [
+          "Lectura, escritura y cálculo",
+          "Seguido",
+          "Sin apoyo elegido"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "acciones": [
+        {
+          "id": "acc-1-agenda",
+          "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+          "como": [
+            "Muestra los momentos del día o de la clase con imágenes o palabras.",
+            "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+            "Marquen juntos lo que ya está hecho."
+          ],
+          "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Davies, K. y Henderson, P. (2020). Special Educational Needs in Mainstream Schools. Education Endowment Foundation.",
+      "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/send"
+    },
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    },
+    {
+      "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+      "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+    },
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "CCSSO (2016). CCSSO Accessibility Manual. Council of Chief State School Officers.",
+      "url": "https://ccsso.org/resource-library/ccsso-accessibility-manual-how-select-administer-and-evaluate-use-accessibility"
+    },
+    {
+      "cita": "Mineduc (2018). Decreto 67: normas mínimas sobre evaluación, calificación y promoción.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1127255"
+    },
+    {
+      "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+      "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+    },
+    {
+      "cita": "Department of Health and Social Care y Department for Education (2019). Reducing the Need for Restraint and Restrictive Intervention. Open Government Licence v3.0.",
+      "url": "https://www.gov.uk/government/publications/reducing-the-need-for-restraint-and-restrictive-intervention"
+    }
+  ],
+  "borrador": false
+}
