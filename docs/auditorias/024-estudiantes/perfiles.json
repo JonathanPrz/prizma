@@ -1,0 +1,124 @@
+[
+  {
+    "id": "lectura",
+    "iniciales": "LE",
+    "titulo": "Leer y escribir",
+    "descripcion": "Lee muy despacio, pierde información al copiar y necesita mucho esfuerzo para escribir respuestas. Comprende las explicaciones orales.",
+    "dimensiones": {
+      "2": 3
+    },
+    "ayuda": "Escuchar el texto y responder con teclado o dictado.",
+    "voz": "Sé la respuesta cuando me la leen; escribirla me toma mucho tiempo.",
+    "orden": 1
+  },
+  {
+    "id": "vision",
+    "iniciales": "VI",
+    "titulo": "Acceder a lo escrito con lupa",
+    "descripcion": "Lee con lupa y con ampliación; no distingue la pizarra desde su puesto. Oye las explicaciones. No usa Braille.",
+    "dimensiones": {
+      "6": 3
+    },
+    "ayuda": "Letra ampliada, contraste y poder acercarse al material.",
+    "voz": "Con mi lupa puedo leer; necesito el archivo para ampliarlo. No leo Braille.",
+    "orden": 2
+  },
+  {
+    "id": "senas",
+    "iniciales": "SE",
+    "titulo": "Acceder a explicaciones en lengua de señas",
+    "descripcion": "Se comunica en lengua de señas chilena. No accede a las explicaciones solo habladas; ve el material escrito y la pizarra.",
+    "dimensiones": {
+      "6": 3
+    },
+    "ayuda": "Intérprete de lengua de señas y señales visuales.",
+    "voz": "Necesito ver a quien interpreta y saber qué se está diciendo por turnos.",
+    "orden": 3
+  },
+  {
+    "id": "oral",
+    "iniciales": "CO",
+    "titulo": "Expresarse sin depender del habla",
+    "descripcion": "Comprende el español, su lengua materna. Le cuesta producir respuestas orales; señala opciones y usa un tablero simple. Lee instrucciones breves.",
+    "dimensiones": {
+      "3": 3
+    },
+    "ayuda": "Tiempo para responder y tablero de comunicación en español.",
+    "voz": "Entiendo español. Quiero poder señalar o usar mi tablero sin que me pidan repetir en voz alta.",
+    "orden": 4
+  },
+  {
+    "id": "lengua",
+    "iniciales": "ID",
+    "titulo": "Participar mientras aprende español",
+    "descripcion": "Acaba de llegar al curso. Se comunica oralmente en su lengua de origen, pero todavía no entiende las instrucciones en español.",
+    "dimensiones": {
+      "3": 3,
+      "10": 3
+    },
+    "ayuda": "Imágenes, traducción de palabras clave y apoyo de alguien que hable su lengua.",
+    "voz": "Puedo explicar las ideas en mi lengua; necesito saber qué pide la actividad.",
+    "orden": 5
+  },
+  {
+    "id": "tareas",
+    "iniciales": "TA",
+    "titulo": "Empezar y terminar una tarea",
+    "descripcion": "Se distrae con otras actividades de la sala; pierde el punto de inicio y deja sin terminar tareas con varios pasos.",
+    "dimensiones": {
+      "1": 3
+    },
+    "ayuda": "Pasos breves visibles y una señal para volver a la tarea.",
+    "voz": "Me sirve saber cuál paso va ahora y marcar lo que ya terminé.",
+    "orden": 6
+  },
+  {
+    "id": "movimiento",
+    "iniciales": "MO",
+    "titulo": "Acceder al puesto y escribir",
+    "descripcion": "Usa silla de ruedas; encuentra pasos estrechos y mesas a las que no puede acercarse. Escribir a mano exige mucho esfuerzo; comprende las consignas.",
+    "dimensiones": {
+      "8": 3
+    },
+    "ayuda": "Mesa accesible, recorridos despejados y teclado.",
+    "voz": "Quiero hacer el trabajo con el grupo y elegir cómo registrar mis respuestas.",
+    "orden": 7
+  },
+  {
+    "id": "ruido",
+    "iniciales": "RU",
+    "titulo": "Participar sin sobrecarga de ruido ni cambios imprevistos",
+    "descripcion": "El ruido del aula y del recreo le impide continuar. Se angustia si cambian sin aviso de sala o actividad; vuelve a trabajar cuando sabe qué ocurrirá.",
+    "dimensiones": {
+      "7": 3,
+      "5": 2
+    },
+    "ayuda": "Lugar con menos ruido, protección auditiva y anticipación de cambios.",
+    "voz": "Quiero saber cuándo puedo ir a un lugar tranquilo y cómo vuelvo.",
+    "orden": 8
+  },
+  {
+    "id": "fatiga",
+    "iniciales": "FA",
+    "titulo": "Continuar con ausencias y cansancio",
+    "descripcion": "Falta algunas jornadas por cuidados de salud y se cansa en clases largas. Necesita retomar lo perdido sin acumular entregas simultáneas.",
+    "dimensiones": {
+      "9": 3
+    },
+    "ayuda": "Material de las clases perdidas, pausas y fechas acordadas.",
+    "voz": "Quiero seguir con el curso sin tener que recuperar todo en un solo día.",
+    "orden": 9
+  },
+  {
+    "id": "desafio",
+    "iniciales": "DE",
+    "titulo": "Seguir aprendiendo después de terminar",
+    "descripcion": "Resuelve las tareas antes que el curso y explica cómo lo hizo. Durante la espera se desconecta; no le cuesta comprender ni necesita simplificar las metas.",
+    "dimensiones": {
+      "1": 1
+    },
+    "ayuda": "Preguntas de mayor profundidad y una investigación que pueda continuar.",
+    "voz": "Cuando ya terminé quiero aprender algo nuevo, no repetir más ejercicios iguales.",
+    "orden": 10
+  }
+]
