@@ -1,0 +1,956 @@
+{
+  "lectura/basica/acc-2-audio": {
+    "clase": "Adecuada",
+    "justificacion": "La comprensión oral está conservada: leer el enunciado elimina la barrera de decodificación, salvo cuando se evalúa lectura.",
+    "causa": null,
+    "fichaSha": "cabef7daaee94b9083ce777266e5d09c86f0a20479dba51aa19d0ee3d5d306db"
+  },
+  "lectura/basica/acc-2-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "El esfuerzo y la lentitud de lectura/escritura descritos hacen pertinente acordar más tiempo sin reducir la exigencia.",
+    "causa": null,
+    "fichaSha": "54d07c9d8d5e6b5f03c1d3a0f167d8776b14c244c1879e4d36295e9c3af8aea1"
+  },
+  "lectura/basica/acc-8-teclado": {
+    "clase": "Adecuada",
+    "justificacion": "La dificultad es registrar una respuesta que sí conoce; teclado, dictado o transcripción son vías alternativas directamente pertinentes.",
+    "causa": null,
+    "fichaSha": "129ad042a9d2457208e558ac839f465bbd4644dab3fded793c86689731a86151"
+  },
+  "lectura/basica/acc-2-pictogramas": {
+    "clase": "Discutible",
+    "justificacion": "Añadir imágenes puede apoyar consignas, pero no se describió dificultad para comprender el vocabulario ni necesidad de pictogramas.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "3f65700b5e170656bdf5bb4d07ec561cc2aa391fe6481ec4d15fdae55717f026"
+  },
+  "lectura/basica/acc-1-organizador": {
+    "clase": "Adecuada",
+    "justificacion": "Puede apoyar el registro de ideas; la ficha exige acordar la ayuda y no usarla si constituye lo evaluado.",
+    "causa": null,
+    "fichaSha": "10077c196b4e4380b7f4146c73bfc1d6e96058b4cdc1ef38c553f4629fe16ef8"
+  },
+  "lectura/basica/acc-8-transcribe": {
+    "clase": "Adecuada",
+    "justificacion": "La dificultad es registrar una respuesta que sí conoce; teclado, dictado o transcripción son vías alternativas directamente pertinentes.",
+    "causa": null,
+    "fichaSha": "0f8a83d44b99553f05ece3643f10556c8ebb4f4f1a1abe6b1ccbe03bbfb01769"
+  },
+  "vision/basica/acc-6-ampliar": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null,
+    "fichaSha": "ea25fbf4f1e358db3d4605c67e6445a02d039ef3eb96e36e4e686af6781cb439"
+  },
+  "vision/basica/acc-6-braille": {
+    "clase": "Inadecuada",
+    "justificacion": "Aunque el título ofrece alternativas, el primer paso pide coordinar transcripción a Braille. Este perfil lee con lupa y declara no usar Braille; el audio no justifica ese paso.",
+    "causa": "una situación demasiado amplia",
+    "fichaSha": "87585eaa835142ccd01d9a5ba2831c05171de3ebbc32cf3c05153f76ac13dbc6"
+  },
+  "vision/basica/acc-6-ubicacion": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null,
+    "fichaSha": "b23dd553a6edfd2ada16ebbcedd3583e932267fce0a84e49647b0ccf20973fff"
+  },
+  "vision/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "La ampliación, el lugar desde el que mira y la disponibilidad de su lupa responden al acceso visual descrito.",
+    "causa": null,
+    "fichaSha": "f0870d42d32b080402d9170c0cfa371e59aa9154c2ff77c5c0231f50770a1107"
+  },
+  "senas/basica/acc-6-audicion": {
+    "clase": "Adecuada",
+    "justificacion": "La coordinación de señas y de los apoyos que utiliza responde al acceso a las explicaciones, sin suponer que necesita amplificación.",
+    "causa": null,
+    "fichaSha": "62c867258bcbc0220ccc8161f59c1aa8391af9be2339e218af4304a44fd55e54"
+  },
+  "senas/basica/acc-3-escrito": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Dejar la instrucción disponible por escrito o con imágenes evita depender solo del habla. La comprobación debe aceptar su lengua de señas; la ficha no exige expresamente una respuesta oral.",
+    "fichaSha": "5dd6deae5dceeed541a212c972950d45eeb26b95b4c00ec6170ce75c29030c76"
+  },
+  "senas/basica/acc-6-ubicacion": {
+    "clase": "Discutible",
+    "justificacion": "Ver a quien interpreta puede depender del lugar, pero la ficha prioriza pizarra y hablante y no identifica al intérprete como referencia.",
+    "causa": "una situación demasiado amplia",
+    "fichaSha": "b23dd553a6edfd2ada16ebbcedd3583e932267fce0a84e49647b0ccf20973fff"
+  },
+  "senas/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "La coordinación de señas y de los apoyos que utiliza responde al acceso a las explicaciones, sin suponer que necesita amplificación.",
+    "causa": null,
+    "fichaSha": "f0870d42d32b080402d9170c0cfa371e59aa9154c2ff77c5c0231f50770a1107"
+  },
+  "oral/basica/acc-3-caa": {
+    "clase": "Adecuada",
+    "justificacion": "El tablero en español y el tiempo para expresar la respuesta coinciden con la comunicación aumentativa descrita.",
+    "causa": null,
+    "fichaSha": "60090ee3456af4ee927cb865eb5c35a5e24eeb20318b5f46a49de92ec159e2db"
+  },
+  "oral/basica/acc-12-tiempo": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Espera y acepta señalar o escribir sin repetir en voz alta: responde directamente al tablero y tiempo de respuesta descritos.",
+    "fichaSha": "9d34515ed783d2def60eb7f238c206ca0a43fdb4d254718cc2caf337a5270cde"
+  },
+  "oral/basica/acc-12-opciones": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Permite señalar tarjetas u opciones, una vía de respuesta que el caso ya utiliza; no presupone falta de comprensión.",
+    "fichaSha": "a14cbb371a718f455908f5e77c38418bbbbd444569057ac88e4d9467e0785f45"
+  },
+  "oral/basica/acc-4-exponer": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Presentar a menos personas o grabar audio/video no garantiza una vía sin habla. El perfil declara dificultad para producir respuesta oral, no temor al público; requiere acordar una alternativa expresiva concreta.",
+    "fichaSha": "00e82e5e67dbcf32ac90db1e805e52c7b19aacf1088522977abcf4ff17fd32bf"
+  },
+  "lengua/basica/acc-10-lengua": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null,
+    "fichaSha": "b376025ee79601648eaad499fcc636b29222fff152d2808e24e4379cc133884b"
+  },
+  "lengua/basica/acc-10-responder": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null,
+    "fichaSha": "c085f43aaf039721811814031c1b2798d0cf328dd5179176ea030317d7afeb84"
+  },
+  "lengua/basica/acc-10-cultura": {
+    "clase": "Discutible",
+    "justificacion": "Normas explícitas o referentes culturales pueden apoyar acogida, pero el obstáculo señalado es entender español; estos pasos sin traducción no lo resuelven por sí solos.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "e85b78dd0f8d488ec0dc4d4f5cb3188d1f1da94a475073b97619a2d9d9d9bdae"
+  },
+  "lengua/basica/acc-3-escrito": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null,
+    "fichaSha": "5dd6deae5dceeed541a212c972950d45eeb26b95b4c00ec6170ce75c29030c76"
+  },
+  "lengua/basica/acc-2-pictogramas": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null,
+    "fichaSha": "3f65700b5e170656bdf5bb4d07ec561cc2aa391fe6481ec4d15fdae55717f026"
+  },
+  "lengua/basica/acc-4-normas": {
+    "clase": "Discutible",
+    "justificacion": "Normas explícitas o referentes culturales pueden apoyar acogida, pero el obstáculo señalado es entender español; estos pasos sin traducción no lo resuelven por sí solos.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "9e305dee1b025c640b6e329cc3bd9379795e8d2ea040585617f5ad4b88b04a5b"
+  },
+  "lengua/basica/acc-1-agenda": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "La secuencia con imágenes y pasos visibles aporta una vía para entender qué hacer, coherente con la ayuda visual solicitada; las palabras deben acordarse según la lengua que comprende.",
+    "fichaSha": "b8e4ae7a685f5edc5aaa8aef28acd60a42de7aa16082034fe0e23514e1a8f411"
+  },
+  "lengua/basica/acc-12-opciones": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Señalar puede facilitar participar, pero no se describió dificultad de producir respuestas en su propia lengua. Si las opciones están en español y no se traducen, sigue sin entender qué se pregunta.",
+    "fichaSha": "a14cbb371a718f455908f5e77c38418bbbbd444569057ac88e4d9467e0785f45"
+  },
+  "lengua/basica/acc-10-familia": {
+    "clase": "Adecuada",
+    "justificacion": "Traducción, imágenes, posibilidad de responder en la lengua que conoce y comunicación con la familia responden al acceso inicial al español.",
+    "causa": null,
+    "fichaSha": "3a9ad6e03b4a3e51dd797167207de28462f6743ce977c569257910c0aae68e6d"
+  },
+  "lengua/basica/acc-1-partes": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Dosificar la cantidad puede ayudar, pero el caso no describe sobrecarga de pasos ni atención. Una consigna en español no se vuelve comprensible solo al entregarla en bloques.",
+    "fichaSha": "1cac372bbb1c1505ee360c5ad9a134e060306b8e623f34fbfeec4358e9ac8073"
+  },
+  "tareas/basica/acc-1-ubicacion": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null,
+    "fichaSha": "700ebbdaaacc1d315967ade1a9b1e88a72374e0f6400b5b0767349a4198920d3"
+  },
+  "tareas/basica/acc-1-partes": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null,
+    "fichaSha": "1cac372bbb1c1505ee360c5ad9a134e060306b8e623f34fbfeec4358e9ac8073"
+  },
+  "tareas/basica/acc-1-organizador": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "10077c196b4e4380b7f4146c73bfc1d6e96058b4cdc1ef38c553f4629fe16ef8"
+  },
+  "tareas/basica/acc-1-agenda": {
+    "clase": "Adecuada",
+    "justificacion": "Bloques, menor distracción y secuencia visible responden a perder el inicio y no terminar tareas con varios pasos.",
+    "causa": null,
+    "fichaSha": "b8e4ae7a685f5edc5aaa8aef28acd60a42de7aa16082034fe0e23514e1a8f411"
+  },
+  "tareas/basica/acc-7-luz": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "ec604e409fe6baabf4975bf1611ba2596493832196ab784fa7ad335fd67d4ae1"
+  },
+  "tareas/basica/acc-7-desfogue": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "6ab6822ad61a1f3fb324bf6ab8176cda605adf2448edbc1846bc4db08591deb1"
+  },
+  "tareas/basica/acc-9-jornada": {
+    "clase": "Discutible",
+    "justificacion": "Organizadores, cambios visuales, movimiento o cambiar la hora pueden servir, pero no se precisó cálculo, luz, necesidad de moverse ni un patrón horario que los explique.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "33a097d913c0739c51cfb41b4a3844a968b56f8348c3e83819664b5b0178ce70"
+  },
+  "movimiento/basica/acc-8-accesible": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "165d2332945ad905e0677b0bf5964d6f8dc3884cd87826605c2fa895c159acbd"
+  },
+  "movimiento/basica/acc-8-materiales": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "ba6411802ea87275e5fa7d5083098d447fc9a9a0c619a32be4aee71baf8feef4"
+  },
+  "movimiento/basica/acc-8-desplazamiento": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "b21a05b0ade78fd9ab8ecf1a2fee6a77740242d996939ec96a44d8aca8318cf2"
+  },
+  "movimiento/basica/acc-8-teclado": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "129ad042a9d2457208e558ac839f465bbd4644dab3fded793c86689731a86151"
+  },
+  "movimiento/basica/acc-8-transcribe": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "0f8a83d44b99553f05ece3643f10556c8ebb4f4f1a1abe6b1ccbe03bbfb01769"
+  },
+  "movimiento/basica/acc-11-ayudas": {
+    "clase": "Adecuada",
+    "justificacion": "El puesto, los recorridos, materiales y vías de registro alternativas responden a la silla de ruedas y al esfuerzo de escritura descritos.",
+    "causa": null,
+    "fichaSha": "f0870d42d32b080402d9170c0cfa371e59aa9154c2ff77c5c0231f50770a1107"
+  },
+  "ruido/basica/acc-7-transiciones": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "7a46954a90e62105a50269ccbc50ba4c86d9373d1facad0f980bf9f20a527666"
+  },
+  "ruido/basica/acc-4-recreo": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "cffe2905490e64fe87dd8ed1452349bc3972d9cfb1c834901efd231709354462"
+  },
+  "ruido/basica/acc-7-desfogue": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "6ab6822ad61a1f3fb324bf6ab8176cda605adf2448edbc1846bc4db08591deb1"
+  },
+  "ruido/basica/acc-1-agenda": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "b8e4ae7a685f5edc5aaa8aef28acd60a42de7aa16082034fe0e23514e1a8f411"
+  },
+  "ruido/basica/acc-4-exponer": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "00e82e5e67dbcf32ac90db1e805e52c7b19aacf1088522977abcf4ff17fd32bf"
+  },
+  "ruido/basica/acc-7-tranquilo": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "d67154a08575f7fd1762b5a3dd95725f32d9f234f95b1567de7bf7d769420ea1"
+  },
+  "ruido/basica/acc-7-luz": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "ec604e409fe6baabf4975bf1611ba2596493832196ab784fa7ad335fd67d4ae1"
+  },
+  "ruido/basica/acc-5-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "36c82fd5246011d5e3c057a782ab674aabee9e5731ee3f8564f47414ddb979f1"
+  },
+  "ruido/basica/acc-5-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipar transiciones y disponer de pausas o espacio con menos ruido responde a la angustia por cambios y recreos descrita.",
+    "causa": null,
+    "fichaSha": "ae7444f67b965c4166b620777502918920720bfd43678107e817e6c0d962fdc1"
+  },
+  "ruido/basica/acc-9-jornada": {
+    "clase": "Discutible",
+    "justificacion": "Se ofrecen movimiento, ajustes visuales, no exponer o cambiar la hora; no se describieron estas barreras específicas. La alternativa tranquila podría ayudar, pero la evidencia del perfil es otra.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "33a097d913c0739c51cfb41b4a3844a968b56f8348c3e83819664b5b0178ce70"
+  },
+  "fatiga/basica/acc-9-plazos": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null,
+    "fichaSha": "5bcdbc3e15898f47e9a827859b7326220088c1dabd94a19c3b356668e9509f99"
+  },
+  "fatiga/basica/acc-9-descanso": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null,
+    "fichaSha": "711de163c02a4d4bc6cd43866dadbbc5321f8a15843883fe58a349d7854b63ba"
+  },
+  "fatiga/basica/acc-9-cuidados": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null,
+    "fichaSha": "69f6bce5c334ea7ad1179b286ef40ee175205ec2354021ab708949382f86546a"
+  },
+  "fatiga/basica/acc-9-jornada": {
+    "clase": "Adecuada",
+    "justificacion": "Las fechas acordadas, material perdido, descanso y horario con energía responden a ausencias y fatiga. Los cuidados concretos se acuerdan, no se presuponen.",
+    "causa": null,
+    "fichaSha": "33a097d913c0739c51cfb41b4a3844a968b56f8348c3e83819664b5b0178ce70"
+  },
+  "desafio/basica/acc-14-extension": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "La pregunta más compleja se ofrece al dominar lo básico y evita más ejercicios iguales, exactamente la necesidad descrita al terminar antes.",
+    "fichaSha": "e044360182eb6de8ab352f24853220242ae42852d8e089fdcc3dce105c56a4e7"
+  },
+  "desafio/basica/acc-14-eleccion": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Elegir investigar o resolver un problema abierto con meta y plazo aporta la profundidad y continuidad que pide el estudiante.",
+    "fichaSha": "48b9faf216f9016844f0d8f226adfd73cdfcdf7bb1e3425d04bdee00bb5fdfdc"
+  },
+  "desafio/basica/acc-14-compactar": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Comprueba dominio y sustituye repetición por mayor desafío sin retirar las evaluaciones del curso. Responde al aprendizaje ya demostrado.",
+    "fichaSha": "446a1118d3f8cd6e4d4fc1628f8df0a4a9984828282a0aee43e1d5c104fe8896"
+  },
+  "desafio/basica/acc-14-pares": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Los grupos flexibles por ritmo o intereses ofrecen oportunidad de desafío sin grupo fijo separado. Es una opción para seguir aprendiendo, no una inferencia diagnóstica.",
+    "fichaSha": "9a1b633af77fe7e7f34be0eb1a83a2de9dc56a1ec9bf0cc14d5820e9d4ac27ff"
+  },
+  "lectura/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Imágenes y pasos ayudan a acceder al procedimiento pese al esfuerzo lector.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "lectura/basica/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "lectura/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar lo aprendido sin depender de escritura extensa.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "vision/basica/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "083c8810a2b94690001aeca54c65abbc08693cfe593bce08c9d91dc780834da1"
+  },
+  "vision/basica/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "Letra grande y contraste coinciden con usar lupa; las alternativas táctiles no deben interpretarse como obligatorias.",
+    "causa": null,
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "vision/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite conocer el recorrido y localizar equipos con su acceso visual.",
+    "causa": null,
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "vision/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo localizar y recorrer la salida responde a no distinguir referencias visuales a distancia.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "senas/basica/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "La alarma visual además de sonora responde directamente al acceso a avisos.",
+    "causa": null,
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "senas/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar avisos y apoyo en una emergencia responde al acceso por señas/señales visuales.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "oral/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite ajustar la forma de demostrar, usando el tablero en lugar del habla.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "lengua/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Las imágenes y demostración ofrecen una vía inicial además del español escrito.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "tareas/basica/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible por pasos responde a perder el inicio y la secuencia de la tarea.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "tareas/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparar y ordenar con tiempo acordado responde a no terminar procedimientos de varios pasos.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  },
+  "tareas/basica/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "tareas/basica/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "movimiento/basica/prac-puesto": {
+    "clase": "Adecuada",
+    "justificacion": "La altura y alcance del puesto responden a la mesa inaccesible.",
+    "causa": null,
+    "fichaSha": "d78da80bd9644c6d28f128b0240809114ea88883d7fc0672fce904c5747d6855"
+  },
+  "movimiento/basica/prac-asistente": {
+    "clase": "Adecuada",
+    "justificacion": "Permite dirigir la ejecución cuando la manipulación no sea lo evaluado, conservando las decisiones del estudiante.",
+    "causa": null,
+    "fichaSha": "083c8810a2b94690001aeca54c65abbc08693cfe593bce08c9d91dc780834da1"
+  },
+  "movimiento/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparación y registro manual exigen más esfuerzo; el tiempo acordado es pertinente.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  },
+  "movimiento/basica/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite revisar el acceso en silla de ruedas antes de la sesión.",
+    "causa": null,
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "movimiento/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar acceso y acompañamiento en la salida responde a la barrera de desplazamiento.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "movimiento/basica/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Distingue el desempeño esencial de la forma de registrar o manipular.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "ruido/basica/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "335a1b1e7956e75065ae22c60aa84b1f0d20ec6505cb0d2daa8dc436fa162db7"
+  },
+  "ruido/basica/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar el apoyo durante una alarma o cambio brusco responde a los desencadenantes descritos.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "fatiga/basica/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas y tiempos distribuidos responden al cansancio en sesiones largas.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  },
+  "lectura/superior/sup-digital": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null,
+    "fichaSha": "32ee991f3e5c05c2b6125a2210d89d473c77007dc3533a7cb90c16451ac05c89"
+  },
+  "lectura/superior/sup-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null,
+    "fichaSha": "0a65ac413748d53dc3497d4cb3433d9f138cda1dea8dff707d75b4dedb71f175"
+  },
+  "lectura/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null,
+    "fichaSha": "e80c3f19eb89b897617b603b90d30be54530978bf20561e0b9fbe62e25b8e001"
+  },
+  "lectura/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null,
+    "fichaSha": "7a964290ad2e33eb576daf5e661c84ba29ba7003d6946369139208cb05c5fcd7"
+  },
+  "lectura/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "Ofrece una vía accesible, más tiempo acordado o material previo frente al esfuerzo lector/escritor descrito; la alternativa conserva el resultado de aprendizaje.",
+    "causa": null,
+    "fichaSha": "267ad240288a174b6b2c6864f37bfaec45065a3344738e2a74220e0333a65589"
+  },
+  "vision/superior/sup-vision": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null,
+    "fichaSha": "16b2ae7e6bebefaa8c8ae0970dab33a6bd70c5146d6b5973a55109e340574ed3"
+  },
+  "vision/superior/sup-digital": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null,
+    "fichaSha": "32ee991f3e5c05c2b6125a2210d89d473c77007dc3533a7cb90c16451ac05c89"
+  },
+  "vision/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Disponer del archivo de presentaciones permite ampliarlo con su lupa o tecnología, tal como solicita el perfil; no exige Braille ni una barrera auditiva.",
+    "fichaSha": "7a964290ad2e33eb576daf5e661c84ba29ba7003d6946369139208cb05c5fcd7"
+  },
+  "vision/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "El formato ampliable y acordado con quien usa lupa responde al acceso visual. sup-vision permite acordar ampliación, no impone Braille a todos.",
+    "causa": null,
+    "fichaSha": "267ad240288a174b6b2c6864f37bfaec45065a3344738e2a74220e0333a65589"
+  },
+  "senas/superior/sup-senas": {
+    "clase": "Adecuada",
+    "justificacion": "La ficha ofrece intérprete/subtítulos y turnos visibles, pertinentes para acceder al discurso. El micrófono por sí solo no sustituye señas.",
+    "causa": null,
+    "fichaSha": "2d8dfb6b334ea334bf07c2ba95a940cd8f627ea743569f8f19041817c63e5a29"
+  },
+  "senas/superior/sup-audicion": {
+    "clase": "Adecuada",
+    "justificacion": "La ficha ofrece intérprete/subtítulos y turnos visibles, pertinentes para acceder al discurso. El micrófono por sí solo no sustituye señas.",
+    "causa": null,
+    "fichaSha": "5b14daf3712857689b6017902d412495712a141657347a22f71372ed04241b46"
+  },
+  "senas/superior/sup-instrucciones": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Instrucciones disponibles por escrito y comprobación de la tarea eliminan la dependencia exclusiva del habla. La confirmación debe aceptar señas y acordar el formato que comprenda.",
+    "fichaSha": "b9ccc5040fdf4a34cb93b6ef8503b5eb6cb9c6390be8a998b17ed3281b7b7b54"
+  },
+  "senas/superior/sup-tecnologia": {
+    "clase": "Discutible",
+    "justificacion": "Puede servir como acceso escrito o tecnología acordada, pero los pasos priorizan lector de pantalla/texto a voz, que no responde a lo descrito.",
+    "causa": "una situación demasiado amplia",
+    "fichaSha": "267ad240288a174b6b2c6864f37bfaec45065a3344738e2a74220e0333a65589"
+  },
+  "oral/superior/sup-caa": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Pregunta qué tablero o sistema usa y permite participar y responder por esa vía. Responde de forma específica al tablero ya descrito, sin atribuir otra lengua.",
+    "fichaSha": "ba2312a40b9e233bc7e64fa594b7747e9db444baaa457799eb5876b0204075ff"
+  },
+  "oral/superior/sup-oral-progresivo": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Incluye responder por escrito o más tarde cuando no se evalúa oralidad, y acuerdo gradual si esta es un resultado requerido. Ofrece una alternativa al habla inmediata.",
+    "fichaSha": "a452f7b0ed6186735c99139d5808bf352ab9e169156979460678e2ad70f4744c"
+  },
+  "oral/superior/sup-grupos": {
+    "clase": "Discutible",
+    "justificacion": "Grupo pequeño o instrucciones escritas pueden servir en ciertos contextos, pero no garantizan disponer del tablero y de tiempo para expresarse.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "e1daf1d79e837ee91f0417069495df851183a3c04aa024ba34be4a431f74d3a9"
+  },
+  "oral/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Permite una forma de respuesta diferente; es pertinente si se elige una vía no oral, manteniendo el resultado evaluado.",
+    "causa": null,
+    "fichaSha": "e80c3f19eb89b897617b603b90d30be54530978bf20561e0b9fbe62e25b8e001"
+  },
+  "lengua/superior/sup-lengua": {
+    "clase": "Adecuada",
+    "justificacion": "Glosario/traductor y vías alternativas, cuando el idioma no es lo evaluado, permiten participar con conocimientos en su lengua.",
+    "causa": null,
+    "fichaSha": "44686e80dae20ce502ae9500d2fa3fa18deaab3aa4fb61810574b9c29ded338a"
+  },
+  "lengua/superior/sup-intercultural": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "2fc0abdc41598cfabef9807166f2b1646bc4ebaaded9567e8e2de50d9b0cb715"
+  },
+  "lengua/superior/sup-instrucciones": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Comprobar la consigna es útil, pero escribirla en español no resuelve por sí solo que aún no lo comprende. La ficha no concreta traducción o mediación en su lengua.",
+    "fichaSha": "b9ccc5040fdf4a34cb93b6ef8503b5eb6cb9c6390be8a998b17ed3281b7b7b54"
+  },
+  "lengua/superior/sup-expectativas": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "7bfd9e4983e7e00cede07e6f5cf25f988c66d5528f14bb265c81efbf87d41be5"
+  },
+  "lengua/superior/sup-apuntes": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Acceso anticipado a apuntes puede permitir una traducción posterior, pero el perfil no describe lentitud para tomar notas. Sin adaptación lingüística siguen siendo materiales en una lengua que no comprende.",
+    "fichaSha": "7a964290ad2e33eb576daf5e661c84ba29ba7003d6946369139208cb05c5fcd7"
+  },
+  "lengua/superior/sup-confidencial": {
+    "clase": "Discutible",
+    "justificacion": "Privacidad, agrupación, expectativas escritas o bibliografía diversa son apoyos posibles, pero por sí solos no hacen comprensibles las instrucciones en español.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "ddc8422d441c4b770ae08a97dba51d4e21dfa1cdf4783092833ca50047c20302"
+  },
+  "lengua/superior/sup-referente": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Una persona de contacto puede canalizar ayuda, pero la ficha no asegura un canal en su lengua ni mediación lingüística. Ese dato falta para responder directamente a la barrera descrita.",
+    "fichaSha": "29504ebf6d1c4638a5558f31fc8253ea3310ce4f2f30cc8a3b56de43b855a78b"
+  },
+  "lengua/superior/sup-anticipar": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "Calendario, rúbricas y avisos ayudan a planificar, pero no se describió dificultad organizativa ni de cambios. Su barrera es comprender español; anticipar fechas no basta para resolverla.",
+    "fichaSha": "b8c60d2b17d3712b5a32070df1b5343ad18d3dd393ae7c0560b2c0d34090d4e8"
+  },
+  "tareas/superior/sup-tiempo": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "0a65ac413748d53dc3497d4cb3433d9f138cda1dea8dff707d75b4dedb71f175"
+  },
+  "tareas/superior/sup-sala": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "e1fa890f49375a02510ca7518d8f23d882c236fc54ca942148a8a6ca58e814e1"
+  },
+  "tareas/superior/sup-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null,
+    "fichaSha": "b8c60d2b17d3712b5a32070df1b5343ad18d3dd393ae7c0560b2c0d34090d4e8"
+  },
+  "tareas/superior/sup-expectativas": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null,
+    "fichaSha": "7bfd9e4983e7e00cede07e6f5cf25f988c66d5528f14bb265c81efbf87d41be5"
+  },
+  "tareas/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Anticipación, material disponible e instrucciones explícitas reducen la pérdida de organización e inicio descrita.",
+    "causa": null,
+    "fichaSha": "7a964290ad2e33eb576daf5e661c84ba29ba7003d6946369139208cb05c5fcd7"
+  },
+  "tareas/superior/sup-sensorial": {
+    "clase": "Discutible",
+    "justificacion": "Más tiempo, sala aparte o regulación sensorial pueden ayudar, pero la dificultad observada en clase no acredita esas condiciones durante una evaluación.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "fb16f740ca6aff89b9d67b641b5a8f47d6b83d04bd4851f2524f653c1e48ee60"
+  },
+  "movimiento/superior/sup-espacios": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null,
+    "fichaSha": "3d95744a659b756722ca72ca5fbf4f2719dd49b4b27960cb3232d0aa67f8f2c9"
+  },
+  "movimiento/superior/sup-formatos": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null,
+    "fichaSha": "e80c3f19eb89b897617b603b90d30be54530978bf20561e0b9fbe62e25b8e001"
+  },
+  "movimiento/superior/sup-apuntes": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null,
+    "fichaSha": "7a964290ad2e33eb576daf5e661c84ba29ba7003d6946369139208cb05c5fcd7"
+  },
+  "movimiento/superior/sup-tecnologia": {
+    "clase": "Adecuada",
+    "justificacion": "Acceso físico, material que evita copiar y alternativas de registro con tecnología responden al puesto inaccesible y al esfuerzo manual, sin cambiar la exigencia.",
+    "causa": null,
+    "fichaSha": "267ad240288a174b6b2c6864f37bfaec45065a3344738e2a74220e0333a65589"
+  },
+  "ruido/superior/sup-calma": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "7cd930a90f809728230bb6e9ad36842c84c27e2b3e7ae371fe5db415ce7d2e33"
+  },
+  "ruido/superior/sup-sala": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "e1fa890f49375a02510ca7518d8f23d882c236fc54ca942148a8a6ca58e814e1"
+  },
+  "ruido/superior/sup-sensorial": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "fb16f740ca6aff89b9d67b641b5a8f47d6b83d04bd4851f2524f653c1e48ee60"
+  },
+  "ruido/superior/sup-confidencial": {
+    "clase": "Discutible",
+    "justificacion": "Proteger la privacidad es una regla útil y cambiar el grupo podría ayudar, pero no se describieron exposición de datos ni barrera grupal como motivo del malestar.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "ddc8422d441c4b770ae08a97dba51d4e21dfa1cdf4783092833ca50047c20302"
+  },
+  "ruido/superior/sup-grupos": {
+    "clase": "Discutible",
+    "justificacion": "Proteger la privacidad es una regla útil y cambiar el grupo podría ayudar, pero no se describieron exposición de datos ni barrera grupal como motivo del malestar.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "e1daf1d79e837ee91f0417069495df851183a3c04aa024ba34be4a431f74d3a9"
+  },
+  "ruido/superior/sup-referente": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "29504ebf6d1c4638a5558f31fc8253ea3310ce4f2f30cc8a3b56de43b855a78b"
+  },
+  "ruido/superior/sup-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "c282857b8a474625a0e1a75759e20181407a4da9f5005e19f8970eb6c8dc5d76"
+  },
+  "ruido/superior/sup-oral-progresivo": {
+    "clase": "Discutible",
+    "causa": "falta un dato en el perfil",
+    "justificacion": "La angustia descrita se vincula a ruido y cambios imprevistos. No se informó dificultad de respuesta oral o exposición que justifique graduar presentaciones.",
+    "fichaSha": "a452f7b0ed6186735c99139d5808bf352ab9e169156979460678e2ad70f4744c"
+  },
+  "ruido/superior/sup-anticipar": {
+    "clase": "Adecuada",
+    "justificacion": "Menor ruido, pausas, un lugar de regulación, anticipación y una referencia para volver responden a los desencadenantes y apoyos descritos.",
+    "causa": null,
+    "fichaSha": "b8c60d2b17d3712b5a32070df1b5343ad18d3dd393ae7c0560b2c0d34090d4e8"
+  },
+  "fatiga/superior/sup-plazos": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null,
+    "fichaSha": "9981e074097860f5a0e8859090c8a685a63b0222c68aa642dcbf092a689bd703"
+  },
+  "fatiga/superior/sup-remoto": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null,
+    "fichaSha": "15627eb6c9c208970e806d8611c3fd240fa83ad082ffe0bb26a8167ef996165e"
+  },
+  "fatiga/superior/sup-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null,
+    "fichaSha": "0a65ac413748d53dc3497d4cb3433d9f138cda1dea8dff707d75b4dedb71f175"
+  },
+  "fatiga/superior/sup-pausas": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas, plazos/material recuperable y acceso remoto permiten continuar sin concentrar todas las entregas; el tiempo de evaluación debe acordarse según la fatiga.",
+    "causa": null,
+    "fichaSha": "c282857b8a474625a0e1a75759e20181407a4da9f5005e19f8970eb6c8dc5d76"
+  },
+  "desafio/superior/sup-profundizar": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Lecturas o problemas avanzados opcionales cuando termina antes dan un siguiente desafío y seguimiento sin simplificar resultados.",
+    "fichaSha": "db58a8d3245faa0fc59f5eb4151ed31faeaa4d041ebcd1f76a6933823c4195af"
+  },
+  "desafio/superior/sup-proyecto": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Un trabajo de mayor alcance con hitos permite profundizar manteniendo el resultado de aprendizaje. Responde a su deseo de investigar más.",
+    "fichaSha": "6f36fd8e28669ebdb3b644a6e359e66dc561c562e9236fcd5b678a12c78efec4"
+  },
+  "desafio/superior/sup-ritmo": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Revisa el dominio y las opciones institucionales; si no hay aceleración formal, cambia repetición por desafío. No otorga una convalidación automática.",
+    "fichaSha": "a0d70dbddbdc6568633aff145f02571be674a76666476861d7e67ca29a07d1ab"
+  },
+  "desafio/superior/sup-investigacion": {
+    "clase": "Adecuada",
+    "causa": null,
+    "justificacion": "Ofrece explorar instancias de producción de conocimiento y acompañar el acceso. Es una vía de profundidad; disponibilidad y requisitos deben comprobarse, sin garantizar un cupo.",
+    "fichaSha": "013404a0354cefd892f2341223fed9bfa922857e85985596397b6b74f7f78293"
+  },
+  "lectura/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Imágenes y pasos ayudan a acceder al procedimiento pese al esfuerzo lector.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "lectura/superior/prac-rotulos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe leer y escribir, pero no declara problemas de tamaño/contraste de los rótulos o de acceso a las señales sonoras. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "lectura/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite demostrar lo aprendido sin depender de escritura extensa.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "vision/superior/prac-asistente": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe acceder a lo escrito con lupa, pero no declara una barrera de manipulación que requiera que otra persona ejecute. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "083c8810a2b94690001aeca54c65abbc08693cfe593bce08c9d91dc780834da1"
+  },
+  "vision/superior/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "Letra grande y contraste coinciden con usar lupa; las alternativas táctiles no deben interpretarse como obligatorias.",
+    "causa": null,
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "vision/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite conocer el recorrido y localizar equipos con su acceso visual.",
+    "causa": null,
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "vision/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar cómo localizar y recorrer la salida responde a no distinguir referencias visuales a distancia.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "senas/superior/prac-rotulos": {
+    "clase": "Adecuada",
+    "justificacion": "La alarma visual además de sonora responde directamente al acceso a avisos.",
+    "causa": null,
+    "fichaSha": "5561455ee150700d3202e6ec479453c8b0f3dcb5bfe9adb7f3483e3e83f800c7"
+  },
+  "senas/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar avisos y apoyo en una emergencia responde al acceso por señas/señales visuales.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "oral/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Permite ajustar la forma de demostrar, usando el tablero en lugar del habla.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "lengua/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "Las imágenes y demostración ofrecen una vía inicial además del español escrito.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "tareas/superior/prac-procedimiento": {
+    "clase": "Adecuada",
+    "justificacion": "La secuencia visible por pasos responde a perder el inicio y la secuencia de la tarea.",
+    "causa": null,
+    "fichaSha": "8aebc9008d4255e786917437046c2ab9836fadaeaeaa60038ea47d0e7810f286"
+  },
+  "tareas/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparar y ordenar con tiempo acordado responde a no terminar procedimientos de varios pasos.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  },
+  "tareas/superior/prac-recorrido": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara una dificultad específica de orientación o acceso al recorrido. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "tareas/superior/prac-evaluar": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe empezar y terminar una tarea, pero no declara que la forma de ejecutar o registrar el desempeño sea el obstáculo. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "movimiento/superior/prac-puesto": {
+    "clase": "Adecuada",
+    "justificacion": "La altura y alcance del puesto responden a la mesa inaccesible.",
+    "causa": null,
+    "fichaSha": "d78da80bd9644c6d28f128b0240809114ea88883d7fc0672fce904c5747d6855"
+  },
+  "movimiento/superior/prac-asistente": {
+    "clase": "Adecuada",
+    "justificacion": "Permite dirigir la ejecución cuando la manipulación no sea lo evaluado, conservando las decisiones del estudiante.",
+    "causa": null,
+    "fichaSha": "083c8810a2b94690001aeca54c65abbc08693cfe593bce08c9d91dc780834da1"
+  },
+  "movimiento/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Preparación y registro manual exigen más esfuerzo; el tiempo acordado es pertinente.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  },
+  "movimiento/superior/prac-recorrido": {
+    "clase": "Adecuada",
+    "justificacion": "Permite revisar el acceso en silla de ruedas antes de la sesión.",
+    "causa": null,
+    "fichaSha": "8b9b02ccc2c7b643815ae8eaad9e305499bcd29c38f425d65e00280db5862d0f"
+  },
+  "movimiento/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar acceso y acompañamiento en la salida responde a la barrera de desplazamiento.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "movimiento/superior/prac-evaluar": {
+    "clase": "Adecuada",
+    "justificacion": "Distingue el desempeño esencial de la forma de registrar o manipular.",
+    "causa": null,
+    "fichaSha": "19790505dc5fd78d542887da34d8cd1b1cafdda8e52bddea106b6198ecc5a4c7"
+  },
+  "ruido/superior/prac-grupos": {
+    "clase": "Discutible",
+    "justificacion": "El caso describe participar sin sobrecarga de ruido ni cambios imprevistos, pero no declara dificultad para formar parejas o distribuir roles en el taller. Esta ficha podría servir si se confirma esa condición; no se deduce del perfil escrito. Se muestra a todos por la casilla de práctica, incluso con puntaje cero.",
+    "causa": "falta un dato en el perfil",
+    "fichaSha": "335a1b1e7956e75065ae22c60aa84b1f0d20ec6505cb0d2daa8dc436fa162db7"
+  },
+  "ruido/superior/prac-evacuacion": {
+    "clase": "Adecuada",
+    "justificacion": "Acordar el apoyo durante una alarma o cambio brusco responde a los desencadenantes descritos.",
+    "causa": null,
+    "fichaSha": "e9ec9cd39e9c66217f1ffd630d593402228f51167c12f45facb3ff6fe359446b"
+  },
+  "fatiga/superior/prac-tiempo": {
+    "clase": "Adecuada",
+    "justificacion": "Pausas y tiempos distribuidos responden al cansancio en sesiones largas.",
+    "causa": null,
+    "fichaSha": "a43f1e746ce4b6abfdbf86e27c78d928e5a2d1d733109042f6d7aed8334c06bf"
+  }
+}

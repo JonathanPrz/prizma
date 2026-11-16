@@ -1,15 +1,19 @@
 // Auditoría de solo lectura de la aplicación. Salidas limitadas a la carpeta de la tarea.
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm'), crypto = require('node:crypto'), assert = require('node:assert/strict');
-const raiz = path.resolve(__dirname, '..'), destino = path.join(raiz, 'docs/auditorias/024-estudiantes');
+const raiz = path.resolve(__dirname, '..'), destino = path.join(raiz, 'docs/auditorias/026-reauditoria');
 const leer = p => fs.readFileSync(path.join(raiz, p), 'utf8');
+fs.mkdirSync(destino,{recursive:true});
+const referencia = JSON.parse(leer('docs/auditorias/024-estudiantes/resultados.json'));
 const perfiles = JSON.parse(fs.readFileSync(path.join(destino, 'perfiles.json'), 'utf8'));
 const revision = JSON.parse(fs.readFileSync(path.join(destino, 'revision-acceso.json'), 'utf8'));
 const catalogo = JSON.parse(leer('data/recomendaciones.json')), fuentes = JSON.parse(leer('data/fuentes.json'));
 const app = leer('app.js'), html = leer('index.html');
+const fichaSha = r => crypto.createHash('sha256').update(JSON.stringify(r)).digest('hex');
+for(const [clave, juicio] of Object.entries(revision)){const ficha=catalogo.find(r=>r.id===clave.split('/')[2]);assert(ficha && juicio.fichaSha===fichaSha(ficha),'Cambió una ficha revisada: '+clave);}
 // Fecha y zona fijas para que la tabla de resumen del PDF sea reproducible.
 process.env.TZ='America/Santiago';
 class FechaPrueba extends Date {constructor(...args){super(...(args.length?args:['2026-11-15T15:00:00-03:00']));}static now(){return new Date('2026-11-15T15:00:00-03:00').getTime();}}
-const huellas=()=>Object.fromEntries(['app.js','index.html','styles.css','data/recomendaciones.json','data/necesidades.json','data/fuentes.json','docs/auditorias/024-estudiantes/perfiles.json'].map(p=>[p,crypto.createHash('sha256').update(leer(p)).digest('hex')]));
+const huellas=()=>Object.fromEntries(['app.js','index.html','styles.css','data/recomendaciones.json','data/necesidades.json','data/fuentes.json','docs/auditorias/024-estudiantes/perfiles.json','docs/auditorias/024-estudiantes/resultados.json','docs/auditorias/026-reauditoria/perfiles.json','docs/auditorias/026-reauditoria/revision-acceso.json'].map(p=>[p,crypto.createHash('sha256').update(leer(p)).digest('hex')]));
 const opciones = [...html.split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m => ({value:m[1]}));
 assert.equal(perfiles.length,10);assert.equal(new Set(perfiles.map(p=>p.id)).size,10);
 const nodos = new Map();
@@ -22,7 +26,7 @@ const run = s => vm.runInContext(s,c), json = s => JSON.parse(JSON.stringify(run
 c.catalogoEntrada=catalogo;c.fuentesEntrada=fuentes;c.necesidadesEntrada=JSON.parse(leer('data/necesidades.json'));
 run('catalogo=catalogoEntrada; fuentes=Object.fromEntries(fuentesEntrada.map(f=>[f.id,f])); necesidades=necesidadesEntrada');
 function iniciar(n, nivel, practica) {
-  c.entrada={perfil:{nivel,practica},estudiantes:perfiles.slice(0,n).map(p=>({...p,seleccion:{}})),estudianteActivo:perfiles[0].id,seleccion:{}};
+  c.entrada={versionSituaciones:2,perfil:{nivel,practica},estudiantes:perfiles.slice(0,n).map(p=>({...p,seleccion:{}})),estudianteActivo:perfiles[0].id,seleccion:{}};
   run('estado=normalizarDatos(entrada); inclusionDocumento=null');
 }
 function ids(n) {return (n?.atributos?.id?.startsWith('elegir-') ? [n.atributos.id.slice(7)] : []).concat((n?.hijos||[]).flatMap(h=>typeof h==='object'?ids(h):[]));}
@@ -120,7 +124,7 @@ async function interfaz() {
       const pagina=await navegador.newPage({viewport:{width:ancho,height:900}}),errores=[];
       pagina.on('pageerror',e=>errores.push(e.message));
       const estudiantes=perfiles.slice(0,n).map(p=>({...p,seleccion:{}}));
-      await pagina.addInitScript(estudiantes=>{localStorage.setItem('prizma.v1',JSON.stringify({perfil:{nivel:'basica'},estudiantes,estudianteActivo:estudiantes.at(-1).id,seleccion:{}}));localStorage.setItem('prizma.privacidad.v1','1');localStorage.setItem('prizma.tema','claro');},estudiantes);
+      await pagina.addInitScript(estudiantes=>{localStorage.setItem('prizma.v1',JSON.stringify({versionSituaciones:2,perfil:{nivel:'basica'},estudiantes,estudianteActivo:estudiantes.at(-1).id,seleccion:{}}));localStorage.setItem('prizma.privacidad.v1','1');localStorage.setItem('prizma.tema','claro');},estudiantes);
       await pagina.goto(`http://127.0.0.1:${servidor.address().port}/#apoyos`);
       await pagina.waitForSelector('#lista-estudiantes button',{state:'attached'});
       const renderizada=await pagina.locator('#apoyos-resultados button[id^="elegir-"]').evaluateAll(ns=>ns.map(n=>n.id.slice(7)));
@@ -136,16 +140,20 @@ async function interfaz() {
       const medida={n,ancho,activo:perfiles[n-1].id,titulo:await pagina.locator('#t-apoyos').innerText(),presionados:await pagina.locator('#lista-estudiantes button[aria-pressed="true"]').count(),tecladoConservaCampos:true,ordenVmCoincide:true,sinDesborde:await pagina.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),arbolSelector:await pagina.locator('#lista-estudiantes').ariaSnapshot(),errores};
       if(ancho===390){
         await pagina.locator('#filtros-dialogo-cuerpo').evaluate(n=>n.scrollTop=n.scrollHeight);
-        medida.contextoAlFinal=await pagina.evaluate(()=>{const visible=s=>{const r=document.querySelector(s).getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;};return {tituloDialogo:document.querySelector('#t-filtros-dialogo').textContent,inicialesEnPantalla:visible('#iniciales'),selectorEnPantalla:visible('#lista-estudiantes')};});
+        medida.contextoAlFinal=await pagina.evaluate(()=>{const visible=s=>{const r=document.querySelector(s).getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;};return {tituloDialogo:document.querySelector('#t-filtros-dialogo').textContent,tituloEnPantalla:visible('#t-filtros-dialogo'),inicialesEnPantalla:visible('#iniciales'),selectorEnPantalla:visible('#lista-estudiantes')};});
         await pagina.screenshot({path:path.join(destino,`n${n}-390-final-filtros.png`)});
       }
       assert(medida.sinDesborde);assert.equal(medida.presionados,1);assert.deepEqual(errores,[]);if(n===10){
         if(ancho===390)await pagina.click('#ver-resultados');
         await pagina.click('#tab-dua');await pagina.waitForFunction(()=>document.querySelector('#tab-dua').getAttribute('aria-selected')==='true');
-        await pagina.locator('#barreras-repetidas').scrollIntoViewIfNeeded();
-        medida.recuadroDua=await pagina.locator('#barreras-repetidas').innerText();
+        medida.recuadroDuaVisible=await pagina.locator('#barreras-repetidas').isVisible();
+        medida.recuadroDua=medida.recuadroDuaVisible?await pagina.locator('#barreras-repetidas').innerText():null;
+        if(medida.recuadroDuaVisible)await pagina.locator('#barreras-repetidas').scrollIntoViewIfNeeded();
         await pagina.screenshot({path:path.join(destino,`n10-${ancho}-dua.png`)});
-        await pagina.click('#barrera-1');medida.necesidadMarcada=await pagina.locator('#necesidad-tareas-largas').getAttribute('aria-pressed');assert.equal(medida.necesidadMarcada,'true');
+        medida.necesidadMarcada=null;
+        if(await pagina.locator('#barrera-1').isVisible()){
+          await pagina.click('#barrera-1');medida.necesidadMarcada=await pagina.locator('#necesidad-tareas-largas').getAttribute('aria-pressed');assert.equal(medida.necesidadMarcada,'true');
+        }
       }
       mediciones.push(medida);await pagina.close();
     }
@@ -174,9 +182,43 @@ const escapar=t=>String(t).replace(/\|/g,'\\|').replace(/\n/g,' '),fila=xs=>'| '
   fs.writeFileSync(path.join(destino,'clasificacion.md'),clas);
   let observadas='# Fichas inadecuadas y discutibles\n\n';for(const tipo of ['Inadecuada','Discutible']){observadas+='## '+tipo+'\n\n'+fila(['ID','Perfil','Nivel','Sección','Causa probable','Justificación'])+fila(Array(6).fill('---'));for(const r of clasificaciones.filter(r=>r.clase===tipo))observadas+=fila([r.id,r.perfil,r.nivel,r.seccion,r.causa,r.justificacion]);observadas+='\n';}fs.writeFileSync(path.join(destino,'fichas-observadas.md'),observadas.trimEnd()+'\n');
   let tablas='';for(let n=1;n<=10;n++){tablas+=`### N = ${n}\n\n`+fila(['Nivel','Práctica','Promedio acceso','Promedio total','Jaccard acceso','Jaccard total','Pares idénticos (acceso y total)'])+fila(Array(7).fill('---'));for(const e of escenarios.filter(e=>e.n===n))tablas+=fila([e.nivel,e.practica?'Sí':'No',e.promedioAcceso.toFixed(2),e.promedioTotal.toFixed(2),e.similitudAcceso.promedio===null?'—':e.similitudAcceso.promedio.toFixed(3),e.similitudTotal.promedio===null?'—':e.similitudTotal.promedio.toFixed(3),e.similitudAcceso.identicos.map(p=>p.join(' / ')).join('; ')||'—']);tablas+='\n';}
-  let pertinencia=fila(['Perfil','Nivel','Adecuadas','Discutibles','Inadecuadas','Total unión'])+fila(Array(6).fill('---'));for(const p of perfiles)for(const n of ['basica','superior']){const rs=clasificaciones.filter(r=>r.perfil===p.id&&r.nivel===n);pertinencia+=fila([p.id,n,...['Adecuada','Discutible','Inadecuada'].map(t=>rs.filter(r=>r.clase===t).length),rs.length]);}
   let tablaPdf=fila(['N','Nivel','Práctica','Páginas','Fichas incompletas','Grupos huérfanos'])+fila(Array(6).fill('---'));for(const p of pdfs)tablaPdf+=fila([p.n,p.nivel,p.practica?'Sí':'No',p.paginas,p.fichasSinBloqueCompleto.length,p.gruposHuerfanos.length]);
-  const descripciones=perfiles.map(p=>`### ${p.orden}. ${p.titulo} (${p.id}, ${p.iniciales})\n\n${p.descripcion}\n\nSituaciones: ${Object.entries(p.dimensiones).map(([d,f])=>`${json('DIMENSIONES')[Number(d)-1][0]}: ${json('FRECUENCIAS')[f]}`).join('; ')}.\n\nLe ayuda: «${p.ayuda}». Voz: «${p.voz}».\n`).join('\n');
-  const plantilla=fs.readFileSync(path.join(destino,'informe-base.md'),'utf8');fs.writeFileSync(path.join(destino,'README.md'),plantilla.replace('{{PERFILES}}',descripciones).replace('{{TABLAS_N}}',tablas).replace('{{PERTINENCIA}}',pertinencia).replace('{{OBSERVADAS}}',observadas.replace(/^# .*\n\n/,'').replace(/^## /gm,'### ')).replace('{{PDF}}',tablaPdf));
+  const clave=r=>`${r.perfil}/${r.nivel}/${r.id}`;
+  const actuales=new Map(clasificaciones.map(r=>[clave(r),r])), previas=new Map(referencia.clasificaciones.map(r=>[clave(r),r]));
+  assert.equal(actuales.size,clasificaciones.length,'Clasificaciones duplicadas');
+  assert.equal(previas.size,referencia.clasificaciones.length,'Referencia duplicada');
+  const conteos=rs=>Object.fromEntries(['Adecuada','Discutible','Inadecuada'].map(t=>[t,rs.filter(r=>r.clase===t).length]));
+  const pertinenciaComparada=perfiles.flatMap(p=>['basica','superior'].map(nivel=>({perfil:p.id,nivel,
+    antes:conteos(referencia.clasificaciones.filter(r=>r.perfil===p.id&&r.nivel===nivel)),despues:conteos(clasificaciones.filter(r=>r.perfil===p.id&&r.nivel===nivel)),
+    accesoAntes:conteos(referencia.clasificaciones.filter(r=>r.perfil===p.id&&r.nivel===nivel&&r.tipo==='acceso')),accesoDespues:conteos(clasificaciones.filter(r=>r.perfil===p.id&&r.nivel===nivel&&r.tipo==='acceso'))})));
+  const pares=escenarios.filter(e=>e.n===10).map(e=>{const a=referencia.escenarios.find(a=>a.n===10&&a.nivel===e.nivel&&a.practica===e.practica);assert(a);return {nivel:e.nivel,practica:e.practica,antes:a.similitudAcceso,despues:e.similitudAcceso,totalAntes:a.similitudTotal,totalDespues:e.similitudTotal};});
+  const retiradas=referencia.clasificaciones.filter(r=>!actuales.has(clave(r))), nuevas=clasificaciones.filter(r=>!previas.has(clave(r)));
+  const comunes=clasificaciones.filter(r=>previas.has(clave(r))).length;
+  assert.equal(retiradas.length+comunes,referencia.clasificaciones.length);
+  assert.equal(nuevas.length+comunes,clasificaciones.length);
+  const inversiones=escenarios.filter(e=>e.n===10).flatMap(e=>e.alumnos.flatMap(a=>a.puntajes.some((p,i,ps)=>i&&p.puntaje>ps[i-1].puntaje)?[{nivel:e.nivel,practica:e.practica,perfil:a.perfil,orden:a.puntajes}]:[]));
+  const resumenGlobal=['basica','superior'].map(nivel=>({nivel,antes:conteos(referencia.clasificaciones.filter(r=>r.nivel===nivel)),despues:conteos(clasificaciones.filter(r=>r.nivel===nivel)),accesoAntes:conteos(referencia.clasificaciones.filter(r=>r.nivel===nivel&&r.tipo==='acceso')),accesoDespues:conteos(clasificaciones.filter(r=>r.nivel===nivel&&r.tipo==='acceso'))}));
+  const nombresAntes=(d)=>d===3?'Comunicación y lenguaje':d===6?'Visión y audición':json('DIMENSIONES')[d-1][0];
+  const marcas=perfiles.map(p=>({perfil:p.id,antes:referencia.perfiles.find(a=>a.id===p.id).dimensiones,despues:p.dimensiones}));
+  for(const p of perfiles){const a=referencia.perfiles.find(a=>a.id===p.id);assert(a);for(const campo of ['id','iniciales','titulo','descripcion','ayuda','voz','orden'])assert.deepEqual(p[campo],a[campo]);}
+  const comparacion={referencia:'docs/auditorias/024-estudiantes/resultados.json',entradaSha,marcas,pertinencia:pertinenciaComparada,resumenGlobal,pares,retiradas,nuevas,inversiones,adecuadasRetiradas:retiradas.filter(r=>r.clase==='Adecuada'),pdfAntes:referencia.pdfs,pdfDespues:pdfs};
+  fs.writeFileSync(path.join(destino,'comparacion.json'),JSON.stringify(comparacion,null,2)+'\n');
+  let tablaMarcas=fila(['Perfil','Antes: situación y frecuencia','Después: situación y frecuencia','Lectura del cambio'])+fila(Array(4).fill('---'));
+  const explicar={vision:'Mismo número 6; ahora solo visión. No se añade Braille.',senas:'Se separa el acceso auditivo del visual; 6 → 13.',oral:'Se separa expresar de comprender; 3 → 12.',lengua:'Conserva 3 y 10; 3 ahora se refiere a comprender las instrucciones.',desafio:'Se reemplaza la desconexión por falta de desafío: 1 → 14. Se conserva A veces, sin inventar frecuencia nueva.'};
+  for(const m of marcas)tablaMarcas+=fila([m.perfil,Object.entries(m.antes).map(([d,f])=>`${d} · ${nombresAntes(Number(d))}: ${json('FRECUENCIAS')[f]}`).join('; '),Object.entries(m.despues).map(([d,f])=>`${d} · ${json('DIMENSIONES')[Number(d)-1][0]}: ${json('FRECUENCIAS')[f]}`).join('; '),explicar[m.perfil]||'Sin cambio: se mantiene la observación y la frecuencia.']);
+  const tripleta=c=>['Adecuada','Discutible','Inadecuada'].map(t=>c[t]).join(' / ');
+  let tablaComparada=fila(['Perfil','Nivel','Antes A / D / I','Después A / D / I','Acceso antes A / D / I','Acceso después A / D / I'])+fila(Array(6).fill('---'));
+  for(const r of pertinenciaComparada)tablaComparada+=fila([r.perfil,r.nivel,tripleta(r.antes),tripleta(r.despues),tripleta(r.accesoAntes),tripleta(r.accesoDespues)]);
+  let tablaGlobal=fila(['Nivel','Antes total A / D / I','Después total A / D / I','Antes acceso A / D / I','Después acceso A / D / I'])+fila(Array(5).fill('---'));
+  for(const r of resumenGlobal)tablaGlobal+=fila([r.nivel,tripleta(r.antes),tripleta(r.despues),tripleta(r.accesoAntes),tripleta(r.accesoDespues)]);
+  let tablaPares=fila(['Nivel','Práctica','Pares idénticos antes','Pares idénticos después','Jaccard acceso antes → después'])+fila(Array(5).fill('---'));
+  for(const r of pares)tablaPares+=fila([r.nivel,r.practica?'Sí':'No',r.antes.identicos.map(p=>p.join(' / ')).join('; ')||'—',r.despues.identicos.map(p=>p.join(' / ')).join('; ')||'—',r.antes.promedio.toFixed(3)+' → '+r.despues.promedio.toFixed(3)]);
+  let tablaRetiradas=fila(['Perfil','Nivel','Ficha antes adecuada que ya no aparece','Justificación conservada de 024'])+fila(Array(4).fill('---'));
+  for(const r of comparacion.adecuadasRetiradas)tablaRetiradas+=fila([r.perfil,r.nivel,r.id,r.justificacion]);
+  const plantilla=fs.readFileSync(path.join(destino,'informe-base.md'),'utf8');
+  const bloques={TABLAS_N:tablas,PDF:tablaPdf,MARCAS:tablaMarcas,COMPARACION:tablaComparada,GLOBAL:tablaGlobal,PARES:tablaPares,RETIRADAS:tablaRetiradas};
+  const informe=plantilla.replace(/\{\{([A-Z_]+)\}\}/g,(_,nombre)=>{assert(Object.hasOwn(bloques,nombre),'Bloque desconocido: '+nombre);return bloques[nombre];});
+  fs.writeFileSync(path.join(destino,'README.md'),informe);
+
   console.log('Auditoría completa:',escenarios.length,'escenarios,',clasificaciones.length,'clasificaciones y',pdfs.length,'PDF medidos.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
