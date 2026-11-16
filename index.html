@@ -39,7 +39,7 @@ try {
 </header>
 <main class="marco disposicion">
   <div class="contexto">
-    <label>Nivel
+    <label id="nivel-campo">Nivel
           <select id="nivel" name="nivel">
             <option value="">Sin indicar</option>
             <option value="parvularia">Educación parvularia</option>
@@ -52,6 +52,7 @@ try {
     <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
       <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos individualizados</button>
+      <button type="button" id="tab-trabajo" role="tab" aria-controls="panel-trabajo" aria-selected="false" tabindex="-1">Trabajo</button>
     </div>
   </div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
@@ -185,6 +186,35 @@ try {
 </section>
     <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>+ Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
   </section>
+<section id="panel-trabajo" class="explorador" role="tabpanel" aria-labelledby="tab-trabajo" tabindex="0" hidden>
+<div class="cabecera-intro"><h1>Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada">Elige los que sirvan. Prizma no reemplaza la evaluación de tu equipo: te ofrece un menú, cada ajuste con su fuente.</p></div>
+<section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-sutil">Quitar caso</button></section>
+<section id="trabajo-descripcion" class="paso">
+<h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2><p class="paso-guia"><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog" aria-controls="guia-trabajo">¿Qué exige la ley?</a></p>
+<div id="trabajo-descripcion-resumen" class="paso-resumen" hidden><p id="trabajo-descripcion-texto"></p><button type="button" id="trabajo-descripcion-editar" class="boton">Editar<span class="solo-lectores"> 1. Describe la situación de una persona</span></button></div>
+<div id="trabajo-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-trabajo" class="perfil-campos">
+<label for="trabajo-iniciales">Iniciales<input id="trabajo-iniciales" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" autocomplete="off" aria-describedby="trabajo-iniciales-ayuda trabajo-duplicadas"><span id="trabajo-iniciales-ayuda" class="ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
+<p id="trabajo-duplicadas" class="ayuda" role="status"></p>
+<a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
+<label for="trabajo-puesto">Tipo de puesto<input type="text" id="trabajo-puesto" maxlength="60" aria-describedby="trabajo-puesto-ayuda"><span id="trabajo-puesto-ayuda" class="ayuda">Por ejemplo: administrativo, bodega, atención de público. No escribas el nombre de la empresa</span></label>
+<fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="trabajo-areas"></div></fieldset>
+<div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="trabajo-dimensiones" class="dimensiones-casos"></div></div>
+<label for="trabajo-ayuda">¿Qué le ayuda?<textarea id="trabajo-ayuda" maxlength="300" rows="2"></textarea></label>
+<label for="trabajo-voz">¿Qué dice la persona?<textarea id="trabajo-voz" maxlength="300" rows="2" aria-describedby="trabajo-voz-ayuda"></textarea><span id="trabajo-voz-ayuda" class="ayuda">Lo que propone, lo que le preocupa. No escribas diagnósticos</span></label>
+<p id="trabajo-descripcion-error" role="alert"></p><button type="submit" id="guardar-descripcion-trabajo" class="boton boton-principal">Guardar descripción</button></form></div></section>
+<section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p class="ayuda">Sin diagnósticos: describe las tareas y las barreras. La persona decide qué contar.</p><div id="trabajo-tarjetas"></div><button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button></section>
+<p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden>Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
+<section id="trabajo-acuerdo" class="paso">
+<h2><button type="button" id="trabajo-acuerdo-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-acuerdo-cuerpo">3. Acuerdos</button></h2>
+<div id="trabajo-acuerdo-resumen" class="paso-resumen" hidden><p id="trabajo-acuerdo-texto"></p><button type="button" id="trabajo-acuerdo-editar" class="boton">Editar<span class="solo-lectores"> 3. Acuerdos</span></button></div>
+<div id="trabajo-acuerdo-cuerpo" class="paso-cuerpo"><form id="acuerdos-trabajo" class="perfil-campos" novalidate>
+<fieldset><legend>¿Con quiénes se acordó?</legend><div id="trabajo-roles" class="opciones-acuerdo"></div></fieldset>
+<label for="trabajo-fecha">Fecha del acuerdo<input type="date" id="trabajo-fecha" required></label>
+<label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label>
+<p id="trabajo-acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos-trabajo" class="boton boton-principal">Guardar acuerdos</button></form></div></section>
+<div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>+ Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
+<p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
+</section>
 </main>
 
 
@@ -196,6 +226,7 @@ try {
     <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
     <ol id="sel-lista" class="sel-lista"></ol>
     <div id="sel-estudiantes"></div>
+    <section id="seleccion-trabajo" hidden><h3>Trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton">Ver documento de trabajo</button></section>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
@@ -220,6 +251,13 @@ try {
   </div>
 </footer>
 
+<dialog id="guia-trabajo" class="aviso-privacidad" aria-labelledby="t-guia-trabajo"><h2 id="t-guia-trabajo" tabindex="-1" autofocus>¿Qué exige la ley al empleador?</h2>
+<h3>Todas las empresas e instituciones</h3><ol><li>No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).</li><li>Adaptar los procesos de selección cuando haya pruebas o requisitos (Ley 20.422, art. 24).</li><li>Guardar reserva de los datos privados de cada trabajador (Código del Trabajo, art. 154 ter).</li></ol>
+<h3>Desde 10 trabajadores permanentes</h3><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>
+<h3>Desde 100 trabajadores</h3><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
+<h3>Sector público</h3><ol start="6"><li>Selección preferente en igualdad de mérito, y cuota en instituciones con 100 o más funcionarios (Ley 20.422, art. 45).</li></ol>
+<h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede acudir a la Dirección del Trabajo o pedir tutela laboral, dentro de 60 días (Código del Trabajo, arts. 485 y 486).</li></ol>
+<p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton">Entendido</button></form></dialog>
 <dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
   <h2 id="t-guia-dua" tabindex="-1" autofocus>Cómo usar el DUA en tu clase</h2>
   <ol>

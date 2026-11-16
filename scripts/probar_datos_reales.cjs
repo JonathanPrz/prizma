@@ -7,7 +7,7 @@ const c = vm.createContext({document:{querySelector:()=>({options:opciones}),que
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
 const run=s=>vm.runInContext(s,c), dato=s=>JSON.parse(JSON.stringify(run(s)));
 c.necesidadesReales=necesidades;c.fuentesReales=referencias;c.catalogoReal=recomendaciones;
-// Las fichas de trabajo no se eligen para estudiantes: tendrán su propia pestaña.
+// Cada selección pasa por su validador propio: curso, estudiantes y trabajo.
 // Deliberately check the real need file first: a regression to 11 must fail here.
 assert.deepEqual(dato('validarNecesidades(necesidadesReales)'),necesidades,'Se descartaron necesidades reales');
 run('necesidades=validarNecesidades(necesidadesReales);fuentes=validarFuentes(fuentesReales);catalogo=validarCatalogo(catalogoReal,fuentes)');
@@ -20,9 +20,9 @@ for(const nivel of opciones.map(o=>o.value)){
  perfil:{nivel,practica:true,actividad:${JSON.stringify(controles('actividad').map(c=>c.value))},evidencia:${JSON.stringify(controles('evidencia').map(c=>c.value))},meta:'m'.repeat(500),reflexion:'r'.repeat(500)},
  necesidades:necesidades.map(n=>n.id),propositos:Object.keys(PROPOSITOS),momentos:MOMENTOS.map(([id])=>id),asignatura:'lenguaje',
  seleccion:Object.fromEntries(catalogo.filter(r=>r.tipo==='dua').map(r=>[r.id,'Nota del curso'])),estudianteActivo:'caso-1',
- estudiantes:[{id:'caso-1',iniciales:'JP2',descripcionGuardada:true,practicaProfesional:true,dimensiones:Object.fromEntries(DIMENSIONES.map((_,i)=>[i+1,3])),ayuda:'a'.repeat(300),voz:'v'.repeat(300),acuerdo:{roles:['estudiante'],fecha:'2026-11-16',revision:'2026-12-01',estado:'completo'},seleccion:Object.fromEntries(catalogo.filter(r=>r.tipo!=='dua'&&r.tipo!=='trabajo').map(r=>[r.id,'n'.repeat(2000)]))}]};var vuelta=validarRespaldo(entrada)`);
+ estudiantes:[{id:'caso-1',iniciales:'JP2',descripcionGuardada:true,practicaProfesional:true,dimensiones:Object.fromEntries(DIMENSIONES.map((_,i)=>[i+1,3])),ayuda:'a'.repeat(300),voz:'v'.repeat(300),acuerdo:{roles:['estudiante'],fecha:'2026-11-16',revision:'2026-12-01',estado:'completo'},seleccion:Object.fromEntries(catalogo.filter(r=>r.tipo!=='dua'&&r.tipo!=='trabajo').map(r=>[r.id,'n'.repeat(2000)]))}]};entrada.trabajadores=[{id:"caso-1",iniciales:"AB2",tipoPuesto:"p".repeat(60),dimensiones:Object.fromEntries(DIMENSIONES.map((_,i)=>[i+1,3])),descripcionGuardada:true,ayuda:"a".repeat(300),voz:"v".repeat(300),acuerdo:{roles:Object.keys(ROLES_TRABAJO),fecha:"2026-11-16",revision:"2026-12-01",estado:"completo"},seleccion:Object.fromEntries(catalogo.filter(r=>r.tipo==="trabajo").map(r=>[r.id,"n".repeat(2000)]))}];entrada.trabajadorActivo="caso-1";var vuelta=validarRespaldo(entrada)`);
  assert.equal(run('vuelta.descartadas'),0);assert.deepEqual(dato('vuelta.estudiantes'),dato('entrada.estudiantes'));
- for(const campo of ['perfil','seleccion','necesidades','momentos','propositos','asignatura','mantenerIndividual','claseGuardada'])assert.deepEqual(dato('vuelta.'+campo),dato('entrada.'+campo),campo);
+ for(const campo of ['perfil','seleccion','necesidades','momentos','propositos','asignatura','mantenerIndividual','claseGuardada','trabajadores','trabajadorActivo'])assert.deepEqual(dato('vuelta.'+campo),dato('entrada.'+campo),campo);
 }
 assert.equal(run('validarNecesidades([{...necesidades[0],dimensiones:[15]}]).length'),0);
 assert.throws(()=>run('validarFuentes([...fuentesReales,fuentesReales[0]])'));
