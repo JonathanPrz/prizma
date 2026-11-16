@@ -492,7 +492,7 @@ const EJEMPLOS_TRABAJO = [
   "tareas repetitivas, pocas responsabilidades, ganas de aprender más",
 ];
 const PIE_TRABAJO = "Contiene datos de una persona trabajadora. Guárdalo con reserva (Código del Trabajo, art. 154 ter).";
-const AVISO_TRABAJO = "Orientación basada en las fuentes citadas. No reemplaza la evaluación de tu equipo ni es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.";
+const AVISO_TRABAJO = "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.";
 function normalizarTrabajador(valor) {
   const e = normalizarEstudiante(valor);
   return { iniciales: e.iniciales, dimensiones: e.dimensiones, ayuda: e.ayuda, voz: e.voz, descripcionGuardada: e.descripcionGuardada,
@@ -699,7 +699,7 @@ function voc(clave) {
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
-  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Apoyos individualizados";
+  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Para un estudiante";
 }
 
 function mostrarPestana(id, enfocar = false) {
@@ -1131,7 +1131,7 @@ function documentoTrabajo(ids = inclusionTrabajo || []) {
 }
 function modeloDocumento() { return centroDocumento || (inclusionTrabajo !== null ? documentoTrabajo() : documento()); }
 
-const AVISO = "Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.";
+const AVISO = "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.";
 
 // Un solo modelo del documento para la vista previa, la impresión y el PDF descargable.
 function prepararDocumento() {
@@ -1270,7 +1270,7 @@ function armarHoja() {
       el("h1", { text: d.titulo }), tabla(["Campo", "Completar a mano"], d.resumen, "h-resumen"),
       ...d.acciones.map(ficha), el("div", { class: "h-acuerdos" }, el("h2", { text: "Acuerdos (para completar en la reunión)" }),
         ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => el("p", { text: t + ": __________________________________" }))),
-      el("p", { class: "h-aviso", text: PIE_PRACTICA }));
+      el("p", { class: "h-aviso", text: PIE_PRACTICA }), el("p", { class: "h-aviso", text: AVISO }));
     return;
   }
   $("#hoja").replaceChildren(...[
@@ -1302,6 +1302,7 @@ function definicionPdf() {
     ...d.acciones.map(ficha),
     { unbreakable: true, stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h2" }, ...["Acordado con", "Fecha", "Próxima revisión"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 12, 0, 0] }))] },
     { text: PIE_PRACTICA, style: "dato", margin: [0, 18, 0, 0] },
+    { text: AVISO, style: "dato", margin: [0, 14, 0, 0] },
   ] : [
     { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
     { text: d.titulo, style: "h1" },

@@ -9,8 +9,8 @@ try {
   if (["claro", "oscuro"].includes(tema)) document.documentElement.dataset.tema = tema;
 } catch (e) { /* sin almacenamiento: se usa el tema del dispositivo */ }
 </script>
-<title>Prizma</title>
-<meta name="description" content="Acciones con fuente para que todo tu curso pueda aprender. Basado en DUA 3.0 y la normativa chilena.">
+<title>Prizma · Apoyos con fuente para aprender y trabajar en igualdad</title>
+<meta name="description" content="Apoyos concretos, con fuente, para que todo el curso aprenda, para cada estudiante y para el trabajo. Basado en DUA 3.0 y la normativa chilena.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap">
@@ -25,7 +25,7 @@ try {
 <header class="cabecera">
   <div class="marco">
     <div class="cabecera-barra">
-      <p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="14" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="39" y="14" width="22" height="22" rx="1.6" fill="var(--motivar)"/><rect x="64" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="14" y="39" width="22" height="22" rx="1.6" fill="var(--presentar)"/><rect x="39" y="39" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="64" y="39" width="22" height="22" rx="1.6" fill="var(--mostrar)"/><rect x="14" y="64" width="22" height="22" rx="1.6" fill="currentColor"/><circle cx="50" cy="75" r="11" fill="var(--presentar)"/><rect x="64" y="64" width="22" height="22" rx="1.6" fill="currentColor"/></svg>Prizma</p>
+      <div class="identidad"><p class="marca"><svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="14" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="39" y="14" width="22" height="22" rx="1.6" fill="var(--motivar)"/><rect x="64" y="14" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="14" y="39" width="22" height="22" rx="1.6" fill="var(--presentar)"/><rect x="39" y="39" width="22" height="22" rx="1.6" fill="currentColor"/><rect x="64" y="39" width="22" height="22" rx="1.6" fill="var(--mostrar)"/><rect x="14" y="64" width="22" height="22" rx="1.6" fill="currentColor"/><circle cx="50" cy="75" r="11" fill="var(--presentar)"/><rect x="64" y="64" width="22" height="22" rx="1.6" fill="currentColor"/></svg>Prizma</p><p class="ayuda subtitulo-marca">Apoyos con fuente para aprender y trabajar en igualdad</p></div>
       <label class="tema" for="tema">Tema
         <select id="tema" name="tema">
           <option value="dispositivo">Según mi dispositivo</option>
@@ -50,9 +50,9 @@ try {
         </label>
     <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase incluye taller, laboratorio o terreno</label>
     <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
-      <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">DUA</button>
-      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Apoyos individualizados</button>
-      <button type="button" id="tab-trabajo" role="tab" aria-controls="panel-trabajo" aria-selected="false" tabindex="-1">Trabajo</button>
+      <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">Para el curso (DUA)</button>
+      <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Para un estudiante</button>
+      <button type="button" id="tab-trabajo" role="tab" aria-controls="panel-trabajo" aria-selected="false" tabindex="-1">Para el trabajo</button>
     </div>
   </div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
@@ -245,7 +245,8 @@ try {
 
 <footer class="pie">
   <div class="marco">
-    <p><strong>Orientación pedagógica.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento.</p>
+    <p>Para docentes, instituciones y empleadores en Chile.</p>
+    <p><strong>Orientación pedagógica y laboral.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.</p>
     <p>Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
     <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a> · <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a> · <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></p>
   </div>

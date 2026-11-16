@@ -1,0 +1,94 @@
+[
+  {
+    "ancho": 390,
+    "tema": "claro",
+    "desborde": false,
+    "modos": [
+      {
+        "modo": "escolar",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "trabajo",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "practica",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      }
+    ],
+    "errores": []
+  },
+  {
+    "ancho": 390,
+    "tema": "oscuro",
+    "desborde": false,
+    "modos": [
+      {
+        "modo": "escolar",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "trabajo",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "practica",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      }
+    ],
+    "errores": []
+  },
+  {
+    "ancho": 1280,
+    "tema": "claro",
+    "desborde": false,
+    "modos": [
+      {
+        "modo": "escolar",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "trabajo",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "practica",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      }
+    ],
+    "errores": []
+  },
+  {
+    "ancho": 1280,
+    "tema": "oscuro",
+    "desborde": false,
+    "modos": [
+      {
+        "modo": "escolar",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "trabajo",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      },
+      {
+        "modo": "practica",
+        "vista": "Orientación pedagógica y laboral. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.",
+        "contiene": true
+      }
+    ],
+    "errores": []
+  }
+]
