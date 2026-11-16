@@ -21,17 +21,19 @@ function nodo(id) {
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
+for (const id of ['panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
-ejecutar('prepararPestanas()');
+// The dedicated work-flow test covers rendering; this suite checks tab navigation.
+ejecutar('sincronizarTrabajo=()=>{};prepararPestanas()');
 assert.equal(contexto.location.hash, '#dua');
 
-for (const id of ['apoyos', 'dua', 'apoyos', 'dua']) {
+for (const id of ['apoyos', 'trabajo', 'dua', 'trabajo', 'apoyos', 'dua']) {
   contexto.location.hash = '#' + id; eventos.hashchange();
   assert.equal(contexto.document.activeElement.id, 'tab-' + id);
   assert.equal(almacen.get('prizma.v1').pestana, id);
-  for (const nombre of ['dua', 'apoyos']) {
+  assert.equal(nodos.get('#nivel-campo').hidden,id==='trabajo');
+  for (const nombre of ['dua', 'apoyos', 'trabajo']) {
     assert.equal(nodos.get('#panel-' + nombre).hidden, nombre !== id);
     assert.equal(nodos.get('#tab-' + nombre).atributos['aria-selected'], String(nombre === id));
     assert.equal(nodos.get('#tab-' + nombre).tabIndex, nombre === id ? 0 : -1);
@@ -39,7 +41,7 @@ for (const id of ['apoyos', 'dua', 'apoyos', 'dua']) {
 }
 contexto.location.hash = '#inexistente'; eventos.hashchange();
 assert.equal(contexto.location.hash, '#dua');
-for (const [tab, tecla, destino] of [['dua', 'ArrowRight', 'apoyos'], ['apoyos', 'ArrowLeft', 'dua'], ['dua', 'End', 'apoyos'], ['apoyos', 'Home', 'dua']]) {
+for (const [tab, tecla, destino] of [['dua', 'ArrowRight', 'apoyos'], ['apoyos', 'ArrowLeft', 'dua'], ['dua', 'End', 'trabajo'], ['trabajo', 'ArrowRight', 'dua'], ['dua', 'ArrowLeft', 'trabajo'], ['apoyos', 'Home', 'dua']]) {
   let prevenido = false;
   nodos.get('#tab-' + tab).eventos.keydown({key: tecla, preventDefault() {prevenido = true;}});
   assert.equal(prevenido, true); assert.equal(contexto.location.hash, destino);

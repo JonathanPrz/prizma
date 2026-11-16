@@ -58,3 +58,8 @@ for(const tipo of ['escolar','superior']){
 }
 assert(!html.includes('<dialog id="aviso-apoyos"'));assert(!leer('app.js').includes('prizma.aviso-apoyos.v1'));assert.equal((html.match(/class="enlace-guia-dua"/g)||[]).length,2);
 console.log('Correcto: ninguna guía automática, aperturas manuales y foco, texto exacto de escuela/superior, privacidad al escribir y memoria, notas sin solapar, encabezados y claves retiradas.');
+// El evento close nativo puede llegar después de que la persona enfocó otro campo.
+const rapida=visita(),origenRapido=rapida.nodo('trabajo-iniciales'),siguienteCampo=rapida.nodo('trabajo-puesto');
+rapida.c.origenRapido=origenRapido;rapida.run('mostrarAvisoPrivacidad(origenRapido)');
+rapida.n('aviso-privacidad').open=false;siguienteCampo.focus();rapida.n('aviso-privacidad').emit('close');
+assert.equal(rapida.c.document.activeElement,siguienteCampo,'Cerrar privacidad no debe robar el foco del siguiente campo');
