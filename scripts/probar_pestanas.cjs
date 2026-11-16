@@ -7,7 +7,7 @@ const telefono = {matches: false, addEventListener(tipo, fn) {this.cambiar = fn;
 let areas = [];
 const contexto = vm.createContext({
   document: {querySelector: selector => nodos.get(selector), querySelectorAll: selector => selector === '#areas input:checked' ? areas : []},
-  location: {hash: ''}, history: {replaceState(a, b, hash) {contexto.location.hash = hash;}},
+  location: {hash: ''}, history: {replaceState(a, b, hash) {contexto.location.hash = hash;},pushState(a,b,hash){contexto.location.hash=hash;}},
   window: {addEventListener(tipo, fn) {eventos[tipo] = fn;}, matchMedia: () => telefono},
   localStorage: {setItem(clave, valor) {almacen.set(clave, JSON.parse(valor));}},
 });
@@ -21,38 +21,39 @@ function nodo(id) {
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
+for (const id of ['panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','inicio','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','pestanas-educacion','elegir-educacion','elegir-trabajo','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
 // The dedicated work-flow test covers rendering; this suite checks tab navigation.
-ejecutar('sincronizarTrabajo=()=>{};prepararPestanas()');
-assert.equal(contexto.location.hash, '#dua');
+ejecutar('sincronizarTrabajo=()=>{};cargarPrivacidad=()=>{};pintarSeleccion=()=>{};prepararIndicador=()=>{};prepararPestanas()');
+assert.equal(nodos.get('#inicio').hidden, false);
 
 for (const id of ['apoyos', 'trabajo', 'dua', 'trabajo', 'apoyos', 'dua']) {
   contexto.location.hash = '#' + id; eventos.hashchange();
-  assert.equal(contexto.document.activeElement.id, 'tab-' + id);
+  assert.equal(contexto.document.activeElement.id, (id==='trabajo'?'panel-':'tab-') + id);
   assert.equal(almacen.get('prizma.v1').pestana, id);
   assert.equal(nodos.get('#nivel-campo').hidden,id==='trabajo');
   for (const nombre of ['dua', 'apoyos', 'trabajo']) {
     assert.equal(nodos.get('#panel-' + nombre).hidden, nombre !== id);
+    if(nombre==='trabajo')continue;
     assert.equal(nodos.get('#tab-' + nombre).atributos['aria-selected'], String(nombre === id));
     assert.equal(nodos.get('#tab-' + nombre).tabIndex, nombre === id ? 0 : -1);
   }
 }
 contexto.location.hash = '#inexistente'; eventos.hashchange();
-assert.equal(contexto.location.hash, '#dua');
-for (const [tab, tecla, destino] of [['dua', 'ArrowRight', 'apoyos'], ['apoyos', 'ArrowLeft', 'dua'], ['dua', 'End', 'trabajo'], ['trabajo', 'ArrowRight', 'dua'], ['dua', 'ArrowLeft', 'trabajo'], ['apoyos', 'Home', 'dua']]) {
+assert.equal(ejecutar('estado.pestana'),'dua');
+for (const [tab, tecla, destino] of [['dua', 'ArrowRight', 'apoyos'], ['apoyos', 'ArrowLeft', 'dua'], ['dua', 'End', 'apoyos'], ['apoyos', 'ArrowRight', 'dua'], ['dua', 'ArrowLeft', 'apoyos'], ['apoyos', 'Home', 'dua']]) {
   let prevenido = false;
   nodos.get('#tab-' + tab).eventos.keydown({key: tecla, preventDefault() {prevenido = true;}});
-  assert.equal(prevenido, true); assert.equal(contexto.location.hash, destino);
+  assert.equal(prevenido, true); assert.equal(contexto.location.hash, '#'+destino);
   contexto.location.hash = '#' + destino; eventos.hashchange();
 }
-nodos.get('#tab-apoyos').eventos.click(); assert.equal(contexto.location.hash, 'apoyos');
+nodos.get('#tab-apoyos').eventos.click(); assert.equal(contexto.location.hash, '#apoyos');
 contexto.location.hash = '#apoyos'; eventos.hashchange();
 nodos.get('.saltar').eventos.click({preventDefault() {}});
 assert.equal(contexto.document.activeElement.id, 'panel-apoyos');
 ejecutar('estado.pestana = "apoyos"'); contexto.location.hash = ''; ejecutar('prepararPestanas()');
-assert.equal(contexto.location.hash, '#apoyos');
+assert.equal(ejecutar('estado.pestana'), 'apoyos');
 
 // Width no longer moves controls into a modal; tabs keep their own inline steps.
 const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');

@@ -32,7 +32,12 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </div>
 </header>
 <main class="marco disposicion">
-  <div class="contexto">
+  <section id="inicio" class="inicio" aria-labelledby="t-inicio" tabindex="-1">
+    <h1 id="t-inicio">¿Dónde quieres apoyar?</h1><p id="inicio-estado" role="status">Cargando los apoyos…</p>
+    <div class="ambitos"><button type="button" id="elegir-educacion" disabled class="boton tarjeta-ambito">Educación: acciones para todo el curso y apoyos para cada estudiante</button>
+    <button type="button" id="elegir-trabajo" disabled class="boton tarjeta-ambito">Trabajo: ajustes para personas trabajadoras con discapacidad</button></div>
+  </section>
+  <div class="contexto" id="contexto" hidden>
     <label id="nivel-campo">Nivel
           <select id="nivel" name="nivel">
             <option value="">Sin indicar</option>
@@ -42,21 +47,24 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
             <option value="superior">Educación superior (universidad, IP o CFT)</option>
           </select>
         </label>
-    <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase incluye taller, laboratorio o terreno</label>
-    <div class="pestanas" role="tablist" aria-label="Tipo de acciones">
+    <button type="button" class="boton cambiar-ambito">Cambiar ámbito</button>
+    <div id="pestanas-educacion" class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">Para el curso (DUA)</button>
       <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Para un estudiante</button>
-      <button type="button" id="tab-trabajo" role="tab" aria-controls="panel-trabajo" aria-selected="false" tabindex="-1">Para el trabajo</button>
+
     </div>
   </div>
+  <nav id="indicador-pasos" class="indicador-pasos" aria-label="Pasos" hidden></nav>
+  <div id="barra-continuar" class="barra-continuar" hidden><button type="button" id="continuar" class="boton boton-principal">Continuar (0 elegidos)</button></div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
-  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0">
-    <div class="cabecera-intro"><h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1><p class="bajada">Elige las que te sirvan. Prizma no planifica tu <span data-voc="clase">clase</span>: te ofrece un menú, cada acción con su fuente.</p></div>
+  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0" hidden>
+    <div class="cabecera-intro"><h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1><p class="bajada">Planifica tu <span data-voc="clase">clase</span> con opciones desde el inicio, para que todo el <span data-voc="curso">curso</span> pueda aprender sin esperar a que alguien se quede atrás.</p><a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog">¿Qué es el DUA y cómo usarlo?</a></div>
 <section id="paso-clase" class="paso">
-  <h2><button type="button" id="paso-clase-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-clase-cuerpo">1. Describe tu clase</button></h2>
-  <p class="paso-guia"><a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a></p>
-  <div id="paso-clase-resumen" class="paso-resumen" hidden><p id="paso-clase-texto"></p><button type="button" class="boton" id="paso-clase-editar">Editar<span class="solo-lectores"> 1. Describe tu clase</span></button></div>
+  <h2><button type="button" id="paso-clase-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-clase-cuerpo">1. Describe tu <span data-voc="clase">clase</span></button></h2>
+
+  <div id="paso-clase-resumen" class="paso-resumen" hidden><p id="paso-clase-texto"></p><button type="button" class="boton" id="paso-clase-editar">Editar<span class="solo-lectores"> 1. Describe tu <span data-voc="clase">clase</span></span></button></div>
   <div id="paso-clase-cuerpo" class="paso-cuerpo"><p class="ayuda">Todo es opcional. Guarda para actualizar las acciones sugeridas.</p><form id="perfil" class="perfil-campos">
+<label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase tiene taller, laboratorio o terreno<span class="ayuda">Clase con taller o laboratorio en el liceo o la institución</span></label>
           <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
           <textarea id="meta" name="meta" maxlength="500" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
           <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
@@ -113,13 +121,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </section>
   <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="0" hidden>
     <div class="cabecera-intro">
-      <h1 id="t-estudiante">Apoyos individualizados para un estudiante</h1>
-      <p id="bajada-apoyos" class="bajada">Elige los que le sirvan. Prizma no reemplaza al equipo de apoyo: te ofrece un menú, cada apoyo con su fuente.</p>
+      <h1 id="t-estudiante">Apoyos para un estudiante</h1>
+      <p id="bajada-apoyos" class="bajada">Cuando las acciones para todo el curso no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.</p>
       <div id="revision-situaciones" class="aviso-apoyos" role="region" aria-label="Revisa las situaciones guardadas" hidden>
         <p id="revision-situaciones-texto"></p>
         <button type="button" id="revision-situaciones-entendido" class="boton">Entendido</button>
       </div>
-      <div class="acciones-intro"><a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></div>
+      <div class="acciones-intro"><a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Qué son los apoyos para un estudiante?</a></div>
     </div>
     <section id="casos" class="paso" aria-labelledby="t-casos"><h2 id="t-casos">Casos</h2><div id="lista-estudiantes" class="chips"></div><button type="button" id="quitar-estudiante" class="boton boton-sutil">Quitar a Estudiante 1</button></section>
 <section id="paso-descripcion" class="paso">
@@ -130,9 +138,9 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
         <div><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
-        <label id="practica-profesional-campo" hidden><input type="checkbox" id="practica-profesional"> Este estudiante hará su práctica profesional</label>
+        <label id="practica-profesional-campo" hidden><input type="checkbox" id="practica-profesional"> Este estudiante hará su práctica profesional<span class="ayuda">Práctica en una empresa o institución, fuera de las clases</span></label>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
-        <label for="estudiante-voz">¿Qué dicen el estudiante y su familia?<textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
+        <label for="estudiante-voz"><span id="voz-etiqueta">¿Qué dicen el estudiante y su familia?</span><textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
 <p id="descripcion-error" role="alert"></p><button type="submit" id="guardar-descripcion" class="boton boton-principal">Guardar descripción</button></form></div>
 </section>    <section id="estudiante" class="paso resultados" tabindex="-1" hidden>
       <h2 id="t-apoyos" tabindex="-1">2. Apoyos sugeridos</h2>
@@ -142,24 +150,24 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
       <div id="apoyos-resultados"></div>
+        <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83)</p>
+        <p id="objetivos-superior" class="ayuda" hidden>En superior no se adecuan los objetivos: se hacen ajustes razonables</p>
       <details id="objetivos" class="bloque-apoyo">
-        <summary>Si los apoyos de acceso no bastan: adecuaciones en los objetivos</summary>
+        <summary>Adecuaciones en los objetivos</summary><p>Apoyo que cambia qué aprende o cuándo. Último paso (Decreto 83).</p>
         <label id="asignatura-campo" class="asignatura" for="asignatura">Asignatura
           <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
         </label>
         <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
-        <p id="objetivos-parvularia" class="ayuda" hidden>En educación parvularia, preferentemente no se adecuan los objetivos (Decreto 83). Usa los apoyos de acceso.</p>
-        <p id="objetivos-superior" class="ayuda" hidden>En educación superior no se adecuan los objetivos de aprendizaje: se hacen ajustes razonables que mantienen los resultados de aprendizaje.</p>
         <div id="objetivos-tarjetas" class="grupos-momentos"></div>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
-        <summary>Si se desregula</summary>
+        <summary>Apoyos ante desregulación</summary><p>Qué hacer antes, durante y después de una crisis.</p>
         <div id="desregulacion-resultados"></div>
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
       <section id="bloque-practica-profesional" class="bloque-apoyo" aria-labelledby="t-practica-profesional" hidden>
-        <h2 id="t-practica-profesional">Práctica profesional</h2>
+        <h2 id="t-practica-profesional">Apoyos para la práctica profesional</h2><p>Lo que hacen el liceo o la institución, el centro y el estudiante.</p>
         <a id="enlace-guia-practica" href="#guia-practica" aria-haspopup="dialog" aria-controls="guia-practica">¿Quién hace qué en la práctica?</a>
         <div id="practica-profesional-grupos"></div>
         <p id="centro-ayuda" class="ayuda">Primero elige los ajustes que puede hacer el centro</p>
@@ -178,13 +186,14 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <p id="acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos" class="boton boton-principal">Guardar acuerdos</button>
   </form></div>
 </section>
+    <button type="button" id="documento-estudiante" class="boton">Ver documento</button>
     <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>+ Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
   </section>
-<section id="panel-trabajo" class="explorador" role="tabpanel" aria-labelledby="tab-trabajo" tabindex="0" hidden>
-<div class="cabecera-intro"><h1>Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada">Elige los que sirvan. Prizma no reemplaza la evaluación de tu equipo: te ofrece un menú, cada ajuste con su fuente.</p></div>
+<section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="0" hidden>
+<div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
 <section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-sutil">Quitar caso</button></section>
 <section id="trabajo-descripcion" class="paso">
-<h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2><p class="paso-guia"><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog" aria-controls="guia-trabajo">¿Qué exige la ley?</a></p>
+<h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2>
 <div id="trabajo-descripcion-resumen" class="paso-resumen" hidden><p id="trabajo-descripcion-texto"></p><button type="button" id="trabajo-descripcion-editar" class="boton">Editar<span class="solo-lectores"> 1. Describe la situación de una persona</span></button></div>
 <div id="trabajo-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-trabajo" class="perfil-campos">
 <label for="trabajo-iniciales">Iniciales<input id="trabajo-iniciales" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" autocomplete="off" aria-describedby="trabajo-iniciales-ayuda trabajo-duplicadas"><span id="trabajo-iniciales-ayuda" class="ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
@@ -229,7 +238,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <input type="file" id="abrir-respaldo" accept=".json,application/json" aria-describedby="respaldo-ayuda">
         <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
       </div>
-      <p id="respaldo-ayuda" class="ayuda">El respaldo es un archivo en tu equipo. Sirve para no perder tu trabajo o pasarlo a otro computador.</p>
+      <p id="respaldo-ayuda" class="ayuda">El respaldo incluye todos los datos de Educación y Trabajo en un solo archivo. Sirve para no perderlos o pasarlos a otro computador.</p>
       <p id="respaldo-estado" class="ayuda" aria-live="polite"></p>
       <button type="button" id="borrar" class="boton boton-sutil">Borrar todo</button>
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
@@ -237,16 +246,15 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </aside>
 </dialog>
 
-<footer class="pie">
-  <div class="marco">
-    <p>Para docentes, instituciones y empleadores en Chile.</p>
-    <p><strong>Orientación pedagógica y laboral.</strong> No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento o empresa.</p>
-    <p>Basado en las Pautas DUA 3.0 de CAST (2024), la normativa chilena y fuentes abiertas, redactado con palabras propias. Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
-    <p><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">Privacidad</a> · <a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog" aria-controls="guia-dua">¿Cómo usar el DUA?</a> · <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Cómo usar los apoyos individualizados?</a></p>
-  </div>
-</footer>
+<footer class="pie"><div class="marco">
+  <div id="pie-educacion" hidden><p>Orientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento.</p><a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog">¿Qué es el DUA y cómo usarlo?</a> · <a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog">¿Qué son los apoyos para un estudiante?</a></div>
+  <div id="pie-trabajo" hidden><p>Orientación laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal.</p><a href="#guia-trabajo" class="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
+  <div id="pie-ambito" hidden><a href="#aviso-privacidad" id="privacidad" aria-haspopup="dialog">Privacidad</a> · <button type="button" class="boton cambiar-ambito">Cambiar ámbito</button></div>
+  <p>Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
+</div></footer>
 
-<dialog id="guia-trabajo" class="aviso-privacidad" aria-labelledby="t-guia-trabajo"><h2 id="t-guia-trabajo" tabindex="-1" autofocus>¿Qué exige la ley al empleador?</h2>
+<dialog id="guia-trabajo" class="aviso-privacidad" aria-labelledby="t-guia-trabajo"><h2 id="t-guia-trabajo" tabindex="-1" autofocus>¿Qué son los ajustes en el trabajo y qué exige la ley?</h2>
+<h3>Qué son</h3><p>la ley chilena los llama ajustes necesarios (Ley 20.422, art. 8). Se acuerdan con la persona, a partir de las tareas del cargo y sin pedir diagnósticos.</p><h3>Qué exige la ley</h3>
 <h3>Todas las empresas e instituciones</h3><ol><li>No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).</li><li>Adaptar los procesos de selección cuando haya pruebas o requisitos (Ley 20.422, art. 24).</li><li>Guardar reserva de los datos privados de cada trabajador (Código del Trabajo, art. 154 ter).</li></ol>
 <h3>Desde 10 trabajadores permanentes</h3><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>
 <h3>Desde 100 trabajadores</h3><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
@@ -254,22 +262,30 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede acudir a la Dirección del Trabajo o pedir tutela laboral, dentro de 60 días (Código del Trabajo, arts. 485 y 486).</li></ol>
 <p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton">Entendido</button></form></dialog>
 <dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
-  <h2 id="t-guia-dua" tabindex="-1" autofocus>Cómo usar el DUA en tu clase</h2>
-  <ol>
+  <h2 id="t-guia-dua" tabindex="-1" autofocus>¿Qué es el DUA y cómo usarlo?</h2>
+  <h3>Qué es</h3><p>El Diseño Universal para el Aprendizaje (DUA) es una forma de planificar. En vez de preparar la <span data-voc="clase">clase</span> para un estudiante «promedio» y adaptarla después, se diseña desde el principio con opciones para todos. Se organiza en 3 principios:</p>
+  <ul><li>distintas formas de <strong>motivarse</strong> y sostener el interés;</li><li>distintas formas de <strong>recibir la información</strong>;</li><li>distintas formas de <strong>expresarse y organizarse</strong>.</li></ul>
+  <p>Las Pautas DUA 3.0 (CAST, 2024) los desarrollan en 9 pautas y 36 consideraciones. En Chile, el Decreto 83 (2015) lo presenta como el primer paso para responder a la diversidad, y el Decreto 67 (2018) pide diversificar la enseñanza y la evaluación.</p>
+  <h3>Cómo usarlo</h3><ol>
     <li>Parte por la meta: ¿qué quieres que aprendan?</li>
     <li>Piensa qué podría impedir que algunos lo logren. Eso es una barrera.</li>
     <li>Elige qué quieres resolver. Prizma te mostrará primero las acciones que responden a eso.</li>
     <li>Elige pocas acciones. El DUA es un menú: no necesitas usarlas todas.</li>
     <li>Quita las barreras, no el desafío. Lo que quieres que aprendan se mantiene.</li>
-    <li>Después de la clase, mira qué funcionó y ajusta.</li>
+    <li>Después de la <span data-voc="clase">clase</span>, mira qué funcionó y ajusta.</li>
   </ol>
   <p class="ayuda">Basado en las Pautas DUA 3.0 de CAST (2024).</p>
   <button type="button" id="guia-empezar" class="boton boton-principal" disabled>Empezar</button>
 </dialog>
 
 <dialog id="guia-apoyos" class="aviso-privacidad" aria-labelledby="t-guia-apoyos">
-  <h2 id="t-guia-apoyos" tabindex="-1" autofocus>Cómo usar los apoyos individualizados</h2>
-  <div id="guia-apoyos-escolar">
+  <h2 id="t-guia-apoyos" tabindex="-1" autofocus>¿Qué son los apoyos para un estudiante?</h2>
+  <div id="guia-apoyos-escolar"><h3>Qué son</h3><ul>
+<li><strong>Adecuaciones de acceso.</strong> Cambian cómo recibe la información, cómo responde, el entorno o el tiempo. No cambian lo que debe aprender. Son la primera opción (Decreto 83).</li>
+<li><strong>Adecuaciones en los objetivos.</strong> Cambian qué aprende o cuándo: graduar, priorizar, dar más tiempo o enriquecer y, solo como último recurso, eliminar. Se deciden con el equipo y la familia y se registran en el PACI (Decreto 83).</li>
+<li><strong>Apoyos ante desregulación.</strong> Qué hacer antes, durante y después de una crisis, junto al protocolo de tu establecimiento (Circular 586).</li>
+<li><strong>Apoyos para la práctica profesional,</strong> en media técnico-profesional (Decreto 2.516).</li></ul>
+<p>Prizma no parte del diagnóstico. Parte de las situaciones en que el estudiante encuentra barreras, como propone la CIF (OMS, 2001).</p><h3>Cómo usarlos</h3>
     <ol>
       <li>Parte por el DUA. Muchas barreras se resuelven con acciones para todo el curso.</li>
       <li>Describe la situación, no al estudiante: marca dónde encuentra barreras y con qué frecuencia.</li>
@@ -280,7 +296,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     </ol>
     <p class="ayuda">Basado en el Decreto 83 (2015) y la CIF (OMS, 2001).</p>
   </div>
-  <div id="guia-apoyos-superior" hidden>
+  <div id="guia-apoyos-superior" hidden><h3>Qué son</h3><p>en la educación superior no se adecuan los objetivos. Se hacen ajustes razonables, que se acuerdan con el estudiante y la unidad de inclusión (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p><h3>Cómo acordarlos</h3>
     <ol>
       <li>Parte por el diseño universal. Muchas barreras se resuelven para todo el curso.</li>
       <li>Pregúntale al estudiante qué barreras encuentra y qué le ha servido antes.</li>
@@ -333,7 +349,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 
 <dialog id="aviso-privacidad" class="aviso-privacidad" aria-labelledby="t-privacidad">
   <h2 id="t-privacidad" tabindex="-1" autofocus>Cuida los datos de tus estudiantes</h2>
-  <ul>
+  <ul id="privacidad-textos">
     <li>Prizma guarda todo solo en este navegador. No envía nada a internet ni tiene cuentas.</li>
     <li>Usa solo iniciales. No escribas nombres, RUT, diagnósticos ni datos de salud.</li>
     <li>Si usas un computador compartido, borra tus datos al terminar con «Borrar todo».</li>

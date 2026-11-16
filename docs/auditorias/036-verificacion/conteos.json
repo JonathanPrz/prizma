@@ -1,0 +1,2681 @@
+{
+  "global": {
+    "dua": {
+      "total": 42,
+      "subtipos": {
+        "sin subtipo": 42
+      }
+    },
+    "acceso": {
+      "total": 89,
+      "subtipos": {
+        "tiempo": 21,
+        "entorno": 27,
+        "presentacion": 27,
+        "respuesta": 14
+      }
+    },
+    "objetivos": {
+      "total": 13,
+      "subtipos": {
+        "graduacion": 3,
+        "priorizacion": 3,
+        "temporalizacion": 3,
+        "enriquecimiento": 3,
+        "eliminacion": 1
+      }
+    },
+    "desregulacion": {
+      "total": 9,
+      "subtipos": {
+        "antes": 3,
+        "durante": 3,
+        "despues": 3
+      }
+    },
+    "adicional": {
+      "total": 0,
+      "subtipos": {}
+    },
+    "practica-profesional": {
+      "total": 23,
+      "subtipos": {
+        "institucion": 7,
+        "centro": 9,
+        "estudiante": 7
+      }
+    },
+    "trabajo": {
+      "total": 64,
+      "subtipos": {
+        "informacion": 10,
+        "tiempo": 12,
+        "puesto": 17,
+        "comunicacion": 17,
+        "proceso": 8
+      }
+    }
+  },
+  "niveles": {
+    "parvularia": {
+      "conteo": {
+        "dua": {
+          "total": 36,
+          "subtipos": {
+            "sin subtipo": 36
+          }
+        },
+        "acceso": {
+          "total": 43,
+          "subtipos": {
+            "tiempo": 10,
+            "entorno": 13,
+            "presentacion": 14,
+            "respuesta": 6
+          }
+        },
+        "objetivos": {
+          "total": 0,
+          "subtipos": {
+            "graduacion": 0,
+            "priorizacion": 0,
+            "temporalizacion": 0,
+            "enriquecimiento": 0,
+            "eliminacion": 0
+          }
+        },
+        "desregulacion": {
+          "total": 9,
+          "subtipos": {
+            "antes": 3,
+            "durante": 3,
+            "despues": 3
+          }
+        },
+        "adicional": {
+          "total": 0,
+          "subtipos": {}
+        },
+        "practica-profesional": {
+          "total": 0,
+          "subtipos": {
+            "institucion": 0,
+            "centro": 0,
+            "estudiante": 0
+          }
+        },
+        "trabajo": {
+          "total": 0,
+          "subtipos": {
+            "informacion": 0,
+            "tiempo": 0,
+            "puesto": 0,
+            "comunicacion": 0,
+            "proceso": 0
+          }
+        }
+      },
+      "ids": {
+        "dua": [
+          "dua-2-1-vocabulario",
+          "dua-9-3-reflexion-cierre",
+          "dua-8-4-pertenencia",
+          "dua-7-1",
+          "dua-7-2",
+          "dua-7-3",
+          "dua-7-4",
+          "dua-8-2",
+          "dua-8-3",
+          "dua-8-5",
+          "dua-9-1",
+          "dua-9-2",
+          "dua-9-4",
+          "dua-1-2",
+          "dua-1-3",
+          "dua-2-3",
+          "dua-2-4",
+          "dua-2-5",
+          "dua-3-1",
+          "dua-3-2",
+          "dua-3-3",
+          "dua-3-4",
+          "dua-4-1",
+          "dua-4-2",
+          "dua-5-1",
+          "dua-5-4",
+          "dua-6-1",
+          "dua-6-2",
+          "dua-6-4",
+          "dua-6-5",
+          "dua-8-1-parv",
+          "dua-5-3-parv",
+          "dua-1-1-parv",
+          "dua-2-2-parv",
+          "dua-5-2-parv",
+          "dua-6-3-parv"
+        ],
+        "acceso": [
+          "acc-1-partes",
+          "acc-1-ubicacion",
+          "acc-3-escrito",
+          "acc-3-caa",
+          "acc-4-exponer",
+          "acc-4-roles",
+          "acc-5-pausas",
+          "acc-5-anticipar",
+          "acc-6-ampliar",
+          "acc-6-ubicacion",
+          "acc-7-tranquilo",
+          "acc-7-transiciones",
+          "acc-8-accesible",
+          "acc-9-plazos",
+          "acc-9-descanso",
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-11-curso",
+          "acc-11-recursos",
+          "acc-2-concreto",
+          "acc-2-registro",
+          "acc-1-agenda",
+          "acc-2-pictogramas",
+          "acc-2-hablado",
+          "acc-4-normas",
+          "acc-4-recreo",
+          "acc-6-braille",
+          "acc-6-audicion",
+          "acc-7-luz",
+          "acc-7-desfogue",
+          "acc-8-materiales",
+          "acc-8-desplazamiento",
+          "acc-9-cuidados",
+          "acc-10-cultura",
+          "acc-10-familia",
+          "acc-11-ayudas",
+          "acc-9-rutina",
+          "acc-12-tiempo",
+          "acc-12-opciones",
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-pares",
+          "acc-14-abiertos"
+        ],
+        "objetivos": [],
+        "desregulacion": [
+          "dec-antes-gatillantes",
+          "dec-antes-refugio",
+          "dec-antes-demanda",
+          "dec-durante-validar",
+          "dec-durante-espacio",
+          "dec-durante-dignidad",
+          "dec-despues-calma",
+          "dec-despues-aprender",
+          "dec-despues-otros"
+        ],
+        "adicional": [],
+        "practica-profesional": [],
+        "trabajo": []
+      },
+      "runtime": {
+        "nivel": "parvularia",
+        "roles": [
+          "Estudiante",
+          "Familia o apoderado",
+          "Equipo de apoyo",
+          "Otro docente"
+        ],
+        "vocabulario": {
+          "clase": "experiencia de aprendizaje",
+          "curso": "grupo",
+          "estudiantes": "niños y niñas"
+        },
+        "rótulos": [
+          {
+            "id": "acc-1-partes",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-1-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-3-escrito",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-3-caa",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-exponer",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-roles",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-5-pausas",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-5-anticipar",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ampliar",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-tranquilo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-transiciones",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-accesible",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-plazos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-9-descanso",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-10-lengua",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-responder",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-11-curso",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-recursos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "dec-antes-gatillantes",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-refugio",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-demanda",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-durante-validar",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-espacio",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-dignidad",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-despues-calma",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-aprender",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-otros",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "acc-2-concreto",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-2-registro",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-1-agenda",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-2-pictogramas",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-2-hablado",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-4-normas",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-4-recreo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-6-braille",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-audicion",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-7-luz",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-desfogue",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-materiales",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-8-desplazamiento",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-cuidados",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-10-cultura",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-familia",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-ayudas",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-rutina",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-12-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-12-opciones",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-extension",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-14-eleccion",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-pares",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-14-abiertos",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          }
+        ],
+        "sinPractica": {
+          "dua": [
+            "dua-4-2",
+            "dua-1-1-parv",
+            "dua-1-3",
+            "dua-2-1-vocabulario",
+            "dua-3-1",
+            "dua-6-1",
+            "dua-6-2",
+            "dua-7-1",
+            "dua-7-2",
+            "dua-8-1-parv",
+            "dua-9-1",
+            "dua-3-2",
+            "dua-5-3-parv",
+            "dua-8-3",
+            "dua-1-2",
+            "dua-2-2-parv",
+            "dua-2-5",
+            "dua-3-3",
+            "dua-4-1",
+            "dua-5-2-parv",
+            "dua-6-3-parv",
+            "dua-6-4",
+            "dua-7-3",
+            "dua-8-2",
+            "dua-9-2",
+            "dua-9-3-reflexion-cierre",
+            "dua-3-4",
+            "dua-5-1",
+            "dua-8-5",
+            "dua-2-3",
+            "dua-2-4",
+            "dua-5-4",
+            "dua-6-5",
+            "dua-7-4",
+            "dua-8-4-pertenencia",
+            "dua-9-4"
+          ],
+          "acceso": [
+            "acc-11-ayudas",
+            "acc-4-exponer",
+            "acc-2-registro",
+            "acc-1-agenda",
+            "acc-4-recreo",
+            "acc-7-desfogue",
+            "acc-9-rutina",
+            "acc-1-partes",
+            "acc-3-escrito",
+            "acc-6-ubicacion",
+            "acc-7-transiciones",
+            "acc-2-concreto",
+            "acc-2-pictogramas",
+            "acc-2-hablado",
+            "acc-4-normas",
+            "acc-7-luz",
+            "acc-10-familia",
+            "acc-12-opciones",
+            "acc-14-pares",
+            "acc-1-ubicacion",
+            "acc-3-caa",
+            "acc-4-roles",
+            "acc-5-pausas",
+            "acc-5-anticipar",
+            "acc-6-ampliar",
+            "acc-7-tranquilo",
+            "acc-8-accesible",
+            "acc-9-plazos",
+            "acc-9-descanso",
+            "acc-10-lengua",
+            "acc-10-responder",
+            "acc-11-curso",
+            "acc-11-recursos",
+            "acc-6-braille",
+            "acc-6-audicion",
+            "acc-8-materiales",
+            "acc-8-desplazamiento",
+            "acc-9-cuidados",
+            "acc-10-cultura",
+            "acc-12-tiempo",
+            "acc-14-extension",
+            "acc-14-eleccion",
+            "acc-14-abiertos"
+          ],
+          "objetivos": [],
+          "desregulacion": [
+            "dec-antes-gatillantes",
+            "dec-antes-refugio",
+            "dec-antes-demanda",
+            "dec-durante-validar",
+            "dec-durante-espacio",
+            "dec-durante-dignidad",
+            "dec-despues-calma",
+            "dec-despues-aprender",
+            "dec-despues-otros"
+          ]
+        },
+        "conPracticas": {
+          "acceso": [],
+          "profesional": {
+            "institucion": [],
+            "centro": [],
+            "estudiante": []
+          }
+        }
+      }
+    },
+    "basica": {
+      "conteo": {
+        "dua": {
+          "total": 36,
+          "subtipos": {
+            "sin subtipo": 36
+          }
+        },
+        "acceso": {
+          "total": 54,
+          "subtipos": {
+            "tiempo": 13,
+            "entorno": 17,
+            "presentacion": 14,
+            "respuesta": 10
+          }
+        },
+        "objetivos": {
+          "total": 13,
+          "subtipos": {
+            "graduacion": 3,
+            "priorizacion": 3,
+            "temporalizacion": 3,
+            "enriquecimiento": 3,
+            "eliminacion": 1
+          }
+        },
+        "desregulacion": {
+          "total": 9,
+          "subtipos": {
+            "antes": 3,
+            "durante": 3,
+            "despues": 3
+          }
+        },
+        "adicional": {
+          "total": 0,
+          "subtipos": {}
+        },
+        "practica-profesional": {
+          "total": 0,
+          "subtipos": {
+            "institucion": 0,
+            "centro": 0,
+            "estudiante": 0
+          }
+        },
+        "trabajo": {
+          "total": 0,
+          "subtipos": {
+            "informacion": 0,
+            "tiempo": 0,
+            "puesto": 0,
+            "comunicacion": 0,
+            "proceso": 0
+          }
+        }
+      },
+      "ids": {
+        "dua": [
+          "dua-8-1-meta-visible",
+          "dua-2-1-vocabulario",
+          "dua-5-3-andamiaje-lista",
+          "dua-9-3-reflexion-cierre",
+          "dua-8-4-pertenencia",
+          "dua-7-1",
+          "dua-7-2",
+          "dua-7-3",
+          "dua-7-4",
+          "dua-8-2",
+          "dua-8-3",
+          "dua-8-5",
+          "dua-9-1",
+          "dua-9-2",
+          "dua-9-4",
+          "dua-1-1",
+          "dua-1-2",
+          "dua-1-3",
+          "dua-2-2",
+          "dua-2-3",
+          "dua-2-4",
+          "dua-2-5",
+          "dua-3-1",
+          "dua-3-2",
+          "dua-3-3",
+          "dua-3-4",
+          "dua-4-1",
+          "dua-4-2",
+          "dua-5-1",
+          "dua-5-2",
+          "dua-5-4",
+          "dua-6-1",
+          "dua-6-2",
+          "dua-6-3",
+          "dua-6-4",
+          "dua-6-5"
+        ],
+        "acceso": [
+          "acc-1-partes",
+          "acc-1-ubicacion",
+          "acc-2-audio",
+          "acc-2-tiempo",
+          "acc-3-escrito",
+          "acc-3-caa",
+          "acc-4-exponer",
+          "acc-4-roles",
+          "acc-5-pausas",
+          "acc-5-anticipar",
+          "acc-6-ampliar",
+          "acc-6-ubicacion",
+          "acc-7-tranquilo",
+          "acc-7-transiciones",
+          "acc-8-teclado",
+          "acc-8-accesible",
+          "acc-9-plazos",
+          "acc-9-descanso",
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-11-curso",
+          "acc-11-recursos",
+          "prac-recorrido",
+          "prac-procedimiento",
+          "prac-rotulos",
+          "prac-puesto",
+          "prac-asistente",
+          "prac-tiempo",
+          "prac-evacuacion",
+          "prac-evaluar",
+          "prac-grupos",
+          "acc-1-agenda",
+          "acc-1-organizador",
+          "acc-2-pictogramas",
+          "acc-4-normas",
+          "acc-4-recreo",
+          "acc-6-braille",
+          "acc-6-audicion",
+          "acc-7-luz",
+          "acc-7-desfogue",
+          "acc-8-materiales",
+          "acc-8-transcribe",
+          "acc-8-desplazamiento",
+          "acc-9-jornada",
+          "acc-9-cuidados",
+          "acc-10-cultura",
+          "acc-10-familia",
+          "acc-11-ayudas",
+          "acc-12-tiempo",
+          "acc-12-opciones",
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-pares",
+          "acc-14-compactar"
+        ],
+        "objetivos": [
+          "obj-graduacion",
+          "obj-priorizacion",
+          "obj-temporalizacion",
+          "obj-enriquecimiento",
+          "obj-eliminacion",
+          "obj-graduacion-matematica",
+          "obj-graduacion-lenguaje",
+          "obj-priorizacion-lenguaje",
+          "obj-priorizacion-matematica",
+          "obj-temporalizacion-lenguaje",
+          "obj-temporalizacion-ciencias",
+          "obj-enriquecimiento-comunicacion",
+          "obj-enriquecimiento-historia"
+        ],
+        "desregulacion": [
+          "dec-antes-gatillantes",
+          "dec-antes-refugio",
+          "dec-antes-demanda",
+          "dec-durante-validar",
+          "dec-durante-espacio",
+          "dec-durante-dignidad",
+          "dec-despues-calma",
+          "dec-despues-aprender",
+          "dec-despues-otros"
+        ],
+        "adicional": [],
+        "practica-profesional": [],
+        "trabajo": []
+      },
+      "runtime": {
+        "nivel": "basica",
+        "roles": [
+          "Estudiante",
+          "Familia o apoderado",
+          "Equipo de apoyo",
+          "Otro docente"
+        ],
+        "vocabulario": {
+          "clase": "clase",
+          "curso": "curso",
+          "estudiantes": "estudiantes"
+        },
+        "rótulos": [
+          {
+            "id": "acc-1-partes",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-1-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-2-audio",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-2-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-3-escrito",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-3-caa",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-exponer",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-roles",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-5-pausas",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-5-anticipar",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ampliar",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-tranquilo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-transiciones",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-teclado",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-8-accesible",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-plazos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-9-descanso",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-10-lengua",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-responder",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-11-curso",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-recursos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "obj-graduacion",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-temporalizacion",
+            "texto": "Adecuación en los objetivos: Temporalización (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "obj-eliminacion",
+            "texto": "Adecuación en los objetivos: Eliminación (Decreto 83)"
+          },
+          {
+            "id": "dec-antes-gatillantes",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-refugio",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-demanda",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-durante-validar",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-espacio",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-dignidad",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-despues-calma",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-aprender",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-otros",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "obj-graduacion-matematica",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-graduacion-lenguaje",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion-lenguaje",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion-matematica",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-temporalizacion-lenguaje",
+            "texto": "Adecuación en los objetivos: Temporalización (Decreto 83)"
+          },
+          {
+            "id": "obj-temporalizacion-ciencias",
+            "texto": "Adecuación en los objetivos: Temporalización (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento-comunicacion",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento-historia",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "prac-recorrido",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-procedimiento",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "prac-rotulos",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "prac-puesto",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-asistente",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "prac-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "prac-evacuacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-evaluar",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "prac-grupos",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-1-agenda",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-1-organizador",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-2-pictogramas",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-4-normas",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-4-recreo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-6-braille",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-audicion",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-7-luz",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-desfogue",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-materiales",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-8-transcribe",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-8-desplazamiento",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-jornada",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-9-cuidados",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-10-cultura",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-familia",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-ayudas",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-12-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-12-opciones",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-extension",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-14-eleccion",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-pares",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-14-compactar",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          }
+        ],
+        "sinPractica": {
+          "dua": [
+            "dua-4-2",
+            "dua-1-1",
+            "dua-1-3",
+            "dua-2-1-vocabulario",
+            "dua-3-1",
+            "dua-6-1",
+            "dua-6-2",
+            "dua-7-1",
+            "dua-7-2",
+            "dua-8-1-meta-visible",
+            "dua-9-1",
+            "dua-3-2",
+            "dua-5-3-andamiaje-lista",
+            "dua-8-3",
+            "dua-1-2",
+            "dua-2-2",
+            "dua-2-5",
+            "dua-3-3",
+            "dua-4-1",
+            "dua-5-2",
+            "dua-6-3",
+            "dua-6-4",
+            "dua-7-3",
+            "dua-8-2",
+            "dua-9-2",
+            "dua-9-3-reflexion-cierre",
+            "dua-3-4",
+            "dua-5-1",
+            "dua-8-5",
+            "dua-2-3",
+            "dua-2-4",
+            "dua-5-4",
+            "dua-6-5",
+            "dua-7-4",
+            "dua-8-4-pertenencia",
+            "dua-9-4"
+          ],
+          "acceso": [
+            "acc-11-ayudas",
+            "acc-4-exponer",
+            "acc-1-agenda",
+            "acc-4-recreo",
+            "acc-7-desfogue",
+            "acc-9-jornada",
+            "acc-1-partes",
+            "acc-3-escrito",
+            "acc-6-ubicacion",
+            "acc-7-transiciones",
+            "acc-8-teclado",
+            "acc-1-organizador",
+            "acc-2-pictogramas",
+            "acc-4-normas",
+            "acc-7-luz",
+            "acc-8-transcribe",
+            "acc-10-familia",
+            "acc-12-opciones",
+            "acc-14-pares",
+            "acc-1-ubicacion",
+            "acc-2-audio",
+            "acc-2-tiempo",
+            "acc-3-caa",
+            "acc-4-roles",
+            "acc-5-pausas",
+            "acc-5-anticipar",
+            "acc-6-ampliar",
+            "acc-7-tranquilo",
+            "acc-8-accesible",
+            "acc-9-plazos",
+            "acc-9-descanso",
+            "acc-10-lengua",
+            "acc-10-responder",
+            "acc-11-curso",
+            "acc-11-recursos",
+            "acc-6-braille",
+            "acc-6-audicion",
+            "acc-8-materiales",
+            "acc-8-desplazamiento",
+            "acc-9-cuidados",
+            "acc-10-cultura",
+            "acc-12-tiempo",
+            "acc-14-extension",
+            "acc-14-eleccion",
+            "acc-14-compactar"
+          ],
+          "objetivos": [
+            "obj-graduacion",
+            "obj-graduacion-matematica",
+            "obj-graduacion-lenguaje",
+            "obj-priorizacion",
+            "obj-priorizacion-lenguaje",
+            "obj-priorizacion-matematica",
+            "obj-temporalizacion",
+            "obj-temporalizacion-lenguaje",
+            "obj-temporalizacion-ciencias",
+            "obj-enriquecimiento",
+            "obj-enriquecimiento-comunicacion",
+            "obj-enriquecimiento-historia",
+            "obj-eliminacion"
+          ],
+          "desregulacion": [
+            "dec-antes-gatillantes",
+            "dec-antes-refugio",
+            "dec-antes-demanda",
+            "dec-durante-validar",
+            "dec-durante-espacio",
+            "dec-durante-dignidad",
+            "dec-despues-calma",
+            "dec-despues-aprender",
+            "dec-despues-otros"
+          ]
+        },
+        "conPracticas": {
+          "acceso": [
+            "prac-recorrido",
+            "prac-evaluar",
+            "prac-procedimiento",
+            "prac-tiempo",
+            "prac-evacuacion",
+            "prac-rotulos",
+            "prac-asistente",
+            "prac-grupos",
+            "prac-puesto"
+          ],
+          "profesional": {
+            "institucion": [],
+            "centro": [],
+            "estudiante": []
+          }
+        }
+      }
+    },
+    "media": {
+      "conteo": {
+        "dua": {
+          "total": 36,
+          "subtipos": {
+            "sin subtipo": 36
+          }
+        },
+        "acceso": {
+          "total": 53,
+          "subtipos": {
+            "tiempo": 13,
+            "entorno": 17,
+            "presentacion": 13,
+            "respuesta": 10
+          }
+        },
+        "objetivos": {
+          "total": 12,
+          "subtipos": {
+            "graduacion": 3,
+            "priorizacion": 3,
+            "temporalizacion": 2,
+            "enriquecimiento": 3,
+            "eliminacion": 1
+          }
+        },
+        "desregulacion": {
+          "total": 9,
+          "subtipos": {
+            "antes": 3,
+            "durante": 3,
+            "despues": 3
+          }
+        },
+        "adicional": {
+          "total": 0,
+          "subtipos": {}
+        },
+        "practica-profesional": {
+          "total": 22,
+          "subtipos": {
+            "institucion": 6,
+            "centro": 9,
+            "estudiante": 7
+          }
+        },
+        "trabajo": {
+          "total": 0,
+          "subtipos": {
+            "informacion": 0,
+            "tiempo": 0,
+            "puesto": 0,
+            "comunicacion": 0,
+            "proceso": 0
+          }
+        }
+      },
+      "ids": {
+        "dua": [
+          "dua-8-1-meta-visible",
+          "dua-2-1-vocabulario",
+          "dua-5-3-andamiaje-lista",
+          "dua-9-3-reflexion-cierre",
+          "dua-8-4-pertenencia",
+          "dua-7-1",
+          "dua-7-2",
+          "dua-7-3",
+          "dua-7-4",
+          "dua-8-2",
+          "dua-8-3",
+          "dua-8-5",
+          "dua-9-1",
+          "dua-9-2",
+          "dua-9-4",
+          "dua-1-1",
+          "dua-1-2",
+          "dua-1-3",
+          "dua-2-2",
+          "dua-2-3",
+          "dua-2-4",
+          "dua-2-5",
+          "dua-3-1",
+          "dua-3-2",
+          "dua-3-3",
+          "dua-3-4",
+          "dua-4-1",
+          "dua-4-2",
+          "dua-5-1",
+          "dua-5-2",
+          "dua-5-4",
+          "dua-6-1",
+          "dua-6-2",
+          "dua-6-3",
+          "dua-6-4",
+          "dua-6-5"
+        ],
+        "acceso": [
+          "acc-1-partes",
+          "acc-1-ubicacion",
+          "acc-2-audio",
+          "acc-2-tiempo",
+          "acc-3-escrito",
+          "acc-3-caa",
+          "acc-4-exponer",
+          "acc-4-roles",
+          "acc-5-pausas",
+          "acc-5-anticipar",
+          "acc-6-ampliar",
+          "acc-6-ubicacion",
+          "acc-7-tranquilo",
+          "acc-7-transiciones",
+          "acc-8-teclado",
+          "acc-8-accesible",
+          "acc-9-plazos",
+          "acc-9-descanso",
+          "acc-10-lengua",
+          "acc-10-responder",
+          "acc-11-curso",
+          "acc-11-recursos",
+          "prac-recorrido",
+          "prac-procedimiento",
+          "prac-rotulos",
+          "prac-puesto",
+          "prac-asistente",
+          "prac-tiempo",
+          "prac-evacuacion",
+          "prac-evaluar",
+          "prac-grupos",
+          "acc-1-agenda",
+          "acc-1-organizador",
+          "acc-4-normas",
+          "acc-4-recreo",
+          "acc-6-braille",
+          "acc-6-audicion",
+          "acc-7-luz",
+          "acc-7-desfogue",
+          "acc-8-materiales",
+          "acc-8-transcribe",
+          "acc-8-desplazamiento",
+          "acc-9-jornada",
+          "acc-9-cuidados",
+          "acc-10-cultura",
+          "acc-10-familia",
+          "acc-11-ayudas",
+          "acc-12-tiempo",
+          "acc-12-opciones",
+          "acc-14-extension",
+          "acc-14-eleccion",
+          "acc-14-pares",
+          "acc-14-compactar"
+        ],
+        "objetivos": [
+          "obj-graduacion",
+          "obj-priorizacion",
+          "obj-temporalizacion",
+          "obj-enriquecimiento",
+          "obj-eliminacion",
+          "obj-graduacion-matematica",
+          "obj-graduacion-lenguaje",
+          "obj-priorizacion-lenguaje",
+          "obj-priorizacion-matematica",
+          "obj-temporalizacion-ciencias",
+          "obj-enriquecimiento-comunicacion",
+          "obj-enriquecimiento-historia"
+        ],
+        "desregulacion": [
+          "dec-antes-gatillantes",
+          "dec-antes-refugio",
+          "dec-antes-demanda",
+          "dec-durante-validar",
+          "dec-durante-espacio",
+          "dec-durante-dignidad",
+          "dec-despues-calma",
+          "dec-despues-aprender",
+          "dec-despues-otros"
+        ],
+        "adicional": [],
+        "practica-profesional": [
+          "pp-plan",
+          "pp-responsables",
+          "pp-visita",
+          "pp-formatos",
+          "pp-seguridad",
+          "pp-horas",
+          "pp-c-puesto",
+          "pp-c-tecnologia",
+          "pp-c-pasos",
+          "pp-c-escritas",
+          "pp-c-entrenamiento",
+          "pp-c-ambiente",
+          "pp-c-referente",
+          "pp-c-analisis",
+          "pp-c-seguimiento",
+          "pp-e-barrera",
+          "pp-e-donde",
+          "pp-e-conversar",
+          "pp-e-compartir",
+          "pp-e-acuerdo",
+          "pp-e-falla",
+          "pp-e-intereses"
+        ],
+        "trabajo": []
+      },
+      "runtime": {
+        "nivel": "media",
+        "roles": [
+          "Estudiante",
+          "Familia o apoderado",
+          "Equipo de apoyo",
+          "Otro docente"
+        ],
+        "vocabulario": {
+          "clase": "clase",
+          "curso": "curso",
+          "estudiantes": "estudiantes"
+        },
+        "rótulos": [
+          {
+            "id": "acc-1-partes",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-1-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-2-audio",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-2-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-3-escrito",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-3-caa",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-exponer",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-roles",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-5-pausas",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-5-anticipar",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ampliar",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-ubicacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-tranquilo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-transiciones",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-teclado",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-8-accesible",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-plazos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-9-descanso",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-10-lengua",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-responder",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-11-curso",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-recursos",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "obj-graduacion",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-temporalizacion",
+            "texto": "Adecuación en los objetivos: Temporalización (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "obj-eliminacion",
+            "texto": "Adecuación en los objetivos: Eliminación (Decreto 83)"
+          },
+          {
+            "id": "dec-antes-gatillantes",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-refugio",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-antes-demanda",
+            "texto": "Apoyo ante desregulación: Antes: prevenir"
+          },
+          {
+            "id": "dec-durante-validar",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-espacio",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-durante-dignidad",
+            "texto": "Apoyo ante desregulación: Durante: acompañar"
+          },
+          {
+            "id": "dec-despues-calma",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-aprender",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "dec-despues-otros",
+            "texto": "Apoyo ante desregulación: Después: reparar"
+          },
+          {
+            "id": "obj-graduacion-matematica",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-graduacion-lenguaje",
+            "texto": "Adecuación en los objetivos: Graduación de la complejidad (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion-lenguaje",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-priorizacion-matematica",
+            "texto": "Adecuación en los objetivos: Priorización (Decreto 83)"
+          },
+          {
+            "id": "obj-temporalizacion-ciencias",
+            "texto": "Adecuación en los objetivos: Temporalización (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento-comunicacion",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "obj-enriquecimiento-historia",
+            "texto": "Adecuación en los objetivos: Enriquecimiento (Decreto 83)"
+          },
+          {
+            "id": "prac-recorrido",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-procedimiento",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "prac-rotulos",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "prac-puesto",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-asistente",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "prac-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "prac-evacuacion",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "prac-evaluar",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "prac-grupos",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-1-agenda",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-1-organizador",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-4-normas",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-4-recreo",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-6-braille",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-6-audicion",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-7-luz",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-7-desfogue",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-8-materiales",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-8-transcribe",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-8-desplazamiento",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-9-jornada",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-9-cuidados",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-10-cultura",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-10-familia",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-11-ayudas",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-12-tiempo",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "acc-12-opciones",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-extension",
+            "texto": "Adecuación de acceso: Presentación de la información (Decreto 83)"
+          },
+          {
+            "id": "acc-14-eleccion",
+            "texto": "Adecuación de acceso: Formas de respuesta (Decreto 83)"
+          },
+          {
+            "id": "acc-14-pares",
+            "texto": "Adecuación de acceso: Entorno (Decreto 83)"
+          },
+          {
+            "id": "acc-14-compactar",
+            "texto": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83)"
+          },
+          {
+            "id": "pp-plan",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-responsables",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-visita",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-formatos",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-seguridad",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-horas",
+            "texto": "Apoyo para la práctica: Lo que hace el liceo"
+          },
+          {
+            "id": "pp-c-puesto",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-tecnologia",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-pasos",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-escritas",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-entrenamiento",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-ambiente",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-referente",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-analisis",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-seguimiento",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-e-barrera",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-donde",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-conversar",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-compartir",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-acuerdo",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-falla",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-intereses",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          }
+        ],
+        "sinPractica": {
+          "dua": [
+            "dua-4-2",
+            "dua-1-1",
+            "dua-1-3",
+            "dua-2-1-vocabulario",
+            "dua-3-1",
+            "dua-6-1",
+            "dua-6-2",
+            "dua-7-1",
+            "dua-7-2",
+            "dua-8-1-meta-visible",
+            "dua-9-1",
+            "dua-3-2",
+            "dua-5-3-andamiaje-lista",
+            "dua-8-3",
+            "dua-1-2",
+            "dua-2-2",
+            "dua-2-5",
+            "dua-3-3",
+            "dua-4-1",
+            "dua-5-2",
+            "dua-6-3",
+            "dua-6-4",
+            "dua-7-3",
+            "dua-8-2",
+            "dua-9-2",
+            "dua-9-3-reflexion-cierre",
+            "dua-3-4",
+            "dua-5-1",
+            "dua-8-5",
+            "dua-2-3",
+            "dua-2-4",
+            "dua-5-4",
+            "dua-6-5",
+            "dua-7-4",
+            "dua-8-4-pertenencia",
+            "dua-9-4"
+          ],
+          "acceso": [
+            "acc-11-ayudas",
+            "acc-4-exponer",
+            "acc-1-agenda",
+            "acc-4-recreo",
+            "acc-7-desfogue",
+            "acc-9-jornada",
+            "acc-1-partes",
+            "acc-3-escrito",
+            "acc-6-ubicacion",
+            "acc-7-transiciones",
+            "acc-8-teclado",
+            "acc-1-organizador",
+            "acc-4-normas",
+            "acc-7-luz",
+            "acc-8-transcribe",
+            "acc-10-familia",
+            "acc-12-opciones",
+            "acc-14-pares",
+            "acc-1-ubicacion",
+            "acc-2-audio",
+            "acc-2-tiempo",
+            "acc-3-caa",
+            "acc-4-roles",
+            "acc-5-pausas",
+            "acc-5-anticipar",
+            "acc-6-ampliar",
+            "acc-7-tranquilo",
+            "acc-8-accesible",
+            "acc-9-plazos",
+            "acc-9-descanso",
+            "acc-10-lengua",
+            "acc-10-responder",
+            "acc-11-curso",
+            "acc-11-recursos",
+            "acc-6-braille",
+            "acc-6-audicion",
+            "acc-8-materiales",
+            "acc-8-desplazamiento",
+            "acc-9-cuidados",
+            "acc-10-cultura",
+            "acc-12-tiempo",
+            "acc-14-extension",
+            "acc-14-eleccion",
+            "acc-14-compactar"
+          ],
+          "objetivos": [
+            "obj-graduacion",
+            "obj-graduacion-matematica",
+            "obj-graduacion-lenguaje",
+            "obj-priorizacion",
+            "obj-priorizacion-lenguaje",
+            "obj-priorizacion-matematica",
+            "obj-temporalizacion",
+            "obj-temporalizacion-ciencias",
+            "obj-enriquecimiento",
+            "obj-enriquecimiento-comunicacion",
+            "obj-enriquecimiento-historia",
+            "obj-eliminacion"
+          ],
+          "desregulacion": [
+            "dec-antes-gatillantes",
+            "dec-antes-refugio",
+            "dec-antes-demanda",
+            "dec-durante-validar",
+            "dec-durante-espacio",
+            "dec-durante-dignidad",
+            "dec-despues-calma",
+            "dec-despues-aprender",
+            "dec-despues-otros"
+          ]
+        },
+        "conPracticas": {
+          "acceso": [
+            "prac-recorrido",
+            "prac-evaluar",
+            "prac-procedimiento",
+            "prac-tiempo",
+            "prac-evacuacion",
+            "prac-rotulos",
+            "prac-asistente",
+            "prac-grupos",
+            "prac-puesto"
+          ],
+          "profesional": {
+            "institucion": [
+              "pp-plan",
+              "pp-responsables",
+              "pp-visita",
+              "pp-formatos",
+              "pp-seguridad",
+              "pp-horas"
+            ],
+            "centro": [
+              "pp-c-ambiente",
+              "pp-c-tecnologia",
+              "pp-c-escritas",
+              "pp-c-entrenamiento",
+              "pp-c-referente",
+              "pp-c-puesto",
+              "pp-c-pasos",
+              "pp-c-analisis",
+              "pp-c-seguimiento"
+            ],
+            "estudiante": [
+              "pp-e-barrera",
+              "pp-e-donde",
+              "pp-e-conversar",
+              "pp-e-compartir",
+              "pp-e-acuerdo",
+              "pp-e-falla",
+              "pp-e-intereses"
+            ]
+          }
+        }
+      }
+    },
+    "superior": {
+      "conteo": {
+        "dua": {
+          "total": 36,
+          "subtipos": {
+            "sin subtipo": 36
+          }
+        },
+        "acceso": {
+          "total": 39,
+          "subtipos": {
+            "tiempo": 8,
+            "entorno": 14,
+            "presentacion": 12,
+            "respuesta": 5
+          }
+        },
+        "objetivos": {
+          "total": 0,
+          "subtipos": {
+            "graduacion": 0,
+            "priorizacion": 0,
+            "temporalizacion": 0,
+            "enriquecimiento": 0,
+            "eliminacion": 0
+          }
+        },
+        "desregulacion": {
+          "total": 0,
+          "subtipos": {
+            "antes": 0,
+            "durante": 0,
+            "despues": 0
+          }
+        },
+        "adicional": {
+          "total": 0,
+          "subtipos": {}
+        },
+        "practica-profesional": {
+          "total": 19,
+          "subtipos": {
+            "institucion": 3,
+            "centro": 9,
+            "estudiante": 7
+          }
+        },
+        "trabajo": {
+          "total": 0,
+          "subtipos": {
+            "informacion": 0,
+            "tiempo": 0,
+            "puesto": 0,
+            "comunicacion": 0,
+            "proceso": 0
+          }
+        }
+      },
+      "ids": {
+        "dua": [
+          "dua-8-1-meta-visible",
+          "dua-2-1-vocabulario",
+          "dua-5-3-andamiaje-lista",
+          "dua-9-3-reflexion-cierre",
+          "dua-8-4-pertenencia",
+          "dua-7-1",
+          "dua-7-2",
+          "dua-7-3",
+          "dua-7-4",
+          "dua-8-2",
+          "dua-8-3",
+          "dua-8-5",
+          "dua-9-1",
+          "dua-9-2",
+          "dua-9-4",
+          "dua-1-1",
+          "dua-1-2",
+          "dua-1-3",
+          "dua-2-2",
+          "dua-2-3",
+          "dua-2-4",
+          "dua-2-5",
+          "dua-3-1",
+          "dua-3-2",
+          "dua-3-3",
+          "dua-3-4",
+          "dua-4-1",
+          "dua-4-2",
+          "dua-5-1",
+          "dua-5-2",
+          "dua-5-4",
+          "dua-6-1",
+          "dua-6-2",
+          "dua-6-3",
+          "dua-6-4",
+          "dua-6-5"
+        ],
+        "acceso": [
+          "sup-tiempo",
+          "sup-digital",
+          "sup-sala",
+          "sup-formatos",
+          "sup-anticipar",
+          "sup-plazos",
+          "sup-apuntes",
+          "sup-senas",
+          "sup-espacios",
+          "sup-lengua",
+          "sup-confidencial",
+          "sup-recursos",
+          "prac-recorrido",
+          "prac-procedimiento",
+          "prac-rotulos",
+          "prac-puesto",
+          "prac-asistente",
+          "prac-tiempo",
+          "prac-evacuacion",
+          "prac-evaluar",
+          "prac-grupos",
+          "sup-grupos",
+          "sup-sensorial",
+          "sup-pausas",
+          "sup-vision",
+          "sup-audicion",
+          "sup-remoto",
+          "sup-tecnologia",
+          "sup-expectativas",
+          "sup-referente",
+          "sup-calma",
+          "sup-intercultural",
+          "sup-caa",
+          "sup-oral-progresivo",
+          "sup-instrucciones",
+          "sup-profundizar",
+          "sup-proyecto",
+          "sup-investigacion",
+          "sup-ritmo"
+        ],
+        "objetivos": [],
+        "desregulacion": [],
+        "adicional": [],
+        "practica-profesional": [
+          "pp-plan-superior",
+          "pp-responsables",
+          "pp-formatos",
+          "pp-c-puesto",
+          "pp-c-tecnologia",
+          "pp-c-pasos",
+          "pp-c-escritas",
+          "pp-c-entrenamiento",
+          "pp-c-ambiente",
+          "pp-c-referente",
+          "pp-c-analisis",
+          "pp-c-seguimiento",
+          "pp-e-barrera",
+          "pp-e-donde",
+          "pp-e-conversar",
+          "pp-e-compartir",
+          "pp-e-acuerdo",
+          "pp-e-falla",
+          "pp-e-intereses"
+        ],
+        "trabajo": []
+      },
+      "runtime": {
+        "nivel": "superior",
+        "roles": [
+          "Estudiante",
+          "Unidad de inclusión",
+          "Otro docente"
+        ],
+        "vocabulario": {
+          "clase": "clase",
+          "curso": "curso",
+          "estudiantes": "estudiantes"
+        },
+        "rótulos": [
+          {
+            "id": "sup-tiempo",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-digital",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-sala",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-formatos",
+            "texto": "Ajuste razonable: Formas de respuesta"
+          },
+          {
+            "id": "sup-anticipar",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-plazos",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-apuntes",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-senas",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-espacios",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-lengua",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-confidencial",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-recursos",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "prac-recorrido",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "prac-procedimiento",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "prac-rotulos",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "prac-puesto",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "prac-asistente",
+            "texto": "Ajuste razonable: Formas de respuesta"
+          },
+          {
+            "id": "prac-tiempo",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "prac-evacuacion",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "prac-evaluar",
+            "texto": "Ajuste razonable: Formas de respuesta"
+          },
+          {
+            "id": "prac-grupos",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-grupos",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-sensorial",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-pausas",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-vision",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-audicion",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-remoto",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-tecnologia",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-expectativas",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-referente",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-calma",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-intercultural",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-caa",
+            "texto": "Ajuste razonable: Formas de respuesta"
+          },
+          {
+            "id": "sup-oral-progresivo",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "sup-instrucciones",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-profundizar",
+            "texto": "Ajuste razonable: Presentación de la información"
+          },
+          {
+            "id": "sup-proyecto",
+            "texto": "Ajuste razonable: Formas de respuesta"
+          },
+          {
+            "id": "sup-investigacion",
+            "texto": "Ajuste razonable: Entorno"
+          },
+          {
+            "id": "sup-ritmo",
+            "texto": "Ajuste razonable: Organización del tiempo y el horario"
+          },
+          {
+            "id": "pp-plan-superior",
+            "texto": "Apoyo para la práctica: Lo que hace la institución"
+          },
+          {
+            "id": "pp-responsables",
+            "texto": "Apoyo para la práctica: Lo que hace la institución"
+          },
+          {
+            "id": "pp-formatos",
+            "texto": "Apoyo para la práctica: Lo que hace la institución"
+          },
+          {
+            "id": "pp-c-puesto",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-tecnologia",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-pasos",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-escritas",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-entrenamiento",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-ambiente",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-referente",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-analisis",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-c-seguimiento",
+            "texto": "Apoyo para la práctica: Lo que puede hacer el centro de práctica"
+          },
+          {
+            "id": "pp-e-barrera",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-donde",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-conversar",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-compartir",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-acuerdo",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-falla",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          },
+          {
+            "id": "pp-e-intereses",
+            "texto": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes"
+          }
+        ],
+        "sinPractica": {
+          "dua": [
+            "dua-4-2",
+            "dua-1-1",
+            "dua-1-3",
+            "dua-2-1-vocabulario",
+            "dua-3-1",
+            "dua-6-1",
+            "dua-6-2",
+            "dua-7-1",
+            "dua-7-2",
+            "dua-8-1-meta-visible",
+            "dua-9-1",
+            "dua-3-2",
+            "dua-5-3-andamiaje-lista",
+            "dua-8-3",
+            "dua-1-2",
+            "dua-2-2",
+            "dua-2-5",
+            "dua-3-3",
+            "dua-4-1",
+            "dua-5-2",
+            "dua-6-3",
+            "dua-6-4",
+            "dua-7-3",
+            "dua-8-2",
+            "dua-9-2",
+            "dua-9-3-reflexion-cierre",
+            "dua-3-4",
+            "dua-5-1",
+            "dua-8-5",
+            "dua-2-3",
+            "dua-2-4",
+            "dua-5-4",
+            "dua-6-5",
+            "dua-7-4",
+            "dua-8-4-pertenencia",
+            "dua-9-4"
+          ],
+          "acceso": [
+            "sup-formatos",
+            "sup-apuntes",
+            "sup-tecnologia",
+            "sup-referente",
+            "sup-tiempo",
+            "sup-sala",
+            "sup-anticipar",
+            "sup-confidencial",
+            "sup-grupos",
+            "sup-sensorial",
+            "sup-pausas",
+            "sup-expectativas",
+            "sup-digital",
+            "sup-remoto",
+            "sup-calma",
+            "sup-intercultural",
+            "sup-instrucciones",
+            "sup-investigacion",
+            "sup-plazos",
+            "sup-senas",
+            "sup-espacios",
+            "sup-lengua",
+            "sup-recursos",
+            "sup-vision",
+            "sup-audicion",
+            "sup-caa",
+            "sup-oral-progresivo",
+            "sup-profundizar",
+            "sup-proyecto",
+            "sup-ritmo"
+          ],
+          "objetivos": [],
+          "desregulacion": []
+        },
+        "conPracticas": {
+          "acceso": [
+            "prac-recorrido",
+            "prac-evaluar",
+            "prac-procedimiento",
+            "prac-tiempo",
+            "prac-evacuacion",
+            "prac-rotulos",
+            "prac-asistente",
+            "prac-grupos",
+            "prac-puesto"
+          ],
+          "profesional": {
+            "institucion": [
+              "pp-plan-superior",
+              "pp-responsables",
+              "pp-formatos"
+            ],
+            "centro": [
+              "pp-c-ambiente",
+              "pp-c-tecnologia",
+              "pp-c-escritas",
+              "pp-c-entrenamiento",
+              "pp-c-referente",
+              "pp-c-puesto",
+              "pp-c-pasos",
+              "pp-c-analisis",
+              "pp-c-seguimiento"
+            ],
+            "estudiante": [
+              "pp-e-barrera",
+              "pp-e-donde",
+              "pp-e-conversar",
+              "pp-e-compartir",
+              "pp-e-acuerdo",
+              "pp-e-falla",
+              "pp-e-intereses"
+            ]
+          }
+        }
+      }
+    },
+    "trabajo": {
+      "conteo": {
+        "dua": {
+          "total": 0,
+          "subtipos": {
+            "sin subtipo": 0
+          }
+        },
+        "acceso": {
+          "total": 0,
+          "subtipos": {
+            "tiempo": 0,
+            "entorno": 0,
+            "presentacion": 0,
+            "respuesta": 0
+          }
+        },
+        "objetivos": {
+          "total": 0,
+          "subtipos": {
+            "graduacion": 0,
+            "priorizacion": 0,
+            "temporalizacion": 0,
+            "enriquecimiento": 0,
+            "eliminacion": 0
+          }
+        },
+        "desregulacion": {
+          "total": 0,
+          "subtipos": {
+            "antes": 0,
+            "durante": 0,
+            "despues": 0
+          }
+        },
+        "adicional": {
+          "total": 0,
+          "subtipos": {}
+        },
+        "practica-profesional": {
+          "total": 0,
+          "subtipos": {
+            "institucion": 0,
+            "centro": 0,
+            "estudiante": 0
+          }
+        },
+        "trabajo": {
+          "total": 64,
+          "subtipos": {
+            "informacion": 10,
+            "tiempo": 12,
+            "puesto": 17,
+            "comunicacion": 17,
+            "proceso": 8
+          }
+        }
+      },
+      "ids": {
+        "dua": [],
+        "acceso": [],
+        "objetivos": [],
+        "desregulacion": [],
+        "adicional": [],
+        "practica-profesional": [],
+        "trabajo": [
+          "tr-etapas",
+          "tr-prioridades",
+          "tr-recordatorios",
+          "tr-distractores",
+          "tr-texto-digital",
+          "tr-formato-lectura",
+          "tr-formularios",
+          "tr-respuesta-oral",
+          "tr-una-tarea",
+          "tr-formatos-formacion",
+          "tr-entrenamiento",
+          "tr-apoyo-puesto",
+          "tr-teclear",
+          "tr-respuesta-escrita",
+          "tr-lengua-senas",
+          "tr-preparar-comunicacion",
+          "tr-escrita-revisable",
+          "tr-uno-a-uno",
+          "tr-bloques-tiempo",
+          "tr-pausas-interaccion",
+          "tr-estresores",
+          "tr-horario-flexible",
+          "tr-pausas-distribuidas",
+          "tr-supervision",
+          "tr-digital-lector",
+          "tr-ocr",
+          "tr-lector-braille",
+          "tr-formularios-voz",
+          "tr-subtitulos",
+          "tr-interprete",
+          "tr-mensajes-escritos",
+          "tr-alertas-visuales",
+          "tr-ruido",
+          "tr-proteccion-auditiva",
+          "tr-iluminacion",
+          "tr-reubicar",
+          "tr-mesa-regulable",
+          "tr-traslado-materiales",
+          "tr-herramientas",
+          "tr-espacio-movilidad",
+          "tr-pausas-descanso",
+          "tr-horario-energia",
+          "tr-tareas-marginales",
+          "tr-ergonomia",
+          "tr-interprete-lengua",
+          "tr-par-idioma",
+          "tr-no-verbal",
+          "tr-lenguaje-claro",
+          "tr-acceso-fisico",
+          "tr-analisis-puesto",
+          "tr-formacion-equipo",
+          "tr-seguimiento-entorno",
+          "tr-autonomia",
+          "tr-responsabilidades",
+          "tr-desarrollo",
+          "tr-mentoria-desafio",
+          "tr-pedir",
+          "tr-analizar",
+          "tr-decidir",
+          "tr-documentar",
+          "tr-revisar",
+          "tr-rechazo",
+          "tr-seleccion",
+          "tr-privacidad"
+        ]
+      },
+      "runtime": {
+        "roles": [
+          "Persona trabajadora",
+          "Jefatura directa",
+          "Gestor o gestora de inclusión",
+          "Recursos humanos",
+          "Prevención de riesgos"
+        ],
+        "ajustes": [
+          "tr-formatos-formacion",
+          "tr-apoyo-puesto",
+          "tr-pausas-distribuidas",
+          "tr-distractores",
+          "tr-texto-digital",
+          "tr-formularios",
+          "tr-una-tarea",
+          "tr-entrenamiento",
+          "tr-lengua-senas",
+          "tr-preparar-comunicacion",
+          "tr-escrita-revisable",
+          "tr-uno-a-uno",
+          "tr-bloques-tiempo",
+          "tr-pausas-interaccion",
+          "tr-horario-flexible",
+          "tr-supervision",
+          "tr-ocr",
+          "tr-mensajes-escritos",
+          "tr-alertas-visuales",
+          "tr-iluminacion",
+          "tr-reubicar",
+          "tr-traslado-materiales",
+          "tr-espacio-movilidad",
+          "tr-horario-energia",
+          "tr-tareas-marginales",
+          "tr-ergonomia",
+          "tr-par-idioma",
+          "tr-no-verbal",
+          "tr-lenguaje-claro",
+          "tr-acceso-fisico",
+          "tr-formacion-equipo",
+          "tr-mentoria-desafio",
+          "tr-etapas",
+          "tr-prioridades",
+          "tr-recordatorios",
+          "tr-formato-lectura",
+          "tr-respuesta-oral",
+          "tr-teclear",
+          "tr-respuesta-escrita",
+          "tr-estresores",
+          "tr-digital-lector",
+          "tr-lector-braille",
+          "tr-formularios-voz",
+          "tr-subtitulos",
+          "tr-interprete",
+          "tr-ruido",
+          "tr-proteccion-auditiva",
+          "tr-mesa-regulable",
+          "tr-herramientas",
+          "tr-pausas-descanso",
+          "tr-interprete-lengua",
+          "tr-analisis-puesto",
+          "tr-seguimiento-entorno",
+          "tr-autonomia",
+          "tr-responsabilidades",
+          "tr-desarrollo"
+        ],
+        "proceso": [
+          "tr-pedir",
+          "tr-analizar",
+          "tr-decidir",
+          "tr-documentar",
+          "tr-revisar",
+          "tr-rechazo",
+          "tr-seleccion",
+          "tr-privacidad"
+        ]
+      }
+    }
+  },
+  "referencias": 57,
+  "necesidades": 8
+}

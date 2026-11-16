@@ -27,7 +27,7 @@ const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
 vm.runInContext(archivo('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
 const guia = nodos.get('#guia-dua');
-vm.runInContext('prepararGuiaDUA()', contexto);
+vm.runInContext('prepararGuiaDUA(); mostrarPestana=()=>{estado.ambito="educacion";estado.pestana="dua";}', contexto);
 assert.equal(guia.open, false);
 vm.runInContext('mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);
@@ -61,8 +61,8 @@ vm.runInContext('prepararGuiaDUA(); mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);
 assert.doesNotThrow(() => nodos.get('#guia-empezar').click());
 const html = archivo('index.html').split('<dialog id="guia-dua"')[1].split('</dialog>')[0];
-assert.ok(html.includes('>Cómo usar el DUA en tu clase</h2>'));
-assert.deepEqual([...html.matchAll(/<li>(.*?)<\/li>/g)].map(m => m[1]), [
+assert.ok(html.includes('>¿Qué es el DUA y cómo usarlo?</h2>'));
+assert.deepEqual([...html.split('<h3>Cómo usarlo</h3>')[1].matchAll(/<li>(.*?)<\/li>/g)].map(m => m[1].replace(/<[^>]+>/g,'')), [
   'Parte por la meta: ¿qué quieres que aprendan?',
   'Piensa qué podría impedir que algunos lo logren. Eso es una barrera.',
   'Elige qué quieres resolver. Prizma te mostrará primero las acciones que responden a eso.',

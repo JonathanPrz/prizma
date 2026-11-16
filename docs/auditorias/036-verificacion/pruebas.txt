@@ -1,0 +1,61 @@
+scripts/probar_arquitectura.cjs
+Correcto: migración del ámbito y respaldos, borrador general/centro y decisión de compartir, glosario sobre todo el catálogo real y HTML.
+Correcto: ambos temas/ancho, teclado/foco, guías, confirmación de nivel, borradores, mochila/privacidad/borrado por ámbito, recarga, almacenamiento bloqueado y sin desborde.
+
+scripts/probar_arreglos_menores.cjs
+Correcto: singular/plural y fecha local a las 23:30 en Santiago.
+
+scripts/probar_avisos.cjs
+Correcto: ninguna guía automática, aperturas manuales y foco, texto exacto de escuela/superior, privacidad al escribir y memoria, notas sin solapar, encabezados y claves retiradas.
+
+scripts/probar_datos_reales.cjs
+Correcto: 240 fichas, 57 fuentes y 8 necesidades reales pasan por los validadores de la página; nada se descarta, se renomina ni se recorta en el respaldo de todos los niveles.
+
+scripts/probar_estudiante.cjs
+Correcto: validación del estudiante, puntaje, visión y audición y exclusión por nivel.
+Correcto: respaldo antiguo y validado, documento separado y definición PDF con tipos oficiales.
+Correcto: objetivos por nivel y orden, nueve apoyos DEC, selección, respaldo y tres grupos PDF.
+Correcto: acciones DUA y apoyos individuales conviven en el documento.
+Correcto: voz validada y respaldada, PDF con voz incluso sin fichas individuales, y vacíos por situación/nivel.
+Correcto: la transformación de listas por pdfmake no modifica los pasos del catálogo.
+
+scripts/probar_estudiantes.cjs
+Correcto: migración v1/localStorage, respaldo v2, selección aislada, ids/límites/entradas inválidas, repetición y versión DUA, exclusión de estudiantes, orden y estructura completa del PDF, pies por sección y catálogo inmutable.
+Correcto: cancelar o reemplazar una generación pendiente no abre otro documento; reintentar sí lo genera.
+
+scripts/probar_flujo_avisos.cjs
+Correcto: pasos y guardado diferido DUA, prioridad global sin duplicados, casos y acuerdos validados, revisión posterior, JP2/duplicados, Sí/No persistido, avisos con conteo único, PDF/reflexión/acuerdos y respaldo, roles por nivel.
+
+scripts/probar_guia_dua.cjs
+Correcto: texto exacto, guía solo manual, Empezar y foco, reapertura, prioridad de privacidad y almacenamiento bloqueado.
+
+scripts/probar_iconos.cjs
+Correcto: tema antes de pintar, dispositivo/elección/legado/almacenamiento bloqueado, alternancia y nombres accesibles; mochila conserva texto accesible.
+
+scripts/probar_individualizados.cjs
+Correcto: asignatura validada y generales primero, práctica simulada/aislada por nivel, respaldos antiguos y tabla CIF con apoyos por dimensión y casos sin apoyo.
+
+scripts/probar_media_practica.cjs
+Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > destacadas, práctica y limpieza independientes.
+
+scripts/probar_momentos.cjs
+Correcto: 36 acciones por nivel, momentos múltiples/validados/ordenados, prioridad de necesidades por grupo, persistencia y respaldo antiguo sin filtro implícito.
+
+scripts/probar_necesidades.cjs
+Correcto: necesidades válidas, orden sin ocultar, parvularia, coincidencias múltiples, respaldo, PDF y catálogo opcional ausente.
+
+scripts/probar_orden.cjs
+Correcto: puntaje/proporción/catálogo, Para empezar sin duplicados y umbral, práctica con coincidencia positiva, revisión v1/v2 persistida y contexto activo.
+
+scripts/probar_pestanas.cjs
+Correcto: hash, historial, pestañas y teclado, foco y persistencia; pasos en ambos anchos sin diálogo ni controles movidos, mochila y limpieza del borrador sin perder clase ni casos, almacenamiento bloqueado.
+
+scripts/probar_practica_profesional.cjs
+Correcto: práctica por estudiante/nivel, booleanos y respaldos, grupos/pertinencia/orden, texto exacto, selección y PDF principal; modelo, vista y PDF del centro sin datos personales, decisión obligatoria y cancelación/revocación durante carga.
+
+scripts/probar_superior.cjs
+Correcto: superior en respaldo, 36 DUA, ajustes filtrados, dos ajustes de acceso, PDF con rótulos propios y selección preservada al cambiar nivel.
+Correcto: rótulos de apoyos adicionales compartidos dependen del nivel actual.
+
+scripts/probar_trabajo.cjs
+Correcto: guía y 14 ejemplos exactos, tres pestañas, casos y selecciones separados, prioridad de Audición/proceso, acuerdos/revisión/bloqueo, respaldo anterior y actual, límites/roles, privacidad de ambos modelos PDF y elección de personas sin marcar.

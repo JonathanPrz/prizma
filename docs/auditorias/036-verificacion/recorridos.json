@@ -1,0 +1,2684 @@
+[
+  {
+    "persona": "basica",
+    "ancho": 1280,
+    "inicial": "Ir al contenido\n\nPrizma\n\nApoyos con fuente para aprender y trabajar en igualdad\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 26,
+    "clicksHastaPdf": 27,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-educacion",
+        "descripcion": "Elegir Educación",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "nivel",
+        "selector": "#nivel",
+        "descripcion": "Elegir Educación básica",
+        "clicksEquivalentes": 2,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#panel-dua .enlace-guia-dua",
+        "descripcion": "Abrir Cómo usar el DUA",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-dua": 0
+          }
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "click",
+        "selector": "#guia-empezar",
+        "descripcion": "Empezar",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-dua": 0
+          }
+        },
+        "despues": {
+          "ventana": 528,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "fill",
+        "selector": "#meta",
+        "descripcion": "Anotar meta",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 528,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 528,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "click",
+        "selector": "#necesidad-tareas-largas",
+        "descripcion": "Elegir tareas largas",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 528,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 528,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "click",
+        "selector": "#guardar-clase",
+        "descripcion": "Guardar clase",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 528,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1028,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "click",
+        "selector": "#elegir-dua-6-2",
+        "descripcion": "Elegir agenda para el curso",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1028,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1028,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "click",
+        "selector": "#tab-apoyos",
+        "descripcion": "Cambiar a estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1028,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "fill",
+        "selector": "#iniciales",
+        "descripcion": "Escribir iniciales",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "check",
+        "selector": "#area-0",
+        "descripcion": "Abrir Cognición y aprendizaje",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 547,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "check",
+        "selector": "input[name=\"dimension-1\"][value=\"3\"]",
+        "descripcion": "Atención y organización: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 547,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 547,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "fill",
+        "selector": "#estudiante-ayuda",
+        "descripcion": "Facilitador",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 547,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1224,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "fill",
+        "selector": "#estudiante-voz",
+        "descripcion": "Voz del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1224,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1224,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "click",
+        "selector": "#guardar-descripcion",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1224,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 477,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#apoyos-resultados details:has(#elegir-acc-1-agenda) > summary",
+        "descripcion": "Abrir Presentación de la información",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 477,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2056,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "click",
+        "selector": "#elegir-acc-1-agenda",
+        "descripcion": "Elegir agenda individual ya cubierta por DUA",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2056,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2725,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "click",
+        "selector": "#indicador-pasos a:nth-child(3)",
+        "descripcion": "Continuar a acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2725,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "check",
+        "selector": "input[name=\"rol-acuerdo\"][value=\"estudiante\"]",
+        "descripcion": "Rol estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "fill",
+        "selector": "#fecha-acuerdo",
+        "descripcion": "Fecha del acuerdo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 22,
+        "tipo": "fill",
+        "selector": "#revision-acuerdo",
+        "descripcion": "Próxima revisión",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 23,
+        "tipo": "click",
+        "selector": "#guardar-acuerdos",
+        "descripcion": "Guardar acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 24,
+        "tipo": "click",
+        "selector": "#documento-estudiante",
+        "descripcion": "Ver documento escolar",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 25,
+        "tipo": "click",
+        "selector": "#generar-documento",
+        "descripcion": "Generar curso y estudiante activos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 26,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3438,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 3438,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 9,
+    "distanciaVentanaPx": 6988,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nPlan de apoyos para el aprendizaje\nResumen\tInformación\nFecha\t16 de noviembre de 2026\nNivel\tEducación básica\nMeta de aprendizaje\tExplicar el ciclo del agua.\nQué quiere resolver\tSe pierden en tareas largas o con muchos pasos\nContenido\tCurso y 1 estudiante\nAcciones para todo el curso\nAntes\nAnticipa la agenda de la clase y avisa los cambios\nMuestra al inicio los momentos de la clase, con palabras o imágenes.\nMarca lo que ya hicieron.\nAvisa con tiempo si algo cambia.\n\nPor qué funciona: Saber qué viene reduce la ansiedad y ayuda a organizarse.\n\nAcción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 1 estudiante.\n\nApoyos para JP\n\nPropuesta para conversar con el equipo de apoyo\n\nBarreras y facilitadores (enfoque CIF)\n\nLas situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)\n\nSituación\tFrecuencia\tApoyos elegidos para esa situación\nAtención y organización\tCasi siempre\tDale una agenda visual y la lista de pasos de cada tarea\nFacilitadores y voz\tInformación\nLe ayuda\tUna agenda visible.\nQué dicen el estudiante y su familia\tPrefiere saber qué viene después.\nAdecuaciones de acceso · Presentación de la información\nDale una agenda visual y la lista de pasos de cada tarea\nMuestra los momentos del día o de la clase con imágenes o palabras.\nEntrega los pasos de la tarea en una tarjeta en su mesa.\nMarquen juntos lo que ya está hecho.\n\nPor qué funciona: Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\n\nAdecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial. También ofrecido a todo el curso.\n\nAcuerdos (para completar en la reunión)\n\nAcordado con: Estudiante\n\nFecha: 16 de noviembre de 2026\n\nPróxima revisión: 1 de diciembre de 2026\n\nFuentes\nCAST (2024). Universal Design for Learning Guidelines version 3.0.\n\nhttps://udlguidelines.cast.org/es/\n\nSuperintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.\n\nhttps://www.supereduc.cl/contenidos-de-interes/circular-no-586/\n\nMineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.\n\nhttps://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf\n\nMineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.\n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1074511\n\nOrientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.",
+    "modelo": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Explicar el ciclo del agua."
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "nombre": "Antes",
+          "acciones": [
+            {
+              "id": "dua-6-2",
+              "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+              "como": [
+                "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+                "Marca lo que ya hicieron.",
+                "Avisa con tiempo si algo cambia."
+              ],
+              "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+              "nota": "",
+              "ofrecida": false,
+              "dato": "Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 1 estudiante."
+            }
+          ]
+        },
+        {
+          "estudiante": "df38214a-9888-409a-8241-0051ed37b72a",
+          "acuerdo": {
+            "roles": [
+              "estudiante"
+            ],
+            "fecha": "2026-11-16",
+            "revision": "2026-12-01",
+            "estado": "completo"
+          },
+          "estadoAcuerdo": "Acuerdos completos",
+          "nombre": "Apoyos para JP",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Casi siempre",
+              "Dale una agenda visual y la lista de pasos de cada tarea"
+            ]
+          ],
+          "ayuda": "Una agenda visible.",
+          "voz": "Prefiere saber qué viene después.",
+          "acciones": [
+            {
+              "id": "acc-1-agenda",
+              "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+              "como": [
+                "Muestra los momentos del día o de la clase con imágenes o palabras.",
+                "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+                "Marquen juntos lo que ya está hecho."
+              ],
+              "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+              "nota": "",
+              "ofrecida": true,
+              "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+              "grupo": "Adecuaciones de acceso · Presentación de la información"
+            }
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+          "url": "https://udlguidelines.cast.org/es/"
+        },
+        {
+          "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+          "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+        },
+        {
+          "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+          "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+        },
+        {
+          "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+        }
+      ],
+      "borrador": false
+    },
+    "errores": []
+  },
+  {
+    "persona": "basica",
+    "ancho": 390,
+    "inicial": "Ir al contenido\n\nPrizma\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 26,
+    "clicksHastaPdf": 27,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-educacion",
+        "descripcion": "Elegir Educación",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "nivel",
+        "selector": "#nivel",
+        "descripcion": "Elegir Educación básica",
+        "clicksEquivalentes": 2,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#panel-dua .enlace-guia-dua",
+        "descripcion": "Abrir Cómo usar el DUA",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-dua": 0
+          }
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "click",
+        "selector": "#guia-empezar",
+        "descripcion": "Empezar",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-dua": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "fill",
+        "selector": "#meta",
+        "descripcion": "Anotar meta",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 787,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "click",
+        "selector": "#necesidad-tareas-largas",
+        "descripcion": "Elegir tareas largas",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 787,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 787,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "click",
+        "selector": "#guardar-clase",
+        "descripcion": "Guardar clase",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 787,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1875,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "click",
+        "selector": "#elegir-dua-6-2",
+        "descripcion": "Elegir agenda para el curso",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1875,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1875,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "click",
+        "selector": "#tab-apoyos",
+        "descripcion": "Cambiar a estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1875,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "fill",
+        "selector": "#iniciales",
+        "descripcion": "Escribir iniciales",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 557,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 557,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 557,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "check",
+        "selector": "#area-0",
+        "descripcion": "Abrir Cognición y aprendizaje",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 557,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 557,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "check",
+        "selector": "input[name=\"dimension-1\"][value=\"3\"]",
+        "descripcion": "Atención y organización: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 557,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1191,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "fill",
+        "selector": "#estudiante-ayuda",
+        "descripcion": "Facilitador",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1191,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1701,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "fill",
+        "selector": "#estudiante-voz",
+        "descripcion": "Voz del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1701,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1701,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "click",
+        "selector": "#guardar-descripcion",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1701,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 681,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#apoyos-resultados details:has(#elegir-acc-1-agenda) > summary",
+        "descripcion": "Abrir Presentación de la información",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 681,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3566,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "click",
+        "selector": "#elegir-acc-1-agenda",
+        "descripcion": "Elegir agenda individual ya cubierta por DUA",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3566,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 4645,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "click",
+        "selector": "#continuar",
+        "descripcion": "Continuar a acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 4645,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "check",
+        "selector": "input[name=\"rol-acuerdo\"][value=\"estudiante\"]",
+        "descripcion": "Rol estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "fill",
+        "selector": "#fecha-acuerdo",
+        "descripcion": "Fecha del acuerdo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 22,
+        "tipo": "fill",
+        "selector": "#revision-acuerdo",
+        "descripcion": "Próxima revisión",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 23,
+        "tipo": "click",
+        "selector": "#guardar-acuerdos",
+        "descripcion": "Guardar acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 24,
+        "tipo": "click",
+        "selector": "#documento-estudiante",
+        "descripcion": "Ver documento escolar",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 25,
+        "tipo": "click",
+        "selector": "#generar-documento",
+        "descripcion": "Generar curso y estudiante activos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 26,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 5427,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 5427,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 10,
+    "distanciaVentanaPx": 11217,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nPlan de apoyos para el aprendizaje\nResumen\tInformación\nFecha\t16 de noviembre de 2026\nNivel\tEducación básica\nMeta de aprendizaje\tExplicar el ciclo del agua.\nQué quiere resolver\tSe pierden en tareas largas o con muchos pasos\nContenido\tCurso y 1 estudiante\nAcciones para todo el curso\nAntes\nAnticipa la agenda de la clase y avisa los cambios\nMuestra al inicio los momentos de la clase, con palabras o imágenes.\nMarca lo que ya hicieron.\nAvisa con tiempo si algo cambia.\n\nPor qué funciona: Saber qué viene reduce la ansiedad y ayuda a organizarse.\n\nAcción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 1 estudiante.\n\nApoyos para JP\n\nPropuesta para conversar con el equipo de apoyo\n\nBarreras y facilitadores (enfoque CIF)\n\nLas situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)\n\nSituación\tFrecuencia\tApoyos elegidos para esa situación\nAtención y organización\tCasi siempre\tDale una agenda visual y la lista de pasos de cada tarea\nFacilitadores y voz\tInformación\nLe ayuda\tUna agenda visible.\nQué dicen el estudiante y su familia\tPrefiere saber qué viene después.\nAdecuaciones de acceso · Presentación de la información\nDale una agenda visual y la lista de pasos de cada tarea\nMuestra los momentos del día o de la clase con imágenes o palabras.\nEntrega los pasos de la tarea en una tarjeta en su mesa.\nMarquen juntos lo que ya está hecho.\n\nPor qué funciona: Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.\n\nAdecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial. También ofrecido a todo el curso.\n\nAcuerdos (para completar en la reunión)\n\nAcordado con: Estudiante\n\nFecha: 16 de noviembre de 2026\n\nPróxima revisión: 1 de diciembre de 2026\n\nFuentes\nCAST (2024). Universal Design for Learning Guidelines version 3.0.\n\nhttps://udlguidelines.cast.org/es/\n\nSuperintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.\n\nhttps://www.supereduc.cl/contenidos-de-interes/circular-no-586/\n\nMineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.\n\nhttps://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf\n\nMineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.\n\nhttps://www.bcn.cl/leychile/navegar?idNorma=1074511\n\nOrientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.",
+    "modelo": {
+      "titulo": "Plan de apoyos para el aprendizaje",
+      "fecha": "16 de noviembre de 2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "curso": true,
+      "resumen": [
+        [
+          "Fecha",
+          "16 de noviembre de 2026"
+        ],
+        [
+          "Nivel",
+          "Educación básica"
+        ],
+        [
+          "Meta de aprendizaje",
+          "Explicar el ciclo del agua."
+        ],
+        [
+          "Qué quiere resolver",
+          "Se pierden en tareas largas o con muchos pasos"
+        ],
+        [
+          "Contenido",
+          "Curso y 1 estudiante"
+        ]
+      ],
+      "grupos": [
+        {
+          "nombre": "Antes",
+          "acciones": [
+            {
+              "id": "dua-6-2",
+              "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+              "como": [
+                "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+                "Marca lo que ya hicieron.",
+                "Avisa con tiempo si algo cambia."
+              ],
+              "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+              "nota": "",
+              "ofrecida": false,
+              "dato": "Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos. Responde también a apoyos individuales de 1 estudiante."
+            }
+          ]
+        },
+        {
+          "estudiante": "ef00bbb3-56f5-4ddc-b8e6-a485005577f7",
+          "acuerdo": {
+            "roles": [
+              "estudiante"
+            ],
+            "fecha": "2026-11-16",
+            "revision": "2026-12-01",
+            "estado": "completo"
+          },
+          "estadoAcuerdo": "Acuerdos completos",
+          "nombre": "Apoyos para JP",
+          "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+          "cif": [
+            [
+              "Atención y organización",
+              "Casi siempre",
+              "Dale una agenda visual y la lista de pasos de cada tarea"
+            ]
+          ],
+          "ayuda": "Una agenda visible.",
+          "voz": "Prefiere saber qué viene después.",
+          "acciones": [
+            {
+              "id": "acc-1-agenda",
+              "titulo": "Dale una agenda visual y la lista de pasos de cada tarea",
+              "como": [
+                "Muestra los momentos del día o de la clase con imágenes o palabras.",
+                "Entrega los pasos de la tarea en una tarjeta en su mesa.",
+                "Marquen juntos lo que ya está hecho."
+              ],
+              "porque": "Ver qué viene y qué falta ayuda a empezar, seguir y cambiar de actividad.",
+              "nota": "",
+              "ofrecida": true,
+              "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 6.2. Respaldo: Orientación oficial.",
+              "grupo": "Adecuaciones de acceso · Presentación de la información"
+            }
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+          "url": "https://udlguidelines.cast.org/es/"
+        },
+        {
+          "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+          "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+        },
+        {
+          "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+          "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+        },
+        {
+          "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+        }
+      ],
+      "borrador": false
+    },
+    "errores": []
+  },
+  {
+    "persona": "instituto",
+    "ancho": 1280,
+    "inicial": "Ir al contenido\n\nPrizma\n\nApoyos con fuente para aprender y trabajar en igualdad\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 20,
+    "clicksHastaPdf": 21,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-educacion",
+        "descripcion": "Elegir Educación",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "nivel",
+        "selector": "#nivel",
+        "descripcion": "Elegir Educación superior",
+        "clicksEquivalentes": 2,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#tab-apoyos",
+        "descripcion": "Cambiar a Ajustes razonables",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "click",
+        "selector": ".enlace-guia-apoyos:first-child",
+        "descripcion": "Abrir guía de superior",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-apoyos": 0
+          }
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "click",
+        "selector": "#guia-apoyos-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-apoyos": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "fill",
+        "selector": "#iniciales",
+        "descripcion": "Iniciales del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "check",
+        "selector": "#area-0",
+        "descripcion": "Abrir Cognición",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 547,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "check",
+        "selector": "input[name=\"dimension-1\"][value=\"3\"]",
+        "descripcion": "Atención y organización: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 547,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 547,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "check",
+        "selector": "#practica-profesional",
+        "descripcion": "Este estudiante hará su práctica profesional",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 547,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1182,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "fill",
+        "selector": "#estudiante-voz",
+        "descripcion": "Voz del estudiante ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1182,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1182,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "click",
+        "selector": "#guardar-descripcion",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1182,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 477,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "click",
+        "selector": "#enlace-guia-practica",
+        "descripcion": "Abrir responsabilidades de la práctica",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 477,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2195,
+          "dialogos": {
+            "guia-practica": 0
+          }
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "click",
+        "selector": "#guia-practica-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2195,
+          "dialogos": {
+            "guia-practica": 0
+          }
+        },
+        "despues": {
+          "ventana": 2195,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "click",
+        "selector": "#practica-profesional-grupos details:has(#elegir-pp-c-pasos) > summary",
+        "descripcion": "Abrir apoyos del centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2195,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2195,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "click",
+        "selector": "#elegir-pp-c-pasos",
+        "descripcion": "Elegir ajuste que puede hacer el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2195,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2756,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#preparar-centro",
+        "descripcion": "Preparar documento para el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2756,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "check",
+        "selector": "input[name=\"compartir-centro\"][value=\"pp-c-pasos\"]",
+        "descripcion": "Elegir solo el ajuste por pasos",
+        "clicksEquivalentes": 0,
+        "antes": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "check",
+        "selector": "#decision-centro",
+        "descripcion": "Confirmar decisión del estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "click",
+        "selector": "#ver-centro",
+        "descripcion": "Ver documento para el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 4351,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 4351,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 4351,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 6,
+    "distanciaVentanaPx": 5761,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nAjustes acordados para la práctica\n\nBorrador: acuerdos sin completar\n\nCampo\tCompletar a mano\nEstudiante\t__________________________________\nCentro de práctica\t__________________________________\nProfesor tutor o coordinador\t__________________________________\nFecha\t__________________________________\nDivide las tareas largas en pasos, con una lista para marcar\nEscribe los pasos de cada tarea en orden.\nDeja la lista en el puesto de trabajo.\nRevisa la lista juntos al principio.\n\nPor qué funciona: Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.\n\nAcuerdos (para completar en la reunión)\n\nAcordado con: __________________________________\n\nFecha: __________________________________\n\nPróxima revisión: __________________________________\n\nDocumento preparado con el estudiante. Contiene solo lo que decidió compartir.\n\nOrientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.",
+    "modelo": {
+      "centro": true,
+      "borrador": true,
+      "titulo": "Ajustes acordados para la práctica",
+      "fecha": "16-11-2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "resumen": [
+        [
+          "Estudiante",
+          "__________________________________"
+        ],
+        [
+          "Centro de práctica",
+          "__________________________________"
+        ],
+        [
+          "Profesor tutor o coordinador",
+          "__________________________________"
+        ],
+        [
+          "Fecha",
+          "__________________________________"
+        ]
+      ],
+      "acciones": [
+        {
+          "titulo": "Divide las tareas largas en pasos, con una lista para marcar",
+          "como": [
+            "Escribe los pasos de cada tarea en orden.",
+            "Deja la lista en el puesto de trabajo.",
+            "Revisa la lista juntos al principio."
+          ],
+          "porque": "Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.",
+          "dato": ""
+        }
+      ]
+    },
+    "errores": []
+  },
+  {
+    "persona": "instituto",
+    "ancho": 390,
+    "inicial": "Ir al contenido\n\nPrizma\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 20,
+    "clicksHastaPdf": 21,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-educacion",
+        "descripcion": "Elegir Educación",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "nivel",
+        "selector": "#nivel",
+        "descripcion": "Elegir Educación superior",
+        "clicksEquivalentes": 2,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#tab-apoyos",
+        "descripcion": "Cambiar a Ajustes razonables",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "click",
+        "selector": ".enlace-guia-apoyos:first-child",
+        "descripcion": "Abrir guía de superior",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-apoyos": 0
+          }
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "click",
+        "selector": "#guia-apoyos-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-apoyos": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "fill",
+        "selector": "#iniciales",
+        "descripcion": "Iniciales del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 591,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 591,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 591,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "check",
+        "selector": "#area-0",
+        "descripcion": "Abrir Cognición",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 591,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 591,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "check",
+        "selector": "input[name=\"dimension-1\"][value=\"3\"]",
+        "descripcion": "Atención y organización: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 591,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1224,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "check",
+        "selector": "#practica-profesional",
+        "descripcion": "Este estudiante hará su práctica profesional",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1224,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1706,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "fill",
+        "selector": "#estudiante-voz",
+        "descripcion": "Voz del estudiante ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1706,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1706,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "click",
+        "selector": "#guardar-descripcion",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1706,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 701,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "click",
+        "selector": "#enlace-guia-practica",
+        "descripcion": "Abrir responsabilidades de la práctica",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 701,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3679,
+          "dialogos": {
+            "guia-practica": 0
+          }
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "click",
+        "selector": "#guia-practica-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3679,
+          "dialogos": {
+            "guia-practica": 0
+          }
+        },
+        "despues": {
+          "ventana": 3679,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "click",
+        "selector": "#practica-profesional-grupos details:has(#elegir-pp-c-pasos) > summary",
+        "descripcion": "Abrir apoyos del centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3679,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3679,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "click",
+        "selector": "#elegir-pp-c-pasos",
+        "descripcion": "Elegir ajuste que puede hacer el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3679,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 4429,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#preparar-centro",
+        "descripcion": "Preparar documento para el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 4429,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "check",
+        "selector": "input[name=\"compartir-centro\"][value=\"pp-c-pasos\"]",
+        "descripcion": "Elegir solo el ajuste por pasos",
+        "clicksEquivalentes": 0,
+        "antes": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "check",
+        "selector": "#decision-centro",
+        "descripcion": "Confirmar decisión del estudiante",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "click",
+        "selector": "#ver-centro",
+        "descripcion": "Ver documento para el centro",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        },
+        "despues": {
+          "ventana": 8404,
+          "dialogos": {
+            "documento-centro": 0
+          }
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 8404,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 8404,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 7,
+    "distanciaVentanaPx": 10414,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nAjustes acordados para la práctica\n\nBorrador: acuerdos sin completar\n\nCampo\tCompletar a mano\nEstudiante\t__________________________________\nCentro de práctica\t__________________________________\nProfesor tutor o coordinador\t__________________________________\nFecha\t__________________________________\nDivide las tareas largas en pasos, con una lista para marcar\nEscribe los pasos de cada tarea en orden.\nDeja la lista en el puesto de trabajo.\nRevisa la lista juntos al principio.\n\nPor qué funciona: Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.\n\nAcuerdos (para completar en la reunión)\n\nAcordado con: __________________________________\n\nFecha: __________________________________\n\nPróxima revisión: __________________________________\n\nDocumento preparado con el estudiante. Contiene solo lo que decidió compartir.\n\nOrientación pedagógica. No reemplaza la evaluación de profesionales, el PACI, el PAEC ni los protocolos de tu establecimiento. Las acciones están redactadas con palabras propias a partir de las Pautas DUA 3.0 de CAST (2024) y otras fuentes citadas.",
+    "modelo": {
+      "centro": true,
+      "borrador": true,
+      "titulo": "Ajustes acordados para la práctica",
+      "fecha": "16-11-2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "resumen": [
+        [
+          "Estudiante",
+          "__________________________________"
+        ],
+        [
+          "Centro de práctica",
+          "__________________________________"
+        ],
+        [
+          "Profesor tutor o coordinador",
+          "__________________________________"
+        ],
+        [
+          "Fecha",
+          "__________________________________"
+        ]
+      ],
+      "acciones": [
+        {
+          "titulo": "Divide las tareas largas en pasos, con una lista para marcar",
+          "como": [
+            "Escribe los pasos de cada tarea en orden.",
+            "Deja la lista en el puesto de trabajo.",
+            "Revisa la lista juntos al principio."
+          ],
+          "porque": "Una lista de pasos ayuda a organizarse y a no saltarse partes de la tarea.",
+          "dato": ""
+        }
+      ]
+    },
+    "errores": []
+  },
+  {
+    "persona": "rrhh",
+    "ancho": 1280,
+    "inicial": "Ir al contenido\n\nPrizma\n\nApoyos con fuente para aprender y trabajar en igualdad\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 20,
+    "clicksHastaPdf": 21,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-trabajo",
+        "descripcion": "Elegir Trabajo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "click",
+        "selector": "#enlace-guia-trabajo",
+        "descripcion": "Abrir Qué exige la ley",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-trabajo": 0
+          }
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#guia-trabajo button",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-trabajo": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "fill",
+        "selector": "#trabajo-iniciales",
+        "descripcion": "Iniciales del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 21,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 21,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 21,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "fill",
+        "selector": "#trabajo-puesto",
+        "descripcion": "Tipo de puesto",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 21,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 569,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "check",
+        "selector": "#trabajo-area-3",
+        "descripcion": "Abrir Sensorial y física",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 569,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 569,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "check",
+        "selector": "input[name=\"trabajo-dimension-13\"][value=\"3\"]",
+        "descripcion": "Audición: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 569,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1099,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "fill",
+        "selector": "#trabajo-ayuda",
+        "descripcion": "Facilitador",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1099,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1528,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "fill",
+        "selector": "#trabajo-voz",
+        "descripcion": "Voz de la persona ficticia",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1528,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1528,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "click",
+        "selector": "#guardar-descripcion-trabajo",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1528,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 502,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "click",
+        "selector": "#elegir-tr-subtitulos",
+        "descripcion": "Elegir subtítulos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 502,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 934,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "click",
+        "selector": "#indicador-pasos a:nth-child(3)",
+        "descripcion": "Continuar a acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 934,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "check",
+        "selector": "input[name=\"rol-trabajo\"][value=\"persona\"]",
+        "descripcion": "Rol Persona trabajadora",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "fill",
+        "selector": "#trabajo-fecha",
+        "descripcion": "Fecha del acuerdo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "fill",
+        "selector": "#trabajo-revision",
+        "descripcion": "Próxima revisión",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#guardar-acuerdos-trabajo",
+        "descripcion": "Guardar acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "click",
+        "selector": "#documento-trabajo",
+        "descripcion": "Ver documento de trabajo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "check",
+        "selector": "#opciones-documento input",
+        "descripcion": "Elegir explícitamente a AB",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "click",
+        "selector": "#generar-documento",
+        "descripcion": "Generar documento laboral",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 2110,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 2110,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 7,
+    "distanciaVentanaPx": 4162,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nPlan de ajustes en el trabajo\nResumen\tInformación\nFecha\t16-11-2026\nContenido\tAjustes para AB\nAjustes para AB\n\nTipo de puesto: Administrativo\n\nBarreras y facilitadores (enfoque CIF)\n\nLas situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar.\n\nSituación\tFrecuencia\tAjustes elegidos para esa situación\nAudición\tCasi siempre\tSubtitula las reuniones y las capacitaciones\nFacilitadores y voz\tInformación\nLe ayuda\tMensajes escritos.\nQué dice la persona\tPrefiere subtítulos en reuniones.\nComunicación\nSubtitula las reuniones y las capacitaciones\nActiva subtítulos automáticos o profesionales.\nComparte los videos con subtítulos.\nEntrega un resumen escrito.\n\nPor qué funciona: Leer lo que se dice permite seguir la reunión.\n\nAjuste en el trabajo: Comunicación. Respaldo: Consenso de expertos.\n\nAcuerdos\n\nAcordado con: Persona trabajadora\n\nFecha: 16 de noviembre de 2026\n\nPróxima revisión: 1 de diciembre de 2026\n\nFuentes\nJob Accommodation Network. Hearing Impairment. U.S. Department of Labor.\n\nhttps://askjan.org/disabilities/Hearing-Impairment.cfm\n\nOrientación pedagógica y laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.",
+    "modelo": {
+      "trabajo": true,
+      "titulo": "Plan de ajustes en el trabajo",
+      "fecha": "16-11-2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "resumen": [
+        [
+          "Fecha",
+          "16-11-2026"
+        ],
+        [
+          "Contenido",
+          "Ajustes para AB"
+        ]
+      ],
+      "grupos": [
+        {
+          "trabajador": "b5493b64-260a-4ba4-acd0-d54af6fa34f6",
+          "nombre": "Ajustes para AB",
+          "subtitulo": "Tipo de puesto: Administrativo",
+          "ayuda": "Mensajes escritos.",
+          "voz": "Prefiere subtítulos en reuniones.",
+          "acuerdo": {
+            "roles": [
+              "persona"
+            ],
+            "fecha": "2026-11-16",
+            "revision": "2026-12-01",
+            "estado": "completo"
+          },
+          "estadoAcuerdo": "Acuerdos completos",
+          "cif": [
+            [
+              "Audición",
+              "Casi siempre",
+              "Subtitula las reuniones y las capacitaciones"
+            ]
+          ],
+          "acciones": [
+            {
+              "id": "tr-subtitulos",
+              "titulo": "Subtitula las reuniones y las capacitaciones",
+              "como": [
+                "Activa subtítulos automáticos o profesionales.",
+                "Comparte los videos con subtítulos.",
+                "Entrega un resumen escrito."
+              ],
+              "porque": "Leer lo que se dice permite seguir la reunión.",
+              "grupo": "Comunicación",
+              "nota": "",
+              "dato": "Ajuste en el trabajo: Comunicación. Respaldo: Consenso de expertos."
+            }
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "cita": "Job Accommodation Network. Hearing Impairment. U.S. Department of Labor.",
+          "url": "https://askjan.org/disabilities/Hearing-Impairment.cfm"
+        }
+      ],
+      "borrador": false
+    },
+    "errores": []
+  },
+  {
+    "persona": "rrhh",
+    "ancho": 390,
+    "inicial": "Ir al contenido\n\nPrizma\n\n¿Dónde quieres apoyar?\n\nEducación: acciones para todo el curso y apoyos para cada estudiante\nTrabajo: ajustes para personas trabajadoras con discapacidad\n\nProyecto personal sin fines de lucro. Código y fuentes.",
+    "clicksHastaVista": 20,
+    "clicksHastaPdf": 21,
+    "acciones": [
+      {
+        "paso": 1,
+        "tipo": "click",
+        "selector": "#elegir-trabajo",
+        "descripcion": "Elegir Trabajo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 2,
+        "tipo": "click",
+        "selector": "#enlace-guia-trabajo",
+        "descripcion": "Abrir Qué exige la ley",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-trabajo": 0
+          }
+        }
+      },
+      {
+        "paso": 3,
+        "tipo": "click",
+        "selector": "#guia-trabajo button",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {
+            "guia-trabajo": 0
+          }
+        },
+        "despues": {
+          "ventana": 0,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 4,
+        "tipo": "fill",
+        "selector": "#trabajo-iniciales",
+        "descripcion": "Iniciales del caso ficticio",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 0,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 439,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        }
+      },
+      {
+        "paso": 5,
+        "tipo": "click",
+        "selector": "#privacidad-entendido",
+        "descripcion": "Entendido",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 439,
+          "dialogos": {
+            "aviso-privacidad": 0
+          }
+        },
+        "despues": {
+          "ventana": 439,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 6,
+        "tipo": "fill",
+        "selector": "#trabajo-puesto",
+        "descripcion": "Tipo de puesto",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 439,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 439,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 7,
+        "tipo": "check",
+        "selector": "#trabajo-area-3",
+        "descripcion": "Abrir Sensorial y física",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 439,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 930,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 8,
+        "tipo": "check",
+        "selector": "input[name=\"trabajo-dimension-13\"][value=\"3\"]",
+        "descripcion": "Audición: Casi siempre",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 930,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1351,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 9,
+        "tipo": "fill",
+        "selector": "#trabajo-ayuda",
+        "descripcion": "Facilitador",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1351,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1994,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 10,
+        "tipo": "fill",
+        "selector": "#trabajo-voz",
+        "descripcion": "Voz de la persona ficticia",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1994,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1994,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 11,
+        "tipo": "click",
+        "selector": "#guardar-descripcion-trabajo",
+        "descripcion": "Guardar descripción",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1994,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 556,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 12,
+        "tipo": "click",
+        "selector": "#elegir-tr-subtitulos",
+        "descripcion": "Elegir subtítulos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 556,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 1187,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 13,
+        "tipo": "click",
+        "selector": "#continuar",
+        "descripcion": "Continuar a acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 1187,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3724,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 14,
+        "tipo": "check",
+        "selector": "input[name=\"rol-trabajo\"][value=\"persona\"]",
+        "descripcion": "Rol Persona trabajadora",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3724,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3724,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 15,
+        "tipo": "fill",
+        "selector": "#trabajo-fecha",
+        "descripcion": "Fecha del acuerdo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3724,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3724,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 16,
+        "tipo": "fill",
+        "selector": "#trabajo-revision",
+        "descripcion": "Próxima revisión",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3724,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3724,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 17,
+        "tipo": "click",
+        "selector": "#guardar-acuerdos-trabajo",
+        "descripcion": "Guardar acuerdos",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3724,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3928,
+          "dialogos": {}
+        }
+      },
+      {
+        "paso": 18,
+        "tipo": "click",
+        "selector": "#documento-trabajo",
+        "descripcion": "Ver documento de trabajo",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3928,
+          "dialogos": {}
+        },
+        "despues": {
+          "ventana": 3928,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 19,
+        "tipo": "check",
+        "selector": "#opciones-documento input",
+        "descripcion": "Elegir explícitamente a AB",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3928,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 3928,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 20,
+        "tipo": "click",
+        "selector": "#generar-documento",
+        "descripcion": "Generar documento laboral",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3928,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        },
+        "despues": {
+          "ventana": 3928,
+          "dialogos": {
+            "incluir-documento": 0
+          }
+        }
+      },
+      {
+        "paso": 21,
+        "tipo": "click",
+        "selector": "#descargar",
+        "descripcion": "Descargar primer PDF",
+        "clicksEquivalentes": 1,
+        "antes": {
+          "ventana": 3928,
+          "dialogos": {
+            "vista": 0
+          }
+        },
+        "despues": {
+          "ventana": 3928,
+          "dialogos": {
+            "vista": 0
+          }
+        }
+      }
+    ],
+    "ventanaMovimientos": 8,
+    "distanciaVentanaPx": 6804,
+    "dialogosMovimientos": 0,
+    "desborde": false,
+    "textoDocumento": "Prizma\nPlan de ajustes en el trabajo\nResumen\tInformación\nFecha\t16-11-2026\nContenido\tAjustes para AB\nAjustes para AB\n\nTipo de puesto: Administrativo\n\nBarreras y facilitadores (enfoque CIF)\n\nLas situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar.\n\nSituación\tFrecuencia\tAjustes elegidos para esa situación\nAudición\tCasi siempre\tSubtitula las reuniones y las capacitaciones\nFacilitadores y voz\tInformación\nLe ayuda\tMensajes escritos.\nQué dice la persona\tPrefiere subtítulos en reuniones.\nComunicación\nSubtitula las reuniones y las capacitaciones\nActiva subtítulos automáticos o profesionales.\nComparte los videos con subtítulos.\nEntrega un resumen escrito.\n\nPor qué funciona: Leer lo que se dice permite seguir la reunión.\n\nAjuste en el trabajo: Comunicación. Respaldo: Consenso de expertos.\n\nAcuerdos\n\nAcordado con: Persona trabajadora\n\nFecha: 16 de noviembre de 2026\n\nPróxima revisión: 1 de diciembre de 2026\n\nFuentes\nJob Accommodation Network. Hearing Impairment. U.S. Department of Labor.\n\nhttps://askjan.org/disabilities/Hearing-Impairment.cfm\n\nOrientación pedagógica y laboral. No reemplaza la evaluación de profesionales ni los protocolos de tu empresa o institución, y no es asesoría legal. Sin diagnósticos: la persona decide qué contar y con quién compartir este acuerdo de ajustes.",
+    "modelo": {
+      "trabajo": true,
+      "titulo": "Plan de ajustes en el trabajo",
+      "fecha": "16-11-2026",
+      "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+      "resumen": [
+        [
+          "Fecha",
+          "16-11-2026"
+        ],
+        [
+          "Contenido",
+          "Ajustes para AB"
+        ]
+      ],
+      "grupos": [
+        {
+          "trabajador": "c0db5e9b-b6bd-477d-8842-eabf150ae671",
+          "nombre": "Ajustes para AB",
+          "subtitulo": "Tipo de puesto: Administrativo",
+          "ayuda": "Mensajes escritos.",
+          "voz": "Prefiere subtítulos en reuniones.",
+          "acuerdo": {
+            "roles": [
+              "persona"
+            ],
+            "fecha": "2026-11-16",
+            "revision": "2026-12-01",
+            "estado": "completo"
+          },
+          "estadoAcuerdo": "Acuerdos completos",
+          "cif": [
+            [
+              "Audición",
+              "Casi siempre",
+              "Subtitula las reuniones y las capacitaciones"
+            ]
+          ],
+          "acciones": [
+            {
+              "id": "tr-subtitulos",
+              "titulo": "Subtitula las reuniones y las capacitaciones",
+              "como": [
+                "Activa subtítulos automáticos o profesionales.",
+                "Comparte los videos con subtítulos.",
+                "Entrega un resumen escrito."
+              ],
+              "porque": "Leer lo que se dice permite seguir la reunión.",
+              "grupo": "Comunicación",
+              "nota": "",
+              "dato": "Ajuste en el trabajo: Comunicación. Respaldo: Consenso de expertos."
+            }
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "cita": "Job Accommodation Network. Hearing Impairment. U.S. Department of Labor.",
+          "url": "https://askjan.org/disabilities/Hearing-Impairment.cfm"
+        }
+      ],
+      "borrador": false
+    },
+    "errores": []
+  }
+]
