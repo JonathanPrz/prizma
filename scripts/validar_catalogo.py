@@ -48,6 +48,7 @@ if acceso and sin_acceso: errores.append(f"Dimensiones sin adecuación de acceso
 NEC = json.load(open("data/necesidades.json"))
 for n in NEC:
     errores += [f"necesidad {n['id']}: consideración inválida {c}" for c in n["consideraciones"] if c not in CONS]
+    errores += [f"necesidad {n['id']}: situación inválida {d}" for d in n.get("dimensiones", []) if d not in range(1, 12)]
 dua = [r["consideracion"] for r in R if r["tipo"] == "dua"]
 for n in NIVELES:
     faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})
