@@ -1,0 +1,112 @@
+{
+  "titulo": "Acciones para todo el curso",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Clase práctica",
+      "Clase con taller, laboratorio o terreno"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Interpretar un gráfico de barras."
+    ],
+    [
+      "Qué quiere resolver",
+      "Se pierden en tareas largas o con muchos pasos"
+    ],
+    [
+      "Contenido",
+      "Curso"
+    ]
+  ],
+  "grupos": [
+    {
+      "nombre": "Antes",
+      "acciones": [
+        {
+          "id": "dua-6-2",
+          "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+          "como": [
+            "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
+            "Marca lo que ya hicieron.",
+            "Avisa con tiempo si algo cambia."
+          ],
+          "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+          "nota": "NOTA_DUA: usar tarjetas con ejemplos.",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 6.2: Anticipar y planificar los desafíos. Respaldo: Consenso de expertos."
+        }
+      ]
+    },
+    {
+      "nombre": "Durante",
+      "acciones": [
+        {
+          "id": "dua-5-3-andamiaje-lista",
+          "titulo": "Entrega una lista de pasos de la tarea y retírala de a poco",
+          "como": [
+            "Divide la tarea en pasos cortos, numerados, con un verbo cada uno.",
+            "Entrega la lista impresa o déjala en la pizarra.",
+            "Cuando el curso domine la tarea, quita pasos o la lista completa."
+          ],
+          "porque": "El andamiaje es un apoyo temporal que permite hacer sola o solo lo que antes requería ayuda.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 5.3: Desarrollar fluidez con apoyos graduados para la práctica y el desempeño. Respaldo: Investigación sólida."
+        }
+      ]
+    },
+    {
+      "nombre": "Después",
+      "acciones": [
+        {
+          "id": "dua-9-3-reflexion-cierre",
+          "titulo": "Cierra con una pregunta sobre cómo aprendieron, no solo sobre qué aprendieron",
+          "como": [
+            "Pregunta: «¿Qué te ayudó hoy a entender?» o «¿Qué harías distinto la próxima vez?».",
+            "Ofrece varias formas de responder: decirlo, escribirlo o marcar una opción.",
+            "Usa las respuestas para ajustar la próxima clase."
+          ],
+          "porque": "Pensar sobre la propia forma de aprender (metacognición) mejora el aprendizaje.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 9.3: Promover la reflexión individual y colectiva. Respaldo: Investigación sólida."
+        }
+      ]
+    },
+    {
+      "nombre": "Después de la clase: ¿qué funcionó?",
+      "reflexion": "REFLEXION_DUA: los ejemplos ayudaron.",
+      "acciones": []
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    },
+    {
+      "cita": "Superintendencia de Educación (2023). Circular 586 sobre estudiantes autistas.",
+      "url": "https://www.supereduc.cl/contenidos-de-interes/circular-no-586/"
+    },
+    {
+      "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+      "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+    },
+    {
+      "cita": "Davies, K. y Henderson, P. (2020). Special Educational Needs in Mainstream Schools. Education Endowment Foundation.",
+      "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/send"
+    }
+  ],
+  "borrador": false
+}

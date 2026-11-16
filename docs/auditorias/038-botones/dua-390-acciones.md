@@ -1,0 +1,31 @@
+# Recorrido dua a 390 px
+
+Expectativas: inferencias de inspección, no testimonios de usuarios. «Anuncio» es el texto mutado de regiones ARIA, no audio de un lector. Distancia = suma de cambios absolutos de scrollY por acción; no gestos humanos. Estado completo antes/después en recorridos.json.
+
+| Paso | Acción / expectativa | Qué pasó | Foco después | Texto anunciado por regiones ARIA | Desplazamiento px |
+| --- | --- | --- | --- | --- | --- |
+| 1 | click #elegir-educacion / Entrar a Educación. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"tab-dua","tag":"BUTTON","texto":"Para el curso (DUA)"} | Sin cambio de texto en región ARIA | 0 |
+| 2 | select #nivel / Elegir el nivel del curso. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"tab-dua","tag":"BUTTON","texto":"Para el curso (DUA)"} | 36 acciones | 0 |
+| 3 | fill #meta / Describir lo que quiero que aprendan. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"meta","tag":"TEXTAREA","texto":""} | Sin cambio de texto en región ARIA | 565 |
+| 4 | click #necesidad-tareas-largas / Priorizar tareas largas. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"necesidad-tareas-largas","tag":"BUTTON","texto":"Se pierden en tareas largas o con muchos pasos"} | Sin cambio de texto en región ARIA | 347 |
+| 5 | check #practica / Indicar que hay taller, laboratorio o terreno. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"practica","tag":"INPUT","texto":""} | 36 acciones | 508 |
+| 6 | click #guardar-clase / Guardar la descripción y ver acciones. | Mochila 0→0; lista DUA 36→36; acceso 0→0 | {"id":"acciones","tag":"SECTION","texto":"2. Acciones sugeridas\n      \n        MomentoAntes (11 · 1 para ti)Durante (14 · 3 para ti)Después (4 · 0 para ti)En toda la clase (7 · 0 para ti)\n        Para quéMotivarPresentarEx"} | 36 acciones | 974 |
+| 7 | click #m-durante / Recorrer solo acciones de Durante. | Mochila 0→0; lista DUA 36→14; acceso 0→0 | {"id":"m-durante","tag":"BUTTON","texto":"Durante (14 · 3 para ti)"} | 14 acciones | 726 |
+| 8 | click #proposito-motivar / Recorrer acciones para motivar. | Mochila 0→0; lista DUA 14→4; acceso 0→0 | {"id":"proposito-motivar","tag":"BUTTON","texto":"Motivar"} | 4 acciones | 0 |
+| 9 | click #limpiar-filtros / Volver a recorrer todos los momentos. | Mochila 0→0; lista DUA 4→36; acceso 0→0 | {"id":"limpiar-filtros","tag":"A","texto":"Limpiar filtros"} | 36 acciones | 0 |
+| 10 | click #elegir-dua-6-2 / Agregar esta opción a mi selección. | Mochila 0→1; lista DUA 36→36; acceso 0→0 | {"id":"elegir-dua-6-2","tag":"BUTTON","texto":"Elegida"} | 36 acciones / Agregada a tu mochila | 1692 |
+| 11 | click #elegir-dua-5-3-andamiaje-lista / Agregar esta opción a mi selección. | Mochila 1→2; lista DUA 36→36; acceso 0→0 | {"id":"elegir-dua-5-3-andamiaje-lista","tag":"BUTTON","texto":"Elegida"} | 36 acciones /  / Agregada a tu mochila | 676 |
+| 12 | click details[data-grupo="Después:dua-9-3-reflexion-cierre"] > summary / Abrir el grupo para ver sus apoyos. | Mochila 2→2; lista DUA 36→36; acceso 0→0 | {"id":"","tag":"SUMMARY","texto":"Después (4)"} | Sin cambio de texto en región ARIA | 1848 |
+| 13 | click #elegir-dua-9-3-reflexion-cierre / Agregar esta opción a mi selección. | Mochila 2→3; lista DUA 36→36; acceso 0→0 | {"id":"elegir-dua-9-3-reflexion-cierre","tag":"BUTTON","texto":"Elegida"} | 36 acciones /  / Agregada a tu mochila | 690 |
+| 14 | click details[data-grupo="En toda la clase:dua-7-4"] > summary / Abrir el grupo para ver sus apoyos. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"","tag":"SUMMARY","texto":"En toda la clase (7)"} | Sin cambio de texto en región ARIA | 1945 |
+| 15 | click #elegir-dua-7-4 / Agregar esta opción a mi selección. | Mochila 3→4; lista DUA 36→36; acceso 0→0 | {"id":"elegir-dua-7-4","tag":"BUTTON","texto":"Elegida"} | 36 acciones /  / Agregada a tu mochila | 618 |
+| 16 | fill #dua-seleccion > li:first-child textarea / Anotar cómo usaré la acción. | Mochila 4→4; lista DUA 36→36; acceso 0→0 | {"id":"t-privacidad","tag":"H2","texto":"Cuida los datos de tus estudiantes"} | Sin cambio de texto en región ARIA | 4204 |
+| 17 | click #privacidad-entendido / Entender la privacidad de las notas. | Mochila 4→4; lista DUA 36→36; acceso 0→0 | {"id":"","tag":"TEXTAREA","texto":"Nota para: Anticipa la agenda de la clase y avisa los cambios · Curso"} | Sin cambio de texto en región ARIA | 0 |
+| 18 | fill #reflexion / Registrar qué funcionó después de la clase. | Mochila 4→4; lista DUA 36→36; acceso 0→0 | {"id":"reflexion","tag":"TEXTAREA","texto":""} | Sin cambio de texto en región ARIA | 885 |
+| 19 | click #abrir-mochila / Revisar mis cuatro acciones. | Mochila 4→4; lista DUA 36→36; acceso 0→0 | {"id":"t-seleccion","tag":"H2","texto":"Mi mochila"} | Sin cambio de texto en región ARIA | 458 |
+| 20 | click #quitar-dua-7-4 / Quitar una acción conservando las demás. | Mochila 4→3; lista DUA 36→36; acceso 0→0 | {"id":"quitar-dua-6-2","tag":"BUTTON","texto":"Quitar"} | 36 acciones | 39 |
+| 21 | click #pdf / Preparar documento. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"t-incluir-documento","tag":"H2","texto":"¿Qué incluirás en el documento?"} | Sin cambio de texto en región ARIA | 0 |
+| 22 | click #generar-documento / Ver solo el curso, opción marcada. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"","tag":"BODY","texto":"Ir al contenido\n\n\n  \n    \n      PrizmaApoyos con fuente para aprender y trabajar en igualdad\n      \n      Mi mochila3\n    \n  \n\n\n  \n    ¿Dónde quieres apoyar?\n    Educación: accione"} | Preparando documento… | 0 |
+| 23 | click #descargar / Descargar el PDF con lo que muestra la vista previa. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"descargar","tag":"BUTTON","texto":"Descargar PDF"} | Preparando el PDF… / PDF descargado. Búscalo en tu carpeta de descargas. | 0 |
+| 24 | click #imprimir / Abrir el diálogo de impresión, sin confirmar un envío. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"imprimir","tag":"BUTTON","texto":"Imprimir"} | Sin cambio de texto en región ARIA | 0 |
+| 25 | click #cerrar / Cerrar la vista y volver al origen. | Mochila 3→3; lista DUA 36→36; acceso 0→0 | {"id":"abrir-mochila","tag":"BUTTON","texto":"Mi mochila: 3 elegidas"} | Sin cambio de texto en región ARIA | 0 |
