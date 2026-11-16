@@ -1478,10 +1478,15 @@ async function iniciar() {
     document.documentElement.style.setProperty("--cabecera-alto", `${entrada.target.getBoundingClientRect().height}px`);
   }).observe($(".cabecera"));
   const tema = $("#tema");
-  tema.value = document.documentElement.dataset.tema;
-  tema.addEventListener("change", () => {
-    document.documentElement.dataset.tema = tema.value;
-    try { localStorage.setItem("prizma.tema", tema.value); } catch (e) { /* el tema funciona sin almacenamiento */ }
+  const nombrarTema = () => {
+    const texto = "Cambiar a modo " + (document.documentElement.dataset.tema === "oscuro" ? "claro" : "oscuro");
+    tema.setAttribute("aria-label", texto); tema.title = texto;
+  };
+  nombrarTema();
+  tema.addEventListener("click", () => {
+    const siguiente = document.documentElement.dataset.tema === "oscuro" ? "claro" : "oscuro";
+    document.documentElement.dataset.tema = siguiente; nombrarTema();
+    try { localStorage.setItem("prizma.tema", siguiente); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
   prepararAvisos(); prepararPracticaProfesional();
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {

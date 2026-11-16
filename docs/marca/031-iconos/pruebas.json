@@ -1,0 +1,50 @@
+[
+  {
+    "ancho": 390,
+    "tema": "claro",
+    "temaTeclado": {
+      "x": 223.625,
+      "y": 8.59375,
+      "width": 54,
+      "height": 44
+    },
+    "axe": [],
+    "desborde": false
+  },
+  {
+    "ancho": 390,
+    "tema": "oscuro",
+    "temaTeclado": {
+      "x": 223.625,
+      "y": 8.59375,
+      "width": 54,
+      "height": 44
+    },
+    "axe": [],
+    "desborde": false
+  },
+  {
+    "ancho": 1280,
+    "tema": "claro",
+    "temaTeclado": {
+      "x": 995.984375,
+      "y": 18.1875,
+      "width": 54,
+      "height": 44
+    },
+    "axe": [],
+    "desborde": false
+  },
+  {
+    "ancho": 1280,
+    "tema": "oscuro",
+    "temaTeclado": {
+      "x": 995.984375,
+      "y": 18.1875,
+      "width": 54,
+      "height": 44
+    },
+    "axe": [],
+    "desborde": false
+  }
+]
