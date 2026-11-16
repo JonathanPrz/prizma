@@ -3,7 +3,7 @@
 Estado: **pendiente** · Asignada a: Codex · Rama: `codex/038-auditoria-botones`
 
 ## Para qué
-El dueño quiere saber si cada botón y opción de Educación funciona y se entiende, desde que se arma una selección hasta el documento imprimible, en las dos pestañas: «Para el curso (DUA)» y «Para un estudiante». No le queda claro:
+El dueño quiere saber si cada botón y opción de Educación funciona y se entiende, desde que se arma una selección hasta el documento imprimible, en las dos pestañas: «Para el curso (DUA)» y «Para un estudiante». Además, quiere entender la función de **todos los filtros** de Prizma, también en «Para el trabajo» (sección 4). No le queda claro:
 1. **Qué hace la casilla «Mi clase tiene taller, laboratorio o terreno»:** a qué afecta en DUA y en los apoyos de cada estudiante.
 2. **La sección «Para empezar (3)» con la línea «Algo que haces para todo el curso»:** qué significa el número y por qué esa definición aparece ahí.
 
@@ -59,7 +59,26 @@ Por cada acción, anota:
   - cómo se ve con filtros y sin filtros, y con necesidades y sin ellas;
   - si se repite la definición bajo otros grupos.
 
-### 4. Problemas encontrados
+### 4. Función de cada filtro, en todas las secciones
+El dueño quiere tener claro **para qué sirve cada filtro y si cumple esa función**, en «Para el curso (DUA)», «Para un estudiante» (básica, media y superior) y «Para el trabajo». Por «filtro» entiende cualquier pregunta, casilla, selector o botón que cambie lo que se muestra o su orden: el nivel, la meta, «¿Qué quieres resolver?», «Más detalles», la casilla de taller, «Momento», «Para qué», las áreas y situaciones con su frecuencia, «¿Qué le ayuda?», la voz, la casilla de práctica profesional, la asignatura, el tipo de puesto y otros que encuentres.
+
+Por cada uno, una fila de una tabla con:
+- **Función declarada:** lo que dice su texto o ayuda.
+- **Tipo de función real:** elige una o más.
+  - **Mostrar u ocultar:** saca fichas de la lista.
+  - **Priorizar:** cambia el orden sin ocultar.
+  - **Agrupar o recorrer:** organiza la vista.
+  - **Activar una sección:** hace aparecer un bloque.
+  - **Solo documento:** no cambia la lista, solo va al PDF.
+  - **Sin efecto.**
+- **Qué cambia, medido:** cuántas fichas aparecen o desaparecen, y cuáles suben de lugar. Usa un caso de prueba fijo, con el filtro marcado y sin marcar.
+- **Si se ve el efecto:** si la persona puede notar el cambio, por ejemplo con una razón en la tarjeta, un conteo o un aviso.
+- **Si cumple su función:** sí, en parte o no, con la explicación.
+- **Si se superpone con otro filtro:** el mismo efecto, o efectos que se contradicen.
+
+Agrega un resumen de una página: el mapa de todos los filtros de las 3 secciones, agrupados por tipo de función, y los que no cumplen la suya.
+
+### 5. Problemas encontrados
 Clasifícalos por prioridad (alta, media o baja):
 - controles cuyo efecto no coincide con su texto;
 - efectos ocultos;
@@ -72,10 +91,11 @@ Clasifícalos por prioridad (alta, media o baja):
 Incluye evidencia (captura, estado y texto) y **sin solución**.
 
 ## Entrega
-`docs/auditorias/038-botones/README.md` con las 4 secciones, más las capturas, los PDF generados y el script.
+`docs/auditorias/038-botones/README.md` con las 5 secciones, más las capturas, los PDF generados y el script.
 
 ## Criterios de aceptación
 - [ ] El inventario cubre todos los controles de las dos pestañas en básica y superior, con lo que dicen y lo que hacen.
 - [ ] Los 3 recorridos llegan al PDF y al diálogo de impresión, en escritorio y teléfono, con capturas.
 - [ ] Los dos puntos del dueño tienen una respuesta medida.
+- [ ] Cada filtro de las 3 secciones tiene su fila con la función declarada, la real, el efecto medido y si la cumple, más el mapa resumen.
 - [ ] Ningún cambio fuera de `docs/auditorias/038-botones/`. El pull request apunta a `main`.
