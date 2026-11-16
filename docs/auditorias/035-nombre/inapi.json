@@ -1,0 +1,15 @@
+{
+  "fecha": "2026-11-16",
+  "url": "https://buscadormarcas.inapi.cl/",
+  "resultado": "No se pudo ejecutar la consulta nominativa. El navegador primero informó ERR_CERT_AUTHORITY_INVALID en el entorno. La página pública, al abrirse por el proxy sin exigir ese certificado en una segunda visita de solo lectura, respondió: You do not have permission to view this directory or page. No hubo formulario utilizable.",
+  "consultasPendientes": [
+    "Prizma",
+    "Prisma (similitud fonética)",
+    "Faro",
+    "Haz",
+    "Ruta",
+    "Sendero",
+    "Mente Autista"
+  ],
+  "sinConclusionRegistral": true
+}

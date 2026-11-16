@@ -1,0 +1,420 @@
+{
+  "metodo": "Texto extraíble de PDF versionados con PyMuPDF, sin OCR ni metadatos. No incluye capturas PNG. Se mantiene separado del conteo de archivos UTF-8.",
+  "total": 85,
+  "pdfExaminados": 12,
+  "versionPyMuPDF": "1.26.6",
+  "archivos": [
+    {
+      "archivo": "docs/auditorias/024-estudiantes/prizma-plan-10-estudiantes.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        },
+        {
+          "pagina": 4,
+          "apariciones": 1
+        },
+        {
+          "pagina": 5,
+          "apariciones": 1
+        },
+        {
+          "pagina": 6,
+          "apariciones": 1
+        },
+        {
+          "pagina": 7,
+          "apariciones": 1
+        },
+        {
+          "pagina": 8,
+          "apariciones": 1
+        },
+        {
+          "pagina": 9,
+          "apariciones": 1
+        },
+        {
+          "pagina": 10,
+          "apariciones": 1
+        },
+        {
+          "pagina": 11,
+          "apariciones": 1
+        },
+        {
+          "pagina": 12,
+          "apariciones": 1
+        },
+        {
+          "pagina": 13,
+          "apariciones": 1
+        },
+        {
+          "pagina": 14,
+          "apariciones": 1
+        },
+        {
+          "pagina": 15,
+          "apariciones": 1
+        },
+        {
+          "pagina": 16,
+          "apariciones": 1
+        },
+        {
+          "pagina": 17,
+          "apariciones": 1
+        },
+        {
+          "pagina": 18,
+          "apariciones": 1
+        },
+        {
+          "pagina": 19,
+          "apariciones": 1
+        },
+        {
+          "pagina": 20,
+          "apariciones": 1
+        },
+        {
+          "pagina": 21,
+          "apariciones": 1
+        },
+        {
+          "pagina": 22,
+          "apariciones": 1
+        },
+        {
+          "pagina": 23,
+          "apariciones": 1
+        },
+        {
+          "pagina": 24,
+          "apariciones": 1
+        },
+        {
+          "pagina": 25,
+          "apariciones": 1
+        },
+        {
+          "pagina": 26,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 26
+    },
+    {
+      "archivo": "docs/auditorias/026-reauditoria/prizma-plan-10-estudiantes.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        },
+        {
+          "pagina": 4,
+          "apariciones": 1
+        },
+        {
+          "pagina": 5,
+          "apariciones": 1
+        },
+        {
+          "pagina": 6,
+          "apariciones": 1
+        },
+        {
+          "pagina": 7,
+          "apariciones": 1
+        },
+        {
+          "pagina": 8,
+          "apariciones": 1
+        },
+        {
+          "pagina": 9,
+          "apariciones": 1
+        },
+        {
+          "pagina": 10,
+          "apariciones": 1
+        },
+        {
+          "pagina": 11,
+          "apariciones": 1
+        },
+        {
+          "pagina": 12,
+          "apariciones": 1
+        },
+        {
+          "pagina": 13,
+          "apariciones": 1
+        },
+        {
+          "pagina": 14,
+          "apariciones": 1
+        },
+        {
+          "pagina": 15,
+          "apariciones": 1
+        },
+        {
+          "pagina": 16,
+          "apariciones": 1
+        },
+        {
+          "pagina": 17,
+          "apariciones": 1
+        },
+        {
+          "pagina": 18,
+          "apariciones": 1
+        },
+        {
+          "pagina": 19,
+          "apariciones": 1
+        },
+        {
+          "pagina": 20,
+          "apariciones": 1
+        },
+        {
+          "pagina": 21,
+          "apariciones": 1
+        },
+        {
+          "pagina": 22,
+          "apariciones": 1
+        },
+        {
+          "pagina": 23,
+          "apariciones": 1
+        },
+        {
+          "pagina": 24,
+          "apariciones": 1
+        },
+        {
+          "pagina": 25,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 25
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/basica-1280-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 3
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/basica-390-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 3
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/instituto-1280-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 1
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/instituto-390-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 1
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/rrhh-1280-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 3
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/rrhh-390-documento.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 3
+    },
+    {
+      "archivo": "docs/marca/023-estudiantes/prizma-plan-2026-11-15.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        },
+        {
+          "pagina": 4,
+          "apariciones": 1
+        },
+        {
+          "pagina": 5,
+          "apariciones": 1
+        },
+        {
+          "pagina": 6,
+          "apariciones": 1
+        },
+        {
+          "pagina": 7,
+          "apariciones": 1
+        },
+        {
+          "pagina": 8,
+          "apariciones": 1
+        },
+        {
+          "pagina": 9,
+          "apariciones": 1
+        },
+        {
+          "pagina": 10,
+          "apariciones": 1
+        },
+        {
+          "pagina": 11,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 11
+    },
+    {
+      "archivo": "docs/marca/028-practica/prizma-practica-ejemplo.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 1
+    },
+    {
+      "archivo": "docs/marca/029-flujo/prizma-plan-ejemplo.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        },
+        {
+          "pagina": 4,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 4
+    },
+    {
+      "archivo": "docs/marca/032-trabajo/prizma-trabajo-ejemplo.pdf",
+      "paginas": [
+        {
+          "pagina": 1,
+          "apariciones": 1
+        },
+        {
+          "pagina": 2,
+          "apariciones": 1
+        },
+        {
+          "pagina": 3,
+          "apariciones": 1
+        },
+        {
+          "pagina": 4,
+          "apariciones": 1
+        }
+      ],
+      "apariciones": 4
+    }
+  ]
+}

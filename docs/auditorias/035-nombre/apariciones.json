@@ -1,0 +1,2313 @@
+{
+  "corte": "412edd0b88b642a3980f416e86c41e486e94c640",
+  "metodo": "Subcadena prizma, sin distinguir mayúsculas. Archivos versionados UTF-8 sin NUL. Excluye esta auditoría, .git y archivos no versionados. Binarios no incluidos en total de texto; rutas se cuentan aparte.",
+  "total": 376,
+  "porGrupo": {
+    "producto y raíz": 42,
+    "docs/ (resto)": 149,
+    "docs/auditorias/": 138,
+    "scripts/": 47
+  },
+  "archivosConApariciones": 96,
+  "archivos": [
+    {
+      "archivo": ".claude/skills/asesor-inclusion/SKILL.md",
+      "apariciones": 5,
+      "lineas": [
+        {
+          "linea": 9,
+          "apariciones": 1
+        },
+        {
+          "linea": 13,
+          "apariciones": 1
+        },
+        {
+          "linea": 31,
+          "apariciones": 1
+        },
+        {
+          "linea": 99,
+          "apariciones": 1
+        },
+        {
+          "linea": 117,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "AGENTS.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 3,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "README.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "app.js",
+      "apariciones": 21,
+      "lineas": [
+        {
+          "linea": 2,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 364,
+          "apariciones": 1
+        },
+        {
+          "linea": 1059,
+          "apariciones": 1
+        },
+        {
+          "linea": 1061,
+          "apariciones": 1
+        },
+        {
+          "linea": 1070,
+          "apariciones": 2
+        },
+        {
+          "linea": 1074,
+          "apariciones": 1
+        },
+        {
+          "linea": 1087,
+          "apariciones": 1
+        },
+        {
+          "linea": 1090,
+          "apariciones": 1
+        },
+        {
+          "linea": 1269,
+          "apariciones": 1
+        },
+        {
+          "linea": 1277,
+          "apariciones": 1
+        },
+        {
+          "linea": 1299,
+          "apariciones": 1
+        },
+        {
+          "linea": 1307,
+          "apariciones": 1
+        },
+        {
+          "linea": 1333,
+          "apariciones": 1
+        },
+        {
+          "linea": 1336,
+          "apariciones": 1
+        },
+        {
+          "linea": 1380,
+          "apariciones": 3
+        },
+        {
+          "linea": 1490,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/arquitectura.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 102,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditoria-estilo.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 45,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditoria-filtros.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 28,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditoria-plan.md",
+      "apariciones": 9,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 34,
+          "apariciones": 1
+        },
+        {
+          "linea": 39,
+          "apariciones": 1
+        },
+        {
+          "linea": 49,
+          "apariciones": 1
+        },
+        {
+          "linea": 59,
+          "apariciones": 1
+        },
+        {
+          "linea": 62,
+          "apariciones": 1
+        },
+        {
+          "linea": 66,
+          "apariciones": 1
+        },
+        {
+          "linea": 73,
+          "apariciones": 1
+        },
+        {
+          "linea": 75,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/024-estudiantes/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 715,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/024-estudiantes/hallazgos.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 86,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/024-estudiantes/informe-base.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 61,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/024-estudiantes/pdf-10-textos.json",
+      "apariciones": 26,
+      "lineas": [
+        {
+          "linea": 2,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 5,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 8,
+          "apariciones": 1
+        },
+        {
+          "linea": 9,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        },
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        },
+        {
+          "linea": 13,
+          "apariciones": 1
+        },
+        {
+          "linea": 14,
+          "apariciones": 1
+        },
+        {
+          "linea": 15,
+          "apariciones": 1
+        },
+        {
+          "linea": 16,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        },
+        {
+          "linea": 18,
+          "apariciones": 1
+        },
+        {
+          "linea": 19,
+          "apariciones": 1
+        },
+        {
+          "linea": 20,
+          "apariciones": 1
+        },
+        {
+          "linea": 21,
+          "apariciones": 1
+        },
+        {
+          "linea": 22,
+          "apariciones": 1
+        },
+        {
+          "linea": 23,
+          "apariciones": 1
+        },
+        {
+          "linea": 24,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        },
+        {
+          "linea": 26,
+          "apariciones": 1
+        },
+        {
+          "linea": 27,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/026-reauditoria/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 158,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/026-reauditoria/informe-base.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 96,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/026-reauditoria/pdf-10-textos.json",
+      "apariciones": 25,
+      "lineas": [
+        {
+          "linea": 2,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 5,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 8,
+          "apariciones": 1
+        },
+        {
+          "linea": 9,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        },
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        },
+        {
+          "linea": 13,
+          "apariciones": 1
+        },
+        {
+          "linea": 14,
+          "apariciones": 1
+        },
+        {
+          "linea": 15,
+          "apariciones": 1
+        },
+        {
+          "linea": 16,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        },
+        {
+          "linea": 18,
+          "apariciones": 1
+        },
+        {
+          "linea": 19,
+          "apariciones": 1
+        },
+        {
+          "linea": 20,
+          "apariciones": 1
+        },
+        {
+          "linea": 21,
+          "apariciones": 1
+        },
+        {
+          "linea": 22,
+          "apariciones": 1
+        },
+        {
+          "linea": 23,
+          "apariciones": 1
+        },
+        {
+          "linea": 24,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        },
+        {
+          "linea": 26,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/029-flujos/antes.json",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 195,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/README.md",
+      "apariciones": 6,
+      "lineas": [
+        {
+          "linea": 16,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        },
+        {
+          "linea": 22,
+          "apariciones": 1
+        },
+        {
+          "linea": 81,
+          "apariciones": 1
+        },
+        {
+          "linea": 92,
+          "apariciones": 1
+        },
+        {
+          "linea": 289,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/auditar.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 4,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/basica-1280-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/basica-390-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/estructura-inicial.html",
+      "apariciones": 11,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        },
+        {
+          "linea": 26,
+          "apariciones": 1
+        },
+        {
+          "linea": 52,
+          "apariciones": 1
+        },
+        {
+          "linea": 115,
+          "apariciones": 1
+        },
+        {
+          "linea": 156,
+          "apariciones": 1
+        },
+        {
+          "linea": 182,
+          "apariciones": 1
+        },
+        {
+          "linea": 242,
+          "apariciones": 1
+        },
+        {
+          "linea": 259,
+          "apariciones": 1
+        },
+        {
+          "linea": 335,
+          "apariciones": 1
+        },
+        {
+          "linea": 364,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/instituto-1280-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/instituto-390-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/inventario-observado.json",
+      "apariciones": 11,
+      "lineas": [
+        {
+          "linea": 134,
+          "apariciones": 1
+        },
+        {
+          "linea": 1908,
+          "apariciones": 1
+        },
+        {
+          "linea": 8095,
+          "apariciones": 1
+        },
+        {
+          "linea": 22470,
+          "apariciones": 1
+        },
+        {
+          "linea": 25038,
+          "apariciones": 1
+        },
+        {
+          "linea": 29989,
+          "apariciones": 1
+        },
+        {
+          "linea": 32039,
+          "apariciones": 1
+        },
+        {
+          "linea": 35791,
+          "apariciones": 1
+        },
+        {
+          "linea": 37178,
+          "apariciones": 1
+        },
+        {
+          "linea": 37275,
+          "apariciones": 1
+        },
+        {
+          "linea": 38818,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/inventario-observado.md",
+      "apariciones": 10,
+      "lineas": [
+        {
+          "linea": 8,
+          "apariciones": 1
+        },
+        {
+          "linea": 26,
+          "apariciones": 1
+        },
+        {
+          "linea": 97,
+          "apariciones": 1
+        },
+        {
+          "linea": 296,
+          "apariciones": 1
+        },
+        {
+          "linea": 326,
+          "apariciones": 1
+        },
+        {
+          "linea": 412,
+          "apariciones": 1
+        },
+        {
+          "linea": 461,
+          "apariciones": 1
+        },
+        {
+          "linea": 479,
+          "apariciones": 1
+        },
+        {
+          "linea": 481,
+          "apariciones": 1
+        },
+        {
+          "linea": 518,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/plantillas-mensajes.md",
+      "apariciones": 11,
+      "lineas": [
+        {
+          "linea": 34,
+          "apariciones": 1
+        },
+        {
+          "linea": 105,
+          "apariciones": 2
+        },
+        {
+          "linea": 106,
+          "apariciones": 1
+        },
+        {
+          "linea": 108,
+          "apariciones": 1
+        },
+        {
+          "linea": 109,
+          "apariciones": 1
+        },
+        {
+          "linea": 134,
+          "apariciones": 1
+        },
+        {
+          "linea": 139,
+          "apariciones": 1
+        },
+        {
+          "linea": 152,
+          "apariciones": 1
+        },
+        {
+          "linea": 158,
+          "apariciones": 1
+        },
+        {
+          "linea": 174,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/recorridos.json",
+      "apariciones": 18,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 2
+        },
+        {
+          "linea": 411,
+          "apariciones": 1
+        },
+        {
+          "linea": 522,
+          "apariciones": 2
+        },
+        {
+          "linea": 928,
+          "apariciones": 1
+        },
+        {
+          "linea": 1039,
+          "apariciones": 2
+        },
+        {
+          "linea": 1363,
+          "apariciones": 1
+        },
+        {
+          "linea": 1405,
+          "apariciones": 2
+        },
+        {
+          "linea": 1729,
+          "apariciones": 1
+        },
+        {
+          "linea": 1771,
+          "apariciones": 2
+        },
+        {
+          "linea": 2117,
+          "apariciones": 1
+        },
+        {
+          "linea": 2185,
+          "apariciones": 2
+        },
+        {
+          "linea": 2531,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/rrhh-1280-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/rrhh-390-documento.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/auditorias/034-arquitectura/terminos.json",
+      "apariciones": 6,
+      "lineas": [
+        {
+          "linea": 543,
+          "apariciones": 1
+        },
+        {
+          "linea": 1914,
+          "apariciones": 1
+        },
+        {
+          "linea": 1936,
+          "apariciones": 1
+        },
+        {
+          "linea": 1990,
+          "apariciones": 1
+        },
+        {
+          "linea": 2586,
+          "apariciones": 1
+        },
+        {
+          "linea": 2870,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/diseno.md",
+      "apariciones": 10,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        },
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 15,
+          "apariciones": 1
+        },
+        {
+          "linea": 41,
+          "apariciones": 1
+        },
+        {
+          "linea": 75,
+          "apariciones": 1
+        },
+        {
+          "linea": 77,
+          "apariciones": 1
+        },
+        {
+          "linea": 100,
+          "apariciones": 1
+        },
+        {
+          "linea": 135,
+          "apariciones": 1
+        },
+        {
+          "linea": 235,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/README.md",
+      "apariciones": 4,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 34,
+          "apariciones": 1
+        },
+        {
+          "linea": 75,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/cif.md",
+      "apariciones": 7,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        },
+        {
+          "linea": 14,
+          "apariciones": 1
+        },
+        {
+          "linea": 49,
+          "apariciones": 1
+        },
+        {
+          "linea": 51,
+          "apariciones": 1
+        },
+        {
+          "linea": 53,
+          "apariciones": 1
+        },
+        {
+          "linea": 60,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/README.md",
+      "apariciones": 5,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 32,
+          "apariciones": 1
+        },
+        {
+          "linea": 41,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/ley-21719.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 18,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/practica-laboral/README.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/practica/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 13,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/superior/README.md",
+      "apariciones": 4,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 3,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 38,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/superior/pendientes-practica-y-trabajo.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/codex/trabajo/README.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 4,
+          "apariciones": 1
+        },
+        {
+          "linea": 6,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/dua-3.0-referencias.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 8,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/dua-3.0.md",
+      "apariciones": 7,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 16,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        },
+        {
+          "linea": 18,
+          "apariciones": 1
+        },
+        {
+          "linea": 113,
+          "apariciones": 1
+        },
+        {
+          "linea": 115,
+          "apariciones": 1
+        },
+        {
+          "linea": 127,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/internacional/README.md",
+      "apariciones": 12,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 17,
+          "apariciones": 1
+        },
+        {
+          "linea": 28,
+          "apariciones": 1
+        },
+        {
+          "linea": 29,
+          "apariciones": 1
+        },
+        {
+          "linea": 32,
+          "apariciones": 1
+        },
+        {
+          "linea": 33,
+          "apariciones": 1
+        },
+        {
+          "linea": 34,
+          "apariciones": 1
+        },
+        {
+          "linea": 71,
+          "apariciones": 1
+        },
+        {
+          "linea": 72,
+          "apariciones": 1
+        },
+        {
+          "linea": 95,
+          "apariciones": 1
+        },
+        {
+          "linea": 97,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/internacional/acs-quimica-discapacidad-2025.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 23,
+          "apariciones": 1
+        },
+        {
+          "linea": 27,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/normativa/README.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 27,
+          "apariciones": 1
+        },
+        {
+          "linea": 47,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/fuentes/orientaciones/README.md",
+      "apariciones": 6,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 68,
+          "apariciones": 1
+        },
+        {
+          "linea": 101,
+          "apariciones": 1
+        },
+        {
+          "linea": 103,
+          "apariciones": 1
+        },
+        {
+          "linea": 104,
+          "apariciones": 1
+        },
+        {
+          "linea": 105,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/014-pasos/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/021-avisos/README.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 3,
+          "apariciones": 3
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/022-guias/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/023-estudiantes/README.md",
+      "apariciones": 4,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        },
+        {
+          "linea": 23,
+          "apariciones": 1
+        },
+        {
+          "linea": 32,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/023-estudiantes/ejemplo-respaldo-v2.json",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 2,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/028-practica/README.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 1
+        },
+        {
+          "linea": 19,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/029-flujo/README.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 16,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/032-trabajo/README.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 25,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/README.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        },
+        {
+          "linea": 4,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/marca/logo-z.svg",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 2,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/001-respaldo-json.md",
+      "apariciones": 7,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 15,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        },
+        {
+          "linea": 43,
+          "apariciones": 1
+        },
+        {
+          "linea": 44,
+          "apariciones": 1
+        },
+        {
+          "linea": 45,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/003-logo.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/004-arreglos-menores.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 5,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/009-un-estudiante.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/010-objetivos-y-desregulacion.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 22,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/012-guia-dua.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/014-pasos-y-mi-plan.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 35,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/017-orden-filtros.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 23,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/021-avisos-emergentes.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 18,
+          "apariciones": 1
+        },
+        {
+          "linea": 20,
+          "apariciones": 1
+        },
+        {
+          "linea": 26,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/022-guias-sin-emergentes.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 50,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/023-varios-estudiantes.md",
+      "apariciones": 4,
+      "lineas": [
+        {
+          "linea": 49,
+          "apariciones": 1
+        },
+        {
+          "linea": 53,
+          "apariciones": 1
+        },
+        {
+          "linea": 73,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/024-auditoria-estudiantes.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 19,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/027-investigacion-practica-laboral.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/028-practica-profesional.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 65,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/030-investigacion-ajustes-trabajo.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 29,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/031-iconos-tema-mochila.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 37,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/032-pestana-trabajo.md",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        },
+        {
+          "linea": 83,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/033-presentacion-general.md",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 10,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/034-auditoria-arquitectura.md",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "docs/tareas/035-auditoria-nombre.md",
+      "apariciones": 6,
+      "lineas": [
+        {
+          "linea": 6,
+          "apariciones": 1
+        },
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 33,
+          "apariciones": 3
+        },
+        {
+          "linea": 39,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "index.html",
+      "apariciones": 11,
+      "lineas": [
+        {
+          "linea": 8,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        },
+        {
+          "linea": 28,
+          "apariciones": 1
+        },
+        {
+          "linea": 54,
+          "apariciones": 1
+        },
+        {
+          "linea": 117,
+          "apariciones": 1
+        },
+        {
+          "linea": 158,
+          "apariciones": 1
+        },
+        {
+          "linea": 184,
+          "apariciones": 1
+        },
+        {
+          "linea": 244,
+          "apariciones": 1
+        },
+        {
+          "linea": 261,
+          "apariciones": 1
+        },
+        {
+          "linea": 337,
+          "apariciones": 1
+        },
+        {
+          "linea": 366,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/auditar_estudiantes.cjs",
+      "apariciones": 4,
+      "lineas": [
+        {
+          "linea": 106,
+          "apariciones": 1
+        },
+        {
+          "linea": 127,
+          "apariciones": 3
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/exportar_revision.py",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 71,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_avisos.cjs",
+      "apariciones": 5,
+      "lineas": [
+        {
+          "linea": 7,
+          "apariciones": 1
+        },
+        {
+          "linea": 41,
+          "apariciones": 2
+        },
+        {
+          "linea": 47,
+          "apariciones": 1
+        },
+        {
+          "linea": 59,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_datos_reales.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 19,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_estudiante.cjs",
+      "apariciones": 5,
+      "lineas": [
+        {
+          "linea": 26,
+          "apariciones": 1
+        },
+        {
+          "linea": 27,
+          "apariciones": 1
+        },
+        {
+          "linea": 51,
+          "apariciones": 1
+        },
+        {
+          "linea": 61,
+          "apariciones": 1
+        },
+        {
+          "linea": 62,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_estudiantes.cjs",
+      "apariciones": 6,
+      "lineas": [
+        {
+          "linea": 9,
+          "apariciones": 1
+        },
+        {
+          "linea": 11,
+          "apariciones": 3
+        },
+        {
+          "linea": 18,
+          "apariciones": 1
+        },
+        {
+          "linea": 25,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_flujo_avisos.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 43,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_guia_dua.cjs",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 36,
+          "apariciones": 1
+        },
+        {
+          "linea": 68,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_iconos.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 11,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_individualizados.cjs",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 22,
+          "apariciones": 2
+        },
+        {
+          "linea": 23,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_media_practica.cjs",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_momentos.cjs",
+      "apariciones": 5,
+      "lineas": [
+        {
+          "linea": 36,
+          "apariciones": 1
+        },
+        {
+          "linea": 41,
+          "apariciones": 1
+        },
+        {
+          "linea": 44,
+          "apariciones": 1
+        },
+        {
+          "linea": 45,
+          "apariciones": 1
+        },
+        {
+          "linea": 46,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_necesidades.cjs",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 28,
+          "apariciones": 1
+        },
+        {
+          "linea": 29,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_orden.cjs",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 15,
+          "apariciones": 2
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_pestanas.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 34,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_practica_profesional.cjs",
+      "apariciones": 2,
+      "lineas": [
+        {
+          "linea": 28,
+          "apariciones": 1
+        },
+        {
+          "linea": 29,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_superior.cjs",
+      "apariciones": 3,
+      "lineas": [
+        {
+          "linea": 11,
+          "apariciones": 1
+        },
+        {
+          "linea": 12,
+          "apariciones": 1
+        },
+        {
+          "linea": 13,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "scripts/probar_trabajo.cjs",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 51,
+          "apariciones": 1
+        }
+      ]
+    },
+    {
+      "archivo": "styles.css",
+      "apariciones": 1,
+      "lineas": [
+        {
+          "linea": 1,
+          "apariciones": 1
+        }
+      ]
+    }
+  ],
+  "archivosConNombrePrizma": [
+    "docs/auditorias/024-estudiantes/prizma-plan-10-estudiantes.pdf",
+    "docs/auditorias/026-reauditoria/prizma-plan-10-estudiantes.pdf",
+    "docs/marca/023-estudiantes/prizma-plan-2026-11-15.pdf",
+    "docs/marca/028-practica/prizma-practica-ejemplo.pdf",
+    "docs/marca/029-flujo/prizma-plan-ejemplo.pdf",
+    "docs/marca/032-trabajo/prizma-trabajo-ejemplo.pdf"
+  ],
+  "enlacesODirectoriosExcluidos": [
+    ".agents/skills/ponytail",
+    ".agents/skills/ponytail-review"
+  ],
+  "binariosExcluidos": [
+    "assets/apple-touch-icon.png",
+    "docs/auditorias/024-estudiantes/n10-1280-dua.png",
+    "docs/auditorias/024-estudiantes/n10-1280-resultados.png",
+    "docs/auditorias/024-estudiantes/n10-1280-selector.png",
+    "docs/auditorias/024-estudiantes/n10-390-dua.png",
+    "docs/auditorias/024-estudiantes/n10-390-final-filtros.png",
+    "docs/auditorias/024-estudiantes/n10-390-resultados.png",
+    "docs/auditorias/024-estudiantes/n10-390-selector.png",
+    "docs/auditorias/024-estudiantes/n4-1280-resultados.png",
+    "docs/auditorias/024-estudiantes/n4-1280-selector.png",
+    "docs/auditorias/024-estudiantes/n4-390-final-filtros.png",
+    "docs/auditorias/024-estudiantes/n4-390-resultados.png",
+    "docs/auditorias/024-estudiantes/n4-390-selector.png",
+    "docs/auditorias/024-estudiantes/pdf-portada.png",
+    "docs/auditorias/024-estudiantes/pdf-vision.png",
+    "docs/auditorias/024-estudiantes/prizma-plan-10-estudiantes.pdf",
+    "docs/auditorias/026-reauditoria/n10-1280-dua.png",
+    "docs/auditorias/026-reauditoria/n10-1280-resultados.png",
+    "docs/auditorias/026-reauditoria/n10-1280-selector.png",
+    "docs/auditorias/026-reauditoria/n10-390-dua.png",
+    "docs/auditorias/026-reauditoria/n10-390-final-filtros.png",
+    "docs/auditorias/026-reauditoria/n10-390-resultados.png",
+    "docs/auditorias/026-reauditoria/n10-390-selector.png",
+    "docs/auditorias/026-reauditoria/n4-1280-resultados.png",
+    "docs/auditorias/026-reauditoria/n4-1280-selector.png",
+    "docs/auditorias/026-reauditoria/n4-390-final-filtros.png",
+    "docs/auditorias/026-reauditoria/n4-390-resultados.png",
+    "docs/auditorias/026-reauditoria/n4-390-selector.png",
+    "docs/auditorias/026-reauditoria/prizma-plan-10-estudiantes.pdf",
+    "docs/auditorias/029-flujos/antes-apoyos-1280.png",
+    "docs/auditorias/029-flujos/antes-dua-1280.png",
+    "docs/auditorias/034-arquitectura/basica-1280-01-inicio.png",
+    "docs/auditorias/034-arquitectura/basica-1280-02-privacidad.png",
+    "docs/auditorias/034-arquitectura/basica-1280-03-apoyos.png",
+    "docs/auditorias/034-arquitectura/basica-1280-04-documento.png",
+    "docs/auditorias/034-arquitectura/basica-1280-documento.pdf",
+    "docs/auditorias/034-arquitectura/basica-390-01-inicio.png",
+    "docs/auditorias/034-arquitectura/basica-390-02-privacidad.png",
+    "docs/auditorias/034-arquitectura/basica-390-03-apoyos.png",
+    "docs/auditorias/034-arquitectura/basica-390-04-documento.png",
+    "docs/auditorias/034-arquitectura/basica-390-documento.pdf",
+    "docs/auditorias/034-arquitectura/instituto-1280-01-inicio.png",
+    "docs/auditorias/034-arquitectura/instituto-1280-02-guia-practica.png",
+    "docs/auditorias/034-arquitectura/instituto-1280-03-practica.png",
+    "docs/auditorias/034-arquitectura/instituto-1280-03b-decision-compartir.png",
+    "docs/auditorias/034-arquitectura/instituto-1280-04-documento.png",
+    "docs/auditorias/034-arquitectura/instituto-1280-documento.pdf",
+    "docs/auditorias/034-arquitectura/instituto-390-01-inicio.png",
+    "docs/auditorias/034-arquitectura/instituto-390-02-guia-practica.png",
+    "docs/auditorias/034-arquitectura/instituto-390-03-practica.png",
+    "docs/auditorias/034-arquitectura/instituto-390-03b-decision-compartir.png",
+    "docs/auditorias/034-arquitectura/instituto-390-04-documento.png",
+    "docs/auditorias/034-arquitectura/instituto-390-documento.pdf",
+    "docs/auditorias/034-arquitectura/rrhh-1280-01-inicio.png",
+    "docs/auditorias/034-arquitectura/rrhh-1280-01b-trabajo.png",
+    "docs/auditorias/034-arquitectura/rrhh-1280-02-privacidad.png",
+    "docs/auditorias/034-arquitectura/rrhh-1280-03-ajustes.png",
+    "docs/auditorias/034-arquitectura/rrhh-1280-04-documento.png",
+    "docs/auditorias/034-arquitectura/rrhh-1280-documento.pdf",
+    "docs/auditorias/034-arquitectura/rrhh-390-01-inicio.png",
+    "docs/auditorias/034-arquitectura/rrhh-390-01b-trabajo.png",
+    "docs/auditorias/034-arquitectura/rrhh-390-02-privacidad.png",
+    "docs/auditorias/034-arquitectura/rrhh-390-03-ajustes.png",
+    "docs/auditorias/034-arquitectura/rrhh-390-04-documento.png",
+    "docs/auditorias/034-arquitectura/rrhh-390-documento.pdf",
+    "docs/auditorias/034-arquitectura/trabajo-contexto-1280.png",
+    "docs/marca/009-un-estudiante/antes-escritorio-detalle.png",
+    "docs/marca/009-un-estudiante/antes-escritorio.png",
+    "docs/marca/009-un-estudiante/antes-telefono-detalle.png",
+    "docs/marca/009-un-estudiante/antes-telefono.png",
+    "docs/marca/009-un-estudiante/despues-escritorio-detalle.png",
+    "docs/marca/009-un-estudiante/despues-escritorio.png",
+    "docs/marca/009-un-estudiante/despues-telefono-detalle.png",
+    "docs/marca/009-un-estudiante/despues-telefono.png",
+    "docs/marca/014-pasos/antes-mochila-1280.png",
+    "docs/marca/014-pasos/antes-mochila-390.png",
+    "docs/marca/014-pasos/antes-paso-1-1280.png",
+    "docs/marca/014-pasos/antes-paso-1-390.png",
+    "docs/marca/014-pasos/antes-paso-2-1280.png",
+    "docs/marca/014-pasos/antes-paso-2-390.png",
+    "docs/marca/014-pasos/antes-paso-3-1280.png",
+    "docs/marca/014-pasos/antes-paso-3-390.png",
+    "docs/marca/014-pasos/cabecera-claro.png",
+    "docs/marca/014-pasos/cabecera-oscuro.png",
+    "docs/marca/014-pasos/despues-mochila-1280-claro.png",
+    "docs/marca/014-pasos/despues-mochila-1280-oscuro.png",
+    "docs/marca/014-pasos/despues-mochila-390-claro.png",
+    "docs/marca/014-pasos/despues-mochila-390-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-1-1280-claro.png",
+    "docs/marca/014-pasos/despues-paso-1-1280-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-1-390-claro.png",
+    "docs/marca/014-pasos/despues-paso-1-390-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-2-1280-claro.png",
+    "docs/marca/014-pasos/despues-paso-2-1280-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-2-390-claro.png",
+    "docs/marca/014-pasos/despues-paso-2-390-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-3-1280-claro.png",
+    "docs/marca/014-pasos/despues-paso-3-1280-oscuro.png",
+    "docs/marca/014-pasos/despues-paso-3-390-claro.png",
+    "docs/marca/014-pasos/despues-paso-3-390-oscuro.png",
+    "docs/marca/014-pasos/favicon-16.png",
+    "docs/marca/014-pasos/favicon-32.png",
+    "docs/marca/016-filtros/apoyos-1280-claro.png",
+    "docs/marca/016-filtros/apoyos-1280-oscuro.png",
+    "docs/marca/016-filtros/apoyos-390-claro.png",
+    "docs/marca/016-filtros/apoyos-390-oscuro.png",
+    "docs/marca/016-filtros/dua-1280-claro.png",
+    "docs/marca/016-filtros/dua-1280-oscuro.png",
+    "docs/marca/016-filtros/dua-390-claro.png",
+    "docs/marca/016-filtros/dua-390-oscuro.png",
+    "docs/marca/016-filtros/filtros-apoyos-390-claro.png",
+    "docs/marca/016-filtros/filtros-apoyos-390-oscuro.png",
+    "docs/marca/016-filtros/filtros-dua-390-claro.png",
+    "docs/marca/016-filtros/filtros-dua-390-oscuro.png",
+    "docs/marca/017-filtros/apoyos-1280-claro.png",
+    "docs/marca/017-filtros/apoyos-1280-oscuro.png",
+    "docs/marca/017-filtros/apoyos-390-claro.png",
+    "docs/marca/017-filtros/apoyos-390-oscuro.png",
+    "docs/marca/017-filtros/dua-1280-claro.png",
+    "docs/marca/017-filtros/dua-1280-oscuro.png",
+    "docs/marca/017-filtros/dua-390-claro.png",
+    "docs/marca/017-filtros/dua-390-oscuro.png",
+    "docs/marca/017-filtros/evaluar-despues-390.png",
+    "docs/marca/017-filtros/evaluar-durante-1280.png",
+    "docs/marca/017-filtros/filtros-apoyos-390-claro.png",
+    "docs/marca/017-filtros/filtros-apoyos-390-oscuro.png",
+    "docs/marca/017-filtros/filtros-dua-390-claro.png",
+    "docs/marca/017-filtros/filtros-dua-390-oscuro.png",
+    "docs/marca/017-filtros/sin-apoyos-parvularia-1280.png",
+    "docs/marca/017-filtros/sin-apoyos-superior-1280.png",
+    "docs/marca/018-individualizados/cif-1280.png",
+    "docs/marca/018-individualizados/cif-390.png",
+    "docs/marca/018-individualizados/objetivos-1280-claro.png",
+    "docs/marca/018-individualizados/objetivos-1280-oscuro.png",
+    "docs/marca/018-individualizados/objetivos-390-claro.png",
+    "docs/marca/018-individualizados/objetivos-390-oscuro.png",
+    "docs/marca/018-individualizados/practica-simulada-1280.png",
+    "docs/marca/018-individualizados/practica-simulada-390.png",
+    "docs/marca/020-media/apoyos-1280-claro.png",
+    "docs/marca/020-media/apoyos-1280-oscuro.png",
+    "docs/marca/020-media/apoyos-390-claro.png",
+    "docs/marca/020-media/apoyos-390-oscuro.png",
+    "docs/marca/020-media/documento-1280.png",
+    "docs/marca/020-media/documento-390.png",
+    "docs/marca/020-media/dua-1280-claro.png",
+    "docs/marca/020-media/dua-1280-oscuro.png",
+    "docs/marca/020-media/dua-390-claro.png",
+    "docs/marca/020-media/dua-390-oscuro.png",
+    "docs/marca/021-avisos/dua-1280-claro.png",
+    "docs/marca/021-avisos/dua-1280-oscuro.png",
+    "docs/marca/021-avisos/dua-390-claro.png",
+    "docs/marca/021-avisos/dua-390-oscuro.png",
+    "docs/marca/021-avisos/escolar-1280-claro.png",
+    "docs/marca/021-avisos/escolar-1280-oscuro.png",
+    "docs/marca/021-avisos/escolar-390-claro.png",
+    "docs/marca/021-avisos/escolar-390-oscuro.png",
+    "docs/marca/021-avisos/superior-1280-claro.png",
+    "docs/marca/021-avisos/superior-1280-oscuro.png",
+    "docs/marca/021-avisos/superior-390-claro.png",
+    "docs/marca/021-avisos/superior-390-oscuro.png",
+    "docs/marca/022-guias/guia-dua-1280-claro.png",
+    "docs/marca/022-guias/guia-dua-1280-oscuro.png",
+    "docs/marca/022-guias/guia-dua-390-claro.png",
+    "docs/marca/022-guias/guia-dua-390-oscuro.png",
+    "docs/marca/022-guias/guia-escolar-1280-claro.png",
+    "docs/marca/022-guias/guia-escolar-1280-oscuro.png",
+    "docs/marca/022-guias/guia-escolar-390-claro.png",
+    "docs/marca/022-guias/guia-escolar-390-oscuro.png",
+    "docs/marca/022-guias/guia-superior-1280-claro.png",
+    "docs/marca/022-guias/guia-superior-1280-oscuro.png",
+    "docs/marca/022-guias/guia-superior-390-claro.png",
+    "docs/marca/022-guias/guia-superior-390-oscuro.png",
+    "docs/marca/022-guias/panel-apoyos-1280-claro.png",
+    "docs/marca/022-guias/panel-apoyos-1280-oscuro.png",
+    "docs/marca/022-guias/panel-apoyos-390-claro.png",
+    "docs/marca/022-guias/panel-apoyos-390-oscuro.png",
+    "docs/marca/022-guias/panel-dua-1280-claro.png",
+    "docs/marca/022-guias/panel-dua-1280-oscuro.png",
+    "docs/marca/022-guias/panel-dua-390-claro.png",
+    "docs/marca/022-guias/panel-dua-390-oscuro.png",
+    "docs/marca/023-estudiantes/contenido-1280-oscuro.png",
+    "docs/marca/023-estudiantes/documento-1280-claro.png",
+    "docs/marca/023-estudiantes/documento-1280-oscuro.png",
+    "docs/marca/023-estudiantes/documento-390-claro.png",
+    "docs/marca/023-estudiantes/documento-390-oscuro.png",
+    "docs/marca/023-estudiantes/mochila-1280.png",
+    "docs/marca/023-estudiantes/pdf-estudiante.png",
+    "docs/marca/023-estudiantes/pdf-paginas.png",
+    "docs/marca/023-estudiantes/prizma-plan-2026-11-15.pdf",
+    "docs/marca/023-estudiantes/repeticiones-1280-claro.png",
+    "docs/marca/023-estudiantes/repeticiones-1280-oscuro.png",
+    "docs/marca/023-estudiantes/repeticiones-390-claro.png",
+    "docs/marca/023-estudiantes/repeticiones-390-oscuro.png",
+    "docs/marca/023-estudiantes/selector-1280-claro.png",
+    "docs/marca/023-estudiantes/selector-1280-oscuro.png",
+    "docs/marca/023-estudiantes/selector-390-claro.png",
+    "docs/marca/023-estudiantes/selector-390-oscuro.png",
+    "docs/marca/025-orden/contexto-390-claro.png",
+    "docs/marca/025-orden/contexto-390-oscuro.png",
+    "docs/marca/025-orden/orden-1280-claro.png",
+    "docs/marca/025-orden/orden-1280-oscuro.png",
+    "docs/marca/025-orden/orden-390-claro.png",
+    "docs/marca/025-orden/orden-390-oscuro.png",
+    "docs/marca/025-orden/practica-1280-oscuro.png",
+    "docs/marca/028-practica/decision-1280-claro.png",
+    "docs/marca/028-practica/decision-1280-oscuro.png",
+    "docs/marca/028-practica/decision-390-claro.png",
+    "docs/marca/028-practica/decision-390-oscuro.png",
+    "docs/marca/028-practica/documento-1280-claro.png",
+    "docs/marca/028-practica/documento-1280-oscuro.png",
+    "docs/marca/028-practica/documento-390-claro.png",
+    "docs/marca/028-practica/documento-390-oscuro.png",
+    "docs/marca/028-practica/guia-1280-claro.png",
+    "docs/marca/028-practica/guia-1280-oscuro.png",
+    "docs/marca/028-practica/guia-390-claro.png",
+    "docs/marca/028-practica/guia-390-oscuro.png",
+    "docs/marca/028-practica/prizma-practica-ejemplo.pdf",
+    "docs/marca/028-practica/resultados-1280-claro.png",
+    "docs/marca/028-practica/resultados-1280-oscuro.png",
+    "docs/marca/028-practica/resultados-390-claro.png",
+    "docs/marca/028-practica/resultados-390-oscuro.png",
+    "docs/marca/029-flujo/acuerdos-1280-claro.png",
+    "docs/marca/029-flujo/acuerdos-1280-oscuro.png",
+    "docs/marca/029-flujo/acuerdos-390-claro.png",
+    "docs/marca/029-flujo/acuerdos-390-oscuro.png",
+    "docs/marca/029-flujo/dua-1280-claro.png",
+    "docs/marca/029-flujo/dua-1280-oscuro.png",
+    "docs/marca/029-flujo/dua-390-claro.png",
+    "docs/marca/029-flujo/dua-390-oscuro.png",
+    "docs/marca/029-flujo/pregunta-1280-claro.png",
+    "docs/marca/029-flujo/pregunta-1280-oscuro.png",
+    "docs/marca/029-flujo/pregunta-390-claro.png",
+    "docs/marca/029-flujo/pregunta-390-oscuro.png",
+    "docs/marca/029-flujo/prizma-plan-ejemplo.pdf",
+    "docs/marca/029-flujo/seleccion-1280-claro.png",
+    "docs/marca/029-flujo/seleccion-1280-oscuro.png",
+    "docs/marca/029-flujo/seleccion-390-claro.png",
+    "docs/marca/029-flujo/seleccion-390-oscuro.png",
+    "docs/marca/031-iconos/cabecera-1280-claro.png",
+    "docs/marca/031-iconos/cabecera-1280-oscuro.png",
+    "docs/marca/031-iconos/cabecera-390-claro.png",
+    "docs/marca/031-iconos/cabecera-390-oscuro.png",
+    "docs/marca/032-trabajo/acuerdos-1280-claro.png",
+    "docs/marca/032-trabajo/acuerdos-1280-oscuro.png",
+    "docs/marca/032-trabajo/acuerdos-390-claro.png",
+    "docs/marca/032-trabajo/acuerdos-390-oscuro.png",
+    "docs/marca/032-trabajo/ajustes-1280-claro.png",
+    "docs/marca/032-trabajo/ajustes-1280-oscuro.png",
+    "docs/marca/032-trabajo/ajustes-390-claro.png",
+    "docs/marca/032-trabajo/ajustes-390-oscuro.png",
+    "docs/marca/032-trabajo/descripcion-1280-claro.png",
+    "docs/marca/032-trabajo/descripcion-1280-oscuro.png",
+    "docs/marca/032-trabajo/descripcion-390-claro.png",
+    "docs/marca/032-trabajo/descripcion-390-oscuro.png",
+    "docs/marca/032-trabajo/prizma-trabajo-ejemplo.pdf",
+    "docs/marca/033-presentacion/cabecera-1280-claro.png",
+    "docs/marca/033-presentacion/cabecera-1280-oscuro.png",
+    "docs/marca/033-presentacion/cabecera-390-claro.png",
+    "docs/marca/033-presentacion/cabecera-390-oscuro.png",
+    "docs/marca/033-presentacion/pie-1280-claro.png",
+    "docs/marca/033-presentacion/pie-1280-oscuro.png",
+    "docs/marca/033-presentacion/pie-390-claro.png",
+    "docs/marca/033-presentacion/pie-390-oscuro.png",
+    "docs/marca/antes/acciones-escritorio-oscuro.png",
+    "docs/marca/antes/acciones-escritorio.png",
+    "docs/marca/antes/acciones-telefono-oscuro.png",
+    "docs/marca/antes/acciones-telefono.png",
+    "docs/marca/antes/escritorio-oscuro.png",
+    "docs/marca/antes/escritorio.png",
+    "docs/marca/antes/telefono-oscuro.png",
+    "docs/marca/antes/telefono.png",
+    "docs/marca/direccion-a/acciones-escritorio-oscuro.png",
+    "docs/marca/direccion-a/acciones-escritorio.png",
+    "docs/marca/direccion-a/acciones-telefono-oscuro.png",
+    "docs/marca/direccion-a/acciones-telefono.png",
+    "docs/marca/direccion-a/escritorio-oscuro.png",
+    "docs/marca/direccion-a/escritorio.png",
+    "docs/marca/direccion-a/telefono-oscuro.png",
+    "docs/marca/direccion-a/telefono.png",
+    "docs/marca/direccion-b/acciones-escritorio-oscuro.png",
+    "docs/marca/direccion-b/acciones-escritorio.png",
+    "docs/marca/direccion-b/acciones-telefono-oscuro.png",
+    "docs/marca/direccion-b/acciones-telefono.png",
+    "docs/marca/direccion-b/escritorio-oscuro.png",
+    "docs/marca/direccion-b/escritorio.png",
+    "docs/marca/direccion-b/telefono-oscuro.png",
+    "docs/marca/direccion-b/telefono.png",
+    "docs/marca/mosaico/opciones-mosaico.png",
+    "docs/marca/mosaico/pruebas-015/M1-16.png",
+    "docs/marca/mosaico/pruebas-015/M1-180.png",
+    "docs/marca/mosaico/pruebas-015/M1-32.png",
+    "docs/marca/mosaico/pruebas-015/M1-64.png",
+    "docs/marca/mosaico/pruebas-015/M1-daltonismo.png",
+    "docs/marca/mosaico/pruebas-015/M1-tamanos-fondos.png",
+    "docs/marca/mosaico/pruebas-015/M2-16.png",
+    "docs/marca/mosaico/pruebas-015/M2-180.png",
+    "docs/marca/mosaico/pruebas-015/M2-32.png",
+    "docs/marca/mosaico/pruebas-015/M2-64.png",
+    "docs/marca/mosaico/pruebas-015/M2-daltonismo.png",
+    "docs/marca/mosaico/pruebas-015/M2-tamanos-fondos.png",
+    "docs/marca/mosaico/pruebas-015/M3-16.png",
+    "docs/marca/mosaico/pruebas-015/M3-180.png",
+    "docs/marca/mosaico/pruebas-015/M3-32.png",
+    "docs/marca/mosaico/pruebas-015/M3-64.png",
+    "docs/marca/mosaico/pruebas-015/M3-daltonismo.png",
+    "docs/marca/mosaico/pruebas-015/M3-tamanos-fondos.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-16.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-180.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-32.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-64.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-daltonismo.png",
+    "docs/marca/mosaico/pruebas-015/Tinta-tamanos-fondos.png",
+    "docs/marca/mosaico/pruebas-015/app-y-pestana.png",
+    "docs/marca/mosaico/pruebas-015/una-tinta.png",
+    "docs/marca/mosaico/tinta-exploracion-generada-a.png",
+    "docs/marca/mosaico/tinta-exploracion-generada-b.png",
+    "docs/marca/mosaico/tinta-mejora-a.png",
+    "docs/marca/mosaico/tinta-mejora-b.png",
+    "docs/marca/opciones-logo.png",
+    "docs/marca/tako/opciones-tako-min.png",
+    "docs/marca/tako/opciones-tako.png"
+  ]
+}
