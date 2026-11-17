@@ -1,0 +1,84 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación media (CH y TP)"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Les cuesta motivarse o se desconectan"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "b856de94-6b00-4fd9-be9a-39cd176b2121",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Necesita más desafío",
+          "Casi siempre",
+          "Ten listas actividades de profundización para cuando termine"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "No aplica",
+      "protocolo": true,
+      "acciones": [
+        {
+          "id": "acc-14-extension",
+          "titulo": "Ten listas actividades de profundización para cuando termine",
+          "como": [
+            "Prepara una pregunta o problema más complejo sobre el mismo tema.",
+            "Ofrécelo cuando muestre que domina lo básico, no como más de lo mismo.",
+            "Revisa y valora ese trabajo igual que el resto."
+          ],
+          "porque": "El Decreto 83 considera materiales y actividades de profundización para quien lo necesita.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 8.2. Respaldo: Orientación oficial.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    }
+  ],
+  "borrador": false
+}

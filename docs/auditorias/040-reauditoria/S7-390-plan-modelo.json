@@ -1,0 +1,84 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "026e6089-ca2b-4d38-8c76-116dcfb6a1dd",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Movimiento y motricidad",
+          "Casi siempre",
+          "Asegura que el puesto y los materiales sean accesibles"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "No aplica",
+      "protocolo": false,
+      "acciones": [
+        {
+          "id": "acc-8-accesible",
+          "titulo": "Asegura que el puesto y los materiales sean accesibles",
+          "como": [
+            "Revisa que pueda llegar y moverse sin obstáculos.",
+            "Ajusta la altura de la mesa o la silla.",
+            "Deja los materiales a su alcance."
+          ],
+          "porque": "Un espacio accesible permite participar con autonomía.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Entorno (Decreto 83). Respaldo: Norma legal.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Entorno"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903"
+    }
+  ],
+  "borrador": false
+}

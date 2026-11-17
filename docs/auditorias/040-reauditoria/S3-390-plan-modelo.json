@@ -1,0 +1,89 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación parvularia"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "58448c30-ff93-4b3a-aa52-e10c5bfc8d27",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Emociones y regulación",
+          "Casi siempre",
+          "Permite moverse antes o después de los demás en cambios y recreos"
+        ],
+        [
+          "Sensibilidad sensorial",
+          "Casi siempre",
+          "Permite moverse antes o después de los demás en cambios y recreos"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "No aplica",
+      "protocolo": true,
+      "acciones": [
+        {
+          "id": "acc-7-transiciones",
+          "titulo": "Permite moverse antes o después de los demás en cambios y recreos",
+          "como": [
+            "Acuerda salir unos minutos antes o después.",
+            "Acompaña los cambios de sala si hace falta.",
+            "Avisa del cambio con un poco de anticipación."
+          ],
+          "porque": "Evitar las aglomeraciones reduce el estrés sensorial.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Organización del tiempo y el horario (Decreto 83). Respaldo: Orientación oficial.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Organización del tiempo y el horario"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+      "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+    }
+  ],
+  "borrador": false
+}

@@ -1,0 +1,89 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación media (CH y TP)"
+    ],
+    [
+      "Clase práctica",
+      "Clase con taller, laboratorio o terreno"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "917e2f6d-8a20-4a32-abde-7de3a28027fb",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Audición",
+          "Casi siempre",
+          "Habla de frente y apoya lo que dices con texto o señas"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "Lengua de señas",
+      "protocolo": false,
+      "acciones": [
+        {
+          "id": "acc-6-audicion",
+          "titulo": "Habla de frente y apoya lo que dices con texto o señas",
+          "como": [
+            "Coordina un intérprete de lengua de señas con el estudiante y el equipo de apoyo.",
+            "Habla de frente, sin tapar tu boca, para permitir la lectura labial.",
+            "Escribe en la pizarra las instrucciones y palabras clave.",
+            "Coordina el intérprete de lengua de señas o el equipo de amplificación si los usa."
+          ],
+          "porque": "Si no escucha bien, necesita ver la información para no quedar fuera.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 1.2. Respaldo: Orientación oficial.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903"
+    }
+  ],
+  "borrador": false
+}

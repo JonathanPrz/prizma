@@ -1,0 +1,89 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Hay estudiantes de otra lengua o cultura"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "110d1df7-5f3f-4587-bfa6-06a98ea3c89e",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Comprender lo que se dice o se lee",
+          "Seguido",
+          "Sin apoyo elegido"
+        ],
+        [
+          "Identidad, lengua y pertenencia",
+          "Casi siempre",
+          "Entrega las palabras clave también en su lengua"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "Otra lengua materna",
+      "protocolo": false,
+      "acciones": [
+        {
+          "id": "acc-10-lengua",
+          "titulo": "Entrega las palabras clave también en su lengua",
+          "como": [
+            "Prepara un glosario con imágenes y traducción.",
+            "Pide apoyo a la familia o a un traductor.",
+            "Deja el glosario disponible en las evaluaciones."
+          ],
+          "porque": "Entender la pregunta es condición para mostrar lo que se sabe.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 2.3. Respaldo: Consenso de expertos.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2018). Decreto 67: normas mínimas sobre evaluación, calificación y promoción.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1127255"
+    },
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    }
+  ],
+  "borrador": false
+}

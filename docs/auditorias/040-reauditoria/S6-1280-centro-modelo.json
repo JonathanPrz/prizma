@@ -1,0 +1,37 @@
+{
+  "centro": true,
+  "borrador": false,
+  "titulo": "Ajustes acordados para la práctica",
+  "fecha": "16-11-2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "resumen": [
+    [
+      "Estudiante",
+      "__________________________________"
+    ],
+    [
+      "Centro de práctica",
+      "__________________________________"
+    ],
+    [
+      "Profesor tutor o coordinador",
+      "__________________________________"
+    ],
+    [
+      "Fecha",
+      "__________________________________"
+    ]
+  ],
+  "acciones": [
+    {
+      "titulo": "Reduce los distractores y acuerda pausas, sin quitar las alarmas",
+      "como": [
+        "Ofrece un puesto más tranquilo si es posible.",
+        "Acuerda pausas breves en jornadas largas.",
+        "Mantén todas las alarmas y señales de seguridad."
+      ],
+      "porque": "Menos estímulos y pausas a tiempo ayudan a concentrarse y a sostener la jornada.",
+      "dato": ""
+    }
+  ]
+}
