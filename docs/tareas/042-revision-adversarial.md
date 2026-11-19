@@ -1,6 +1,6 @@
 # Tarea 042 · Revisión adversarial: busca las fallas de Prizma y de Claude
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/042-adversarial` · Pull request con destino `main`
+Estado: **pendiente, después de la tarea 043** · Asignada a: Codex · Rama: `codex/042-adversarial` · Pull request con destino `main`
 
 ## Tu papel
 Esta vez **no ejecutas lo que Claude pide: te opones.** El dueño detectó que las validaciones anteriores son circulares: Claude definió lo correcto y tú mediste si Prizma coincidía con Claude. Tu trabajo es encontrar dónde Prizma o Claude se equivocan. Una entrega sin objeciones serias es una entrega fallida, salvo que demuestres con evidencia que no las hay.
