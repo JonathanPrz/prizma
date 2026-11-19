@@ -62,15 +62,26 @@ def pares(lote):
     for f in filas:
         if f['par'] not in esperados: continue
         a = PARES[f['par']]['archivo']; e = lambda m, k=f['par']: err.append(f'{k}: {m}')
+        if None in f: e('la fila tiene columnas de más: si un texto lleva «;», enciérralo entre comillas dobles')
         if f['tipo_archivo'] not in {'texto completo','extracto','resumen de agente','registro'}: e('tipo_archivo inválido')
         v = f['veredicto']
         afirma = PARES[f['par']]['afirmacion']
         if v in {'respaldada','en parte','contradice'}: revisar_cita(f, a, e, afirma)
         elif v == 'sin respaldo': revisar_ausencia(f, a, e, afirma)
         else: e('veredicto debe ser respaldada, en parte, sin respaldo o contradice')
-        if v in {'en parte','contradice'} and not f['nota'].strip(): e('en parte o contradice exige nota')
-    repetidas(filas, 'cita_literal', 2, err); repetidas(filas, 'nota', 2, err)
+        if len(f['nota'].strip()) < 40: e('toda fila necesita una nota propia de al menos 40 caracteres: qué respalda y qué no')
+    repetidas(filas, 'cita_literal', 2, err); repetidas(filas, 'nota', 2, err); parecidas(filas, err)
+    nl = sum('no leído' in f['nota'].lower() for f in filas)
+    if nl > max(2, len(filas) // 10): err.append(f'{nl} pares «no leído»: el máximo es el 10 % del lote. Léelos.')
     return err
+
+def parecidas(filas, err):
+    # Una plantilla con varias palabras cambiadas sigue siendo una plantilla: se compara el vocabulario de las notas.
+    conj = [(f['par'], set(re.findall(r'[a-záéíóúñü]{4,}', f['nota'].lower()))) for f in filas if f['nota'].strip()]
+    for k, a in conj:
+        if len(a) < 4: continue
+        n = sum(1 for k2, b in conj if k2 != k and len(a & b) / len(a | b) >= 0.6)
+        if n > 2: err.append(f'{k}: la nota es casi igual a la de otros {n} pares; escribe una propia'); break
 
 def repetidas(filas, col, maximo, err):
     # Una misma cita o nota para muchos pares indica que no se leyó cada uno.
