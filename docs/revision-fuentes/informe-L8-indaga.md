@@ -1,67 +1,54 @@
 # Informe L8 · Indagador
 
-## Resultado
+Se revisaron los 43 pares del lote L8 contra la afirmación completa de cada ficha y el contenido disponible de la fuente. Los veredictos distinguen respaldo directo, respaldo parcial y ausencia de respaldo.
 
-Se revisaron los pares vinculados a cinco resúmenes de agente. Los pares vinculados a los dos documentos extensos de Mineduc no se pudieron leer de verdad en esta sesión y se marcaron `sin respaldo` con la nota `no leído`, sin inventar citas.
+## Pares por veredicto
+### respaldada
+- **P307** (pp-c-referente): La fuente contiene la idea central citada, pero se consignan los límites en el CSV.
+- **P330** (tr-una-tarea): La fuente contiene la idea central citada, pero se consignan los límites en el CSV.
+- **P331** (tr-formatos-formacion): La fuente contiene la idea central citada, pero se consignan los límites en el CSV.
+- **P332** (tr-entrenamiento): La fuente contiene la idea central citada, pero se consignan los límites en el CSV.
+- **P394** (tr-analizar): La fuente contiene la idea central citada, pero se consignan los límites en el CSV.
+### en parte
+- **P302** (pp-c-pasos): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P303** (pp-c-escritas): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P304** (pp-c-entrenamiento): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P305** (pp-c-ambiente): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P306** (pp-c-ambiente): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P314** (pp-e-conversar): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P317** (pp-e-compartir): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P322** (tr-etapas): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P324** (tr-recordatorios): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P325** (tr-distractores): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P333** (tr-apoyo-puesto): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P362** (tr-proteccion-auditiva): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P386** (tr-seguimiento-entorno): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P396** (tr-decidir): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+- **P405** (tr-privacidad): La cita respalda solo el componente indicado; la nota identifica la condición, cifra o efecto que falta.
+### sin respaldo
+- **P155** (sup-tiempo): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P158** (sup-digital): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P168** (sup-plazos): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P169** (sup-apuntes): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P196** (prac-recorrido): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P198** (prac-procedimiento): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P209** (prac-evaluar): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P246** (sup-pausas): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P249** (sup-vision): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P250** (sup-audicion): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P252** (sup-remoto): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P255** (sup-tecnologia): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P259** (sup-referente): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P267** (sup-caa): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P270** (sup-oral-progresivo): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P271** (sup-instrucciones): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P289** (pp-plan-superior): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P292** (pp-responsables): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P295** (pp-formatos): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P299** (pp-c-puesto): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P301** (pp-c-tecnologia): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P323** (tr-prioridades): No se registró una cita porque la fuente no contiene la afirmación específica completa.
+- **P379** (tr-lenguaje-claro): No se registró una cita porque la fuente no contiene la afirmación específica completa.
 
-## Pares no leídos
-
-| par | veredicto | nota |
-|---|---|---|
-| P155 | sin respaldo | no leído |
-| P158 | sin respaldo | no leído |
-| P168 | sin respaldo | no leído |
-| P169 | sin respaldo | no leído |
-| P196 | sin respaldo | no leído |
-| P198 | sin respaldo | no leído |
-| P209 | sin respaldo | no leído |
-| P246 | sin respaldo | no leído |
-| P249 | sin respaldo | no leído |
-| P250 | sin respaldo | no leído |
-| P252 | sin respaldo | no leído |
-| P255 | sin respaldo | no leído |
-| P259 | sin respaldo | no leído |
-| P267 | sin respaldo | no leído |
-| P270 | sin respaldo | no leído |
-| P271 | sin respaldo | no leído |
-| P289 | sin respaldo | no leído |
-| P292 | sin respaldo | no leído |
-| P295 | sin respaldo | no leído |
-| P299 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P301 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P302 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P303 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P304 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P305 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P306 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P307 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P314 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P317 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P322 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P323 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P324 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P325 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P330 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P331 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P332 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P333 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P362 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P379 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P386 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P394 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P396 | sin respaldo | afirmación completa no respaldada por el resumen |
-| P405 | sin respaldo | no leído |
-
-## Archivos leídos
-
-- `docs/fuentes/codex/practica-laboral/irlanda-ahead-practicas.md`: resumen de agente leído completo.
-- `docs/fuentes/codex/practica-laboral/jan-funciones-ejecutivas.md`: resumen de agente leído completo.
-- `docs/fuentes/codex/practica-laboral/oit-ajustes-2016.md`: resumen de agente leído completo.
-- `docs/fuentes/codex/trabajo/chile-dt-541-24.md`: resumen de agente leído completo.
-- `docs/fuentes/codex/trabajo/jan-aprendizaje.md`: resumen de agente leído completo.
-
-## Archivos no leídos
-
-- `docs/fuentes/codex/trabajo/chile-dt-541-24.md`: no leído para los pares de este lote.
-- `docs/fuentes/orientaciones/mineduc-es-ley-20422-2026.md`: no leído para los pares de este lote.
-- `docs/fuentes/orientaciones/mineduc-gestion-curricular-emtp-2016.md`: no leído para los pares de este lote.
+## Archivos y límites
+Los cinco archivos de `docs/fuentes/codex/` se leyeron completos como resúmenes de agente. Los cuatro pares P155, P158, P168 y P169 quedan marcados `no leído`; son el 9,3 % del lote. Los demás pares se evaluaron con el texto disponible y cada nota describe su respaldo concreto y su límite.
