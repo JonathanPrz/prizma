@@ -6,14 +6,14 @@ const eventos = {}, nodos = new Map(), almacen = new Map();
 const telefono = {matches: false, addEventListener(tipo, fn) {this.cambiar = fn;}};
 let areas = [];
 const contexto = vm.createContext({
-  document: {querySelector: selector => nodos.get(selector), querySelectorAll: selector => selector === '#areas input:checked' ? areas : []},
+  document: {createElement: tag => nodo(tag), querySelector: selector => nodos.get(selector), querySelectorAll: selector => selector === '#areas input:checked' ? areas : []},
   location: {hash: ''}, history: {replaceState(a, b, hash) {contexto.location.hash = hash;},pushState(a,b,hash){contexto.location.hash=hash;}},
   window: {addEventListener(tipo, fn) {eventos[tipo] = fn;}, matchMedia: () => telefono},
   localStorage: {setItem(clave, valor) {almacen.set(clave, JSON.parse(valor));}},
 });
 function nodo(id) {
   return {id, open: false, eventos: {}, atributos: {},
-    focus() {contexto.document.activeElement = this;},
+    replaceChildren(){}, focus() {contexto.document.activeElement = this;},
     setAttribute(k, v) {this.atributos[k] = v;},
     addEventListener(tipo, fn) {this.eventos[tipo] = fn;},
     append(hijo) {if (hijo.padre) hijo.padre.hijo = null; this.hijo = hijo; hijo.padre = this;},
@@ -21,7 +21,7 @@ function nodo(id) {
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','inicio','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','pestanas-educacion','elegir-educacion','elegir-trabajo','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
+for (const id of ['persistencia-aviso','panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','inicio','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','pestanas-educacion','elegir-educacion','elegir-trabajo','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
 // The dedicated work-flow test covers rendering; this suite checks tab navigation.

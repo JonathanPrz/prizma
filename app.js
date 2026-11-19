@@ -66,7 +66,7 @@ const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar",
 const TIPOS_PRACTICA = { institucion: "Lo que hace la institución", centro: "Lo que puede hacer el centro de práctica", estudiante: "Preparar al estudiante para pedir ajustes" };
 const PIE_PRACTICA = "Documento preparado con el estudiante. Contiene solo lo que decidió compartir.";
 const GRUPOS_APOYOS = { acceso: "Adecuaciones de acceso", objetivos: "Adecuaciones en los objetivos", desregulacion: "Apoyos ante desregulación", adicional: "Apoyos adicionales", "practica-profesional": "Apoyos para la práctica" };
-const ROLES_ACUERDO = { estudiante: "Estudiante", familia: "Familia o apoderado", equipo: "Equipo de apoyo", docente: "Otro docente", inclusion: "Unidad de inclusión" };
+const ROLES_ACUERDO = { estudiante: "Estudiante", familia: "Familia", equipo: "Equipo de apoyo", diferencial: "Educador diferencial", pie: "Equipo PIE", jefatura: "Jefatura técnica", docente: "Otro docente", inclusion: "Unidad de inclusión" };
 const MODALIDADES = { "": "No aplica", senas: "Lengua de señas", braille: "Braille", ampliacion: "Lupa o ampliación", caa: "Tablero o comunicación aumentativa", lengua: "Otra lengua materna" };
 // Única exclusión de modalidad: requiere revisión de Claude; las fichas multiformato conservan sus alternativas.
 const EXCLUSIONES_MODALIDAD = { ampliacion: ["acc-6-braille"] };
@@ -117,7 +117,7 @@ function normalizarEstudiante(valor) {
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?$/.test(e.iniciales) ? e.iniciales : "",
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
-    modalidad: modalidadValida(e.modalidad), protocolo: e.protocolo === true,
+    modalidad: modalidadValida(e.modalidad), paci: e.protocolo !== true && e.paci === true, paec: e.protocolo !== true && e.paec === true, dec: e.protocolo !== true && e.dec === true, revisarInstrumentos: e.revisarInstrumentos === true || e.protocolo === true,
     practicaProfesional: e.practicaProfesional === true,
     descripcionGuardada: typeof e.descripcionGuardada === "boolean" ? e.descripcionGuardada : Object.keys(dimensiones).some((k) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(dimensiones[k]) && dimensiones[k] >= 1 && dimensiones[k] <= 3),
     acuerdo: normalizarAcuerdo(e.acuerdo),
@@ -130,7 +130,7 @@ function estudianteActual() { return estado.estudiantes.find((e) => e.id === est
 function nombreEstudiante(e) { return e.iniciales || `Estudiante ${estado.estudiantes.indexOf(e) + 1}`; }
 // Mediodía evita que la zona horaria cambie el día de una fecha AAAA-MM-DD.
 function fechaLarga(iso) { return fechaValida(iso) ? new Date(iso + "T12:00:00").toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" }) : ""; }
-function datosEstudiante(e) { return Boolean(e.modalidad || e.protocolo || e.acuerdo?.criterio || e.acuerdo?.roles.length || e.acuerdo?.fecha || e.practicaProfesional || e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
+function datosEstudiante(e) { return Boolean(e.modalidad || e.paci || e.paec || e.dec || e.revisarInstrumentos || e.acuerdo?.criterio || e.acuerdo?.roles.length || e.acuerdo?.fecha || e.practicaProfesional || e.iniciales || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length); }
 function seleccionValidada(valor, dua) {
   const v = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
   return Object.fromEntries(Object.entries(v).filter(([id, nota]) => typeof nota === "string" && catalogo.some((r) => r.id === id && (dua === "trabajo" ? r.tipo === "trabajo" : dua ? r.tipo === "dua" : r.tipo in GRUPOS_APOYOS))).map(([id, nota]) => [id, nota.slice(0, 2000)]));
@@ -226,6 +226,7 @@ function tipoOficial(r) {
   if (r.tipo === "practica-profesional") return "Apoyo para la práctica: " + nombreGrupoPractica(r.subtipo);
   if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
   if (r.tipo === "adicional") return "Apoyo adicional";
+  if (r.tipo === "acceso" && estado.perfil.nivel === "media") return `Adecuación de acceso (criterios del Decreto 83, por remisión del Decreto 67, art. 5): ${TIPOS_ACCESO[r.subtipo]}`;
   if (r.tipo === "acceso") return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`;
   if (r.tipo === "objetivos") return `Adecuación en los objetivos: ${TIPOS_OBJETIVOS[r.subtipo]} (Decreto 83)`;
   return `Apoyo ante desregulación: ${MOMENTOS_DEC[r.subtipo]}`;
@@ -257,7 +258,7 @@ function situacionesSinApoyos() {
   return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
-function rolesPermitidos() { return esSuperior() ? ["estudiante", "inclusion", "docente"] : ["estudiante", "familia", "equipo", "docente"]; }
+function rolesPermitidos() { return esSuperior() ? ["estudiante", "inclusion", "docente"] : ["estudiante", "familia", "equipo", "diferencial", "pie", "jefatura", "docente"]; }
 function erroresAcuerdo(e, trabajo = false) {
   const a = e.acuerdo || normalizarAcuerdo(), errores = [], roles = trabajo ? Object.keys(ROLES_TRABAJO) : rolesPermitidos();
   if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) errores.push("Guarda una descripción con al menos una situación.");
@@ -266,6 +267,7 @@ function erroresAcuerdo(e, trabajo = false) {
   if (seleccionIncompatible(e, trabajo)) errores.push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
   if (!a.roles.some((r) => roles.includes(r))) errores.push("Elige al menos un rol.");
   if (a.roles.some((r) => !roles.includes(r))) errores.push("Revisa los roles para este nivel.");
+  if (!trabajo && catalogo.some(r => r.tipo === "objetivos" && Object.hasOwn(e.seleccion, r.id)) && (!a.roles.includes("familia") || !a.roles.some(r => ["diferencial", "pie", "jefatura"].includes(r)))) errores.push("Una adecuación en los objetivos se decide con la familia y el equipo de apoyo (Decreto 83). Agrega esos roles");
   if (!fechaValida(a.fecha)) errores.push("Indica una fecha del acuerdo válida.");
   if (!fechaValida(a.revision)) errores.push("Indica una próxima revisión válida.");
   else if (a.fecha && a.revision <= a.fecha) errores.push("La revisión debe ser posterior al acuerdo.");
@@ -447,7 +449,7 @@ function pintarApoyos() {
   $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
     grupoPlegado(nombre, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)), "Qué hacer antes, durante y después de una crisis.")));
-  for (const id of ["protocolo-objetivos", "protocolo-dec"]) $("#" + id).checked = estudianteActual().protocolo;
+  for (const campo of ["paci", "paec", "dec"]) for (const lugar of ["objetivos", "dec"]) $("#" + campo + "-" + lugar).checked = estudianteActual()[campo];
   $("#modalidad-revisar").textContent = seleccionIncompatible(estudianteActual()) ? "Revisa los apoyos elegidos para la modalidad actual en Mi mochila." : "";
   pintarSeguridad();
   $("#apoyos-estado").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? `${lista.length + practicas.length} ${superior ? "ajustes razonables sugeridos" : "adecuaciones de acceso sugeridas"}` : "Marca al menos una situación para ver apoyos.";
@@ -501,7 +503,7 @@ function sincronizarEstudiante() {
 }
 function escucharEstudiante() {
   $("#modalidad").addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e.modalidad = modalidadValida(ev.target.value); guardar(); pintarApoyos(); pintarSeleccion(); });
-  for (const id of ["protocolo-objetivos", "protocolo-dec"]) $("#" + id).addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e.protocolo = ev.target.checked; guardar(); pintarApoyos(); });
+  for (const campo of ["paci", "paec", "dec"]) for (const lugar of ["objetivos", "dec"]) $("#" + campo + "-" + lugar).addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e[campo] = ev.target.checked; guardar(); pintarApoyos(); });
   $("#criterio-acuerdo").addEventListener("input", ev => { const e = estudianteActual(); marcarRevision(e); e.acuerdo.criterio = ev.target.value.slice(0, 200); guardar(); pintarEstadoCasos(); if (!privacidadAvisada && ev.target.value) mostrarAvisoPrivacidad(ev.target); });
 
   $("#practica-profesional").addEventListener("change", (evento) => {
@@ -729,8 +731,20 @@ let borradorDua = null;
 function cargar() {
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = normalizarDatos(g); } catch (e) { /* sin almacenamiento: la página funciona igual */ }
 }
+function avisarInstrumentos() {
+  if (!estado.estudiantes.some(e => e.revisarInstrumentos)) return;
+  $("#instrumentos-aviso").hidden = false;
+  estado.estudiantes.forEach(e => { e.revisarInstrumentos = false; }); guardar();
+}
+let falloGuardadoAvisado = false;
 function guardar() {
-  try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* idem */ }
+  try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {
+    if (falloGuardadoAvisado) return;
+    falloGuardadoAvisado = true;
+    const aviso = $("#persistencia-aviso");
+    aviso.hidden = false;
+    aviso.replaceChildren(el("p", { text: "No se pudo guardar en este navegador. Descarga un respaldo para no perder tu trabajo" }), el("button", { type: "button", class: "boton", text: "Guardar respaldo", onclick: guardarRespaldo }));
+  }
 }
 
 function normalizarAsignatura(valor) { return ASIGNATURAS.includes(valor) ? valor : ""; }
@@ -1066,7 +1080,7 @@ function tarjeta(r, destacarMomento = false) {
   const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
   const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
   const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);
-  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida) }, elegida ? "Elegida" : "Elegir");
+  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida), "aria-label": (elegida ? "Elegida: " : "Elegir: ") + textoModalidad(r.titulo, r, persona) }, elegida ? "Elegida" : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
@@ -1126,6 +1140,8 @@ function alternar(id, estudianteId = estado.estudianteActivo, trabajadorId = est
   if (!seleccion) return;
   if (r.tipo !== "dua") marcarRevision(persona);
   const foco = document.activeElement.id;
+  const siguientes = foco.startsWith("quitar-clase-") ? elegidasOrdenadas().map(r => "quitar-clase-" + r.id) : [];
+  const siguiente = siguientes[siguientes.indexOf(foco) + 1];
   const agregada = !Object.hasOwn(seleccion, id);
   if (!agregada) delete seleccion[id]; else seleccion[id] = "";
   guardar(); if (trabajo) pintarTrabajo(); else { pintarTarjetas(); pintarApoyos(); } pintarSeleccion();
@@ -1140,7 +1156,7 @@ function alternar(id, estudianteId = estado.estudianteActivo, trabajadorId = est
     requestAnimationFrame(() => { aviso.textContent = "Agregada a tu mochila"; });
   }
   if (foco.startsWith("elegir-") || foco.startsWith("quitar-")) {
-    (document.getElementById(foco) || $("#mochila .quitar") || $("#t-seleccion")).focus();
+    (document.getElementById(foco) || (foco.startsWith("quitar-clase-") ? document.getElementById(siguiente) || $("#t-seleccion-dua") : $("#mochila .quitar") || $("#t-seleccion"))).focus();
   }
 }
 
@@ -1186,7 +1202,7 @@ function pintarSeleccion() {
     });
     return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r) : nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: textoModalidad(r.titulo, r, e) }), e && !compatibleModalidad(r, e) ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, nota,
-      el("button", { type: "button", class: "quitar", id: prefijo + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, trabajo ? undefined : e?.id, trabajo ? e.id : undefined), text: "Quitar" }));
+      el("button", { type: "button", class: "quitar", id: prefijo + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, trabajo ? undefined : e?.id, trabajo ? e.id : undefined), "aria-label": "Quitar: " + textoModalidad(r.titulo, r, e) + ", " + (e ? (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) : "del curso"), text: "Quitar" }));
   }
 }
 
@@ -1267,7 +1283,7 @@ async function abrirRespaldo(evento) {
       aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
       return;
     }
-    estado = normal; inclusionDocumento = null; inclusionTrabajo = null; borradorDua = null;
+    estado = normal; avisarInstrumentos(); inclusionDocumento = null; inclusionTrabajo = null; borradorDua = null;
     if (!estado.claseGuardada) editarClase(); else abrirPaso("paso-clase", false);
     if (estado.ambito) { history.replaceState(null, "", estado.ambito === "trabajo" ? "#trabajo" : "#dua"); mostrarPestana(estado.ambito === "trabajo" ? "trabajo" : "dua"); } else { history.replaceState(null, "", "#inicio"); mostrarInicio(); } guardar(); sincronizarTrabajo(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     aviso.textContent = `Respaldo abierto: ${plural(totalElegidas(), "acción", "acciones")}.` +
@@ -1277,13 +1293,20 @@ async function abrirRespaldo(evento) {
 }
 
 let inclusionTrabajo = null;
+let seccionesTrabajo = { barreras: false, voz: false, ajustes: true };
 function prepararDocumentoTrabajo() {
   centroDocumento = null; inclusionDocumento = null; inclusionTrabajo = [];
+  seccionesTrabajo = { barreras: false, voz: false, ajustes: true };
   solicitudDocumento++; origenDocumento = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
   $("#generar-documento").disabled = false;
   $("#t-incluir-documento").textContent = "¿Qué personas incluirás en el documento de trabajo?";
   $("#opciones-documento").replaceChildren(
     el("p", { class: "ayuda", text: "La persona decide qué contar. Revisa con ella los datos, las notas y los ajustes antes de compartir el documento." }),
+    el("fieldset", {}, el("legend", { text: "Secciones que la persona decide compartir" }), ...[["barreras", "Barreras y situaciones"], ["voz", "Lo que dice la persona"], ["ajustes", "Ajustes acordados"]].map(([id, texto]) => {
+      const campo = el("input", { type: "checkbox", name: "seccion-trabajo", value: id }); campo.checked = seccionesTrabajo[id];
+      campo.addEventListener("change", () => { seccionesTrabajo[id] = campo.checked; });
+      return el("label", {}, campo, texto);
+    })),
     ...estado.trabajadores.filter(datosTrabajador).map((e) => {
       const campo = el("input", { type: "checkbox", name: "incluir", value: "trabajo:" + e.id }); campo.checked = false;
       return el("label", {}, campo, tituloTrabajador(e));
@@ -1291,14 +1314,14 @@ function prepararDocumentoTrabajo() {
   $("#error-documento").textContent = ""; $("#mochila").close(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 function documentoTrabajo(ids = inclusionTrabajo || []) {
-  const personas = (estado.trabajadores || []).filter((e) => ids.includes(e.id)), usadas = personas.flatMap(elegidasTrabajo);
+  const personas = (estado.trabajadores || []).filter((e) => ids.includes(e.id)), usadas = seccionesTrabajo.ajustes ? personas.flatMap(elegidasTrabajo) : [];
   return { trabajo: true, titulo: "Plan de ajustes en el trabajo", fecha: new Date().toLocaleDateString("es-CL"), logo: logoDocumento(),
     resumen: [["Fecha", new Date().toLocaleDateString("es-CL")], ["Contenido", personas.map(tituloTrabajador).join("; ") || "Sin personas elegidas"]],
     grupos: personas.map((e) => {
-      const acciones = elegidasTrabajo(e);
-      return { trabajador: e.id, nombre: tituloTrabajador(e), subtitulo: "Tipo de puesto: " + (e.tipoPuesto.trim() || "Sin indicar"), ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], compartir: (e.compartir || "").trim() || "No informado",
-        acuerdo: normalizarAcuerdo(e.acuerdo, ROLES_TRABAJO), estadoAcuerdo: estadoCaso(e, true),
-        cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], acciones.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin ajuste elegido"]),
+      const acciones = seccionesTrabajo.ajustes ? elegidasTrabajo(e) : [];
+      return { trabajador: e.id, nombre: tituloTrabajador(e), subtitulo: "Tipo de puesto: " + (e.tipoPuesto.trim() || "Sin indicar"), ...(seccionesTrabajo.voz ? { ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], compartir: (e.compartir || "").trim() || "No informado" } : {}),
+        acuerdo: seccionesTrabajo.ajustes ? normalizarAcuerdo(e.acuerdo, ROLES_TRABAJO) : null, estadoAcuerdo: estadoCaso(e, true),
+        cif: seccionesTrabajo.barreras ? Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], acciones.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin ajuste elegido"]) : null,
         acciones: acciones.map((r) => ({ id: r.id, titulo: textoModalidad(r.titulo, r, e), como: pasosApoyo(r, e), porque: r.porque, grupo: TIPOS_TRABAJO[r.subtipo], nota: e.seleccion[r.id].trim(), dato: tipoOficial(r) + ". Respaldo: " + RESPALDO[r.respaldo] + "." })) };
     }),
     fuentes: [...new Set(usadas.flatMap((r) => r.fuentes))].map((id) => ({ cita: fuentes[id].cita, url: fuentes[id].url })) };
@@ -1317,10 +1340,11 @@ function prepararDocumento() {
   solicitudDocumento++;
   origenDocumento = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
   $("#generar-documento").disabled = false;
-  inclusionDocumento = { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] };
+  inclusionDocumento = { curso: true, estudiantes: estado.pestana !== "dua" && datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] };
   $("#opciones-documento").replaceChildren(...[["curso", "Acciones para todo el curso"], ...estado.estudiantes.filter(datosEstudiante).map((e) => ["alumno:" + e.id, tituloEstudiante(e)])].map(([id, texto]) => {
     const c = el("input", { type: "checkbox", value: id, name: "incluir" });
-    c.checked = id === "curso" || id === "alumno:" + estado.estudianteActivo;
+    c.checked = id === "curso" || inclusionDocumento.estudiantes.includes(id.slice(7));
+    c.addEventListener("change", () => { $("#error-documento").textContent = [...document.querySelectorAll('input[name="incluir"]:checked')].some(n => n.value.startsWith("alumno:")) ? "Incluirás datos de un estudiante. Revisa con quién compartirás este documento" : ""; });
     return el("label", {}, c, texto);
   }));
   $("#error-documento").textContent = "";
@@ -1425,14 +1449,14 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
         const apoyos = elegidasOrdenadas(e.seleccion);
         return { estudiante: e.id, acuerdo: normalizarAcuerdo(e.acuerdo), estadoAcuerdo: estadoCaso(e), nombre: tituloEstudiante(e), subtitulo: subtituloEstudiante(),
           cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], apoyos.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
-          ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], protocolo: e.protocolo === true, acciones: apoyos.map((r) => accion(r, e.seleccion, e)),
+          ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], paci: e.paci, paec: e.paec, dec: e.dec, acciones: apoyos.map((r) => accion(r, e.seleccion, e)),
         };
       })),
     fuentes: [...new Set(usadas.flatMap((r) => r.fuentes))].map((id) => ({ cita: fuentes[id]?.cita || id, url: fuentes[id]?.url || "" })),
   };
 }
 function datosContexto(g) {
-  return [["¿Qué usa hoy para comunicarse o acceder?", g.modalidad || "No aplica"], ...(g.trabajador ? [["¿Qué decidió compartir la persona y con quién?", g.compartir || "No informado"]] : esSuperior() ? [] : [["¿Existe un PAEC, un PACI o el protocolo DEC?", g.protocolo ? "Sí" : "No informado"]])];
+  return [["¿Qué usa hoy para comunicarse o acceder?", g.modalidad || "No aplica"], ...(g.trabajador ? [["¿Qué decidió compartir la persona y con quién?", g.compartir || "No informado"]] : esSuperior() ? [] : [["Tiene PACI", g.paci ? "Sí" : "No informado"], ["Tiene PAEC", g.paec ? "Sí" : "No informado"], ["Se aplica el protocolo DEC del establecimiento", g.dec ? "Sí" : "No informado"]])];
 }
 function datosAcuerdo(g) {
   const a = g.acuerdo || normalizarAcuerdo(), roles = g.trabajador ? ROLES_TRABAJO : ROLES_ACUERDO;
@@ -1461,11 +1485,11 @@ function armarHoja() {
     ...d.grupos.map((g) => el("section", { class: (g.estudiante || g.trabajador) ? "h-estudiante" : "h-momento" },
       el((g.estudiante || g.trabajador) ? "h2" : "h3", { text: g.nombre }), g.subtitulo ? el("p", { text: g.subtitulo }) : null,
       g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO }),
-        el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif")),
-        tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores")) : null,
+        el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif"))) : null,
+      g.voz !== undefined ? tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores") : null,
       g.reflexion ? el("p", { text: g.reflexion }) : null,
       ...g.acciones.flatMap((a, i) => [(g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null, ficha(a)]),
-      (g.estudiante || g.trabajador) ? el("div", { class: "h-acuerdos" }, el("h3", { text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)" }), ...datosAcuerdo(g).map((text) => el("p", { text })), g.estadoAcuerdo === "Por revisar" ? el("p", { text: "Por revisar: cambiaste el caso después del acuerdo." }) : null) : null)),
+      (g.estudiante || g.trabajador && g.acuerdo) ? el("div", { class: "h-acuerdos" }, el("h3", { text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)" }), ...datosAcuerdo(g).map((text) => el("p", { text })), g.estadoAcuerdo === "Por revisar" ? el("p", { text: "Por revisar: cambiaste el caso después del acuerdo." }) : null) : null)),
     el("section", { class: "h-fuentes-seccion" }, el("h2", { text: "Fuentes" }), el("ol", { class: "h-fuentes" }, d.fuentes.map((f) => el("li", {}, f.cita, el("p", { class: "h-dato", text: f.url })))), el("p", { class: "h-aviso", text: d.trabajo ? AVISO_TRABAJO : AVISO }))].filter(Boolean));
 }
 function definicionPdf() {
@@ -1494,10 +1518,12 @@ function definicionPdf() {
     ...d.grupos.flatMap((g) => [
       ...(g.reflexion ? [{ unbreakable: true, stack: [{ text: g.nombre, style: "h3" }, { text: g.reflexion, margin: [0, 5, 0, 12] }] }] : []),
       ...((g.estudiante || g.trabajador) ? [{ id: "alumno-" + (g.estudiante || g.trabajador), text: g.nombre, style: "h2", headlineLevel: 1, pageBreak: "before", margin: [0, 8, 0, 6] }] : []),
-      ...((g.estudiante || g.trabajador) ? [
-        { text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] },
+      ...((g.estudiante || g.trabajador) ? [{ text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] }] : []),
+      ...(g.cif ? [
         { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
         { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
+      ] : []),
+      ...(g.voz !== undefined ? [
         { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), bold: true }, g.voz], ...datosContexto(g)] }, layout: fino, margin: [0, 0, 0, 12] },
       ] : []),
       ...g.acciones.flatMap((a, i) => !(g.estudiante || g.trabajador) && i === 0 ? [{ unbreakable: true, stack: [
@@ -1506,14 +1532,14 @@ function definicionPdf() {
       ] }] : (g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? [
         { unbreakable: true, stack: [{ text: a.grupo, style: "h3", margin: [0, 8, 0, 5] }, ficha(a)] },
       ] : [ficha(a)]),
-      ...((g.estudiante || g.trabajador) ? [{ unbreakable: true, margin: [0, 10, 0, 0], stack: [{ text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)", style: "h3" }, ...datosAcuerdo(g).map((text) => ({ text, margin: [0, 10, 0, 0] })), ...(g.estadoAcuerdo === "Por revisar" ? [{ text: "Por revisar: cambiaste el caso después del acuerdo.", margin: [0, 8, 0, 0] }] : [])] }] : []),
+      ...((g.estudiante || g.trabajador && g.acuerdo) ? [{ unbreakable: true, margin: [0, 10, 0, 0], stack: [{ text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)", style: "h3" }, ...datosAcuerdo(g).map((text) => ({ text, margin: [0, 10, 0, 0] })), ...(g.estadoAcuerdo === "Por revisar" ? [{ text: "Por revisar: cambiaste el caso después del acuerdo.", margin: [0, 8, 0, 0] }] : [])] }] : []),
     ]),
     { id: "fuentes-documento", text: "Fuentes", style: "h2", pageBreak: "before", headlineLevel: 1 },
     { ol: d.fuentes.map((f) => ({ stack: [{ text: f.cita }, { text: f.url, style: "dato", margin: [0, 2, 0, 8] }] })) },
     { table: { widths: ["*"], body: [[{ text: d.trabajo ? AVISO_TRABAJO : AVISO, style: "dato", margin: [5, 5, 5, 5] }]] }, layout: fino, margin: [0, 14, 0, 0] },
   ];
   return {
-    info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [margen, margen, margen, margen], content: contenido,
+    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [margen, margen, margen, margen], content: contenido,
     pageBreakBefore: (n, siguientes) => Boolean(n.headlineLevel && siguientes.every((n) => n.headlineLevel)),
     header: (actual) => actual === 1 ? null : { margin: [margen, 20, margen, 0], stack: [
       { columns: [{ text: "Prizma · " + d.titulo, width: "*" }, { text: d.fecha, width: 115, alignment: "right" }], fontSize: 8, color: "#555555" },
@@ -1689,6 +1715,15 @@ async function iniciar() {
   new ResizeObserver(([entrada]) => {
     document.documentElement.style.setProperty("--cabecera-alto", `${entrada.target.getBoundingClientRect().height}px`);
   }).observe($(".cabecera"));
+  new ResizeObserver(([entrada]) => {
+    document.documentElement.style.setProperty("--barra-alto", `${entrada.target.getBoundingClientRect().height}px`);
+  }).observe($("#barra-continuar"));
+  document.addEventListener("focusin", evento => {
+    const barra = $("#barra-continuar"), foco = evento.target;
+    if (foco.closest("dialog") || barra.contains(foco) || !barra.getClientRects().length) return;
+    const limite = barra.getBoundingClientRect().top - 16, rect = foco.getBoundingClientRect();
+    if (rect.bottom > limite) window.scrollBy(0, rect.bottom - limite);
+  });
   const tema = $("#tema");
   const nombrarTema = () => {
     const texto = "Cambiar a modo " + (document.documentElement.dataset.tema === "oscuro" ? "claro" : "oscuro");
@@ -1738,6 +1773,12 @@ async function iniciar() {
   $("#inicio-estado").textContent = "";
   $("#elegir-educacion").disabled = false; $("#elegir-trabajo").disabled = false;
   cargar();
+  avisarInstrumentos();
+  $("#proyectar").addEventListener("click", () => {
+    const activo = document.documentElement.classList.toggle("proyectando");
+    $("#proyectar").textContent = activo ? "Salir de proyección" : "Proyectar al curso";
+    $("#proyectar").setAttribute("aria-pressed", String(activo));
+  });
   prepararPestanas(); prepararPasos(); prepararTrabajo();
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   $("#guia-empezar").disabled = false;

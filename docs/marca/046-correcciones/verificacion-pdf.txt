@@ -1,0 +1,3 @@
+PDF descargado: /Lang (es-CL).
+pdftotext: NOTA_AJUSTE presente; VOZ_PRIVADA, AYUDA_PRIVADA y COMPARTIR_PRIVADO ausentes.
+pdfinfo: Tagged: no. La vista previa HTML es la alternativa indicada.

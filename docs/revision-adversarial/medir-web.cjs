@@ -46,7 +46,7 @@ const servidor=http.createServer((q,r)=>{
   resultados.teclado.push(foco);
   if(foco.cubierto&&foco.id==='documento-trabajo')await p.screenshot({path:path.join(__dirname,'foco-cubierto-390.png')});
  }
- await p.click('#documento-trabajo');await p.locator('#opciones-documento input').check();await p.click('#generar-documento');await p.waitForSelector('#vista[open]');
+ await p.click('#documento-trabajo');await p.locator('#opciones-documento input[name="incluir"]').check();await p.click('#generar-documento');await p.waitForSelector('#vista[open]');
  resultados.vistaTrabajo=await p.locator('#hoja').innerText();
  resultados.avisoOscuro=await p.locator('#hoja .aviso-apoyos').evaluate(n=>({texto:n.textContent,color:getComputedStyle(n).color,fondo:getComputedStyle(n).backgroundColor}));
  await p.screenshot({path:path.join(__dirname,'documento-390.png')});
@@ -63,7 +63,8 @@ const servidor=http.createServer((q,r)=>{
  await p.click('#cancelar-documento');
  resultados.falloPersistencia=await p.evaluate(()=>{const anterior=localStorage.getItem('prizma.v1'),set=Storage.prototype.setItem;Storage.prototype.setItem=()=>{throw new DOMException('Cuota sintética','QuotaExceededError');};estado.perfil.meta='MARCADOR-NO-PERSISTIDO';guardar();Storage.prototype.setItem=set;return {estado:estado.perfil.meta,almacenIgual:localStorage.getItem('prizma.v1')===anterior,alertas:[...document.querySelectorAll('[role="alert"],[role="status"]')].filter(n=>n.checkVisibility()).map(n=>n.textContent)};});
  resultados.objetivosSinFamilia=await p.evaluate(()=>{estado.perfil.nivel='basica';const e=estudianteActual();e.seleccion={'obj-eliminacion':''};e.protocolo=false;e.descripcionGuardada=true;e.acuerdo=normalizarAcuerdo({roles:['docente'],fecha:'2026-11-19',revision:'2026-12-19',criterio:'Participa en la actividad acordada',estado:'completo'});return {estado:estadoCaso(e),errores:erroresAcuerdo(e),roles:e.acuerdo.roles,protocolo:e.protocolo,seleccion:e.seleccion};});
- assert.equal(resultados.objetivosSinFamilia.estado,'Acuerdos completos');
+ assert.equal(resultados.objetivosSinFamilia.estado,'Por revisar');
+ assert(resultados.objetivosSinFamilia.errores.some(t=>t.includes('Decreto 83')));
  assert(resultados.mediciones.length>=15);
  fs.writeFileSync(path.join(__dirname,'mediciones-web.json'),JSON.stringify(resultados)+'\n');
  console.log('Mediciones escritas; solicitudes externas: '+resultados.red.length);

@@ -1,0 +1,34 @@
+{
+  "orden": "IDs ordenados lexicográficamente; una RNG, primero DUA y luego fuera de riesgo",
+  "poblacion_dua": 41,
+  "poblacion_fuera": 166,
+  "dua": [
+    "dua-6-5",
+    "dua-3-3",
+    "acc-2-hablado",
+    "dua-4-1",
+    "dua-7-1",
+    "dua-1-1",
+    "dua-6-4",
+    "sup-lengua",
+    "dua-9-4",
+    "dua-6-3",
+    "dua-9-2",
+    "dua-5-2",
+    "dua-5-1",
+    "dua-2-3",
+    "dua-9-3-reflexion-cierre"
+  ],
+  "fuera": [
+    "dec-durante-validar",
+    "tr-mensajes-escritos",
+    "prac-evaluar",
+    "dec-despues-calma",
+    "acc-10-lengua",
+    "tr-no-verbal",
+    "dua-5-4",
+    "pp-c-entrenamiento",
+    "acc-11-ayudas",
+    "tr-herramientas"
+  ]
+}

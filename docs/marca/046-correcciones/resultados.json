@@ -1,0 +1,18 @@
+{
+  "externos": [],
+  "errores": [],
+  "estudiantes": 70,
+  "trabajadores": 48,
+  "contrastes": [
+    {
+      "tema": "claro",
+      "contraste": 16.867485157207796
+    },
+    {
+      "tema": "oscuro",
+      "contraste": 16.867485157207796
+    }
+  ],
+  "idiomaPdf": "es-CL",
+  "combinaciones": 8
+}

@@ -2,8 +2,10 @@
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
+correcciones = '--correcciones' in sys.argv
 carpeta = Path(__file__).resolve().parent
 raiz = carpeta.parents[1]
 def leer(nombre):
@@ -29,10 +31,16 @@ objeciones = re.findall(r'^\| O(\d+) \|', readme, re.M)
 assert list(map(int, objeciones)) == list(range(1, 28))
 for linea in readme.splitlines():
     if re.match(r'^\| O\d+ \|', linea):
-        assert linea.rstrip().endswith('| |'), 'La respuesta de Claude debe quedar vacía'
+        if correcciones:
+            assert linea.rstrip().endswith('|') and not linea.rstrip().endswith('| |'), 'Falta la respuesta de Claude'
+        else:
+            assert linea.rstrip().endswith('| |'), 'La respuesta de Claude debe quedar vacía'
 for archivo in carpeta.glob('*.json'):
     json.loads(archivo.read_text())
 versionados = subprocess.check_output(['git','diff','--name-only','main'],cwd=raiz,text=True).splitlines()
 nuevos = subprocess.check_output(['git','ls-files','--others','--exclude-standard'],cwd=raiz,text=True).splitlines()
-assert all(p.startswith('docs/revision-adversarial/') for p in versionados + nuevos)
-print('Estructura correcta: 15 casos, 40 fichas, 27 objeciones con respuesta vacía; cambios dentro del alcance.')
+if correcciones:
+    assert not any(p.startswith(('data/', 'docs/fuentes/', '.claude/')) for p in versionados + nuevos)
+else:
+    assert all(p.startswith('docs/revision-adversarial/') for p in versionados + nuevos)
+print('Estructura correcta: 15 casos, 40 fichas, 27 objeciones; respuestas y alcance de la tarea ' + ('046.' if correcciones else '042.'))
