@@ -30,7 +30,9 @@ def revisar_cita(f, a, e, contra=None):
     try: n = int(f['linea'])
     except ValueError: return e('linea no es un número')
     if n <= inicio_cuerpo(a): e('la cita está en la cabecera del archivo (título o metadatos), no en su contenido')
-    if contra is not None and not (palabras(cita) - VACIAS) & (palabras(contra) - VACIAS):
+    # En una cita en inglés la comparación de palabras con la ficha en español no sirve: la juzga el adversario.
+    ingles = len(set(cita.split()) & {'the','and','of','to','or','is','are','with','for','that'}) >= 2
+    if contra is not None and not ingles and not (palabras(cita) - VACIAS) & (palabras(contra) - VACIAS):
         e('la cita no comparte ninguna palabra de contenido con lo que debe respaldar')
     if cita not in norm(' '.join(lineas(a)[max(0, n-2):n+1])):
         e('la cita no está en la línea indicada' + (' (sí en otra)' if cita in norm(' '.join(lineas(a))) else ' ni en el archivo'))
