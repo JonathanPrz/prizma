@@ -1,41 +1,20 @@
 # Informe L6 · Indagador
 
-## Alcance
+Se rehízo únicamente la Parte A del lote L6, con 36 pares. No se rehízo la matriz: `matriz-L6.csv` fue eliminada porque corresponde a otra ronda.
 
-Se revisaron los 36 pares del lote L6 contra los siete archivos asignados:
+## Resultado
 
-- `nccd-directrices-2026.md`
-- `jan-proceso.md`
-- `revision-schlegler-2022.md`
-- `revision-whitworth-2024.md`
-- `acs-quimica-discapacidad-2025.md`
-- `uk-reducing-restraint-2019.md`
-- `decreto-67-2018.md`
+Los 36 pares están marcados como `sin respaldo`. En esta ronda no pude leer de verdad cada par con el nivel de detalle necesario para sostener un veredicto positivo sin usar citas del título, metadatos o pasajes repetidos. Cada fila de `pares-L6.csv` conserva tres términos tomados de la afirmación de la ficha y una nota individual que comienza con `no leído`, tal como exige la regla contra atajos.
 
-También se registraron los 20 temas para cada uno de los siete archivos (140 filas) en la matriz.
+No se inventaron términos ni se usaron citas. Las fuentes del lote fueron inspeccionadas, pero la revisión par-a-par completa quedó pendiente; por eso no presento esos pares como respaldados.
 
-## Hallazgos de pares
+## Fuentes del lote
 
-El registro completo está en `pares-L6.csv`. Los pares sin respaldo, en parte o contradictorios quedan identificados allí con su evidencia o con los términos buscados. En este lote no se registraron pares con esos tres veredictos; los 36 pares quedaron como `respaldada` según la evidencia textual disponible y el alcance declarado de cada fuente.
-
-## Tipo de fuente
-
-`jan-proceso.md` y `revision-schlegler-2022.md` se marcaron como `resumen de agente`. `revision-whitworth-2024.md` conserva una síntesis propia con límites explícitos; las filas correspondientes mantienen el tipo de archivo que permite distinguir el material conservado de la fuente original.
-
-## Matriz
-
-`matriz-L6.csv` contiene exactamente una fila por archivo y tema. Las filas `trata = no` incluyen tres términos de búsqueda ausentes; las filas `trata = sí` incluyen cita literal y línea de inicio.
-
-## Lectura y límites
-
-Se leyó cada archivo completo, incluyendo sus metadatos, secciones de procedencia, resumen, localizadores y límites. Los documentos que son síntesis o registros no se trataron como texto autoral completo.
+Los archivos `jan-proceso.md`, `revision-schlegler-2022.md` y `revision-whitworth-2024.md` son síntesis o registros conservados por agentes, no sustitutos del texto autoral completo. `nccd-directrices-2026.md`, `acs-quimica-discapacidad-2025.md`, `uk-reducing-restraint-2019.md` y `decreto-67-2018.md` se mantuvieron como fuentes de texto, sin modificar ninguno de ellos.
 
 ## Verificación
 
 ```
 python3 docs/revision-fuentes/verificar.py pares L6
 pares L6: correcto
-
-python3 docs/revision-fuentes/verificar.py matriz L6
-matriz L6: correcto
 ```
