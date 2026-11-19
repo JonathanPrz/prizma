@@ -22,6 +22,8 @@ Las fuentes están en `docs/fuentes/` de este repositorio. **Antes de afirmar al
 |---|---|
 | Índice y estado de las fuentes | `docs/fuentes/README.md` |
 | DUA 3.0: estructura, 36 consideraciones, uso | `docs/fuentes/dua-3.0.md` |
+| DUA 3.0: qué propone cada consideración y qué tipos de acción caben | `docs/fuentes/dua-3.0.md`, sección 8 |
+| DUA 3.0: qué cambió respecto de la 2.2 y por qué | `docs/fuentes/dua-3.0.md`, sección 7 |
 | Investigación detrás de cada consideración DUA | `docs/fuentes/dua-3.0-referencias.md` |
 | CIF: barreras, facilitadores, actividad y participación | `docs/fuentes/cif.md` |
 | Resumen de toda la normativa | `docs/fuentes/normativa/README.md` |
@@ -60,6 +62,11 @@ Las fuentes están en `docs/fuentes/` de este repositorio. **Antes de afirmar al
   - Primero se define la meta de aprendizaje.
   - El problema está en el diseño, no en el estudiante.
   - Tiene 3 principios, 9 directrices y 36 consideraciones.
+  - La meta es la agencia del estudiante, no formar «aprendices expertos». Los verbos son «diseñar», no «proporcionar».
+  - La 3.0 suma las identidades (cultura, lengua, discapacidad) y los sesgos como barreras: 1.3, 2.3, 2.4, 5.4, 6.5 y 7.4.
+  - La elección (7.1) no es solo individual: también se decide en conjunto. La colaboración y la interdependencia (8.3) son un apoyo, no falta de autonomía.
+  - Un apoyo no rebaja la meta (8.2): se presume la capacidad de cada estudiante.
+  - Para elegir la consideración de una acción, usa la sección 8 de `dua-3.0.md`. Por ejemplo, la previsibilidad (agendas, avisos de cambio, rutinas) es 7.4, no 6.2.
 - **CIF:** la discapacidad surge de la interacción entre la persona y su contexto. El contexto puede ser una barrera o un facilitador.
 - **EEF:** la pregunta clave es qué necesita este estudiante, no qué funciona para su diagnóstico. Hay 5 estrategias con buena evidencia: instrucción explícita, estrategias metacognitivas, andamiaje, agrupamiento flexible y tecnología.
 
@@ -104,7 +111,8 @@ Cuando te pidan revisar o redactar una ficha de `data/recomendaciones.json`, com
 - [ ] El `respaldo` corresponde a lo que la fuente realmente dice. No sube de nivel sin una razón.
 - [ ] El `titulo` empieza con un verbo y es una acción observable.
 - [ ] El `porque` cabe en 1 frase y no exagera, por ejemplo con "la neurociencia demuestra".
-- [ ] `consideracion` es un código DUA 3.0 válido, entre 1.1 y 9.4.
+- [ ] `consideracion` es un código DUA 3.0 válido, entre 1.1 y 9.4, y la acción cabe en esa consideración según la sección 8 de `dua-3.0.md`.
+- [ ] Si el `porque` afirma un efecto, como «da seguridad» o «mejora la comprensión», una fuente lo dice. Las consideraciones de CAST proponen acciones, pero casi nunca afirman efectos.
 - [ ] `subtipo` usa los tipos oficiales del Decreto 83, si la ficha es de acceso o de objetivos.
 - [ ] `niveles` respeta las reglas por nivel. Por ejemplo, en parvularia no hay adecuaciones en los objetivos por defecto.
 - [ ] No contiene neuromitos, medidas prohibidas ni contención física.
