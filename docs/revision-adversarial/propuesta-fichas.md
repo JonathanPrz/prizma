@@ -18,3 +18,11 @@ Codex tiene razón: los casos semilla (`docs/casos/`) exigen apoyos fijos cuando
 
 ## O11, el resto de los enlaces
 Hay más fichas de acceso enlazadas con una acción DUA. Se propone que un subagente revise todos los enlaces (`dua`) y marque los que no son equivalentes, con control a ciegas, como en la tarea 043.
+
+## Resultado de la revisión de enlaces (O11)
+Un subagente revisó los 46 apoyos enlazados con una acción DUA (`enlaces-dua.csv`): 27 equivalentes, 18 cercanos y 3 no equivalentes. Otro modelo controló 10 pares a ciegas:
+- **Coincide en los 3 no equivalentes:** `acc-4-normas` con `dua-8-4-pertenencia`, y `acc-14-extension` y `sup-profundizar` con `dua-8-2`. En los dos últimos, la acción del curso da apoyo a quien le cuesta, mientras que el apoyo individual da más desafío a quien ya domina.
+- **Agrega un cuarto:** `acc-11-curso` (actitudes del curso ante los apoyos) con `dua-8-4-pertenencia`.
+- **En el resto, solo hay diferencias entre categorías vecinas,** equivalente o cercana.
+
+Esto corrige la propuesta anterior sobre `acc-4-normas`: su enlace no es equivalente. Se propone quitar los 4 enlaces.

@@ -930,7 +930,8 @@
     "como": [
       "Ofrece elegir entre texto, presentación oral, dibujo, video o maqueta.",
       "Usa la misma pauta para evaluar todos los formatos.",
-      "Deja claro qué se evalúa."
+      "Deja claro qué se evalúa.",
+      "Si la meta es un formato, por ejemplo escribir un texto, ese formato se mantiene."
     ],
     "porque": "Así se evalúa el aprendizaje y no la habilidad para un formato en particular.",
     "areas": [
@@ -1901,6 +1902,7 @@
     "subtipo": "tiempo",
     "titulo": "Ajusta plazos y ofrece recuperar evaluaciones por ausencias de salud",
     "como": [
+      "Revisa qué dice el reglamento de evaluación de tu establecimiento sobre ausencias prolongadas.",
       "Acuerda nuevas fechas con el estudiante y su familia.",
       "Entrega el material de las clases perdidas.",
       "Prioriza lo esencial para ponerse al día."
@@ -1920,7 +1922,8 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "ley-20422"
+      "ley-20422",
+      "decreto-67"
     ],
     "destacada": false,
     "revision": null
@@ -2058,7 +2061,7 @@
     "titulo": "Ofrece tiempo y recursos en el colegio cuando falta apoyo en casa",
     "como": [
       "Deja tiempo en clase para avanzar las tareas.",
-      "Presta materiales o acceso a computador.",
+      "Presta materiales o acceso a computador, según lo que tenga el establecimiento.",
       "Acuerda plazos realistas con el estudiante."
     ],
     "porque": "Las condiciones del hogar no deberían decidir quién puede aprender.",
@@ -2660,8 +2663,7 @@
     ],
     "destacada": false,
     "revision": null,
-    "subtipo": "tiempo",
-    "dua": "6.2"
+    "subtipo": "tiempo"
   },
   {
     "id": "sup-plazos",
@@ -3417,7 +3419,8 @@
       2,
       12,
       8,
-      10
+      10,
+      9
     ],
     "niveles": [
       "basica",
@@ -4415,10 +4418,10 @@
     "titulo": "Ajusta la rutina a los momentos del día en que tiene más energía",
     "como": [
       "Observa en qué momentos del día está más activo y en cuáles se cansa.",
-      "Ofrece en sus mejores momentos las experiencias que le piden más esfuerzo.",
+      "Ofrece en sus mejores momentos las actividades que le piden más esfuerzo.",
       "Planifica un momento de descanso después."
     ],
-    "porque": "El Decreto 83 permite modificar la forma en que se estructura el horario para que cada niño o niña pueda participar.",
+    "porque": "El Decreto 83 permite modificar la forma en que se estructura el horario para que cada estudiante pueda participar.",
     "areas": [
       "cognicion",
       "emocional",
@@ -4430,7 +4433,8 @@
       5
     ],
     "niveles": [
-      "parvularia"
+      "parvularia",
+      "basica"
     ],
     "contextos": [],
     "respaldo": "orientacion-oficial",
@@ -6383,7 +6387,8 @@
     "titulo": "Envía las instrucciones y avisos por un canal escrito",
     "como": [
       "Confirma por escrito las instrucciones importantes.",
-      "Usa chat o correo para avisos urgentes.",
+      "Usa chat o mensajes para los avisos del día a día.",
+      "Para emergencias, acuerda con prevención de riesgos una alarma que pueda ver o sentir; un correo no basta.",
       "Habla de frente cuando converses en persona."
     ],
     "porque": "El canal escrito evita perder información.",
