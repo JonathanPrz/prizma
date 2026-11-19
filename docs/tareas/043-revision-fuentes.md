@@ -24,6 +24,22 @@ Trabajan dos agentes por lote, en sesiones distintas:
 
 Todos los CSV van en UTF-8 con BOM y separados por `;`.
 
+## Reglas contra atajos (agregadas tras la primera ronda)
+La primera ronda pasó el verificador con atajos, y Claude la rechazó:
+- en un lote, la misma cita se usó para 79 de 81 pares;
+- hubo citas tomadas del título o de los metadatos;
+- en «sin respaldo», hubo términos inventados como `zzl7P381a`;
+- las notas eran genéricas y estaban copiadas en todos los pares.
+
+Ahora el verificador rechaza todo eso. Además:
+- cada cita debe compartir palabras de contenido con lo que respalda;
+- los términos buscados deben salir de la afirmación de la ficha o de la descripción del tema;
+- una misma cita o nota no puede repetirse en más de 2 pares.
+
+**Si no puedes leer un par de verdad, márcalo «sin respaldo» con nota «no leído». No inventes.** Un «no leído» honesto vale más que un «respaldada» falso.
+
+**Orden:** primero la parte A (pares) en todos los lotes. La parte B (matriz) va en una segunda ronda.
+
 ## Rol 1 · Indagador (una sesión por lote)
 Rama `codex/043-<lote>-indaga`, por ejemplo `codex/043-L1-indaga`. Pull request con destino `main`.
 
