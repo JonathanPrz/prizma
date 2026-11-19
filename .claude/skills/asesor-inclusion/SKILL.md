@@ -24,6 +24,7 @@ Las fuentes están en `docs/fuentes/` de este repositorio. **Antes de afirmar al
 | DUA 3.0: estructura, 36 consideraciones, uso | `docs/fuentes/dua-3.0.md` |
 | DUA 3.0: qué propone cada consideración y qué tipos de acción caben | `docs/fuentes/dua-3.0.md`, sección 8 |
 | DUA 3.0: qué cambió respecto de la 2.2 y por qué | `docs/fuentes/dua-3.0.md`, sección 7 |
+| Estudios abiertos sobre el DUA y el andamiaje (8 revisiones y metanálisis, con DOI verificado) | `docs/fuentes/codex/dua/README.md`. Sus niveles de evidencia son generosos: la mayoría es indirecta. No los uses para subir el respaldo de una ficha sin revisar el estudio. |
 | Investigación detrás de cada consideración DUA | `docs/fuentes/dua-3.0-referencias.md` |
 | CIF: barreras, facilitadores, actividad y participación | `docs/fuentes/cif.md` |
 | Resumen de toda la normativa | `docs/fuentes/normativa/README.md` |

@@ -1,6 +1,6 @@
 # Tarea 045 · Buscar documentos y estudios que expliquen las consideraciones DUA 3.0
 
-Estado: **pendiente** · Asignada a: Codex (modelo fuerte) · Rama: `codex/045-investigacion-dua` · Pull request con destino `main`
+Estado: **integrada como entrega parcial** (PR #55: 8 fuentes, DOI verificados por Claude en Crossref) · Asignada a: Codex (modelo fuerte) · Rama: `codex/045-investigacion-dua` · Pull request con destino `main`
 
 ## Para qué
 Unas 56 fichas citan las Pautas DUA 3.0 de CAST, pero en el repositorio solo están los títulos de las consideraciones y un resumen de sus cambios. Se necesitan fuentes **abiertas** que expliquen qué propone cada consideración, y estudios sobre si el DUA funciona, para verificar las fichas DUA sin copiar a CAST.
