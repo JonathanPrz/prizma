@@ -8,7 +8,7 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/039-co
  try{
   for(const ancho of [1280,390])for(const tema of ['light','dark']){
    const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:tema,reducedMotion:'reduce'}),errores=[];p.on('pageerror',e=>errores.push(e.message));
-   await p.goto('http://127.0.0.1:'+servidor.address().port);await p.waitForFunction(()=>catalogo.length===240);await p.click('#elegir-educacion');await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
+   await p.goto('http://127.0.0.1:'+servidor.address().port);await p.waitForFunction(()=>catalogo.length>0);await p.click('#elegir-educacion');await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
    async function sinDesborde(){assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Sin desplazamiento horizontal');}
    async function foto(nombre){await sinDesborde();await p.screenshot({path:path.join(salida,`${nombre}-${ancho}-${tema}.png`)});}
    async function area(prefijo,modelo){
@@ -22,7 +22,7 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/039-co
     assert.equal(await p.evaluate(modelo=>(modelo==='trabajo'?trabajadorActual():estudianteActual()).dimensiones[1],modelo),undefined);
     await p.check(`input[name="${name}1"][value="3"]`);
    }
-   await area('','estudiante');assert.equal(await p.locator('#t-para-empezar').textContent(),'Para empezar');assert.equal(await p.locator('#t-para-empezar + p').textContent(),'Los apoyos que mejor responden a las situaciones que marcaste.');await p.locator('#area-0').evaluate(n=>n.scrollIntoView({block:'center'}));await foto('estudiante');await p.reload();await p.waitForFunction(()=>catalogo.length===240);assert.equal(await p.locator('#area-0').getAttribute('aria-expanded'),'true');assert.match(await p.locator('#area-0').innerText(),/2 marcadas/);
+   await area('','estudiante');assert.equal(await p.locator('#t-para-empezar').textContent(),'Para empezar');assert.equal(await p.locator('#t-para-empezar + p').textContent(),'Los apoyos que mejor responden a las situaciones que marcaste.');await p.locator('#area-0').evaluate(n=>n.scrollIntoView({block:'center'}));await foto('estudiante');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.locator('#area-0').getAttribute('aria-expanded'),'true');assert.match(await p.locator('#area-0').innerText(),/2 marcadas/);
    await p.click('#tab-dua');await p.check('#practica');assert.equal(await p.evaluate(()=>estado.perfil.practica),false);assert.equal(await p.evaluate(()=>borradorDua.perfil.practica),true);await p.click('#guardar-clase');assert.equal(await p.evaluate(()=>estado.perfil.practica),true);
    await p.click('#paso-clase-editar');await p.click('#limpiar-clase');assert(!await p.locator('#practica').isChecked());assert.equal(await p.evaluate(()=>estado.perfil.practica),true);await p.click('#guardar-clase');assert.equal(await p.evaluate(()=>estado.perfil.practica),false);
    await p.evaluate(()=>{estado.estudiantes.push({id:'otro',...normalizarEstudiante({iniciales:'BB',dimensiones:{1:2,2:2}}),seleccion:{}});pintarRepeticiones();});

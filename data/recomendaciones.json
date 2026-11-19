@@ -97,12 +97,12 @@
       "haciendo",
       "practica"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -116,7 +116,7 @@
       "Ofrece varias formas de responder: decirlo, escribirlo o marcar una opción.",
       "Usa las respuestas para ajustar la próxima clase."
     ],
-    "porque": "Pensar sobre la propia forma de aprender (metacognición) mejora el aprendizaje.",
+    "porque": "Pensar sobre cómo se aprende ayuda a elegir qué hacer la próxima vez.",
     "areas": [
       "cognicion"
     ],
@@ -128,12 +128,12 @@
       "hablando",
       "observacion"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -359,12 +359,12 @@
       "conversar",
       "practica"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -779,12 +779,12 @@
       "experimentar",
       "practica"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -911,13 +911,13 @@
       "escuchar-leer",
       "escribiendo"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3",
       "mineduc-autismo-2025"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -1236,13 +1236,13 @@
       "crear",
       "haciendo"
     ],
-    "respaldo": "investigacion-solida",
+    "respaldo": "consenso-expertos",
     "fuentes": [
       "eef-send-2020",
       "cast-dua-3",
       "mineduc-parvularia-2025"
     ],
-    "destacada": true,
+    "destacada": false,
     "revision": null
   },
   {
@@ -1406,7 +1406,6 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
       "mineduc-autismo-2025"
     ],
     "destacada": false,
@@ -1500,7 +1499,6 @@
     "respaldo": "orientacion-oficial",
     "fuentes": [
       "decreto-83",
-      "ccsso-2016",
       "ofqual-2025"
     ],
     "destacada": false,
@@ -1857,8 +1855,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "ccsso-2016"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null,
@@ -1920,7 +1917,6 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
       "ley-20422"
     ],
     "destacada": false,
@@ -2077,8 +2073,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "decreto-67",
-      "cast-dua-3"
+      "decreto-67"
     ],
     "destacada": false,
     "revision": null
@@ -2105,8 +2100,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-83",
-      "decreto-67"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -2133,8 +2127,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-83",
-      "decreto-67"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -2161,8 +2154,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-83",
-      "decreto-67"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -2189,8 +2181,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-83",
-      "decreto-67"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -2217,8 +2208,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-83",
-      "decreto-67"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -2523,7 +2513,7 @@
       "Si no lo es, acuérdalo antes de la evaluación. El Mineduc sugiere como referencia un 50% más.",
       "Aplícalo también a evaluaciones en línea y con plazo."
     ],
-    "porque": "La evidencia muestra beneficios, sobre todo cuando el tiempo estándar no alcanza para trabajar al propio ritmo.",
+    "porque": "Cuando la rapidez no es lo que se evalúa, el tiempo adicional permite mostrar lo aprendido. No hay una cifra que sirva a todos.",
     "areas": [],
     "dimensiones": [
       1,
@@ -2534,11 +2524,10 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "investigacion-moderada",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
       "ofqual-2025",
-      "mineduc-es-20422",
-      "ley-21091"
+      "mineduc-es-20422"
     ],
     "destacada": false,
     "revision": null,
@@ -2566,8 +2555,7 @@
     "respaldo": "investigacion-moderada",
     "fuentes": [
       "wood-2018",
-      "mineduc-es-20422",
-      "ley-20422"
+      "mineduc-es-20422"
     ],
     "destacada": false,
     "revision": null,
@@ -2691,10 +2679,8 @@
       "superior"
     ],
     "contextos": [],
-    "respaldo": "norma-legal",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
-      "ley-21091",
-      "ley-20422",
       "cdpd",
       "mineduc-es-20422"
     ],
@@ -2918,35 +2904,6 @@
       "cdpd",
       "ley-21091",
       "ley-20422"
-    ],
-    "contextos": [],
-    "destacada": false,
-    "revision": null
-  },
-  {
-    "id": "sup-recursos",
-    "tipo": "acceso",
-    "subtipo": "entorno",
-    "titulo": "Asegura que las tareas se puedan hacer con los recursos de la institución",
-    "como": [
-      "Indica qué computadores, biblioteca o préstamos de equipos pueden usar.",
-      "Prefiere programas gratuitos o disponibles en el campus.",
-      "Considera el acceso a internet al fijar plazos y formatos."
-    ],
-    "porque": "Si la tarea exige recursos que no todos tienen, mide el acceso y no el aprendizaje.",
-    "areas": [
-      "contexto"
-    ],
-    "dimensiones": [
-      11
-    ],
-    "niveles": [
-      "superior"
-    ],
-    "respaldo": "consenso-expertos",
-    "fuentes": [
-      "ley-21091",
-      "cast-dua-3"
     ],
     "contextos": [],
     "destacada": false,
@@ -3574,8 +3531,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "ccsso-2016"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null,
@@ -3899,8 +3855,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "ccsso-2016"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null
@@ -4024,8 +3979,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "mineduc-extranjeros-2017"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null,
@@ -4662,8 +4616,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "cast-dua-3"
+      "decreto-83"
     ],
     "destacada": false,
     "revision": null,
@@ -4816,8 +4769,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "ley-21091",
-      "cast-dua-3"
+      "ley-21091"
     ],
     "destacada": false,
     "revision": null,
@@ -4931,8 +4883,7 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "decreto-2516",
-      "ley-20422"
+      "decreto-2516"
     ],
     "destacada": false,
     "revision": null
@@ -7033,10 +6984,9 @@
       "trabajo"
     ],
     "contextos": [],
-    "respaldo": "norma-legal",
+    "respaldo": "consenso-expertos",
     "fuentes": [
-      "codigo-trabajo",
-      "dt-693-26"
+      "codigo-trabajo"
     ],
     "destacada": false,
     "revision": null
@@ -7244,16 +7194,15 @@
       "Nombra a quien implementa el ajuste.",
       "Fija la fecha de revisión."
     ],
-    "porque": "El empleador mantiene la responsabilidad; el gestor de inclusión facilita, no reemplaza.",
+    "porque": "Saber quién decide, quién lo hace y cuándo se revisa evita que la solicitud quede sin respuesta.",
     "areas": [],
     "dimensiones": [],
     "niveles": [
       "trabajo"
     ],
     "contextos": [],
-    "respaldo": "norma-legal",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
-      "codigo-trabajo",
       "oit-2016"
     ],
     "destacada": false,
@@ -7318,16 +7267,15 @@
       "Propón otras alternativas que resuelvan la barrera.",
       "Informa que puede consultar a la Dirección del Trabajo."
     ],
-    "porque": "La persona puede reclamar ante la Dirección del Trabajo o pedir tutela laboral (Código del Trabajo, arts. 485 y 486).",
+    "porque": "Si cree que hubo discriminación, la persona puede denunciar ante la Inspección del Trabajo o el juzgado.",
     "areas": [],
     "dimensiones": [],
     "niveles": [
       "trabajo"
     ],
     "contextos": [],
-    "respaldo": "norma-legal",
+    "respaldo": "orientacion-oficial",
     "fuentes": [
-      "codigo-trabajo",
       "mintrab-tutela"
     ],
     "destacada": false,

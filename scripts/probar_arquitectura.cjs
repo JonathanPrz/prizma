@@ -54,7 +54,7 @@ async function navegador() {
     for (const width of [1280,390]) for (const colorScheme of ['light','dark']) {
       const p = await browser.newPage({viewport:{width,height:900},colorScheme,reducedMotion:'reduce'}), errores=[];
       p.on('pageerror', e=>errores.push(e.message));
-      await p.goto(url); await p.waitForFunction(()=>catalogo.length===240);
+      await p.goto(url); await p.waitForFunction(()=>catalogo.length>0);
       assert(await p.locator('#inicio').isVisible()); assert(!await p.locator('#abrir-mochila').isVisible());
       await p.locator('#elegir-educacion').focus(); await p.keyboard.press('Enter');
       assert.equal(await p.evaluate(()=>document.activeElement.id),'tab-dua');
@@ -85,18 +85,18 @@ async function navegador() {
       await p.keyboard.press('Escape');assert.equal(await p.evaluate(()=>document.activeElement.id),'trabajo-iniciales');
       await p.evaluate(()=>{trabajadorActual().seleccion={'tr-subtitulos':'Nota laboral'};pintarSeleccion();});
       await p.click('#abrir-mochila');const mochila=await p.locator('#mochila').innerText();assert(!mochila.includes('JP'));assert(mochila.includes('AB'));assert(mochila.includes('Educación y Trabajo en un solo archivo'));
-      await p.click('#cerrar-mochila');await p.reload();await p.waitForFunction(()=>catalogo.length===240);assert.equal(await p.evaluate(()=>estado.ambito),'trabajo');
+      await p.click('#cerrar-mochila');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.evaluate(()=>estado.ambito),'trabajo');
       const texto=await p.locator('body').innerText();for(const termino of prohibidos)assert(!termino.test(texto));
       assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
       await p.screenshot({path:path.join(capturas,`trabajo-${width}-${colorScheme}.png`)});
-      await p.click('#abrir-mochila');p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length===240&&estado.trabajadores.length===1&&!trabajadorActual().iniciales);
+      await p.click('#abrir-mochila');p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length>0&&estado.trabajadores.length===1&&!trabajadorActual().iniciales);
       assert.equal(await p.evaluate(()=>estudianteActual().iniciales),'JP');
       await p.locator('#contexto .cambiar-ambito').click();await p.click('#elegir-educacion');await p.click('#tab-apoyos');
       await p.click('#abrir-mochila');assert((await p.locator('#mochila').innerText()).includes('JP'));assert(!await p.locator('#seleccion-trabajo').isVisible());
-      p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length===240&&!estudianteActual().iniciales);
+      p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length>0&&!estudianteActual().iniciales);
       assert.deepEqual(errores,[]);await p.close();
     }
-    const p=await browser.newPage();await p.addInitScript(()=>{Storage.prototype.getItem=Storage.prototype.setItem=()=>{throw Error('bloqueado');};});await p.goto(url+'/#trabajo');await p.waitForFunction(()=>catalogo.length===240);assert(await p.locator('#panel-trabajo').isVisible());await p.close();
+    const p=await browser.newPage();await p.addInitScript(()=>{Storage.prototype.getItem=Storage.prototype.setItem=()=>{throw Error('bloqueado');};});await p.goto(url+'/#trabajo');await p.waitForFunction(()=>catalogo.length>0);assert(await p.locator('#panel-trabajo').isVisible());await p.close();
     console.log('Correcto: ambos temas/ancho, teclado/foco, guías, confirmación de nivel, borradores, mochila/privacidad/borrado por ámbito, recarga, almacenamiento bloqueado y sin desborde.');
   } finally { await browser.close(); await new Promise(ok=>servidor.close(ok)); }
 }
