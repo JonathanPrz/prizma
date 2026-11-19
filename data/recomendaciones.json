@@ -3234,13 +3234,15 @@
     "areas": [
       "cognicion",
       "comunicacion",
-      "emocional"
+      "emocional",
+      "sensorial"
     ],
     "dimensiones": [
       1,
       2,
       3,
-      5
+      5,
+      13
     ],
     "niveles": [
       "basica",
