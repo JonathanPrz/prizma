@@ -1,6 +1,6 @@
 # Tarea 044 · Completar DUA 3.0 con palabras propias y verificar las fichas DUA
 
-Estado: **en curso**. El dueño está reuniendo el texto de las 36 consideraciones desde https://udlguidelines.cast.org/ (1 de 36: la 7.1). Ya están hechas la sección 7 de `dua-3.0.md` y la revisión del enfoque 3.0 (PR #54). · Partes: dueño, Claude y Codex (solo la parte C) · Rama: `claude/044-dua-3`
+Estado: **hecha**, salvo la parte C (opcional) y el permiso de CAST (A.1). El dueño entregó el texto de las 36 consideraciones; las secciones 7 y 8 de `dua-3.0.md` están escritas con palabras propias; las 56 fichas DUA se verificaron con control a ciegas (`dua-respaldo-A.csv`, `dua-respaldo-B.csv`) y se corrigieron en los PR #54 y #56.
 
 ## Para qué
 Unas 60 fichas citan `cast-dua-3`, cuyo archivo es `docs/fuentes/dua-3.0.md`. Ese archivo solo trae los **títulos** de las 36 consideraciones, no su contenido. Por eso la revisión de la tarea 043 no pudo comprobar si cada ficha DUA dice lo que propone su consideración.
