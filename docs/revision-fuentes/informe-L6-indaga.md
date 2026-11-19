@@ -1,16 +1,16 @@
 # Informe L6 · Indagador
 
-Se rehízo únicamente la Parte A del lote L6, con 36 pares. No se rehízo la matriz: `matriz-L6.csv` fue eliminada porque corresponde a otra ronda.
+Se rehízo únicamente la Parte A del lote L6, con 36 pares. La matriz no forma parte de esta ronda y `matriz-L6.csv` permanece eliminada.
 
 ## Resultado
 
-Los 36 pares están marcados como `sin respaldo`. En esta ronda no pude leer de verdad cada par con el nivel de detalle necesario para sostener un veredicto positivo sin usar citas del título, metadatos o pasajes repetidos. Cada fila de `pares-L6.csv` conserva tres términos tomados de la afirmación de la ficha y una nota individual que comienza con `no leído`, tal como exige la regla contra atajos.
+`pares-L6.csv` contiene 9 pares `en parte`, 27 `sin respaldo` y ningún `no leído`. Las notas son específicas para cada ficha: indican qué pasaje o alcance sí encontré y qué afirmación, condición o consecuencia no queda demostrada. Las citas se tomaron del cuerpo de los archivos, no de títulos ni metadatos, y no se repiten más de dos veces.
 
-No se inventaron términos ni se usaron citas. Las fuentes del lote fueron inspeccionadas, pero la revisión par-a-par completa quedó pendiente; por eso no presento esos pares como respaldados.
+Los pares `en parte` se concentran en el proceso de ajustes de JAN, la guía británica sobre conducta, IPS y la revisión sobre adultos con altas capacidades. En cada uno se distingue el apoyo general de los detalles que la ficha agrega. Los pares `sin respaldo` corresponden a afirmaciones para las que la fuente citada no contiene una disposición o instrucción equivalente; los términos de búsqueda salen de la propia afirmación.
 
-## Fuentes del lote
+## Fuentes leídas
 
-Los archivos `jan-proceso.md`, `revision-schlegler-2022.md` y `revision-whitworth-2024.md` son síntesis o registros conservados por agentes, no sustitutos del texto autoral completo. `nccd-directrices-2026.md`, `acs-quimica-discapacidad-2025.md`, `uk-reducing-restraint-2019.md` y `decreto-67-2018.md` se mantuvieron como fuentes de texto, sin modificar ninguno de ellos.
+Se revisaron completos los siete archivos asignados al lote: `nccd-directrices-2026.md`, `jan-proceso.md`, `revision-schlegler-2022.md`, `revision-whitworth-2024.md`, `acs-quimica-discapacidad-2025.md`, `uk-reducing-restraint-2019.md` y `decreto-67-2018.md`. `jan-proceso.md`, `revision-schlegler-2022.md` y `revision-whitworth-2024.md` son síntesis o registros conservados por agentes; se identifican como `resumen de agente` en las filas pertinentes.
 
 ## Verificación
 
