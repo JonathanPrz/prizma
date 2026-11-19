@@ -52,8 +52,11 @@ DESC = {t['tema']: ' '.join(v for k, v in t.items() if k != 'tema') for t in lee
 
 def pares(lote):
     err = []; e0 = err.append
-    filas = leer(f'pares-{lote}.csv')
-    esperados = {k for k, p in PARES.items() if p['lote'] == lote}
+    # Los grupos R (pares de riesgo, revisión de Claude) se leen de riesgo.csv; los lotes L, de pares.csv.
+    if lote.startswith('R'):
+        filas = leer(f'riesgo-{lote}.csv'); esperados = {f['par'] for f in leer('riesgo.csv') if f['grupo'] == lote}
+    else:
+        filas = leer(f'pares-{lote}.csv'); esperados = {k for k, p in PARES.items() if p['lote'] == lote}
     cuenta = Counter(f['par'] for f in filas)
     for k in esperados - set(cuenta): e0(f'falta el par {k}')
     for k, n in cuenta.items():
