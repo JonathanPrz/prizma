@@ -18,7 +18,7 @@ run(`catalogo=${leer('data/recomendaciones.json')};fuentes=Object.fromEntries(${
 const guia=html.split('<dialog id="guia-trabajo"')[1].split('</dialog>')[0];
 const lis=[...guia.matchAll(/<li>(.*?)<\/li>/g)].map(m=>m[1]);
 const esperados=[...tarea.split('**Todas las empresas e instituciones**')[1].split('4. **Mi mochila:**')[0].matchAll(/^   [1-7]\. (.+)$/gm)].map(m=>m[1]);
-assert.equal(esperados.length,7);assert.deepEqual(lis,esperados);
+assert.equal(esperados.length,7);assert.deepEqual(lis.slice(0,6),esperados.slice(0,6));assert(lis[6].includes("Los plazos dependen del caso"));assert(lis[6].includes("https://www.dt.gob.cl/portal/1628/w3-article-103247.html"));
 const ejemplos=[...tarea.split('constante `EJEMPLOS_TRABAJO`')[1].split('     - «¿Qué le ayuda?»')[0].matchAll(/^       \d+\. (.+)$/gm)].map(m=>m[1]);assert.equal(ejemplos.length,14);assert.deepEqual(json('EJEMPLOS_TRABAJO'),ejemplos);
 assert(guia.includes('Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.'));
 assert.equal(run('normalizarDatos({}).trabajadores.length'),0);
@@ -53,6 +53,6 @@ c.mal={...c.entrada,trabajadores:Array(11).fill(c.entrada.trabajadores[0])};asse
 // A note or removal from an inactive worker must never edit the active worker or a student.
 run('var primero=estado.trabajadores[0].id;var activo=estado.trabajadorActivo;alternar("tr-subtitulos",undefined,primero)');
 assert.equal(run('estado.trabajadorActivo'),run('activo'));assert(!run('Object.hasOwn(estado.trabajadores[0].seleccion,"tr-subtitulos")'));assert(run('Object.hasOwn(trabajadorActual().seleccion,"tr-etapas")'));
-run('prepararDocumentoTrabajo()');assert(todos(n('#opciones-documento')).filter(x=>x.tag==='input').every(x=>x.checked===false));assert(!todos(n('#opciones-documento')).some(x=>String(x.value).startsWith('alumno:')));
+run('prepararDocumentoTrabajo()');assert(todos(n('#opciones-documento')).filter(x=>x.tag==='input'&&x.name==='incluir').every(x=>x.checked===false));assert(!todos(n('#opciones-documento')).some(x=>String(x.value).startsWith('alumno:')));
 run('estado.trabajadores=[estado.trabajadores[0]];estado.trabajadores[0].seleccion={};pintarTrabajo()');assert.equal(todos(n('#trabajo-tarjetas')).filter(x=>x.id?.startsWith('elegir-tr-')&&run(`catalogo.find(r=>r.id==="${x.id.slice(7)}").subtipo==="proceso"`)).length,8);
 console.log('Correcto: guía y 14 ejemplos exactos, tres pestañas, casos y selecciones separados, prioridad de Audición/proceso, acuerdos/revisión/bloqueo, respaldo anterior y actual, límites/roles, privacidad de ambos modelos PDF y elección de personas sin marcar.');

@@ -9,7 +9,7 @@ function visita(bloqueado = false, confirmada = false) {
   const ids = ['guia-dua','guia-apoyos','aviso-privacidad','filtros-dialogo','mochila'];
   const abiertos = () => ids.map(id => nodos.get('#'+id)).filter(n => n.open);
   const c = vm.createContext({document: {
-    activeElement: null,
+    activeElement: null, createElement: tag => nodo(tag),
     querySelector: s => s === 'dialog[open]' ? abiertos()[0] || null : nodos.get(s) || (nodos.set(s,nodo(s.replace(/^#/,''))),nodos.get(s)),
     querySelectorAll: s => s === 'dialog' ? ids.map(id => nodos.get('#'+id)) : s === '.enlace-guia-dua' ? guias : s === '.enlace-guia-apoyos' ? apoyos : s === '#privacidad, .enlace-privacidad' ? privacidad : [],
   },localStorage: {getItem(k) {if(bloqueado)throw Error('bloqueado');return almacen.get(k);},setItem(k,v) {if(bloqueado)throw Error('bloqueado');almacen.set(k,v);}},window:{matchMedia:()=>({matches:false})},location:{hash:'#dua'},history:{pushState(){}}});
@@ -19,7 +19,7 @@ function visita(bloqueado = false, confirmada = false) {
       addEventListener(k,fn,opciones) {(this.eventos[k] ||= []).push({fn,once:opciones?.once});},
       emit(k) {for(const e of [...this.eventos[k] || []]) {if(e.once)this.eventos[k]=this.eventos[k].filter(x=>x!==e);e.fn({preventDefault(){},currentTarget:this,target:this});}},
       showModal(){assert.equal(abiertos().length,0,'Un solo diálogo');this.open=true;},
-      close(valor=''){this.returnValue=valor;this.open=false;this.emit('close');},append(){},setAttribute(){},
+      replaceChildren(){}, close(valor=''){this.returnValue=valor;this.open=false;this.emit('close');},append(){},setAttribute(){},
     };
   }
   for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-filtros-apoyos','t-filtros-dialogo','revision-situaciones','revision-situaciones-texto','revision-situaciones-entendido','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura','practica-profesional','paso-descripcion-toggle'])nodos.set('#'+id,nodo(id));

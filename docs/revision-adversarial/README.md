@@ -81,3 +81,55 @@ Chromium puede requerir permiso para ejecutarse y abrir un puerto local; todas l
 Se ejecutaron estas mediciones y el validador del catálogo: **239 recomendaciones, 36/36 consideraciones**. No se ejecutó la batería histórica completa: contiene pruebas que escriben fuera de esta carpeta y pruebas calibradas con los casos de Claude; no se la presenta como validación independiente. Esta entrega añade documentación e instrumentación, sin cambios de producción.
 
 Autorrevisión exigida por `AGENTS.md`: [ponytail-review](revision-ponytail.md). El dueño decide la integración tras las respuestas y eventuales desacuerdos.
+
+## Verificación de la tarea 046
+
+Segunda ronda sobre la implementación de `codex/046-correcciones`, 19-11-2026. Los resultados de la tarea 042, arriba, son históricos. Esta ronda sí modifica la página y ejecuta la batería histórica. No cambia `data/`, `docs/fuentes/` ni `.claude/`; las correcciones del catálogo siguen a cargo de Claude.
+
+### Réplica a las respuestas parciales de Claude
+
+- **O9: acepto la corrección del rótulo e insisto en el respaldo.** En esta base, `acc-9-plazos.respaldo` es `orientacion-oficial`, no `norma-legal`. Retiro esa parte de O9 y de la ficha 28. Sin embargo, `fuentes` contiene solo `ley-20422`, mientras `como` indica acordar fechas, entregar material y priorizar contenidos. El art. 40 trata atención escolar por salud; no establece esos tres pasos para cualquier ausencia. La propia respuesta reconoce ese límite. Sigue pendiente agregar una orientación de evaluación pertinente o identificar los pasos como propuesta de consenso. Cambiar el rótulo no aporta la fuente faltante.
+- **O10: acepto que ya dice consenso e insisto en precisar el préstamo.** `acc-11-recursos.respaldo` es `consenso-expertos`: no corresponde acusar que la ficha declara el préstamo como obligación legal. Pero el paso «Presta materiales o acceso a computador» sigue sin condición, y la única fuente es `decreto-67`. El art. 18 d respalda coordinación y evitar sobrecarga; no documenta un deber de préstamo. Acepto la solución propuesta por Claude: explicitar que es una propuesta institucional sujeta a recursos disponibles y no atribuir ese paso al decreto. En el catálogo de esta rama esa condición todavía falta; O10 queda pendiente de su cambio de contenido.
+- **O26: acepto el límite técnico y la alternativa HTML, con alcance comprobado.** Se conserva pdfmake y no se agregan bibliotecas. La vista previa muestra los mismos campos seleccionados del modelo compartido, con encabezados y tablas HTML; el aviso bajo la descarga explica expresamente que el PDF carece de etiquetas y remite a esa vista. El PDF real sigue con `Tagged: no` (véase [pdfinfo](../marca/046-correcciones/pdfinfo.txt)). Esto ofrece una alternativa en la página; no convierte el PDF en accesible ni demuestra compatibilidad con todos los lectores. No se hizo una sesión con lector de pantalla real. O27 se verifica por separado: el archivo descargado contiene `/Lang (es-CL)`.
+
+### Antes y después
+
+| Objeción | Antes | Después y evidencia |
+|---|---|---|
+| `O1` | Google Fonts recibía solicitudes al cargar. | Tipografía del sistema; cero solicitudes HTTP fuera del sitio al cargar y descargar el PDF. `scripts/probar_adversarial.cjs`. |
+| `O2` | Voz y barreras se imprimían siempre. | Tres secciones independientes; solo ajustes marcados por defecto. Las ocho combinaciones se verifican en HTML y definición PDF; además se descarga un PDF real. |
+| `O3` | DUA preseleccionaba al estudiante activo. | Solo curso marcado desde DUA; inclusión expresa del estudiante muestra la advertencia. |
+| `O4` | Proyección exponía conteos y mochila. | «Proyectar al curso» oculta barreras repetidas, avisos individuales y mochila; «Salir de proyección» los restituye. |
+| `O5` | Error de guardado silencioso. | Aviso una vez por sesión y botón «Guardar respaldo»; prueba con `setItem` que lanza error. |
+| `O6` | Acceso en media rotulado como aplicación directa de D83. | Tarjetas, selección y documentos precisan criterios D83 por remisión D67 art. 5. |
+| `O7` | Prohibición absoluta en superior. | Resultados de aprendizaje mantenidos; corregidos aviso y guía. |
+| `O8` | Plazo aislado de 60 días. | Texto solicitado y enlace al procedimiento oficial de la DT. |
+| `O9`–`O11` | Fuentes o equivalencias cuestionadas del catálogo. | Sin cambios de catálogo; réplica O9/O10 arriba. O11 sigue a cargo de Claude. |
+| `O12` | Objetivos completos con solo docente; instrumentos mezclados. | Exige familia y diferencial, PIE o jefatura; equipo genérico no basta. PACI, PAEC y DEC separados y sincronizados. Respuesta antigua marcada migra a tres casillas vacías, con aviso al cargar o importar; no se repite tras guardar y recargar. |
+| `O13`–`O17` | Problemas de contenido y casos semilla. | Fuera del cambio de página; siguen a cargo de Claude. No se presentan como resueltos. |
+| `O18`–`O21` | Controles parcial o totalmente tras la barra móvil. | `scroll-padding-bottom` con altura observada y margen; corrección de desplazamiento al enfocar. Tab recorre descripción, grupos abiertos y acuerdos de ambos ámbitos a 390 px. Comprueba el borde completo del control sobre la barra. |
+| `O22` | Quitar perdía foco en BODY. | Va a la siguiente acción DUA o al título de selección. |
+| `O23`–`O24` | Botones genéricos. | Nombre empieza con Elegir/Elegida/Quitar, incluye título y, en selección, curso o persona. |
+| `O25` | Aviso oscuro con contraste 1,35:1. | Colores de hoja: contraste medido 16,87:1 en ambos temas. |
+| `O26` | PDF sin etiquetas, sin alternativa indicada. | Vista HTML equivalente y aviso visible de la limitación; réplica arriba. |
+| `O27` | PDF sin idioma. | `language: "es-CL"`; `/Lang (es-CL)` comprobado en los bytes del PDF descargado. |
+
+### Reproducción y límites
+
+```bash
+python3 scripts/validar_catalogo.py
+CHROMIUM_BIN=/usr/bin/chromium node scripts/probar_adversarial.cjs
+for prueba in scripts/probar_*.cjs; do CHROMIUM_BIN=/usr/bin/chromium node "$prueba"; done
+python3 scripts/probar_unificar_media.py
+python3 docs/revision-adversarial/muestrear.py
+node docs/revision-adversarial/medir-casos.cjs
+CHROMIUM_BIN=/usr/bin/chromium node docs/revision-adversarial/medir-web.cjs
+python3 docs/revision-adversarial/medir-coincidencias.py
+python3 docs/revision-adversarial/validar-entrega.py --correcciones
+```
+
+`CHROMIUM_BIN` se puede omitir si está instalado el navegador de Playwright. No se fijan rutas de este entorno en los scripts nuevos. La instrumentación web actualiza la expectativa de O12 a «Por revisar» y el selector de personas para admitir las nuevas casillas. `validar-entrega.py --correcciones` conserva los controles de casos, fichas y objeciones, exige las respuestas de Claude y comprueba las carpetas protegidas; sin la opción mantiene el alcance histórico de la tarea 042.
+
+Salidas de esta ronda: [instrumentación adversarial](../marca/046-correcciones/adversarial/), [resultados nuevos](../marca/046-correcciones/resultados.json), [capturas a 1280 y 390 px](../marca/046-correcciones/). Las mediciones históricas de 042 se conservan en su ubicación original. El catálogo pasa con **239 recomendaciones y 36/36 consideraciones**. Pasan los **22 scripts `scripts/probar_*.cjs`** y `probar_unificar_media.py`; véase [registro de batería](../marca/046-correcciones/bateria.txt). Las pruebas históricas de preguntas clave, persistencia y documentos se actualizan solo donde la tarea cambia el comportamiento esperado; no se suprimen sus recorridos.
+
+No se certifica el contenido pendiente del catálogo ni accesibilidad del PDF etiquetado; no hubo evaluación jurídica profesional o prueba con lectores de pantalla reales. La autorrevisión de código se registra en [revisión 046](../marca/046-correcciones/revision-ponytail.md).

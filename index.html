@@ -11,9 +11,6 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 </script>
 <title>Prizma · Apoyos con fuente para aprender y trabajar en igualdad</title>
 <meta name="description" content="Apoyos concretos, con fuente, para que todo el curso aprenda, para cada estudiante y para el trabajo. Basado en DUA 3.0 y la normativa chilena.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
@@ -31,6 +28,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     </div>
   </div>
 </header>
+<div id="persistencia-aviso" class="marco" role="status" hidden></div>
+<p id="instrumentos-aviso" class="marco" role="status" hidden>Revisa qué instrumentos tiene el estudiante</p>
 <main class="marco disposicion">
   <section id="inicio" class="inicio" aria-labelledby="t-inicio" tabindex="-1">
     <h1 id="t-inicio">¿Dónde quieres apoyar?</h1><p id="inicio-estado" role="status">Cargando los apoyos…</p>
@@ -99,6 +98,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
           <button type="submit" class="boton boton-principal" id="guardar-clase">Guardar</button>
         </form></div>
 </section>
+    <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
     <section id="acciones" class="paso resultados" tabindex="-1">
       <h2 id="t-acciones">2. Acciones sugeridas</h2>
       <div id="filtros-vista" class="filtros-vista">
@@ -111,7 +111,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
       <div id="tarjetas" class="grupos-momentos"></div>
     </section>
-    <section id="seleccion-dua" class="paso"><h2>3. Tu selección</h2><p id="dua-seleccion-vacia" class="ayuda">Todavía no eliges acciones DUA.</p><ol id="dua-seleccion" class="sel-lista"></ol>
+    <section id="seleccion-dua" class="paso"><h2 id="t-seleccion-dua" tabindex="-1">3. Tu selección</h2><p id="dua-seleccion-vacia" class="ayuda">Todavía no eliges acciones DUA.</p><ol id="dua-seleccion" class="sel-lista"></ol>
       <label for="reflexion">Después de la clase: ¿qué funcionó?<textarea id="reflexion" maxlength="500" rows="3"></textarea></label>
       <button type="button" id="documento-clase" class="boton" disabled>Ver documento</button>
     </section>
@@ -150,19 +150,23 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <p id="modalidad-revisar" role="status"></p><div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
       <div id="apoyos-resultados"></div>
         <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83)</p>
-        <p id="objetivos-superior" class="ayuda" hidden>En superior no se adecuan los objetivos: se hacen ajustes razonables</p>
+        <p id="objetivos-superior" class="ayuda" hidden>En superior se hacen ajustes razonables que mantienen los resultados de aprendizaje</p>
       <details id="objetivos" class="bloque-apoyo">
         <summary>Adecuaciones en los objetivos</summary><p>Apoyo que cambia qué aprende o cuándo. Último paso (Decreto 83).</p>
         <label id="asignatura-campo" class="asignatura" for="asignatura">Asignatura
           <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
         </label>
         <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
-        <label><input type="checkbox" id="protocolo-objetivos"> ¿Existe un PAEC, un PACI o el protocolo DEC?</label>
+        <label><input type="checkbox" id="paci-objetivos"> Tiene PACI</label>
+        <label><input type="checkbox" id="paec-objetivos"> Tiene PAEC</label>
+        <label><input type="checkbox" id="dec-objetivos"> Se aplica el protocolo DEC del establecimiento</label>
         <div id="objetivos-tarjetas" class="grupos-momentos"></div>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
         <summary>Apoyos ante desregulación</summary><p>Qué hacer antes, durante y después de una crisis.</p>
-        <label><input type="checkbox" id="protocolo-dec"> ¿Existe un PAEC, un PACI o el protocolo DEC?</label>
+        <label><input type="checkbox" id="paci-dec"> Tiene PACI</label>
+        <label><input type="checkbox" id="paec-dec"> Tiene PAEC</label>
+        <label><input type="checkbox" id="dec-dec"> Se aplica el protocolo DEC del establecimiento</label>
         <div id="desregulacion-resultados"></div>
         <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
@@ -264,7 +268,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <h3>Desde 10 trabajadores permanentes</h3><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>
 <h3>Desde 100 trabajadores</h3><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
 <h3>Sector público</h3><ol start="6"><li>Selección preferente en igualdad de mérito, y cuota en instituciones con 100 o más funcionarios (Ley 20.422, art. 45).</li></ol>
-<h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede acudir a la Dirección del Trabajo o pedir tutela laboral, dentro de 60 días (Código del Trabajo, arts. 485 y 486).</li></ol>
+<h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede consultar a la Dirección del Trabajo o pedir tutela laboral. Los plazos dependen del caso: revísalos en el <a href="https://www.dt.gob.cl/portal/1628/w3-article-103247.html" target="_blank" rel="noopener noreferrer">sitio de la Dirección del Trabajo</a>.</li></ol>
 <p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton">Entendido</button></form></dialog>
 <dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
   <h2 id="t-guia-dua" tabindex="-1" autofocus>¿Qué es el DUA y cómo usarlo?</h2>
@@ -301,7 +305,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     </ol>
     <p class="ayuda">Basado en el Decreto 83 (2015) y la CIF (OMS, 2001).</p>
   </div>
-  <div id="guia-apoyos-superior" hidden><h3>Qué son</h3><p>en la educación superior no se adecuan los objetivos. Se hacen ajustes razonables, que se acuerdan con el estudiante y la unidad de inclusión (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p><h3>Cómo acordarlos</h3>
+  <div id="guia-apoyos-superior" hidden><h3>Qué son</h3><p>En superior se hacen ajustes razonables que mantienen los resultados de aprendizaje. Se acuerdan con el estudiante y la unidad de inclusión (Ley 21.091, art. 2 e; Ley 20.422, art. 39).</p><h3>Cómo acordarlos</h3>
     <ol>
       <li>Parte por el diseño universal. Muchas barreras se resuelven para todo el curso.</li>
       <li>Pregúntale al estudiante qué barreras encuentra y qué le ha servido antes.</li>
@@ -380,6 +384,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <button type="button" id="imprimir" class="boton">Imprimir</button>
       <button type="button" id="cerrar" class="boton boton-sutil">Cerrar</button>
     </div>
+    <p class="ayuda">Si usas un lector de pantalla, lee el documento en esta vista previa: el PDF no tiene etiquetas de estructura.</p>
     <p id="vista-estado" class="ayuda" aria-live="polite"></p>
   </div>
   <article id="hoja" class="hoja"></article>

@@ -20,7 +20,7 @@
   --hoja-suave: #f2f2f2;
   --velo: rgb(15 20 38 / .6);
   --sombra: rgb(24 33 63 / .06);
-  --fuente: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fuente: system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light;
 }
 :root[data-tema="oscuro"] {
@@ -38,7 +38,7 @@
   }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--cabecera-alto, 10rem) + 1rem); }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--cabecera-alto, 10rem) + 1rem); scroll-padding-bottom: calc(var(--barra-alto, 5rem) + 1.5rem); }
 body { margin: 0; background: var(--papel); color: var(--tinta); font: 400 1.0625rem/1.6 var(--fuente); }
 h1, h2, h3, h4 { line-height: 1.2; text-wrap: balance; margin: 0; }
 p { margin: 0; }
@@ -333,3 +333,6 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
 #areas, #trabajo-areas { display: flex; flex-wrap: wrap; gap: .5rem; }
 
 .seguridad { display: grid; gap: .75rem; }
+
+.hoja .aviso-apoyos { color: var(--hoja-tinta); background: var(--hoja-suave); border-color: var(--hoja-linea); }
+.proyectando #abrir-mochila, .proyectando #barreras-repetidas, .proyectando #panel-dua .aviso-cruzado { display: none; }
