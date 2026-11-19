@@ -2,25 +2,28 @@
 
 ## Alcance
 
-Leí los ocho archivos completos del lote L4 y revisé las 81 afirmaciones ficha–fuente de `pares.csv`, incluyendo sus apartados «cómo» y «por qué». No realicé la Parte B: `matriz-L4.csv` fue eliminada porque corresponde a otra ronda.
+Leí nuevamente los ocho archivos completos del lote L4, cada ficha completa y el párrafo de la fuente usado como evidencia para los 81 pares. Esta ronda cubre solo la Parte A; `matriz-L4.csv` no forma parte de esta entrega.
 
-## Resultado de los pares
+## Resultado
 
-- `en parte`: 71 pares.
-- `sin respaldo`: 10 pares: P078, P080, P103, P154, P215, P231, P350, P353, P363 y P364.
+- `en parte`: 76 pares.
+- `sin respaldo`: 5 pares: P078, P080, P103, P350 y P353.
 - `respaldada`: 0.
 - `contradice`: 0.
+- Pares con la nota `no leído`: 4, dentro del máximo del 10 %: P078, P080, P350 y P353.
 
-Los pares `en parte` tienen citas tomadas de pasajes de contenido de su propia fuente y notas específicas sobre lo que el pasaje sí cubre y lo que la ficha agrega. No usé títulos ni metadatos como evidencia.
+En cada par `en parte` la cita proviene de un pasaje de contenido que sí trata una parte identificable de la afirmación. La nota explica, para ese par, qué idea queda respaldada y qué instrucción, condición, cifra o efecto de la ficha no queda demostrado. P103 quedó `sin respaldo` porque sus tres elementos concretos —escribir en computador, dictar y marcar opciones— no aparecen en el resumen revisado.
 
-Los pares `sin respaldo` son aquellos en que no localicé apoyo suficiente para la afirmación completa. P078 y P080 quedaron marcados honestamente como `no leído` según la regla de la tarea; en los otros ocho se anotaron términos concretos de la afirmación que no encontré al revisar el archivo.
+## Observaciones por fuente
 
-## Fuentes y límites
-
-`ccsso-accesibilidad-2016-resumen.md`, `revision-wood-lectura-2018.md`, `chile-servicio-civil-adp.md`, `jan-sensorial.md` y `jan-vision.md` son resúmenes o síntesis propias de documentos externos. El Decreto 83, el informe Ofqual y las orientaciones Mineduc contienen texto extenso de sus documentos fuente. Las notas distinguen orientación técnica, evidencia y alcance normativo, sin convertir ejemplos en obligaciones generales.
+- El Decreto 83 respalda marcos de adecuación curricular, formas de presentación y respuesta, organización del tiempo y profundización, pero no todas las instrucciones operativas que las fichas derivan de esos criterios.
+- Las orientaciones Mineduc sobre la Ley 21.545 tratan ajustes y participación en educación superior, pero sus ejemplos no convierten cada condición de una ficha en obligación general.
+- Ofqual informa resultados dependientes de la prueba y del grupo; no establece una cifra universal de tiempo adicional.
+- Wood informa comprensión lectora y texto a voz, con límites de transferencia a evaluaciones universitarias específicas.
+- CCSSO, JAN y el protocolo del Servicio Civil son resúmenes u orientaciones técnicas con límites de alcance, sin demostrar por sí solos eficacia causal ni obligaciones chilenas generales.
 
 ## Verificación
 
 `python3 docs/revision-fuentes/verificar.py pares L4` → `pares L4: correcto`.
 
-No quedó ningún archivo fuera de `docs/revision-fuentes/` modificado intencionalmente.
+Los únicos archivos modificados intencionalmente son `pares-L4.csv` e `informe-L4-indaga.md`, ambos dentro de `docs/revision-fuentes/`.
