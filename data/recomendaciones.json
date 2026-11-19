@@ -178,7 +178,8 @@
     "como": [
       "Deja elegir el tema del ejemplo, la herramienta o el orden de las tareas.",
       "Mantén la meta igual para todo el curso.",
-      "Presenta las opciones al inicio, con un ejemplo de cada una."
+      "Presenta las opciones al inicio, con un ejemplo de cada una.",
+      "A veces, que el curso elija en conjunto una de las opciones."
     ],
     "porque": "Elegir dentro de límites claros aumenta el interés y la sensación de control.",
     "areas": [
@@ -437,9 +438,10 @@
     "como": [
       "Usa una escala visual simple, por ejemplo de 3 colores, para indicar cómo están.",
       "Enseña frases para pedir ayuda o una pausa.",
-      "Muestra cómo nombras tu propia emoción."
+      "Muestra cómo nombras tu propia emoción.",
+      "Pregunta también cómo creen que se siente un compañero."
     ],
-    "porque": "Reconocer la emoción es el primer paso para regularla y pedir ayuda a tiempo.",
+    "porque": "Reconocer cómo se siente uno y cómo se sienten los demás ayuda a pedir apoyo y a cuidarse en grupo.",
     "areas": [
       "emocional",
       "comunicacion"
@@ -759,13 +761,13 @@
     "tipo": "dua",
     "momento": "durante",
     "consideracion": "3.2",
-    "titulo": "Modela paso a paso y practiquen juntos antes del trabajo individual",
+    "titulo": "Destaca las ideas clave y cómo se relacionan",
     "como": [
-      "Muestra cómo se hace, pensando en voz alta.",
-      "Resuelvan un ejemplo juntos.",
-      "Recién entonces pide práctica individual, mientras recorres la sala."
+      "Marca en el material las 2 o 3 ideas centrales.",
+      "Usa un esquema que muestre cómo se conectan.",
+      "Pide que encuentren el mismo patrón en un ejemplo nuevo."
     ],
-    "porque": "Enseñar en pasos pequeños, con modelado y práctica guiada, reduce los errores al empezar.",
+    "porque": "Ver lo esencial y cómo se conecta ayuda a entender y a recordar.",
     "areas": [
       "cognicion"
     ],
@@ -781,7 +783,6 @@
     ],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "eef-send-2020",
       "cast-dua-3"
     ],
     "destacada": false,
@@ -1187,7 +1188,8 @@
     "como": [
       "Muestra una imagen o un objeto relacionado con la experiencia.",
       "Di en una frase qué van a hacer y para qué sirve.",
-      "Al cerrar, vuelvan a la imagen y recuerden qué hicieron."
+      "Al cerrar, vuelvan a la imagen y recuerden qué hicieron.",
+      "Pregunta qué les gustaría descubrir o hacer."
     ],
     "porque": "Saber qué viene y para qué da seguridad y ayuda a sostener la atención.",
     "areas": [
@@ -1285,6 +1287,7 @@
     "consideracion": "2.2",
     "titulo": "Acompaña con imágenes o pictogramas cada indicación importante",
     "como": [
+      "Antes de usar un pictograma, muestra qué significa con la acción real.",
       "Al dar una indicación, muestra una imagen o un pictograma que la represente.",
       "Usa siempre la misma imagen para la misma acción.",
       "Deja las imágenes a la vista mientras trabajan."
