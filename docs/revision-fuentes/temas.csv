@@ -1,21 +1,21 @@
-tema;nombre;qué buscar
-T01;DUA y diseño universal;definición, principios, pautas, relación con la planificación
-T02;Adecuaciones de acceso;presentación, respuesta, entorno, tiempo, sin cambiar objetivos
-T03;Adecuaciones en los objetivos;graduar, priorizar, temporalizar, enriquecer, eliminar, PACI
-T04;Ajustes razonables o necesarios;definición, quién decide, límites, carga desproporcionada
-T05;Evaluación;evaluación diversificada, tiempo adicional, formatos, calificación
-T06;Desregulación y crisis;antes, durante, después, contención, protocolo, restricción física
-T07;Participación en las decisiones;estudiante, familia, persona trabajadora, equipo, consentimiento
-T08;Diagnóstico;si se exige, si se puede pedir, enfoque en barreras, CIF
-T09;Datos personales y privacidad;datos sensibles, reserva, quién accede, plazos
-T10;Práctica profesional;rol del liceo o institución, del centro y del estudiante
-T11;Trabajo;obligaciones del empleador, selección, contratación, despido, cuota
-T12;Accesibilidad de materiales y entornos;formatos, Braille, audio, digital, espacios
-T13;Comunicación y lengua;lengua de señas, comunicación aumentativa, intercultural, extranjeros
-T14;Altas capacidades y desafío;enriquecimiento, aceleración, profundización
-T15;Seguridad y riesgos;seguridad física, salud, emergencias, laboratorio, taller
-T16;Documentos y registros formales;PACI, PAEC, DEC, plan de apoyo, actas, informes
-T17;Evidencia de efectividad;estudios, tamaño del efecto, calidad, límites
-T18;Rol de las instituciones;PIE, unidad de inclusión, Superintendencia, SENADIS, Dirección del Trabajo
-T19;Niveles específicos;lo que el documento dice solo para parvularia, básica, media, TP o superior
-T20;Otro tema importante;lo que el documento destaca y no cabe arriba
+tema;nombre;qué entra;qué no entra (va en otro tema)
+T01;DUA: principios y pautas;definición, principios, pautas, planificar con opciones;cada ficha DUA se revisa en pares.csv
+T02;Adecuaciones de acceso;presentación, respuesta, entorno y tiempo en clases;tiempo en pruebas (T05)
+T03;Adecuaciones en los objetivos;graduar, priorizar, temporalizar, enriquecer, eliminar, quién decide;el registro PACI (T17)
+T04;Ajustes razonables o necesarios;definición, quién los pide y decide, límites, carga desproporcionada;ajustes concretos de puesto (T11)
+T05;Evaluación y calificación;evaluación diversificada, tiempo adicional en pruebas, formatos, notas;
+T06;Desregulación y crisis;antes, durante, después, contención, restricción física;seguridad en taller o laboratorio (T16)
+T07;Participación en las decisiones;estudiante, familia, persona trabajadora, equipo, consentimiento;
+T08;Diagnóstico y certificados;si se exige, si se puede pedir, enfoque en barreras;
+T09;Datos personales y privacidad;datos sensibles, reserva, quién accede, cuánto se guardan;
+T10;Práctica profesional;rol del liceo o institución, del centro y del estudiante;
+T11;Trabajo: ajustes al puesto;tareas, horario, herramientas, comunicación, proceso de solicitud;obligaciones legales (T12)
+T12;Trabajo: derechos y obligaciones;no discriminación, selección, reserva, ajustes exigibles, sanciones;
+T13;Accesibilidad de materiales y espacios;formatos accesibles, Braille, audio, digital, espacios físicos;lengua de señas (T14)
+T14;Comunicación y lengua;lengua de señas, comunicación aumentativa, intercultural, extranjeros;
+T15;Altas capacidades y desafío;enriquecimiento, aceleración, profundización;
+T16;Seguridad física y salud;taller, laboratorio, terreno, emergencias, medicamentos;crisis emocional (T06)
+T17;Registros, plazos y procedimientos;PACI, PAEC, DEC, plan de apoyo, plazos de respuesta, reclamos;
+T18;Rol de las instituciones;PIE, unidad de inclusión, Superintendencia, SENADIS, Dirección del Trabajo;rol en la práctica (T10)
+T19;Evidencia de efectividad;estudios, tamaño del efecto, calidad, límites, cifras;
+T20;Vigencia y versión;fecha, versión, si fue modificada, derogada o reemplazada;

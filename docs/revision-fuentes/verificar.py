@@ -1,67 +1,88 @@
-"""Revisa las matrices de la tarea 043 sin juicio humano: completitud, citas literales y vínculos.
-Uso: python3 docs/revision-fuentes/verificar.py L1   (o sin argumento: todos los lotes con matriz)."""
-import csv, json, re, sys, os
-from collections import defaultdict
-R = os.path.dirname(os.path.abspath(__file__))
-RAIZ = os.path.normpath(os.path.join(R, '..', '..'))
-COLS = ['lote','archivo','id_fuente','tipo_archivo','tema','trata','dice','cita_literal','linea',
-        'nivel','fuerza','fichas_prizma','coincide_prizma','terminos_buscados','nota']
-TIPOS = {'texto completo','extracto','resumen de agente','registro'}
-TRATA = {'sí','no'}; FUERZA = {'obligación legal','orientación oficial','evidencia','opinión','no aplica'}
-COINC = {'sí','en parte','no','no aplica'}
+"""Revisión mecánica de la tarea 043, sin juicio humano.
+  python3 docs/revision-fuentes/verificar.py pares L1    revisa pares-L1.csv
+  python3 docs/revision-fuentes/verificar.py matriz L1   revisa matriz-L1.csv
+  python3 docs/revision-fuentes/verificar.py muestra L1  crea muestra-L1.csv para el adversario"""
+import csv, json, os, random, re, sys
+from collections import Counter
+R = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.normpath(os.path.join(R, '..', '..'))
+def leer(n): return list(csv.DictReader(open(os.path.join(R, n), encoding='utf-8-sig'), delimiter=';'))
+def norm(t):
+    t = t.replace('“','"').replace('”','"').replace('«','"').replace('»','"').replace('’',"'").replace('‘',"'")
+    return ' ' + re.sub(r'\s+', ' ', re.sub(r'[*_`>#|]', ' ', t)).strip().lower() + ' '
+TEXTOS = {}
+def lineas(a):
+    if a not in TEXTOS: TEXTOS[a] = open(os.path.join(RAIZ, a), encoding='utf-8').read().split('\n')
+    return TEXTOS[a]
 
-def leer(p): return list(csv.DictReader(open(p, encoding='utf-8-sig'), delimiter=';'))
-def norm(t): return re.sub(r'\s+', ' ', re.sub(r'[*_`>#]', '', t)).strip().lower()
+def revisar_cita(f, a, e):
+    cita = norm(f['cita_literal'])
+    if not 6 <= len(cita.split()) <= 40: return e('cita_literal debe tener entre 6 y 40 palabras')
+    try: n = int(f['linea'])
+    except ValueError: return e('linea no es un número')
+    if cita not in norm(' '.join(lineas(a)[max(0, n-2):n+1])):
+        e('la cita no está en la línea indicada' + (' (sí en otra)' if cita in norm(' '.join(lineas(a))) else ' ni en el archivo'))
 
-temas = [f['tema'] for f in leer(os.path.join(R, 'temas.csv'))]
-lotes = defaultdict(list)
-for f in leer(os.path.join(R, 'lotes.csv')): lotes[f['lote']].append(f['archivo'])
-fuentes = {f['id'] for f in json.load(open(os.path.join(RAIZ, 'data/fuentes.json')))}
-fichas = {r['id']: set(r.get('fuentes', [])) for r in json.load(open(os.path.join(RAIZ, 'data/recomendaciones.json')))}
+def revisar_ausencia(f, a, e):
+    terminos = [t.strip() for t in f['terminos_buscados'].split(',') if t.strip()]
+    if len(terminos) < 3: return e('terminos_buscados necesita al menos 3 términos, separados por coma')
+    texto = norm(' '.join(lineas(a)))
+    for t in terminos:
+        if norm(t) in texto: e(f'el término «{t}» sí aparece en el archivo')
 
-def revisar(lote):
-    p = os.path.join(R, f'matriz-{lote}.csv')
-    if not os.path.exists(p): return [f'falta {os.path.basename(p)}']
-    filas, err = leer(p), []
-    if filas and list(filas[0].keys()) != COLS: err.append(f'columnas distintas de: {";".join(COLS)}')
-    vistos = set(); textos = {}
-    for i, f in enumerate(filas, 2):
-        a, t = f.get('archivo',''), f.get('tema','')
-        e = lambda m: err.append(f'fila {i} ({a} {t}): {m}')
-        if a not in lotes[lote]: e('archivo fuera del lote'); continue
-        vistos.add((a, t))
-        if t not in temas: e('tema desconocido')
-        if f['tipo_archivo'] not in TIPOS: e(f'tipo_archivo debe ser uno de {sorted(TIPOS)}')
-        if f['trata'] not in TRATA: e('trata debe ser sí o no')
-        for i_ in f['id_fuente'].split():
-            if i_ != 'sin' and i_ != 'id' and i_ not in fuentes: e(f'id_fuente {i_} no existe')
-        if f['trata'] == 'no':
-            if not f['terminos_buscados'].strip(): e('«no trata» sin terminos_buscados')
-            continue
-        if f['fuerza'] not in FUERZA: e(f'fuerza debe ser uno de {sorted(FUERZA)}')
-        if f['coincide_prizma'] not in COINC: e(f'coincide_prizma debe ser uno de {sorted(COINC)}')
-        cita = norm(f['cita_literal'])
-        if not cita: e('falta cita_literal'); continue
-        if len(cita.split()) > 40: e('cita_literal de más de 40 palabras')
-        lineas = textos.setdefault(a, open(os.path.join(RAIZ, a), encoding='utf-8').read().split('\n'))
-        try: n = int(f['linea'])
-        except ValueError: e('linea no es un número'); continue
-        ventana = norm(' '.join(lineas[max(0, n-4):n+3]))
-        if cita not in ventana:
-            e('la cita no está en esa línea' + (' (sí está en otra parte del archivo)' if cita in norm(' '.join(lineas)) else ' ni en el archivo'))
-        for fid in f['fichas_prizma'].split():
-            if fid not in fichas: e(f'ficha {fid} no existe')
-            elif f['id_fuente'] != 'sin id' and not fichas[fid] & set(f['id_fuente'].split()): e(f'ficha {fid} no cita esta fuente')
-    for a in lotes[lote]:
-        for t in temas:
-            if (a, t) not in vistos: err.append(f'falta la fila {a} {t}')
+LOTES = {l['archivo']: l for l in leer('lotes.csv')}
+PARES = {p['par']: p for p in leer('pares.csv')}
+TEMAS = [t['tema'] for t in leer('temas.csv')]
+
+def pares(lote):
+    err = []; e0 = err.append
+    filas = leer(f'pares-{lote}.csv')
+    esperados = {k for k, p in PARES.items() if p['lote'] == lote}
+    cuenta = Counter(f['par'] for f in filas)
+    for k in esperados - set(cuenta): e0(f'falta el par {k}')
+    for k, n in cuenta.items():
+        if k not in esperados: e0(f'{k} no es de este lote')
+        elif n > 1: e0(f'{k} aparece {n} veces')
+    for f in filas:
+        if f['par'] not in esperados: continue
+        a = PARES[f['par']]['archivo']; e = lambda m, k=f['par']: err.append(f'{k}: {m}')
+        if f['tipo_archivo'] not in {'texto completo','extracto','resumen de agente','registro'}: e('tipo_archivo inválido')
+        v = f['veredicto']
+        if v in {'respaldada','en parte','contradice'}: revisar_cita(f, a, e)
+        elif v == 'sin respaldo': revisar_ausencia(f, a, e)
+        else: e('veredicto debe ser respaldada, en parte, sin respaldo o contradice')
+        if v in {'en parte','contradice'} and not f['nota'].strip(): e('en parte o contradice exige nota')
     return err
 
+def matriz(lote):
+    err = []; filas = leer(f'matriz-{lote}.csv')
+    archivos = [a for a, l in LOTES.items() if l['lote'] == lote]
+    cuenta = Counter((f['archivo'], f['tema']) for f in filas)
+    for a in archivos:
+        for t in TEMAS:
+            if cuenta[(a, t)] != 1: err.append(f'{a} {t}: debe haber exactamente 1 fila (hay {cuenta[(a, t)]})')
+    for f in filas:
+        a = f['archivo']; e = lambda m: err.append(f'{a} {f["tema"]}: {m}')
+        if a not in archivos: e('archivo fuera del lote'); continue
+        if f['trata'] == 'sí':
+            revisar_cita(f, a, e)
+            if f['fuerza'] not in {'obligación legal','orientación oficial','evidencia','opinión'}: e('fuerza inválida')
+        elif f['trata'] == 'no': revisar_ausencia(f, a, e)
+        else: e('trata debe ser sí o no')
+    return err
+
+def muestra(lote):
+    # Semilla fija: el adversario no elige qué revisar, y cualquiera puede repetir la muestra.
+    filas = leer(f'pares-{lote}.csv'); rnd = random.Random('043-' + lote)
+    elegidos = [f for f in filas if f['veredicto'] != 'respaldada' or PARES[f['par']]['respaldo'] == 'investigacion-solida']
+    resto = [f for f in filas if f not in elegidos]
+    elegidos += rnd.sample(resto, min(len(resto), max(10, round(len(resto) * 0.3))))
+    with open(os.path.join(R, f'muestra-{lote}.csv'), 'w', encoding='utf-8-sig', newline='') as h:
+        w = csv.writer(h, delimiter=';'); w.writerow(['par']); w.writerows([[f['par']] for f in sorted(elegidos, key=lambda f: f['par'])])
+    print(f'muestra-{lote}.csv: {len(elegidos)} pares'); return []
+
 if __name__ == '__main__':
-    pedidos = sys.argv[1:] or [l for l in sorted(lotes) if os.path.exists(os.path.join(R, f'matriz-{l}.csv'))]
-    total = 0
-    for l in pedidos:
-        err = revisar(l); total += len(err)
-        print(f'{l}: ' + ('correcto' if not err else f'{len(err)} problemas'))
-        for x in err[:200]: print('  ' + x)
-    sys.exit(1 if total else 0)
+    modo, lote = sys.argv[1], sys.argv[2]
+    err = {'pares': pares, 'matriz': matriz, 'muestra': muestra}[modo](lote)
+    if modo != 'muestra': print(f'{modo} {lote}: ' + ('correcto' if not err else f'{len(err)} problemas'))
+    for x in err[:200]: print('  ' + x)
+    sys.exit(1 if err else 0)
