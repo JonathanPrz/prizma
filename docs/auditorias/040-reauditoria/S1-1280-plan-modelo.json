@@ -1,0 +1,84 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Meta de aprendizaje",
+      "comprender un texto informativo"
+    ],
+    [
+      "Qué quiere resolver",
+      "Hay estudiantes que leen o escriben con dificultad"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "902aa790-2edf-4008-ac79-d22a21b2a3c4",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Apoyos para AA",
+      "subtitulo": "Propuesta para conversar con el equipo de apoyo",
+      "cif": [
+        [
+          "Lectura, escritura y cálculo",
+          "Casi siempre",
+          "Lee en voz alta los enunciados o entrégalos en audio"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "No aplica",
+      "protocolo": false,
+      "acciones": [
+        {
+          "id": "acc-2-audio",
+          "titulo": "Lee en voz alta los enunciados o entrégalos en audio",
+          "como": [
+            "Lee las preguntas sin explicar la respuesta.",
+            "Ofrece el texto con lector de voz si lo hay.",
+            "Aplícalo cuando lo que evalúas no es la lectura."
+          ],
+          "porque": "Así la dificultad para leer no impide mostrar lo que sabe del tema.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Adecuación de acceso: Presentación de la información (Decreto 83). Versión DUA 3.0, consideración 2.2. Respaldo: Orientación oficial.",
+          "revisionModalidad": false,
+          "grupo": "Adecuaciones de acceso · Presentación de la información"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Mineduc (2015). Decreto Exento 83: criterios y orientaciones de adecuación curricular.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1074511"
+    },
+    {
+      "cita": "CCSSO (2016). CCSSO Accessibility Manual. Council of Chief State School Officers.",
+      "url": "https://ccsso.org/resource-library/ccsso-accessibility-manual-how-select-administer-and-evaluate-use-accessibility"
+    }
+  ],
+  "borrador": false
+}

@@ -1,0 +1,222 @@
+[
+  {
+    "archivo": "S1-1280-plan.pdf",
+    "caso": "S1",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S2-1280-plan.pdf",
+    "caso": "S2",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S3-1280-plan.pdf",
+    "caso": "S3",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S4-1280-plan.pdf",
+    "caso": "S4",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S5-1280-plan.pdf",
+    "caso": "S5",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S6-1280-plan.pdf",
+    "caso": "S6",
+    "ancho": 1280,
+    "paginas": 5,
+    "acciones": 3,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S6-1280-centro.pdf",
+    "caso": "S6",
+    "ancho": 1280,
+    "paginas": 1,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": false,
+    "criterioConservado": null,
+    "reservaCentroComprobada": true
+  },
+  {
+    "archivo": "S7-1280-plan.pdf",
+    "caso": "S7",
+    "ancho": 1280,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S8-1280-plan.pdf",
+    "caso": "S8",
+    "ancho": 1280,
+    "paginas": 3,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S9-1280-curso.pdf",
+    "caso": "S9",
+    "ancho": 1280,
+    "paginas": 2,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": false,
+    "criterioConservado": null,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S1-390-plan.pdf",
+    "caso": "S1",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S2-390-plan.pdf",
+    "caso": "S2",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S3-390-plan.pdf",
+    "caso": "S3",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S4-390-plan.pdf",
+    "caso": "S4",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S5-390-plan.pdf",
+    "caso": "S5",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S6-390-plan.pdf",
+    "caso": "S6",
+    "ancho": 390,
+    "paginas": 5,
+    "acciones": 3,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S6-390-centro.pdf",
+    "caso": "S6",
+    "ancho": 390,
+    "paginas": 1,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": false,
+    "criterioConservado": null,
+    "reservaCentroComprobada": true
+  },
+  {
+    "archivo": "S7-390-plan.pdf",
+    "caso": "S7",
+    "ancho": 390,
+    "paginas": 4,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S8-390-plan.pdf",
+    "caso": "S8",
+    "ancho": 390,
+    "paginas": 3,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": true,
+    "criterioConservado": true,
+    "reservaCentroComprobada": null
+  },
+  {
+    "archivo": "S9-390-curso.pdf",
+    "caso": "S9",
+    "ancho": 390,
+    "paginas": 2,
+    "acciones": 1,
+    "titulosFaltantes": [],
+    "personal": false,
+    "criterioConservado": null,
+    "reservaCentroComprobada": null
+  }
+]

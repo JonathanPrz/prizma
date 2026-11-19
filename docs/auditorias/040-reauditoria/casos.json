@@ -1,0 +1,1271 @@
+[
+  {
+    "id": "S1",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 1,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "dimensiones": {
+        "2": 3
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S1"
+  },
+  {
+    "id": "S2",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 2,
+      "nivel": "media",
+      "ambito": "educacion",
+      "practica": true,
+      "dimensiones": {
+        "13": 3
+      },
+      "dua": [
+        "1.2",
+        "3.2",
+        "2.5"
+      ],
+      "incluir": [
+        "acc-6-audicion",
+        "acc-3-escrito",
+        "prac-rotulos",
+        "prac-recorrido",
+        "prac-procedimiento"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S2"
+  },
+  {
+    "id": "S3",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 3,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "dimensiones": {
+        "5": 3,
+        "7": 3
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio",
+        "acc-4-recreo"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S3"
+  },
+  {
+    "id": "S4",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 4,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [
+        "lengua-cultura"
+      ],
+      "dimensiones": {
+        "3": 2,
+        "10": 3
+      },
+      "dua": [
+        "2.3",
+        "1.3",
+        "2.1"
+      ],
+      "incluir": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-familia",
+        "acc-10-cultura",
+        "acc-2-pictogramas"
+      ],
+      "excluir": [
+        "acc-3-caa",
+        "acc-12-tiempo"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S4"
+  },
+  {
+    "id": "S5",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 5,
+      "nivel": "media",
+      "ambito": "educacion",
+      "necesidades": [
+        "motivacion"
+      ],
+      "dimensiones": {
+        "14": 3
+      },
+      "dua": [
+        "8.2",
+        "7.1"
+      ],
+      "incluir": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares",
+        "obj-enriquecimiento-historia"
+      ],
+      "excluir": [
+        "acc-1-partes",
+        "acc-2-tiempo"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S5"
+  },
+  {
+    "id": "S6",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 6,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "practicaProfesional": true,
+      "dimensiones": {
+        "9": 3
+      },
+      "incluir": [
+        "sup-plazos",
+        "sup-pausas",
+        "sup-remoto",
+        "pp-plan-superior",
+        "pp-c-ambiente",
+        "pp-e-compartir",
+        "sup-tiempo",
+        "pp-e-acuerdo"
+      ],
+      "excluir": [
+        "sup-senas",
+        "sup-lengua"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S6"
+  },
+  {
+    "id": "S7",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 7,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "dimensiones": {
+        "8": 3
+      },
+      "dua": [
+        "4.1",
+        "4.2"
+      ],
+      "incluir": [
+        "acc-8-accesible",
+        "acc-8-desplazamiento",
+        "acc-8-teclado",
+        "acc-8-transcribe",
+        "acc-8-materiales"
+      ],
+      "excluir": [
+        "acc-6-braille"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S7"
+  },
+  {
+    "id": "S8",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "13": 3
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ]
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S8"
+  },
+  {
+    "id": "S9",
+    "tipo": "semilla",
+    "entrada": {
+      "id": 9,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [
+        "clima"
+      ],
+      "dimensiones": {},
+      "dua": [
+        "7.4",
+        "8.4",
+        "9.4",
+        "9.2"
+      ],
+      "incluir": [],
+      "excluir": []
+    },
+    "oraculo": "Semilla vigente de Claude",
+    "origenA": "S9"
+  },
+  {
+    "id": "V1-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 1,
+      "nivel": "media",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "clima"
+      ],
+      "dimensiones": {
+        "2": 2
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V1-01"
+  },
+  {
+    "id": "V1-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 1,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "motivacion"
+      ],
+      "dimensiones": {
+        "1": 3,
+        "4": 1,
+        "14": 1
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V1-02"
+  },
+  {
+    "id": "V1-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 1,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "lengua-cultura"
+      ],
+      "dimensiones": {
+        "2": 2,
+        "5": 3
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V1-03"
+  },
+  {
+    "id": "V1-04",
+    "tipo": "variante",
+    "entrada": {
+      "id": 1,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "meta": "comprender un texto informativo",
+      "necesidades": [
+        "evaluar"
+      ],
+      "dimensiones": {
+        "5": 1,
+        "7": 1,
+        "13": 2
+      },
+      "dua": [
+        "2.2",
+        "2.5",
+        "1.2",
+        "5.3"
+      ],
+      "incluir": [
+        "acc-2-audio",
+        "acc-2-pictogramas",
+        "acc-2-tiempo",
+        "acc-8-teclado"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V1-04"
+  },
+  {
+    "id": "V2-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 2,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "practica": true,
+      "dimensiones": {
+        "9": 1,
+        "13": 1
+      },
+      "dua": [
+        "1.2",
+        "3.2",
+        "2.5"
+      ],
+      "incluir": [
+        "acc-6-audicion",
+        "acc-3-escrito",
+        "prac-rotulos",
+        "prac-recorrido"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "necesidades": [],
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V2-01"
+  },
+  {
+    "id": "V2-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 2,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "practica": false,
+      "dimensiones": {
+        "1": 1,
+        "2": 1,
+        "8": 1
+      },
+      "dua": [
+        "1.2",
+        "3.2",
+        "2.5"
+      ],
+      "incluir": [
+        "acc-6-audicion",
+        "acc-3-escrito",
+        "prac-rotulos",
+        "prac-recorrido"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "necesidades": [
+        "comprension"
+      ],
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V2-02"
+  },
+  {
+    "id": "V2-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 2,
+      "nivel": "media",
+      "ambito": "educacion",
+      "practica": false,
+      "dimensiones": {
+        "13": 1
+      },
+      "dua": [
+        "1.2",
+        "3.2",
+        "2.5"
+      ],
+      "incluir": [
+        "acc-6-audicion",
+        "acc-3-escrito",
+        "prac-rotulos",
+        "prac-recorrido"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "necesidades": [
+        "clima",
+        "comprension"
+      ],
+      "practicaProfesional": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V2-03"
+  },
+  {
+    "id": "V2-04",
+    "tipo": "variante",
+    "entrada": {
+      "id": 2,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "practica": true,
+      "dimensiones": {
+        "6": 1
+      },
+      "dua": [
+        "1.2",
+        "3.2",
+        "2.5"
+      ],
+      "incluir": [
+        "acc-6-audicion",
+        "acc-3-escrito",
+        "prac-rotulos",
+        "prac-recorrido"
+      ],
+      "excluir": [
+        "acc-6-braille",
+        "acc-10-lengua"
+      ],
+      "necesidades": [
+        "clima",
+        "comprension"
+      ],
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V2-04"
+  },
+  {
+    "id": "V3-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 3,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "dimensiones": {
+        "2": 2,
+        "7": 1,
+        "10": 2
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ],
+      "necesidades": [],
+      "practica": true,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V3-01"
+  },
+  {
+    "id": "V3-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 3,
+      "nivel": "media",
+      "ambito": "educacion",
+      "dimensiones": {
+        "6": 1,
+        "10": 2
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ],
+      "necesidades": [
+        "comprension"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V3-02"
+  },
+  {
+    "id": "V3-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 3,
+      "nivel": "media",
+      "ambito": "educacion",
+      "dimensiones": {
+        "5": 3,
+        "11": 3,
+        "14": 3
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ],
+      "necesidades": [
+        "participacion",
+        "motivacion"
+      ],
+      "practica": false,
+      "practicaProfesional": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V3-03"
+  },
+  {
+    "id": "V3-04",
+    "tipo": "variante",
+    "entrada": {
+      "id": 3,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "dimensiones": {
+        "5": 1,
+        "9": 3,
+        "10": 1
+      },
+      "dua": [
+        "6.2",
+        "7.4",
+        "9.2"
+      ],
+      "incluir": [
+        "acc-7-transiciones",
+        "acc-1-agenda",
+        "acc-7-tranquilo",
+        "dec-antes-gatillantes",
+        "dec-antes-refugio"
+      ],
+      "excluir": [
+        "obj-graduacion"
+      ],
+      "necesidades": [
+        "clima",
+        "comprension"
+      ],
+      "practica": true,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V3-04"
+  },
+  {
+    "id": "V4-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 4,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "necesidades": [
+        "motivacion"
+      ],
+      "dimensiones": {
+        "10": 1,
+        "11": 1,
+        "14": 2
+      },
+      "dua": [
+        "2.3",
+        "1.3",
+        "2.1"
+      ],
+      "incluir": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-familia",
+        "acc-10-cultura"
+      ],
+      "excluir": [
+        "acc-3-caa",
+        "acc-12-tiempo"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V4-01"
+  },
+  {
+    "id": "V4-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 4,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [],
+      "dimensiones": {
+        "3": 1,
+        "14": 1
+      },
+      "dua": [
+        "2.3",
+        "1.3",
+        "2.1"
+      ],
+      "incluir": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-familia",
+        "acc-10-cultura"
+      ],
+      "excluir": [
+        "acc-3-caa",
+        "acc-12-tiempo"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V4-02"
+  },
+  {
+    "id": "V4-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 4,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "necesidades": [
+        "comprension",
+        "participacion"
+      ],
+      "dimensiones": {
+        "3": 2,
+        "4": 1,
+        "14": 1
+      },
+      "dua": [
+        "2.3",
+        "1.3",
+        "2.1"
+      ],
+      "incluir": [
+        "acc-10-lengua",
+        "acc-10-responder",
+        "acc-10-familia",
+        "acc-10-cultura"
+      ],
+      "excluir": [
+        "acc-3-caa",
+        "acc-12-tiempo"
+      ],
+      "practica": false,
+      "practicaProfesional": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V4-03"
+  },
+  {
+    "id": "V5-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 5,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "dimensiones": {
+        "1": 1,
+        "11": 3,
+        "14": 3
+      },
+      "dua": [
+        "8.2",
+        "7.1"
+      ],
+      "incluir": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ],
+      "excluir": [
+        "acc-1-partes",
+        "acc-2-tiempo"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V5-01"
+  },
+  {
+    "id": "V5-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 5,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [
+        "comprension",
+        "tareas-largas"
+      ],
+      "dimensiones": {
+        "3": 1,
+        "8": 2
+      },
+      "dua": [
+        "8.2",
+        "7.1"
+      ],
+      "incluir": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ],
+      "excluir": [
+        "acc-1-partes",
+        "acc-2-tiempo"
+      ],
+      "practica": true,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V5-02"
+  },
+  {
+    "id": "V5-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 5,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "necesidades": [
+        "lectoescritura"
+      ],
+      "dimensiones": {
+        "5": 2,
+        "14": 2
+      },
+      "dua": [
+        "8.2",
+        "7.1"
+      ],
+      "incluir": [
+        "acc-14-extension",
+        "acc-14-eleccion",
+        "acc-14-compactar",
+        "acc-14-pares"
+      ],
+      "excluir": [
+        "acc-1-partes",
+        "acc-2-tiempo"
+      ],
+      "practica": true,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V5-03"
+  },
+  {
+    "id": "V6-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 6,
+      "nivel": "parvularia",
+      "ambito": "educacion",
+      "practicaProfesional": false,
+      "dimensiones": {
+        "1": 3,
+        "8": 3,
+        "9": 2
+      },
+      "incluir": [
+        "sup-plazos",
+        "sup-pausas",
+        "sup-remoto",
+        "pp-plan-superior",
+        "pp-c-ambiente",
+        "pp-e-compartir"
+      ],
+      "excluir": [
+        "sup-senas",
+        "sup-lengua"
+      ],
+      "necesidades": [
+        "motivacion",
+        "participacion"
+      ],
+      "practica": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V6-01"
+  },
+  {
+    "id": "V6-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 6,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "practicaProfesional": false,
+      "dimensiones": {
+        "1": 3,
+        "10": 1,
+        "14": 1
+      },
+      "incluir": [
+        "sup-plazos",
+        "sup-pausas",
+        "sup-remoto",
+        "pp-plan-superior",
+        "pp-c-ambiente",
+        "pp-e-compartir"
+      ],
+      "excluir": [
+        "sup-senas",
+        "sup-lengua"
+      ],
+      "necesidades": [
+        "tareas-largas"
+      ],
+      "practica": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V6-02"
+  },
+  {
+    "id": "V6-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 6,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "practicaProfesional": false,
+      "dimensiones": {
+        "2": 1,
+        "9": 3
+      },
+      "incluir": [
+        "sup-plazos",
+        "sup-pausas",
+        "sup-remoto",
+        "pp-plan-superior",
+        "pp-c-ambiente",
+        "pp-e-compartir"
+      ],
+      "excluir": [
+        "sup-senas",
+        "sup-lengua"
+      ],
+      "necesidades": [
+        "lengua-cultura",
+        "comprension"
+      ],
+      "practica": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V6-03"
+  },
+  {
+    "id": "V7-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 7,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "dimensiones": {
+        "8": 3
+      },
+      "dua": [
+        "4.1",
+        "4.2"
+      ],
+      "incluir": [
+        "acc-8-accesible",
+        "acc-8-desplazamiento",
+        "acc-8-teclado",
+        "acc-8-transcribe",
+        "acc-8-materiales"
+      ],
+      "excluir": [
+        "acc-6-braille"
+      ],
+      "necesidades": [
+        "motivacion"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V7-01"
+  },
+  {
+    "id": "V7-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 7,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "dimensiones": {
+        "1": 3,
+        "12": 3,
+        "14": 1
+      },
+      "dua": [
+        "4.1",
+        "4.2"
+      ],
+      "incluir": [
+        "acc-8-accesible",
+        "acc-8-desplazamiento",
+        "acc-8-teclado",
+        "acc-8-transcribe",
+        "acc-8-materiales"
+      ],
+      "excluir": [
+        "acc-6-braille"
+      ],
+      "necesidades": [
+        "evaluar",
+        "tareas-largas"
+      ],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V7-02"
+  },
+  {
+    "id": "V7-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 7,
+      "nivel": "media",
+      "ambito": "educacion",
+      "dimensiones": {
+        "8": 2
+      },
+      "dua": [
+        "4.1",
+        "4.2"
+      ],
+      "incluir": [
+        "acc-8-accesible",
+        "acc-8-desplazamiento",
+        "acc-8-teclado",
+        "acc-8-transcribe",
+        "acc-8-materiales"
+      ],
+      "excluir": [
+        "acc-6-braille"
+      ],
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": true
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V7-03"
+  },
+  {
+    "id": "V8-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "6": 3,
+        "13": 1
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ],
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V8-01"
+  },
+  {
+    "id": "V8-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "6": 1,
+        "10": 3
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ],
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V8-02"
+  },
+  {
+    "id": "V8-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 8,
+      "nivel": "trabajo",
+      "ambito": "trabajo",
+      "dimensiones": {
+        "13": 1
+      },
+      "incluir": [
+        "tr-alertas-visuales",
+        "tr-mensajes-escritos",
+        "tr-subtitulos",
+        "tr-analizar",
+        "tr-privacidad"
+      ],
+      "excluir": [
+        "tr-ocr"
+      ],
+      "necesidades": [],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V8-03"
+  },
+  {
+    "id": "V9-01",
+    "tipo": "variante",
+    "entrada": {
+      "id": 9,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "necesidades": [],
+      "dimensiones": {
+        "8": 3,
+        "9": 3,
+        "14": 3
+      },
+      "dua": [
+        "7.4",
+        "8.4",
+        "9.4",
+        "9.2"
+      ],
+      "incluir": [],
+      "excluir": [],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V9-01"
+  },
+  {
+    "id": "V9-02",
+    "tipo": "variante",
+    "entrada": {
+      "id": 9,
+      "nivel": "basica",
+      "ambito": "educacion",
+      "necesidades": [],
+      "dimensiones": {
+        "2": 2,
+        "6": 2,
+        "10": 1
+      },
+      "dua": [
+        "7.4",
+        "8.4",
+        "9.4",
+        "9.2"
+      ],
+      "incluir": [],
+      "excluir": [],
+      "practica": false,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V9-02"
+  },
+  {
+    "id": "V9-03",
+    "tipo": "variante",
+    "entrada": {
+      "id": 9,
+      "nivel": "superior",
+      "ambito": "educacion",
+      "necesidades": [],
+      "dimensiones": {
+        "3": 3
+      },
+      "dua": [
+        "7.4",
+        "8.4",
+        "9.4",
+        "9.2"
+      ],
+      "incluir": [],
+      "excluir": [],
+      "practica": true,
+      "practicaProfesional": false
+    },
+    "oraculo": "Referencia heredada de A, sin nueva validación experta",
+    "origenA": "V9-03"
+  }
+]

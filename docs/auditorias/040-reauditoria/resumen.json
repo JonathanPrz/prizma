@@ -1,0 +1,87 @@
+{
+  "semilla": {
+    "casos": 9,
+    "referencias": 43,
+    "exclusionesDefinidas": 13,
+    "porEtapa": {
+      "a": {
+        "esperadosTotal": 42,
+        "esperadosPrimero": 22,
+        "ausentes": 1,
+        "excluidosTotal": 0,
+        "excluidosPrimero": 0,
+        "duaTotal": 21,
+        "duaPrimero": 7
+      },
+      "web": {
+        "esperadosTotal": 42,
+        "esperadosPrimero": 22,
+        "ausentes": 1,
+        "excluidosTotal": 0,
+        "excluidosPrimero": 0,
+        "duaTotal": 21,
+        "duaPrimero": 7
+      },
+      "conModalidad": {
+        "esperadosTotal": 42,
+        "esperadosPrimero": 22,
+        "ausentes": 1,
+        "excluidosTotal": 0,
+        "excluidosPrimero": 0,
+        "duaTotal": 21,
+        "duaPrimero": 7
+      }
+    }
+  },
+  "variante": {
+    "casos": 30,
+    "referencias": 124,
+    "exclusionesDefinidas": 44,
+    "porEtapa": {
+      "a": {
+        "esperadosTotal": 42,
+        "esperadosPrimero": 14,
+        "ausentes": 82,
+        "excluidosTotal": 7,
+        "excluidosPrimero": 1,
+        "duaTotal": 73,
+        "duaPrimero": 9
+      },
+      "web": {
+        "esperadosTotal": 43,
+        "esperadosPrimero": 14,
+        "ausentes": 81,
+        "excluidosTotal": 7,
+        "excluidosPrimero": 1,
+        "duaTotal": 73,
+        "duaPrimero": 9
+      },
+      "conModalidad": {
+        "esperadosTotal": 43,
+        "esperadosPrimero": 14,
+        "ausentes": 81,
+        "excluidosTotal": 6,
+        "excluidosPrimero": 0,
+        "duaTotal": 73,
+        "duaPrimero": 9
+      }
+    }
+  },
+  "global": {
+    "recorridos": 78,
+    "casos": 39,
+    "anchos": [
+      1280,
+      390
+    ],
+    "erroresPagina": 0,
+    "desbordes": 0,
+    "documentos": 20,
+    "sinPerdidasEsperadosTotal": true,
+    "sinPerdidasEsperadosPrimero": true,
+    "solicitudesExternas": 78,
+    "urlsExternas": [
+      "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap"
+    ]
+  }
+}

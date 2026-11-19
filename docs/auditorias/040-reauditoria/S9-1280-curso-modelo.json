@@ -1,0 +1,60 @@
+{
+  "titulo": "Acciones para todo el curso",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación básica"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "El clima del curso dificulta aprender"
+    ],
+    [
+      "Contenido",
+      "Curso"
+    ]
+  ],
+  "grupos": [
+    {
+      "nombre": "En toda la clase",
+      "acciones": [
+        {
+          "id": "dua-7-4",
+          "titulo": "Reduce las distracciones y las amenazas en la sala",
+          "como": [
+            "Deja a la vista solo el material de la clase.",
+            "Ofrece un lugar más tranquilo a quien lo necesite.",
+            "Nunca ridiculices un error en público."
+          ],
+          "porque": "Sentirse seguro y tener menos estímulos alrededor deja más atención para aprender.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Acción para todo el curso. DUA 3.0, consideración 7.4: Abordar los sesgos, las amenazas y las distracciones. Respaldo: Consenso de expertos.",
+          "revisionModalidad": false
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "CAST (2024). Universal Design for Learning Guidelines version 3.0.",
+      "url": "https://udlguidelines.cast.org/es/"
+    },
+    {
+      "cita": "Mineduc (2025). Respuesta educativa y acompañamiento emocional del estudiantado autista, Ley 21.545.",
+      "url": "https://especial.mineduc.cl/wp-content/uploads/sites/31/2025/11/RESPUESTA-EDUCATIVA-Y-ACOMPANAMIENTO-EMOCIONAL-Ley-Autismo-21.545.pdf"
+    }
+  ],
+  "borrador": false
+}

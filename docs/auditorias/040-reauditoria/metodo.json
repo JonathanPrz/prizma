@@ -1,0 +1,29 @@
+{
+  "base": "8bd8722cede26d0cbf23eb5f7c192445628c2a22",
+  "chromium": "156.0.8078.79",
+  "fecha": "2026-11-17T02:34:02.140Z",
+  "casos": 39,
+  "semillas": 9,
+  "variantes": 30,
+  "anchos": [
+    1280,
+    390
+  ],
+  "ejecuciones": 78,
+  "huellas": {
+    "AGENTS.md": "3445d74ab2550ef81114434dab8e65bd8227ce42961635978d6977b91f85dd4c",
+    "app.js": "7d1d0c1410deb454e15943f7d533e2cc310a5222ed1ea1b73b8dbe9bd0d40b05",
+    "index.html": "332b7e039bd42dab33ad14a55acfaf14057273fc24a38f6a211ab36453c30160",
+    "styles.css": "c7ef82451a40b73db09872be5a6b9b407cb9fc626298b52a1664f8cd969cca59",
+    "data/recomendaciones.json": "ea9b76ede117a339f021b61a3c355d92c24d22d1bef5c3003db5a0cf4e236e57",
+    "data/necesidades.json": "5a91d1a104668779e400ef8746cfc9cb5abc0af622322c014a02120c16cc367f",
+    "data/fuentes.json": "7969ab9952af529b78dffcc5a055e31e59963fb0e1c88c53530bb13b5b6d3fed",
+    "docs/casos/casos-semilla.json": "22f7a74655021657597d577218684432475a3b07770a280c0f0ac7f2dcbfb8ee",
+    "docs/casos/asesoria-claude.md": "e11004614b91bb987184b7ac0cbaee2fe295567d99b22739343cd4d4fd8b837f",
+    "docs/tareas/040-simulacion-y-asistente.md": "53bff6e0e9aa1459477fd5c47ec72842ca405243ce30a69b71b041071e2507b5",
+    "docs/auditorias/040-simulacion/resultados.jsonl": "2584cc98c8a1cd3b19ec8eae76246460007ee5e749bf07f28de21921114ab69b",
+    "docs/auditorias/040-reauditoria/reauditar.cjs": "a3ff2a0890df36bf99137a2f7a008d26a9e2184585d4c0aae39cf77e5e4a0edd"
+  },
+  "eleccionVariantes": "Primeras cuatro de los orígenes 1–3 y primeras tres de 4–9 en el archivo de A; sin seleccionar por resultado.",
+  "entrada": "Solo click, fill, check y selectOption; evaluate solo lee estado/DOM o desplaza para capturar."
+}

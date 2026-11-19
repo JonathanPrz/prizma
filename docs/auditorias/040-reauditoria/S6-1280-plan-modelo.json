@@ -1,0 +1,142 @@
+{
+  "titulo": "Plan de apoyos para el aprendizaje",
+  "fecha": "16 de noviembre de 2026",
+  "logo": "<svg class=\"logo\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect x=\"14\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"39\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#b0145a\"></rect><rect x=\"64\" y=\"14\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"14\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#00727d\"></rect><rect x=\"39\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><rect x=\"64\" y=\"39\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#5a33a8\"></rect><rect x=\"14\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect><circle cx=\"50\" cy=\"75\" r=\"11\" fill=\"#00727d\"></circle><rect x=\"64\" y=\"64\" width=\"22\" height=\"22\" rx=\"1.6\" fill=\"#18213f\"></rect></svg>",
+  "curso": true,
+  "resumen": [
+    [
+      "Fecha",
+      "16 de noviembre de 2026"
+    ],
+    [
+      "Nivel",
+      "Educación superior (universidad, IP o CFT)"
+    ],
+    [
+      "Meta de aprendizaje",
+      "Sin información"
+    ],
+    [
+      "Qué quiere resolver",
+      "Sin información"
+    ],
+    [
+      "Contenido",
+      "Curso y 1 estudiante"
+    ]
+  ],
+  "grupos": [
+    {
+      "estudiante": "493c8dc1-a13e-4876-859d-1db6fa05e8cf",
+      "acuerdo": {
+        "roles": [
+          "estudiante"
+        ],
+        "fecha": "2026-11-16",
+        "revision": "2026-12-01",
+        "criterio": "Prueba técnica: realizar tres de cuatro pasos con el apoyo acordado.",
+        "estado": "completo"
+      },
+      "estadoAcuerdo": "Acuerdos completos",
+      "nombre": "Ajustes razonables para AA",
+      "subtitulo": "Propuesta para acordar con el estudiante y la unidad de inclusión",
+      "cif": [
+        [
+          "Salud y energía",
+          "Casi siempre",
+          "Flexibiliza plazos y recuperaciones por razones de salud; Reduce los distractores y acuerda pausas, sin quitar las alarmas"
+        ]
+      ],
+      "ayuda": "Sin información",
+      "voz": "Sin información",
+      "modalidad": "No aplica",
+      "protocolo": false,
+      "acciones": [
+        {
+          "id": "sup-plazos",
+          "titulo": "Flexibiliza plazos y recuperaciones por razones de salud",
+          "como": [
+            "Acuerda nuevas fechas cuando hay ausencias justificadas.",
+            "Entrega el material de las clases perdidas.",
+            "Mantén el mismo nivel de exigencia."
+          ],
+          "porque": "Una condición de salud no debe impedir completar la formación.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Ajuste razonable: Organización del tiempo y el horario. Respaldo: Norma legal.",
+          "revisionModalidad": false,
+          "grupo": "Ajustes razonables · Organización del tiempo y el horario"
+        },
+        {
+          "id": "pp-c-ambiente",
+          "titulo": "Reduce los distractores y acuerda pausas, sin quitar las alarmas",
+          "como": [
+            "Ofrece un puesto más tranquilo si es posible.",
+            "Acuerda pausas breves en jornadas largas.",
+            "Mantén todas las alarmas y señales de seguridad."
+          ],
+          "porque": "Menos estímulos y pausas a tiempo ayudan a concentrarse y a sostener la jornada.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo para la práctica: Lo que puede hacer el centro de práctica. Respaldo: Consenso de expertos.",
+          "revisionModalidad": false,
+          "grupo": "Práctica profesional · Lo que puede hacer el centro de práctica"
+        },
+        {
+          "id": "pp-e-compartir",
+          "titulo": "Que el estudiante decida qué contar, a quién y para qué",
+          "como": [
+            "Explica para qué sirve cada dato y quién lo verá.",
+            "Comparte solo lo necesario para el ajuste, nunca el diagnóstico ni el expediente.",
+            "Respeta si decide no contar."
+          ],
+          "porque": "La ley protege los datos de salud: pedir un ajuste no autoriza entregar el expediente.",
+          "nota": "",
+          "ofrecida": false,
+          "dato": "Apoyo para la práctica: Preparar al estudiante para pedir ajustes. Respaldo: Norma legal.",
+          "revisionModalidad": false,
+          "grupo": "Práctica profesional · Preparar al estudiante para pedir ajustes"
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "cita": "Ley 21.091 (2018). Sobre Educación Superior.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1118991"
+    },
+    {
+      "cita": "Ley 20.422 (2010). Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1010903"
+    },
+    {
+      "cita": "Naciones Unidas (2006). Convención sobre los Derechos de las Personas con Discapacidad.",
+      "url": "https://www.ohchr.org/es/instruments-mechanisms/instruments/convention-rights-persons-disabilities"
+    },
+    {
+      "cita": "Mineduc (2026). Ley 20.422: orientaciones para su implementación en las instituciones de educación superior.",
+      "url": "https://educacionsuperior.mineduc.cl/wp-content/uploads/sites/49/2026/01/Orientaciones-Ley-20.422-educacion-superior.pdf"
+    },
+    {
+      "cita": "Job Accommodation Network. Accommodation Solutions for Individuals with Executive Functioning Deficits. U.S. Department of Labor.",
+      "url": "https://askjan.org/articles/Executive-Functioning-Deficits.cfm"
+    },
+    {
+      "cita": "OIT (2016). Promoting diversity and inclusion through workplace adjustments: A practical guide.",
+      "url": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/@ed_norm/@declaration/documents/publication/wcms_536630.pdf"
+    },
+    {
+      "cita": "Ley 19.628 (1999). Sobre protección de la vida privada.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=141599"
+    },
+    {
+      "cita": "Ley 21.719 (2024). Regula la protección y el tratamiento de los datos personales.",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1209272"
+    },
+    {
+      "cita": "Waters, B. y Rath, V. (2022). Students with Disabilities on Placement. AHEAD y DAWN, Irlanda.",
+      "url": "https://www.ahead.ie/userfiles/files/documents/Students%20with%20Disabilities%20on%20Placement%20digital_2-12-22.pdf"
+    }
+  ],
+  "borrador": false
+}
