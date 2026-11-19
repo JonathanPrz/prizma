@@ -1,0 +1,77 @@
+{
+  "app": "prizma",
+  "version": 2,
+  "ambito": "trabajo",
+  "versionSituaciones": 2,
+  "catalogo": "2026-11-15",
+  "guardado": "2026-11-19T22:34:17.991Z",
+  "perfil": {
+    "nivel": "basica",
+    "practica": false,
+    "actividad": [],
+    "evidencia": [],
+    "meta": "",
+    "reflexion": ""
+  },
+  "claseGuardada": true,
+  "mantenerIndividual": [],
+  "seleccion": {
+    "dua-1-1": ""
+  },
+  "trabajadores": [
+    {
+      "id": "a80e3eef-7d2d-4765-b275-2e851ba896c5",
+      "iniciales": "CD",
+      "dimensiones": {
+        "13": 3
+      },
+      "ayuda": "",
+      "voz": "MARCADOR-PRIVADO",
+      "descripcionGuardada": true,
+      "modalidad": "",
+      "compartir": "Solo ajustes, no mi voz ni mis barreras",
+      "tipoPuesto": "",
+      "acuerdo": {
+        "roles": [],
+        "fecha": "",
+        "revision": "",
+        "criterio": "",
+        "estado": "sin-acuerdos"
+      },
+      "seleccion": {
+        "tr-subtitulos": ""
+      }
+    }
+  ],
+  "trabajadorActivo": "a80e3eef-7d2d-4765-b275-2e851ba896c5",
+  "estudiantes": [
+    {
+      "id": "a38ca115-0642-4cc9-83f6-1cb5a1ab5363",
+      "iniciales": "AB",
+      "dimensiones": {
+        "2": 3
+      },
+      "ayuda": "",
+      "modalidad": "",
+      "protocolo": false,
+      "practicaProfesional": false,
+      "descripcionGuardada": true,
+      "acuerdo": {
+        "roles": [],
+        "fecha": "",
+        "revision": "",
+        "criterio": "",
+        "estado": "sin-acuerdos"
+      },
+      "voz": "",
+      "seleccion": {
+        "acc-2-audio": ""
+      }
+    }
+  ],
+  "estudianteActivo": "a38ca115-0642-4cc9-83f6-1cb5a1ab5363",
+  "propositos": [],
+  "necesidades": [],
+  "momentos": [],
+  "asignatura": ""
+}
