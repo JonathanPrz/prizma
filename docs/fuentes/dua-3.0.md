@@ -133,3 +133,51 @@ La numeración salta, porque viene de versiones anteriores: Compromiso usa las d
 | Agencia del aprendiz | En la interfaz: "que el estudiante decida y participe". |
 
 Para docentes sin formación en inclusión, la interfaz usa palabras simples, como "Motivar", y deja el término oficial en un texto de ayuda.
+
+## 7. Qué cambió en cada consideración y por qué (CAST, 2024)
+
+Resumen propio de *UDL Guidelines 3.0: Rationale for Updates* (CAST, 30 de julio de 2024), leído por el dueño y entregado a Claude. No es una traducción. Este documento explica los cambios respecto de la versión 2.2; no describe en detalle qué propone cada consideración.
+
+En general, CAST cambió cuatro cosas. La meta pasó de formar «aprendices expertos» a la agencia del estudiante, porque «experto» sonaba excluyente y ponía el aprendizaje como algo individual y terminado. Los verbos pasaron de «proporcionar» a «diseñar», para que las pautas las puedan usar también los estudiantes y no solo el docente. Los «puntos de verificación» pasaron a ser «consideraciones», porque la palabra anterior hacía pensar en una lista que hay que cumplir completa. Las filas se renombraron (acceso, soporte, función ejecutiva), porque «internalizar» parecía valer más que el acceso y porque la función ejecutiva está repartida en toda la fila inferior.
+
+**Compromiso**
+- **7.1 Optimizar la elección y la autonomía**: se quitó la palabra «individual» del nombre anterior. Se pensó que la versión 2.2 ponía demasiado peso en lo personal y poco en el aprendizaje colectivo. Para Prizma: no tratar la elección solo como individual; considera también decisiones del grupo.
+- **7.2 Optimizar la relevancia, el valor y la autenticidad**: sin cambios.
+- **7.3 Fomentar la alegría y el juego**: consideración nueva. Reconoce que la alegría y el juego tienen un lugar en el aprendizaje, tanto de niños como de adultos, y que no todo es producir.
+- **7.4 Abordar los sesgos, las amenazas y las distracciones**: antes era 7.3, «Minimizar las amenazas y las distracciones». Ahora nombra los sesgos no atendidos, que también dañan. Para Prizma: preguntar a los estudiantes qué los distrae o amenaza, en vez de suponerlo.
+- **8.1 Aclarar el significado y el propósito de las metas**: antes, «Resaltar las metas y los objetivos». Se cambió porque sonaba muy centrado en el docente; ahora las metas deben tener sentido para el propio estudiante. Para Prizma: las metas se explican desde la mirada del estudiante, no solo del docente.
+- **8.2 Optimizar los desafíos y el apoyo**: antes hablaba de variar las exigencias. Se temió que eso se leyera como bajar las expectativas a quienes se cree menos capaces, y que fuera solo una manera de ajustar el desafío. Para Prizma: un apoyo no debe rebajar la meta.
+- **8.3 Fomentar la colaboración, la interdependencia y el aprendizaje colectivo**: antes, «Fomentar la colaboración y la comunidad». Ahora destaca depender unos de otros y aprender en conjunto, porque se vio un sesgo hacia la independencia. Para Prizma: el trabajo en equipo cuenta como apoyo, no como falta de autonomía.
+- **8.4 Fomentar la pertenencia y la comunidad**: consideración nueva. La palabra «pertenencia» no aparecía en la versión 2.2, y quienes opinaron pidieron un lenguaje más positivo que «minimizar amenazas». Para Prizma: acciones para todo el curso sobre sentirse bienvenido.
+- **8.5 Ofrecer retroalimentación orientada a la acción**: antes era 8.4, con la palabra «maestría» en el nombre. Se descartó esa palabra por su relación con la esclavitud y el racismo, y se puso el foco en lo que la persona puede hacer a continuación.
+- **9.1 Reconocer expectativas, creencias y motivaciones**: antes, «Promover expectativas y creencias que optimicen la motivación». Se consideró muy centrado en el docente; ahora incluye lo que piensan y esperan también los propios estudiantes, con una mirada más colectiva.
+- **9.2 Desarrollar la conciencia de sí mismo y de los demás**: antes era «Facilitar habilidades y estrategias personales para afrontar». Se cambió para conectar con la convivencia y para no pedir que el estudiante «aguante» barreras injustas que le corresponde resolver a docentes e instituciones. Para Prizma: no escribir acciones que carguen al estudiante con superar la barrera.
+- **9.3 Promover la reflexión individual y colectiva**: antes, «Desarrollar la autoevaluación y la reflexión». Se consideró centrado en el docente; ahora hay espacio para reflexionar también en grupo. Además, se buscó aclarar su cruce con la función ejecutiva.
+- **9.4 Cultivar la empatía y las prácticas restaurativas**: consideración nueva. Busca diseñar experiencias que cuiden la relación con los demás, aumenten la conciencia y permitan reparar vínculos cuando hace falta.
+
+**Representación**
+- **1.1 Apoyar las oportunidades para personalizar la presentación de información**: antes, «Ofrecer formas de personalizar...». «Ofrecer» sonaba centrado en el docente; ahora el estudiante tiene más protagonismo. También se detalló mejor la personalización del formato del texto.
+- **1.2 Apoyar múltiples formas de percibir información**: une los antiguos 1.2 (alternativas para lo auditivo) y 1.3 (alternativas para lo visual). «Alternativa» hacía pensar que hay una vía correcta y otra de reemplazo, y que se elige una sola. Para Prizma: presentar varias formas a la vez, sin tratar una como la «normal».
+- **1.3 Representar una diversidad de perspectivas e identidades de maneras auténticas**: consideración nueva. Se agregó el «quién» del aprendizaje, porque ignorarlo hace pasar una cultura dominante por universal. Pide además evitar representaciones estereotipadas. Para Prizma: revisar quiénes aparecen en los materiales.
+- **2.1 Aclarar vocabulario, símbolos y estructuras del lenguaje**: une los antiguos 2.1 (vocabulario y símbolos) y 2.2 (sintaxis y estructura). Eran ideas cercanas, y «sintaxis» es una palabra poco conocida. CAST lo presenta como un cambio de orden, no de fondo.
+- **2.2 Apoyar la decodificación de texto, notación matemática y símbolos**: antes era 2.3. Solo cambió el número.
+- **2.3 Cultivar la comprensión y el respeto entre lenguas y dialectos**: antes, «Promover la comprensión entre lenguas». Se sumó el respeto y los dialectos, y se cuestionó el verbo «promover» por su carga de poder. Se apoyó en un trabajo con docentes de estudiantes multilingües. Para Prizma: tratar la lengua de origen como un valor y no como un déficit.
+- **2.4 Abordar los sesgos en el uso del lenguaje y los símbolos**: consideración nueva. Reconoce que el lenguaje y los símbolos discriminatorios dañan y frenan la participación, y busca que docentes y estudiantes los detecten y los quiten.
+- **2.5 Ilustrar a través de múltiples medios**: sin cambios.
+- **3.1 Conectar el conocimiento previo con el nuevo aprendizaje**: antes, «Activar o proporcionar conocimientos previos». El verbo ponía todo en manos del docente y podía llevar a pensar en lo que le falta al estudiante. Ahora invita a que sea el estudiante quien conecte con lo que ya sabe y vive. Para Prizma: partir de lo que el estudiante trae.
+- **3.2 Resaltar y explorar patrones, características críticas, grandes ideas y relaciones**: se agregó «explorar». «Resaltar» es una acción del docente; ahora se pide dejar espacio para que los estudiantes descubran los patrones y les den sentido.
+- **3.3 Cultivar múltiples formas de conocer y dar significado**: antes, «Guiar el procesamiento de la información y la visualización». «Procesamiento de la información» se vio como algo estrecho, que favorece una sola mirada de occidente. Para Prizma: aceptar maneras distintas de construir sentido, por ejemplo partir de una historia.
+- **3.4 Maximizar la transferencia y la generalización**: sin cambios.
+
+**Acción y expresión**
+- **4.1 Variar y valorar los métodos de respuesta, navegación y movimiento**: se sumaron el movimiento y el verbo «valorar». Se buscó reconocer las distintas formas en que el cuerpo participa (callado, de pie, caminando, cantando) y salir de la idea de que aprender es estar quieto y en silencio.
+- **4.2 Optimizar el acceso a materiales accesibles y a tecnologías y herramientas de asistencia y accesibilidad**: antes, acceso a herramientas y tecnologías de asistencia. Ahora destaca los materiales accesibles, porque un archivo digital no es accesible por ser digital, y porque hoy muchos equipos y programas traen funciones de accesibilidad. Para Prizma: el material accesible sirve poco si falta la tecnología para usarlo.
+- **5.1 Usar múltiples medios para la comunicación**: sin cambios.
+- **5.2 Usar múltiples herramientas para la construcción, la composición y la creatividad**: se agregó la creatividad, que no figuraba en las pautas, para apoyar la agencia del estudiante: explorar, experimentar y usar las herramientas a su manera.
+- **5.3 Desarrollar fluidez con apoyos graduados para la práctica y el desempeño**: antes hablaba de «niveles graduados» de apoyo. Se cambió a «apoyos graduados» porque los niveles podían reforzar expectativas bajas. Pone el acento en la práctica, en el proceso y en la evaluación formativa. Para Prizma: graduar el apoyo, no la exigencia.
+- **5.4 Abordar sesgos relacionados con los modos de expresión y comunicación**: consideración nueva. Apunta a sesgos personales y del sistema que dan menos valor a algunas formas de expresarse, como la palabra escrita. Para Prizma: no tratar una forma de mostrar lo aprendido como la mejor.
+- **6.1 Establecer metas significativas**: antes, «Guiar el establecimiento de metas apropiadas». Se hizo más centrado en el estudiante y se sacó «apropiadas», palabra que puede usarse para exigir que todos se parezcan y que se presta a sesgos.
+- **6.2 Anticipar y planificar los desafíos**: antes, «Apoyar la planificación y el desarrollo de estrategias». Como el desarrollo de estrategias subió a nivel de directriz, el nombre anterior se repetía. CAST lo describe como un ajuste de orden.
+- **6.3 Organizar la información y los recursos**: antes, «Facilitar la gestión de información y recursos». Se cambió para que la acción sea del estudiante y no del docente.
+- **6.4 Ampliar la capacidad para dar seguimiento al progreso**: sin cambios.
+- **6.5 Desafiar las prácticas excluyentes**: El documento no explica el cambio.
