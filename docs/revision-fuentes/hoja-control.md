@@ -126,3 +126,23 @@ Si encuentras un error grave, avísale a Claude: se revisa de nuevo todo el grup
 **Por qué:** Es un resumen propio (no el PDF) del protocolo ADP del Servicio Civil: respalda ajustes de acceso coordinados con la persona antes de la entrevista, solo en procesos ADP. No menciona la Ley 20.422 ni su art. 24, ni formatos accesibles, interpretación o más tiempo en pruebas, así que la base legal de la ficha no sale de aquí.
 
 ¿De acuerdo? [ ] Sí  [ ] No  · Comentario:
+
+---
+
+## Resultado del control (revisión a ciegas con otro modelo, a pedido del dueño)
+Un subagente de otro modelo revisó los 10 pares sin ver los veredictos de arriba.
+
+| Par | Revisión | Control | ¿Coinciden? |
+|---|---|---|---|
+| P048 | en parte | en parte | sí |
+| P075 | respaldada | en parte | categoría vecina: los dos citan la línea 436 |
+| P103 | sin respaldo | en parte (débil) | categoría vecina: los dos dicen que el resumen no nombra teclado ni dictado |
+| P121 | respaldada | respaldada | sí |
+| P125 | respaldada | respaldada | sí |
+| P175 | en parte | en parte (débil) | sí |
+| P186 | en parte | sin respaldo | categoría vecina: el control es más estricto |
+| P248 | en parte | respaldada en lo esencial | categoría vecina: los dos citan los arts. 26 ter y 39 |
+| P396 | en parte | en parte | sí |
+| P404 | en parte | en parte | sí |
+
+Coinciden 6 de 10. Las 4 diferencias son entre categorías vecinas, con las mismas líneas y el mismo diagnóstico. No hay ningún error grave: nada respaldado que no lo esté, ni al revés. Por eso no se revisa de nuevo ningún grupo. P186 se tratará como «sin respaldo» en las correcciones.
