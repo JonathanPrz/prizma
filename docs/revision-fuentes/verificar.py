@@ -74,7 +74,9 @@ def pares(lote):
 
 def repetidas(filas, col, maximo, err):
     # Una misma cita o nota para muchos pares indica que no se leyó cada uno.
-    for t, n in Counter(f[col].strip() for f in filas if f[col].strip()).items():
+    # Se quitan las palabras entre comillas y los números de par: una plantilla con un término cambiado sigue siendo una plantilla.
+    plantilla = lambda t: re.sub(r'«[^»]*»|"[^"]*"|\bP\d+\b|\d+', '_', t.strip().lower())
+    for t, n in Counter(plantilla(f[col]) for f in filas if f[col].strip()).items():
         if n > maximo: err.append(f'la misma {col} aparece {n} veces (máximo {maximo}): «{t[:60]}»')
 
 def matriz(lote):
