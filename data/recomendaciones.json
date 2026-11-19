@@ -141,13 +141,13 @@
     "tipo": "dua",
     "momento": "toda-la-clase",
     "consideracion": "8.4",
-    "titulo": "Acuerda con el grupo 3 normas de convivencia, a la vista de todos",
+    "titulo": "Pregunta al curso qué los hace sentirse parte y acuerden cómo cuidarlo",
     "como": [
-      "Pregunta qué necesitan para aprender bien juntos.",
-      "Elijan 3 normas en positivo. Por ejemplo: «Esperamos nuestro turno para hablar».",
-      "Déjalas visibles, escritas o con imágenes, y revísenlas cada cierto tiempo."
+      "Pregunta qué hace que alguien se sienta parte del curso.",
+      "Elijan juntos 3 acuerdos en positivo, a la vista de todos.",
+      "Revisen cada cierto tiempo si alguien está quedando fuera."
     ],
-    "porque": "Las normas claras y construidas en conjunto dan seguridad y hacen sentir parte del grupo.",
+    "porque": "Sentirse parte no significa lo mismo para todos; preguntarlo permite cuidar a quien suele quedar fuera.",
     "areas": [
       "comunicacion",
       "emocional"
@@ -239,11 +239,11 @@
     "consideracion": "7.3",
     "titulo": "Incluye un momento breve de juego o desafío",
     "como": [
-      "Plantea 5 minutos de adivinanza, misterio o competencia por equipos.",
+      "Plantea 5 minutos de adivinanza, misterio o desafío en equipo.",
       "Conéctalo con la meta de la clase.",
       "Cuida que nadie quede eliminado ni expuesto."
     ],
-    "porque": "El disfrute favorece la participación y baja la tensión ante lo difícil.",
+    "porque": "El juego y la alegría suman ganas de participar.",
     "areas": [
       "cognicion",
       "emocional"
@@ -345,7 +345,7 @@
       "Asigna un rol claro a cada integrante.",
       "Evita grupos fijos por nivel durante todo el año."
     ],
-    "porque": "Agrupar de forma flexible permite apoyar lo que cada uno necesita sin etiquetar.",
+    "porque": "Agrupar de distintas formas según la tarea permite aprender unos de otros.",
     "areas": [
       "comunicacion",
       "cognicion"
@@ -1057,13 +1057,13 @@
     "tipo": "dua",
     "momento": "antes",
     "consideracion": "6.2",
-    "titulo": "Anticipa la agenda de la clase y avisa los cambios",
+    "titulo": "Muestra los pasos de la clase y anticipen juntos qué puede costar",
     "como": [
-      "Muestra al inicio los momentos de la clase, con palabras o imágenes.",
-      "Marca lo que ya hicieron.",
-      "Avisa con tiempo si algo cambia."
+      "Muestra al inicio los pasos de la clase, con palabras o imágenes.",
+      "Pregunta qué paso creen que les costará más y qué harán si pasa.",
+      "Marca lo que ya hicieron y avisa con tiempo si algo cambia."
     ],
-    "porque": "Saber qué viene reduce la ansiedad y ayuda a organizarse.",
+    "porque": "Planificar los pasos y anticipar lo difícil ayuda a organizarse y a no quedarse detenido.",
     "areas": [
       "cognicion",
       "emocional"
@@ -1191,7 +1191,7 @@
       "Al cerrar, vuelvan a la imagen y recuerden qué hicieron.",
       "Pregunta qué les gustaría descubrir o hacer."
     ],
-    "porque": "Saber qué viene y para qué da seguridad y ayuda a sostener la atención.",
+    "porque": "Saber qué van a hacer y para qué ayuda a mantener el esfuerzo.",
     "areas": [
       "cognicion",
       "emocional"
@@ -1326,7 +1326,7 @@
       "Incluye herramientas adaptadas, como tijeras de apoyo o pinceles con mango grueso.",
       "Deja que elijan con qué crear."
     ],
-    "porque": "Con la herramienta adecuada, el esfuerzo va a la idea y no a la dificultad de manipular.",
+    "porque": "Así la dificultad para manipular no impide crear.",
     "areas": [
       "sensorial",
       "cognicion"
@@ -1359,7 +1359,7 @@
       "Marca cajas y repisas con una foto o un pictograma.",
       "Invita a ordenar al terminar, usando las imágenes como guía."
     ],
-    "porque": "Un ambiente ordenado y predecible facilita encontrar lo necesario y actuar con autonomía.",
+    "porque": "Las imágenes ayudan a recordar dónde va cada cosa sin tener que preguntar.",
     "areas": [
       "cognicion",
       "contexto"
@@ -2824,7 +2824,7 @@
       "Escribe lo que dice y léeselo en voz alta.",
       "Valora la idea, no el trazo."
     ],
-    "porque": "A esta edad lo importante es comunicar la idea; el trazo todavía se está desarrollando.",
+    "porque": "Lo que se busca es que comunique la idea, no cómo la escribe.",
     "areas": [
       "cognicion",
       "comunicacion",
@@ -4698,7 +4698,7 @@
       "Si ya lo domina, cambia la práctica repetida por una tarea de mayor desafío.",
       "Mantén las evaluaciones del curso."
     ],
-    "porque": "Repetir lo ya aprendido desmotiva; un desafío a su medida sostiene el esfuerzo.",
+    "porque": "Un desafío a su medida sostiene el esfuerzo.",
     "areas": [
       "cognicion"
     ],
