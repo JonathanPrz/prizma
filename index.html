@@ -115,10 +115,10 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <div id="filtros-vista" class="filtros-vista">
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
+        <p class="conteo" id="conteo" aria-live="polite" aria-atomic="true"></p>
         <p id="filtros-vista-ayuda" class="ayuda" tabindex="-1">Elige un momento o un principio para ver menos acciones.</p>
         <a href="#acciones" id="limpiar-filtros" hidden>Quitar filtros</a>
       </div>
-      <p class="conteo" id="conteo" aria-live="polite" aria-atomic="true"></p>
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
       <div id="tarjetas" class="grupos-momentos"></div>
     </section>

@@ -435,7 +435,7 @@ function guardarClase() {
     estado.necesidades = normalizarNecesidades(borradorDua.necesidades);
   }
   borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso("paso-clase", false);
-  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#t-dua-marcadas") || $("#t-dua-recomendadas") || $("#acciones"), $("#acciones"));
+  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#t-dua-marcadas") || $("#acciones"), $("#acciones"));
 }
 function prepararPasos() {
   $("#guardar-borrador-dua").addEventListener("click", () => $("#perfil").requestSubmit());
@@ -1114,8 +1114,9 @@ function etiqueta(valor) {
   const casilla = document.querySelector(`input[value="${valor}"]`);
   return casilla ? casilla.closest("label").textContent.trim() : valor;
 }
+const ORDEN_PRINCIPIOS = Object.keys(PROPOSITOS);
 function compararPertinenciaDua(a, b, practica = practicaActiva()) {
-  return (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (Number(practica && esPractica(b)) - Number(practica && esPractica(a))) || (coincidencias(b).length - coincidencias(a).length) || (b.destacada - a.destacada) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true });
+  return (coincidenciasNecesidades(b).length - coincidenciasNecesidades(a).length) || (Number(practica && esPractica(b)) - Number(practica && esPractica(a))) || (coincidencias(b).length - coincidencias(a).length) || (ORDEN_PRINCIPIOS.indexOf(proposito(a)) - ORDEN_PRINCIPIOS.indexOf(proposito(b))) || a.consideracion.localeCompare(b.consideracion, "es", { numeric: true });
 }
 function compararDua(a, b, practica = practicaActiva()) {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
@@ -1126,18 +1127,14 @@ function hayContextoDua() {
 }
 function respondeAlContexto(r) { return coincidencias(r).length > 0 || practicaActiva() && esPractica(r); }
 function hayFiltrosVista() { return estado.momentos.length || estado.propositos.length; }
-function recomendadasDua(lista) {
-  return !estado.necesidades.length && !hayFiltrosVista() && hayContextoDua()
-    ? lista.filter(respondeAlContexto).sort(compararPertinenciaDua) : [];
-}
 function gruposPorMomento(lista) {
   return MOMENTOS.map(([id, nombre]) => [nombreMomento(id, nombre), lista.filter(r => r.momento === id)])
     .filter(([, acciones]) => acciones.length);
 }
-function visibles() {
+function visibles(momentos = estado.momentos, propositos = estado.propositos) {
   const practica = practicaActiva();
-  return catalogo.filter((r) => r.tipo === "dua" && (!estado.momentos.length || estado.momentos.includes(r.momento)) && aplica(r))
-    .filter((r) => !estado.propositos.length || estado.propositos.includes(proposito(r)))
+  return catalogo.filter((r) => r.tipo === "dua" && (!momentos.length || momentos.includes(r.momento)) && aplica(r))
+    .filter((r) => !propositos.length || propositos.includes(proposito(r)))
     .sort((a, b) => compararDua(a, b, practica));
 }
 
@@ -1160,14 +1157,14 @@ function definicionAcceso() {
   return esSuperior() ? "En superior: cambio en la enseñanza, la evaluación o el entorno que mantiene los resultados de aprendizaje (Ley 21.091)." : "Apoyo que cambia cómo recibe la información, cómo responde, el entorno o el tiempo, sin cambiar lo que debe aprender (Decreto 83).";
 }
 const gruposAbiertos = new Set();
-function grupoPlegado(nombre, acciones, definicion, abrir = false) {
+function grupoPlegado(nombre, acciones, definicion) {
   const anterior = [...document.querySelectorAll("details[data-grupo]")].find((d) => d.getAttribute?.("data-grupo") === nombre);
-  const grupo = el("details", { class: "grupo-apoyos", ...(abrir ? {} : { "data-grupo": nombre }) },
+  const grupo = el("details", { class: "grupo-apoyos", "data-grupo": nombre },
     el("summary", { text: `${nombre} (${acciones.length})` }),
     definicion ? el("p", { class: "ayuda", text: definicion }) : null,
     el("ul", { class: "tarjetas" }, acciones.map((r) => tarjeta(r))));
-  grupo.open = abrir || (anterior?.open ?? gruposAbiertos.has(nombre));
-  if (!abrir) grupo.addEventListener("toggle", () => {
+  grupo.open = anterior?.open ?? gruposAbiertos.has(nombre);
+  grupo.addEventListener("toggle", () => {
     if (!grupo.isConnected) return;
     if (grupo.open) gruposAbiertos.add(nombre); else gruposAbiertos.delete(nombre);
   });
@@ -1454,28 +1451,54 @@ function fechaLocal() {
   return `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}-${String(fecha.getDate()).padStart(2, "0")}`;
 }
 
-function seccionRecomendadas(acciones) {
-  const tarjetas = acciones.map((r, i) => {
-    const ficha = tarjeta(r, true);
-    ficha.hidden = i >= 6;
-    return ficha;
+const aperturasDua = new Map();
+let firmaCarpetasDua;
+function carpetaDua(clave, titulo, abierta, ...contenido) {
+  const carpeta = el("details", { class: "grupo-apoyos" }, el("summary", { text: titulo }), contenido);
+  carpeta.open = aperturasDua.get(clave) ?? abierta;
+  carpeta.addEventListener("toggle", () => {
+    if (carpeta.isConnected) aperturasDua.set(clave, carpeta.open);
   });
-  const restantes = tarjetas.slice(6);
-  const boton = restantes.length ? el("button", {
-    type: "button", class: "boton",
-    text: restantes.length === 1 ? "Ver la recomendada restante" : `Ver las ${restantes.length} recomendadas restantes`,
-    onclick: (evento) => {
-      restantes.forEach((ficha) => { ficha.hidden = false; });
-      evento.currentTarget.hidden = true;
-      const titulo = restantes[0].querySelector("h4");
-      titulo.setAttribute("tabindex", "-1");
-      enfocarYDesplazar(titulo, restantes[0]);
-    },
-  }) : null;
-  return el("section", { "aria-labelledby": "t-dua-recomendadas" },
-    el("h3", { id: "t-dua-recomendadas", tabindex: "-1", text: `Recomendadas para tu ${voc("clase")} (${acciones.length})` }),
-    el("p", { class: "ayuda", text: "Responden a lo que marcaste en el paso 1, en orden de prioridad." }),
-    el("ul", { class: "tarjetas" }, tarjetas), boton);
+  return carpeta;
+}
+function carpetaMomento(nombre, acciones) {
+  const momento = acciones[0].momento;
+  const cantidad = acciones.filter(respondeAlContexto).length;
+  const titulo = nombre + " (" + acciones.length +
+    (hayContextoDua() ? " · " + (cantidad ? plural(cantidad, "responde", "responden") : "ninguna responde") : "") + ")";
+  const corte = cantidad ? Math.min(3, cantidad) : acciones.length;
+  const primeras = el("ul", { class: "tarjetas" }, acciones.slice(0, corte).map((r) => tarjeta(r)));
+  const otras = acciones.slice(corte);
+  const resto = otras.length ? carpetaDua(momento + "-otras",
+    (otras.length === 1 ? "Ver la otra" : `Ver las otras ${otras.length}`) + (momento === "toda-la-clase" ? "" : " de " + nombre),
+    false, el("ul", { class: "tarjetas" }, otras.map((r) => tarjeta(r)))) : null;
+  const carpeta = carpetaDua(momento, titulo, Boolean(cantidad || estado.propositos.length || estado.momentos.includes(momento)), primeras, resto);
+  carpeta.setAttribute("id", "dua-momento-" + momento);
+  return carpeta;
+}
+function avisoSinCoincidencias(lista) {
+  if (!hayContextoDua() || !hayFiltrosVista() || lista.some(respondeAlContexto)) return null;
+  const momentos = gruposPorMomento(visibles([], estado.propositos).filter(respondeAlContexto));
+  const porPrincipio = !momentos.length && estado.propositos.length;
+  const disponibles = porPrincipio
+    ? ORDEN_PRINCIPIOS.map(id => [id, visibles([], [id]).filter(respondeAlContexto)]).filter(([, acciones]) => acciones.length)
+    : momentos;
+  const nombres = porPrincipio || !estado.momentos.length
+    ? ORDEN_PRINCIPIOS.filter(id => estado.propositos.includes(id)).map(id => PROPOSITOS[id].principio)
+    : MOMENTOS.filter(([id]) => estado.momentos.includes(id)).map(([id, nombre]) => nombreMomento(id, nombre));
+  const mensaje = `Ninguna acción de ${new Intl.ListFormat("es-CL").format(nombres)} responde a lo que marcaste.`;
+  return el("div", { class: "aviso-apoyos" },
+    el("p", { role: "status" }, iconoEstado("!"), mensaje + (disponibles.length ? " Responden en:" : "")),
+    disponibles.length ? el("div", { class: "acciones-intro" }, disponibles.map(([nombre, acciones]) => el("button", {
+      type: "button", class: "boton", text: `${porPrincipio ? PROPOSITOS[nombre].principio : nombre} (${acciones.length})`,
+      onclick: () => {
+        estado.momentos = porPrincipio ? [] : [acciones[0].momento];
+        if (porPrincipio) estado.propositos = [nombre];
+        actualizarVistaDua();
+        const destino = $(`#dua-momento-${acciones[0].momento} > summary`);
+        enfocarYDesplazar(destino);
+      },
+    }))) : null);
 }
 
 function conteoDua(lista) {
@@ -1496,7 +1519,10 @@ function pintarTarjetas() {
   const lista = visibles();
   const marcadas = necesidades.filter((n) => estado.necesidades.includes(n.id));
   const contenedor = $("#tarjetas");
-  const plegados = (acciones, abrir = false) => gruposPorMomento(acciones).map(([nombre, fichas]) => grupoPlegado(nombre, fichas, "", abrir));
+  const firma = JSON.stringify([estado.momentos, estado.propositos, estado.necesidades, estado.perfil.nivel,
+    estado.perfil.meta, estado.perfil.practica, estado.perfil.actividad, estado.perfil.evidencia]);
+  if (firma !== firmaCarpetasDua) { aperturasDua.clear(); firmaCarpetasDua = firma; }
+  const carpetas = (acciones) => gruposPorMomento(acciones).map(([nombre, fichas]) => carpetaMomento(nombre, fichas));
   if (marcadas.length) {
     const grupos = marcadas.map((n) => {
       const acciones = lista.filter((r) => n.consideraciones.includes(r.consideracion)).sort(compararPertinenciaDua);
@@ -1504,7 +1530,7 @@ function pintarTarjetas() {
       return el("div", { role: "group", "aria-labelledby": titulo },
         el("h3", { id: titulo, tabindex: "-1", text: n.texto }),
         acciones.length ? el("ul", { class: "tarjetas" }, acciones.map((r) => tarjeta(r, true, true))) :
-          el("div", { class: "acciones-intro" }, el("p", { class: "ayuda", text: "Ninguna acción en este filtro" }),
+          el("div", { class: "aviso-apoyos acciones-intro" }, el("p", { role: "status" }, iconoEstado("!"), "Ninguna acción en este filtro"),
             el("button", { type: "button", class: "boton", text: "Quitar filtros", onclick: () => {
               limpiarFiltrosVista();
               document.getElementById(titulo).focus();
@@ -1513,18 +1539,9 @@ function pintarTarjetas() {
     contenedor.replaceChildren(
       el("section", { class: "dua-marcadas", "aria-labelledby": "t-dua-marcadas" },
         el("h3", { id: "t-dua-marcadas", tabindex: "-1", text: "Para lo que marcaste" }), grupos),
-      el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), plegados(lista.filter((r) => !coincidenciasNecesidades(r).length))));
-  } else if (estado.momentos.length) {
-    contenedor.replaceChildren(el("ul", { class: "tarjetas" }, lista.map((r) => tarjeta(r, estado.momentos.length > 1))));
-  } else if (estado.propositos.length) {
-    contenedor.replaceChildren(...plegados(lista, true));
+      el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), carpetas(lista.filter((r) => !coincidenciasNecesidades(r).length))));
   } else {
-    const recomendadas = recomendadasDua(lista);
-    if (recomendadas.length) {
-      const demas = lista.filter((r) => !respondeAlContexto(r));
-      contenedor.replaceChildren(seccionRecomendadas(recomendadas),
-        el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: `Las demás acciones (${demas.length})` }), plegados(demas)));
-    } else contenedor.replaceChildren(...plegados(lista));
+    contenedor.replaceChildren(...[avisoSinCoincidencias(lista), ...carpetas(lista)].filter(Boolean));
   }
   $("#conteo").textContent = conteoDua(lista);
 }
@@ -2217,8 +2234,7 @@ function prepararProyeccion() {
   }
 
   entrar.addEventListener("click", async () => {
-    const lista = visibles(), recomendadas = recomendadasDua(lista);
-    const acciones = recomendadas.length ? recomendadas : lista;
+    const acciones = visibles();
     const fichaProyectada = (r) => {
       const principio = proposito(r);
       return el("li", { class: "tarjeta", "data-accion": r.id },
@@ -2227,10 +2243,8 @@ function prepararProyeccion() {
         consideraciones[r.consideracion] ? el("p", { class: "t-que-busca", text: "Qué busca: " + consideraciones[r.consideracion] }) : null,
         el("ol", {}, r.como.map((paso) => el("li", { text: textoPublico(paso) }))));
     };
-    const grupos = !hayFiltrosVista() && !hayContextoDua() ? gruposPorMomento(acciones) : [];
-    $("#acciones-proyectadas").replaceChildren(...(grupos.length
-      ? grupos.map(([nombre, fichas]) => el("li", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, fichas.map(fichaProyectada))))
-      : acciones.map(fichaProyectada)));
+    $("#acciones-proyectadas").replaceChildren(...gruposPorMomento(acciones)
+      .map(([nombre, fichas]) => el("li", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, fichas.map(fichaProyectada)))));
     $("#proyeccion-vacia").hidden = Boolean(acciones.length);
     vista.hidden = false;
     raiz.classList.add("proyectando");

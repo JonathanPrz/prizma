@@ -169,48 +169,91 @@ async function probar() {
         ['Antes', 'Durante', 'Después', 'En toda la clase']);
       assert.equal(await nodo('acciones-proyectadas').locator('.tarjeta').count(), 36);
       await nodo('salir-proyeccion').click();
-      await p.locator('#perfil .mas-detalles summary').click();
-      await p.locator('input[value="conversar"]').check();
-      await p.locator('input[value="escribiendo"]').check();
-      await nodo('guardar-clase').click();
-      const recomendadas = tarjetas.locator('section[aria-labelledby="t-dua-recomendadas"]');
-      const demas = tarjetas.locator('section[aria-labelledby="t-dua-demas"]');
-      const ids = lista => lista.locator('.tarjeta').evaluateAll(ns => ns.map(n => n.dataset.accion));
-      const sugeridas = await ids(recomendadas);
-      assert(sugeridas.length > 6);
-      assert.equal(await nodo('t-dua-recomendadas').textContent(), `Recomendadas para tu clase (${sugeridas.length})`);
-      assert(await nodo('t-dua-recomendadas').evaluate(n => n === document.activeElement));
-      assert.equal(await recomendadas.locator('.tarjeta:visible').count(), 6);
-      const otras = await ids(demas);
-      assert.equal(await demas.locator('details[open]').count(), 0);
-      assert.equal(sugeridas.length + otras.length, 36);
-      assert.equal(new Set([...sugeridas, ...otras]).size, 36);
-      await nodo('proyectar').click();
-      assert.deepEqual(await ids(nodo('acciones-proyectadas')), sugeridas);
-      await nodo('salir-proyeccion').click();
-      await recomendadas.getByRole('button', { name: `Ver las ${sugeridas.length - 6} recomendadas restantes` }).click();
-      assert.equal(await recomendadas.locator('.tarjeta:visible').count(), sugeridas.length);
-      assert(await recomendadas.locator('.tarjeta h4').nth(6).evaluate(n => n === document.activeElement));
-
+      async function carpetasEsperadas(esperadas) {
+        const carpetas = tarjetas.locator(':scope > details');
+        assert.equal(await carpetas.count(), esperadas.length);
+        for (const [i, [titulo, abierta, visibles, otras]] of esperadas.entries()) {
+          const carpeta = carpetas.nth(i);
+          assert.equal(await carpeta.locator(':scope > summary').textContent(), titulo);
+          assert.equal(await carpeta.evaluate(n => n.open), abierta, titulo);
+          assert.equal(await carpeta.locator('.tarjeta:visible').count(), visibles, titulo);
+          const resto = carpeta.locator(':scope > details');
+          assert.equal(await resto.count(), otras ? 1 : 0, titulo);
+          if (otras) {
+            assert.equal(await resto.locator('summary').first().textContent(), otras);
+            assert.equal(await resto.evaluate(n => n.open), false);
+          }
+        }
+      }
+      await carpetasEsperadas([
+        ['Antes (11)', false, 0], ['Durante (14)', false, 0], ['Después (4)', false, 0], ['En toda la clase (7)', false, 0]
+      ]);
+      assert(await p.evaluate(() => compararPertinenciaDua(
+        { consideracion: '7.1', contextos: [] }, { consideracion: '1.1', contextos: [] }) < 0));
       await nodo('m-antes').click();
+      await carpetasEsperadas([['Antes (11)', true, 11]]);
+      await limpiar.click();
       await nodo('proposito-motivar').click();
-      assert.equal(await tarjetas.locator(':scope > ul .tarjeta:visible').count(), 4);
-      assert(await limpiar.isVisible());
-      assert.match(await nodo('conteo').textContent(), /^Antes y Compromiso: \d+ de 4 acciones responde/);
+      await carpetasEsperadas([['Antes (4)', true, 4], ['Durante (4)', true, 4], ['Después (2)', true, 2], ['En toda la clase (3)', true, 3]]);
+      await limpiar.click();
+      await nodo('practica').check();
+      await nodo('guardar-clase').click();
+      assert(await nodo('acciones').evaluate(n => n === document.activeElement));
+      await carpetasEsperadas([
+        ['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes'],
+        ['Durante (14 · 6 responden)', true, 3, 'Ver las otras 11 de Durante'],
+        ['Después (4 · ninguna responde)', false, 0],
+        ['En toda la clase (7 · 1 responde)', true, 1, 'Ver las otras 6']
+      ]);
+      if (width === 390) console.log('Alto de resultados DUA con taller a 390 px: ' + (await nodo('acciones').boundingBox()).height + ' px.');
+      assert.equal(await tarjetas.locator('.aviso-apoyos [role="status"]').count(), 0);
+      assert.equal(await tarjetas.locator(':scope > ul, .empieza-por, #t-dua-recomendadas').count(), 0);
+      const todas = await tarjetas.locator('.tarjeta').evaluateAll(ns => ns.map(n => n.dataset.accion));
+      assert.equal(new Set(todas).size, 36);
+      await nodo('proyectar').click();
+      assert.deepEqual(await nodo('acciones-proyectadas').locator('.tarjeta').evaluateAll(ns => ns.map(n => n.dataset.accion)), todas);
+      await nodo('salir-proyeccion').click();
+      const resumenDurante = nodo('dua-momento-durante').locator(':scope > summary');
+      await resumenDurante.click();
+      await p.evaluate(() => pintarTarjetas());
+      assert.equal(await nodo('dua-momento-durante').evaluate(n => n.open), false);
       await nodo('m-antes').click();
-      assert.equal(await tarjetas.locator(':scope > details:not([open])').count(), 0);
-      assert.equal(await tarjetas.locator('details .tarjeta:visible').count(), 13);
+      await carpetasEsperadas([['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes']]);
+      assert.equal(await nodo('conteo').textContent(), 'Antes: 1 de 11 acciones responde a lo que marcaste');
+      await nodo('proposito-motivar').click();
+      await carpetasEsperadas([['Antes (4 · ninguna responde)', true, 4]]);
+      assert(await limpiar.isVisible());
+      assert.equal(await nodo('conteo').textContent(), 'Antes y Compromiso: 0 de 4 acciones responden a lo que marcaste');
+      assert.deepEqual(await tarjetas.locator(':scope > .aviso-apoyos button').allTextContents(), ['Durante (1)', 'En toda la clase (1)']);
+      await tarjetas.getByRole('button', { name: 'Durante (1)', exact: true }).click();
+      assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [['durante'], ['motivar']]);
+      assert(await resumenDurante.evaluate(n => n === document.activeElement));
       await limpiar.click();
       assert(!await limpiar.isVisible());
 
       await nodo('paso-clase-editar').click();
-      await p.locator('input[value="conversar"]').uncheck();
-      await p.locator('input[value="escribiendo"]').uncheck();
+      await nodo('practica').uncheck();
+      await p.locator('#perfil .mas-detalles summary').click();
       await p.locator('input[value="moverse"]').check();
       await nodo('guardar-clase').click();
       await nodo('m-antes').click();
-      assert((await tarjetas.locator(':scope > ul > .tarjeta:visible').count()) > 0);
-      assert.equal(await nodo('tarjetas').locator('.empieza-por').count(), 0);
+      await carpetasEsperadas([['Antes (11 · ninguna responde)', true, 11]]);
+      assert.match(await tarjetas.getByRole('status').textContent(), /Ninguna acción de Antes responde.*Responden en:/);
+      await tarjetas.getByRole('button', { name: 'Durante (3)', exact: true }).click();
+      assert.deepEqual(await p.evaluate(() => estado.momentos), ['durante']);
+      assert(await resumenDurante.evaluate(n => n === document.activeElement));
+      await limpiar.click();
+      await nodo('paso-clase-editar').click();
+      await p.locator('input[value="moverse"]').uncheck();
+      await p.locator('input[value="crear"]').check();
+      await nodo('guardar-clase').click();
+      await nodo('m-antes').click();
+      await nodo('proposito-presentar').click();
+      const alternativas = tarjetas.locator(':scope > .aviso-apoyos');
+      assert.match(await alternativas.getByRole('status').textContent(), /Ninguna acción de Representación responde/);
+      await alternativas.getByRole('button', { name: /^Compromiso \(/ }).click();
+      assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [[], ['motivar']]);
+      assert(await p.evaluate(() => document.activeElement.matches('#tarjetas details[id^="dua-momento-"] > summary')));
       assert.match(await nodo('guia-nivel').textContent(), /La ley chilena los llama/);
       assert(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       await p.close();

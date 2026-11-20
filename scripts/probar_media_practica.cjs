@@ -30,6 +30,6 @@ vm.runInContext(`var original=catalogo;var modelo=catalogo.find(r=>r.tipo==='dua
  {...modelo,id:'sim-destacada',consideracion:'1.3',contextos:[],destacada:true}
 ]);estado.perfil={nivel:'media',practica:true,actividad:['crear'],evidencia:['grupo'],meta:''};estado.necesidades=['evaluar'];estado.momentos=[];estado.propositos=[]`,c);
 assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-practica','sim-detalles','sim-destacada']);
-vm.runInContext('estado.perfil.practica=false',c);assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-detalles','sim-destacada','sim-practica']);
+vm.runInContext('estado.perfil.practica=false',c);assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-detalles','sim-practica','sim-destacada']);
 vm.runInContext('catalogo=original; estado.perfil.practica=true; sincronizarPerfil=()=>{};pintarControles=()=>{};pintarTarjetas=()=>{};actualizarRespaldo=()=>{};borradorDua={perfil:{...estado.perfil},necesidades:[]};limpiarClase()',c);assert.equal(e('estado.perfil.practica'),true);
-console.log('Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > destacadas, práctica y limpieza independientes.');
+console.log('Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > principio y número, práctica y limpieza independientes.');

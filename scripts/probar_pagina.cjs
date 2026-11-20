@@ -146,7 +146,7 @@ async function probar() {
         await aviso.getByRole('button', { name: 'Guardar y actualizar' }).click();
         assert(!await aviso.isVisible());
         assert.equal(await nodo('conteo').textContent(), '8 de 36 acciones responden a lo que marcaste');
-        const primeraDua = pagina.locator('#tarjetas [aria-labelledby="t-dua-recomendadas"] .tarjeta button[id^="elegir-"]').first();
+        const primeraDua = pagina.locator('#dua-momento-antes > ul .tarjeta button[id^="elegir-"]').first();
         await primeraDua.click();
         assert.match(await nodo('continuar-conteo').textContent(), /1 elegida/);
         await primeraDua.click();
