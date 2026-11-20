@@ -102,7 +102,7 @@ function pintarSeguridad(e = estudianteActual(), trabajo = false) {
   const caja = $(trabajo ? "#trabajo-seguridad" : "#estudiante-seguridad");
   const activa = seguridadActiva(e, trabajo); caja.hidden = !activa;
   const fichas = activa ? catalogo.filter(r => trabajo ? aplica(r, e) && r.id === (e.etapa === "practica" ? "pp-seguridad" : "tr-alertas-visuales") : aplica(r) && IDS_SEGURIDAD.includes(r.id)) : [];
-  caja.replaceChildren(...(activa ? [el("p", { text: "Revisa rótulos, evacuación y alertas antes de comenzar. Acuerda las medidas con la persona y con quienes están a cargo de la seguridad." }), ...fichas.map(r => el("button", { type: "button", class: "boton", text: "Revisar: " + textoModalidad(r.titulo, r, e), onclick: () => {
+  caja.replaceChildren(...(activa ? [avisoVisual("", "!", "Revisa rótulos, evacuación y alertas antes de comenzar. Acuerda las medidas con la persona y con quienes están a cargo de la seguridad."), ...fichas.map(r => el("button", { type: "button", class: "boton", text: "Revisar: " + textoModalidad(r.titulo, r, e), onclick: () => {
     const destino = document.getElementById("elegir-" + r.id); if (!destino) return;
     for (let n = destino.parentElement; n; n = n.parentElement) if (n.tagName === "DETAILS") n.open = true;
     destino.focus(); destino.scrollIntoView({ block: "center" });
@@ -226,7 +226,7 @@ function barrerasRepetidas() {
 function pintarRepeticiones() {
   const lista = barrerasRepetidas(), caja = $("#barreras-repetidas");
   caja.hidden = !lista.length;
-  caja.replaceChildren(el("h3", { text: "Barreras que se repiten en tu curso" }), ...lista.map((b) => {
+  caja.replaceChildren(el("h3", {}, iconoEstado("!"), "Barreras que se repiten en tu curso"), ...lista.map((b) => {
     const n = necesidades.find((n) => n.dimensiones?.includes(b.dimension));
     return el("div", {}, el("p", { text: `${b.nombre}: ${b.cantidad} estudiantes` }), n ? el("button", {
       type: "button", class: "boton", id: `barrera-${b.dimension}`, text: estado.necesidades.includes(n.id) ? "Ya lo estás considerando" : "Ver acciones para esto",
@@ -306,11 +306,21 @@ function estadoCaso(e, trabajo = false) {
   if (e.acuerdo?.estado === "completo") return erroresAcuerdo(e, trabajo).length ? "Por revisar" : "Acuerdos completos";
   return "Sin acuerdos";
 }
+function rotularEstadoCaso(boton, nombre, estado) {
+  boton.textContent = nombre + " · " + estado;
+  if (estado === "Acuerdos completos" || estado === "Por revisar") {
+    const completo = estado === "Acuerdos completos";
+    const icono = iconoEstado(completo ? "✓" : "!");
+    icono.className += completo ? " estado-completo" : " estado-revisar";
+    boton.append(icono);
+  }
+}
 function marcarRevision(e) { if (e.acuerdo?.estado === "completo") e.acuerdo.estado = "por-revisar"; }
 function abrirPaso(id, abierto) {
   $("#" + id + "-cuerpo").hidden = !abierto;
   $("#" + id + "-resumen").hidden = abierto;
   $("#" + id + "-toggle").setAttribute("aria-expanded", String(abierto));
+  pintarAccionPrincipal();
 }
 function pintarEstadoCasos() {
   const e = estudianteActual(), pendientes = estado.estudiantes.filter((e) => estadoCaso(e) !== "Acuerdos completos");
@@ -319,7 +329,7 @@ function pintarEstadoCasos() {
   $("#agregar-caso-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreEstudiante).join(", ") : estado.estudiantes.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-estudiantes button").forEach((b) => {
     const caso = estado.estudiantes.find((e) => b.id === `estudiante-${e.id}`);
-    if (caso) b.textContent = nombreEstudiante(caso) + " · " + estadoCaso(caso);
+    if (caso) rotularEstadoCaso(b, nombreEstudiante(caso), estadoCaso(caso));
   });
   pintarContextoEstudiante();
   $("#estudiante").hidden = !e.descripcionGuardada;
@@ -452,7 +462,7 @@ function pintarApoyos() {
   $("#apoyos-adicionales").hidden = !adicionales.length;
   $("#apoyos-adicionales").replaceChildren(...adicionales.map(tarjeta));
   $("#apoyos-sin-fichas").replaceChildren(...situacionesSinApoyos().map((d) =>
-    el("p", { class: "aviso-apoyos" }, `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
+    avisoVisual("aviso-apoyos", "!", `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
   const e = estudianteActual(), lista = accesosVisibles(e), practicas = practicasVisibles();
   const todas = [...lista, ...practicas].sort((a, b) => compararAcceso(a, b, e));
@@ -635,7 +645,7 @@ function pintarEstadoTrabajo() {
   $("#trabajo-agregar-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreTrabajador).join(", ") : estado.trabajadores.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-trabajadores button").forEach((b) => {
     const caso = estado.trabajadores.find((e) => b.id === "trabajador-" + e.id);
-    if (caso) b.textContent = nombreTrabajador(caso) + " · " + estadoCaso(caso, true);
+    if (caso) rotularEstadoCaso(b, nombreTrabajador(caso), estadoCaso(caso, true));
   });
   $("#trabajo-descripcion-toggle").textContent = "1. Describe la situación de " + nombreTrabajador(e);
   $("#quitar-trabajador").textContent = "Quitar a " + nombreTrabajador(e);
@@ -820,7 +830,7 @@ function guardar() {
     falloGuardadoAvisado = true;
     const aviso = $("#persistencia-aviso");
     aviso.hidden = false;
-    aviso.replaceChildren(el("p", { text: "No se pudo guardar en este navegador. Descarga un respaldo para no perder tu trabajo" }), el("button", { type: "button", class: "boton", text: "Guardar respaldo", onclick: guardarRespaldo }));
+    aviso.replaceChildren(avisoVisual("aviso-apoyos mensaje-error", "✕", "No se pudo guardar en este navegador. Descarga un respaldo para no perder tu trabajo"), el("button", { type: "button", class: "boton", text: "Guardar respaldo", onclick: guardarRespaldo }));
   }
 }
 
@@ -999,6 +1009,12 @@ function visibles() {
     .sort((a, b) => compararDua(a, b, practica));
 }
 
+function iconoEstado(simbolo) { return el("span", { class: "icono-estado", "aria-hidden": "true", text: simbolo }); }
+function avisoVisual(clase, simbolo, ...contenido) { return el("p", { class: clase }, iconoEstado(simbolo), ...contenido); }
+function mostrarMensaje(nodo, texto, estado = "") {
+  nodo.setAttribute?.("data-estado", estado);
+  nodo.textContent = texto;
+}
 function el(tag, attrs = {}, ...hijos) {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
@@ -1033,13 +1049,26 @@ function actualizarPaso(numero) {
   });
   actualizarContinuar();
 }
+function pintarAccionPrincipal() {
+  const principal = $("#continuar");
+  if (!principal?.getClientRects) return;
+  const candidatos = (estado.pestana === "dua" ? ["guardar-clase", "documento-clase"] :
+    estado.pestana === "apoyos" ? ["guardar-descripcion", "guardar-acuerdos", "documento-estudiante"] :
+    ["guardar-descripcion-trabajo", "guardar-acuerdos-trabajo", "documento-trabajo", "preparar-centro"]).map((id) => $("#" + id));
+  const elegido = principal.getClientRects().length ? principal : candidatos.find((boton) => boton.getClientRects().length);
+  document.querySelectorAll("main .boton-principal").forEach((boton) => {
+    if (boton !== elegido) boton.classList.remove("boton-principal");
+  });
+  elegido?.classList.add("boton-principal");
+}
 function actualizarContinuar() {
   const b = $("#continuar");
   if (!b?.isConnected) return;
+  pintarAccionPrincipal();
   const e = trabajadorActual();
   const cantidad = estado.pestana === "trabajo" ? (e ? elegidasTrabajo(e).length : 0) :
     Object.keys(estado.pestana === "apoyos" ? estudianteActual().seleccion : estado.seleccion).length;
-  b.textContent = pasoActual === 1 ? (estado.pestana === "dua" ? "Guardar y ver acciones" : "Guardar y ver apoyos") :
+  b.textContent = pasoActual === 1 ? (estado.pestana === "dua" ? "Guardar y ver acciones" : estado.pestana === "trabajo" ? "Guardar y ver ajustes" : "Guardar y ver apoyos") :
     pasoActual === 2 ? (estado.pestana === "dua" ? `Ir a tu selección (${cantidad} elegidas)` : `Ir a acuerdos (${cantidad} elegidos)`) : "Ver documento";
 }
 function irPaso(numero) {
@@ -1126,7 +1155,7 @@ function pintarFiltrosVista() {
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
     const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
-      el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto })));
+      el("span", {}, p.principio, el("small", { text: p.corto })));
     b.addEventListener("click", () => {
       estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
       actualizarVistaDua();
@@ -1161,7 +1190,7 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
   const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
   const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
   const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);
-  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida), "aria-label": (elegida ? "Elegida: " : "Elegir: ") + textoModalidad(r.titulo, r, persona) }, elegida ? "Elegida" : "Elegir");
+  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida), "aria-label": (elegida ? "Elegida: " : "Elegir: ") + textoModalidad(r.titulo, r, persona) }, elegida ? [iconoEstado("✓"), " Elegida"] : "Elegir");
   boton.addEventListener("click", () => alternar(r.id));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
@@ -1171,12 +1200,12 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
     motivo ? el("p", { class: "t-razon", text: motivo }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
-    !dua && APOYOS_FORMA.includes(r.id) ? el("p", { class: "aviso-apoyos" }, el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
+    !dua && APOYOS_FORMA.includes(r.id) ? avisoVisual("aviso-apoyos", "!", el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
     el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
     // Va bajo el título y en color neutro: el verde ya identifica al principio Compromiso.
     queBusca ? el("p", { class: "t-que-busca", text: `DUA 3.0, consideración ${r.consideracion} · Qué busca: ${queBusca}` }) : null,
-    ofrecida ? el("p", { class: "aviso-cruzado", role: "status", text: "Ya está considerado en el DUA: " + version.titulo }) : null,
-    dua && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status", text: avisoDua(r) }) : null,
+    ofrecida ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), "Ya está considerado en el DUA: " + version.titulo) : null,
+    dua && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), avisoDua(r)) : null,
     el("ol", {}, (dua ? r.como.map(textoPublico) : pasosApoyo(r, persona)).map((p) => el("li", { text: p }))),
     version ? el("div", { class: "version-curso", id: "version-" + r.id, tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
       preguntar ? el("div", { role: "status" }, el("p", { text: `Este apoyo lo necesitan ${repetida} estudiantes. ¿Quieres agregar su versión a todo el curso?` }),
@@ -1185,7 +1214,7 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
           el("button", { type: "button", class: "boton", id: "individual-" + r.id, text: "No, mantener individual", onclick: () => {
             estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById("version-" + r.id).focus();
           } }))) : el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso", onclick: () => agregarVersionCurso(r) })) : null,
-    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status", text: `Este apoyo lo eligieron ${repetida} estudiantes` }) : null,
+    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status" }, iconoEstado("!"), `Este apoyo lo eligieron ${repetida} estudiantes`) : null,
     el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
       el("span", { class: "respaldo " + r.respaldo, text: RESPALDO[r.respaldo] }),
@@ -1293,6 +1322,7 @@ function pintarSeleccion() {
       ...Object.keys(GRUPOS_APOYOS).filter((tipo) => elegidasOrdenadas(e.seleccion).some((r) => r.tipo === tipo)).map((tipo) =>
         el("div", {}, el("h4", { text: esSuperior() && ["acceso", "adicional"].includes(tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
   $("#seleccion-trabajo").hidden = !trabajo || !laborales.length;
+  $("#cerrar-mochila")?.classList?.toggle("boton-principal", trabajo && !laborales.length);
   $("#pdf").hidden = trabajo;
   $("#borrar").textContent = trabajo ? "Borrar los datos de Práctica y trabajo" : "Borrar los datos de Educación";
   $("#sel-vacia").textContent = trabajo ? "Todavía no eliges ajustes. Usa el botón «Elegir» de cada ajuste." : "Todavía no eliges acciones ni apoyos. Usa el botón «Elegir».";
@@ -1310,7 +1340,7 @@ function pintarSeleccion() {
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad(nota);
     });
     return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r) : nombreMomento[r.momento] }),
-      el("span", { class: "sel-titulo", text: textoModalidad(r.titulo, r, e) }), e && !compatibleModalidad(r, e) ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, nota,
+      el("span", { class: "sel-titulo", text: textoModalidad(r.titulo, r, e) }), e && !compatibleModalidad(r, e) ? avisoVisual("aviso-apoyos", "!", "Revisa este apoyo: no corresponde a la modalidad actual.") : null, nota,
       el("button", { type: "button", class: "quitar", id: prefijo + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, trabajo ? undefined : e?.id, trabajo ? e.id : undefined), "aria-label": "Quitar: " + textoModalidad(r.titulo, r, e) + ", " + (e ? (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) : "del curso"), text: "Quitar" }));
   }
 }
@@ -1367,7 +1397,7 @@ function guardarRespaldo() {
   document.body.append(enlace);
   enlace.click(); enlace.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  $("#respaldo-estado").textContent = "Respaldo descargado. Búscalo en tu carpeta de descargas.";
+  mostrarMensaje($("#respaldo-estado"), "Respaldo descargado. Búscalo en tu carpeta de descargas.", "exito");
 }
 
 function validarRespaldo(datos, avisos = []) {
@@ -1396,7 +1426,7 @@ async function abrirRespaldo(evento) {
     const avisos = [];
     const { descartadas, ...normal } = validarRespaldo(datos, avisos);
     if (hayDatos() && !window.confirm(`Esto reemplaza los datos de tu ${voc("clase")}, tu selección y todos tus estudiantes y los casos de trabajo por los del respaldo. ¿Continuar?`)) {
-      aviso.textContent = "No se abrió el respaldo. Tus datos siguen igual.";
+      mostrarMensaje(aviso, "No se abrió el respaldo. Tus datos siguen igual.", "aviso");
       return;
     }
     estado = normal; avisarInstrumentos(); inclusionDocumento = null; inclusionTrabajo = null; borradorDua = null;
@@ -1405,9 +1435,9 @@ async function abrirRespaldo(evento) {
     history.replaceState(null, "", "#" + destino); mostrarPestana(destino);
     sincronizarTrabajo(); sincronizarEstudiante(); sincronizarPerfil(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
     mostrarMigracionPractica(avisos);
-    aviso.textContent = `Respaldo abierto: ${plural(totalElegidas(), "acción", "acciones")}.` +
-      (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : "");
-  } catch (e) { aviso.textContent = e.message; }
+    mostrarMensaje(aviso, `Respaldo abierto: ${plural(totalElegidas(), "acción", "acciones")}.` +
+      (descartadas ? ` ${plural(descartadas, "acción", "acciones")} ${descartadas === 1 ? "ya no está en el catálogo y no se cargó." : "ya no están en el catálogo y no se cargaron."}` : ""), descartadas ? "aviso" : "exito");
+  } catch (e) { mostrarMensaje(aviso, e.message, "error"); }
   finally { input.value = ""; }
 }
 
@@ -1430,7 +1460,7 @@ function prepararDocumentoTrabajo() {
       const campo = el("input", { type: "checkbox", name: "incluir", value: "trabajo:" + e.id }); campo.checked = false;
       return el("label", {}, campo, tituloTrabajador(e));
     }));
-  $("#error-documento").textContent = ""; $("#mochila").close(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
+  mostrarMensaje($("#error-documento"), ""); $("#mochila").close(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 function documentoTrabajo(ids = inclusionTrabajo || []) {
   const ajustes = (e) => seccionesTrabajo.ajustes ? elegidasTrabajo(e) : [];
@@ -1464,27 +1494,27 @@ function prepararDocumento() {
   $("#opciones-documento").replaceChildren(...[["curso", "Acciones para todo el curso"], ...estado.estudiantes.filter(datosEstudiante).map((e) => ["alumno:" + e.id, tituloEstudiante(e)])].map(([id, texto]) => {
     const c = el("input", { type: "checkbox", value: id, name: "incluir" });
     c.checked = id === "curso" || inclusionDocumento.estudiantes.includes(id.slice(7));
-    c.addEventListener("change", () => { $("#error-documento").textContent = [...document.querySelectorAll('input[name="incluir"]:checked')].some(n => n.value.startsWith("alumno:")) ? "Incluirás datos de un estudiante. Revisa con quién compartirás este documento" : ""; });
+    c.addEventListener("change", () => { mostrarMensaje($("#error-documento"), [...document.querySelectorAll('input[name="incluir"]:checked')].some(n => n.value.startsWith("alumno:")) ? "Incluirás datos de un estudiante. Revisa con quién compartirás este documento" : "", "aviso"); });
     return el("label", {}, c, texto);
   }));
-  $("#error-documento").textContent = "";
+  mostrarMensaje($("#error-documento"), "");
   $("#mochila").close();
   $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 async function generarDocumento() {
   const ids = [...document.querySelectorAll('input[name="incluir"]:checked')].map((c) => c.value);
-  if (!ids.length) { $("#error-documento").textContent = inclusionTrabajo !== null ? "Elige al menos una persona trabajadora." : "Elige el curso o al menos un estudiante."; return; }
+  if (!ids.length) { mostrarMensaje($("#error-documento"), inclusionTrabajo !== null ? "Elige al menos una persona trabajadora." : "Elige el curso o al menos un estudiante.", "error"); return; }
   if (inclusionTrabajo !== null) inclusionTrabajo = ids.filter((id) => id.startsWith("trabajo:")).map((id) => id.slice(8));
   else inclusionDocumento = { curso: ids.includes("curso"), estudiantes: ids.filter((id) => id.startsWith("alumno:")).map((id) => id.slice(7)) };
   const solicitud = solicitudDocumento;
   const boton = $("#generar-documento");
-  boton.disabled = true; $("#error-documento").textContent = "Preparando documento…";
+  boton.disabled = true; mostrarMensaje($("#error-documento"), "Preparando documento…");
   try { await prepararPdf(); }
-  catch (e) { if (solicitud === solicitudDocumento) { $("#error-documento").textContent = "No se pudo preparar el documento. Reintenta."; boton.disabled = false; } return; }
+  catch (e) { if (solicitud === solicitudDocumento) { mostrarMensaje($("#error-documento"), "No se pudo preparar el documento. Reintenta.", "error"); boton.disabled = false; } return; }
   if (solicitud !== solicitudDocumento) return;
   boton.disabled = false;
   if (!$("#incluir-documento").open) return;
-  armarHoja(); $("#incluir-documento").close(); $("#vista-estado").textContent = ""; $("#vista").showModal();
+  armarHoja(); $("#incluir-documento").close(); mostrarMensaje($("#vista-estado"), ""); $("#vista").showModal();
 }
 function documentoParaCentro(ids, decision, e) {
   if (decision !== true || !elegidasCentro(e).length) return null;
@@ -1511,7 +1541,7 @@ function prepararCentro() {
     campo.checked = true; campo.addEventListener("change", actualizarDecisionCentro);
     return el("label", {}, campo, textoModalidad(r.titulo, r, e));
   }));
-  $("#error-centro").textContent = ""; actualizarDecisionCentro();
+  mostrarMensaje($("#error-centro"), ""); actualizarDecisionCentro();
   $("#documento-centro").showModal(); $("#t-documento-centro").focus();
 }
 async function verDocumentoCentro(e) {
@@ -1520,13 +1550,13 @@ async function verDocumentoCentro(e) {
   const d = documentoParaCentro(ids, $("#decision-centro").checked, e);
   if (!d) return;
   const solicitud = ++solicitudDocumento;
-  $("#ver-centro").disabled = true; $("#error-centro").textContent = "Preparando documento…";
+  $("#ver-centro").disabled = true; mostrarMensaje($("#error-centro"), "Preparando documento…");
   try { await prepararPdf(); }
-  catch (e) { if (solicitud === solicitudDocumento) { $("#error-centro").textContent = "No se pudo preparar el documento. Reintenta."; actualizarDecisionCentro(); } return; }
+  catch (e) { if (solicitud === solicitudDocumento) { mostrarMensaje($("#error-centro"), "No se pudo preparar el documento. Reintenta.", "error"); actualizarDecisionCentro(); } return; }
   if (solicitud !== solicitudDocumento || !$("#documento-centro").open || e !== trabajadorActual() || e.etapa !== "practica" || !$("#decision-centro").checked ||
       JSON.stringify(ids) !== JSON.stringify([...document.querySelectorAll('input[name="compartir-centro"]:checked')].map((c) => c.value))) return;
   centroDocumento = d; armarHoja(); $("#documento-centro").close();
-  $("#vista-estado").textContent = ""; $("#vista").showModal(); $("#cerrar").focus();
+  mostrarMensaje($("#vista-estado"), ""); $("#vista").showModal(); $("#cerrar").focus();
 }
 function prepararPracticaProfesional() {
   $("#preparar-practica").addEventListener("click", () => {
@@ -1723,22 +1753,22 @@ function prepararPdf() {
 async function descargarPdf() {
   const aviso = $("#vista-estado"), boton = $("#descargar");
   const solicitud = solicitudDocumento, centro = centroDocumento;
-  boton.disabled = true; aviso.textContent = "Preparando el PDF…";
+  boton.disabled = true; mostrarMensaje(aviso, "Preparando el PDF…");
   try {
     await prepararPdf();
     if (!$("#vista").open || solicitud !== solicitudDocumento || centro !== centroDocumento) return;
     const fecha = fechaLocal();
     window.pdfMake.createPdf(definicionPdf()).download(inclusionTrabajo !== null ? `prizma-trabajo-${fecha}.pdf` : centroDocumento ? `prizma-practica-${fecha}.pdf` : `prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
-    aviso.textContent = "PDF descargado. Búscalo en tu carpeta de descargas.";
+    mostrarMensaje(aviso, "PDF descargado. Búscalo en tu carpeta de descargas.", "exito");
   } catch (e) {
-    aviso.textContent = "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».";
+    mostrarMensaje(aviso, "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».", "error");
   } finally { boton.disabled = false; }
 }
 
 function imprimirPdf() {
-  $("#vista-estado").textContent = "";
+  mostrarMensaje($("#vista-estado"), "");
   try { window.pdfMake.createPdf(definicionPdf()).print(); }
-  catch (e) { $("#vista-estado").textContent = "No se pudo abrir la impresión. Descarga el PDF e imprímelo desde tu lector de PDF"; }
+  catch (e) { mostrarMensaje($("#vista-estado"), "No se pudo abrir la impresión. Descarga el PDF e imprímelo desde tu lector de PDF", "error"); }
 }
 
 function mostrarGuiaDUA(origen = document.activeElement) {
@@ -1852,6 +1882,7 @@ function prepararAvisos() {
 }
 
 async function iniciar() {
+  window.matchMedia("(max-width: 39.999rem)").addEventListener("change", pintarAccionPrincipal);
   new ResizeObserver(([entrada]) => {
     document.documentElement.style.setProperty("--cabecera-alto", `${entrada.target.getBoundingClientRect().height}px`);
   }).observe($(".cabecera"));
