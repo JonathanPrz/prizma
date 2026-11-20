@@ -69,49 +69,48 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <h2><button type="button" id="paso-clase-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-clase-cuerpo"><span>1. Describe tu <span data-voc="clase">clase</span></span></button></h2>
 
   <div id="paso-clase-resumen" class="paso-resumen" hidden><p id="paso-clase-texto"></p><button type="button" class="boton" id="paso-clase-editar">Editar<span class="solo-lectores"> 1. Describe tu <span data-voc="clase">clase</span></span></button></div>
-  <div id="paso-clase-cuerpo" class="paso-cuerpo"><p class="ayuda">Todo es opcional. Guarda para actualizar las acciones sugeridas.</p><form id="perfil" class="perfil-campos">
-<label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase tiene taller, laboratorio o terreno<span class="ayuda">Prizma pondrá primero acciones útiles en talleres y sumará apoyos de taller en los casos de tus estudiantes</span></label>
-          <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
-          <textarea id="meta" name="meta" maxlength="500" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
-          <span class="ayuda">Quita las barreras, no el desafío de aprender esto. La meta va a tu documento y te ayuda a elegir: Prizma no la usa para ordenar las acciones</span>
-        </label>
-          <p id="necesidades-error" class="ayuda" role="status" hidden>No se pudieron cargar las necesidades. Puedes usar las demás opciones de la clase.</p>
-          <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
-        <legend>¿Qué quieres resolver en esta <span data-voc="clase">clase</span>?</legend>
-        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Si no eliges, verás todas las acciones.</p>
-        <div class="chips" id="necesidades"></div>
-      </fieldset>
-          <details class="mas-detalles"><summary>Más detalles (opcional)</summary>
-        <fieldset class="perfil-opciones">
-          <legend>¿Qué harán principalmente?</legend>
-          <p id="actividad-ayuda" class="ayuda">Puedes marcar varias.</p>
+  <div id="paso-clase-cuerpo" class="paso-cuerpo">
+    <p class="ayuda">Todo es opcional. Lo que marques ordena al instante las acciones del paso 2. No oculta ninguna.</p>
+    <div id="perfil" class="perfil-campos">
+      <fieldset>
+        <legend>¿Qué harán principalmente?</legend>
+        <p id="actividad-ayuda" class="ayuda">Puedes marcar varias.</p>
+        <div class="perfil-rejilla">
           <label><input type="checkbox" name="actividad" value="escuchar-leer" aria-describedby="actividad-ayuda"> Escuchar o leer</label>
           <label><input type="checkbox" name="actividad" value="conversar" aria-describedby="actividad-ayuda"> Conversar o debatir</label>
-          <label><input type="checkbox" name="actividad" value="experimentar" aria-describedby="actividad-ayuda"> Experimentar o manipular materiales</label>
-          <label><input type="checkbox" name="actividad" value="crear" aria-describedby="actividad-ayuda"> Crear o producir algo</label>
-          <label><input type="checkbox" name="actividad" value="moverse" aria-describedby="actividad-ayuda"> Moverse dentro de la sala</label>
-        </fieldset>
-        <fieldset class="perfil-opciones">
-          <legend>¿Cómo mostrarán lo que aprendieron?</legend>
-          <p id="evidencia-ayuda" class="ayuda">Puedes marcar varias.</p>
-          <label><input type="checkbox" name="evidencia" value="escribiendo" aria-describedby="evidencia-ayuda"> Escribiendo</label>
-          <label><input type="checkbox" name="evidencia" value="hablando" aria-describedby="evidencia-ayuda"> Hablando o explicando</label>
-          <label><input type="checkbox" name="evidencia" value="haciendo" aria-describedby="evidencia-ayuda"> Haciendo o demostrando</label>
-          <label><input type="checkbox" name="evidencia" value="grupo" aria-describedby="evidencia-ayuda"> En grupo</label>
-          <label><input type="checkbox" name="evidencia" value="observacion" aria-describedby="evidencia-ayuda"> Observaré mientras trabajan</label>
-        </fieldset>
-        </details>
-          <a href="#dua" id="limpiar-clase">Limpiar respuestas</a>
-          <button type="submit" class="boton" id="guardar-clase">Guardar</button>
-        </form></div>
+          <label><input type="checkbox" name="actividad" value="experimentar" aria-describedby="actividad-ayuda"> Experimentar o manipular</label>
+          <label><input type="checkbox" name="actividad" value="crear" aria-describedby="actividad-ayuda"> Crear algo</label>
+          <label><input type="checkbox" name="actividad" value="moverse" aria-describedby="actividad-ayuda"> Moverse en la sala</label>
+        </div>
+        <label id="practica-campo" class="casilla-practica" hidden>
+          <input id="practica" type="checkbox" aria-describedby="practica-ayuda"> <span>La <span data-voc="clase">clase</span> es en taller, laboratorio o terreno</span>
+          <span id="practica-ayuda" class="ayuda">También suma apoyos de taller en “Para un estudiante”.</span>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>¿Cómo mostrarán lo que aprendieron?</legend>
+        <div class="perfil-rejilla">
+          <label><input type="checkbox" name="evidencia" value="escribiendo"> Escribiendo</label>
+          <label><input type="checkbox" name="evidencia" value="hablando"> Hablando o explicando</label>
+          <label><input type="checkbox" name="evidencia" value="haciendo"> Haciendo o demostrando</label>
+          <label><input type="checkbox" name="evidencia" value="grupo"> En grupo</label>
+          <label><input type="checkbox" name="evidencia" value="observacion"> Observaré mientras trabajan</label>
+        </div>
+      </fieldset>
+      <p id="conteo-paso1" class="ayuda" role="status"><span id="conteo-paso1-texto">Marca lo que harán para ver primero lo que responde.</span><span id="ver-acciones-dua-campo" hidden> · <a href="#t-acciones" id="ver-acciones-dua">Ver acciones</a></span><span id="aviso-taller-paso1" hidden></span></p>
+      <p id="necesidades-error" class="ayuda" role="status" hidden>No se pudieron cargar las necesidades. Puedes usar las demás opciones de la clase.</p>
+      <details id="necesidades-campo" hidden>
+        <summary>¿Hay algo puntual que quieras resolver? (opcional)<span id="necesidades-marcadas"></span></summary>
+        <p id="necesidades-ayuda" class="ayuda">Elige una o más. Las acciones se agrupan arriba por lo que elijas.</p>
+        <div id="necesidades"></div>
+      </details>
+      <button type="button" class="boton boton-sutil" id="limpiar-clase">Borrar respuestas</button>
+    </div>
+  </div>
 </section>
     <section id="acciones" class="paso resultados" tabindex="-1">
-      <h2 id="t-acciones">2. Acciones sugeridas</h2>
+      <h2 id="t-acciones" tabindex="-1">2. Acciones sugeridas</h2>
       <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
-      <div id="aviso-borrador-dua" class="aviso-apoyos acciones-intro" hidden>
-        <p role="status"><span class="icono-estado" aria-hidden="true">!</span> Tienes cambios sin guardar en el paso 1. Las acciones todavía no los consideran</p>
-        <button type="button" id="guardar-borrador-dua" class="boton">Guardar y actualizar</button>
-      </div>
       <div id="filtros-vista" class="filtros-vista">
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
@@ -122,7 +121,12 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
       <div id="tarjetas" class="grupos-momentos"></div>
     </section>
-    <section id="seleccion-dua" class="paso"><h2 id="t-seleccion-dua" tabindex="-1">3. Tu selección</h2><p id="dua-seleccion-vacia" class="ayuda">Todavía no eliges acciones DUA.</p><ol id="dua-seleccion" class="sel-lista"></ol>
+    <section id="seleccion-dua" class="paso"><h2 id="t-seleccion-dua" tabindex="-1">3. Tu selección</h2>
+      <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
+          <textarea id="meta" name="meta" maxlength="500" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
+          <span class="ayuda">Quita las barreras, no el desafío. Va a tu documento.</span>
+        </label>
+      <p id="dua-seleccion-vacia" class="ayuda">Todavía no eliges acciones DUA.</p><ol id="dua-seleccion" class="sel-lista"></ol>
       <label for="reflexion">Después de la clase: ¿qué funcionó?<textarea id="reflexion" maxlength="500" rows="3"></textarea></label>
       <button type="button" id="documento-clase" class="boton" disabled>Ver documento</button>
     </section>
@@ -255,7 +259,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <div id="barra-continuar" class="barra-continuar" hidden>
     <div class="barra-contenido">
       <p id="continuar-conteo" class="ayuda" aria-live="polite" aria-atomic="true" hidden><span id="continuar-cantidad"></span><span id="continuar-caso"></span></p>
-      <button type="button" id="continuar" class="boton boton-principal">Guardar y ver acciones</button>
+      <button type="button" id="continuar" class="boton boton-principal">Ver acciones</button>
     </div>
   </div>
 </main>

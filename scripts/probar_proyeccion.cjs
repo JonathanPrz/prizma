@@ -48,8 +48,8 @@ async function probar() {
       await pagina.waitForSelector('#contexto');
       const nodo = id => pagina.locator('#' + id);
       await nodo('nivel').selectOption('basica');
-      await nodo('necesidad-tareas-largas').click();
-      await nodo('guardar-clase').click();
+      await nodo('necesidades-campo').locator('summary').click();
+      await nodo('necesidad-tareas-largas').check();
 
       const momentos = nodo('momentos').locator('button');
       const nombres = ['Antes', 'Durante', 'Después', 'En toda la clase'];

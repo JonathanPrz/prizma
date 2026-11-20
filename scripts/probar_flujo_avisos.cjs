@@ -6,7 +6,7 @@ let c;
 function nodo(tag='div'){return {tag,id:'',hijos:[],parentElement:{},get children(){return this.hijos.filter(h=>typeof h==='object');},eventos:{},options:opciones,value:'',isConnected:true,open:false,replaceChildren(...h){this.hijos=h;for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},append(...h){this.hijos.push(...h);for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},getAttribute(k){return this[k]??null;},setAttribute(k,v){this[k]=String(v);if(k==='id')nodos.set('#'+v,this);},addEventListener(t,f){this.eventos[t]=f;},focus(){c.document.activeElement=this;},scrollIntoView(){}};}
 const n=s=>{if(!nodos.has(s))nodos.set(s,nodo());return nodos.get(s);};
 const todos=x=>(x?.hijos||[]).filter(h=>typeof h==='object').flatMap(h=>[h,...todos(h)]);
-c=vm.createContext({getComputedStyle:()=>({getPropertyValue:()=> '#21633b'}),document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{
+c=vm.createContext({setTimeout,clearTimeout,getComputedStyle:()=>({getPropertyValue:()=> '#21633b'}),document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{
  if(s==='#lista-estudiantes button')return n('#lista-estudiantes').hijos;
  if(s==='input[name="rol-acuerdo"]:checked')return todos(n('#roles-acuerdo')).filter(x=>x.tag==='input'&&x.checked);
  const name=s.match(/name="([^"]+)"/)?.[1];return name?controles(name):[];
@@ -18,11 +18,13 @@ for(const fecha of ['2026-02-30','2025-02-29','ayer','2026-1-01',null]){c.fecha=
 assert.equal(run('normalizarAcuerdo({roles:["nombre"],fecha:"2026-11-16",revision:"2026-12-01",criterio:"Inicia cuatro de cinco tareas.",estado:"completo"}).estado'),'sin-acuerdos');
 assert.equal(run('normalizarDatos({estudiante:{dimensiones:{1:2}}}).estudiantes[0].descripcionGuardada'),true);assert.equal(run('normalizarDatos({estudiante:{dimensiones:{1:2}}}).estudiantes[0].acuerdo.estado'),'sin-acuerdos');
 const ids=x=>todos(x).filter(x=>x.id?.startsWith('elegir-')).map(x=>x.id.slice(7));
-run('editarClase();pintarTarjetas()');const antes=ids(n('#tarjetas'));
-n('#necesidad-tareas-largas').eventos.click({currentTarget:n('#necesidad-tareas-largas')});assert.deepEqual(json('estado.necesidades'),[]);assert.deepEqual(ids(n('#tarjetas')),antes,'Un clic no actualiza los resultados guardados');
-run('guardarClase()');assert.equal(n('#paso-clase-cuerpo').hidden,true);assert.deepEqual(json('estado.necesidades'),['tareas-largas']);assert.equal(n('#tarjetas').hijos[0].className,'dua-marcadas');assert.equal(ids(n('#t-dua-necesidad-tareas-largas').parentElement).length,4);
+run('pintarControles();escucharPerfil();pintarTarjetas()');
+n('#necesidad-tareas-largas').checked=true;n('#perfil').eventos.change({target:n('#necesidad-tareas-largas')});
+assert.deepEqual(json('estado.necesidades'),['tareas-largas']);
+assert.equal(run('estado.claseGuardada'),true);
+assert.equal(n('#tarjetas').hijos[0].className,'dua-marcadas');assert.equal(ids(n('#t-dua-necesidad-tareas-largas').parentElement).length,4);
 const render=ids(n('#tarjetas'));assert.equal(new Set(render).size,render.length);assert.equal(render.length,run('visibles().length'));
-run('editarClase();limpiarClase()');assert.deepEqual(json('estado.necesidades'),['tareas-largas']);run('guardarClase()');assert.equal(n('#tarjetas').hijos.length,4);assert(n('#tarjetas').hijos.every(n=>n.tag==='details'&&!n.open));
+run('limpiarClase()');assert.equal(run('estado.necesidades.length'),0);assert.equal(n('#tarjetas').hijos.length,4);assert(n('#tarjetas').hijos.every(n=>n.tag==='details'&&!n.open));
 run('pintarEstadoCasos();guardarDescripcion()');assert(n('#descripcion-error').textContent.includes('al menos una situación'));run('agregarEstudiante()');assert.equal(run('estado.estudiantes.length'),1);
 run("Object.assign(estudianteActual(),normalizarEstudiante({iniciales:'JP',dimensiones:{1:3}}));guardarDescripcion();alternar('acc-1-agenda');guardarAcuerdos()");assert(n('#acuerdo-roles-error').textContent.includes('rol'));assert(n('#acuerdo-fecha-error').textContent.includes('fecha del acuerdo'));
 run("estudianteActual().acuerdo={roles:['estudiante'],fecha:'2026-11-16',revision:'2026-11-16',estado:'sin-acuerdos'};guardarAcuerdos()");assert(n('#acuerdo-revision-error').textContent.includes('posterior'));
@@ -42,4 +44,4 @@ assert(d.grupos.filter(g=>g.estudiante).every(g=>g.acciones.find(a=>a.id==='acc-
 run('guardar();cargar()');assert.equal(run('estado.perfil.reflexion'),'La agenda ayudó a empezar.');assert.deepEqual(json('estado.estudiantes[0].acuerdo.roles'),['estudiante','familia']);
 c.entrada={app:'prizma',version:2,...json('estado')};const vuelta=json('validarRespaldo(entrada)');assert.equal(vuelta.descartadas,0);assert.deepEqual(vuelta.estudiantes,json('estado.estudiantes'));assert.deepEqual(vuelta.mantenerIndividual,json('estado.mantenerIndividual'));
 run("estado.perfil.nivel='superior'");assert.deepEqual(json('rolesPermitidos()'),['estudiante','inclusion','docente']);assert.notEqual(run('estadoCaso(estado.estudiantes[0])'),'Acuerdos completos');
-console.log('Correcto: pasos y guardado diferido DUA, prioridad global sin duplicados, casos y acuerdos validados, revisión posterior, JP2/duplicados, Sí/No persistido, avisos con conteo único, PDF/reflexión/acuerdos y respaldo, roles por nivel.');
+console.log('Correcto: pasos y actualización inmediata DUA, prioridad global sin duplicados, casos y acuerdos validados, revisión posterior, JP2/duplicados, Sí/No persistido, avisos con conteo único, PDF/reflexión/acuerdos y respaldo, roles por nivel.');

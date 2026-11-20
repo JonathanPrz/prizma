@@ -127,7 +127,7 @@ async function probar() {
           [...document.fonts].some(f => f.family === 'Public Sans' && f.status === 'loaded');
       });
       assert(fuenteCargada);
-      for (const selector of ['#panel-dua h1', '#guardar-clase', '#nivel']) {
+      for (const selector of ['#panel-dua h1', '#limpiar-clase', '#nivel']) {
         assert.match(await pagina.locator(selector).evaluate(n => getComputedStyle(n).fontFamily), /^"Public Sans",/);
       }
       const entorno = width + ' ' + colorScheme;
@@ -184,7 +184,7 @@ async function probar() {
       }
 
       await pagina.selectOption('#nivel', 'basica');
-      await pagina.click('#guardar-clase');
+      await pagina.click('#continuar');
       await medir('DUA con resultados');
       await verificarTitulos('#panel-dua');
       const tarjeta = pagina.locator('#elegir-dua-1-1');

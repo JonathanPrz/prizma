@@ -31,15 +31,13 @@ async function probar() {
       assert.equal(await p.locator('#proposito-motivar').innerText().then(t => t.replace(/\s+/g, ' ').trim()), 'Compromiso Motivar');
       assert.equal(await p.locator('#proposito-presentar').innerText().then(t => t.replace(/\s+/g, ' ').trim()), 'Representación Presentar');
       await p.fill('#meta', 'Interpretar un gráfico de barras.');
-      await p.click('#necesidad-tareas-largas');
-      assert.deepEqual(await p.evaluate(() => estado.necesidades), []);
-      // El filtro funciona incluso con una descripción todavía sin guardar.
+      await p.locator('#necesidades-campo summary').click();
+      await p.check('#necesidad-tareas-largas');
+      assert.deepEqual(await p.evaluate(() => estado.necesidades), ['tareas-largas']);
       await p.locator('#m-durante').focus(); await p.keyboard.press('Enter');
       assert.equal(await p.locator('#m-durante').getAttribute('aria-pressed'), 'true');
       assert.equal(await p.evaluate(() => document.activeElement.id), 'm-durante');
       assert(await p.evaluate(() => visibles().every(r => r.momento === 'durante')));
-      assert(await p.evaluate(() => borradorDua !== null && !Object.hasOwn(borradorDua, 'momentos') && !Object.hasOwn(borradorDua, 'propositos')));
-      await p.click('#guardar-clase');
       assert.deepEqual(await p.evaluate(() => estado.momentos), ['durante']);
       assert.deepEqual(await p.evaluate(() => estado.necesidades), ['tareas-largas']);
       const marcadas = p.locator('.dua-marcadas');
@@ -81,11 +79,10 @@ async function probar() {
       assert(accesibilidad.includes('group "Para qué"'));
       assert(accesibilidad.includes('button "Compromiso Motivar" [pressed]'));
       const filtros = await p.evaluate(() => ({momentos: estado.momentos, propositos: estado.propositos}));
-      await p.click('#paso-clase-editar'); await p.fill('#meta', 'Comparar dos gráficos.');
-      await p.click('#guardar-clase');
+      await p.fill('#meta', 'Comparar dos gráficos.');
       assert.deepEqual(await p.evaluate(() => ({momentos: estado.momentos, propositos: estado.propositos})), filtros);
       const resumen = await p.locator('#paso-clase-texto').innerText();
-      assert(resumen.includes('Comparar dos gráficos.')); assert(!resumen.includes('Durante')); assert(!resumen.includes('Motivar'));
+      assert(resumen.includes(await p.locator('#ayuda-necesidad-tareas-largas').textContent())); assert(!resumen.includes('Durante')); assert(!resumen.includes('Motivar'));
       const descripcion = await p.evaluate(() => documento({curso: true, estudiantes: []}).resumen);
       assert(descripcion.some(([k,v]) => k === 'Meta de aprendizaje' && v === 'Comparar dos gráficos.'));
       assert(!descripcion.flat().includes('Durante')); assert(!descripcion.flat().some(t => /motivar|propósito|momento/i.test(t)));
@@ -96,11 +93,10 @@ async function probar() {
       assert.equal(await p.evaluate(() => estado.perfil.meta), 'Comparar dos gráficos.');
       assert.deepEqual(await p.evaluate(() => estado.necesidades), ['tareas-largas']);
       await p.click('#m-durante'); await p.click('#proposito-presentar');
-      await p.click('#paso-clase-editar'); await p.click('#limpiar-clase');
-      assert.equal(await p.locator('#meta').inputValue(), '');
+      await p.click('#limpiar-clase');
+      assert.equal(await p.locator('#meta').inputValue(), 'Comparar dos gráficos.');
       assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [['durante'], ['presentar']]);
-      assert.equal(await p.evaluate(() => estado.perfil.meta), 'Comparar dos gráficos.', 'Limpiar respuestas todavía es borrador');
-      await p.click('#guardar-clase');
+      assert.deepEqual(await p.evaluate(() => estado.necesidades), []);
       assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [['durante'], ['presentar']]);
       await p.reload(); await p.waitForFunction(n => catalogo.length === n, catalogoReal.length);
       assert.equal(await p.locator('#m-durante').getAttribute('aria-pressed'), 'true');
@@ -197,8 +193,6 @@ async function probar() {
       await carpetasEsperadas([['Antes (4)', true, 4], ['Durante (4)', true, 4], ['Después (2)', true, 2], ['En toda la clase (3)', true, 3]]);
       await limpiar.click();
       await nodo('practica').check();
-      await nodo('guardar-clase').click();
-      assert(await nodo('acciones').evaluate(n => n === document.activeElement));
       await carpetasEsperadas([
         ['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes'],
         ['Durante (14 · 6 responden)', true, 3, 'Ver las otras 11 de Durante'],
@@ -231,11 +225,8 @@ async function probar() {
       await limpiar.click();
       assert(!await limpiar.isVisible());
 
-      await nodo('paso-clase-editar').click();
       await nodo('practica').uncheck();
-      await p.locator('#perfil .mas-detalles summary').click();
       await p.locator('input[value="moverse"]').check();
-      await nodo('guardar-clase').click();
       await nodo('m-antes').click();
       await carpetasEsperadas([['Antes (11 · ninguna responde)', true, 11]]);
       assert.match(await tarjetas.getByRole('status').textContent(), /Ninguna acción de Antes responde.*Responden en:/);
@@ -243,10 +234,8 @@ async function probar() {
       assert.deepEqual(await p.evaluate(() => estado.momentos), ['durante']);
       assert(await resumenDurante.evaluate(n => n === document.activeElement));
       await limpiar.click();
-      await nodo('paso-clase-editar').click();
       await p.locator('input[value="moverse"]').uncheck();
       await p.locator('input[value="crear"]').check();
-      await nodo('guardar-clase').click();
       await nodo('m-antes').click();
       await nodo('proposito-presentar').click();
       const alternativas = tarjetas.locator(':scope > .aviso-apoyos');
