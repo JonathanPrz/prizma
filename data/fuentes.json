@@ -340,5 +340,29 @@
     "cita": "Whitworth, A., Baxter, S., Cullingworth, J. y Clowe, M. (2024). Individual Placement and Support (IPS) beyond severe mental health. Preventive Medicine Reports.",
     "url": "https://doi.org/10.1016/j.pmedr.2024.102786",
     "archivo": "docs/fuentes/codex/trabajo/revision-whitworth-2024.md"
+  },
+  {
+    "id": "brucker-2020",
+    "cita": "Brucker, D. L., y Sundar, V. (2020). Job crafting among American workers with disabilities. Journal of Occupational Rehabilitation.",
+    "url": "https://doi.org/10.1007/s10926-020-09889-9",
+    "archivo": "docs/fuentes/codex/trabajo/brucker-sundar-2020-redisenar-puesto.md"
+  },
+  {
+    "id": "sundar-2026",
+    "cita": "Sundar, V., y Brucker, D. L. (2026). Positive gains in job crafting behavior, self-efficacy, and work performance among U.S. workers with disabilities. Journal of Occupational Rehabilitation.",
+    "url": "https://doi.org/10.1007/s10926-026-10454-z",
+    "archivo": "docs/fuentes/codex/trabajo/sundar-brucker-2026-intervencion-puesto.md"
+  },
+  {
+    "id": "eeoc-2002",
+    "cita": "U.S. Equal Employment Opportunity Commission (2002). Enforcement guidance on reasonable accommodation and undue hardship under the ADA.",
+    "url": "https://www.eeoc.gov/laws/guidance/enforcement-guidance-reasonable-accommodation-and-undue-hardship-under-ada",
+    "archivo": "docs/fuentes/codex/trabajo/eeoc-2002-capacitacion-accesible.md"
+  },
+  {
+    "id": "williams-2023",
+    "cita": "Williams, Khan, Mayes y otros (2023). Getting on at work: progression and promotion of women with disability in the Victorian Public Service.",
+    "url": "https://doi.org/10.5204/rep.eprints.241144",
+    "archivo": "docs/fuentes/codex/trabajo/williams-et-al-2023-carrera-victoria.md"
   }
 ]

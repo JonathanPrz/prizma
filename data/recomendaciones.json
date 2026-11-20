@@ -6961,7 +6961,9 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "cdpd"
+      "cdpd",
+      "brucker-2020",
+      "sundar-2026"
     ],
     "destacada": false,
     "revision": null
@@ -6989,7 +6991,8 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "cdpd"
+      "cdpd",
+      "brucker-2020"
     ],
     "destacada": false,
     "revision": null
@@ -7017,7 +7020,9 @@
     "contextos": [],
     "respaldo": "norma-legal",
     "fuentes": [
-      "cdpd"
+      "cdpd",
+      "eeoc-2002",
+      "williams-2023"
     ],
     "destacada": false,
     "revision": null
@@ -7048,7 +7053,8 @@
     "respaldo": "consenso-expertos",
     "fuentes": [
       "jan-expresion",
-      "cdpd"
+      "cdpd",
+      "williams-2023"
     ],
     "destacada": false,
     "revision": null
