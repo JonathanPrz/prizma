@@ -5589,7 +5589,7 @@
     "titulo": "Reduce los distractores del puesto de trabajo",
     "como": [
       "Ofrece un puesto alejado del paso de personas o del ruido.",
-      "Permite audífonos o separadores si no afectan la seguridad.",
+      "Permite audífonos o separadores, sin que impidan oír las alarmas.",
       "Acuerda horarios sin interrupciones para el trabajo concentrado."
     ],
     "porque": "Menos interrupciones dejan más energía para la tarea.",
@@ -5701,34 +5701,6 @@
     "revision": null
   },
   {
-    "id": "tr-respuesta-oral",
-    "tipo": "trabajo",
-    "subtipo": "comunicacion",
-    "titulo": "Permite informar en forma oral cuando escribir no es la función",
-    "como": [
-      "Identifica si la escritura es esencial en esa tarea.",
-      "Si no lo es, acepta un informe oral o un audio.",
-      "Registra lo acordado por escrito para ambos."
-    ],
-    "porque": "Así se evalúa el trabajo y no la habilidad para escribir.",
-    "areas": [
-      "cognicion"
-    ],
-    "dimensiones": [
-      2
-    ],
-    "niveles": [
-      "trabajo"
-    ],
-    "contextos": [],
-    "respaldo": "consenso-expertos",
-    "fuentes": [
-      "jan-expresion"
-    ],
-    "destacada": false,
-    "revision": null
-  },
-  {
     "id": "tr-una-tarea",
     "tipo": "trabajo",
     "subtipo": "informacion",
@@ -5827,10 +5799,9 @@
     "titulo": "Ofrece entrenamiento individual con apoyo en el puesto",
     "como": [
       "Asigna a alguien que enseñe la tarea en el lugar donde se hace.",
-      "Retira el apoyo de a poco.",
       "Coordina con programas de empleo con apoyo si existen."
     ],
-    "porque": "El apoyo en el puesto es parte de los programas de empleo con mejor evidencia.",
+    "porque": "El apoyo en el puesto es parte del empleo con apoyo, que tiene evidencia moderada, sobre todo en salud mental.",
     "areas": [
       "cognicion",
       "comunicacion"
@@ -5926,7 +5897,8 @@
     ],
     "dimensiones": [
       12,
-      13
+      13,
+      10
     ],
     "niveles": [
       "trabajo"
@@ -5934,7 +5906,6 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "jan-expresion",
       "ley-20422"
     ],
     "destacada": false,
@@ -6288,8 +6259,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "jan-vision",
-      "ley-20422"
+      "jan-vision"
     ],
     "destacada": false,
     "revision": null
@@ -6365,7 +6335,8 @@
       "sensorial"
     ],
     "dimensiones": [
-      13
+      13,
+      10
     ],
     "niveles": [
       "trabajo"
@@ -6790,64 +6761,6 @@
     "revision": null
   },
   {
-    "id": "tr-interprete-lengua",
-    "tipo": "trabajo",
-    "subtipo": "comunicacion",
-    "titulo": "Usa interpretación profesional en las comunicaciones necesarias",
-    "como": [
-      "Identifica qué comunicaciones son críticas: contrato, seguridad, evaluaciones.",
-      "Coordina un intérprete para esas instancias.",
-      "Entrega también la información por escrito en su lengua."
-    ],
-    "porque": "Entender las comunicaciones críticas protege derechos y seguridad.",
-    "areas": [
-      "contexto"
-    ],
-    "dimensiones": [
-      10
-    ],
-    "niveles": [
-      "trabajo"
-    ],
-    "contextos": [],
-    "respaldo": "orientacion-oficial",
-    "fuentes": [
-      "hse-lengua"
-    ],
-    "destacada": false,
-    "revision": null
-  },
-  {
-    "id": "tr-par-idioma",
-    "tipo": "trabajo",
-    "subtipo": "comunicacion",
-    "titulo": "Ofrece el apoyo de un compañero que hable su idioma",
-    "como": [
-      "Pregunta si hay alguien en el equipo que hable su lengua.",
-      "Acuerda que pueda apoyarle en las primeras semanas.",
-      "No lo uses para las comunicaciones legales o de seguridad."
-    ],
-    "porque": "Un par del mismo idioma facilita la integración en el equipo.",
-    "areas": [
-      "comunicacion",
-      "contexto"
-    ],
-    "dimensiones": [
-      10,
-      4
-    ],
-    "niveles": [
-      "trabajo"
-    ],
-    "contextos": [],
-    "respaldo": "orientacion-oficial",
-    "fuentes": [
-      "hse-lengua"
-    ],
-    "destacada": false,
-    "revision": null
-  },
-  {
     "id": "tr-no-verbal",
     "tipo": "trabajo",
     "subtipo": "informacion",
@@ -6887,7 +6800,7 @@
       "Evita modismos y siglas.",
       "Capacita a las jefaturas para comunicarse con claridad."
     ],
-    "porque": "El lenguaje claro ayuda a todo el equipo, no solo a quien aprende el idioma.",
+    "porque": "El lenguaje claro ayuda a todo el equipo, también a quienes tienen dificultades para comprender textos o instrucciones.",
     "areas": [
       "comunicacion",
       "contexto"
@@ -6900,10 +6813,9 @@
       "trabajo"
     ],
     "contextos": [],
-    "respaldo": "orientacion-oficial",
+    "respaldo": "consenso-expertos",
     "fuentes": [
-      "hse-lengua",
-      "dt-541-24"
+      "jan-aprendizaje"
     ],
     "destacada": false,
     "revision": null
@@ -7036,7 +6948,7 @@
       "Revisen el avance en reuniones periódicas.",
       "Ajusta según funcione."
     ],
-    "porque": "La autonomía se asocia con mayor satisfacción en adultos con altas capacidades.",
+    "porque": "Organizar el propio trabajo permite aportar en igualdad de condiciones.",
     "areas": [
       "cognicion"
     ],
@@ -7049,7 +6961,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "schlegler-2022"
+      "cdpd"
     ],
     "destacada": false,
     "revision": null
@@ -7064,7 +6976,7 @@
       "Busquen responsabilidades que aprovechen sus intereses.",
       "Revisa la carga total."
     ],
-    "porque": "Un trabajo con sentido sostiene el compromiso.",
+    "porque": "Un trabajo con sentido sostiene el compromiso y evita dejar a la persona por debajo de su capacidad.",
     "areas": [
       "cognicion"
     ],
@@ -7077,7 +6989,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "schlegler-2022"
+      "cdpd"
     ],
     "destacada": false,
     "revision": null
@@ -7092,7 +7004,7 @@
       "Acuerda metas de desarrollo.",
       "Revisa el avance cada semestre."
     ],
-    "porque": "Aprender cosas nuevas sostiene la motivación en el trabajo.",
+    "porque": "La CDPD pide promover la formación continua y la promoción profesional de las personas con discapacidad.",
     "areas": [
       "cognicion"
     ],
@@ -7103,9 +7015,9 @@
       "trabajo"
     ],
     "contextos": [],
-    "respaldo": "consenso-expertos",
+    "respaldo": "norma-legal",
     "fuentes": [
-      "schlegler-2022"
+      "cdpd"
     ],
     "destacada": false,
     "revision": null
@@ -7120,7 +7032,7 @@
       "Busquen juntos a alguien adecuado.",
       "Acuerden la frecuencia de los encuentros."
     ],
-    "porque": "Una mentoría elegida puede abrir nuevos desafíos.",
+    "porque": "Una mentoría elegida apoya el desarrollo en el puesto y la promoción profesional.",
     "areas": [
       "cognicion",
       "comunicacion"
@@ -7135,7 +7047,8 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "schlegler-2022"
+      "jan-expresion",
+      "cdpd"
     ],
     "destacada": false,
     "revision": null

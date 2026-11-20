@@ -70,7 +70,7 @@ const ROLES_ACUERDO = { estudiante: "Estudiante", familia: "Familia", equipo: "E
 const MODALIDADES = { "": "No aplica", senas: "Lengua de señas", braille: "Braille", ampliacion: "Lupa o ampliación", caa: "Tablero o comunicación aumentativa", lengua: "Otra lengua materna" };
 // Única exclusión de modalidad: requiere revisión de Claude; las fichas multiformato conservan sus alternativas.
 const EXCLUSIONES_MODALIDAD = { ampliacion: ["acc-6-braille"] };
-const APOYOS_FORMA = ["acc-2-audio", "acc-8-teclado", "acc-8-transcribe", "acc-2-tiempo", "prac-tiempo", "acc-9-jornada", "acc-12-tiempo", "acc-12-opciones", "acc-2-registro", "acc-1-organizador", "sup-tiempo", "sup-formatos", "sup-caa", "sup-oral-progresivo", "prac-evaluar", "prac-asistente", "tr-respuesta-oral"];
+const APOYOS_FORMA = ["acc-2-audio", "acc-8-teclado", "acc-8-transcribe", "acc-2-tiempo", "prac-tiempo", "acc-9-jornada", "acc-12-tiempo", "acc-12-opciones", "acc-2-registro", "acc-1-organizador", "sup-tiempo", "sup-formatos", "sup-caa", "sup-oral-progresivo", "prac-evaluar", "prac-asistente"];
 const IDS_SEGURIDAD = ["prac-rotulos", "prac-evacuacion"];
 function modalidadValida(valor) { return typeof valor === "string" && Object.hasOwn(MODALIDADES, valor) ? valor : ""; }
 function compatibleModalidad(r, e = estudianteActual()) { return !(EXCLUSIONES_MODALIDAD[modalidadValida(e?.modalidad)] || []).includes(r.id); }
