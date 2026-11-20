@@ -1,6 +1,6 @@
 # Tarea 053 · Sistema visual: color, letra, espacio y botones
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/053-sistema-visual` · Pull request con destino `main`
+Estado: **integrada** (PR #73) · Asignada a: Codex · Rama: `codex/053-sistema-visual` · Pull request con destino `main`
 
 ## Para qué
 El dueño aprobó un sistema visual (20-11-2026) para que quien entra a hacer adecuaciones sepa qué mirar primero. Responde a los hallazgos V1, V3, V4, V5, V8, C1 y H4 de `docs/auditorias/050-interfaz/README.md`. Las reglas:
