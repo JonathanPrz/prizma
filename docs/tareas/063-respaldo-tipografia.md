@@ -1,6 +1,6 @@
 # Tarea 063 · Letra de respaldo calibrada con la fuente correcta
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/063-respaldo-tipografia` · Pull request con destino `main`
+Estado: **integrada** (PR #84) · Asignada a: Codex · Rama: `codex/063-respaldo-tipografia` · Pull request con destino `main`
 
 ## Para qué
 Es un detalle de la revisión del PR #77 (tarea 057). La letra de respaldo `"Public Sans respaldo"` se calibró con las medidas de Arial (Liberation Sans): `size-adjust`, `ascent-override` y `descent-override`. Pero su `src` pide primero `local("Segoe UI")`. En Windows se usa Segoe UI con ajustes pensados para Arial, así que mientras carga Public Sans el texto puede saltar de tamaño o de línea.
