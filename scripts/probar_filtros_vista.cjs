@@ -196,7 +196,7 @@ async function probar() {
       await nodo('proposito-motivar').click();
       assert.equal(await tarjetas.locator(':scope > ul .tarjeta:visible').count(), 4);
       assert(await limpiar.isVisible());
-      assert.match(await nodo('conteo').textContent(), /^Antes y Compromiso: 4 acciones, \d+ responde/);
+      assert.match(await nodo('conteo').textContent(), /^Antes y Compromiso: \d+ de 4 acciones responde/);
       await nodo('m-antes').click();
       assert.equal(await tarjetas.locator(':scope > details:not([open])').count(), 0);
       assert.equal(await tarjetas.locator('details .tarjeta:visible').count(), 13);

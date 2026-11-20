@@ -438,6 +438,7 @@ function guardarClase() {
   pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#t-dua-marcadas") || $("#t-dua-recomendadas") || $("#acciones"), $("#acciones"));
 }
 function prepararPasos() {
+  $("#guardar-borrador-dua").addEventListener("click", () => $("#perfil").requestSubmit());
   $("#perfil").addEventListener("submit", (evento) => { evento.preventDefault(); guardarClase(); });
   $("#descripcion-caso").addEventListener("submit", (evento) => { evento.preventDefault(); guardarDescripcion(); });
   $("#acuerdos-caso").addEventListener("submit", (evento) => { evento.preventDefault(); guardarAcuerdos(); });
@@ -1044,7 +1045,7 @@ function limpiarClase() {
   if (!borradorDua) editarClase();
   borradorDua.necesidades = [];
   borradorDua.perfil = { ...borradorDua.perfil, meta: "", actividad: [], evidencia: [], practica: false };
-  sincronizarPerfil(); pintarControles();
+  sincronizarPerfil(); pintarControles(false);
 }
 
 function nombreMomento(id, nombre) {
@@ -1232,7 +1233,7 @@ function actualizarContinuar() {
   if (conteo) {
     const contador = $("#continuar-cantidad"), caso = $("#continuar-caso");
     const texto = personal && e ? plural(cantidad, "elegido", "elegidos") :
-      plural(cantidad, "acción", "acciones");
+      plural(cantidad, "elegida", "elegidas");
     const nombre = personal && e ? " para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) :
       " para el " + voc("curso");
     conteo.hidden = pasoActual === 1 && cantidad === 0;
@@ -1310,7 +1311,18 @@ function prepararIndicador() {
 function alternarOpcion(lista, id) {
   return lista.includes(id) ? lista.filter((opcion) => opcion !== id) : [...lista, id];
 }
-function pintarControles() {
+function actualizarAvisoBorradorDua(mostrar = true) {
+  const coincide = (a, b) => a.length === b.length && a.every((valor) => b.includes(valor));
+  const cambios = mostrar && borradorDua && (
+    borradorDua.perfil.meta !== estado.perfil.meta ||
+    borradorDua.perfil.practica !== estado.perfil.practica ||
+    !coincide(borradorDua.perfil.actividad, estado.perfil.actividad) ||
+    !coincide(borradorDua.perfil.evidencia, estado.perfil.evidencia) ||
+    !coincide(borradorDua.necesidades, estado.necesidades)
+  );
+  $("#aviso-borrador-dua").hidden = !cambios;
+}
+function pintarControles(mostrarPendientes = true) {
   const contenedor = $("#necesidades");
   $("#necesidades-campo").hidden = !necesidades.length;
   if (!contenedor.children?.length) contenedor.replaceChildren(...necesidades.map((n) => el("button", {
@@ -1319,12 +1331,14 @@ function pintarControles() {
       const configuracion = borradorDua || estado;
       configuracion.necesidades = alternarOpcion(configuracion.necesidades, n.id);
       evento.currentTarget.setAttribute("aria-pressed", String(configuracion.necesidades.includes(n.id)));
+      actualizarAvisoBorradorDua();
     },
   })));
   const configuracion = borradorDua || estado;
   Array.from(contenedor.children || []).forEach((boton, i) => {
     boton.setAttribute("aria-pressed", String(configuracion.necesidades.includes(necesidades[i].id)));
   });
+  actualizarAvisoBorradorDua(mostrarPendientes);
   pintarFiltrosVista();
 }
 
@@ -1467,13 +1481,14 @@ function seccionRecomendadas(acciones) {
 function conteoDua(lista) {
   const total = plural(lista.length, "acción", "acciones");
   const contexto = hayContextoDua();
-  const responden = plural(lista.filter(respondeAlContexto).length, "responde a lo que marcaste", "responden a lo que marcaste");
-  if (!hayFiltrosVista()) return contexto ? `${total} · ${responden}` : `${total} para todo el ${voc("curso")}`;
+  const cantidad = contexto ? lista.filter(respondeAlContexto).length : 0;
+  const conteo = contexto ? `${cantidad} de ${total} ${cantidad === 1 ? "responde" : "responden"} a lo que marcaste` : total;
+  if (!hayFiltrosVista()) return contexto ? conteo : `${total} para todo el ${voc("curso")}`;
   const filtros = [
     ...MOMENTOS.filter(([id]) => estado.momentos.includes(id)).map(([id, nombre]) => nombreMomento(id, nombre)),
     ...Object.entries(PROPOSITOS).filter(([id]) => estado.propositos.includes(id)).map(([, p]) => p.principio),
   ];
-  return new Intl.ListFormat("es-CL").format(filtros) + ": " + total + (contexto ? ", " + responden : "");
+  return new Intl.ListFormat("es-CL").format(filtros) + ": " + conteo;
 }
 
 function pintarTarjetas() {
@@ -1648,6 +1663,7 @@ function escucharPerfil() {
     borradorDua.perfil.meta = $("#meta").value.slice(0, 500);
     borradorDua.perfil.practica = $("#practica").checked;
     for (const nombre of ["actividad", "evidencia"]) borradorDua.perfil[nombre] = [...document.querySelectorAll(`input[name="${nombre}"]:checked`)].map((c) => c.value);
+    actualizarAvisoBorradorDua();
   });
 }
 
