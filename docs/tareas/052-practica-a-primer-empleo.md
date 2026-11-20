@@ -1,6 +1,6 @@
 # Tarea 052 · De la práctica al primer empleo, conservando la historia
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/052-primer-empleo` · Pull request con destino `main`
+Estado: **integrada** (PR #81) · Asignada a: Codex · Rama: `codex/052-primer-empleo` · Pull request con destino `main`
 
 ## Para qué
 Quedó pendiente de la tarea 051. Es para quien acompaña a una persona desde su práctica profesional hasta su primer empleo. El dueño aprobó esta versión el 20-11-2026, después de una revisión adversarial.
