@@ -1,6 +1,6 @@
 # Tarea 050 · Auditoría de la interfaz de Prizma en 4 pilares
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/050-auditoria-interfaz` · Pull request con destino `main`
+Estado: **integrada** (PR #70) · Asignada a: Codex · Rama: `codex/050-auditoria-interfaz` · Pull request con destino `main`
 
 ## Para qué
 El dueño quiere saber cómo está Prizma frente a 4 pilares de diseño: núcleo visual, heurísticas, componentes y redacción en español. El método y los criterios están en la skill `auditoria-ui` (`.agents/skills/auditoria-ui/SKILL.md`). **Síguela completa.**
