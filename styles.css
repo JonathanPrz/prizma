@@ -226,6 +226,7 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .aviso-privacidad li + li { margin-top: .75rem; }
 
 .t-razon { margin: 0; font-size: .875rem; font-weight: 600; color: var(--solida); }
+.t-que-busca { margin: 0; font-size: .875rem; color: var(--tenue); }
 
 /* Los apoyos individuales usan la misma superficie y controles del perfil. */
 #estudiante { width: 100%; }
