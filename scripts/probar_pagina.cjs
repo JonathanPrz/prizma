@@ -128,13 +128,24 @@ async function probar() {
       const fuenteSituacion = await grupo.locator('legend').first().evaluate(n => parseFloat(getComputedStyle(n).fontSize));
       assert.equal(fuenteSituacion, 16);
       assert(fuenteArea > fuenteSituacion);
+      async function verificarMargenes() {
+        const margenes = await frecuencia.locator('label').evaluateAll(celdas => celdas.map(celda => {
+          const rango = document.createRange();
+          rango.selectNodeContents([...celda.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()));
+          const texto = rango.getBoundingClientRect();
+          const borde = celda.getBoundingClientRect();
+          return { opcion: rango.toString(), izquierda: texto.left - borde.left, derecha: borde.right - texto.right };
+        }));
+        assert(margenes.every(m => m.izquierda >= 8 && m.derecha >= 8), JSON.stringify(margenes));
+      }
+      await verificarMargenes();
       const posiciones = await frecuencia.locator('label').evaluateAll(celdas => celdas.map(celda => {
         const r = celda.getBoundingClientRect();
         const css = getComputedStyle(celda);
         return { x: r.x, y: r.y, ancho: r.width, alto: r.height, letra: css.fontSize,
           bordes: [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth] };
       }));
-      assert(posiciones.every(p => p.alto >= 32 && p.alto <= 40 && p.ancho >= 88 && p.ancho === posiciones[0].ancho &&
+      assert(posiciones.every(p => p.alto >= 32 && p.alto <= 40 && p.ancho >= 104 && p.ancho === posiciones[0].ancho &&
         p.letra === '14px' && p.bordes.every(borde => borde === '0px')));
       if (width === 390) {
         const [primera, segunda, tercera, cuarta] = posiciones;
@@ -172,6 +183,7 @@ async function probar() {
       assert.match(await area.innerText(), /\(1 marcada\)/);
       await area.click();
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
+      await verificarMargenes();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
       assert(await nodo('continuar-conteo').isVisible());

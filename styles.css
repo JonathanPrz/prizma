@@ -427,13 +427,13 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 .situaciones-area legend { font-size: 1rem; font-weight: 600; }
 
 .frecuencias {
-  display: inline-grid; grid-template-columns: repeat(4, minmax(5.5rem, 1fr)); gap: 0;
+  display: inline-grid; grid-template-columns: repeat(4, minmax(6.5rem, 1fr)); gap: 0;
   max-width: 100%; margin-top: .5rem;
   border: 1px solid var(--borde-control); border-radius: .5rem; background: var(--superficie);
 }
 .frecuencias label {
   position: relative; display: flex; align-items: center; justify-content: center; gap: .25rem;
-  min-height: 2.25rem; padding-inline: .25rem; text-align: center;
+  min-height: 2.25rem; padding-inline: .75rem; text-align: center;
   color: var(--tinta); font-size: .875rem; font-weight: 600; line-height: 1.1;
 }
 .frecuencias label + label::before {
@@ -452,12 +452,12 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 }
 .frecuencias label:has(input:checked) .icono-estado { display: inline-block; }
 .frecuencias label:has(input:focus-visible) { z-index: 1; outline: 3px solid var(--enfoque); outline-offset: 2px; }
-@container (width >= 22.125rem) {
+@container (width >= 26.125rem) {
   .frecuencias label:first-child { border-end-start-radius: .4375rem; }
   .frecuencias label:last-child { border-start-end-radius: .4375rem; }
 }
-@container (width < 22.125rem) {
-  .frecuencias { grid-template-columns: repeat(2, minmax(5.5rem, 1fr)); }
+@container (width < 26.125rem) {
+  .frecuencias { grid-template-columns: repeat(2, minmax(6.5rem, 1fr)); }
   .frecuencias label:nth-child(2) { border-start-end-radius: .4375rem; }
   .frecuencias label:nth-child(3) { border-end-start-radius: .4375rem; }
   .frecuencias label:nth-child(3)::before { display: none; }
