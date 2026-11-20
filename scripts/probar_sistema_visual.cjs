@@ -19,6 +19,12 @@ function luminancia(hex) {
 }
 
 async function probar() {
+  const favicon = await fs.readFile(path.join(raiz, 'assets/favicon.svg'), 'utf8');
+  assert.match(favicon, /<rect width="100" height="100" rx="22" fill="#1a2134"\/>/);
+  const icono = await fs.readFile(path.join(raiz, 'assets/apple-touch-icon.png'));
+  assert.equal(icono.subarray(12, 16).toString(), 'IHDR');
+  assert.deepEqual([icono.readUInt32BE(16), icono.readUInt32BE(20)], [180, 180]);
+
   const servidor = http.createServer(async (req, res) => {
     const ruta = path.resolve(raiz, '.' + new URL(req.url, 'http://localhost').pathname.replace(/\/$/, '/index.html'));
     if (!ruta.startsWith(raiz + path.sep)) return res.writeHead(403).end();
@@ -49,6 +55,30 @@ async function probar() {
       const origen = 'http://127.0.0.1:' + servidor.address().port;
       await pagina.goto(origen);
       await pagina.waitForSelector('#contexto');
+      const logo = await pagina.locator('svg.logo').evaluate(svg => {
+        const raiz = getComputedStyle(document.documentElement);
+        const prueba = document.createElement('span');
+        svg.parentElement.append(prueba);
+        const esperados = ['accion', 'compromiso', 'representacion'].map(variable => {
+          prueba.style.color = raiz.getPropertyValue('--' + variable);
+          return getComputedStyle(prueba).color;
+        });
+        prueba.remove();
+        return {
+          circulos: svg.querySelectorAll('circle').length,
+          rectangulos: [...svg.querySelectorAll('rect')].map(rect => getComputedStyle(rect).fill),
+          persona: getComputedStyle(svg.querySelector('circle')).fill,
+          tinta: getComputedStyle(svg).color,
+          esperados
+        };
+      });
+      assert.equal(logo.circulos, 1);
+      assert.deepEqual(logo.rectangulos, logo.esperados);
+      assert.equal(logo.persona, logo.tinta);
+      const impreso = await pagina.evaluate(() => logoDocumento());
+      assert.doesNotMatch(impreso, /var\(|currentColor/);
+      for (const color of ['#1a2134', '#21633b', '#693b97', '#005873']) assert(impreso.includes(color));
+
       const fuenteCargada = await pagina.evaluate(async () => {
         await document.fonts.ready;
         return document.fonts.check('16px "Public Sans"') &&
@@ -133,6 +163,9 @@ async function probar() {
       await pagina.click('#generar-documento');
       await pagina.waitForSelector('#vista[open]');
       await medir('vista previa del documento');
+      const imagenDocumento = pagina.locator('#hoja .h-marca img');
+      assert(await imagenDocumento.evaluate(async img => { await img.decode(); return img.naturalWidth > 0; }));
+      assert.equal(await pagina.evaluate(() => definicionPdf().content[0].columns[0].svg), impreso);
       for (const selector of ['#hoja', '#hoja h2']) {
         assert.match(await pagina.locator(selector).first().evaluate(n => getComputedStyle(n).fontFamily), /^Roboto,/);
       }

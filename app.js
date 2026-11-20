@@ -1651,7 +1651,10 @@ function prepararPracticaProfesional() {
 }
 function logoDocumento() {
   const svg = typeof document !== "undefined" ? $(".logo")?.outerHTML || "" : "";
-  return svg.replace(/currentColor/g, "#18213f").replace(/var\(--motivar\)/g, "#b0145a").replace(/var\(--presentar\)/g, "#00727d").replace(/var\(--mostrar\)/g, "#5a33a8");
+  return svg.replaceAll("currentColor", "#1a2134")
+    .replaceAll("var(--compromiso)", "#21633b")
+    .replaceAll("var(--representacion)", "#693b97")
+    .replaceAll("var(--accion)", "#005873");
 }
 function documento(opciones = inclusionDocumento || { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] }) {
   const sel = opciones.curso ? elegidasOrdenadas() : [], alumnos = estado.estudiantes.filter((e) => opciones.estudiantes.includes(e.id));

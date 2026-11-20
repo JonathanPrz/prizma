@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#fff"/><g fill="#18213f"><rect x="1" y="1" width="3" height="3" rx=".25"/><rect x="12" y="1" width="3" height="3" rx=".25"/><rect x="6.5" y="6.5" width="3" height="3" rx=".25"/><rect x="1" y="12" width="3" height="3" rx=".25"/><rect x="12" y="12" width="3" height="3" rx=".25"/></g><rect x="6.5" y="1" width="3" height="3" rx=".25" fill="#b0145a"/><rect x="1" y="6.5" width="3" height="3" rx=".25" fill="#00727d"/><rect x="12" y="6.5" width="3" height="3" rx=".25" fill="#5a33a8"/><circle cx="8" cy="13.25" r="2" fill="#00727d"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#1a2134"/>
+  <g transform="translate(50 49) rotate(45) scale(.64) translate(-50 -50)">
+    <circle cx="25" cy="25" r="21" fill="#e8eaef"/>
+    <rect x="55" y="5" width="40" height="40" rx="5" fill="#76d7ee"/>
+    <rect x="5" y="55" width="40" height="40" rx="5" fill="#8bdaa1"/>
+    <rect x="55" y="55" width="40" height="40" rx="5" fill="#d2afff"/>
+  </g>
+</svg>
