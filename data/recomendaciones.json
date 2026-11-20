@@ -1472,7 +1472,7 @@
     "respaldo": "orientacion-oficial",
     "fuentes": [
       "decreto-83",
-      "ccsso-2016"
+      "wood-2018"
     ],
     "destacada": false,
     "revision": null,
@@ -1634,8 +1634,8 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
-      "mineduc-autismo-2025"
+      "mineduc-autismo-2025",
+      "supereduc-586"
     ],
     "destacada": false,
     "revision": null,
@@ -1697,7 +1697,6 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
       "supereduc-586",
       "mineduc-autismo-2025"
     ],
@@ -1810,7 +1809,7 @@
       "Acompaña los cambios de sala si hace falta.",
       "Avisa del cambio con un poco de anticipación."
     ],
-    "porque": "Evitar las aglomeraciones reduce el estrés sensorial.",
+    "porque": "Moverse sin aglomeraciones puede hacer los cambios menos difíciles.",
     "areas": [
       "sensorial",
       "emocional"
@@ -1827,7 +1826,6 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "decreto-83",
       "mineduc-autismo-2025"
     ],
     "destacada": false,
@@ -1935,7 +1933,7 @@
     "titulo": "Permite pausas para descansar o atender necesidades de salud",
     "como": [
       "Acuerda cuándo y dónde puede descansar.",
-      "Ten un plan para tomar medicamentos o colaciones si se necesita.",
+      "Si toma medicamentos en horario escolar, sigue el protocolo del establecimiento y la indicación médica.",
       "Avisa a los adultos que lo necesitan saber."
     ],
     "porque": "El cansancio y el dolor afectan la atención y el aprendizaje.",
@@ -3336,7 +3334,7 @@
       "O que termine en otra sesión del mismo taller.",
       "Prevé pausas breves en las sesiones largas."
     ],
-    "porque": "El apuro en un taller aumenta los errores y los riesgos.",
+    "porque": "Más tiempo en el taller permite completar la tarea sin saltarse pasos.",
     "areas": [
       "cognicion",
       "sensorial"
@@ -3506,8 +3504,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "mineduc-autismo-2025",
-      "decreto-83"
+      "mineduc-autismo-2025"
     ],
     "destacada": false,
     "revision": null,
@@ -3936,6 +3933,7 @@
     "titulo": "Coordina con la familia y el equipo los cuidados de salud en la sala",
     "como": [
       "Conoce qué cuidados necesita y quién los entrega.",
+      "Los procedimientos de salud los hace personal autorizado, según el protocolo.",
       "Acuerda dónde y cuándo se hacen, con privacidad.",
       "Ten claro qué hacer si se siente mal."
     ],
@@ -3954,8 +3952,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "nccd-2026",
-      "ley-20422"
+      "nccd-2026"
     ],
     "destacada": false,
     "revision": null
@@ -4227,7 +4224,7 @@
       "Acuerda tutorías breves para resolver dudas.",
       "Ajusta los plazos de entrega durante ese período."
     ],
-    "porque": "Mantener el vínculo con el curso evita que una ausencia de salud termine en abandono.",
+    "porque": "Acceder a lo que se perdió permite seguir el curso durante una ausencia de salud.",
     "areas": [
       "contexto",
       "sensorial"
@@ -4242,8 +4239,7 @@
     "contextos": [],
     "respaldo": "consenso-expertos",
     "fuentes": [
-      "mineduc-es-20422",
-      "ofs-uk"
+      "mineduc-es-20422"
     ],
     "destacada": false,
     "revision": null
