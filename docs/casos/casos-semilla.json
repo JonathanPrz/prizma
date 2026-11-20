@@ -1,214 +1,248 @@
 [
- {
-  "id": 1,
-  "nivel": "basica",
-  "ambito": "educacion",
-  "meta": "comprender un texto informativo",
-  "necesidades": [
-   "lectoescritura"
-  ],
-  "dimensiones": {
-   "2": 3
+  {
+    "id": 1,
+    "nivel": "basica",
+    "ambito": "educacion",
+    "meta": "comprender un texto informativo",
+    "necesidades": [
+      "lectoescritura"
+    ],
+    "dimensiones": {
+      "2": 3
+    },
+    "dua": [
+      "2.2",
+      "2.5",
+      "1.2",
+      "5.3"
+    ],
+    "incluir": [
+      "acc-2-audio",
+      "acc-2-pictogramas",
+      "acc-2-tiempo"
+    ],
+    "excluir": [
+      "acc-6-braille",
+      "acc-10-lengua"
+    ],
+    "condicionales": [
+      {
+        "id": "acc-8-teclado",
+        "condicion": "Solo si hay una barrera para escribir a mano o para producir texto."
+      }
+    ]
   },
-  "dua": [
-   "2.2",
-   "2.5",
-   "1.2",
-   "5.3"
-  ],
-  "incluir": [
-   "acc-2-audio",
-   "acc-2-pictogramas",
-   "acc-2-tiempo",
-   "acc-8-teclado"
-  ],
-  "excluir": [
-   "acc-6-braille",
-   "acc-10-lengua"
-  ]
- },
- {
-  "id": 2,
-  "nivel": "media",
-  "ambito": "educacion",
-  "practica": true,
-  "dimensiones": {
-   "13": 3
+  {
+    "id": 2,
+    "nivel": "media",
+    "ambito": "educacion",
+    "practica": true,
+    "dimensiones": {
+      "13": 3
+    },
+    "dua": [
+      "1.2",
+      "3.2",
+      "2.5"
+    ],
+    "incluir": [
+      "acc-6-audicion",
+      "acc-3-escrito",
+      "prac-rotulos",
+      "prac-recorrido",
+      "prac-procedimiento",
+      "prac-evacuacion"
+    ],
+    "excluir": [
+      "acc-6-braille",
+      "acc-10-lengua"
+    ]
   },
-  "dua": [
-   "1.2",
-   "3.2",
-   "2.5"
-  ],
-  "incluir": [
-   "acc-6-audicion",
-   "acc-3-escrito",
-   "prac-rotulos",
-   "prac-recorrido",
-   "prac-procedimiento"
-  ],
-  "excluir": [
-   "acc-6-braille",
-   "acc-10-lengua"
-  ]
- },
- {
-  "id": 3,
-  "nivel": "parvularia",
-  "ambito": "educacion",
-  "dimensiones": {
-   "5": 3,
-   "7": 3
+  {
+    "id": 3,
+    "nivel": "parvularia",
+    "ambito": "educacion",
+    "dimensiones": {
+      "5": 3,
+      "7": 3
+    },
+    "dua": [
+      "6.2",
+      "7.4",
+      "9.2"
+    ],
+    "incluir": [
+      "acc-7-transiciones",
+      "acc-1-agenda",
+      "acc-7-tranquilo",
+      "dec-antes-gatillantes",
+      "dec-antes-refugio"
+    ],
+    "excluir": [
+      "obj-graduacion"
+    ],
+    "condicionales": [
+      {
+        "id": "acc-4-recreo",
+        "condicion": "Solo si el relato describe dificultad para organizar el tiempo libre del recreo."
+      }
+    ]
   },
-  "dua": [
-   "6.2",
-   "7.4",
-   "9.2"
-  ],
-  "incluir": [
-   "acc-7-transiciones",
-   "acc-1-agenda",
-   "acc-7-tranquilo",
-   "dec-antes-gatillantes",
-   "dec-antes-refugio",
-   "acc-4-recreo"
-  ],
-  "excluir": [
-   "obj-graduacion"
-  ]
- },
- {
-  "id": 4,
-  "nivel": "basica",
-  "ambito": "educacion",
-  "necesidades": [
-   "lengua-cultura"
-  ],
-  "dimensiones": {
-   "10": 3,
-   "3": 2
+  {
+    "id": 4,
+    "nivel": "basica",
+    "ambito": "educacion",
+    "necesidades": [
+      "lengua-cultura"
+    ],
+    "dimensiones": {
+      "10": 3,
+      "3": 2
+    },
+    "dua": [
+      "2.3",
+      "1.3",
+      "2.1"
+    ],
+    "incluir": [
+      "acc-10-lengua",
+      "acc-10-responder",
+      "acc-10-familia",
+      "acc-10-cultura",
+      "acc-2-pictogramas"
+    ],
+    "excluir": [
+      "acc-3-caa",
+      "acc-12-tiempo"
+    ]
   },
-  "dua": [
-   "2.3",
-   "1.3",
-   "2.1"
-  ],
-  "incluir": [
-   "acc-10-lengua",
-   "acc-10-responder",
-   "acc-10-familia",
-   "acc-10-cultura",
-   "acc-2-pictogramas"
-  ],
-  "excluir": [
-   "acc-3-caa",
-   "acc-12-tiempo"
-  ]
- },
- {
-  "id": 5,
-  "nivel": "media",
-  "ambito": "educacion",
-  "necesidades": [
-   "motivacion"
-  ],
-  "dimensiones": {
-   "14": 3
+  {
+    "id": 5,
+    "nivel": "media",
+    "ambito": "educacion",
+    "necesidades": [
+      "motivacion"
+    ],
+    "dimensiones": {
+      "14": 3
+    },
+    "dua": [
+      "8.2",
+      "7.1"
+    ],
+    "incluir": [
+      "acc-14-extension",
+      "acc-14-eleccion",
+      "acc-14-compactar",
+      "acc-14-pares"
+    ],
+    "excluir": [
+      "acc-1-partes",
+      "acc-2-tiempo"
+    ],
+    "condicionales": [
+      {
+        "id": "obj-enriquecimiento-historia",
+        "condicion": "Solo si la asignatura es Historia y el equipo decide sumar objetivos nuevos."
+      }
+    ]
   },
-  "dua": [
-   "8.2",
-   "7.1"
-  ],
-  "incluir": [
-   "acc-14-extension",
-   "acc-14-eleccion",
-   "acc-14-compactar",
-   "acc-14-pares",
-   "obj-enriquecimiento-historia"
-  ],
-  "excluir": [
-   "acc-1-partes",
-   "acc-2-tiempo"
-  ]
- },
- {
-  "id": 6,
-  "nivel": "superior",
-  "ambito": "educacion",
-  "practicaProfesional": true,
-  "dimensiones": {
-   "9": 3
+  {
+    "id": 6,
+    "nivel": "superior",
+    "ambito": "educacion",
+    "practicaProfesional": true,
+    "dimensiones": {
+      "9": 3
+    },
+    "incluir": [
+      "sup-plazos",
+      "sup-pausas",
+      "sup-remoto",
+      "pp-plan-superior",
+      "pp-c-ambiente",
+      "pp-e-compartir",
+      "pp-e-acuerdo"
+    ],
+    "excluir": [
+      "sup-senas",
+      "sup-lengua"
+    ],
+    "condicionales": [
+      {
+        "id": "sup-tiempo",
+        "condicion": "Solo si la rapidez no es lo que se evalúa y la condición afecta el ritmo en las evaluaciones."
+      }
+    ]
   },
-  "incluir": [
-   "sup-plazos",
-   "sup-pausas",
-   "sup-remoto",
-   "pp-plan-superior",
-   "pp-c-ambiente",
-   "pp-e-compartir",
-   "sup-tiempo",
-   "pp-e-acuerdo"
-  ],
-  "excluir": [
-   "sup-senas",
-   "sup-lengua"
-  ]
- },
- {
-  "id": 7,
-  "nivel": "basica",
-  "ambito": "educacion",
-  "dimensiones": {
-   "8": 3
+  {
+    "id": 7,
+    "nivel": "basica",
+    "ambito": "educacion",
+    "dimensiones": {
+      "8": 3
+    },
+    "dua": [
+      "4.1",
+      "4.2"
+    ],
+    "incluir": [
+      "acc-8-accesible",
+      "acc-8-desplazamiento",
+      "acc-8-materiales"
+    ],
+    "excluir": [
+      "acc-6-braille"
+    ],
+    "condicionales": [
+      {
+        "id": "acc-8-teclado",
+        "condicion": "Es una opción para probar, no un paquete fijo, si escribir a mano es la barrera."
+      },
+      {
+        "id": "acc-8-transcribe",
+        "condicion": "Es una opción para probar si ni el teclado ni el dictado bastan."
+      }
+    ]
   },
-  "dua": [
-   "4.1",
-   "4.2"
-  ],
-  "incluir": [
-   "acc-8-accesible",
-   "acc-8-desplazamiento",
-   "acc-8-teclado",
-   "acc-8-transcribe",
-   "acc-8-materiales"
-  ],
-  "excluir": [
-   "acc-6-braille"
-  ]
- },
- {
-  "id": 8,
-  "nivel": "trabajo",
-  "ambito": "trabajo",
-  "dimensiones": {
-   "13": 3
+  {
+    "id": 8,
+    "nivel": "trabajo",
+    "ambito": "trabajo",
+    "dimensiones": {
+      "13": 3
+    },
+    "incluir": [
+      "tr-alertas-visuales",
+      "tr-mensajes-escritos",
+      "tr-analizar",
+      "tr-privacidad"
+    ],
+    "excluir": [
+      "tr-ocr"
+    ],
+    "condicionales": [
+      {
+        "id": "tr-subtitulos",
+        "condicion": "Solo si el puesto incluye reuniones o videos."
+      }
+    ]
   },
-  "incluir": [
-   "tr-alertas-visuales",
-   "tr-mensajes-escritos",
-   "tr-subtitulos",
-   "tr-analizar",
-   "tr-privacidad"
-  ],
-  "excluir": [
-   "tr-ocr"
-  ]
- },
- {
-  "id": 9,
-  "nivel": "basica",
-  "ambito": "educacion",
-  "necesidades": [
-   "clima"
-  ],
-  "dimensiones": {},
-  "dua": [
-   "7.4",
-   "8.4",
-   "9.4",
-   "9.2"
-  ],
-  "incluir": [],
-  "excluir": []
- }
+  {
+    "id": 9,
+    "nivel": "basica",
+    "ambito": "educacion",
+    "necesidades": [
+      "clima"
+    ],
+    "dimensiones": {},
+    "dua": [
+      "7.4",
+      "8.4",
+      "9.4",
+      "9.2"
+    ],
+    "incluir": [],
+    "excluir": []
+  }
 ]
