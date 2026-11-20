@@ -4879,7 +4879,7 @@
       "Incluye los ajustes que el estudiante decidió pedir.",
       "Entrega una copia al estudiante."
     ],
-    "porque": "El Decreto 2.516 exige un plan de práctica acordado; los ajustes que el estudiante decidió pedir pueden incluirse en ese plan.",
+    "porque": "El Decreto 2.516 exige un plan elaborado con el estudiante y consensuado con el centro (art. 2); los ajustes que pidió pueden incluirse en él.",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -4953,7 +4953,7 @@
       "Conversa a solas con el estudiante y después con el representante del centro.",
       "Registra los acuerdos y ajustes revisados, sin datos de salud."
     ],
-    "porque": "El Decreto 2.516 establece la supervisión en terreno del profesor tutor.",
+    "porque": "El Decreto 2.516 exige al menos una visita en terreno, con entrevista al centro y al estudiante (art. 7).",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -5000,10 +5000,10 @@
     "titulo": "Revisa con el centro la seguridad y el seguro antes de empezar",
     "como": [
       "Acuerda en el convenio cómo se supervisa la seguridad y qué hacer ante un accidente.",
-      "Verifica qué cubre el seguro en esa actividad.",
+      "Revisa cómo se usa el seguro escolar en esa actividad.",
       "Asegura que el estudiante reciba la inducción de seguridad en un formato que entienda."
     ],
-    "porque": "El plan de práctica incluye la prevención de riesgos, y el reglamento del liceo precisa la seguridad (Decreto 2.516).",
+    "porque": "El reglamento de práctica fija cómo cuidar la seguridad, enfrentar accidentes y usar el seguro escolar (Decreto 2.516, art. 11 d).",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -5028,7 +5028,7 @@
       "En la solicitud, explica qué condición necesita, sin incluir diagnósticos salvo que el estudiante lo decida.",
       "Mientras se resuelve, mantén el plan acordado."
     ],
-    "porque": "No hay reducción automática por discapacidad: el Decreto 2.516 permite modificaciones excepcionales solicitadas a la SEREMI.",
+    "porque": "No hay reducción automática por discapacidad: solo la SEREMI cambia la duración mínima, a petición del establecimiento (Decreto 2.516, art. 4).",
     "areas": [],
     "dimensiones": [],
     "niveles": [
