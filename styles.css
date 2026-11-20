@@ -127,7 +127,7 @@ details.fuentes { font-size: .875rem; border-top: 1px solid var(--linea); paddin
 details.fuentes summary { cursor: pointer; color: var(--enfoque); min-height: 1.75rem; }
 details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .boton { font: inherit; font-weight: 600; font-size: .9375rem; min-height: 2.75rem; padding: .55rem 1rem; border-radius: .35rem; border: 1px solid var(--tinta); background: var(--superficie); color: var(--tinta); cursor: pointer; }
-.boton[aria-pressed="true"], .boton-principal { background: var(--tinta); color: var(--superficie); }
+.boton[aria-pressed="true"], .boton[aria-expanded="true"], .boton-principal { background: var(--tinta); color: var(--superficie); }
 .boton-principal, .boton-sutil { width: 100%; }
 .boton-sutil { border-color: var(--borde-control); color: var(--tenue); }
 .boton:disabled { opacity: .5; cursor: not-allowed; }
