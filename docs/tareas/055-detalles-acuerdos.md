@@ -1,6 +1,6 @@
 # Tarea 055 · Dos detalles del paso 3 «Acuerda»
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/055-detalles-acuerdos` · Pull request con destino `main`
+Estado: **integrada** (PR #75) · Asignada a: Codex · Rama: `codex/055-detalles-acuerdos` · Pull request con destino `main`
 
 ## Para qué
 Dos detalles que quedaron de la revisión del PR #74. Son cambios pequeños: no toques nada más.
