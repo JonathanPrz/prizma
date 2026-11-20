@@ -287,6 +287,7 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 .aviso-privacidad { width: min(36rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; padding: 1.5rem; border: 1.5px solid var(--borde-control); border-radius: .35rem; background: var(--elevado); color: var(--tinta); }
 .aviso-privacidad ul, .aviso-privacidad ol { padding-left: 1rem; margin-block: 1rem; }
 .aviso-privacidad li + li { margin-top: .75rem; }
+#guia-nivel > section + section, #guia-nivel > section + p { margin-top: 1rem; }
 
 .t-razon { margin: 0; font-size: .875rem; color: var(--tenue); }
 .t-que-busca { margin: 0; font-size: .875rem; color: var(--tenue); }
@@ -484,7 +485,7 @@ html.proyectando body > :not(#proyeccion) { display: none !important; }
 #estado-catalogo, #migracion-practica:not(:empty) { grid-column: 1 / -1; }
 #migracion-practica:empty { position: absolute; }
 
-#enlace-guia-practica, .pie a { display: inline-block; min-height: 1.5rem; }
+#enlace-guia-practica, #guia-nivel nav a, .pie a { display: inline-block; min-height: 1.5rem; }
 :where(main, dialog) small:not(.hoja *) { font-size: .875rem; }
 :where(main, dialog) :is(h3, h4):not(.hoja *) { font-size: 1.0625rem; font-weight: 700; }
 dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }

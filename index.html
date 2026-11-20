@@ -195,7 +195,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
   </section>
 <section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="-1" hidden>
-<div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada" id="trabajo-bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
+<div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada" id="trabajo-bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-nivel" id="enlace-guia-nivel" aria-haspopup="dialog" aria-controls="guia-nivel">Guía de Práctica y trabajo</a></div>
 <section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-sutil" aria-label="Quitar este caso: Persona 1">Quitar este caso</button></section>
 <section id="trabajo-descripcion" class="paso">
 <h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2>
@@ -229,7 +229,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 </div>
 <section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p id="trabajo-ajustes-ayuda" class="ayuda">Los hace el empleador. También sirven para conversarlos con él</p><div id="trabajo-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div><div id="trabajo-tarjetas"></div>      <section id="bloque-practica-profesional" class="bloque-apoyo" aria-labelledby="t-practica-profesional" hidden>
         <h3 id="t-practica-profesional">Apoyos para la práctica profesional</h3>
-        <a id="enlace-guia-practica" href="#guia-practica" aria-haspopup="dialog" aria-controls="guia-practica">¿Quién hace qué en la práctica?</a>
+        <a id="enlace-guia-practica" href="#guia-seccion-practica" aria-haspopup="dialog" aria-controls="guia-nivel">¿Quién hace qué en la práctica?</a>
         <div id="practica-profesional-grupos"></div>
       </section>
 <button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button><span class="error-campo" id="trabajo-acuerdo-seleccion-error"></span></section>
@@ -289,14 +289,66 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <p>Proyecto personal sin fines de lucro. <a href="https://github.com/JonathanPrz/prizma">Código y fuentes</a>.</p>
 </div></footer>
 
-<dialog id="guia-trabajo" class="aviso-privacidad" aria-labelledby="t-guia-trabajo"><h2 id="t-guia-trabajo" tabindex="-1" autofocus>¿Qué son los ajustes en el trabajo y qué exige la ley?</h2>
-<h3>Qué son</h3><p>la ley chilena los llama ajustes necesarios (Ley 20.422, art. 8). Se acuerdan con la persona, a partir de las tareas del cargo y sin pedir diagnósticos.</p><h3>Qué exige la ley</h3>
-<h3>Todas las empresas e instituciones</h3><ol><li>No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).</li><li>Adaptar los procesos de selección cuando haya pruebas o requisitos (Ley 20.422, art. 24).</li><li>Guardar reserva de los datos privados de cada trabajador (Código del Trabajo, art. 154 ter).</li></ol>
-<h3>Desde 10 trabajadores permanentes</h3><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>
-<h3>Desde 100 trabajadores</h3><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
-<h3>Sector público</h3><ol start="6"><li>Selección preferente en igualdad de mérito, y cuota en instituciones con 100 o más funcionarios (Ley 20.422, art. 45).</li></ol>
-<h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede consultar a la Dirección del Trabajo o pedir tutela laboral. Los plazos dependen del caso: revísalos en el <a href="https://www.dt.gob.cl/portal/1628/w3-article-103247.html" target="_blank" rel="noopener noreferrer">sitio de la Dirección del Trabajo</a>.</li></ol>
-<p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton boton-principal">Entendido</button></form></dialog>
+<dialog id="guia-nivel" class="aviso-privacidad" aria-labelledby="t-guia-nivel">
+  <h2 id="t-guia-nivel" tabindex="-1" autofocus>Guía de Práctica y trabajo</h2>
+  <nav aria-label="Índice de la guía">
+    <ul>
+      <li><a href="#guia-seccion-practica">En la práctica profesional</a></li>
+      <li><a href="#guia-seccion-transicion">Del paso al primer empleo</a></li>
+      <li><a href="#guia-seccion-trabajo">En el trabajo</a></li>
+    </ul>
+  </nav>
+  <section>
+    <h3>Antes de empezar</h3>
+    <p>La persona decide qué información se comparte y con quién. Pedir un ajuste no autoriza entregar el diagnóstico ni el expediente (Ley 19.628; Ley 21.719 desde el 1 de diciembre de 2026).</p>
+    <p>Escribe solo iniciales y describe situaciones, sin diagnósticos.</p>
+  </section>
+  <section>
+    <h3 id="guia-seccion-practica" tabindex="-1">En la práctica profesional</h3>
+    <div id="guia-niveles-practica">
+      <section id="guia-practica-media">
+        <h4>En la media técnico-profesional</h4>
+        <ol>
+          <li>El liceo, el estudiante y el centro acuerdan por escrito el plan de práctica: tareas, jornada y ajustes (Decreto 2.516, art. 2).</li>
+          <li>El profesor tutor supervisa, visita el centro y registra el avance (art. 7).</li>
+          <li>El representante del centro evalúa las tareas y firma el informe con el tutor (art. 6).</li>
+          <li>Si hacen falta condiciones excepcionales, el liceo las solicita a la SEREMI (arts. 4 y 13).</li>
+        </ol>
+      </section>
+      <section id="guia-practica-superior">
+        <h4>En la educación superior</h4>
+        <ol>
+          <li>La institución mantiene su deber de hacer ajustes también durante la práctica (Ley 20.422, art. 39; Ley 21.091, art. 2 e).</li>
+          <li>La institución acuerda con el centro quién implementa cada ajuste, y lo deja por escrito.</li>
+        </ol>
+      </section>
+    </div>
+    <ul>
+      <li>El centro proporciona colación y movilización, o una compensación acordada (Código del Trabajo, art. 8).</li>
+    </ul>
+  </section>
+  <section>
+    <h3 id="guia-seccion-transicion" tabindex="-1">Del paso al primer empleo</h3>
+    <ul>
+      <li>Lo acordado en la práctica no pasa solo al empleo: la persona decide qué contarle a su nuevo empleador.</li>
+      <li>“Preparar su primer empleo” copia las situaciones y lo que le ayuda, para revisarlos con la persona. No copia lo que dijo ni lo que compartió con el centro.</li>
+      <li>En el empleo, los ajustes los hace el empleador. Los de la práctica sirven para conversarlos.</li>
+      <li>Si aún es menor de edad, para trabajar necesita autorización (Código del Trabajo, art. 13).</li>
+    </ul>
+  </section>
+  <section>
+    <h3 id="guia-seccion-trabajo" tabindex="-1">En el trabajo</h3>
+    <h4>Qué son</h4><p>la ley chilena los llama ajustes necesarios (Ley 20.422, art. 8). Se acuerdan con la persona, a partir de las tareas del cargo y sin pedir diagnósticos.</p>
+    <h4>Qué exige la ley</h4>
+    <h4>Todas las empresas e instituciones</h4><ol><li>No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).</li><li>Adaptar los procesos de selección cuando haya pruebas o requisitos (Ley 20.422, art. 24).</li><li>Guardar reserva de los datos privados de cada trabajador (Código del Trabajo, art. 154 ter).</li></ol>
+    <h4>Desde 10 trabajadores permanentes</h4><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>
+    <h4>Desde 100 trabajadores</h4><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
+    <h4>Sector público</h4><ol start="6"><li>Selección preferente en igualdad de mérito, y cuota en instituciones con 100 o más funcionarios (Ley 20.422, art. 45).</li></ol>
+    <h4>Si se rechaza un ajuste</h4><ol start="7"><li>La persona puede consultar a la Dirección del Trabajo o pedir tutela laboral. Los plazos dependen del caso: revísalos en el <a href="https://www.dt.gob.cl/portal/1628/w3-article-103247.html" target="_blank" rel="noopener noreferrer">sitio de la Dirección del Trabajo</a>.</li></ol>
+  </section>
+  <p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p>
+  <form method="dialog"><button type="submit" class="boton boton-principal">Entendido</button></form>
+</dialog>
 <dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
   <h2 id="t-guia-dua" tabindex="-1" autofocus>¿Qué es el DUA y cómo usarlo?</h2>
   <h3>Qué es</h3><p>El Diseño Universal para el Aprendizaje (DUA) es una forma de planificar. En vez de preparar la <span data-voc="clase">clase</span> para un estudiante «promedio» y adaptarla después, se diseña desde el principio con opciones para todos. Se organiza en 3 principios:</p>
@@ -346,32 +398,6 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <button type="button" id="guia-apoyos-entendido" class="boton boton-principal">Entendido</button>
 </dialog>
 
-<dialog id="guia-practica" class="aviso-privacidad" aria-labelledby="t-guia-practica">
-  <h2 id="t-guia-practica" tabindex="-1" autofocus>¿Quién hace qué en la práctica?</h2>
-  <section id="guia-practica-media">
-    <h3>En la media técnico-profesional</h3>
-    <ol>
-      <li>El liceo, el estudiante y el centro acuerdan por escrito el plan de práctica: tareas, jornada y ajustes (Decreto 2.516, art. 2).</li>
-      <li>El profesor tutor supervisa, visita el centro y registra el avance (art. 7).</li>
-      <li>El representante del centro evalúa las tareas y firma el informe con el tutor (art. 6).</li>
-      <li>Si hacen falta condiciones excepcionales, el liceo las solicita a la SEREMI (arts. 4 y 13).</li>
-    </ol>
-  </section>
-  <section id="guia-practica-superior" hidden>
-    <h3>En la educación superior</h3>
-    <ol>
-      <li>La institución mantiene su deber de hacer ajustes también durante la práctica (Ley 20.422, art. 39; Ley 21.091, art. 2 e).</li>
-      <li>La institución acuerda con el centro quién implementa cada ajuste, y lo deja por escrito.</li>
-    </ol>
-  </section>
-  <h3>En ambos casos</h3>
-  <ul>
-    <li>El estudiante decide qué información se comparte. Pedir un ajuste no autoriza entregar el diagnóstico ni el expediente (Ley 19.628; Ley 21.719 desde el 1 de diciembre de 2026).</li>
-    <li>El centro proporciona colación y movilización, o una compensación acordada (Código del Trabajo, art. 8).</li>
-  </ul>
-  <p class="ayuda">Orientación basada en la normativa citada. No es asesoría legal.</p>
-  <button type="button" id="guia-practica-entendido" class="boton boton-principal">Entendido</button>
-</dialog>
 
 <dialog id="documento-centro" class="aviso-privacidad" aria-labelledby="t-documento-centro">
   <h2 id="t-documento-centro" tabindex="-1" autofocus>Preparar documento para el centro</h2>
