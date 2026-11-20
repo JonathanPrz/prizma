@@ -23,11 +23,11 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/039-co
     await p.check(`input[name="${name}1"][value="3"]`);
    }
    await area('','estudiante');assert.equal(await p.locator('#t-apoyos-empezar').textContent(),'Empieza por:');assert.equal(await p.locator('#t-apoyos-empezar ~ p').textContent(),'Responden mejor a lo que describiste');assert.equal(await p.locator('#t-apoyos-empezar ~ ul a').count(),3);await p.locator('#area-0').evaluate(n=>n.scrollIntoView({block:'center'}));await foto('estudiante');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.locator('#area-0').getAttribute('aria-expanded'),'true');assert.match(await p.locator('#area-0').innerText(),/2 marcadas/);
-   await p.click('#tab-dua');await p.check('#practica');assert.equal(await p.evaluate(()=>estado.perfil.practica),false);assert.equal(await p.evaluate(()=>borradorDua.perfil.practica),true);await p.click('#guardar-clase');assert.equal(await p.evaluate(()=>estado.perfil.practica),true);
-   await p.click('#paso-clase-editar');await p.click('#limpiar-clase');assert(!await p.locator('#practica').isChecked());assert.equal(await p.evaluate(()=>estado.perfil.practica),true);await p.click('#guardar-clase');assert.equal(await p.evaluate(()=>estado.perfil.practica),false);
+   await p.click('#tab-dua');await p.check('#practica');assert.equal(await p.evaluate(()=>estado.perfil.practica),true);
+   await p.click('#limpiar-clase');assert(!await p.locator('#practica').isChecked());assert.equal(await p.evaluate(()=>estado.perfil.practica),false);
    await p.evaluate(()=>{estado.estudiantes.push({id:'otro',...normalizarEstudiante({iniciales:'BB',dimensiones:{1:2,2:2}}),seleccion:{}});pintarRepeticiones();});
    await p.click('#m-despues');await p.click('#proposito-presentar');
-   await p.click('#barrera-1');assert(await p.evaluate(()=>estado.necesidades.includes('tareas-largas')));assert.equal(await p.evaluate(()=>borradorDua),null);assert.equal(await p.evaluate(()=>document.activeElement.id),'t-dua-marcadas');
+   await p.click('#barrera-1');assert(await p.evaluate(()=>estado.necesidades.includes('tareas-largas')));assert.equal(await p.evaluate(()=>estado.claseGuardada),true);assert.equal(await p.evaluate(()=>document.activeElement.id),'t-dua-marcadas');
    assert.equal(await p.locator('#t-dua-marcadas').innerText(),'Para lo que marcaste');
    assert.deepEqual(await p.evaluate(()=>[estado.momentos,estado.propositos]),[['despues'],['presentar']]);
    await p.getByRole('button',{name:'Quitar filtros'}).click();

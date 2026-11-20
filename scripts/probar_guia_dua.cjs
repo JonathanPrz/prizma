@@ -22,7 +22,7 @@ function nodo(id) {
 }
 for (const id of ['panel-trabajo','tab-trabajo','nivel-campo','practica-campo','t-filtros-apoyos', 't-filtros-dialogo', 'guia-dua', 't-guia-dua', 'guia-empezar', 'aviso-privacidad', 't-privacidad', 't-filtros-dua', 'filtros-dialogo', 'abrir-filtros', 'panel-dua', 'panel-apoyos', 'tab-dua', 'tab-apoyos','paso-descripcion-toggle','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','meta']) nodos.set('#' + id, nodo(id));
 for (const id of ['dua', 'apoyos']) nodos.set('#panel-' + id + ' .acciones-intro', nodo('intro-' + id));
-nodos.set('#necesidades button', nodo('primera-necesidad'));
+nodos.set('#perfil input[name="actividad"]', nodo('primera-actividad'));
 const enlaces = [nodo('enlace-necesidades'), nodo('enlace-pie')];
 const archivo = nombre => fs.readFileSync(path.join(__dirname, '..', nombre), 'utf8');
 vm.runInContext(archivo('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
@@ -34,7 +34,7 @@ assert.equal(guia.open, true);
 assert.equal(contexto.document.activeElement.id, 't-guia-dua');
 nodos.get('#guia-empezar').click();
 assert.equal(almacen.has('prizma.guia-dua.v1'), false);
-assert.equal(contexto.document.activeElement.id, 'primera-necesidad');
+assert.equal(contexto.document.activeElement.id, 'primera-actividad');
 vm.runInContext('prepararGuiaDUA()', contexto);
 assert.equal(guia.open, false);
 for (const enlace of enlaces) {
@@ -52,10 +52,9 @@ nodos.get('#guia-empezar').click();
 assert.equal(nodos.get('#aviso-privacidad').open, true);
 assert.equal(vm.runInContext('origenAvisoPrivacidad === origenPrueba && !privacidadPendiente', contexto), true);
 nodos.get('#aviso-privacidad').close();
-nodos.delete('#necesidades button');
 enlaces[1].click();
 nodos.get('#guia-empezar').click();
-assert.equal(contexto.document.activeElement.id, 'meta');
+assert.equal(contexto.document.activeElement.id, 'primera-actividad');
 contexto.localStorage.getItem = contexto.localStorage.setItem = () => {throw new Error('bloqueado');};
 vm.runInContext('prepararGuiaDUA(); mostrarGuiaDUA()', contexto);
 assert.equal(guia.open, true);

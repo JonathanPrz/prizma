@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const leer=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const opciones=[...leer('index.html').split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m=>({value:m[1]}));
 const almacen=new Map();
-const c=vm.createContext({document:{querySelector:()=>({options:opciones}),querySelectorAll:()=>[]},localStorage:{getItem:k=>almacen.get(k),setItem:(k,v)=>almacen.set(k,v)}});
+const c=vm.createContext({document:{querySelector:()=>({options:opciones,focus(){}}),querySelectorAll:()=>[]},localStorage:{getItem:k=>almacen.get(k),setItem:(k,v)=>almacen.set(k,v)}});
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
 const e=s=>JSON.parse(JSON.stringify(vm.runInContext(s,c)));
 vm.runInContext(`catalogo=${leer('data/recomendaciones.json')}; necesidades=${leer('data/necesidades.json')}`,c);
@@ -31,5 +31,5 @@ vm.runInContext(`var original=catalogo;var modelo=catalogo.find(r=>r.tipo==='dua
 ]);estado.perfil={nivel:'media',practica:true,actividad:['crear'],evidencia:['grupo'],meta:''};estado.necesidades=['evaluar'];estado.momentos=[];estado.propositos=[]`,c);
 assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-practica','sim-detalles','sim-destacada']);
 vm.runInContext('estado.perfil.practica=false',c);assert.deepEqual(e('visibles().map(r=>r.id)'),['sim-necesidad','sim-detalles','sim-practica','sim-destacada']);
-vm.runInContext('catalogo=original; estado.perfil.practica=true; sincronizarPerfil=()=>{};pintarControles=()=>{};pintarTarjetas=()=>{};actualizarRespaldo=()=>{};borradorDua={perfil:{...estado.perfil},necesidades:[]};limpiarClase()',c);assert.equal(e('estado.perfil.practica'),true);
+vm.runInContext('catalogo=original; estado.perfil.practica=true; sincronizarPerfil=()=>{};pintarControles=()=>{};pintarTarjetas=()=>{};pintarApoyos=()=>{};resumenClase=()=>{};actualizarRespaldo=()=>{};limpiarClase()',c);assert.equal(e('estado.perfil.practica'),false);
 console.log('Correcto: migración CH/TP y práctica antigua, precedencia y validación booleanas, 36 DUA/prácticas pertinentes, prioridad necesidades > práctica > detalles > principio y número, práctica y limpieza independientes.');
