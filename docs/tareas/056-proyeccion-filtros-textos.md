@@ -1,6 +1,6 @@
 # Tarea 056 · Proyección visible, filtros DUA más claros y textos ordenados
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/056-proyeccion-filtros` · Pull request con destino `main`
+Estado: **integrada** (PR #76) · Asignada a: Codex · Rama: `codex/056-proyeccion-filtros` · Pull request con destino `main`
 
 ## Para qué
 Son decisiones del dueño del 20-11-2026, tomadas después de una revisión adversarial. Son cinco cambios pequeños en «Para el curso (DUA)» y en algunos textos.
