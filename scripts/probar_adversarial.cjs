@@ -67,7 +67,7 @@ const servidor = http.createServer((req, res) => {
       await page.screenshot({ path: path.join(salida, `proyeccion-${width}.png`) });
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.click('#proyectar'); assert(await page.locator('#abrir-mochila').isVisible());
+    await page.click('#salir-proyeccion'); assert(await page.locator('#abrir-mochila').isVisible());
     // Walk every visible keyboard destination, including expanded groups and agreements.
     async function teclado(pestana) {
       await page.evaluate(pestana => {

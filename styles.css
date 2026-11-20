@@ -159,9 +159,9 @@ input[type="checkbox"] { width: 1.2rem; height: 1.2rem; flex: none; margin: 0; }
 .t-proposito.presentar { color: var(--representacion); }
 .t-proposito.mostrar { color: var(--accion); }
 .tri { width: .7rem; height: .7rem; flex: none; clip-path: polygon(0 100%, 50% 0, 100% 100%); }
-.t-proposito.motivar .tri { background: var(--compromiso); }
-.t-proposito.presentar .tri { background: var(--representacion); }
-.t-proposito.mostrar .tri { background: var(--accion); }
+.t-proposito.motivar .tri, .chip.motivar .tri { background: var(--compromiso); }
+.t-proposito.presentar .tri, .chip.presentar .tri { background: var(--representacion); }
+.t-proposito.mostrar .tri, .chip.mostrar .tri { background: var(--accion); }
 .dua-marcadas { display: grid; gap: 1rem; }
 .grupos-momentos > .dua-marcadas > h3 { margin-bottom: 0; }
 .dua-marcadas [role="group"] > h3 { margin-bottom: .75rem; font-size: 1.0625rem; }
@@ -395,6 +395,9 @@ body:has(#barra-continuar:not([hidden])) { padding-bottom: var(--barra-alto, 0px
 .filtros-vista { display: grid; gap: .75rem; padding: 1rem; border-radius: .35rem; background: var(--panel); }
 .filtros-vista .chips { flex-direction: row; }
 .filtros-vista .chip { width: auto; max-width: 100%; }
+#momentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#momentos .chip { justify-content: center; width: 100%; padding-inline: .25rem; }
+#m-toda-la-clase { grid-column: 1 / -1; }
 .filtros-vista legend { font-weight: 800; margin-bottom: .5rem; }
 .filtros-vista > a { justify-self: start; min-height: 1.5rem; }
 
@@ -403,7 +406,16 @@ body:has(#barra-continuar:not([hidden])) { padding-bottom: var(--barra-alto, 0px
 .seguridad { display: grid; gap: .75rem; }
 
 .hoja .aviso-apoyos { color: var(--hoja-tinta); background: var(--hoja-suave); border-color: var(--hoja-linea); }
-.proyectando #abrir-mochila, .proyectando #barreras-repetidas, .proyectando #panel-dua .aviso-cruzado { display: none; }
+html.proyectando { font-size: 125%; scroll-padding: var(--proyeccion-alto, 0px) 0 1rem; }
+html.proyectando body > :not(#proyeccion) { display: none !important; }
+html.proyectando body { padding-bottom: 0; }
+#proyeccion { max-width: 50rem; padding-block: calc(var(--proyeccion-alto, 0px) + 1rem) 1rem; }
+#proyeccion-barra {
+  position: fixed; inset: 0 0 auto; z-index: 25;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem;
+  padding: .75rem 1rem; background: var(--superficie); border-bottom: 1px solid var(--linea);
+}
+#proyeccion .t-que-busca { font-size: inherit; }
 
 #estado-catalogo, #migracion-practica:not(:empty) { grid-column: 1 / -1; }
 #migracion-practica:empty { position: absolute; }
