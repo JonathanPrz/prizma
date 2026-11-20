@@ -287,19 +287,71 @@ function situacionesSinApoyos() {
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
 function rolesPermitidos() { return esSuperior() ? ["estudiante", "inclusion", "docente"] : ["estudiante", "familia", "equipo", "diferencial", "pie", "jefatura", "docente"]; }
-function erroresAcuerdo(e, trabajo = false) {
-  const a = e.acuerdo || normalizarAcuerdo(), errores = [], roles = trabajo ? Object.keys(rolesTrabajo(e)) : rolesPermitidos();
-  if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) errores.push("Guarda una descripción con al menos una situación.");
-  if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length) errores.push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
-  if (typeof a.criterio !== "string" || !a.criterio.trim() || a.criterio.length > 200) errores.push("Indica cómo sabremos que funciona (máximo 200 caracteres).");
-  if (seleccionIncompatible(e, trabajo)) errores.push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
-  if (!a.roles.some((r) => roles.includes(r))) errores.push("Elige al menos un rol.");
-  if (a.roles.some((r) => !roles.includes(r))) errores.push("Revisa los roles para este nivel.");
-  if (!trabajo && catalogo.some(r => r.tipo === "objetivos" && Object.hasOwn(e.seleccion, r.id)) && (!a.roles.includes("familia") || !a.roles.some(r => ["diferencial", "pie", "jefatura"].includes(r)))) errores.push("Una adecuación en los objetivos se decide con la familia y el equipo de apoyo (Decreto 83). Agrega esos roles");
-  if (!fechaValida(a.fecha)) errores.push("Indica una fecha del acuerdo válida.");
-  if (!fechaValida(a.revision)) errores.push("Indica una próxima revisión válida.");
-  else if (a.fecha && a.revision <= a.fecha) errores.push("La revisión debe ser posterior al acuerdo.");
+function camposConErrores(e, trabajo = false) {
+  const a = e.acuerdo || normalizarAcuerdo(), errores = {}, roles = trabajo ? Object.keys(rolesTrabajo(e)) : rolesPermitidos();
+  if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) (errores.descripcion ??= []).push("Guarda una descripción con al menos una situación.");
+  if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length) (errores.seleccion ??= []).push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
+  if (typeof a.criterio !== "string" || !a.criterio.trim() || a.criterio.length > 200) (errores.criterio ??= []).push("Indica cómo sabremos que funciona (máximo 200 caracteres).");
+  if (seleccionIncompatible(e, trabajo)) (errores.seleccion ??= []).push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
+  if (!a.roles.some((r) => roles.includes(r))) (errores.roles ??= []).push("Elige al menos un rol.");
+  if (a.roles.some((r) => !roles.includes(r))) (errores.roles ??= []).push("Revisa los roles para este nivel.");
+  if (!trabajo && catalogo.some(r => r.tipo === "objetivos" && Object.hasOwn(e.seleccion, r.id)) && (!a.roles.includes("familia") || !a.roles.some(r => ["diferencial", "pie", "jefatura"].includes(r)))) (errores.roles ??= []).push("Una adecuación en los objetivos se decide con la familia y el equipo de apoyo (Decreto 83). Agrega esos roles");
+  if (!fechaValida(a.fecha)) (errores.fecha ??= []).push("Indica una fecha del acuerdo válida.");
+  if (!fechaValida(a.revision)) (errores.revision ??= []).push("Indica una próxima revisión válida.");
+  else if (a.fecha && a.revision <= a.fecha) (errores.revision ??= []).push("La revisión debe ser posterior al acuerdo.");
   return errores;
+}
+function erroresAcuerdo(e, trabajo = false) {
+  return Object.values(camposConErrores(e, trabajo)).flat();
+}
+function mostrarErroresAcuerdo(trabajo, errores, enfocar = false) {
+  const campos = trabajo ? {
+    roles: "#trabajo-roles input", fecha: "#trabajo-fecha", revision: "#trabajo-revision", criterio: "#trabajo-criterio",
+    descripcion: "#trabajo-area-0", seleccion: "#trabajo-ir-acuerdos",
+  } : {
+    roles: "#roles-acuerdo input", fecha: "#fecha-acuerdo", revision: "#revision-acuerdo", criterio: "#criterio-acuerdo",
+    descripcion: "#area-0", seleccion: "#ir-acuerdos",
+  };
+  let primero;
+  for (const [clave, selector] of Object.entries(campos)) {
+    const id = (trabajo ? "trabajo-acuerdo-" : "acuerdo-") + clave + "-error";
+    const aviso = $("#" + id);
+    const texto = errores[clave]?.join(" ") || "";
+    aviso.textContent = texto;
+    const controles = clave === "roles" ? [...document.querySelectorAll(selector)] : [$(selector)].filter(Boolean);
+    for (const campo of controles) {
+      const descripciones = (campo.getAttribute?.("aria-describedby") || "").split(/\s+/).filter(Boolean);
+      if (texto) {
+        campo.setAttribute("aria-invalid", "true");
+        campo.setAttribute("aria-describedby", [...new Set([...descripciones, id])].join(" "));
+        primero ??= campo;
+      } else if (descripciones.includes(id)) {
+        campo.removeAttribute?.("aria-invalid");
+        const restantes = descripciones.filter((d) => d !== id);
+        if (restantes.length) campo.setAttribute("aria-describedby", restantes.join(" "));
+        else campo.removeAttribute?.("aria-describedby");
+      }
+    }
+  }
+  const cantidad = Object.keys(errores).length;
+  $(trabajo ? "#trabajo-acuerdos-error" : "#acuerdos-error").textContent =
+    cantidad ? "Revisa " + plural(cantidad, "campo", "campos") + "." : "";
+  if (enfocar && primero) {
+    if (primero.closest?.("[hidden]") && errores.descripcion) {
+      const id = trabajo ? "trabajo-descripcion" : "paso-descripcion";
+      abrirPaso(id, true);
+    }
+    primero.focus();
+  }
+}
+function revisarErroresVisibles(e, trabajo = false) {
+  if (!$(trabajo ? "#trabajo-acuerdos-error" : "#acuerdos-error")?.textContent) return;
+  const errores = camposConErrores(e, trabajo);
+  for (const clave of Object.keys(errores)) {
+    const id = (trabajo ? "trabajo-acuerdo-" : "acuerdo-") + clave + "-error";
+    if (!$("#" + id).textContent) delete errores[clave];
+  }
+  mostrarErroresAcuerdo(trabajo, errores);
 }
 function estadoCaso(e, trabajo = false) {
   if (e.acuerdo?.estado === "por-revisar") return "Por revisar";
@@ -334,6 +386,7 @@ function pintarEstadoCasos() {
   pintarContextoEstudiante();
   $("#estudiante").hidden = !e.descripcionGuardada;
   $("#paso-acuerdos").hidden = !e.descripcionGuardada;
+  revisarErroresVisibles(e);
   $("#acuerdos-revisar").hidden = estadoCaso(e) !== "Por revisar";
   const situaciones = Object.entries(e.dimensiones).map(([d, f]) => `${DIMENSIONES[d - 1][0]}: ${FRECUENCIAS[f]}`).join("; ");
   $("#paso-descripcion-texto").textContent = situaciones ? situaciones + (e.ayuda.trim() ? ". Le ayuda: " + e.ayuda.trim() : "") : "Todavía no guardas una situación.";
@@ -341,6 +394,7 @@ function pintarEstadoCasos() {
   $("#paso-acuerdos-texto").textContent = a.fecha ? `${estadoCaso(e)} · ${a.roles.map((r) => ROLES_ACUERDO[r]).join(", ")} · Fecha: ${fechaLarga(a.fecha)} · Próxima revisión: ${fechaLarga(a.revision) || "Sin indicar"}` : "Todavía no guardas acuerdos.";
   const repetidas = e.iniciales && estado.estudiantes.some((otro) => otro.id !== e.id && otro.iniciales.toUpperCase() === e.iniciales.toUpperCase());
   $("#iniciales-duplicadas").textContent = repetidas ? `Ya hay un estudiante ${e.iniciales}. Agrega un número para distinguirlos` : "";
+  if (estado.pestana === "apoyos") actualizarContinuar();
 }
 function sincronizarAcuerdos() {
   const e = estudianteActual(), a = e.acuerdo || (e.acuerdo = normalizarAcuerdo());
@@ -354,17 +408,17 @@ function sincronizarAcuerdos() {
   }));
   $("#criterio-acuerdo").value = a.criterio;
   $("#fecha-acuerdo").value = a.fecha; $("#revision-acuerdo").value = a.revision;
-  $("#acuerdos-error").textContent = ""; $("#descripcion-error").textContent = "";
+  mostrarErroresAcuerdo(false, {}); $("#descripcion-error").textContent = "";
 }
 function guardarDescripcion() {
   if (!Object.keys(estudianteActual().dimensiones).length) { $("#descripcion-error").textContent = "Marca al menos una situación para guardar la descripción."; return; }
   estudianteActual().descripcionGuardada = true; guardar(); pintarEstadoCasos(); pintarApoyos();
-  $("#descripcion-error").textContent = ""; abrirPaso("paso-descripcion", false); $("#t-apoyos").focus(); actualizarPaso(2);
+  $("#descripcion-error").textContent = ""; abrirPaso("paso-descripcion", false); irAlPasoVisible(2, $("#t-apoyos"));
 }
 function guardarAcuerdos() {
-  const errores = erroresAcuerdo(estudianteActual());
-  $("#acuerdos-error").textContent = errores.join(" ");
-  if (errores.length) return;
+  const errores = camposConErrores(estudianteActual());
+  mostrarErroresAcuerdo(false, errores, true);
+  if (Object.keys(errores).length) return;
   estudianteActual().acuerdo.estado = "completo"; guardar(); pintarEstadoCasos();
   abrirPaso("paso-acuerdos", false); $("#paso-acuerdos-editar").focus();
 }
@@ -383,7 +437,7 @@ function guardarClase() {
     estado.necesidades = normalizarNecesidades(borradorDua.necesidades);
   }
   borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso("paso-clase", false);
-  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); $("#acciones").focus(); actualizarPaso(2);
+  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#acciones"));
 }
 function prepararPasos() {
   $("#perfil").addEventListener("submit", (evento) => { evento.preventDefault(); guardarClase(); });
@@ -393,13 +447,15 @@ function prepararPasos() {
     $("#" + id + "-toggle").addEventListener("click", () => {
       const abrir = $("#" + id + "-cuerpo").hidden;
       if (id === "paso-clase" && abrir && !borradorDua) editarClase(); else abrirPaso(id, abrir);
+      if (abrir) activarPasoAbierto(id);
     });
     $("#" + id + "-editar").addEventListener("click", () => {
       if (id === "paso-clase") editarClase(); else abrirPaso(id, true);
+      activarPasoAbierto(id);
       $(id === "paso-clase" ? "#meta" : id === "paso-descripcion" ? "#iniciales" : "#roles-acuerdo input").focus();
     });
   }
-  $("#ir-acuerdos").addEventListener("click", () => { abrirPaso("paso-acuerdos", true); $("#roles-acuerdo input").focus(); actualizarPaso(3); });
+  $("#ir-acuerdos").addEventListener("click", () => irPaso(3));
   for (const [id, clave] of [["fecha-acuerdo", "fecha"], ["revision-acuerdo", "revision"]]) $("#" + id).addEventListener("change", (evento) => {
     const e = estudianteActual(); marcarRevision(e); e.acuerdo[clave] = fechaValida(evento.target.value) ? evento.target.value : ""; guardar(); pintarEstadoCasos();
   });
@@ -557,7 +613,7 @@ function escucharEstudiante() {
 
   $("#revision-situaciones-entendido").addEventListener("click", () => {
     estado.versionSituaciones = 2; guardar(); pintarRevisionSituaciones();
-    $("#t-apoyos").focus(); actualizarPaso(2);
+    irAlPasoVisible(2, $("#t-apoyos"));
   });
   $("#agregar-estudiante").addEventListener("click", agregarEstudiante);
   $("#quitar-estudiante").addEventListener("click", quitarEstudiante);
@@ -651,6 +707,7 @@ function pintarEstadoTrabajo() {
   $("#quitar-trabajador").textContent = "Quitar a " + nombreTrabajador(e);
   $("#trabajo-resultados").hidden = !e.descripcionGuardada;
   $("#trabajo-acuerdo").hidden = !e.descripcionGuardada;
+  revisarErroresVisibles(e, true);
   $("#trabajo-revisar").hidden = estadoCaso(e, true) !== "Por revisar";
   const situaciones = Object.entries(e.dimensiones).map(([d, f]) => `${DIMENSIONES[d - 1][0]}: ${FRECUENCIAS[f]}`).join("; ");
   $("#trabajo-descripcion-texto").textContent = [e.tipoPuesto, situaciones, e.ayuda.trim() ? "Le ayuda: " + e.ayuda.trim() : ""].filter(Boolean).join(" · ") || "Todavía no guardas una situación.";
@@ -664,6 +721,7 @@ function pintarEstadoTrabajo() {
   $("#centro-ayuda").textContent = centro ? "La persona decide cuáles ajustes compartir." : "Primero elige los ajustes que puede hacer el centro";
   $("#pdf-trabajo").textContent = practica ? "Ver documento para el centro" : "Ver documento de trabajo";
   $("#pdf-trabajo").disabled = practica && !centro;
+  if (estado.pestana === "trabajo") actualizarContinuar();
 }
 function pintarTrabajo() {
   const e = trabajadorActual(); if (!e) return;
@@ -726,7 +784,7 @@ function sincronizarTrabajo() {
   $("#trabajo-modalidad-ayuda").textContent = e.etapa === "trabajo" ? $("#modalidad-ayuda").textContent : "";
   $("#trabajo-modalidad").value = e.modalidad; $("#trabajo-compartir").value = e.compartir; $("#trabajo-criterio").value = e.acuerdo.criterio;
   $("#trabajo-fecha").value = e.acuerdo.fecha; $("#trabajo-revision").value = e.acuerdo.revision;
-  $("#trabajo-acuerdos-error").textContent = ""; $("#trabajo-descripcion-error").textContent = "";
+  mostrarErroresAcuerdo(true, {}); $("#trabajo-descripcion-error").textContent = "";
   abrirPaso("trabajo-descripcion", !e.descripcionGuardada); abrirPaso("trabajo-acuerdo", estadoCaso(e, true) !== "Acuerdos completos"); pintarTrabajo();
 }
 function agregarTrabajador() {
@@ -739,11 +797,13 @@ function guardarDescripcionTrabajo() {
   const e = trabajadorActual(); if (!e) return;
   if (!Object.keys(e.dimensiones).length) { $("#trabajo-descripcion-error").textContent = "Marca al menos una situación para guardar la descripción."; return; }
   e.descripcionGuardada = true; guardar(); pintarTrabajo(); $("#trabajo-descripcion-error").textContent = "";
-  abrirPaso("trabajo-descripcion", false); $("#t-ajustes").focus(); actualizarPaso(2);
+  abrirPaso("trabajo-descripcion", false); irAlPasoVisible(2, $("#t-ajustes"));
 }
 function guardarAcuerdosTrabajo() {
   const e = trabajadorActual(); if (!e) return;
-  const errores = erroresAcuerdo(e, true); $("#trabajo-acuerdos-error").textContent = errores.join(" "); if (errores.length) return;
+  const errores = camposConErrores(e, true);
+  mostrarErroresAcuerdo(true, errores, true);
+  if (Object.keys(errores).length) return;
   e.acuerdo.estado = "completo"; guardar(); pintarEstadoTrabajo(); abrirPaso("trabajo-acuerdo", false); $("#trabajo-acuerdo-editar").focus();
 }
 function prepararTrabajo() {
@@ -760,12 +820,16 @@ function prepararTrabajo() {
   $("#trabajo-criterio").addEventListener("input", ev => { const e = trabajadorActual(); marcarRevision(e); e.acuerdo.criterio = ev.target.value.slice(0, 200); guardar(); pintarEstadoTrabajo(); if (!privacidadAvisada && ev.target.value) mostrarAvisoPrivacidad(ev.target); });
 
   for (const id of ["trabajo-descripcion", "trabajo-acuerdo"]) {
-    $("#" + id + "-toggle").addEventListener("click", () => abrirPaso(id, $("#" + id + "-cuerpo").hidden));
-    $("#" + id + "-editar").addEventListener("click", () => { abrirPaso(id, true); $(id === "trabajo-descripcion" ? "#trabajo-iniciales" : "#trabajo-roles input").focus(); });
+    $("#" + id + "-toggle").addEventListener("click", () => {
+      const abrir = $("#" + id + "-cuerpo").hidden;
+      abrirPaso(id, abrir);
+      if (abrir) activarPasoAbierto(id);
+    });
+    $("#" + id + "-editar").addEventListener("click", () => { abrirPaso(id, true); activarPasoAbierto(id); $(id === "trabajo-descripcion" ? "#trabajo-iniciales" : "#trabajo-roles input").focus(); });
   }
   $("#descripcion-trabajo").addEventListener("submit", (ev) => { ev.preventDefault(); guardarDescripcionTrabajo(); });
   $("#acuerdos-trabajo").addEventListener("submit", (ev) => { ev.preventDefault(); guardarAcuerdosTrabajo(); });
-  $("#trabajo-ir-acuerdos").addEventListener("click", () => { abrirPaso("trabajo-acuerdo", true); $("#trabajo-roles input").focus(); });
+  $("#trabajo-ir-acuerdos").addEventListener("click", () => irPaso(3));
   $("#agregar-trabajador").addEventListener("click", agregarTrabajador);
   $("#quitar-trabajador").addEventListener("click", () => {
     if (!window.confirm("Se borran sus datos y ajustes de este navegador. ¿Continuar?")) return;
@@ -1042,6 +1106,12 @@ function pasosActuales() {
   return estado.pestana === "trabajo" ? ["trabajo-descripcion", "trabajo-resultados", "trabajo-acuerdo"] :
     estado.pestana === "apoyos" ? ["paso-descripcion", "estudiante", "paso-acuerdos"] : ["paso-clase", "acciones", "seleccion-dua"];
 }
+function pasosTerminados() {
+  if (estado.pestana === "dua") return [estado.claseGuardada, elegidasOrdenadas().length > 0, false];
+  const trabajo = estado.pestana === "trabajo", e = trabajo ? trabajadorActual() : estudianteActual();
+  return [e?.descripcionGuardada, e && (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length > 0,
+    e && estadoCaso(e, trabajo) === "Acuerdos completos"];
+}
 function actualizarPaso(numero) {
   pasoActual = numero;
   document.querySelectorAll("#indicador-pasos a").forEach((a, i) => {
@@ -1065,11 +1135,26 @@ function actualizarContinuar() {
   const b = $("#continuar");
   if (!b?.isConnected) return;
   pintarAccionPrincipal();
-  const e = trabajadorActual();
-  const cantidad = estado.pestana === "trabajo" ? (e ? elegidasTrabajo(e).length : 0) :
-    Object.keys(estado.pestana === "apoyos" ? estudianteActual().seleccion : estado.seleccion).length;
+  const trabajo = estado.pestana === "trabajo", personal = estado.pestana !== "dua";
+  const e = trabajo ? trabajadorActual() : estudianteActual();
+  const cantidad = !personal ? elegidasOrdenadas().length : !e ? 0 : (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length;
+  const conteo = $("#continuar-conteo");
+  const textoConteo = personal && e ?
+    plural(cantidad, "elegido", "elegidos") + " para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) :
+    plural(cantidad, "acción", "acciones") + " para el " + voc("curso");
+  if (conteo && conteo.textContent !== textoConteo) conteo.textContent = textoConteo;
+  const terminados = pasosTerminados();
+  document.querySelectorAll("#indicador-pasos .paso-terminado").forEach((marca, i) => {
+    marca.hidden = !terminados[i];
+  });
   b.textContent = pasoActual === 1 ? (estado.pestana === "dua" ? "Guardar y ver acciones" : estado.pestana === "trabajo" ? "Guardar y ver ajustes" : "Guardar y ver apoyos") :
-    pasoActual === 2 ? (estado.pestana === "dua" ? `Ir a tu selección (${cantidad} elegidas)` : `Ir a acuerdos (${cantidad} elegidos)`) : "Ver documento";
+    pasoActual === 2 ? (estado.pestana === "dua" ? "Ir a tu selección" : "Ir a acuerdos") : "Ver documento";
+}
+function activarPasoAbierto(id) {
+  const indice = pasosActuales().indexOf(id);
+  if (indice < 0) return;
+  actualizarPaso(indice + 1);
+  $("#" + id).scrollIntoView?.({ block: "start" });
 }
 function irPaso(numero) {
   const personal = estado.pestana !== "dua", trabajo = estado.pestana === "trabajo";
@@ -1082,10 +1167,13 @@ function irPaso(numero) {
   if (numero === 1) {
     if (!personal) editarClase(); else abrirPaso(id, true);
   } else if (numero === 3 && personal) abrirPaso(id, true);
+  irAlPasoVisible(numero, $("#" + id));
+}
+function irAlPasoVisible(numero, destino) {
   actualizarPaso(numero);
-  const destino = $("#" + id);
-  destino.setAttribute("tabindex", "-1"); destino.focus({ preventScroll: true });
-  destino.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  destino.setAttribute("tabindex", "-1");
+  destino.focus({ preventScroll: true });
+  destino.scrollIntoView?.({ block: "start" });
 }
 function continuarPaso() {
   if (pasoActual === 1) {
@@ -1108,7 +1196,7 @@ function prepararIndicador() {
   n.hidden = false; $("#barra-continuar").hidden = false;
   const textos = estado.pestana === "dua" ? ["1 Describe", "2 Elige", "3 Tu selección"] : ["1 Describe", "2 Elige", "3 Acuerda"];
   n.replaceChildren(...pasosActuales().map((id, i) => {
-    const a = el("a", { href: "#" + id, text: textos[i] });
+    const a = el("a", { href: "#" + id }, el("span", { class: "paso-terminado", "aria-hidden": "true", hidden: "", text: "✓" }), textos[i]);
     a.addEventListener("click", (e) => { e.preventDefault(); irPaso(i + 1); });
     return a;
   }));
@@ -1195,17 +1283,17 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].principio),
-      !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
-    dua && destacarMomento ? el("p", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null,
+      !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion),
+      dua && destacarMomento ? el("span", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null),
+    el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
     motivo ? el("p", { class: "t-razon", text: motivo }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+    queBusca ? el("p", { class: "t-que-busca", text: `DUA 3.0, consideración ${r.consideracion} · Qué busca: ${queBusca}` }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     !dua && APOYOS_FORMA.includes(r.id) ? avisoVisual("aviso-apoyos", "!", el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
-    el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
-    // Va bajo el título y en color neutro: el verde ya identifica al principio Compromiso.
-    queBusca ? el("p", { class: "t-que-busca", text: `DUA 3.0, consideración ${r.consideracion} · Qué busca: ${queBusca}` }) : null,
     ofrecida ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), "Ya está considerado en el DUA: " + version.titulo) : null,
     dua && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), avisoDua(r)) : null,
+    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status" }, iconoEstado("!"), `Este apoyo lo eligieron ${repetida} estudiantes`) : null,
     el("ol", {}, (dua ? r.como.map(textoPublico) : pasosApoyo(r, persona)).map((p) => el("li", { text: p }))),
     version ? el("div", { class: "version-curso", id: "version-" + r.id, tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
       preguntar ? el("div", { role: "status" }, el("p", { text: `Este apoyo lo necesitan ${repetida} estudiantes. ¿Quieres agregar su versión a todo el curso?` }),
@@ -1214,12 +1302,11 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
           el("button", { type: "button", class: "boton", id: "individual-" + r.id, text: "No, mantener individual", onclick: () => {
             estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById("version-" + r.id).focus();
           } }))) : el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso", onclick: () => agregarVersionCurso(r) })) : null,
-    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status" }, iconoEstado("!"), `Este apoyo lo eligieron ${repetida} estudiantes`) : null,
-    el("p", { class: "t-porque" }, el("strong", { text: "Por qué funciona: " }), r.porque),
     el("div", { class: "t-abajo" },
       el("span", { class: "respaldo " + r.respaldo, text: RESPALDO[r.respaldo] }),
       boton),
-    el("details", { class: "fuentes" }, el("summary", { text: "Fuentes" }),
+    el("details", { class: "fuentes", "data-ficha": r.id }, el("summary", { text: "Por qué funciona y fuentes" }),
+      el("p", { class: "t-porque", text: r.porque }),
       el("ul", {}, r.fuentes.map((f) => el("li", {}, el("a", { href: fuentes[f].url, rel: "noopener", target: "_blank", text: fuentes[f].cita }))))));
 }
 
@@ -1280,7 +1367,11 @@ function alternar(id, estudianteId, trabajadorId) {
   const siguiente = siguientes[siguientes.indexOf(foco) + 1];
   const agregada = !Object.hasOwn(seleccion, id);
   if (!agregada) delete seleccion[id]; else seleccion[id] = "";
+  const abiertas = new Set([...document.querySelectorAll("details[data-ficha][open]")].map((n) => n.getAttribute("data-ficha")));
   guardar(); if (trabajo) pintarTrabajo(); else { pintarTarjetas(); pintarApoyos(); } pintarSeleccion();
+  document.querySelectorAll("details[data-ficha]").forEach((n) => {
+    if (abiertas.has(n.getAttribute("data-ficha"))) n.open = true;
+  });
   if (agregada) {
     const contador = $("#n-sel");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1882,7 +1973,9 @@ function prepararAvisos() {
 }
 
 async function iniciar() {
-  window.matchMedia("(max-width: 39.999rem)").addEventListener("change", pintarAccionPrincipal);
+  new ResizeObserver(([entrada]) => {
+    document.documentElement.style.setProperty("--indicador-alto", `${entrada.target.getBoundingClientRect().height}px`);
+  }).observe($("#indicador-pasos"));
   new ResizeObserver(([entrada]) => {
     document.documentElement.style.setProperty("--cabecera-alto", `${entrada.target.getBoundingClientRect().height}px`);
   }).observe($(".cabecera"));
@@ -1891,9 +1984,15 @@ async function iniciar() {
   }).observe($("#barra-continuar"));
   document.addEventListener("focusin", evento => {
     const barra = $("#barra-continuar"), foco = evento.target;
-    if (foco.closest("dialog") || barra.contains(foco) || !barra.getClientRects().length) return;
-    const limite = barra.getBoundingClientRect().top - 16, rect = foco.getBoundingClientRect();
-    if (rect.bottom > limite) window.scrollBy(0, rect.bottom - limite);
+    if (foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar") || barra.hidden) return;
+    const indicador = $("#indicador-pasos");
+    const cabecera = $(".cabecera").getBoundingClientRect().bottom;
+    const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?
+      indicador.getBoundingClientRect().bottom : cabecera;
+    const inferior = barra.getBoundingClientRect().top;
+    const rect = foco.getBoundingClientRect();
+    if (rect.top < superior + 8) window.scrollBy(0, rect.top - superior - 8);
+    else if (rect.bottom > inferior - 8) window.scrollBy(0, Math.min(rect.bottom - inferior + 8, rect.top - superior - 8));
   });
   const tema = $("#tema");
   const nombrarTema = () => {
@@ -1913,16 +2012,17 @@ async function iniciar() {
     pendienteScroll = true;
     requestAnimationFrame(() => {
       pendienteScroll = false;
-      const borde = $("#indicador-pasos").getBoundingClientRect().bottom + 32;
-      // scrollIntoView suma el padding del documento y el margen de cada paso.
       const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-      const alFinal = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight;
-      const visibles = pasosActuales().map((id, i) => ({ nodo: $("#" + id), numero: i + 1 })).filter(({ nodo }) => {
-        const arriba = nodo.getBoundingClientRect().top;
-        const margen = padding + (parseFloat(getComputedStyle(nodo).scrollMarginTop) || 0);
-        return !nodo.hidden && (arriba <= Math.max(borde, margen + 1) || alFinal && arriba < window.innerHeight);
-      });
-      if (visibles.length) actualizarPaso(visibles[visibles.length - 1].numero);
+      const foco = document.activeElement;
+      const secciones = pasosActuales().map((id) => $("#" + id));
+      const barra = $("#barra-continuar").getBoundingClientRect().top;
+      const activa = secciones[pasoActual - 1];
+      const rect = foco?.getBoundingClientRect();
+      if (activa?.contains(foco) && rect?.bottom > padding && rect.top < barra) return;
+      const visibles = secciones.map((nodo, i) => ({ nodo, numero: i + 1 })).filter(({ nodo }) =>
+        !nodo.hidden && nodo.getBoundingClientRect().top <= padding + 24);
+      const ultimo = visibles.at(-1)?.numero;
+      if (ultimo && ultimo !== pasoActual) actualizarPaso(ultimo);
     });
   }, { passive: true });
   const cargaNecesidades = fetch("data/necesidades.json").then((r) => {

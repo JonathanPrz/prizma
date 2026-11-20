@@ -180,7 +180,7 @@ async function probar() {
     await campo('trabajo-ir-acuerdos').click();
     await pagina.getByLabel('Persona trabajadora', { exact: true }).check();
     await campo('guardar-acuerdos-trabajo').click();
-    assert.match(await campo('trabajo-acuerdos-error').innerText(), /Elige al menos un ajuste/);
+    assert.match(await campo('trabajo-acuerdo-seleccion-error').innerText(), /Elige al menos un ajuste/);
     assert.doesNotMatch(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
     await campo('abrir-mochila').click();
     assert(await campo('sel-vacia').isVisible());
