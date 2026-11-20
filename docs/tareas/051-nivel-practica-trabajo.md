@@ -1,4 +1,4 @@
-# Tarea 051 · «Práctica y paso al trabajo» como nivel, sin modo Trabajo aparte
+# Tarea 051 · «Práctica y trabajo» como nivel, sin modo Trabajo aparte
 
 Estado: **v3, pendiente de una segunda revisión adversarial y de la aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
 
