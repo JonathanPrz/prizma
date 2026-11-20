@@ -115,6 +115,9 @@ async function probar() {
           return [...new Set(trayectoriaGuardado)];
         });
         assert.equal(trayecto.length, 2, JSON.stringify(trayecto));
+        assert(await nodo('continuar-conteo').isVisible());
+        assert.match(await nodo('continuar-conteo').textContent(), /0 elegidas/);
+        assert.doesNotMatch(await nodo('continuar-conteo').textContent(), /acciones/);
         assert.match(await nodo('conteo').textContent(), /responden a lo que marcaste/);
         await verificarClics('momentos');
         await verificarClics('propositos');
@@ -124,6 +127,36 @@ async function probar() {
         assert.equal(await nodo('t-dua-marcadas').innerText(), 'Para lo que marcaste');
         assert.equal(await nodo('tarjetas').locator('.empieza-por').count(), 0);
         assert((await pagina.locator('#tarjetas .dua-marcadas .tarjeta:visible').count()) > 0);
+        const aviso = nodo('aviso-borrador-dua');
+        const taller = nodo('practica');
+        await nodo('paso-clase-editar').click();
+        await nodo('limpiar-clase').click();
+        assert(!await aviso.isVisible());
+        await nodo('guardar-clase').click();
+        assert.equal(await nodo('conteo').textContent(), '36 acciones para todo el curso');
+        await nodo('paso-clase-editar').click();
+        await taller.check();
+        assert(await aviso.isVisible());
+        assert(await taller.evaluate(n => n === document.activeElement));
+        assert.match(await aviso.getByRole('status').textContent(), /Tienes cambios sin guardar en el paso 1/);
+        assert.equal(await nodo('conteo').textContent(), '36 acciones para todo el curso');
+        await taller.uncheck();
+        assert(!await aviso.isVisible());
+        await taller.check();
+        await aviso.getByRole('button', { name: 'Guardar y actualizar' }).click();
+        assert(!await aviso.isVisible());
+        assert.equal(await nodo('conteo').textContent(), '8 de 36 acciones responden a lo que marcaste');
+        const primeraDua = pagina.locator('#tarjetas [aria-labelledby="t-dua-recomendadas"] .tarjeta button[id^="elegir-"]').first();
+        await primeraDua.click();
+        assert.match(await nodo('continuar-conteo').textContent(), /1 elegida/);
+        await primeraDua.click();
+        await nodo('m-antes').click();
+        await nodo('proposito-motivar').click();
+        assert.match(await nodo('conteo').textContent(), /^Antes y Compromiso: \d+ de 4 acciones responde/);
+        await nodo('limpiar-filtros').click();
+        await nodo('paso-clase-editar').click();
+        await nodo('limpiar-clase').click();
+        await nodo('guardar-clase').click();
       }
       if (width === 640) {
         assert.equal(await nodo('indicador-pasos').evaluate(n => getComputedStyle(n).position), 'static');

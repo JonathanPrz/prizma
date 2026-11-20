@@ -108,6 +108,10 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <section id="acciones" class="paso resultados" tabindex="-1">
       <h2 id="t-acciones">2. Acciones sugeridas</h2>
       <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
+      <div id="aviso-borrador-dua" class="aviso-apoyos acciones-intro" hidden>
+        <p role="status"><span class="icono-estado" aria-hidden="true">!</span> Tienes cambios sin guardar en el paso 1. Las acciones todavía no los consideran</p>
+        <button type="button" id="guardar-borrador-dua" class="boton">Guardar y actualizar</button>
+      </div>
       <div id="filtros-vista" class="filtros-vista">
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
