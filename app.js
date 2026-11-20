@@ -39,28 +39,27 @@ const AREAS = [
   ["Contexto e identidad", [10, 11]],
 ];
 const DIMENSIONES = [
-  ["Atención y organización", "instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad"],
-  ["Lectura, escritura y cálculo", "textos largos, copiar de la pizarra, escribir a mano, cálculo mental"],
-  ["Comprender lo que se dice o se lee", "instrucciones largas o solo orales, lenguaje figurado, vocabulario nuevo"],
-  ["Interacción social", "trabajo en grupo, normas que no se dicen, exponer en público"],
-  ["Emociones y regulación", "evaluaciones, imprevistos, frustración, desregulación"],
-  ["Visión", "ver la pizarra, leer letra pequeña, imágenes y gráficos"],
-  ["Sensibilidad sensorial", "ruido, luz, multitudes, texturas, olores"],
-  ["Movimiento y motricidad", "escribir, manipular materiales, desplazarse"],
-  ["Salud y energía", "fatiga, dolor, ausencias por tratamiento"],
-  ["Identidad, lengua y pertenencia", "otra lengua materna, pueblo originario, migración, sentirse parte del curso"],
-  ["Espacio, tiempo y actitudes", "sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa"],
-  // 12 a 14 se agregaron después: los números no se reordenan para no romper datos guardados.
-  ["Expresarse oralmente", "responder en voz alta, explicar con palabras, hablar frente a otros"],
-  ["Audición", "escuchar al docente, escuchar con ruido, videos sin subtítulos"],
-  ["Necesita más desafío", "termina antes, se aburre con la práctica repetida, pide ir más allá"],
+  ["Organizarse y mantener la atención", "Cuando hay tareas de muchos pasos, instrucciones largas, cambios de rutina sin aviso o debe empezar una tarea."],
+  ["Lectura, escritura y cálculo", "Cuando debe leer textos largos, copiar de la pizarra, escribir a mano o calcular de memoria."],
+  ["Comprender lo que se dice o se lee", "Cuando las instrucciones son solo orales o hay lenguaje figurado o palabras nuevas."],
+  ["Relacionarse con otros", "En trabajos en grupo, recreos, al exponer, con normas que nadie explica o cuando lo molestan."],
+  ["Manejar las emociones", "En evaluaciones, imprevistos, esperas o cuando algo le frustra."],
+  ["Información que se ve", "Cuando debe ver la pizarra, leer letra pequeña o interpretar imágenes y gráficos."],
+  ["Ruido, luz y otros estímulos", "Con ruido, luz fuerte, mucha gente, ciertas texturas u olores."],
+  ["Moverse y usar las manos", "Al escribir a mano, manipular materiales o desplazarse."],
+  ["Salud y energía", "En jornadas largas, con dolor o al volver de ausencias por tratamiento."],
+  ["Identidad, lengua y pertenencia", "Cuando la clase usa solo español, no considera su cultura o no se siente parte del curso."],
+  ["Lugar, horarios y actitudes", "Cuando la sala, los horarios, los materiales o la tecnología no le sirven, o hay actitudes que lo excluyen."],
+  ["Expresarse oralmente", "Cuando debe responder en voz alta, explicar con sus palabras o hablar frente a otros."],
+  ["Información que se oye", "Cuando debe escuchar al docente, oír con ruido de fondo o ver videos sin subtítulos."],
+  ["Tareas con poco desafío", "Cuando termina antes y no hay más, la práctica es repetitiva o no puede profundizar."],
 ];
 const FRECUENCIAS = ["No aplica", "A veces", "Seguido", "Casi siempre"];
 const TIPOS_ACCESO = { presentacion: "Presentación de la información", respuesta: "Formas de respuesta", entorno: "Entorno", tiempo: "Organización del tiempo y el horario" };
 const TIPOS_OBJETIVOS = { graduacion: "Graduación de la complejidad", priorizacion: "Priorización", temporalizacion: "Temporalización", enriquecimiento: "Enriquecimiento", eliminacion: "Eliminación" };
 const ASIGNATURAS = ["", "lenguaje", "matematica", "ciencias", "historia"];
 const CIF_TITULO = "Barreras y facilitadores (enfoque CIF)";
-const CIF_AVISO = "Las situaciones describen barreras del entorno, no rasgos del estudiante (CIF, OMS 2001)";
+const CIF_AVISO = "Las situaciones describen dónde aparecen las barreras, no rasgos del estudiante (CIF, OMS 2001)";
 const CIF_COLUMNAS = ["Situación", "Frecuencia", "Apoyos elegidos para esa situación"];
 const MOMENTOS_DEC = { antes: "Antes: prevenir", durante: "Durante: acompañar", despues: "Después: reparar" };
 const TIPOS_PRACTICA = { institucion: "Lo que hace la institución educativa", centro: "Lo que hace el centro de práctica", estudiante: "Lo que prepara la persona" };
@@ -191,14 +190,14 @@ function normalizarDatos(datos, avisos = []) {
 }
 function pintarSelectorEstudiantes() {
   $("#lista-estudiantes").replaceChildren(...estado.estudiantes.map((e) => el("button", {
-    type: "button", class: "chip", id: `estudiante-${e.id}`, "aria-pressed": String(e.id === estado.estudianteActivo), text: nombreEstudiante(e) + " · " + estadoCaso(e),
+    type: "button", class: "chip", id: `estudiante-${e.id}`, "aria-pressed": String(e.id === estado.estudianteActivo), text: rotuloCaso(nombreEstudiante(e), estadoCaso(e)),
     onclick: () => {
       estado.estudianteActivo = e.id; guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarEstadoCasos();
       document.getElementById(`estudiante-${e.id}`).focus();
     },
   })));
   pintarEstadoCasos();
-  $("#quitar-estudiante").textContent = "Quitar a " + nombreEstudiante(estudianteActual());
+  $("#quitar-estudiante").setAttribute("aria-label", "Quitar este caso: " + nombreEstudiante(estudianteActual()));
 }
 function agregarEstudiante() {
   if (estado.estudiantes.length >= 10 || estado.estudiantes.some((e) => estadoCaso(e) !== "Acuerdos completos")) return;
@@ -358,14 +357,8 @@ function estadoCaso(e, trabajo = false) {
   if (e.acuerdo?.estado === "completo") return erroresAcuerdo(e, trabajo).length ? "Por revisar" : "Acuerdos completos";
   return "Sin acuerdos";
 }
-function rotularEstadoCaso(boton, nombre, estado) {
-  boton.textContent = nombre + " · " + estado;
-  if (estado === "Acuerdos completos" || estado === "Por revisar") {
-    const completo = estado === "Acuerdos completos";
-    const icono = iconoEstado(completo ? "✓" : "!");
-    icono.className += completo ? " estado-completo" : " estado-revisar";
-    boton.append(icono);
-  }
+function rotuloCaso(nombre, estado) {
+  return estado === "Por revisar" ? nombre + " · " + estado : nombre;
 }
 function marcarRevision(e) { if (e.acuerdo?.estado === "completo") e.acuerdo.estado = "por-revisar"; }
 function abrirPaso(id, abierto) {
@@ -381,7 +374,7 @@ function pintarEstadoCasos() {
   $("#agregar-caso-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreEstudiante).join(", ") : estado.estudiantes.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-estudiantes button").forEach((b) => {
     const caso = estado.estudiantes.find((e) => b.id === `estudiante-${e.id}`);
-    if (caso) rotularEstadoCaso(b, nombreEstudiante(caso), estadoCaso(caso));
+    if (caso) b.textContent = rotuloCaso(nombreEstudiante(caso), estadoCaso(caso));
   });
   pintarContextoEstudiante();
   $("#estudiante").hidden = !e.descripcionGuardada;
@@ -473,7 +466,7 @@ function pintarContextoEstudiante() {
 function pintarRevisionSituaciones() {
   const pendientes = estado.versionSituaciones !== 2 ? estado.estudiantes.filter((e) => e.dimensiones[3] || e.dimensiones[6]) : [];
   $("#revision-situaciones").hidden = !pendientes.length;
-  $("#revision-situaciones-texto").textContent = 'Separamos algunas situaciones: "Visión" y "Audición", y "Comprender" y "Expresarse oralmente". Revisa las situaciones de: ' + pendientes.map(nombreEstudiante).join(", ") + ".";
+  $("#revision-situaciones-texto").textContent = 'Separamos algunas situaciones: "Información que se ve" y "Información que se oye", y "Comprender" y "Expresarse oralmente". Revisa las situaciones de: ' + pendientes.map(nombreEstudiante).join(", ") + ".";
 }
 function pintarTituloApoyos() {
   pintarContextoEstudiante(); pintarRevisionSituaciones();
@@ -550,24 +543,47 @@ function pintarApoyos() {
 function actualizarArea(boton, nombre, ids, persona) {
   const cantidad = ids.filter((d) => persona.dimensiones[d]).length;
   const icono = boton.getAttribute("aria-expanded") === "true" ? "−" : "+";
-  // El símbolo solo se ve: aria-expanded ya anuncia si está abierta.
-  boton.replaceChildren(el("span", { "aria-hidden": "true", text: icono + " " }), `${nombre}${cantidad ? ` (${plural(cantidad, "marcada", "marcadas")})` : ""}`);
+  boton.setAttribute("data-marcada", String(cantidad > 0));
+  boton.replaceChildren(el("span", { "aria-hidden": "true", text: icono + " " }),
+    `${nombre}${cantidad ? ` (${plural(cantidad, "marcada", "marcadas")})` : ""}`,
+    ...(cantidad ? [iconoEstado("✓")] : []));
 }
-function actualizarFrecuencias(contenedor) {
-  contenedor.parentElement.hidden = ![...contenedor.children].some((grupo) => !grupo.hidden);
-}
-function botonArea(nombre, ids, persona, grupo, id) {
-  grupo.hidden = !ids.some((d) => persona.dimensiones[d]);
-  grupo.append(el("h4", { class: "subtitulo-area", text: nombre }));
-  const boton = el("button", { type: "button", class: "boton", id, "aria-controls": grupo.id, "aria-expanded": String(!grupo.hidden) });
-  actualizarArea(boton, nombre, ids, persona);
-  boton.addEventListener("click", () => {
-    grupo.hidden = !grupo.hidden;
-    boton.setAttribute("aria-expanded", String(!grupo.hidden));
+function pintarAreas(persona, trabajo = false) {
+  const prefijo = trabajo ? "trabajo-" : "";
+  const contenedor = $(trabajo ? "#trabajo-areas" : "#areas");
+  contenedor.replaceChildren(...AREAS.map(([nombre, ids], i) => {
+    const grupo = el("div", { class: "situaciones-area", id: trabajo ? "trabajo-area-d-" + i : "dim-area-" + i });
+    grupo.hidden = !ids.some((d) => persona.dimensiones[d]);
+    const boton = el("button", { type: "button", class: "boton", id: prefijo + "area-" + i,
+      "aria-controls": grupo.id, "aria-expanded": String(!grupo.hidden) });
     actualizarArea(boton, nombre, ids, persona);
-    actualizarFrecuencias(grupo.parentElement);
-  });
-  return boton;
+    boton.addEventListener("click", () => {
+      grupo.hidden = !grupo.hidden;
+      boton.setAttribute("aria-expanded", String(!grupo.hidden));
+      actualizarArea(boton, nombre, ids, persona);
+    });
+    for (const d of ids) {
+      const [titulo, ejemplo] = DIMENSIONES[d - 1], ayudaId = prefijo + "ayuda-d-" + d;
+      const segmentos = el("div", { class: "frecuencias" });
+      const campo = el("fieldset", { "aria-describedby": ayudaId },
+        el("legend", { text: titulo }), el("p", { id: ayudaId, class: "ayuda", text: trabajo ? EJEMPLOS_TRABAJO[d - 1] : ejemplo }), segmentos);
+      FRECUENCIAS.forEach((texto, valor) => {
+        const radio = el("input", { type: "radio", name: prefijo + "dimension-" + d, value: valor });
+        radio.checked = (persona.dimensiones[d] || 0) === valor;
+        radio.addEventListener("change", () => {
+          if ((persona.dimensiones[d] || 0) !== valor) marcarRevision(persona);
+          if (valor) persona.dimensiones[d] = valor; else delete persona.dimensiones[d];
+          actualizarArea(boton, nombre, ids, persona);
+          guardar();
+          if (trabajo) { pintarTrabajo(); pintarSeleccion(); }
+          else { pintarApoyos(); pintarRepeticiones(); actualizarRespaldo(); pintarEstadoCasos(); }
+        });
+        segmentos.append(el("label", {}, radio, texto, valor ? iconoEstado("✓") : null));
+      });
+      grupo.append(campo);
+    }
+    return el("div", { class: "area-descripcion" }, boton, grupo);
+  }));
 }
 function sincronizarEstudiante() {
   pintarSelectorEstudiantes();
@@ -575,32 +591,7 @@ function sincronizarEstudiante() {
   $("#modalidad").value = estudianteActual().modalidad;
   $("#estudiante-ayuda").value = estudianteActual().ayuda;
   $("#estudiante-voz").value = estudianteActual().voz;
-  const areas = $("#areas"); areas.replaceChildren();
-  const dimensiones = $("#dimensiones"); dimensiones.replaceChildren();
-  AREAS.forEach(([nombre, ids], i) => {
-    const grupo = el("div");
-    grupo.id = `dim-area-${i}`;
-    const boton = botonArea(nombre, ids, estudianteActual(), grupo, `area-${i}`);
-    areas.append(boton);
-    ids.forEach((d) => {
-      const [titulo, ayuda] = DIMENSIONES[d - 1];
-      const campo = el("fieldset", { class: "perfil-opciones", "aria-describedby": `ayuda-d-${d}` }, el("legend", { text: titulo }), el("p", { class: "ayuda", id: `ayuda-d-${d}`, text: ayuda }));
-      FRECUENCIAS.forEach((texto, valor) => {
-        const radio = el("input", { type: "radio", name: `dimension-${d}`, value: valor });
-        radio.checked = (estudianteActual().dimensiones[d] || 0) === valor;
-        radio.addEventListener("change", () => {
-          if ((estudianteActual().dimensiones[d] || 0) !== valor) marcarRevision(estudianteActual());
-          if (valor) estudianteActual().dimensiones[d] = valor; else delete estudianteActual().dimensiones[d];
-          actualizarArea(boton, nombre, ids, estudianteActual());
-          guardar(); pintarApoyos(); pintarRepeticiones(); actualizarRespaldo(); pintarEstadoCasos();
-        });
-        campo.append(el("label", {}, radio, texto));
-      });
-      grupo.append(campo);
-    });
-    dimensiones.append(grupo);
-  });
-  actualizarFrecuencias(dimensiones);
+  pintarAreas(estudianteActual());
   sincronizarAcuerdos();
   abrirPaso("paso-descripcion", !estudianteActual().descripcionGuardada);
   abrirPaso("paso-acuerdos", estadoCaso(estudianteActual()) !== "Acuerdos completos");
@@ -638,20 +629,20 @@ function escucharEstudiante() {
 const TIPOS_TRABAJO = { informacion: "Información", comunicacion: "Comunicación", puesto: "Puesto y entorno", tiempo: "Tiempo y organización", proceso: "Cómo pedir, decidir y revisar ajustes" };
 const ROLES_TRABAJO = { persona: "Persona trabajadora", jefatura: "Jefatura directa", gestor: "Gestor o gestora de inclusión", rrhh: "Recursos humanos", prevencion: "Prevención de riesgos" };
 const EJEMPLOS_TRABAJO = [
-  "encargos largos, varias tareas a la vez, plazos, interrupciones",
-  "manuales, correos largos, formularios, registros escritos",
-  "instrucciones verbales, capacitaciones, procedimientos nuevos",
-  "reuniones, trabajo en equipo, atención de público, normas que no se dicen",
-  "presión de tiempo, cambios imprevistos, conflictos, evaluaciones",
-  "pantallas, documentos impresos, señalética",
-  "ruido, luz intensa, espacios concurridos, olores",
-  "desplazarse, cargar, manipular herramientas, posturas",
-  "fatiga, dolor, controles médicos, jornadas largas",
-  "otra lengua materna, migración, sentirse parte del equipo",
-  "acceso al lugar, horarios, actitudes del equipo o de la jefatura",
-  "reuniones, llamadas, presentaciones, atención telefónica",
-  "reuniones, llamadas, alarmas, ruido de fondo",
-  "tareas repetitivas, pocas responsabilidades, ganas de aprender más",
+  "Cuando hay encargos largos, varias tareas a la vez, plazos, interrupciones o cambios sin aviso.",
+  "Cuando debe leer manuales o correos largos, llenar formularios o hacer registros escritos.",
+  "Cuando las instrucciones son solo verbales, en capacitaciones o con procedimientos nuevos.",
+  "En reuniones, trabajo en equipo, atención de público, con normas que nadie explica o cuando lo molestan.",
+  "Con presión de tiempo, cambios imprevistos, conflictos o evaluaciones de desempeño.",
+  "Cuando debe leer pantallas, documentos impresos o señalética.",
+  "Con ruido, luz intensa, espacios concurridos u olores.",
+  "Al desplazarse, cargar, usar herramientas o mantener una postura.",
+  "En jornadas largas, con dolor o al volver de controles o licencias médicas.",
+  "Cuando el equipo usa solo español, no considera su cultura o no se siente parte del equipo.",
+  "Cuando el lugar, el acceso o los horarios no le sirven, o hay actitudes del equipo o la jefatura que lo excluyen.",
+  "En reuniones, llamadas, presentaciones o atención telefónica.",
+  "En reuniones y llamadas, con alarmas sonoras o ruido de fondo.",
+  "Cuando las tareas son repetitivas, tiene pocas responsabilidades o no puede aprender más.",
 ];
 const ROLES_PRACTICA = { estudiante: "Estudiante en práctica", institucion: "Institución educativa (profesor tutor)", centro: "Centro de práctica", familia: "Familia o apoderado" };
 const ROLES_NIVEL_TRABAJO = { ...ROLES_TRABAJO, ...ROLES_PRACTICA };
@@ -687,7 +678,7 @@ function elegidasTrabajo(e) {
 }
 function ajustesTrabajo(e = trabajadorActual()) {
   if (!e) return [];
-  // La tarea pide estos cuatro primero ante Audición; solo desempata pertinencias iguales.
+  // La tarea pide estos cuatro primero ante Información que se oye; solo desempata pertinencias iguales.
   const auditivos = ["tr-subtitulos", "tr-interprete", "tr-mensajes-escritos", "tr-alertas-visuales"];
   const orden = Object.keys(e.dimensiones).length === 1 && e.dimensiones[13] ?
     [...auditivos.map((id) => catalogo.find((r) => r.id === id)).filter(Boolean), ...catalogo.filter((r) => !auditivos.includes(r.id))] : catalogo;
@@ -701,10 +692,10 @@ function pintarEstadoTrabajo() {
   $("#trabajo-agregar-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreTrabajador).join(", ") : estado.trabajadores.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-trabajadores button").forEach((b) => {
     const caso = estado.trabajadores.find((e) => b.id === "trabajador-" + e.id);
-    if (caso) rotularEstadoCaso(b, nombreTrabajador(caso), estadoCaso(caso, true));
+    if (caso) b.textContent = rotuloCaso(nombreTrabajador(caso), estadoCaso(caso, true));
   });
   $("#trabajo-descripcion-toggle").textContent = "1. Describe la situación de " + nombreTrabajador(e);
-  $("#quitar-trabajador").textContent = "Quitar a " + nombreTrabajador(e);
+  $("#quitar-trabajador").setAttribute("aria-label", "Quitar este caso: " + nombreTrabajador(e));
   $("#trabajo-resultados").hidden = !e.descripcionGuardada;
   $("#trabajo-acuerdo").hidden = !e.descripcionGuardada;
   revisarErroresVisibles(e, true);
@@ -748,7 +739,7 @@ function pintarTrabajo() {
 function sincronizarTrabajo() {
   const e = trabajadorActual(); if (!e) return;
   $("#lista-trabajadores").replaceChildren(...estado.trabajadores.map((e) => el("button", { type: "button", class: "chip", id: "trabajador-" + e.id,
-    "aria-pressed": String(e.id === estado.trabajadorActivo), text: nombreTrabajador(e) + " · " + estadoCaso(e, true), onclick: () => {
+    "aria-pressed": String(e.id === estado.trabajadorActivo), text: rotuloCaso(nombreTrabajador(e), estadoCaso(e, true)), onclick: () => {
       estado.trabajadorActivo = e.id; guardar(); sincronizarTrabajo(); pintarSeleccion(); document.getElementById("trabajador-" + e.id).focus();
     } })));
   for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"], ["compartir", "compartir"]]) $("#trabajo-" + id).value = e[clave];
@@ -756,26 +747,7 @@ function sincronizarTrabajo() {
   $("#trabajo-nivel-origen").value = e.nivelOrigen;
   $("#trabajo-nivel-origen-campo").hidden = e.etapa !== "practica";
   if (estado.ambito === "trabajo") cargarPrivacidad();
-  $("#trabajo-areas").replaceChildren(); $("#trabajo-dimensiones").replaceChildren();
-  AREAS.forEach(([nombre, ids], i) => {
-    const grupo = el("div", { id: "trabajo-area-d-" + i });
-    const boton = botonArea(nombre, ids, e, grupo, "trabajo-area-" + i);
-    $("#trabajo-areas").append(boton);
-    ids.forEach((d) => {
-      const ayudaId = "trabajo-ayuda-d-" + d;
-      const campo = el("fieldset", { class: "perfil-opciones", "aria-describedby": ayudaId }, el("legend", { text: DIMENSIONES[d - 1][0] }), el("p", { id: ayudaId, class: "ayuda", text: EJEMPLOS_TRABAJO[d - 1] }));
-      FRECUENCIAS.forEach((texto, valor) => {
-        const radio = el("input", { type: "radio", name: "trabajo-dimension-" + d, value: valor }); radio.checked = (e.dimensiones[d] || 0) === valor;
-        radio.addEventListener("change", () => {
-          if ((e.dimensiones[d] || 0) !== valor) marcarRevision(e);
-          if (valor) e.dimensiones[d] = valor; else delete e.dimensiones[d];
-          actualizarArea(boton, nombre, ids, e);
-          guardar(); pintarTrabajo(); pintarSeleccion();
-        }); campo.append(el("label", {}, radio, texto));
-      }); grupo.append(campo);
-    }); $("#trabajo-dimensiones").append(grupo);
-  });
-  actualizarFrecuencias($("#trabajo-dimensiones"));
+  pintarAreas(e, true);
   $("#trabajo-roles").replaceChildren(...Object.entries(rolesTrabajo(e)).map(([id, nombre]) => {
     const campo = el("input", { type: "checkbox", name: "rol-trabajo", value: id }); campo.checked = e.acuerdo.roles.includes(id);
     campo.addEventListener("change", () => { marcarRevision(e); e.acuerdo.roles = [...document.querySelectorAll('input[name="rol-trabajo"]:checked')].map((c) => c.value); guardar(); pintarEstadoTrabajo(); });
@@ -1271,7 +1243,7 @@ function motivoApoyo(r, e) {
 }
 function tarjeta(r, destacarMomento = false, agrupada = false) {
   const dua = r.tipo === "dua", trabajo = r.tipo === "trabajo" || r.tipo === "practica-profesional" && estado.ambito === "trabajo", acceso = r.tipo === "acceso", persona = trabajo ? trabajadorActual() : estudianteActual(), prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : persona.seleccion);
-  const motivo = acceso || trabajo ? motivoApoyo(r, persona) : "";
+  const motivo = acceso || trabajo || r.tipo === "desregulacion" ? motivoApoyo(r, persona) : "";
   const queBusca = agrupada && consideraciones[r.consideracion];
   const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
   const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
@@ -1742,7 +1714,7 @@ function armarHoja() {
     d.curso ? el("h2", { text: "Acciones para todo el curso" }) : null,
     ...d.grupos.map((g) => el("section", { class: (g.estudiante || g.trabajador) ? "h-estudiante" : "h-momento" },
       el((g.estudiante || g.trabajador) ? "h2" : "h3", { text: g.nombre }), g.subtitulo ? el("p", { text: g.subtitulo }) : null,
-      g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO }),
+      g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: d.trabajo ? "Las situaciones describen dónde aparecen las barreras, no rasgos de la persona (CIF, OMS 2001). La persona decide qué contar." : CIF_AVISO }),
         el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif"))) : null,
       g.voz !== undefined ? tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores") : null,
       g.reflexion ? el("p", { text: g.reflexion }) : null,
@@ -1781,7 +1753,7 @@ function definicionPdf() {
       ...((g.estudiante || g.trabajador) ? [{ id: "alumno-" + (g.estudiante || g.trabajador), text: g.nombre, style: "h2", headlineLevel: 1, pageBreak: "before", margin: [0, 8, 0, 6] }] : []),
       ...((g.estudiante || g.trabajador) ? [{ text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] }] : []),
       ...(g.cif ? [
-        { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen barreras del puesto, no diagnósticos. La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
+        { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen dónde aparecen las barreras, no rasgos de la persona (CIF, OMS 2001). La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
         { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
       ] : []),
       ...(g.voz !== undefined ? [

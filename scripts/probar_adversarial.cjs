@@ -133,7 +133,7 @@ const servidor = http.createServer((req, res) => {
         seccionesTrabajo = opciones; inclusionTrabajo = ['trabajador']; armarHoja();
         return { html: document.querySelector('#hoja').textContent, pdf: JSON.stringify(definicionPdf()) };
       }, { barreras, voz, ajustes });
-      for (const texto of Object.values(resultado)) { assert.equal(texto.includes('VOZ_PRIVADA'), voz); assert.equal(texto.includes('Audición'), barreras); assert.equal(texto.includes('NOTA_AJUSTE'), ajustes); }
+      for (const texto of Object.values(resultado)) { assert.equal(texto.includes('VOZ_PRIVADA'), voz); assert.equal(texto.includes('Información que se oye'), barreras); assert.equal(texto.includes('NOTA_AJUSTE'), ajustes); }
     }
     await page.evaluate(() => {
       const respaldo = JSON.parse(localStorage.getItem(CLAVE));

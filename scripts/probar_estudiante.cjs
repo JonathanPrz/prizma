@@ -97,7 +97,7 @@ assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id)'), [
 vm.runInContext('estudianteActual().modalidad = "braille"', contexto);
 assert.equal(ejecutar('accesosVisibles()[0].id'), 'acc-6-braille');
 assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], estudianteActual())'), 'Porque usa: Braille');
-assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], {modalidad:"braille", dimensiones:{6:2}})'), 'Porque usa: Braille; y marcaste: Visión (seguido).');
+assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], {modalidad:"braille", dimensiones:{6:2}})'), 'Porque usa: Braille; y marcaste: Información que se ve (seguido).');
 vm.runInContext('estudianteActual().modalidad = "ampliacion"; estudianteActual().dimensiones[6] = 2', contexto);
 assert.equal(ejecutar('accesosVisibles()[0].id'), 'acc-6-ampliar');
 assert(!ejecutar('accesosVisibles().some(r => r.id === "acc-6-braille")'));

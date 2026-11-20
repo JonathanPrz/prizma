@@ -78,11 +78,63 @@ async function probar() {
         const css = getComputedStyle(n);
         return { fondo: css.backgroundColor, borde: css.borderTopWidth, texto: css.color };
       };
+      const chip = nodo('lista-estudiantes').locator('button');
+      assert.equal(await chip.innerText(), 'JP');
+      assert(await chip.evaluate(b => b.getBoundingClientRect().width < b.parentElement.getBoundingClientRect().width));
+      const quitar = nodo('quitar-estudiante');
+      assert.equal(await quitar.innerText(), 'Quitar este caso');
+      assert.equal(await quitar.getAttribute('aria-label'), 'Quitar este caso: JP');
+      assert((await quitar.boundingBox()).height >= 44);
+
+      const contexto = nodo('area-4');
+      await contexto.click();
+      assert.match(await contexto.innerText(), /Contexto e identidad/);
+      const grupoContexto = nodo(await contexto.getAttribute('aria-controls'));
+      assert.equal(await grupoContexto.locator('legend').first().innerText(), 'Identidad, lengua y pertenencia');
+      assert(await grupoContexto.evaluate(g => g.previousElementSibling.id === 'area-4'));
+      await contexto.click();
+
       const areaCerrada = await area.evaluate(estiloControl);
       await area.click();
       await pagina.mouse.move(0, 0);
       assert.equal(await area.getAttribute('aria-expanded'), 'true');
       assert.deepEqual(await area.evaluate(estiloControl), areaCerrada);
+      const grupo = nodo(await area.getAttribute('aria-controls'));
+      assert(await grupo.evaluate(g => g.previousElementSibling.id === 'area-0' && g.parentElement.nextElementSibling.firstElementChild.id === 'area-1'));
+      const frecuencia = grupo.locator('.frecuencias').first();
+      const radios = frecuencia.getByRole('radio');
+      assert.equal(await radios.count(), 4);
+      assert(await radios.first().isChecked());
+      assert.equal((await radios.first().locator('..').evaluate(estiloControl)).fondo, areaCerrada.fondo);
+      const posiciones = await frecuencia.locator('label').evaluateAll(celdas => celdas.map(celda => {
+        const r = celda.getBoundingClientRect();
+        return { x: r.x, y: r.y, ancho: r.width, alto: r.height };
+      }));
+      assert(posiciones.every(p => p.alto >= 44 && p.ancho === posiciones[0].ancho));
+      if (width === 390) {
+        const [primera, segunda, tercera, cuarta] = posiciones;
+        assert(primera.x === tercera.x && segunda.x === cuarta.x && primera.x < segunda.x);
+        assert(primera.y === segunda.y && tercera.y === cuarta.y && primera.y < tercera.y);
+        assert(await pagina.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      } else {
+        assert(posiciones.every(p => p.y === posiciones[0].y));
+      }
+      await radios.first().focus();
+      await pagina.keyboard.press('ArrowRight');
+      assert(await radios.nth(1).isChecked());
+      assert.equal(await radios.nth(1).locator('..').evaluate(n => getComputedStyle(n).outlineWidth), '3px');
+      await pagina.keyboard.press('ArrowRight');
+      assert(await radios.nth(2).isChecked());
+      assert(await radios.nth(2).locator('..').locator('[aria-hidden="true"]').isVisible());
+      assert.match(await area.innerText(), /\(1 marcada\)/);
+      const seleccionada = await radios.nth(2).locator('..').evaluate(estiloControl);
+      assert.notEqual(seleccionada.fondo, areaCerrada.fondo);
+      assert.deepEqual(await area.evaluate(estiloControl), seleccionada);
+      await area.click();
+      assert.equal(await area.getAttribute('aria-expanded'), 'false');
+      assert.deepEqual(await area.evaluate(estiloControl), seleccionada);
+      assert.match(await area.innerText(), /\(1 marcada\)/);
+      await area.click();
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
@@ -161,6 +213,14 @@ async function probar() {
         assert.equal(await nodo('continuar').innerText(), 'Ver documento');
       }
       await verificarErrores(false);
+      assert.equal(await chip.innerText(), 'JP');
+      await nodo('paso-descripcion-editar').click();
+      await nodo('area-3').click();
+      await pagina.locator('input[name="dimension-6"][value="2"]').check();
+      assert.equal(await chip.innerText(), 'JP · Por revisar');
+      await nodo('guardar-descripcion').click();
+      const ampliar = nodo('elegir-acc-6-ampliar').locator('xpath=ancestor::li[contains(@class, "tarjeta")]');
+      assert.equal(await ampliar.locator('.t-razon').textContent(), 'Porque marcaste: Información que se ve (seguido).');
 
       await nodo('nivel').selectOption('practica-trabajo');
       await nodo('trabajo-area-0').click();

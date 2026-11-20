@@ -133,7 +133,7 @@ async function probar() {
     await campo('trabajo-revision').fill(acuerdo.revision);
     await campo('trabajo-criterio').fill('Criterio privado del caso');
     await campo('guardar-acuerdos-trabajo').click();
-    assert.match(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    assert.match(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
     await campo('abrir-mochila').click();
     await campo('sel-trabajadores').locator('textarea').first().fill('Nota privada del caso');
     await campo('cerrar-mochila').click();
@@ -173,7 +173,7 @@ async function probar() {
     await pagina.reload();
     await listo();
     assert.deepEqual(await pagina.evaluate(() => trabajadorActual().acuerdo.roles), ['institucion']);
-    assert.match(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    assert.match(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
 
     await campo('trabajo-descripcion-editar').click();
     await campo('trabajo-etapa').selectOption('trabajo');
@@ -181,7 +181,7 @@ async function probar() {
     await pagina.getByLabel('Persona trabajadora', { exact: true }).check();
     await campo('guardar-acuerdos-trabajo').click();
     assert.match(await campo('trabajo-acuerdo-seleccion-error').innerText(), /Elige al menos un ajuste/);
-    assert.doesNotMatch(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    assert.doesNotMatch(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
     await campo('abrir-mochila').click();
     assert(await campo('sel-vacia').isVisible());
     assert.equal(await campo('n-sel').textContent(), '0');
@@ -189,7 +189,7 @@ async function probar() {
 
     await elegir('tr-subtitulos');
     await campo('guardar-acuerdos-trabajo').click();
-    assert.match(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    assert.match(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
     await campo('abrir-mochila').click();
     assert.equal(await campo('sel-trabajadores').locator('li').count(), 1);
     assert.match(await campo('sel-trabajadores').locator('textarea').getAttribute('data-nota-clave'), /tr-subtitulos$/);
