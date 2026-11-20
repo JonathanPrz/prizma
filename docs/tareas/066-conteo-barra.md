@@ -1,6 +1,6 @@
 # Tarea 066 · Conteos más claros y aviso de cambios sin guardar en DUA
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/066-conteo-barra` · Pull request con destino `main`
+Estado: **integrada** (PR #87) · Asignada a: Codex · Rama: `codex/066-conteo-barra` · Pull request con destino `main`
 
 ## Para qué
 Son tres detalles de la revisión del PR #86. El dueño marcó «Mi clase tiene taller…» sin presionar «Guardar», bajó a los resultados y vio «36 acciones para todo el curso»: parecía que Prizma ignoraba lo marcado. Los cambios del paso 1 se aplican al guardar (decisión de la tarea 039), pero nada avisa que hay cambios pendientes.
