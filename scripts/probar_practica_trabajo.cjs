@@ -165,7 +165,7 @@ async function probar() {
     assert.doesNotMatch(await campo('privacidad-textos').innerText(), /154 ter/);
     await campo('privacidad-entendido').click();
     await campo('indicador-pasos').getByRole('link', { name: '3 Acuerda' }).click();
-    assert.equal(await campo('continuar').innerText(), 'Ver documento');
+    assert.equal(await campo('continuar').innerText(), 'Ver documento para el centro');
     await campo('continuar').click();
     assert(await campo('documento-centro').isVisible());
     await campo('cancelar-centro').click();

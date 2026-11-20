@@ -1148,7 +1148,9 @@ function actualizarContinuar() {
     marca.hidden = !terminados[i];
   });
   b.textContent = pasoActual === 1 ? (estado.pestana === "dua" ? "Guardar y ver acciones" : estado.pestana === "trabajo" ? "Guardar y ver ajustes" : "Guardar y ver apoyos") :
-    pasoActual === 2 ? (estado.pestana === "dua" ? "Ir a tu selección" : "Ir a acuerdos") : "Ver documento";
+    pasoActual === 2 ? (personal ? "Ir a acuerdos" : "Ir a tu selección") :
+    personal && !terminados[2] ? "Guardar acuerdos" :
+    trabajo && e?.etapa === "practica" ? "Ver documento para el centro" : "Ver documento";
 }
 function activarPasoAbierto(id) {
   const indice = pasosActuales().indexOf(id);
