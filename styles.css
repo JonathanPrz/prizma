@@ -7,8 +7,9 @@
 }
 @font-face {
   font-family: "Public Sans respaldo";
-  src: local("Segoe UI"), local("Arial"), local("Helvetica");
-  /* Chromium, párrafo en español a 160 px: Public Sans 12634,31 px de ancho,
+  src: local("Arial"), local("Liberation Sans"), local("Helvetica"), local("Arimo");
+  /* Solo fuentes con métricas de Arial, que son las usadas para calibrar el respaldo.
+     Chromium, párrafo en español a 160 px: Public Sans 12634,31 px de ancho,
      ascenso 152 y descenso 36. Liberation Sans (métricas Arial): 12309,84 px,
      ascenso 145 y descenso 34. Calibrada: ancho 12634,42 px, ascenso 152 y descenso 36. */
   size-adjust: 102.64%;
