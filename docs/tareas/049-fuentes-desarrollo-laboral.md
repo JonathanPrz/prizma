@@ -1,6 +1,6 @@
 # Tarea 049 · Fuentes para «Necesita más desafío» en el trabajo
 
-Estado: **pendiente** · Asignada a: Codex (modelo fuerte) · Rama: `codex/049-desarrollo-laboral` · Pull request con destino `main`
+Estado: **integrada** (PR #67, DOI verificados por Claude en Crossref) · Asignada a: Codex (modelo fuerte) · Rama: `codex/049-desarrollo-laboral` · Pull request con destino `main`
 
 ## Para qué
 Cuatro ajustes de trabajo responden a la situación «Necesita más desafío»: `tr-autonomia`, `tr-responsabilidades`, `tr-desarrollo` y `tr-mentoria-desafio`. Su fuente anterior era una revisión sobre adultos con altas capacidades, que no trata de discapacidad, y se quitó. Hoy se apoyan en la CDPD (art. 27: promoción profesional y formación continua) y en JAN (mentoría en el puesto), como consenso de expertos.
