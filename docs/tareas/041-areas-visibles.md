@@ -1,6 +1,6 @@
 # Tarea 041 · Áreas: estado visible y frecuencias solo cuando corresponde
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/041-areas`
+Estado: **pendiente** · Asignada a: Codex · Rama: `codex/041-areas` · Pull request con destino `main`
 
 ## Para qué
 El dueño observó dos problemas en «¿En qué áreas encuentra barreras?», en «Para un estudiante» y en «Para el trabajo»:
