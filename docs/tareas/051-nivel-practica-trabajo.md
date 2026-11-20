@@ -1,11 +1,13 @@
 # Tarea 051 · «Práctica y paso al trabajo» como nivel, sin modo Trabajo aparte
 
-Estado: **v2, tras revisión adversarial; pendiente de aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
+Estado: **v3, pendiente de una segunda revisión adversarial y de la aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
 
 ## Para qué
 Decisión del dueño (20-11-2026): Prizma tiene demasiados modos. El modo «Para el trabajo» se integra como un nivel más, junto con la práctica profesional:
 
-> Nivel: Parvularia · Básica · Media · Superior · **Práctica y paso al trabajo**
+> Nivel: Parvularia · Básica · Media · Superior · **Práctica y trabajo**
+
+**Por qué es un nivel y no una parte del caso de clase** (aclaración del dueño, 20-11-2026): la práctica no es una asignatura. Quien la usa es la coordinación de práctica, quien acompaña al estudiante en su práctica o primer empleo o, en el futuro, quien asesora en inclusión a una empresa. Para ese rol, las acciones DUA y las adecuaciones de clase no tienen sentido.
 
 **La v1 fue rechazada por la revisión adversarial,** por cuatro razones:
 - las fichas de práctica no habrían aparecido, porque sus `niveles` son media o superior;
@@ -23,14 +25,14 @@ Actualiza `docs/arquitectura.md` con la sección «Ajuste del dueño (20-11-2026
 
 ### 1. Entrada y nivel
 - Se eliminan `#inicio` y el botón «Cambiar ámbito». Al entrar se ve Prizma con el selector de nivel.
-- El selector `#nivel` suma la opción «Práctica y paso al trabajo» (`practica-trabajo`). Con ella:
+- El selector `#nivel` suma la opción «Práctica y trabajo» (`practica-trabajo`), con la ayuda «Para coordinar la práctica profesional, acompañar el primer empleo o asesorar a una empresa». Con ella:
   - se ocultan las pestañas de Educación;
   - se muestra `#panel-trabajo`, reutilizando lo que hoy hace `mostrarPestana("trabajo")`.
 - Cambiar de nivel con casos guardados pide confirmación, como hoy.
 
 ### 2. El caso del nivel nuevo
 Usa el modelo de trabajador que ya existe (`estado.trabajadores`), con estos campos nuevos:
-- **`etapa`**, con la pregunta «¿En qué etapa está?» y las opciones «Prepara su práctica» (`prepara`), «Está en práctica» (`practica`) y «Está entrando o ya está en un trabajo» (`trabajo`). El valor por defecto es `trabajo`, para que los casos antiguos se vean igual.
+- **`etapa`**, con la pregunta «¿En qué etapa está?» y las opciones «Prepara su práctica» (`prepara`), «Está en práctica» (`practica`) y «Primer empleo o trabajo» (`trabajo`). El valor por defecto es `trabajo`, para que los casos antiguos se vean igual.
 - **`nivelOrigen`**, con la pregunta «¿Desde qué nivel hace la práctica?» y las opciones «Media técnico-profesional» (`media`) y «Superior (IP, CFT o universidad)» (`superior`). Solo se muestra si la etapa es `prepara` o `practica`.
 
 Con esos campos:
@@ -49,7 +51,7 @@ Con esos campos:
 ### 4. Media y superior
 - Se quita la casilla «Este estudiante hará su práctica profesional».
 - En su lugar va el botón **«Preparar su práctica»**. Crea un caso en el nivel nuevo, copiando las iniciales y las situaciones del estudiante, con etapa `prepara` y `nivelOrigen` igual al nivel actual. Después cambia al nivel nuevo, con confirmación.
-- Bajo el botón, la ayuda: «Pasa sus datos al nivel Práctica y paso al trabajo».
+- Bajo el botón, la ayuda: «Pasa sus datos al nivel Práctica y trabajo».
 
 ### 5. Privacidad
 El nivel nuevo tiene su propio aviso, con estas frases:
@@ -64,7 +66,7 @@ El nivel nuevo tiene su propio aviso, con estas frases:
 
 ### 7. Migración de datos guardados
 - **`ambito: "trabajo"`:** el nivel activo pasa a `practica-trabajo`. Si el estado o el respaldo también tiene `perfil.nivel` de educación con casos escolares, ese nivel se guarda en `estado.nivelEducacion` y se recupera al volver a un nivel educativo.
-- **Estudiante con `practicaProfesional: true`:** se crea un caso en el nivel nuevo con sus iniciales, sus situaciones y sus `pp-*` elegidas, con etapa `practica` y `nivelOrigen` igual al nivel educativo. El estudiante original conserva lo demás. Se avisa una vez: «La práctica de {iniciales} ahora está en el nivel Práctica y paso al trabajo».
+- **Estudiante con `practicaProfesional: true`:** se crea un caso en el nivel nuevo con sus iniciales, sus situaciones y sus `pp-*` elegidas, con etapa `practica` y `nivelOrigen` igual al nivel educativo. El estudiante original conserva lo demás. Se avisa una vez: «La práctica de {iniciales} ahora está en el nivel Práctica y trabajo».
 - Los respaldos antiguos se restauran sin errores ni pérdidas.
 
 ### 8. Validador y textos
