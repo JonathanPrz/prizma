@@ -1,6 +1,6 @@
 # Tarea 068 · Paso 1 «Describe tu clase»: al instante, sin «Guardar» y con lo que ordena a la vista
 
-Estado: **lista para Codex, después de integrar la 067** · Asignada a: Codex · Rama: `codex/068-describe-clase` · Pull request con destino `main`
+Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/068-describe-clase` · Pull request con destino `main`
 
 ## Para qué
 El dueño marcó el taller, no presionó «Guardar» y creyó que Prizma lo ignoraba. El aviso de la tarea 066 solo parcha ese problema. Además, en el teléfono:

@@ -1,6 +1,6 @@
 # Tarea 067 · Resultados DUA en carpetas por momento, con lo que responde primero
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/067-resultados-momento` · Pull request con destino `main`
+Estado: **integrada** (PR #88) · Asignada a: Codex · Rama: `codex/067-resultados-momento` · Pull request con destino `main`
 
 ## Para qué
 El dueño marcó «laboratorio» y el filtro «Antes». El conteo decía «Antes: 1 de 11 acciones responde», pero aparecieron las 11 abiertas en una lista plana. Esperaba una carpeta «Antes» con lo que responde distinguido.
