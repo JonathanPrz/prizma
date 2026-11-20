@@ -57,6 +57,9 @@ def pares(lote):
     # Los grupos R (pares de riesgo, revisión de Claude) se leen de riesgo.csv; los lotes L, de pares.csv.
     if lote.startswith('R'):
         filas = leer(f'riesgo-{lote}.csv'); esperados = {f['par'] for f in leer('riesgo.csv') if f['grupo'] == lote}
+    elif lote.startswith('D'):
+        # Revisiones posteriores a la tarea 043 (por ejemplo, desregulación), listadas en extra.csv.
+        filas = leer(f'extra-{lote}.csv'); esperados = {f['par'] for f in leer('extra.csv') if f['grupo'] == lote}
     else:
         filas = leer(f'pares-{lote}.csv'); esperados = {k for k, p in PARES.items() if p['lote'] == lote}
     cuenta = Counter(f['par'] for f in filas)
