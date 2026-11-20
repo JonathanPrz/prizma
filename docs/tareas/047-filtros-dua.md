@@ -1,6 +1,6 @@
 # Tarea 047 · El DUA muestra para qué sirve cada acción, con opciones que describen la clase y colores de CAST
 
-Estado: **v3, lista para Codex tras dos revisiones adversariales** · Asignada a: Codex · Rama: `codex/047-consideraciones` · Pull request con destino `main`
+Estado: **integrada** (PR #62, con ajustes de Claude en la tarjeta) · Asignada a: Codex · Rama: `codex/047-consideraciones` · Pull request con destino `main`
 
 ## Para qué
 El dueño quiere que, al marcar lo que quiere resolver, Prizma le muestre **qué consideraciones DUA aplicar y cómo**, conservando las acciones, que le gustan. Además:
