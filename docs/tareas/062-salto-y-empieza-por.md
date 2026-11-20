@@ -1,6 +1,6 @@
 # Tarea 062 · La página no salta al hacer clic, y «Empieza por:» en vez de «Para empezar»
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/062-salto-empieza-por` · Pull request con destino `main`
+Estado: **integrada** (PR #83) · Asignada a: Codex · Rama: `codex/062-salto-empieza-por` · Pull request con destino `main`
 
 ## Para qué
 El dueño aprobó dos cambios el 20-11-2026, el segundo después de una revisión adversarial.
