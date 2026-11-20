@@ -1,6 +1,6 @@
 # Tarea 064 · Una sola guía para «Práctica y trabajo»
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/064-guia-unificada` · Pull request con destino `main`
+Estado: **integrada** (PR #85) · Asignada a: Codex · Rama: `codex/064-guia-unificada` · Pull request con destino `main`
 
 ## Para qué
 Quedó pendiente de las tareas 051 y 052. Hoy el nivel «Práctica y trabajo» tiene dos guías separadas, y cada una se ve solo en una etapa:
