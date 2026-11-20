@@ -34,6 +34,7 @@ Revisas una página web y entregas un informe con evidencia medible. **No corrig
 | V5 | **Menos bordes.** Se separa con espacio, fondo o sombra antes que con líneas. Los bordes que quedan cumplen una función. | Cuenta los elementos con borde y anota cuáles sobran. |
 | V6 | **Contraste.** Texto normal de 4,5:1 o más, texto grande y componentes de 3:1 o más (WCAG 1.4.3 y 1.4.11). | Mide cada combinación de texto y fondo, en los dos temas. |
 | V7 | **Ancho de lectura.** Entre 45 y 75 caracteres por línea en el texto largo. | Mide el ancho de los párrafos en caracteres. |
+| V0 | **Jerarquía primero.** En cada pantalla, lo principal, el paso actual y la siguiente acción se reconocen en 5 segundos. El tamaño de letra no compensa una mala jerarquía: una letra más grande en todo aplana la página. WCAG no fija un tamaño mínimo de letra; exige contraste, zoom al 200 % y objetivos táctiles. | Pide a alguien (o simula) decir qué ve primero en cada pantalla. Lista los elementos que compiten por atención con el mismo peso. |
 | V8 | **Tamaño de objetivos táctiles.** Mínimo de 24 × 24 px (WCAG 2.5.8). Recomendado: 44 × 44 px en los controles principales (Apple HIG: 44 pt; Material: 48 dp). | Mide el área de cada control interactivo a 390 px. |
 
 ## Pilar 2 · Bases cognitivas y heurísticas
