@@ -1,9 +1,9 @@
 # Tarea 048 · «¿Qué usa hoy para comunicarse o acceder?» sugiere sus apoyos
 
-Estado: **v2, lista para Codex tras la revisión adversarial** · Asignada a: Codex · Rama: `codex/048-modalidad` · Pull request con destino `main`
+Estado: **v3, ajustada tras integrar la tarea 051 (PR #71)** · Asignada a: Codex · Rama: `codex/048-modalidad` · Pull request con destino `main`
 
 ## Para qué
-Hoy la pregunta de modalidad casi no cambia las sugerencias. Si marcas «Braille», no sube la ficha de Braille. Esta tarea hace que **la modalidad muestre y ponga primero los apoyos de acceso o los ajustes de trabajo que le corresponden**, en «Para un estudiante» y en «Para el trabajo».
+Hoy la pregunta de modalidad casi no cambia las sugerencias. Si marcas «Braille», no sube la ficha de Braille. Esta tarea hace que **la modalidad muestre y ponga primero los apoyos de acceso o los ajustes de trabajo que le corresponden**, en «Para un estudiante» y en el nivel «Práctica y trabajo», etapa «Primer empleo o trabajo».
 
 **Lo que corrigió la revisión adversarial de la v1:**
 - No se puede guardar la descripción sin al menos una situación, y esa regla se mantiene.
@@ -11,6 +11,8 @@ Hoy la pregunta de modalidad casi no cambia las sugerencias. Si marcas «Braille
 - Las adecuaciones en los objetivos y los apoyos de práctica quedan fuera: tienen sus propias reglas.
 - Se corrigieron fichas mal asignadas.
 - En «otra lengua materna» solo entran apoyos que no suponen que la persona no entiende español.
+
+**Después de la tarea 051:** «Para el trabajo» ahora es el nivel «Práctica y trabajo». Esta tarea aplica solo a los casos con `etapa === "trabajo"`. En los casos con etapa `practica` no cambia nada. `compararAcceso(a, b, e)` y `aplica(r, e)` ya reciben el caso: usa ese `e`, no `estudianteActual()` ni `trabajadorActual()` por defecto.
 
 **No cambies `data/`, `docs/fuentes/` ni `.claude/`.**
 
@@ -47,7 +49,8 @@ En `scripts/probar_estudiante.cjs` y `scripts/probar_trabajo.cjs`:
 - básica, con «Braille» y una situación ajena (por ejemplo, Atención): `acc-6-braille` aparece primero, con «Porque usa: Braille»;
 - con «Lupa o ampliación», aparece `acc-6-ampliar` y **no** aparece `acc-6-braille`;
 - superior, con «Otra lengua materna»: aparece `sup-lengua` y no aparece `acc-10-familia`;
-- trabajo, con «Lengua de señas»: `tr-lengua-senas` y `tr-interprete` van primero;
+- «Práctica y trabajo», etapa trabajo, con «Lengua de señas»: `tr-lengua-senas` y `tr-interprete` van primero;
+- etapa práctica, con «Lengua de señas»: las fichas `pp-*` y su orden son iguales a los de hoy;
 - sin modalidad, los resultados de un caso fijo son iguales a los de hoy;
 - la prueba de los casos semilla (`probar_preguntas_clave.cjs`) sigue en 37 de 37.
 

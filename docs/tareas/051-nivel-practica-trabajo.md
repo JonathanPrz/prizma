@@ -1,6 +1,6 @@
 # Tarea 051 · «Práctica y trabajo» como quinta opción del nivel, sin modo Trabajo aparte
 
-Estado: **v4, tras dos revisiones adversariales; pendiente de aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
+Estado: **integrada** (PR #71) · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
 
 ## Para qué
 Decisiones del dueño (20-11-2026):
