@@ -70,10 +70,20 @@ const ROLES_ACUERDO = { estudiante: "Estudiante", familia: "Familia", equipo: "E
 const MODALIDADES = { "": "No aplica", senas: "Lengua de señas", braille: "Braille", ampliacion: "Lupa o ampliación", caa: "Tablero o comunicación aumentativa", lengua: "Otra lengua materna" };
 // Única exclusión de modalidad: requiere revisión de Claude; las fichas multiformato conservan sus alternativas.
 const EXCLUSIONES_MODALIDAD = { ampliacion: ["acc-6-braille"] };
+const APOYOS_MODALIDAD = {
+  senas: ["acc-6-audicion", "sup-senas", "sup-audicion", "tr-lengua-senas", "tr-interprete"],
+  braille: ["acc-6-braille", "sup-vision", "sup-tecnologia", "tr-lector-braille", "tr-formularios-voz", "tr-texto-digital"],
+  ampliacion: ["acc-6-ampliar", "sup-vision", "tr-lector-braille", "tr-texto-digital"],
+  caa: ["acc-3-caa", "sup-caa", "tr-teclear", "tr-respuesta-escrita"],
+  lengua: ["acc-10-responder", "sup-lengua"],
+};
 const APOYOS_FORMA = ["acc-2-audio", "acc-8-teclado", "acc-8-transcribe", "acc-2-tiempo", "prac-tiempo", "acc-9-jornada", "acc-12-tiempo", "acc-12-opciones", "acc-2-registro", "acc-1-organizador", "sup-tiempo", "sup-formatos", "sup-caa", "sup-oral-progresivo", "prac-evaluar", "prac-asistente"];
 const IDS_SEGURIDAD = ["prac-rotulos", "prac-evacuacion"];
 function modalidadValida(valor) { return typeof valor === "string" && Object.hasOwn(MODALIDADES, valor) ? valor : ""; }
 function compatibleModalidad(r, e = estudianteActual()) { return !(EXCLUSIONES_MODALIDAD[modalidadValida(e?.modalidad)] || []).includes(r.id); }
+function enModalidad(r, e) {
+  return e.etapa !== "practica" && Boolean(APOYOS_MODALIDAD[modalidadValida(e.modalidad)]?.includes(r.id)) && compatibleModalidad(r, e);
+}
 function seleccionIncompatible(e, trabajo = false) { return catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && (trabajo ? aplica(r, e) : aplica(r)) && !compatibleModalidad(r, e)); }
 function seguridadActiva(e, trabajo = false) { return Boolean(e && [6, 13, 8].some(d => e.dimensiones[d]) && (trabajo || practicaActiva())); }
 function textoModalidad(texto, r, e) {
@@ -260,7 +270,7 @@ function dimensionesCoincidentes(r, e = estudianteActual()) { return r.dimension
 function puntaje(r, e = estudianteActual()) { return dimensionesCoincidentes(r, e).reduce((suma, d) => suma + e.dimensiones[d], 0); }
 function compararAcceso(a, b, e = estudianteActual(), orden = catalogo) {
   const proporcion = (r) => r.dimensiones.length ? dimensionesCoincidentes(r, e).length / r.dimensiones.length : 0;
-  return puntaje(b, e) - puntaje(a, e) || proporcion(b) - proporcion(a) || orden.indexOf(a) - orden.indexOf(b);
+  return Number(enModalidad(b, e)) - Number(enModalidad(a, e)) || puntaje(b, e) - puntaje(a, e) || proporcion(b) - proporcion(a) || orden.indexOf(a) - orden.indexOf(b);
 }
 function esPractica(r) { return r.contextos.includes("practica"); }
 function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
@@ -268,7 +278,10 @@ function practicaActiva() { return estado.perfil.practica && hayPracticas(); }
 function practicasVisibles() {
   return catalogo.filter(r => r.tipo === "acceso" && aplica(r) && esPractica(r) && compatibleModalidad(r) && (estado.perfil.practica && puntaje(r) > 0 || seguridadActiva(estudianteActual()) && IDS_SEGURIDAD.includes(r.id))).sort(compararAcceso);
 }
-function accesosVisibles() { return catalogo.filter((r) => r.tipo === "acceso" && aplica(r) && !esPractica(r) && compatibleModalidad(r) && puntaje(r)).sort(compararAcceso); }
+function accesosVisibles(e = estudianteActual()) {
+  return catalogo.filter((r) => r.tipo === "acceso" && aplica(r, e) && !esPractica(r) &&
+    compatibleModalidad(r, e) && (puntaje(r, e) || enModalidad(r, e))).sort((a, b) => compararAcceso(a, b, e));
+}
 function situacionesSinApoyos() {
   return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
@@ -441,15 +454,16 @@ function pintarApoyos() {
   $("#apoyos-sin-fichas").replaceChildren(...situacionesSinApoyos().map((d) =>
     el("p", { class: "aviso-apoyos" }, `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
-  const lista = accesosVisibles(), practicas = practicasVisibles();
-  const todas = [...lista, ...practicas].sort(compararAcceso), primeras = todas.length > 3 ? todas.slice(0, 3) : [];
+  const e = estudianteActual(), lista = accesosVisibles(e), practicas = practicasVisibles();
+  const todas = [...lista, ...practicas].sort((a, b) => compararAcceso(a, b, e));
+  const primeras = todas.length > 3 || lista.some((r) => enModalidad(r, e)) ? todas.slice(0, 3) : [];
   const destacadas = new Set(primeras.map((r) => r.id));
   const resto = lista.filter((r) => !destacadas.has(r.id)), restoPracticas = practicas.filter((r) => !destacadas.has(r.id));
   $("#apoyos-resultados").replaceChildren(
-    ...(primeras.length ? [el("section", { "aria-labelledby": "t-para-empezar" }, el("h3", { id: "t-para-empezar", text: "Para empezar" }), el("p", { class: "ayuda", text: "Los apoyos que mejor responden a las situaciones que marcaste." }), el("ul", { class: "tarjetas" }, primeras.map(tarjeta)))] : []),
+    ...(primeras.length ? [el("section", { "aria-labelledby": "t-para-empezar" }, el("h3", { id: "t-para-empezar", text: "Para empezar" }), el("p", { class: "ayuda", text: "Los apoyos que mejor responden a lo que describiste." }), el("ul", { class: "tarjetas" }, primeras.map(tarjeta)))] : []),
     ...Object.entries(TIPOS_ACCESO).filter(([tipo]) => resto.some((r) => r.subtipo === tipo))
       // Cada grupo se ubica según su ficha más pertinente; así no queda una buena ficha debajo de grupos peores.
-      .sort(([a], [b]) => compararAcceso(resto.find((r) => r.subtipo === a), resto.find((r) => r.subtipo === b))).map(([tipo, nombre]) =>
+      .sort(([a], [b]) => compararAcceso(resto.find((r) => r.subtipo === a), resto.find((r) => r.subtipo === b), e)).map(([tipo, nombre]) =>
       grupoPlegado(nombre, resto.filter((r) => r.subtipo === tipo), definicionAcceso())));
   if (restoPracticas.length) $("#apoyos-resultados").append(grupoPlegado("En talleres, laboratorios y terreno", restoPracticas, definicionAcceso()));
   const objetivos = objetivosVisibles();
@@ -611,7 +625,7 @@ function ajustesTrabajo(e = trabajadorActual()) {
   const auditivos = ["tr-subtitulos", "tr-interprete", "tr-mensajes-escritos", "tr-alertas-visuales"];
   const orden = Object.keys(e.dimensiones).length === 1 && e.dimensiones[13] ?
     [...auditivos.map((id) => catalogo.find((r) => r.id === id)).filter(Boolean), ...catalogo.filter((r) => !auditivos.includes(r.id))] : catalogo;
-  return catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo !== "proceso" && compatibleModalidad(r, e) && (puntaje(r, e) > 0 || seguridadActiva(e, true) && r.id === "tr-alertas-visuales")).sort((a, b) => compararAcceso(a, b, e, orden));
+  return catalogo.filter((r) => aplica(r, e) && r.tipo === "trabajo" && r.subtipo !== "proceso" && compatibleModalidad(r, e) && (puntaje(r, e) > 0 || enModalidad(r, e) || seguridadActiva(e, true) && r.id === "tr-alertas-visuales")).sort((a, b) => compararAcceso(a, b, e, orden));
 }
 function pintarEstadoTrabajo() {
   const e = trabajadorActual(); if (!e) return;
@@ -652,8 +666,8 @@ function pintarTrabajo() {
   $("#trabajo-tarjetas").hidden = practica;
   $("#practica-profesional-grupos").replaceChildren(...(practica ? Object.keys(TIPOS_PRACTICA).map((subtipo) =>
     grupoPlegado(nombreGrupoPractica(subtipo, e), fichasPracticaProfesional(subtipo, e), "")) : []));
-  const lista = practica ? [] : ajustesTrabajo(e), primeras = lista.length > 4 ? lista.slice(0, 4) : [], ids = new Set(primeras.map((r) => r.id));
-  const grupo = (titulo, fichas) => titulo === "Para empezar" ? el("section", {}, el("h3", { text: titulo }), el("p", { class: "ayuda", text: "Los ajustes que mejor responden a las situaciones que marcaste." }), el("ul", { class: "tarjetas" }, fichas.map((r) => tarjeta(r)))) : grupoPlegado(titulo, fichas, "Cambio en el puesto, la comunicación, las herramientas o el horario. La ley lo llama «ajuste necesario» (Ley 20.422, art. 8).");
+  const lista = practica ? [] : ajustesTrabajo(e), primeras = lista.length > 4 || lista.some((r) => enModalidad(r, e)) ? lista.slice(0, 4) : [], ids = new Set(primeras.map((r) => r.id));
+  const grupo = (titulo, fichas) => titulo === "Para empezar" ? el("section", {}, el("h3", { text: titulo }), el("p", { class: "ayuda", text: "Los ajustes que mejor responden a lo que describiste." }), el("ul", { class: "tarjetas" }, fichas.map((r) => tarjeta(r)))) : grupoPlegado(titulo, fichas, "Cambio en el puesto, la comunicación, las herramientas o el horario. La ley lo llama «ajuste necesario» (Ley 20.422, art. 8).");
   $("#trabajo-tarjetas").replaceChildren(
     ...(primeras.length ? [grupo("Para empezar", primeras)] : []),
     ...Object.entries(TIPOS_TRABAJO).filter(([id]) => id !== "proceso").map(([id, nombre]) => {
@@ -699,6 +713,7 @@ function sincronizarTrabajo() {
     campo.addEventListener("change", () => { marcarRevision(e); e.acuerdo.roles = [...document.querySelectorAll('input[name="rol-trabajo"]:checked')].map((c) => c.value); guardar(); pintarEstadoTrabajo(); });
     return el("label", {}, campo, nombre);
   }));
+  $("#trabajo-modalidad-ayuda").textContent = e.etapa === "trabajo" ? $("#modalidad-ayuda").textContent : "";
   $("#trabajo-modalidad").value = e.modalidad; $("#trabajo-compartir").value = e.compartir; $("#trabajo-criterio").value = e.acuerdo.criterio;
   $("#trabajo-fecha").value = e.acuerdo.fecha; $("#trabajo-revision").value = e.acuerdo.revision;
   $("#trabajo-acuerdos-error").textContent = ""; $("#trabajo-descripcion-error").textContent = "";
@@ -1132,8 +1147,16 @@ function agregarVersionCurso(r) {
   document.getElementById("version-" + r.id)?.focus();
 }
 function textoPublico(texto) { return texto.replace(/la ficha clínica/g, "los antecedentes clínicos"); }
+function motivoApoyo(r, e) {
+  const modalidad = enModalidad(r, e) ? "Porque usa: " + MODALIDADES[e.modalidad] : "";
+  const situaciones = dimensionesCoincidentes(r, e).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[e.dimensiones[d]].toLowerCase()})`);
+  const marcadas = [r.tipo === "acceso" && esPractica(r) ? "actividades prácticas" : "", situaciones.join(", ")].filter(Boolean).join("; ");
+  if (!marcadas) return modalidad;
+  return (modalidad ? modalidad + "; y marcaste: " : "Porque marcaste: ") + marcadas + ".";
+}
 function tarjeta(r, destacarMomento = false, agrupada = false) {
   const dua = r.tipo === "dua", trabajo = r.tipo === "trabajo" || r.tipo === "practica-profesional" && estado.ambito === "trabajo", acceso = r.tipo === "acceso", persona = trabajo ? trabajadorActual() : estudianteActual(), prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : persona.seleccion);
+  const motivo = acceso || trabajo ? motivoApoyo(r, persona) : "";
   const queBusca = agrupada && consideraciones[r.consideracion];
   const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
   const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
@@ -1146,8 +1169,7 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
     dua && destacarMomento ? el("p", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null,
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
-    trabajo && dimensionesCoincidentes(r, persona).length ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r, persona).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[persona.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : null,
-    acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
+    motivo ? el("p", { class: "t-razon", text: motivo }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     !dua && APOYOS_FORMA.includes(r.id) ? el("p", { class: "aviso-apoyos" }, el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
     el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
