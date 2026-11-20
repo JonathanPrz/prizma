@@ -116,6 +116,7 @@ async function probar() {
         const roles = nodo(trabajo ? 'trabajo-roles' : 'roles-acuerdo').locator('input').first();
         await nodo(trabajo ? 'trabajo-ir-acuerdos' : 'ir-acuerdos').click();
         assert.match(await activo.innerText(), /3 Acuerda/);
+        assert.equal(await nodo('continuar').innerText(), 'Guardar acuerdos');
         const posicion = await roles.evaluate(input => ({
           arriba: document.querySelector('#indicador-pasos').getBoundingClientRect().bottom,
           titulo: input.closest('section').querySelector('h2').getBoundingClientRect().top,
@@ -135,12 +136,29 @@ async function probar() {
         assert.equal(await roles.evaluate(r => r === document.activeElement), true);
         assert.equal(await roles.getAttribute('aria-invalid'), 'true');
         assert.equal(await roles.getAttribute('aria-describedby'), prefijo + 'roles-error');
+        if (width === 390) {
+          const mensaje = await nodo(prefijo + 'roles-error').evaluate(error => ({
+            trasPregunta: error.previousElementSibling?.tagName === 'LEGEND',
+            inicio: error.getBoundingClientRect().top,
+            fin: error.getBoundingClientRect().bottom,
+            primeraOpcion: error.nextElementSibling.getBoundingClientRect().top,
+            bordeBarra: document.querySelector('#barra-continuar').getBoundingClientRect().top
+          }));
+          assert(mensaje.trasPregunta && mensaje.inicio >= 0 && mensaje.fin <= mensaje.primeraOpcion &&
+            mensaje.fin <= mensaje.bordeBarra, JSON.stringify(mensaje));
+        }
         assert.equal(await nodo(trabajo ? 'trabajo-acuerdos-error' : 'acuerdos-error').innerText(), 'Revisa 4 campos.');
         await roles.check();
         assert.equal(await roles.getAttribute('aria-invalid'), null);
         assert.equal(await roles.getAttribute('aria-describedby'), null);
         assert(!(await nodo(prefijo + 'roles-error').isVisible()));
         assert.equal(await nodo(trabajo ? 'trabajo-acuerdos-error' : 'acuerdos-error').innerText(), 'Revisa 3 campos.');
+        await nodo(trabajo ? 'trabajo-fecha' : 'fecha-acuerdo').fill('2026-11-20');
+        await nodo(trabajo ? 'trabajo-revision' : 'revision-acuerdo').fill('2026-12-04');
+        await nodo(trabajo ? 'trabajo-criterio' : 'criterio-acuerdo').fill('Completa la tarea con el apoyo elegido.');
+        assert.equal(await nodo('continuar').innerText(), 'Guardar acuerdos');
+        await nodo(trabajo ? 'guardar-acuerdos-trabajo' : 'guardar-acuerdos').click();
+        assert.equal(await nodo('continuar').innerText(), 'Ver documento');
       }
       await verificarErrores(false);
 
@@ -155,6 +173,17 @@ async function probar() {
       });
       await primerAjuste.click();
       await verificarErrores(true);
+
+      await nodo('trabajo-descripcion-editar').click();
+      await nodo('trabajo-etapa').selectOption('practica');
+      const fichaCentro = nodo('elegir-pp-c-analisis');
+      await fichaCentro.evaluate(b => b.closest('details').open = true);
+      await fichaCentro.click();
+      await nodo('trabajo-ir-acuerdos').click();
+      assert.equal(await nodo('continuar').innerText(), 'Guardar acuerdos');
+      await nodo('trabajo-roles').locator('input').first().check();
+      await nodo('guardar-acuerdos-trabajo').click();
+      assert.equal(await nodo('continuar').innerText(), 'Ver documento para el centro');
       assert.deepEqual(errores, []);
       await pagina.close();
     }
