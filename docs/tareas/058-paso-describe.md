@@ -1,6 +1,6 @@
 # Tarea 058 · Paso 1 «Describe»: casos, áreas, frecuencia y redacción de las situaciones
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/058-paso-describe` · Pull request con destino `main`
+Estado: **integrada** (PR #78) · Asignada a: Codex · Rama: `codex/058-paso-describe` · Pull request con destino `main`
 
 ## Para qué
 El dueño encontró el paso 1 desordenado y la redacción de las situaciones difícil de entender. Aprobó estos cambios el 20-11-2026, después de dos revisiones adversariales. Valen para «Para un estudiante» y para «Práctica y trabajo», que usan el mismo formulario.
