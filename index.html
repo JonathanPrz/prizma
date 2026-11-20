@@ -52,9 +52,9 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     </div>
   </div>
   <nav id="indicador-pasos" class="indicador-pasos" aria-label="Pasos" hidden></nav>
-  <div id="barra-continuar" class="barra-continuar" hidden><button type="button" id="continuar" class="boton boton-principal">Guardar y ver acciones</button></div>
+  <div id="barra-continuar" class="barra-continuar" hidden><p id="continuar-conteo" class="ayuda" aria-live="polite"></p><button type="button" id="continuar" class="boton boton-principal">Guardar y ver acciones</button></div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
-  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="0" hidden>
+  <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="-1" hidden>
     <div class="cabecera-intro"><p class="ayuda">Algo que haces para todo el curso.</p><h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1><p class="bajada">Planifica tu <span data-voc="clase">clase</span> con opciones desde el inicio, para que todo el <span data-voc="curso">curso</span> pueda aprender sin esperar a que alguien se quede atrás.</p><a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog">¿Qué es el DUA y cómo usarlo?</a></div>
 <section id="paso-clase" class="paso">
   <h2><button type="button" id="paso-clase-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-clase-cuerpo"><span>1. Describe tu <span data-voc="clase">clase</span></span></button></h2>
@@ -114,7 +114,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <button type="button" id="documento-clase" class="boton" disabled>Ver documento</button>
     </section>
   </section>
-  <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="0" hidden>
+  <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="-1" hidden>
     <div class="cabecera-intro">
       <h1 id="t-estudiante">Apoyos para un estudiante</h1>
       <p id="bajada-apoyos" class="bajada">Cuando las acciones para todo el curso no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.</p>
@@ -132,7 +132,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <p id="iniciales-duplicadas" class="ayuda" role="status"></p>
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <label for="modalidad">¿Qué usa hoy para comunicarse o acceder?<select id="modalidad" aria-describedby="modalidad-ayuda"><option value="">No aplica</option><option value="senas">Lengua de señas</option><option value="braille">Braille</option><option value="ampliacion">Lupa o ampliación</option><option value="caa">Tablero o comunicación aumentativa</option><option value="lengua">Otra lengua materna</option></select><span id="modalidad-ayuda" class="ayuda">Prizma pondrá primero los apoyos para esa forma de comunicarse o acceder</span></label>
-        <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div></fieldset>
+        <fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="areas"></div><span class="error-campo" id="acuerdo-descripcion-error"></span></fieldset>
         <div hidden><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="dimensiones"></div></div>
         <div id="preparar-practica-campo" hidden><button type="button" id="preparar-practica" class="boton" aria-describedby="preparar-practica-ayuda">Preparar su práctica</button><p id="preparar-practica-ayuda" class="ayuda" role="status"></p></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
@@ -169,24 +169,24 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <p class="aviso-apoyos"><span class="icono-estado" aria-hidden="true">!</span> <strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
-      <button type="button" id="ir-acuerdos" class="boton">Continuar a acuerdos</button>
+      <button type="button" id="ir-acuerdos" class="boton">Continuar a acuerdos</button><span class="error-campo" id="acuerdo-seleccion-error"></span>
     </section>
     <p id="acuerdos-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
 <section id="paso-acuerdos" class="paso">
   <h2><button type="button" id="paso-acuerdos-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-acuerdos-cuerpo">3. Acuerdos</button></h2>
   <div id="paso-acuerdos-resumen" class="paso-resumen" hidden><p id="paso-acuerdos-texto"></p><button type="button" class="boton" id="paso-acuerdos-editar">Editar<span class="solo-lectores"> 3. Acuerdos</span></button></div>
-  <div id="paso-acuerdos-cuerpo" class="paso-cuerpo"><form id="acuerdos-caso" class="perfil-campos" novalidate>
-    <fieldset><legend>¿Con quiénes se acordó?</legend><div id="roles-acuerdo" class="opciones-acuerdo"></div></fieldset>
-    <label for="fecha-acuerdo">Fecha del acuerdo<input type="date" id="fecha-acuerdo" required></label>
-    <label for="revision-acuerdo">Próxima revisión<input type="date" id="revision-acuerdo" required></label>
-    <label for="criterio-acuerdo">¿Cómo sabremos que funciona?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required></textarea></label>
-    <div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="acuerdos-error" role="alert"></p></div><button type="submit" id="guardar-acuerdos" class="boton">Guardar acuerdos</button>
+  <div id="paso-acuerdos-cuerpo" class="paso-cuerpo"><form id="acuerdos-caso" class="perfil-campos" novalidate><div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="acuerdos-error" role="alert"></p></div>
+    <fieldset><legend>¿Con quiénes se acordó?</legend><div id="roles-acuerdo" class="opciones-acuerdo"></div><span class="error-campo" id="acuerdo-roles-error"></span></fieldset>
+    <div class="campo-acuerdo"><label for="fecha-acuerdo">Fecha del acuerdo<input type="date" id="fecha-acuerdo" required></label><span class="error-campo" id="acuerdo-fecha-error"></span></div>
+    <div class="campo-acuerdo"><label for="revision-acuerdo">Próxima revisión<input type="date" id="revision-acuerdo" required></label><span class="error-campo" id="acuerdo-revision-error"></span></div>
+    <div class="campo-acuerdo"><label for="criterio-acuerdo">¿Cómo sabremos que funciona?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required></textarea></label><span class="error-campo" id="acuerdo-criterio-error"></span></div>
+    <button type="submit" id="guardar-acuerdos" class="boton">Guardar acuerdos</button>
   </form></div>
 </section>
     <button type="button" id="documento-estudiante" class="boton">Ver documento</button>
     <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>+ Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
   </section>
-<section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="0" hidden>
+<section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="-1" hidden>
 <div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada" id="trabajo-bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
 <section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-peligro">Quitar caso</button></section>
 <section id="trabajo-descripcion" class="paso">
@@ -200,7 +200,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
 <label for="trabajo-puesto">Tipo de puesto<input type="text" id="trabajo-puesto" maxlength="60" aria-describedby="trabajo-puesto-ayuda"><span id="trabajo-puesto-ayuda" class="ayuda">Por ejemplo: administrativo, bodega, atención de público. No escribas el nombre de la empresa</span></label>
 <label for="trabajo-modalidad">¿Qué usa hoy para comunicarse o acceder?<select id="trabajo-modalidad" aria-describedby="trabajo-modalidad-ayuda"><option value="">No aplica</option><option value="senas">Lengua de señas</option><option value="braille">Braille</option><option value="ampliacion">Lupa o ampliación</option><option value="caa">Tablero o comunicación aumentativa</option><option value="lengua">Otra lengua materna</option></select><span id="trabajo-modalidad-ayuda" class="ayuda"></span></label>
-<fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="trabajo-areas"></div></fieldset>
+<fieldset class="perfil-opciones"><legend>¿En qué áreas encuentra barreras?</legend><div id="trabajo-areas"></div><span class="error-campo" id="trabajo-acuerdo-descripcion-error"></span></fieldset>
 <div hidden><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="trabajo-dimensiones" class="dimensiones-casos"></div></div>
 <label for="trabajo-ayuda">¿Qué le ayuda?<textarea id="trabajo-ayuda" maxlength="300" rows="2"></textarea></label>
 <label for="trabajo-voz">¿Qué dice la persona?<textarea id="trabajo-voz" maxlength="300" rows="2" aria-describedby="trabajo-voz-ayuda"></textarea><span id="trabajo-voz-ayuda" class="ayuda">Lo que propone, lo que le preocupa. No escribas diagnósticos</span></label>
@@ -212,18 +212,18 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <p id="centro-ayuda" class="ayuda">Primero elige los ajustes que puede hacer el centro</p>
         <button type="button" class="boton" id="preparar-centro" aria-describedby="centro-ayuda" aria-haspopup="dialog" aria-controls="documento-centro" disabled>Preparar documento para el centro</button>
       </section>
-<button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button></section>
+<button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button><span class="error-campo" id="trabajo-acuerdo-seleccion-error"></span></section>
 <p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
 <section id="trabajo-acuerdo" class="paso">
 <h2><button type="button" id="trabajo-acuerdo-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-acuerdo-cuerpo">3. Acuerdos</button></h2>
 <div id="trabajo-acuerdo-resumen" class="paso-resumen" hidden><p id="trabajo-acuerdo-texto"></p><button type="button" id="trabajo-acuerdo-editar" class="boton">Editar<span class="solo-lectores"> 3. Acuerdos</span></button></div>
-<div id="trabajo-acuerdo-cuerpo" class="paso-cuerpo"><form id="acuerdos-trabajo" class="perfil-campos" novalidate>
-<fieldset><legend>¿Con quiénes se acordó?</legend><div id="trabajo-roles" class="opciones-acuerdo"></div></fieldset>
-<label for="trabajo-fecha">Fecha del acuerdo<input type="date" id="trabajo-fecha" required></label>
-<label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label>
-<label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label>
+<div id="trabajo-acuerdo-cuerpo" class="paso-cuerpo"><form id="acuerdos-trabajo" class="perfil-campos" novalidate><div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="trabajo-acuerdos-error" role="alert"></p></div>
+<fieldset><legend>¿Con quiénes se acordó?</legend><div id="trabajo-roles" class="opciones-acuerdo"></div><span class="error-campo" id="trabajo-acuerdo-roles-error"></span></fieldset>
+<div class="campo-acuerdo"><label for="trabajo-fecha">Fecha del acuerdo<input type="date" id="trabajo-fecha" required></label><span class="error-campo" id="trabajo-acuerdo-fecha-error"></span></div>
+<div class="campo-acuerdo"><label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label><span class="error-campo" id="trabajo-acuerdo-revision-error"></span></div>
+<div class="campo-acuerdo"><label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label><span class="error-campo" id="trabajo-acuerdo-criterio-error"></span></div>
 <label for="trabajo-compartir">¿Qué decidió compartir la persona y con quién?<textarea id="trabajo-compartir" maxlength="300" rows="2"></textarea></label>
-<div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="trabajo-acuerdos-error" role="alert"></p></div><button type="submit" id="guardar-acuerdos-trabajo" class="boton">Guardar acuerdos</button></form></div></section>
+<button type="submit" id="guardar-acuerdos-trabajo" class="boton">Guardar acuerdos</button></form></div></section>
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>+ Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
