@@ -18,7 +18,48 @@ function luminancia(hex) {
     .reduce((suma, c, i) => suma + c * [0.2126, 0.7152, 0.0722][i], 0);
 }
 
+async function verificarRespaldoTipografico(navegador, origen) {
+  const pagina = await navegador.newPage();
+  try {
+    const medir = () => pagina.evaluate(async () => {
+      const muestra = document.createElement('p');
+      muestra.textContent = 'Apoyos para un estudiante. Marca las situaciones que aparecen y con qué frecuencia. Elige apoyos para organizar los pasos de una tarea y conversar sobre lo que le ayuda.';
+      muestra.style.cssText = 'position:absolute; width:max-content; white-space:nowrap; font:400 16px var(--fuente)';
+      document.body.append(muestra);
+      await document.fonts.ready;
+      const resultado = {
+        ancho: muestra.getBoundingClientRect().width,
+        cargadas: [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family)
+      };
+      muestra.remove();
+      return resultado;
+    });
+
+    await pagina.goto(origen);
+    const principal = await medir();
+    assert(principal.cargadas.includes('Public Sans'));
+    await pagina.route('**/vendor/fuentes/public-sans-latin.woff2', ruta => ruta.abort());
+    await pagina.reload();
+    const respaldo = await medir();
+    assert(!respaldo.cargadas.includes('Public Sans'));
+    if (!respaldo.cargadas.includes('Public Sans respaldo')) {
+      console.log('Medición omitida: Chromium no tiene disponible una fuente local del respaldo.');
+      return;
+    }
+    const diferencia = Math.abs(respaldo.ancho - principal.ancho) / principal.ancho;
+    assert(diferencia <= .02, `Diferencia de ancho del respaldo: ${(diferencia * 100).toFixed(2)} %`);
+    console.log(`Correcto: diferencia de ancho del respaldo con Public Sans bloqueada: ${(diferencia * 100).toFixed(2)} %.`);
+  } finally {
+    await pagina.close();
+  }
+}
+
 async function probar() {
+  const estilos = await fs.readFile(path.join(raiz, 'styles.css'), 'utf8');
+  const respaldo = estilos.match(/@font-face\s*\{[^{}]*font-family:\s*"Public Sans respaldo"[^{}]*\}/)?.[0];
+  assert(respaldo, 'Falta la declaración de Public Sans respaldo');
+  const src = respaldo.match(/src:\s*([^;]+);/)?.[1];
+  assert.equal(src, 'local("Arial"), local("Liberation Sans"), local("Helvetica"), local("Arimo")');
   const favicon = await fs.readFile(path.join(raiz, 'assets/favicon.svg'), 'utf8');
   assert.match(favicon, /<rect width="100" height="100" rx="22" fill="#1a2134"\/>/);
   const icono = await fs.readFile(path.join(raiz, 'assets/apple-touch-icon.png'));
@@ -40,6 +81,8 @@ async function probar() {
   let navegador;
   try {
     navegador = await chromium.launch({ executablePath: process.env.CHROMIUM_BIN || undefined, args: ['--no-sandbox'] });
+    const origen = 'http://127.0.0.1:' + servidor.address().port;
+    await verificarRespaldoTipografico(navegador, origen);
     for (const width of [390, 1280]) for (const colorScheme of ['light', 'dark']) {
       const pagina = await navegador.newPage({ viewport: { width, height: 844 }, colorScheme, reducedMotion: 'reduce' });
       pagina.setDefaultTimeout(10000);
@@ -52,7 +95,6 @@ async function probar() {
         localStorage.setItem('prizma.privacidad.v1', '1');
         localStorage.setItem('prizma.privacidad.v1.trabajo', '1');
       });
-      const origen = 'http://127.0.0.1:' + servidor.address().port;
       await pagina.goto(origen);
       await pagina.waitForSelector('#contexto');
       const logo = await pagina.locator('svg.logo').evaluate(svg => {
