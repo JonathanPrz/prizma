@@ -56,3 +56,21 @@ assert.equal(run('estado.trabajadorActivo'),run('activo'));assert(!run('Object.h
 run('prepararDocumentoTrabajo()');assert(todos(n('#opciones-documento')).filter(x=>x.tag==='input'&&x.name==='incluir').every(x=>x.checked===false));assert(!todos(n('#opciones-documento')).some(x=>String(x.value).startsWith('alumno:')));
 run('estado.trabajadores=[estado.trabajadores[0]];estado.trabajadores[0].seleccion={};pintarTrabajo()');assert.equal(todos(n('#trabajo-tarjetas')).filter(x=>x.id?.startsWith('elegir-tr-')&&run(`catalogo.find(r=>r.id==="${x.id.slice(7)}").subtipo==="proceso"`)).length,8);
 console.log('Correcto: guía y 14 ejemplos exactos, tres pestañas, casos y selecciones separados, prioridad de Audición/proceso, acuerdos/revisión/bloqueo, respaldo anterior y actual, límites/roles, privacidad de ambos modelos PDF y elección de personas sin marcar.');
+
+const idsTarjetas = (raiz) => todos(raiz).filter(x => x.id?.startsWith('elegir-')).map(x => x.id.slice(7));
+assert.deepEqual(json('ajustesTrabajo(normalizarTrabajador({dimensiones:{13:3}})).map(r => r.id)'), [
+  'tr-subtitulos', 'tr-interprete', 'tr-mensajes-escritos', 'tr-alertas-visuales', 'tr-formatos-formacion', 'tr-lengua-senas'
+]);
+run('Object.assign(trabajadorActual(), normalizarTrabajador({ dimensiones:{1:3}, modalidad:"senas" })); pintarTrabajo()');
+const primerasSenas = n('#trabajo-tarjetas').hijos[0];
+assert.equal(primerasSenas.tag, 'section');
+assert.deepEqual(idsTarjetas(primerasSenas).slice(0, 2).sort(), ['tr-interprete', 'tr-lengua-senas']);
+assert(todos(primerasSenas).some(x => x.className === 't-razon' && x.textContent === 'Porque usa: Lengua de señas'));
+run('Object.assign(trabajadorActual(), normalizarTrabajador({ etapa:"practica", dimensiones:{13:3}, modalidad:"senas" })); pintarTrabajo()');
+assert.deepEqual(idsTarjetas(n('#practica-profesional-grupos')), [
+  'pp-plan', 'pp-responsables', 'pp-visita', 'pp-formatos', 'pp-seguridad', 'pp-horas', 'pp-c-tecnologia',
+  'pp-c-escritas', 'pp-c-analisis', 'pp-c-seguimiento', 'pp-e-barrera', 'pp-e-donde', 'pp-e-conversar',
+  'pp-e-compartir', 'pp-e-acuerdo', 'pp-e-falla', 'pp-e-intereses'
+]);
+assert(todos(n('#practica-profesional-grupos')).every(x => !x.textContent?.startsWith('Porque usa:')));
+console.log('Correcto: Lengua de señas prioriza los dos ajustes de trabajo y muestra el motivo. Práctica y el caso sin modalidad conservan su orden.');

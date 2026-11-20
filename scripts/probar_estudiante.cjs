@@ -81,3 +81,27 @@ const pasosOriginales = ejecutar('catalogo.find(r=>r.id===Object.keys(estado.sel
 vm.runInContext('function primeraLista(n){if(!n||typeof n!=="object")return null;if(n.ol)return n.ol;for(const v of Object.values(n)){const l=primeraLista(v);if(l)return l;}return null;} primeraLista(definicionPdf().content)[0]={text:"Objeto que inserta pdfmake"}', contexto);
 assert.deepEqual(ejecutar('catalogo.find(r=>r.id===Object.keys(estado.seleccion)[0]).como'), pasosOriginales);
 console.log('Correcto: la transformación de listas por pdfmake no modifica los pasos del catálogo.');
+
+const tabla = ejecutar('APOYOS_MODALIDAD');
+const catalogo = ejecutar('catalogo');
+for (const [modalidad, ids] of Object.entries(tabla)) {
+  for (const id of ids) {
+    assert(['acceso', 'trabajo'].includes(catalogo.find(r => r.id === id)?.tipo), modalidad + ': ' + id);
+  }
+}
+vm.runInContext('estado.perfil.nivel = "basica"; estudianteActual().dimensiones = {1: 3}', contexto);
+assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id)'), [
+  'acc-1-ubicacion', 'acc-1-partes', 'acc-1-organizador', 'acc-7-luz',
+  'acc-1-agenda', 'acc-7-desfogue', 'acc-9-jornada', 'acc-9-rutina'
+]);
+vm.runInContext('estudianteActual().modalidad = "braille"', contexto);
+assert.equal(ejecutar('accesosVisibles()[0].id'), 'acc-6-braille');
+assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], estudianteActual())'), 'Porque usa: Braille');
+assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], {modalidad:"braille", dimensiones:{6:2}})'), 'Porque usa: Braille; y marcaste: Visión (seguido).');
+vm.runInContext('estudianteActual().modalidad = "ampliacion"; estudianteActual().dimensiones[6] = 2', contexto);
+assert.equal(ejecutar('accesosVisibles()[0].id'), 'acc-6-ampliar');
+assert(!ejecutar('accesosVisibles().some(r => r.id === "acc-6-braille")'));
+vm.runInContext('estado.perfil.nivel = "superior"; estudianteActual().modalidad = "lengua"; estudianteActual().dimensiones = {1:3}', contexto);
+assert.equal(ejecutar('accesosVisibles()[0].id'), 'sup-lengua');
+assert(!ejecutar('accesosVisibles().some(r => r.id === "acc-10-familia")'));
+console.log('Correcto: catálogo de modalidades, prioridad, motivo y exclusiones en básica y superior, y orden original sin modalidad.');
