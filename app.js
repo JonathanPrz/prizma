@@ -1111,10 +1111,16 @@ function actualizarContinuar() {
   const e = trabajo ? trabajadorActual() : estudianteActual();
   const cantidad = !personal ? elegidasOrdenadas().length : !e ? 0 : (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length;
   const conteo = $("#continuar-conteo");
-  const textoConteo = personal && e ?
-    plural(cantidad, "elegido", "elegidos") + " para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) :
-    plural(cantidad, "acción", "acciones") + " para el " + voc("curso");
-  if (conteo && conteo.textContent !== textoConteo) conteo.textContent = textoConteo;
+  if (conteo) {
+    const contador = $("#continuar-cantidad"), caso = $("#continuar-caso");
+    const texto = personal && e ? plural(cantidad, "elegido", "elegidos") :
+      plural(cantidad, "acción", "acciones");
+    const nombre = personal && e ? " para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) :
+      " para el " + voc("curso");
+    conteo.hidden = pasoActual === 1 && cantidad === 0;
+    if (contador.textContent !== texto) contador.textContent = texto;
+    if (caso.textContent !== nombre) caso.textContent = nombre;
+  }
   const terminados = pasosTerminados();
   document.querySelectorAll("#indicador-pasos .paso-terminado").forEach((marca, i) => {
     marca.hidden = !terminados[i];
@@ -2013,7 +2019,7 @@ async function iniciar() {
     const cabecera = $(".cabecera").getBoundingClientRect().bottom;
     const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?
       indicador.getBoundingClientRect().bottom : cabecera;
-    const inferior = barra.getBoundingClientRect().top;
+    const inferior = foco.closest("main") ? Math.min(innerHeight, barra.getBoundingClientRect().top) : innerHeight;
     const rect = foco.getBoundingClientRect();
     if (rect.top < superior + 8) window.scrollBy(0, rect.top - superior - 8);
     else if (rect.bottom > inferior - 8) window.scrollBy(0, Math.min(rect.bottom - inferior + 8, rect.top - superior - 8));

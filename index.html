@@ -39,7 +39,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 </header>
 <div id="persistencia-aviso" class="marco" role="status" hidden></div>
 <p id="instrumentos-aviso" class="marco aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Revisa qué instrumentos tiene el estudiante</p>
-<main class="marco disposicion">
+<main class="disposicion">
+  <div class="marco">
   <p id="estado-catalogo" role="status">Cargando los apoyos…</p>
   <div id="migracion-practica" role="status"></div>
   <div class="contexto" id="contexto" hidden>
@@ -61,7 +62,6 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     </div>
   </div>
   <nav id="indicador-pasos" class="indicador-pasos" aria-label="Pasos" hidden></nav>
-  <div id="barra-continuar" class="barra-continuar" hidden><p id="continuar-conteo" class="ayuda" aria-live="polite"></p><button type="button" id="continuar" class="boton boton-principal">Guardar y ver acciones</button></div>
   <p id="mochila-estado" class="solo-lectores" role="status"></p>
   <section id="panel-dua" class="explorador" role="tabpanel" aria-labelledby="tab-dua" tabindex="-1" hidden>
     <div class="cabecera-intro"><p class="ayuda">Algo que haces para todo el curso.</p><h1>Acciones para que todo tu <span data-voc="curso">curso</span> pueda aprender</h1><p class="bajada">Planifica tu <span data-voc="clase">clase</span> con opciones desde el inicio, para que todo el <span data-voc="curso">curso</span> pueda aprender sin esperar a que alguien se quede atrás.</p><a href="#guia-dua" class="enlace-guia-dua" aria-haspopup="dialog">¿Qué es el DUA y cómo usarlo?</a></div>
@@ -234,6 +234,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
+  </div>
+  <div id="barra-continuar" class="barra-continuar" hidden>
+    <div class="barra-contenido">
+      <p id="continuar-conteo" class="ayuda" aria-live="polite" aria-atomic="true" hidden><span id="continuar-cantidad"></span><span id="continuar-caso"></span></p>
+      <button type="button" id="continuar" class="boton boton-principal">Guardar y ver acciones</button>
+    </div>
+  </div>
 </main>
 
 
