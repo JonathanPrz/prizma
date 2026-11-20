@@ -4879,7 +4879,7 @@
       "Incluye los ajustes que el estudiante decidió pedir.",
       "Entrega una copia al estudiante."
     ],
-    "porque": "El Decreto 2.516 exige un plan de práctica acordado; los ajustes forman parte de ese acuerdo.",
+    "porque": "El Decreto 2.516 exige un plan de práctica acordado; los ajustes que el estudiante decidió pedir pueden incluirse en ese plan.",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -4903,7 +4903,7 @@
       "Acuerden los ajustes y quién los implementa.",
       "Fijen una fecha para revisarlos."
     ],
-    "porque": "La institución mantiene su deber de hacer ajustes también fuera del campus (Ley 20.422, art. 39).",
+    "porque": "La institución mantiene su deber de hacer ajustes también en la práctica (orientación del Mineduc sobre la Ley 20.422).",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -4912,8 +4912,7 @@
     "contextos": [],
     "respaldo": "orientacion-oficial",
     "fuentes": [
-      "mineduc-es-20422",
-      "ley-20422"
+      "mineduc-es-20422"
     ],
     "destacada": false,
     "revision": null
@@ -4952,7 +4951,7 @@
     "como": [
       "Planifica al menos una visita en terreno.",
       "Conversa a solas con el estudiante y después con el representante del centro.",
-      "Registra lo conversado y los ajustes revisados."
+      "Registra los acuerdos y ajustes revisados, sin datos de salud."
     ],
     "porque": "El Decreto 2.516 establece la supervisión en terreno del profesor tutor.",
     "areas": [],
@@ -5004,7 +5003,7 @@
       "Verifica qué cubre el seguro en esa actividad.",
       "Asegura que el estudiante reciba la inducción de seguridad en un formato que entienda."
     ],
-    "porque": "El Decreto 2.516 pide que el convenio defina la seguridad y la respuesta ante accidentes.",
+    "porque": "El plan de práctica incluye la prevención de riesgos, y el reglamento del liceo precisa la seguridad (Decreto 2.516).",
     "areas": [],
     "dimensiones": [],
     "niveles": [
@@ -5026,6 +5025,7 @@
     "como": [
       "Revisa si el caso requiere cambiar las horas mínimas u otras condiciones.",
       "Presenta una solicitud fundada a la SEREMI.",
+      "En la solicitud, explica qué condición necesita, sin incluir diagnósticos salvo que el estudiante lo decida.",
       "Mientras se resuelve, mantén el plan acordado."
     ],
     "porque": "No hay reducción automática por discapacidad: el Decreto 2.516 permite modificaciones excepcionales solicitadas a la SEREMI.",
@@ -5482,7 +5482,7 @@
       "Revisen opciones de centros según esos intereses.",
       "Incluye a la familia si el estudiante lo desea."
     ],
-    "porque": "La planificación centrada en la persona se asocia con mejores transiciones al trabajo.",
+    "porque": "Partir de sus intereses ayuda a elegir un lugar donde pueda participar y aprender.",
     "areas": [],
     "dimensiones": [],
     "niveles": [
