@@ -5,7 +5,7 @@ const path = require('node:path');
 const { chromium } = require('playwright');
 
 const raiz = path.resolve(__dirname, '..');
-const tipos = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json' };
+const tipos = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.woff2': 'font/woff2' };
 const pares = [
   ['tinta', 'papel', 4.5], ['tinta', 'superficie', 4.5], ['tenue', 'papel', 4.5],
   ['tenue', 'superficie', 4.5], ['sobre-acento', 'acento', 4.5],
@@ -37,14 +37,27 @@ async function probar() {
     for (const width of [390, 1280]) for (const colorScheme of ['light', 'dark']) {
       const pagina = await navegador.newPage({ viewport: { width, height: 844 }, colorScheme, reducedMotion: 'reduce' });
       pagina.setDefaultTimeout(10000);
-      const errores = [];
+      const errores = [], peticionesFuente = [];
+      pagina.on('request', req => {
+        if (req.resourceType() === 'font') peticionesFuente.push(req.url());
+      });
       pagina.on('pageerror', error => errores.push(error.message));
       await pagina.addInitScript(() => {
         localStorage.setItem('prizma.privacidad.v1', '1');
         localStorage.setItem('prizma.privacidad.v1.trabajo', '1');
       });
-      await pagina.goto('http://127.0.0.1:' + servidor.address().port);
+      const origen = 'http://127.0.0.1:' + servidor.address().port;
+      await pagina.goto(origen);
       await pagina.waitForSelector('#contexto');
+      const fuenteCargada = await pagina.evaluate(async () => {
+        await document.fonts.ready;
+        return document.fonts.check('16px "Public Sans"') &&
+          [...document.fonts].some(f => f.family === 'Public Sans' && f.status === 'loaded');
+      });
+      assert(fuenteCargada);
+      for (const selector of ['#panel-dua h1', '#guardar-clase', '#nivel']) {
+        assert.match(await pagina.locator(selector).evaluate(n => getComputedStyle(n).fontFamily), /^"Public Sans",/);
+      }
       const entorno = width + ' ' + colorScheme;
       const css = await pagina.evaluate(pares => Object.fromEntries([...new Set(pares.flatMap(p => p.slice(0, 2)))]
         .map(variable => [variable, getComputedStyle(document.documentElement).getPropertyValue('--' + variable).trim()])), pares);
@@ -74,6 +87,19 @@ async function probar() {
         assert(!resultado.desborde, contexto);
       }
 
+      async function verificarTitulos(panel) {
+        if (width !== 390) return;
+        const titulosLargos = await pagina.locator(panel).evaluate(panel => {
+          const plegados = [...panel.querySelectorAll('details:not([open])')].filter(d => !d.closest('.tarjeta'));
+          plegados.forEach(d => { d.open = true; });
+          const largos = [...panel.querySelectorAll('.tarjeta :is(h3,h4)')].filter(t => t.checkVisibility() &&
+            t.getBoundingClientRect().height > parseFloat(getComputedStyle(t).lineHeight) * 4 + 1);
+          plegados.forEach(d => { d.open = false; });
+          return largos.map(t => t.textContent);
+        });
+        assert.deepEqual(titulosLargos, []);
+      }
+
       async function verificarCasoActivo(lista) {
         const caso = pagina.locator(lista + ' button[aria-pressed="true"]');
         assert.match(await caso.innerText(), /Sin acuerdos/);
@@ -88,6 +114,7 @@ async function probar() {
       await pagina.selectOption('#nivel', 'basica');
       await pagina.click('#guardar-clase');
       await medir('DUA con resultados');
+      await verificarTitulos('#panel-dua');
       const tarjeta = pagina.locator('#elegir-dua-1-1');
       if (!await tarjeta.isVisible()) {
         await tarjeta.evaluate(boton => {
@@ -106,6 +133,9 @@ async function probar() {
       await pagina.click('#generar-documento');
       await pagina.waitForSelector('#vista[open]');
       await medir('vista previa del documento');
+      for (const selector of ['#hoja', '#hoja h2']) {
+        assert.match(await pagina.locator(selector).first().evaluate(n => getComputedStyle(n).fontFamily), /^Roboto,/);
+      }
       await pagina.click('#cerrar');
 
       await pagina.click('#tab-apoyos');
@@ -116,6 +146,10 @@ async function probar() {
       await pagina.check('input[name="dimension-1"][value="2"]');
       await pagina.click('#guardar-descripcion');
       await medir('estudiante con resultados');
+      const tarjetaEstudiante = pagina.locator('#panel-apoyos .tarjeta ol li').first();
+      assert.match(await tarjetaEstudiante.evaluate(n => getComputedStyle(n).fontFamily), /^"Public Sans",/);
+      await verificarTitulos('#panel-apoyos');
+      assert.deepEqual(peticionesFuente, [origen + '/vendor/fuentes/public-sans-latin.woff2']);
       await pagina.locator('#nivel').focus();
       const foco = await pagina.locator('#nivel').evaluate(n => {
         const css = getComputedStyle(n);
@@ -133,6 +167,7 @@ async function probar() {
       await pagina.check('input[name="trabajo-dimension-1"][value="2"]');
       await pagina.click('#guardar-descripcion-trabajo');
       await medir('trabajo con resultados');
+      await verificarTitulos('#panel-trabajo');
       const ajuste = pagina.locator('#trabajo-tarjetas [id^="elegir-"]').first();
       await ajuste.evaluate(boton => {
         for (let n = boton.parentElement; n; n = n.parentElement) if (n.tagName === 'DETAILS') n.open = true;

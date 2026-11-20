@@ -24,6 +24,7 @@ Nunca se registran diagnósticos: se describen barreras y tareas. Diseño comple
 | `docs/fuentes/`, `docs/diseno.md`, `docs/auditoria-plan.md` | Fuentes y decisiones | **No** |
 | `.claude/skills/` | Skills de Claude | **No** |
 | `vendor/pdfmake/` | Librería de terceros (MIT) | No |
+| `vendor/fuentes/` | Fuente Public Sans (OFL) | No |
 | `scripts/validar_catalogo.py` | Revisión del catálogo | Solo si la tarea lo pide |
 
 ## Cómo probar
