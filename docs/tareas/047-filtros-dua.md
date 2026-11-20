@@ -1,62 +1,75 @@
-# Tarea 047 · Preguntas del paso 1 del DUA: enfoque 3.0 y opciones que faltan
+# Tarea 047 · El DUA recomienda consideraciones, con opciones que describen la clase y colores de CAST
 
-Estado: **propuesta, pendiente de aprobación del dueño** · Asignada a: Codex · Rama: `codex/047-filtros-dua` · Pull request con destino `main`
+Estado: **propuesta v2, pendiente de revisión adversarial y aprobación del dueño** · Asignada a: Codex · Rama: `codex/047-consideraciones` · Pull request con destino `main`
 
 ## Para qué
-La auditoría 038 midió qué hace cada control, pero no si las preguntas son las adecuadas. Al revisarlas, Claude encontró seis problemas:
-1. Las opciones de «¿Qué quieres resolver?» ponen el problema en los estudiantes. DUA 3.0 dice que la barrera está en el diseño de la clase.
-2. Faltan situaciones frecuentes: el acceso sensorial y motor, el desafío para quien termina antes y la regulación emocional.
-3. «Quiero evaluar de formas distintas» es una meta, no una barrera.
-4. La meta de aprendizaje no cambia las sugerencias, pero el texto del paso hace pensar que sí.
-5. El contador «(11 · 1 para ti)» no se entiende.
-6. «Proyectar al curso» está en el paso 1, y «Moverse o salir de la sala» repite en parte la casilla de taller y terreno.
+El dueño quiere que, al marcar lo que quiere resolver, Prizma le recomiende **consideraciones DUA que pueda aplicar**, cada una con su forma de hacerlo. Hoy el resultado es una lista de 42 acciones ordenadas. Además:
+- las opciones de «¿Qué quieres resolver?» ponen el problema en los estudiantes y se pisan entre sí;
+- los colores de los principios no son los de CAST.
 
-**Puedes cambiar `data/necesidades.json` como indica esta tarea.** No cambies `data/recomendaciones.json`, `docs/fuentes/` ni `.claude/`.
+La v1 de esta tarea fue rechazada por una revisión adversarial: no cumplía el objetivo, repetía 10 consideraciones entre opciones y asignaba mal algunas.
+
+**Puedes cambiar `data/necesidades.json` y crear `data/consideraciones.json` como indica esta tarea.** No cambies `data/recomendaciones.json`, `docs/fuentes/` ni `.claude/`.
 
 ## Cambios
 
-### 1. Opciones de «¿Qué quieres resolver?»
-Los `id` no cambian, para no romper los datos guardados. Cambian el texto, las consideraciones y las dimensiones (situaciones de los casos que se conectan con cada opción), y hay tres opciones nuevas.
+### 1. Opciones de «¿Qué quieres resolver?» (`data/necesidades.json`)
+Describen el diseño de la clase, no a los estudiantes. **Ninguna consideración se repite entre opciones.** Se conservan los `id` antiguos. Se agrega una opción nueva, `desafio`.
 
-| id | Texto nuevo | Consideraciones | Dimensiones |
+| id | Texto | Consideraciones | Dimensiones |
 |---|---|---|---|
-| `motivacion` | La clase no logra mantener el interés | 7.1, 7.2, 7.3, 8.1 | — |
-| `comprension` | Las explicaciones o las instrucciones no llegan a todos | 1.2, 2.1, 2.5, 3.2 | 3 |
-| `tareas-largas` | Las tareas largas o con muchos pasos se vuelven difíciles de seguir | 5.3, 6.2, 6.3, 6.4 | 1 |
-| `participacion` | No todos logran participar o trabajar en grupo | 8.3, 8.4, 5.4, 9.2 | 4, 11 |
-| `lectoescritura` | Leer o escribir es una barrera para algunos | 2.2, 4.2, 5.2, 1.1 | 2 |
-| `evaluar` | Una sola forma de evaluar deja fuera a algunos | 5.1, 4.1, 8.5, 9.3 | 12 |
-| `lengua-cultura` | Hay estudiantes de otra lengua o cultura (sin cambio) | 2.3, 1.3, 2.4 | 10 |
-| `clima` | La convivencia del curso dificulta aprender | 7.4, 8.4, 9.4 | 7 |
-| **`acceso`** (nueva) | Algunos no ven bien, no oyen bien o se mueven con dificultad en la sala | 1.1, 1.2, 4.1, 4.2 | 6, 8, 13 |
-| **`desafio`** (nueva) | Algunos terminan antes o necesitan más desafío | 8.2, 7.1, 5.2, 3.3 | 14 |
-| **`regulacion`** (nueva) | La frustración o las emociones interrumpen el trabajo | 9.1, 9.2, 7.4, 9.3 | 5 |
+| `motivacion` | Las actividades no conectan con los intereses ni la vida del curso | 7.1, 7.2, 7.3, 8.1 | — |
+| `comprension` | La información llega de una sola forma o supone conocimientos que no todos tienen | 1.2, 2.1, 2.5, 3.1 | 3, 6, 13 |
+| `tareas-largas` | Las tareas largas no tienen pasos visibles ni apoyos para organizarse | 5.3, 6.2, 6.3, 6.4 | 1 |
+| `participacion` | La participación depende de una sola forma de interactuar | 8.3, 8.4, 9.4 | 4, 11 |
+| `lectoescritura` | Leer, escribir o manipular es la única vía para aprender o responder | 1.1, 2.2, 4.1, 4.2 | 2, 8 |
+| `evaluar` | Hay una sola forma de mostrar lo aprendido | 5.1, 5.2, 5.4, 8.5 | 12 |
+| `lengua-cultura` | Los materiales usan una sola lengua y una sola cultura | 1.3, 2.3, 2.4, 3.3 | 10 |
+| `clima` | El ambiente de la sala genera tensión, distracciones o frustración | 7.4, 9.1, 9.2 | 5, 7 |
+| `desafio` (nueva) | La tarea tiene un solo nivel de desafío | 3.4, 6.1, 8.2 | 14 |
 
-Cada dimensión queda en una sola opción, porque el aviso de «barreras repetidas» busca la primera opción que la contiene. La dimensión 9 (salud y energía) sigue sin opción para todo el curso.
+Quedan sin opción 3.2, 6.5 y 9.3, y la dimensión 9. Siguen apareciendo entre «las demás acciones».
 
-### 2. La meta de aprendizaje
-Bajo el campo de la meta, cambia la ayuda por: «Quita las barreras, no el desafío de aprender esto. La meta va a tu documento y te ayuda a elegir: Prizma no la usa para ordenar las acciones».
+**Compatibilidad:** los datos guardados con estos `id` cargan igual, pero `clima` y `evaluar` cambian sus consideraciones. Dilo en el pull request y agrega una prueba de que un estado antiguo carga sin errores.
 
-### 3. El contador de «Momento»
-- Cambia «(11 · 1 para ti)» por «(11 · 1 coincide)».
-- Bajo «Momento», agrega la línea: «"Coincide" cuenta las acciones que responden a lo que marcaste en el paso 1».
-- El nombre accesible de cada botón dice todo: «Antes: 11 acciones, 1 coincide con lo que marcaste».
+### 2. Consideraciones arriba (`data/consideraciones.json` y la pestaña DUA)
+- Crea `data/consideraciones.json` con las 36 consideraciones: `id`, `principio` (compromiso, representacion, accion), `pauta`, `titulo` (el mismo de `CONSIDERACIONES` en `app.js`) y `que_busca`. Copia «Qué busca» de la sección 8 de `docs/fuentes/dua-3.0.md`: es una síntesis propia de Prizma, no texto de CAST.
+- Valida el archivo al cargarlo, como el catálogo. Si falla, la pestaña funciona igual que hoy, sin el bloque de consideraciones.
+- Si hay al menos una opción marcada y guardada, el paso 2 empieza con **«Consideraciones para lo que marcaste»**:
+  - una tarjeta por consideración que responde, en el orden de la tabla;
+  - en cada tarjeta, el número y el título, el color de su principio, el «Qué busca» y debajo sus acciones, con su botón «Elegir» de siempre;
+  - respeta los filtros «Momento» y «Para qué»: si una consideración no tiene acciones visibles con el filtro activo, no se muestra;
+  - después va «Las demás acciones», con la vista de hoy por momento, sin repetir las que ya aparecieron arriba.
+- Sin opciones marcadas, el paso 2 queda como hoy.
+- «Para empezar» se mantiene solo cuando no hay opciones marcadas. Con opciones marcadas, su función la cumple el bloque de consideraciones.
 
-### 4. «Proyectar al curso»
-Muévelo del paso 1 al inicio del paso 2, antes de los filtros. Su comportamiento no cambia.
+### 3. Colores y nombres de los principios
+- Los colores siguen a CAST: **verde** para Compromiso, **morado** para Representación y **azul** para Acción y expresión. Cambia los valores de `--motivar`, `--presentar` y `--mostrar` en `styles.css`, en modo claro y oscuro.
+- Contraste de 4,5:1 o más sobre `--superficie` y sobre `--panel`, en los dos temas. Una prueba lo mide.
+- Los chips de «Para qué» muestran el nombre oficial y, debajo, el nombre simple: «Compromiso · motivar», «Representación · presentar» y «Acción y expresión · expresarse y organizarse».
 
-### 5. «Moverse o salir de la sala»
-Pasa a «Moverse dentro de la sala». Salir de la sala ya lo cubre la casilla «Mi clase tiene taller, laboratorio o terreno».
+### 4. «Momento» se mantiene
+Sigue como filtro, porque ordena la planificación. Cambia «(11 · 1 para ti)» por «(11 · 1 coincide)». Bajo «Momento» va la línea: «"Coincide" cuenta las acciones que responden a lo que marcaste en el paso 1».
 
-## Después de implementar
-- `python3 scripts/validar_catalogo.py`: debe seguir correcto. Si el validador revisa las necesidades, comprueba también las tres nuevas.
-- Actualiza las pruebas que usan los textos antiguos y agrega a `scripts/probar_filtros_vista.cjs`:
-  - que las tres opciones nuevas ordenan primero acciones de sus consideraciones;
-  - que ninguna dimensión aparece en más de una opción.
-- Capturas en `docs/marca/047-filtros/`, a 1280 y 390 px, en tema claro y oscuro.
+### 5. La meta y «Proyectar al curso»
+- Ayuda de la meta: «Quita las barreras, no el desafío de aprender esto. La meta va a tu documento y te ayuda a elegir: Prizma no la usa para ordenar las acciones».
+- «Proyectar al curso» pasa al inicio del paso 2. En proyección, el bloque de consideraciones se muestra sin conteos.
+- «Moverse o salir de la sala» pasa a «Moverse dentro de la sala».
+
+## Pruebas
+- `validar_catalogo.py` revisa que:
+  - ninguna consideración se repita entre opciones;
+  - cada dimensión de la 1 a la 14, salvo la 9, esté en exactamente una opción;
+  - `consideraciones.json` tenga las 36 y coincida con `CONSIDERACIONES`.
+- `probar_filtros_vista.cjs`:
+  - con una opción marcada aparecen sus consideraciones y sus acciones arriba, y no se repiten abajo;
+  - el bloque respeta «Momento» y «Para qué»;
+  - el contraste de los tres colores.
+- Actualiza los scripts que usan los textos antiguos: `probar_filtros_vista.cjs`, `probar_flujo_avisos.cjs` y otros.
+- Capturas en `docs/marca/047-consideraciones/`, a 1280 y 390 px, en tema claro y oscuro.
 
 ## Criterios de aceptación
-- [ ] Las 11 opciones tienen el texto y la conexión de la tabla. Los `id` antiguos se conservan.
-- [ ] Los datos guardados con las opciones antiguas siguen funcionando.
-- [ ] La ayuda de la meta, el contador y «Proyectar al curso» cambian como se indica.
-- [ ] Pasan todas las pruebas. No hay desplazamiento horizontal a 390 px.
+- [ ] Marcar una opción muestra arriba sus consideraciones, cada una con su «Qué busca» y sus acciones.
+- [ ] Ninguna consideración ni dimensión se repite entre opciones. Los datos antiguos cargan.
+- [ ] Colores de CAST con contraste AA en los dos temas.
+- [ ] Pasan el validador y todas las pruebas. No hay desplazamiento horizontal a 390 px.
