@@ -410,8 +410,14 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 .filtros-vista { display: grid; gap: .75rem; padding: 1rem; border-radius: .35rem; background: var(--panel); }
 .filtros-vista .chips { flex-direction: row; }
 .filtros-vista .chip { width: auto; max-width: 100%; }
-#momentos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.filtros-vista { container-type: inline-size; }
+#momentos, #propositos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 #momentos .chip { justify-content: center; width: 100%; padding-inline: .25rem; }
+#propositos .chip { width: 100%; min-width: 0; font-weight: 700; }
+@container (width < 40rem) {
+  #propositos { grid-template-columns: minmax(0, 1fr); }
+  #propositos small { display: inline; margin-inline-start: .35rem; }
+}
 #m-toda-la-clase { grid-column: 1 / -1; }
 .filtros-vista legend { font-weight: 800; margin-bottom: .5rem; }
 .filtros-vista > a { justify-self: start; min-height: 1.5rem; }
@@ -524,3 +530,6 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .empieza-por ul { margin-block: .25rem; }
 .empieza-por a { display: inline-block; min-height: 1.5rem; }
 .relacion-tarjeta { display: contents; }
+
+[aria-labelledby="t-dua-recomendadas"] > :is(.ayuda, .tarjetas) { margin-bottom: 1rem; }
+#acciones-proyectadas > li > ul { margin-top: 1rem; }

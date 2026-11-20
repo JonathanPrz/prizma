@@ -115,14 +115,14 @@ async function probar() {
           return [...new Set(trayectoriaGuardado)];
         });
         assert.equal(trayecto.length, 2, JSON.stringify(trayecto));
-        assert.match(await nodo('tarjetas').locator('summary').allTextContents().then(textos => textos.join(' ')), /responden a lo que marcaste/);
+        assert.match(await nodo('conteo').textContent(), /responden a lo que marcaste/);
         await verificarClics('momentos');
         await verificarClics('propositos');
         await nodo('paso-clase-editar').click();
         await pagina.locator('#necesidades button').first().click();
         await nodo('guardar-clase').click();
         assert.equal(await nodo('t-dua-marcadas').innerText(), 'Para lo que marcaste');
-        assert.equal(await nodo('t-dua-empezar').count(), 0);
+        assert.equal(await nodo('tarjetas').locator('.empieza-por').count(), 0);
         assert((await pagina.locator('#tarjetas .dua-marcadas .tarjeta:visible').count()) > 0);
       }
       if (width === 640) {
