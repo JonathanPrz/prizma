@@ -38,7 +38,6 @@
   --alerta: #8a4b08;
   --alerta-fondo: #fff7e6;
 
-  --motivar: #b0145a; --presentar: #00727d; --mostrar: #5a33a8;
   --hoja-compromiso: #21633b;
   --hoja-representacion: #693b97;
   --hoja-accion: #005873;
@@ -79,7 +78,6 @@
   --alerta: #f5c04e;
   --alerta-fondo: #3a2d12;
 
-  --motivar: #ff7fb0; --presentar: #4fd1dc; --mostrar: #b79cff;
   --compromiso: #8bdaa1; --representacion: #d2afff; --accion: #76d7ee;
   color-scheme: dark;
 }
@@ -106,7 +104,6 @@
     --alerta: #f5c04e;
     --alerta-fondo: #3a2d12;
 
-    --motivar: #ff7fb0; --presentar: #4fd1dc; --mostrar: #b79cff;
     --compromiso: #8bdaa1; --representacion: #d2afff; --accion: #76d7ee;
     color-scheme: dark;
   }
