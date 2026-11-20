@@ -29,7 +29,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </div>
 </header>
 <div id="persistencia-aviso" class="marco" role="status" hidden></div>
-<p id="instrumentos-aviso" class="marco" role="status" hidden>Revisa qué instrumentos tiene el estudiante</p>
+<p id="instrumentos-aviso" class="marco aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Revisa qué instrumentos tiene el estudiante</p>
 <main class="marco disposicion">
   <p id="estado-catalogo" role="status">Cargando los apoyos…</p>
   <div id="migracion-practica" role="status"></div>
@@ -93,7 +93,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         </fieldset>
         </details>
           <a href="#dua" id="limpiar-clase">Limpiar respuestas</a>
-          <button type="submit" class="boton boton-principal" id="guardar-clase">Guardar</button>
+          <button type="submit" class="boton" id="guardar-clase">Guardar</button>
         </form></div>
 </section>
     <section id="acciones" class="paso resultados" tabindex="-1">
@@ -119,12 +119,12 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <h1 id="t-estudiante">Apoyos para un estudiante</h1>
       <p id="bajada-apoyos" class="bajada">Cuando las acciones para todo el curso no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.</p>
       <div id="revision-situaciones" class="aviso-apoyos" role="region" aria-label="Revisa las situaciones guardadas" hidden>
-        <p id="revision-situaciones-texto"></p>
+        <p><span class="icono-estado" aria-hidden="true">!</span> <span id="revision-situaciones-texto"></span></p>
         <button type="button" id="revision-situaciones-entendido" class="boton">Entendido</button>
       </div>
       <div class="acciones-intro"><a href="#guia-apoyos" class="enlace-guia-apoyos" aria-haspopup="dialog" aria-controls="guia-apoyos">¿Qué son los apoyos para un estudiante?</a></div>
     </div>
-    <section id="casos" class="paso" aria-labelledby="t-casos"><h2 id="t-casos">Casos</h2><div id="lista-estudiantes" class="chips"></div><button type="button" id="quitar-estudiante" class="boton boton-sutil">Quitar a Estudiante 1</button></section>
+    <section id="casos" class="paso" aria-labelledby="t-casos"><h2 id="t-casos">Casos</h2><div id="lista-estudiantes" class="chips"></div><button type="button" id="quitar-estudiante" class="boton boton-peligro">Quitar a Estudiante 1</button></section>
 <section id="paso-descripcion" class="paso">
   <h2><button type="button" id="paso-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-descripcion-cuerpo">1. Describe la situación de un estudiante</button></h2>
   <div id="paso-descripcion-resumen" class="paso-resumen" hidden><p id="paso-descripcion-texto"></p><button type="button" class="boton" id="paso-descripcion-editar">Editar<span class="solo-lectores"> 1. Describe la situación de un estudiante</span></button></div>
@@ -137,7 +137,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <div id="preparar-practica-campo" hidden><button type="button" id="preparar-practica" class="boton" aria-describedby="preparar-practica-ayuda">Preparar su práctica</button><p id="preparar-practica-ayuda" class="ayuda" role="status"></p></div>
         <label for="estudiante-ayuda">¿Qué le ayuda?<textarea id="estudiante-ayuda" maxlength="300" rows="2" aria-describedby="facilitadores-ayuda"></textarea><span id="facilitadores-ayuda" class="ayuda">Por ejemplo: apoyos visuales, trabajar con un compañero.</span></label>
         <label for="estudiante-voz"><span id="voz-etiqueta">¿Qué dicen el estudiante y su familia?</span><textarea id="estudiante-voz" maxlength="300" rows="2" aria-describedby="voz-ayuda"></textarea><span id="voz-ayuda" class="ayuda">Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.</span></label>
-<p id="descripcion-error" role="alert"></p><button type="submit" id="guardar-descripcion" class="boton boton-principal">Guardar descripción</button></form></div>
+<div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="descripcion-error" role="alert"></p></div><button type="submit" id="guardar-descripcion" class="boton">Guardar descripción</button></form></div>
 </section>    <section id="estudiante" class="paso resultados" tabindex="-1" hidden>
       <h2 id="t-apoyos" tabindex="-1">2. Apoyos sugeridos</h2>
       <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo.</p>
@@ -145,7 +145,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
       <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
-      <p id="modalidad-revisar" role="status"></p><div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
+      <div class="mensaje-estado"><span class="icono-estado" aria-hidden="true">!</span><p id="modalidad-revisar" role="status"></p></div><div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
       <div id="apoyos-resultados"></div>
         <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83)</p>
         <p id="objetivos-superior" class="ayuda" hidden>En superior se hacen ajustes razonables que mantienen los resultados de aprendizaje</p>
@@ -154,7 +154,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <label id="asignatura-campo" class="asignatura" for="asignatura">Asignatura
           <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
         </label>
-        <p id="objetivos-aviso" class="aviso-apoyos">Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
+        <p id="objetivos-aviso" class="aviso-apoyos"><span class="icono-estado" aria-hidden="true">!</span> Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
         <label><input type="checkbox" id="paci-objetivos"> Tiene PACI</label>
         <label><input type="checkbox" id="paec-objetivos"> Tiene PAEC</label>
         <label><input type="checkbox" id="dec-objetivos"> Se aplica el protocolo DEC del establecimiento</label>
@@ -166,12 +166,12 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <label><input type="checkbox" id="paec-dec"> Tiene PAEC</label>
         <label><input type="checkbox" id="dec-dec"> Se aplica el protocolo DEC del establecimiento</label>
         <div id="desregulacion-resultados"></div>
-        <p class="aviso-apoyos"><strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
+        <p class="aviso-apoyos"><span class="icono-estado" aria-hidden="true">!</span> <strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
       <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
       <button type="button" id="ir-acuerdos" class="boton">Continuar a acuerdos</button>
     </section>
-    <p id="acuerdos-revisar" class="aviso-apoyos" role="status" hidden>Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
+    <p id="acuerdos-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
 <section id="paso-acuerdos" class="paso">
   <h2><button type="button" id="paso-acuerdos-toggle" class="paso-titulo" aria-expanded="true" aria-controls="paso-acuerdos-cuerpo">3. Acuerdos</button></h2>
   <div id="paso-acuerdos-resumen" class="paso-resumen" hidden><p id="paso-acuerdos-texto"></p><button type="button" class="boton" id="paso-acuerdos-editar">Editar<span class="solo-lectores"> 3. Acuerdos</span></button></div>
@@ -180,7 +180,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <label for="fecha-acuerdo">Fecha del acuerdo<input type="date" id="fecha-acuerdo" required></label>
     <label for="revision-acuerdo">Próxima revisión<input type="date" id="revision-acuerdo" required></label>
     <label for="criterio-acuerdo">¿Cómo sabremos que funciona?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required></textarea></label>
-    <p id="acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos" class="boton boton-principal">Guardar acuerdos</button>
+    <div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="acuerdos-error" role="alert"></p></div><button type="submit" id="guardar-acuerdos" class="boton">Guardar acuerdos</button>
   </form></div>
 </section>
     <button type="button" id="documento-estudiante" class="boton">Ver documento</button>
@@ -188,7 +188,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </section>
 <section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="0" hidden>
 <div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada" id="trabajo-bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
-<section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-sutil">Quitar caso</button></section>
+<section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-peligro">Quitar caso</button></section>
 <section id="trabajo-descripcion" class="paso">
 <h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2>
 <div id="trabajo-descripcion-resumen" class="paso-resumen" hidden><p id="trabajo-descripcion-texto"></p><button type="button" id="trabajo-descripcion-editar" class="boton">Editar<span class="solo-lectores"> 1. Describe la situación de una persona</span></button></div>
@@ -204,7 +204,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <div hidden><h3>¿Con qué frecuencia encuentra estas situaciones?</h3><div id="trabajo-dimensiones" class="dimensiones-casos"></div></div>
 <label for="trabajo-ayuda">¿Qué le ayuda?<textarea id="trabajo-ayuda" maxlength="300" rows="2"></textarea></label>
 <label for="trabajo-voz">¿Qué dice la persona?<textarea id="trabajo-voz" maxlength="300" rows="2" aria-describedby="trabajo-voz-ayuda"></textarea><span id="trabajo-voz-ayuda" class="ayuda">Lo que propone, lo que le preocupa. No escribas diagnósticos</span></label>
-<p id="trabajo-descripcion-error" role="alert"></p><button type="submit" id="guardar-descripcion-trabajo" class="boton boton-principal">Guardar descripción</button></form></div></section>
+<div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="trabajo-descripcion-error" role="alert"></p></div><button type="submit" id="guardar-descripcion-trabajo" class="boton">Guardar descripción</button></form></div></section>
 <section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p id="trabajo-ajustes-ayuda" class="ayuda">Los hace el empleador. También sirven para conversarlos con él</p><div id="trabajo-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div><div id="trabajo-tarjetas"></div>      <section id="bloque-practica-profesional" class="bloque-apoyo" aria-labelledby="t-practica-profesional" hidden>
         <h3 id="t-practica-profesional">Apoyos para la práctica profesional</h3>
         <a id="enlace-guia-practica" href="#guia-practica" aria-haspopup="dialog" aria-controls="guia-practica">¿Quién hace qué en la práctica?</a>
@@ -213,7 +213,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <button type="button" class="boton" id="preparar-centro" aria-describedby="centro-ayuda" aria-haspopup="dialog" aria-controls="documento-centro" disabled>Preparar documento para el centro</button>
       </section>
 <button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button></section>
-<p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden>Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
+<p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>
 <section id="trabajo-acuerdo" class="paso">
 <h2><button type="button" id="trabajo-acuerdo-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-acuerdo-cuerpo">3. Acuerdos</button></h2>
 <div id="trabajo-acuerdo-resumen" class="paso-resumen" hidden><p id="trabajo-acuerdo-texto"></p><button type="button" id="trabajo-acuerdo-editar" class="boton">Editar<span class="solo-lectores"> 3. Acuerdos</span></button></div>
@@ -223,7 +223,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label>
 <label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label>
 <label for="trabajo-compartir">¿Qué decidió compartir la persona y con quién?<textarea id="trabajo-compartir" maxlength="300" rows="2"></textarea></label>
-<p id="trabajo-acuerdos-error" role="alert"></p><button type="submit" id="guardar-acuerdos-trabajo" class="boton boton-principal">Guardar acuerdos</button></form></div></section>
+<div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="trabajo-acuerdos-error" role="alert"></p></div><button type="submit" id="guardar-acuerdos-trabajo" class="boton">Guardar acuerdos</button></form></div></section>
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>+ Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
@@ -238,7 +238,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
     <ol id="sel-lista" class="sel-lista"></ol>
     <div id="sel-estudiantes"></div>
-    <section id="seleccion-trabajo" hidden><h3>Práctica y trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton">Ver documento de trabajo</button></section>
+    <section id="seleccion-trabajo" hidden><h3>Práctica y trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton boton-principal">Ver documento de trabajo</button></section>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
@@ -248,8 +248,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
         <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
       </div>
       <p id="respaldo-ayuda" class="ayuda">El respaldo incluye todos los datos de Educación y Trabajo en un solo archivo. Sirve para no perderlos o pasarlos a otro computador.</p>
-      <p id="respaldo-estado" class="ayuda" aria-live="polite"></p>
-      <button type="button" id="borrar" class="boton boton-sutil">Borrar todo</button>
+      <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><span class="icono-estado icono-exito" aria-hidden="true">✓</span><p id="respaldo-estado" class="ayuda" aria-live="polite"></p></div>
+      <button type="button" id="borrar" class="boton boton-peligro">Borrar todo</button>
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
     </div>
   </aside>
@@ -269,7 +269,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <h3>Desde 100 trabajadores</h3><ol start="5"><li>Contratar al menos un 1 % de personas con discapacidad, contar con una persona de recursos humanos certificada en inclusión y capacitar al equipo cada año (Código del Trabajo, arts. 157 bis, 157 quáter y 157 quinquies).</li></ol>
 <h3>Sector público</h3><ol start="6"><li>Selección preferente en igualdad de mérito, y cuota en instituciones con 100 o más funcionarios (Ley 20.422, art. 45).</li></ol>
 <h3>Si se rechaza un ajuste</h3><ol start="7"><li>La persona puede consultar a la Dirección del Trabajo o pedir tutela laboral. Los plazos dependen del caso: revísalos en el <a href="https://www.dt.gob.cl/portal/1628/w3-article-103247.html" target="_blank" rel="noopener noreferrer">sitio de la Dirección del Trabajo</a>.</li></ol>
-<p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton">Entendido</button></form></dialog>
+<p>Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.</p><form method="dialog"><button type="submit" class="boton boton-principal">Entendido</button></form></dialog>
 <dialog id="guia-dua" class="aviso-privacidad" aria-labelledby="t-guia-dua">
   <h2 id="t-guia-dua" tabindex="-1" autofocus>¿Qué es el DUA y cómo usarlo?</h2>
   <h3>Qué es</h3><p>El Diseño Universal para el Aprendizaje (DUA) es una forma de planificar. En vez de preparar la <span data-voc="clase">clase</span> para un estudiante «promedio» y adaptarla después, se diseña desde el principio con opciones para todos. Se organiza en 3 principios:</p>
@@ -351,7 +351,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <fieldset><legend>Ajustes que la persona decide compartir</legend><div id="opciones-centro"></div></fieldset>
   <label><input type="checkbox" id="decision-centro" aria-describedby="decision-centro-ayuda"> La persona revisó este documento y decidió compartirlo</label>
   <p id="decision-centro-ayuda" class="ayuda" role="status"></p>
-  <p id="error-centro" role="status"></p>
+  <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><p id="error-centro" role="status"></p></div>
   <button type="button" id="ver-centro" class="boton boton-principal" aria-describedby="decision-centro-ayuda" disabled>Ver documento</button>
   <button type="button" id="cancelar-centro" class="boton">Cancelar</button>
 </dialog>
@@ -371,7 +371,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <dialog id="incluir-documento" class="aviso-privacidad" aria-labelledby="t-incluir-documento">
   <h2 id="t-incluir-documento" tabindex="-1" autofocus>¿Qué quieres incluir en el documento?</h2>
   <fieldset><legend>Contenido</legend><div id="opciones-documento"></div></fieldset>
-  <p id="error-documento" role="status"></p>
+  <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><p id="error-documento" role="status"></p></div>
   <button type="button" class="boton boton-principal" id="generar-documento">Ver documento</button>
   <button type="button" class="boton" id="cancelar-documento">Cancelar</button>
 </dialog>
@@ -385,7 +385,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <button type="button" id="cerrar" class="boton boton-sutil">Cerrar</button>
     </div>
     <p class="ayuda">Si usas un lector de pantalla, lee el documento en esta vista previa: el PDF no tiene etiquetas de estructura.</p>
-    <p id="vista-estado" class="ayuda" aria-live="polite"></p>
+    <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><span class="icono-estado icono-exito" aria-hidden="true">✓</span><p id="vista-estado" class="ayuda" aria-live="polite"></p></div>
   </div>
   <article id="hoja" class="hoja"></article>
 </dialog>
