@@ -87,9 +87,11 @@ const servidor = http.createServer((req, res) => {
         await page.keyboard.press('Tab');
         const dato = await page.evaluate(() => {
           const n = document.activeElement, r = n.getBoundingClientRect(), b = document.querySelector('#barra-continuar');
-          return { id: n.id || n.name || n.tagName, barra: b.getClientRects().length && !b.contains(n), bottom: r.bottom, top: b.getBoundingClientRect().top, dentro: !!n.closest('#panel-apoyos, #panel-trabajo') };
+          const barra = b.getBoundingClientRect();
+          const tapaFoco = b.getClientRects().length && !b.contains(n) && r.bottom > barra.top - 1 && r.top < barra.bottom + 1;
+          return { id: n.id || n.name || n.tagName, tapaFoco, dentro: !!n.closest('#panel-apoyos, #panel-trabajo') };
         });
-        if (dato.barra && dato.id !== "BODY") assert(dato.bottom <= dato.top - 1, JSON.stringify(dato));
+        if (dato.id !== "BODY") assert(!dato.tapaFoco, JSON.stringify(dato));
         if (dato.dentro) vistos.add(dato.id);
         if (i > 20 && dato.id === 'BODY') break;
       }

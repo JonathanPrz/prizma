@@ -73,6 +73,12 @@ async function probar() {
 
       await nodo('tab-apoyos').click();
       await nodo('iniciales').fill('JP');
+      assert(!(await nodo('continuar-conteo').isVisible()));
+      assert(await nodo('continuar').evaluate(b => {
+        const contenido = b.parentElement;
+        return Math.abs(contenido.getBoundingClientRect().right -
+          parseFloat(getComputedStyle(contenido).paddingRight) - b.getBoundingClientRect().right) <= 1;
+      }));
       const area = nodo('area-0');
       const estiloControl = n => {
         const css = getComputedStyle(n);
@@ -138,6 +144,8 @@ async function probar() {
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
+      assert(await nodo('continuar-conteo').isVisible());
+      assert.equal(await nodo('continuar-conteo').textContent(), '0 elegidos para JP');
       const medidas = await nodo('panel-apoyos').evaluate(n => ({
         ancho: n.getBoundingClientRect().width,
         columnas: [...n.querySelectorAll('.tarjetas')].filter(l => l.getClientRects().length)
@@ -161,7 +169,40 @@ async function probar() {
       await detalle.locator('summary').click();
       await elegir.click();
       assert(await detalle.evaluate(d => d.open));
-      assert.equal(await nodo('continuar-conteo').innerText(), '1 elegido para JP');
+      assert(await nodo('continuar-conteo').isVisible());
+      assert.equal(await nodo('continuar-conteo').textContent(), '1 elegido para JP');
+      if (width === 390) {
+        assert(await nodo('continuar-conteo').evaluate(n => {
+          const caso = n.querySelector('#continuar-caso');
+          return n.getBoundingClientRect().height <= parseFloat(getComputedStyle(n).lineHeight) &&
+            getComputedStyle(caso).position === 'absolute' && caso.getBoundingClientRect().width === 1;
+        }));
+      }
+      const geometria = await pagina.evaluate(async () => {
+        const barra = document.querySelector('#barra-continuar');
+        const raiz = document.documentElement;
+        const pie = document.querySelector('.pie');
+        const posicion = scrollY;
+        const fin = raiz.scrollHeight - innerHeight;
+        const desplazar = async y => {
+          window.scrollTo(0, y);
+          await new Promise(ok => requestAnimationFrame(() => requestAnimationFrame(ok)));
+          return barra.getBoundingClientRect();
+        };
+        const mitad = await desplazar(fin / 2);
+        const final = await desplazar(fin);
+        const medidas = {
+          visibleMitad: mitad.top >= 0 && Math.abs(mitad.bottom - innerHeight) <= 1,
+          anchoCompleto: mitad.left === 0 && mitad.width === raiz.clientWidth &&
+            getComputedStyle(barra).backgroundColor === getComputedStyle(pie).backgroundColor,
+          antesPie: Math.abs(final.bottom - pie.getBoundingClientRect().top) <= 1,
+          sinFranja: Math.abs(pie.getBoundingClientRect().bottom - innerHeight) <= 1 &&
+            getComputedStyle(document.body).paddingBottom === '0px'
+        };
+        await desplazar(posicion);
+        return medidas;
+      });
+      assert.deepEqual(geometria, { visibleMitad: true, anchoCompleto: true, antesPie: true, sinFranja: true });
 
       async function verificarErrores(trabajo) {
         const prefijo = trabajo ? 'trabajo-acuerdo-' : 'acuerdo-';
@@ -209,6 +250,23 @@ async function probar() {
         await nodo(trabajo ? 'trabajo-revision' : 'revision-acuerdo').fill('2026-12-04');
         await nodo(trabajo ? 'trabajo-criterio' : 'criterio-acuerdo').fill('Completa la tarea con el apoyo elegido.');
         assert.equal(await nodo('continuar').innerText(), 'Guardar acuerdos');
+        const ultimoCampo = nodo(trabajo ? 'acuerdos-trabajo' : 'acuerdos-caso').locator('textarea').last();
+        assert(await ultimoCampo.evaluate(campo => {
+          const barra = document.querySelector('#barra-continuar');
+          window.scrollBy(0, campo.getBoundingClientRect().bottom - barra.getBoundingClientRect().top - 12);
+          const cubierto = campo.getBoundingClientRect().bottom > barra.getBoundingClientRect().top;
+          campo.blur();
+          campo.focus({ preventScroll: true });
+          return cubierto;
+        }));
+        assert(await ultimoCampo.evaluate(campo => {
+          const r = campo.getBoundingClientRect();
+          const indicador = document.querySelector('#indicador-pasos');
+          const arriba = getComputedStyle(indicador).position === 'sticky' ?
+            indicador.getBoundingClientRect().bottom : document.querySelector('.cabecera').getBoundingClientRect().bottom;
+          return document.activeElement === campo && r.top >= arriba &&
+            r.bottom <= Math.min(innerHeight, document.querySelector('#barra-continuar').getBoundingClientRect().top);
+        }));
         await nodo(trabajo ? 'guardar-acuerdos-trabajo' : 'guardar-acuerdos').click();
         assert.equal(await nodo('continuar').innerText(), 'Ver documento');
       }
