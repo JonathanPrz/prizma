@@ -25,7 +25,7 @@ for(const nivel of ['basica','media','superior']){vm.runInContext(`estado.perfil
 vm.runInContext('estado.perfil.nivel="parvularia"',c);assert.equal(e('hayPracticas()'),false);assert.equal(e('practicaActiva()'),false);assert.equal(e('practicasVisibles().length'),0);assert(!e('documento().resumen.flat().join(". ")').includes('Clase con taller'));
 vm.runInContext(`var original=catalogo;var modelo=catalogo.find(r=>r.tipo==='dua');catalogo=catalogo.filter(r=>r.tipo!=='dua').concat([
  {...modelo,id:'sim-practica',consideracion:'1.1',contextos:['practica'],destacada:false},
- {...modelo,id:'sim-necesidad',consideracion:'4.1',contextos:[],destacada:false},
+ {...modelo,id:'sim-necesidad',consideracion:'5.1',contextos:[],destacada:false},
  {...modelo,id:'sim-detalles',consideracion:'1.2',contextos:['crear','grupo'],destacada:false},
  {...modelo,id:'sim-destacada',consideracion:'1.3',contextos:[],destacada:true}
 ]);estado.perfil={nivel:'media',practica:true,actividad:['crear'],evidencia:['grupo'],meta:''};estado.necesidades=['evaluar'];estado.momentos=[];estado.propositos=[]`,c);

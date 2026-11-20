@@ -1,4 +1,5 @@
 """Revisa data/recomendaciones.json contra las reglas de docs/diseno.md, sección 5. Uso: python3 scripts/validar_catalogo.py"""
+from collections import Counter
 import json, sys
 R = json.load(open("data/recomendaciones.json"))
 F = {f["id"] for f in json.load(open("data/fuentes.json"))}
@@ -59,6 +60,17 @@ NEC = json.load(open("data/necesidades.json"))
 for n in NEC:
     errores += [f"necesidad {n['id']}: consideración inválida {c}" for c in n["consideraciones"] if c not in CONS]
     errores += [f"necesidad {n['id']}: situación inválida {d}" for d in n.get("dimensiones", []) if d not in range(1, 15)]
+consideraciones_opciones = Counter(c for n in NEC for c in n["consideraciones"])
+errores += [f"Consideración repetida entre opciones DUA: {c}" for c, veces in consideraciones_opciones.items() if veces > 1]
+dimensiones_opciones = Counter(d for n in NEC for d in n.get("dimensiones", []))
+if dimensiones_opciones != Counter(set(range(1, 15)) - {9}):
+    errores.append("Las opciones DUA deben cubrir una vez cada dimensión salvo la 9.")
+consideraciones = json.load(open("data/consideraciones.json"))
+if (not isinstance(consideraciones, list) or len(consideraciones) != len(CONS)
+        or any(not isinstance(c, dict) or not isinstance(c.get("id"), str)
+               or not isinstance(c.get("que_busca"), str) or not c["que_busca"].strip() for c in consideraciones)
+        or {c["id"] for c in consideraciones} != CONS):
+    errores.append("consideraciones.json debe tener las 36 consideraciones DUA con texto en que_busca.")
 dua = [r["consideracion"] for r in R if r["tipo"] == "dua"]
 for n in NIVELES:
     faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})

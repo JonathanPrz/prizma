@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const leer=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const opciones=[...leer('index.html').split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m=>({value:m[1]}));
-const almacen=new Map();const c=vm.createContext({document:{querySelector:s=>s==='.logo'?{outerHTML:leer('index.html').match(/<svg class="logo".*?<\/svg>/)[0]}:{options:opciones},querySelectorAll:()=>[]},localStorage:{getItem:k=>almacen.get(k),setItem:(k,v)=>almacen.set(k,v)}});
+const almacen=new Map();const c=vm.createContext({getComputedStyle:()=>({getPropertyValue:()=> '#21633b'}),document:{querySelector:s=>s==='.logo'?{outerHTML:leer('index.html').match(/<svg class="logo".*?<\/svg>/)[0]}:{options:opciones},querySelectorAll:()=>[]},localStorage:{getItem:k=>almacen.get(k),setItem:(k,v)=>almacen.set(k,v)}});
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
 const run=s=>vm.runInContext(s,c), e=s=>JSON.parse(JSON.stringify(run(s)));
 run(`catalogo=${leer('data/recomendaciones.json')}; necesidades=${leer('data/necesidades.json')}; fuentes=Object.fromEntries(${leer('data/fuentes.json')}.map(f=>[f.id,f]));`);

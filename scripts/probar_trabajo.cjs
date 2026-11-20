@@ -6,7 +6,7 @@ let c;
 const todos=x=>(x?.hijos||[]).filter(h=>typeof h==='object').flatMap(h=>[h,...todos(h)]);
 function nodo(tag='div'){return {tag,id:'',hijos:[],parentElement:{},get children(){return this.hijos.filter(h=>typeof h==='object');},eventos:{},options:opciones,value:'',isConnected:true,open:false,replaceChildren(...h){this.hijos=h;for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},append(...h){this.hijos.push(...h);for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},setAttribute(k,v){this[k]=String(v);if(k==='id')nodos.set('#'+v,this);},getAttribute(k){return this[k];},addEventListener(t,f){this.eventos[t]=f;},focus(){c.document.activeElement=this;},scrollIntoView(){},closest(){return null;},showModal(){this.open=true;},close(){this.open=false;},querySelector(s){return todos(this).find(x=>s.includes('name="'+x.name+'"')&&s.includes('value="'+x.value+'"'));}};}
 const n=s=>{if(!nodos.has(s))nodos.set(s,nodo());return nodos.get(s);};
-c=vm.createContext({document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{
+c=vm.createContext({getComputedStyle:()=>({getPropertyValue:()=> '#21633b'}),document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{
  if(s==='#lista-trabajadores button')return n('#lista-trabajadores').hijos;
  if(s==='#lista-estudiantes button')return n('#lista-estudiantes').hijos;
  if(s==='input[name="rol-trabajo"]:checked')return todos(n('#trabajo-roles')).filter(x=>x.tag==='input'&&x.checked);

@@ -27,8 +27,10 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/039-co
    await p.click('#paso-clase-editar');await p.click('#limpiar-clase');assert(!await p.locator('#practica').isChecked());assert.equal(await p.evaluate(()=>estado.perfil.practica),true);await p.click('#guardar-clase');assert.equal(await p.evaluate(()=>estado.perfil.practica),false);
    await p.evaluate(()=>{estado.estudiantes.push({id:'otro',...normalizarEstudiante({iniciales:'BB',dimensiones:{1:2,2:2}}),seleccion:{}});pintarRepeticiones();});
    await p.click('#m-despues');await p.click('#proposito-presentar');
-   await p.click('#barrera-1');assert(await p.evaluate(()=>estado.necesidades.includes('tareas-largas')));assert.equal(await p.evaluate(()=>borradorDua),null);assert.equal(await p.evaluate(()=>document.activeElement.id),'t-dua-empezar');
-   assert.equal(await p.locator('#t-dua-empezar').innerText(),'Para empezar');assert.equal(await p.locator('#t-dua-empezar + p').innerText(),'Las acciones que mejor responden a lo que describiste.');assert.equal(await p.locator('#tarjetas > details > p.ayuda').count(),0);
+   await p.click('#barrera-1');assert(await p.evaluate(()=>estado.necesidades.includes('tareas-largas')));assert.equal(await p.evaluate(()=>borradorDua),null);assert.equal(await p.evaluate(()=>document.activeElement.id),'t-dua-marcadas');
+   assert.equal(await p.locator('#t-dua-marcadas').innerText(),'Para lo que marcaste');
+   assert.deepEqual(await p.evaluate(()=>[estado.momentos,estado.propositos]),[['despues'],['presentar']]);
+   await p.getByRole('button',{name:'Quitar filtros'}).click();
    assert.equal(await p.locator('.cabecera-intro').filter({hasText:'Algo que haces para todo el curso.'}).count(),1);
    await p.locator('#tarjetas section button[id^="elegir-"]').first().click();assert.equal(await p.locator('#continuar').innerText(),'Ir a tu selección (1 elegidas)');if(await p.locator('#continuar').isVisible())await p.click('#continuar');else await p.click('#indicador-pasos a[href="#seleccion-dua"]');assert.equal(await p.locator('#continuar').innerText(),'Ver documento');await foto('dua');
    await p.click('#documento-clase');await p.click('#generar-documento');await p.waitForSelector('#vista[open]');
