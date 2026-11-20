@@ -30,7 +30,7 @@ assert.deepEqual(json('normalizarEstudiante({acuerdo:{roles:["persona"]}}).acuer
 assert.equal(run('normalizarTrabajadores(Array.from({length:11},()=>({id:"repetido",seleccion:{}}))).length'),10);
 assert.equal(run('new Set(normalizarTrabajadores([{id:"repetido"},{id:"repetido"},{id:"<invalido>"}]).map(e=>e.id)).size'),3);
 assert.deepEqual(json('seleccionValidada({"tr-subtitulos":"NO","acc-1-agenda":"Sí"},false)'),{'acc-1-agenda':'Sí'});
-const alumnos=json('estado.estudiantes');run('mostrarPestana("trabajo");prepararTrabajo()');assert(n('#nivel-campo').hidden);assert(n('#practica-campo').hidden);assert.deepEqual(json('estado.estudiantes'),alumnos);
+const alumnos=json('estado.estudiantes');run('mostrarPestana("trabajo");prepararTrabajo()');assert(!n('#nivel-campo').hidden);assert.equal(n('#nivel').value,'practica-trabajo');assert(n('#practica-campo').hidden);assert.deepEqual(json('estado.estudiantes'),alumnos);
 run('guardarDescripcionTrabajo()');assert(n('#trabajo-descripcion-error').textContent.includes('al menos una situación'));run('agregarTrabajador()');assert.equal(run('estado.trabajadores.length'),1);
 run('Object.assign(trabajadorActual(),normalizarTrabajador({iniciales:"AB2",tipoPuesto:"Bodega",dimensiones:{13:3},ayuda:"Avisos escritos",voz:"VOZ_TRABAJO"}));sincronizarTrabajo();guardarDescripcionTrabajo()');
 assert.equal(n('#trabajo-descripcion-cuerpo').hidden,true);
@@ -46,7 +46,7 @@ run('Object.assign(trabajadorActual(),normalizarTrabajador({iniciales:"AB2",dime
 run('Object.assign(estudianteActual(),normalizarEstudiante({iniciales:"JP",dimensiones:{6:2},voz:"VOZ_ESCOLAR"}));estudianteActual().seleccion={"acc-1-agenda":"NOTA_ESCOLAR"};estado.seleccion={"dua-6-2":"NOTA_CURSO"};trabajadorActual().seleccion={"tr-etapas":"NOTA_TRABAJO"};inclusionTrabajo=estado.trabajadores.map(e=>e.id)');
 const trabajo=json('documentoTrabajo()'),escuela=json('documento({curso:true,estudiantes:estado.estudiantes.map(e=>e.id)})');
 assert(!JSON.stringify(trabajo).includes('VOZ_ESCOLAR'));assert(!JSON.stringify(trabajo).includes('NOTA_CURSO'));assert(!JSON.stringify(escuela).includes('VOZ_TRABAJO'));assert(!JSON.stringify(escuela).includes('NOTA_TRABAJO'));assert(!JSON.stringify(escuela).includes('tr-subtitulos'));
-const pdf=json('definicionPdf()');assert.equal(pdf.info.title,'Plan de ajustes en el trabajo');assert(!JSON.stringify(pdf).includes('VOZ_ESCOLAR'));assert(JSON.stringify(pdf).includes('Persona trabajadora'));assert.equal(run('definicionPdf().footer(2,4).columns[0].text'),run('PIE_TRABAJO'));
+const pdf=json('definicionPdf()');assert.equal(pdf.info.title,'Plan de ajustes en el trabajo');assert(!JSON.stringify(pdf).includes('VOZ_ESCOLAR'));assert(JSON.stringify(pdf).includes('Persona trabajadora'));assert.equal(run('definicionPdf().footer(2,4).columns[0].text'),run('PIE_TRABAJO("trabajo")'));
 run('inclusionTrabajo=null');assert(!JSON.stringify(json('definicionPdf()')).includes('VOZ_TRABAJO'));
 run('guardar();cargar()');c.entrada={app:'prizma',version:2,...json('estado')};const vuelta=json('validarRespaldo(entrada)');assert.equal(vuelta.descartadas,0);assert.deepEqual(vuelta.trabajadores,json('estado.trabajadores'));assert.deepEqual(vuelta.estudiantes,json('estado.estudiantes'));
 c.mal={...c.entrada,trabajadores:Array(11).fill(c.entrada.trabajadores[0])};assert.throws(()=>run('validarRespaldo(mal)'));

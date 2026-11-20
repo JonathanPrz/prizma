@@ -4,8 +4,8 @@
 
 Página web estática que ofrece apoyos concretos, con fuente, para aprender y trabajar en igualdad. Se basa en DUA 3.0 y en la normativa chilena. Tiene tres partes:
 - **Para el curso (DUA):** acciones para todo el curso. Niveles: parvularia, básica, media (CH y TP) y superior (universidad, IP y CFT).
-- **Para un estudiante:** adecuaciones (Decreto 83) o, en superior, ajustes razonables. Incluye la práctica profesional.
-- **Para el trabajo:** ajustes para empresas e instituciones que reciben trabajadores con discapacidad (Ley 20.422 y Código del Trabajo).
+- **Para un estudiante:** adecuaciones (Decreto 83) o, en superior, ajustes razonables.
+- **Práctica y trabajo:** quinto nivel del selector, con apoyos para la práctica profesional y ajustes para el primer empleo o el trabajo. Mantiene sus casos y su mochila separados de Educación.
 
 Nunca se registran diagnósticos: se describen barreras y tareas. Diseño completo en `docs/diseno.md`.
 

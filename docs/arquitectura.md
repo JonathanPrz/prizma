@@ -128,3 +128,10 @@ En la pestaña «Para el curso (DUA)» hay dos tipos de preguntas:
 - **Filtrar la vista** (paso 2): «Momento» y «Para qué». Sirven para recorrer las acciones por partes y se cambian muchas veces. Funcionan al instante, sin guardar.
 
 Se implementa en la tarea 037.
+
+
+## 8. Ajuste del dueño (20-11-2026)
+
+El selector de nivel incorpora **Práctica y trabajo** como quinta opción y reemplaza la pantalla de inicio de la decisión 1. Al abrir este nivel se usa el ámbito Trabajo existente y se conserva el nivel educativo guardado. Si no hay un ámbito guardado, Prizma abre Educación.
+
+La decisión 3 se mantiene. La mochila muestra los datos del ámbito activo y el respaldo abarca ambos ámbitos.
