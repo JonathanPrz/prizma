@@ -14,10 +14,13 @@ RAIZ = Path(__file__).resolve().parent.parent
 catalogo = json.loads((RAIZ / "data/recomendaciones.json").read_text(encoding="utf-8"))
 fuentes = {f["id"]: f["cita"] for f in json.loads((RAIZ / "data/fuentes.json").read_text(encoding="utf-8"))}
 
-DIMENSIONES = ["Atención y organización", "Lectura, escritura y cálculo", "Comprender lo que se dice o se lee", "Interacción social",
-               "Emociones y regulación", "Visión", "Sensibilidad sensorial", "Movimiento y motricidad",
-               "Salud y energía", "Identidad, lengua y pertenencia", "Espacio, tiempo y actitudes",
-               "Expresarse oralmente", "Audición", "Necesita más desafío"]
+DIMENSIONES = [
+    "Organizarse y mantener la atención", "Lectura, escritura y cálculo", "Comprender lo que se dice o se lee",
+    "Relacionarse con otros", "Manejar las emociones", "Información que se ve",
+    "Ruido, luz y otros estímulos", "Moverse y usar las manos", "Salud y energía",
+    "Identidad, lengua y pertenencia", "Lugar, horarios y actitudes", "Expresarse oralmente",
+    "Información que se oye", "Tareas con poco desafío",
+]
 TIPOS = {"dua": "DUA (todo el curso)", "acceso": "Adecuación de acceso", "objetivos": "Adecuación en los objetivos",
          "desregulacion": "Desregulación", "adicional": "Apoyo adicional", "practica-profesional": "Práctica profesional", "trabajo": "Trabajo"}
 SUBTIPOS = {"presentacion": "Presentación", "respuesta": "Respuesta", "entorno": "Entorno", "tiempo": "Tiempo",

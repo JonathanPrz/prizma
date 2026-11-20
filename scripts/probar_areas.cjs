@@ -11,9 +11,9 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
    for (const prefijo of ['', 'trabajo-']) {
     if (prefijo) { await p.selectOption('#nivel','practica-trabajo'); }
     const boton=p.locator('#'+prefijo+'area-0');
-    const bloque=p.locator('#'+prefijo+'dimensiones').locator('..');
+    const grupos=p.locator('#'+prefijo+'areas .situaciones-area:visible');
     const grupo=p.locator('#'+await boton.getAttribute('aria-controls'));
-    assert(!await bloque.isVisible(), 'Sin áreas abiertas se oculta el título y su contenedor');
+    assert.equal(await grupos.count(), 0, 'Sin áreas abiertas se ocultan las situaciones');
     assert.match(await boton.innerText(), /^\+ /);
     const cerrado=await boton.evaluate(n=>getComputedStyle(n).backgroundColor);
     await boton.focus(); await p.keyboard.press('Enter');
@@ -28,13 +28,13 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
      const a=luz(estilo.color),b=luz(estilo.backgroundColor);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
     });
     assert(contraste>=4.5, 'Contraste AA del botón abierto');
-    assert(await bloque.isVisible()); assert(await grupo.locator('h4').isVisible());
-    assert.equal(await grupo.locator('h4').innerText(),await p.evaluate(()=>AREAS[0][0]));
+    assert(await grupo.isVisible()); assert(await grupo.locator('legend').first().isVisible());
+    assert.equal(await grupo.locator('legend').first().innerText(),await p.evaluate(()=>DIMENSIONES[AREAS[0][1][0]-1][0]));
     await p.check('input[name="'+prefijo+'dimension-1"][value="3"]');
     assert.match(await boton.innerText(), /1 marcada/);
     await p.locator('#'+prefijo+'area-1').click();
-    await boton.click(); assert(await bloque.isVisible(), 'Otra área abierta mantiene las frecuencias');
-    await p.locator('#'+prefijo+'area-1').click(); assert(!await bloque.isVisible());
+    await boton.click(); assert.equal(await grupos.count(), 1, 'Otra área abierta mantiene sus frecuencias');
+    await p.locator('#'+prefijo+'area-1').click(); assert.equal(await grupos.count(), 0);
     assert.match(await boton.innerText(), /^\+ .*1 marcada/);
     await boton.focus(); await p.keyboard.press('Space');
     assert(await p.locator('input[name="'+prefijo+'dimension-1"][value="3"]').isChecked());
@@ -43,7 +43,7 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
     await boton.scrollIntoViewIfNeeded();
     await p.screenshot({path:path.join(salida,`${prefijo||'estudiante-'}${ancho}-${tema}.png`)});
     await p.reload(); await p.waitForFunction(()=>catalogo.length>0);
-    assert.equal(await boton.getAttribute('aria-expanded'),'true'); assert(await bloque.isVisible());
+    assert.equal(await boton.getAttribute('aria-expanded'),'true'); assert(await grupo.isVisible());
    }
    assert.deepEqual(errores,[]); await p.close();
   }

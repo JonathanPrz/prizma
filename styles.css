@@ -159,8 +159,6 @@ textarea { resize: vertical; }
 textarea::placeholder { color: var(--tenue); opacity: 1; }
 fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 legend { font-weight: 600; padding: 0; margin-bottom: .25rem; }
-/* Separa el nombre del área de su primera pregunta: sin esto se leen como el mismo nivel. */
-.subtitulo-area { font-size: 1.0625rem; font-weight: 700; margin: 1rem 0 .75rem; padding-bottom: .25rem; border-bottom: 1px solid var(--linea); }
 .perfil-opciones { border-top: 1px solid var(--linea); padding-top: 1rem; }
 .perfil-opciones .ayuda { margin-bottom: .5rem; }
 .perfil-opciones label { display: flex; align-items: center; gap: .5rem; min-height: 2.1rem; padding-block: .25rem; cursor: pointer; font-size: .875rem; line-height: 1.4; }
@@ -298,7 +296,6 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 /* Los apoyos individuales usan la misma superficie y controles del perfil. */
 #estudiante { width: 100%; }
 #iniciales { font: inherit; font-size: 1rem; font-weight: 400; line-height: 1.6; color: var(--tinta); background: var(--superficie); border: 1.5px solid var(--borde-control); border-radius: .35rem; padding: .5rem .75rem; min-height: 2.75rem; width: 100%; box-sizing: border-box; }
-#dimensiones fieldset { margin-bottom: 1rem; }
 #apoyos-resultados > section { margin-block: 1.5rem; }
 #sel-estudiante { margin-top: 1rem; }
 
@@ -359,8 +356,6 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 .paso .perfil-campos { margin-top: 0; }
 #meta { max-width: 75ch; }
 #casos .boton { justify-self: start; width: auto; }
-#dimensiones, .dimensiones-casos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
-#dimensiones .perfil-opciones label, .dimensiones-casos .perfil-opciones label { display: inline-flex; margin-right: .75rem; }
 .opciones-acuerdo { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .opciones-acuerdo label, #practica-profesional-campo { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
 input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-height: 1.6; color: var(--tinta); background: var(--superficie); border: 1.5px solid var(--borde-control); border-radius: .35rem; padding: .5rem .75rem; min-height: 2.75rem; max-width: 100%; width: min(100%, 22rem); }
@@ -370,7 +365,6 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 .agregar-caso { display: grid; gap: .5rem; }
 @media (max-width: 48rem) {
   .paso { padding: 1rem; }
-  #dimensiones, .dimensiones-casos { grid-template-columns: minmax(0, 1fr); }
   .opciones-acuerdo { flex-direction: column; }
 }
 .paso-guia { margin: 0 0 .75rem; }
@@ -418,7 +412,32 @@ body:has(#barra-continuar:not([hidden])) { padding-bottom: var(--barra-alto, 0px
 .filtros-vista legend { font-weight: 800; margin-bottom: .5rem; }
 .filtros-vista > a { justify-self: start; min-height: 1.5rem; }
 
-#areas, #trabajo-areas { display: flex; flex-wrap: wrap; gap: .5rem; }
+#lista-estudiantes, #lista-trabajadores { flex-direction: row; }
+:is(#lista-estudiantes, #lista-trabajadores) .chip { width: auto; max-width: 100%; }
+#quitar-estudiante, #quitar-trabajador { justify-self: start; }
+
+.descripcion-areas > .ayuda { margin-bottom: .75rem; }
+#areas, #trabajo-areas, .situaciones-area { display: grid; gap: 1rem; }
+.area-descripcion > .boton { width: 100%; text-align: left; }
+.area-descripcion > .boton .icono-estado { margin-inline-start: .25rem; }
+.area-descripcion + .area-descripcion { border-top: 1px solid var(--linea); padding-top: .75rem; }
+.situaciones-area { padding-top: .75rem; }
+.situaciones-area legend { font-weight: 700; }
+
+.frecuencias { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .25rem; margin-top: .5rem; }
+.frecuencias label {
+  position: relative; display: flex; align-items: center; justify-content: center; gap: .25rem;
+  min-height: 2.75rem; padding: .25rem; text-align: center;
+  border: 2px solid var(--borde-control); border-radius: .35rem; background: var(--superficie);
+}
+.frecuencias input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.frecuencias .icono-estado { display: none; margin: 0; }
+.area-descripcion > [data-marcada="true"], .frecuencias label:has(input:checked:not([value="0"])) {
+  background: var(--acento-suave); border: 2px solid var(--acento); color: var(--acento-texto);
+}
+.frecuencias label:has(input:checked) .icono-estado { display: inline-block; }
+.frecuencias label:has(input:focus-visible) { outline: 3px solid var(--enfoque); outline-offset: 2px; }
+@media (width < 30rem) { .frecuencias { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .seguridad { display: grid; gap: .75rem; }
 
@@ -449,10 +468,7 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .mensaje-estado:has(> p:empty) { display: contents; }
 .mensaje-estado:has(> p:empty) > .icono-estado { display: none; }
 .mensaje-error, .aviso-apoyos.mensaje-error:not(.hoja *) { background: var(--error-suave); color: var(--error); }
-.estado-completo { background: var(--solida-fondo); color: var(--solida); }
-.estado-revisar { background: var(--alerta-fondo); color: var(--alerta); }
 .icono-estado { display: inline-block; margin-inline-end: .25rem; font-weight: 700; }
-.icono-estado:is(.estado-revisar, .estado-completo) { border-radius: .25rem; padding-inline: .25rem; }
 
 .estado-variable:not(:has(> [data-estado]:not([data-estado=""]))) { background: none; color: var(--tenue); }
 .estado-variable:has(> [data-estado="error"]) { background: var(--error-suave); color: var(--error); }

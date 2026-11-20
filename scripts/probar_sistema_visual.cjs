@@ -102,7 +102,7 @@ async function probar() {
 
       async function verificarCasoActivo(lista) {
         const caso = pagina.locator(lista + ' button[aria-pressed="true"]');
-        assert.match(await caso.innerText(), /Sin acuerdos/);
+        assert.equal(await caso.innerText(), lista === '#lista-estudiantes' ? 'Estudiante 1' : 'Persona 1');
         const estilo = await caso.evaluate(n => ({
           borde: getComputedStyle(n).borderTopWidth,
           contenido: getComputedStyle(n, '::after').content

@@ -2232,7 +2232,9 @@
     ],
     "dimensiones": [
       5,
-      7
+      7,
+      1,
+      4
     ],
     "niveles": [
       "parvularia",
@@ -2298,7 +2300,8 @@
     ],
     "dimensiones": [
       5,
-      1
+      1,
+      2
     ],
     "niveles": [
       "parvularia",
