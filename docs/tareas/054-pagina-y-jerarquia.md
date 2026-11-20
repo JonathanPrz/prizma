@@ -1,6 +1,6 @@
 # Tarea 054 · Una columna, tarjetas ordenadas y pasos que no se pierden
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/054-pagina-jerarquia` · Pull request con destino `main`
+Estado: **integrada** (PR #74) · Asignada a: Codex · Rama: `codex/054-pagina-jerarquia` · Pull request con destino `main`
 
 ## Para qué
 Corrige por qué la gente se pierde hoy (hallazgos H1, V0, V7, C6 y C7 de `docs/auditorias/050-interfaz/README.md`) y ordena la página. El dueño aprobó estas decisiones el 20-11-2026, después de una revisión adversarial:
