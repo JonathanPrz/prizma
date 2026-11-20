@@ -2259,7 +2259,8 @@
     "como": [
       "Elige con el estudiante a quién acudir.",
       "Prepara un lugar tranquilo con objetos que le ayuden.",
-      "Enséñale a pedirlo antes de que la emoción crezca."
+      "Enséñale a pedirlo antes de que la emoción crezca.",
+      "Úsalo solo si el estudiante quiere, nunca como castigo ni encierro."
     ],
     "porque": "Tener a quién y adónde acudir da seguridad y anticipa la ayuda.",
     "areas": [
@@ -2324,7 +2325,8 @@
     "como": [
       "Nombra lo que ves: «Veo que estás muy enojado».",
       "Habla poco, despacio y sin exigir.",
-      "No retes ni amenaces en ese momento."
+      "No retes ni amenaces en ese momento.",
+      "Si hay riesgo para él o para otros, activa el protocolo DEC de tu establecimiento."
     ],
     "porque": "En plena crisis, la calma del adulto ayuda más que las razones.",
     "areas": [
@@ -2356,7 +2358,8 @@
     "como": [
       "Mantén distancia y no lo toques sin su permiso.",
       "Baja el ruido y la luz si puedes.",
-      "Ofrece su objeto o su espacio de calma."
+      "Ofrece su objeto o su espacio de calma.",
+      "Si hay riesgo para él o para otros, activa el protocolo DEC de tu establecimiento."
     ],
     "porque": "Menos estímulos y más espacio ayudan a recuperar el control.",
     "areas": [
@@ -2422,7 +2425,7 @@
       "Ofrece agua o un momento de descanso.",
       "Conversa después, en privado."
     ],
-    "porque": "Hablar antes de tiempo puede reactivar la crisis.",
+    "porque": "Conversar cuando ya está en calma permite entender lo que pasó.",
     "areas": [
       "emocional"
     ],
