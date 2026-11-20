@@ -1,6 +1,6 @@
 # Tarea 057 · Public Sans como letra de la interfaz
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/057-tipografia` · Pull request con destino `main`
+Estado: **integrada** (PR #77) · Asignada a: Codex · Rama: `codex/057-tipografia` · Pull request con destino `main`
 
 ## Para qué
 El dueño eligió Public Sans el 20-11-2026, después de comparar 8 letras con el texto real de Prizma y de dos revisiones adversariales. La razón: con la letra del sistema, cada equipo ve una letra distinta (Segoe UI, SF, Roboto…), y la jerarquía de la tarea 053 no se ve igual en todos. Public Sans tiene un tono institucional y cercano.
