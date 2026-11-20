@@ -24,6 +24,9 @@ const servidor = http.createServer((req, res) => {
     const origen = 'http://127.0.0.1:' + servidor.address().port;
     page.on('request', r => { if (/^https?:/.test(r.url()) && new URL(r.url()).origin !== origen) externos.push(r.url()); });
     page.on('pageerror', e => errores.push(e.message));
+    await page.addInitScript(() => {
+      Element.prototype.requestFullscreen = async () => {};
+    });
     await page.goto(origen);
     await page.waitForFunction(() => catalogo.length);
     await page.evaluate(() => {
@@ -59,6 +62,8 @@ const servidor = http.createServer((req, res) => {
     });
     assert(await page.locator('#barreras-repetidas').isVisible());
     await page.click('#proyectar');
+    assert(await page.locator('#salir-proyeccion').isVisible());
+    assert.equal(await page.evaluate(() => document.fullscreenElement), null);
     assert(!(await page.locator('#barreras-repetidas').isVisible()));
     assert(!(await page.locator('#abrir-mochila').isVisible()));
     assert.equal(await page.locator('#panel-dua .aviso-cruzado:visible').count(), 0);
@@ -67,7 +72,7 @@ const servidor = http.createServer((req, res) => {
       await page.screenshot({ path: path.join(salida, `proyeccion-${width}.png`) });
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.click('#proyectar'); assert(await page.locator('#abrir-mochila').isVisible());
+    await page.click('#salir-proyeccion'); assert(await page.locator('#abrir-mochila').isVisible());
     // Walk every visible keyboard destination, including expanded groups and agreements.
     async function teclado(pestana) {
       await page.evaluate(pestana => {

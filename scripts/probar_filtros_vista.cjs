@@ -49,11 +49,11 @@ async function probar() {
       const idsMarcados = await grupo.locator('button[id^="elegir-"]').evaluateAll(ns => ns.map(n => n.id));
       assert.deepEqual(idsMarcados, await p.evaluate(() => visibles().filter(r => coincidenciasNecesidades(r).length).sort(compararPertinenciaDua).map(r => 'elegir-' + r.id)));
       assert(idsMarcados.length > 0);
-      assert.equal(await grupo.getByText(/^DUA 3\.0, consideración .* · Qué busca:/).count(), idsMarcados.length);
+      assert.equal(await grupo.getByText(/^Qué busca:/).count(), idsMarcados.length);
       assert.equal(await grupo.getByText(/^Responde a:/).count(), 0);
       for (const id of idsMarcados) assert.equal(await p.locator('#' + id).count(), 1);
-      assert.match(await p.locator('#m-durante').innerText(), /\d+ · \d+ coincide/);
-      assert.match(await p.locator('#m-durante').getAttribute('aria-label'), /^Durante: \d+ acciones, \d+ coincide con lo que marcaste$/);
+      assert.equal(await p.locator('#m-durante').innerText(), 'Durante');
+      assert.equal(await p.locator('#m-durante').getAttribute('aria-label'), 'Durante');
       if (width === 390) assert(await p.locator('#propositos').evaluate(n => n.scrollWidth <= n.clientWidth));
       await p.setViewportSize({width, height: width === 390 ? 1500 : 1080});
       await p.locator('#acciones').evaluate(n => n.scrollIntoView({block: 'start'}));

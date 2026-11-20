@@ -17,6 +17,14 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <script src="app.js" defer></script>
 </head>
 <body>
+<main id="proyeccion" class="marco" aria-label="Acciones DUA para proyectar" hidden>
+  <div id="proyeccion-barra">
+    <p>Modo proyección: se ocultan los datos de estudiantes</p>
+    <button type="button" id="salir-proyeccion" class="boton">Salir de proyección</button>
+  </div>
+  <ul id="acciones-proyectadas" class="tarjetas"></ul>
+  <p id="proyeccion-vacia" hidden>No hay acciones con los filtros actuales.</p>
+</main>
 <a class="saltar" href="#panel-dua">Ir al contenido</a>
 
 <header class="cabecera">
@@ -100,10 +108,10 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <h2 id="t-acciones">2. Acciones sugeridas</h2>
       <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
       <div id="filtros-vista" class="filtros-vista">
-        <fieldset aria-describedby="filtros-vista-ayuda momento-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div><p id="momento-ayuda" class="ayuda">"Coincide" cuenta las acciones que responden a lo que marcaste en el paso 1</p></fieldset>
+        <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
         <p id="filtros-vista-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos</p>
-        <a href="#acciones" id="limpiar-filtros">Limpiar filtros</a>
+        <a href="#acciones" id="limpiar-filtros">Quitar filtros</a>
       </div>
       <p class="conteo" id="conteo" aria-live="polite" aria-atomic="true"></p>
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
@@ -184,11 +192,11 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </form></div>
 </section>
     <button type="button" id="documento-estudiante" class="boton">Ver documento</button>
-    <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>+ Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
+    <div class="agregar-caso"><button type="button" id="agregar-estudiante" class="boton" aria-describedby="agregar-caso-ayuda" disabled>Agregar otro caso</button><p id="agregar-caso-ayuda" class="ayuda" role="status"></p></div>
   </section>
 <section id="panel-trabajo" class="explorador" role="region" aria-labelledby="t-trabajo" tabindex="-1" hidden>
 <div class="cabecera-intro"><h1 id="t-trabajo">Ajustes para que cada persona pueda trabajar en igualdad</h1><p class="bajada" id="trabajo-bajada">Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.</p><a href="#guia-trabajo" id="enlace-guia-trabajo" aria-haspopup="dialog">¿Qué son los ajustes en el trabajo y qué exige la ley?</a></div>
-<section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-peligro">Quitar caso</button></section>
+<section class="paso" aria-labelledby="t-casos-trabajo"><h2 id="t-casos-trabajo">Casos</h2><div id="lista-trabajadores" class="chips"></div><button type="button" id="quitar-trabajador" class="boton boton-peligro">Quitar a Persona 1</button></section>
 <section id="trabajo-descripcion" class="paso">
 <h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2>
 <div id="trabajo-descripcion-resumen" class="paso-resumen" hidden><p id="trabajo-descripcion-texto"></p><button type="button" id="trabajo-descripcion-editar" class="boton">Editar<span class="solo-lectores"> 1. Describe la situación de una persona</span></button></div>
@@ -224,7 +232,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <div class="campo-acuerdo"><label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label><span class="error-campo" id="trabajo-acuerdo-criterio-error"></span></div>
 <label for="trabajo-compartir">¿Qué decidió compartir la persona y con quién?<textarea id="trabajo-compartir" maxlength="300" rows="2"></textarea></label>
 <button type="submit" id="guardar-acuerdos-trabajo" class="boton">Guardar acuerdos</button></form></div></section>
-<div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>+ Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
+<div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
 </main>
@@ -241,13 +249,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <section id="seleccion-trabajo" hidden><h3>Práctica y trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton boton-principal">Ver documento de trabajo</button></section>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
-      <p class="ayuda">Revisa tu documento y después descárgalo en PDF o imprímelo.</p>
+      <p class="ayuda">Revisa el documento y descárgalo en PDF o imprímelo.</p>
       <button type="button" id="guardar-respaldo" class="boton" disabled>Guardar respaldo</button>
       <div class="abrir-respaldo">
         <input type="file" id="abrir-respaldo" accept=".json,application/json" aria-describedby="respaldo-ayuda">
         <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
       </div>
-      <p id="respaldo-ayuda" class="ayuda">El respaldo incluye todos los datos de Educación y Trabajo en un solo archivo. Sirve para no perderlos o pasarlos a otro computador.</p>
+      <p id="respaldo-ayuda" class="ayuda">El respaldo guarda los datos de Educación y de Práctica y trabajo en un archivo. Úsalo para no perderlos o pasarlos a otro computador.</p>
       <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><span class="icono-estado icono-exito" aria-hidden="true">✓</span><p id="respaldo-estado" class="ayuda" aria-live="polite"></p></div>
       <button type="button" id="borrar" class="boton boton-peligro">Borrar todo</button>
       <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>

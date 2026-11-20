@@ -377,7 +377,7 @@ function abrirPaso(id, abierto) {
 function pintarEstadoCasos() {
   const e = estudianteActual(), pendientes = estado.estudiantes.filter((e) => estadoCaso(e) !== "Acuerdos completos");
   $("#agregar-estudiante").disabled = pendientes.length > 0 || estado.estudiantes.length >= 10;
-  $("#agregar-estudiante").textContent = estado.estudiantes.length >= 10 ? "Máximo 10 casos" : "+ Agregar otro caso";
+  $("#agregar-estudiante").textContent = estado.estudiantes.length >= 10 ? "Máximo 10 casos" : "Agregar otro caso";
   $("#agregar-caso-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreEstudiante).join(", ") : estado.estudiantes.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-estudiantes button").forEach((b) => {
     const caso = estado.estudiantes.find((e) => b.id === `estudiante-${e.id}`);
@@ -697,7 +697,7 @@ function pintarEstadoTrabajo() {
   const e = trabajadorActual(); if (!e) return;
   const pendientes = estado.trabajadores.filter((e) => estadoCaso(e, true) !== "Acuerdos completos");
   $("#agregar-trabajador").disabled = pendientes.length > 0 || estado.trabajadores.length >= 10;
-  $("#agregar-trabajador").textContent = estado.trabajadores.length >= 10 ? "Máximo 10 casos" : "+ Agregar otro caso";
+  $("#agregar-trabajador").textContent = estado.trabajadores.length >= 10 ? "Máximo 10 casos" : "Agregar otro caso";
   $("#trabajo-agregar-ayuda").textContent = pendientes.length ? "Completa los acuerdos de: " + pendientes.map(nombreTrabajador).join(", ") : estado.trabajadores.length >= 10 ? "Llegaste al máximo de 10 casos." : "Puedes agregar el siguiente caso.";
   document.querySelectorAll("#lista-trabajadores button").forEach((b) => {
     const caso = estado.trabajadores.find((e) => b.id === "trabajador-" + e.id);
@@ -1229,23 +1229,19 @@ function limpiarFiltrosVista() {
 function pintarFiltrosVista() {
   const cont = $("#momentos"); cont.replaceChildren();
   for (const [id, nombre] of MOMENTOS) {
-    const acciones = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r));
-    const coincide = acciones.filter((r) => coincidenciasNecesidades(r).length).length;
-    const conteo = estado.necesidades.length ? `${acciones.length} · ${coincide} coincide` : String(acciones.length);
-    const etiquetaMomento = `${nombreMomento(id, nombre)}: ${plural(acciones.length, "acción", "acciones")}`;
     cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(estado.momentos.includes(id)),
-      "aria-label": estado.necesidades.length ? `${etiquetaMomento}, ${coincide} coincide con lo que marcaste` : etiquetaMomento,
+      "aria-label": nombreMomento(id, nombre),
       onclick: () => {
         estado.momentos = estado.momentos.includes(id) ? estado.momentos.filter((m) => m !== id) : [...estado.momentos, id];
         actualizarVistaDua();
         document.getElementById("m-" + id).focus();
       },
-    }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase") })) : nombre, " ", el("small", { text: `(${conteo})` })));
+    }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase") })) : nombre));
   }
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
     const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
-      el("span", {}, p.principio, el("small", { text: p.corto })));
+      el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto })));
     b.addEventListener("click", () => {
       estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
       actualizarVistaDua();
@@ -1285,12 +1281,12 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
     el("div", { class: "t-arriba" },
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].principio),
-      !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion),
+      !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "Consideración " + r.consideracion),
       dua && destacarMomento ? el("span", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null),
     el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
     motivo ? el("p", { class: "t-razon", text: motivo }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
-    queBusca ? el("p", { class: "t-que-busca", text: `DUA 3.0, consideración ${r.consideracion} · Qué busca: ${queBusca}` }) : null,
+    queBusca ? el("p", { class: "t-que-busca", text: `Qué busca: ${queBusca}` }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     !dua && APOYOS_FORMA.includes(r.id) ? avisoVisual("aviso-apoyos", "!", el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
     ofrecida ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), "Ya está considerado en el DUA: " + version.titulo) : null,
@@ -1974,6 +1970,57 @@ function prepararAvisos() {
   }));
 }
 
+function prepararProyeccion() {
+  const raiz = document.documentElement, vista = $("#proyeccion");
+  const entrar = $("#proyectar"), salir = $("#salir-proyeccion");
+  new ResizeObserver(([entrada]) => {
+    raiz.style.setProperty("--proyeccion-alto", `${entrada.target.getBoundingClientRect().height}px`);
+  }).observe($("#proyeccion-barra"));
+
+  async function salirDeProyeccion() {
+    if (!raiz.classList.contains("proyectando")) return;
+    raiz.classList.remove("proyectando");
+    vista.hidden = true;
+    entrar.setAttribute("aria-pressed", "false");
+    entrar.focus();
+    try {
+      if (document.fullscreenElement === raiz) await document.exitFullscreen();
+    } catch (e) { /* La vista normal ya está visible. */ }
+  }
+
+  entrar.addEventListener("click", async () => {
+    const acciones = visibles();
+    $("#acciones-proyectadas").replaceChildren(...acciones.map((r) => {
+      const principio = proposito(r);
+      return el("li", { class: "tarjeta", "data-accion": r.id },
+        el("p", { class: "t-proposito " + principio }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[principio].principio),
+        el("h3", { text: r.titulo }),
+        consideraciones[r.consideracion] ? el("p", { class: "t-que-busca", text: "Qué busca: " + consideraciones[r.consideracion] }) : null,
+        el("ol", {}, r.como.map((paso) => el("li", { text: textoPublico(paso) }))));
+    }));
+    $("#proyeccion-vacia").hidden = Boolean(acciones.length);
+    vista.hidden = false;
+    raiz.classList.add("proyectando");
+    entrar.setAttribute("aria-pressed", "true");
+    salir.focus();
+    window.scrollTo(0, 0);
+    try {
+      await raiz.requestFullscreen?.();
+      if (document.fullscreenElement === raiz && !raiz.classList.contains("proyectando")) await document.exitFullscreen();
+    } catch (e) { /* La proyección funciona también en la ventana. */ }
+  });
+  salir.addEventListener("click", salirDeProyeccion);
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape" && raiz.classList.contains("proyectando")) {
+      evento.preventDefault();
+      salirDeProyeccion();
+    }
+  });
+  document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) salirDeProyeccion();
+  });
+}
+
 async function iniciar() {
   new ResizeObserver(([entrada]) => {
     document.documentElement.style.setProperty("--indicador-alto", `${entrada.target.getBoundingClientRect().height}px`);
@@ -1986,7 +2033,7 @@ async function iniciar() {
   }).observe($("#barra-continuar"));
   document.addEventListener("focusin", evento => {
     const barra = $("#barra-continuar"), foco = evento.target;
-    if (foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar") || barra.hidden) return;
+    if (foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden) return;
     const indicador = $("#indicador-pasos");
     const cabecera = $(".cabecera").getBoundingClientRect().bottom;
     const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?
@@ -2014,6 +2061,7 @@ async function iniciar() {
     pendienteScroll = true;
     requestAnimationFrame(() => {
       pendienteScroll = false;
+      if (document.documentElement.classList.contains("proyectando")) return;
       const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
       const foco = document.activeElement;
       const secciones = pasosActuales().map((id) => $("#" + id));
@@ -2052,11 +2100,7 @@ async function iniciar() {
   $("#estado-catalogo").hidden = true;
   cargar();
   avisarInstrumentos();
-  $("#proyectar").addEventListener("click", () => {
-    const activo = document.documentElement.classList.toggle("proyectando");
-    $("#proyectar").textContent = activo ? "Salir de proyección" : "Proyectar al curso";
-    $("#proyectar").setAttribute("aria-pressed", String(activo));
-  });
+  prepararProyeccion();
   prepararPestanas(); prepararPasos(); prepararTrabajo();
   sincronizarEstudiante(); escucharEstudiante(); sincronizarPerfil(); escucharPerfil(); pintarControles(); pintarTarjetas(); pintarSeleccion();
   $("#guia-empezar").disabled = false;

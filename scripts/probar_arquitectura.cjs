@@ -86,7 +86,7 @@ async function navegador() {
       assert(!(await p.locator('#aviso-privacidad').innerText()).includes('estudiantes'));
       await p.keyboard.press('Escape');assert.equal(await p.evaluate(()=>document.activeElement.id),'trabajo-iniciales');
       await p.evaluate(()=>{trabajadorActual().seleccion={'tr-subtitulos':'Nota laboral'};pintarSeleccion();});
-      await p.click('#abrir-mochila');const mochila=await p.locator('#mochila').innerText();assert(!mochila.includes('JP'));assert(mochila.includes('AB'));assert(mochila.includes('Educación y Trabajo en un solo archivo'));
+      await p.click('#abrir-mochila');const mochila=await p.locator('#mochila').innerText();assert(!mochila.includes('JP'));assert(mochila.includes('AB'));assert(mochila.includes('Educación y de Práctica y trabajo en un archivo'));
       await p.click('#cerrar-mochila');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.evaluate(()=>estado.ambito),'trabajo');
       const texto=await p.locator('body').innerText();for(const termino of prohibidos)assert(!termino.test(texto));
       assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
