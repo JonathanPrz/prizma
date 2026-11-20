@@ -1,6 +1,6 @@
 # Tarea 061 · Selectores de frecuencia más livianos y dos detalles de Práctica y trabajo
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/061-selectores-frecuencia` · Pull request con destino `main`
+Estado: **integrada** (PR #82) · Asignada a: Codex · Rama: `codex/061-selectores-frecuencia` · Pull request con destino `main`
 
 ## Para qué
 El dueño encontró «muy grandes» los selectores de frecuencia del paso 1. Mediciones en `main` (Chromium):
