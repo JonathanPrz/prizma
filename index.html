@@ -201,6 +201,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <h2><button type="button" id="trabajo-descripcion-toggle" class="paso-titulo" aria-expanded="true" aria-controls="trabajo-descripcion-cuerpo">1. Describe la situación de una persona</button></h2>
 <div id="trabajo-descripcion-resumen" class="paso-resumen" hidden><p id="trabajo-descripcion-texto"></p><button type="button" id="trabajo-descripcion-editar" class="boton">Editar<span class="solo-lectores"> 1. Describe la situación de una persona</span></button></div>
 <div id="trabajo-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-trabajo" class="perfil-campos">
+<p id="primer-empleo-revisar" class="aviso-apoyos" role="status" hidden></p>
 <label for="trabajo-etapa">¿Para qué es este caso?<select id="trabajo-etapa"><option value="practica">Práctica profesional</option><option value="trabajo" selected>Primer empleo o trabajo</option></select></label>
 <label id="trabajo-nivel-origen-campo" for="trabajo-nivel-origen" hidden>¿Desde qué nivel hace la práctica?<select id="trabajo-nivel-origen"><option value="media">Media técnico-profesional</option><option value="superior">Superior (IP, CFT o universidad)</option></select></label>
 <label for="trabajo-iniciales">Iniciales<input id="trabajo-iniciales" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" autocomplete="off" aria-describedby="trabajo-iniciales-ayuda trabajo-duplicadas"><span id="trabajo-iniciales-ayuda" class="ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
@@ -212,12 +213,24 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <label for="trabajo-ayuda">¿Qué le ayuda?<textarea id="trabajo-ayuda" maxlength="300" rows="2"></textarea></label>
 <label for="trabajo-voz">¿Qué dice la persona?<textarea id="trabajo-voz" maxlength="300" rows="2" aria-describedby="trabajo-voz-ayuda"></textarea><span id="trabajo-voz-ayuda" class="ayuda">Lo que propone, lo que le preocupa. No escribas diagnósticos</span></label>
 <div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="trabajo-descripcion-error" role="alert"></p></div><button type="submit" id="guardar-descripcion-trabajo" class="boton">Guardar descripción</button></form></div></section>
+<section id="trabajo-historia" class="paso" aria-labelledby="t-trabajo-historia" hidden>
+  <h2 id="t-trabajo-historia">Ajustes acordados en su práctica</h2>
+  <ul id="trabajo-historia-fichas"></ul>
+  <p id="trabajo-historia-estado"></p>
+  <p id="trabajo-historia-criterio" hidden></p>
+  <p class="ayuda">Sirven para conversar los ajustes con la persona. Que se hayan acordado no asegura que hayan funcionado.</p>
+  <button type="button" id="ver-caso-practica" class="boton">Ver el caso de práctica</button>
+</section>
+<div id="acciones-practica" class="paso" hidden>
+  <p id="centro-ayuda" class="ayuda">Primero elige los ajustes que puede hacer el centro</p>
+  <button type="button" class="boton" id="preparar-centro" aria-describedby="centro-ayuda" aria-haspopup="dialog" aria-controls="documento-centro" disabled>Preparar documento para el centro</button>
+  <button type="button" id="preparar-primer-empleo" class="boton" aria-describedby="primer-empleo-ayuda">Preparar su primer empleo</button>
+  <p id="primer-empleo-ayuda" class="ayuda" role="status"></p>
+</div>
 <section id="trabajo-resultados" class="paso resultados" hidden><h2 id="t-ajustes" tabindex="-1">2. Ajustes sugeridos</h2><p id="trabajo-ajustes-ayuda" class="ayuda">Los hace el empleador. También sirven para conversarlos con él</p><div id="trabajo-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div><div id="trabajo-tarjetas"></div>      <section id="bloque-practica-profesional" class="bloque-apoyo" aria-labelledby="t-practica-profesional" hidden>
         <h3 id="t-practica-profesional">Apoyos para la práctica profesional</h3>
         <a id="enlace-guia-practica" href="#guia-practica" aria-haspopup="dialog" aria-controls="guia-practica">¿Quién hace qué en la práctica?</a>
         <div id="practica-profesional-grupos"></div>
-        <p id="centro-ayuda" class="ayuda">Primero elige los ajustes que puede hacer el centro</p>
-        <button type="button" class="boton" id="preparar-centro" aria-describedby="centro-ayuda" aria-haspopup="dialog" aria-controls="documento-centro" disabled>Preparar documento para el centro</button>
       </section>
 <button type="button" id="trabajo-ir-acuerdos" class="boton">Continuar a acuerdos</button><span class="error-campo" id="trabajo-acuerdo-seleccion-error"></span></section>
 <p id="trabajo-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>

@@ -653,25 +653,41 @@ function PIE_TRABAJO(etapa) {
   return PRIVACIDAD_TRABAJO + ". " + reserva + ".";
 }
 function AVISO_TRABAJO(etapa) { return PIE_TRABAJO(etapa) + " Orientación general. No reemplaza la evaluación de profesionales ni es asesoría legal."; }
+const ID_TRABAJADOR = /^[a-zA-Z0-9-]{1,80}$/;
 function normalizarTrabajador(valor) {
   const e = normalizarEstudiante(valor);
   return { etapa: valor?.etapa === "practica" ? "practica" : "trabajo", nivelOrigen: valor?.nivelOrigen === "superior" ? "superior" : "media", iniciales: e.iniciales, dimensiones: e.dimensiones, ayuda: e.ayuda, voz: e.voz, descripcionGuardada: e.descripcionGuardada, modalidad: e.modalidad,
+    ...(typeof valor?.origen === "string" && ID_TRABAJADOR.test(valor.origen) ? { origen: valor.origen } : {}),
     compartir: typeof valor?.compartir === "string" ? valor.compartir.slice(0, 300) : "",
     tipoPuesto: typeof valor?.tipoPuesto === "string" ? valor.tipoPuesto.slice(0, 60) : "",
     acuerdo: normalizarAcuerdo(valor?.acuerdo, valor?.etapa === "practica" ? ROLES_PRACTICA : ROLES_TRABAJO), seleccion: seleccionValidada(valor?.seleccion, "trabajo") };
 }
 function normalizarTrabajadores(lista) {
   const ids = new Set();
-  return (Array.isArray(lista) ? lista.slice(0, 10) : []).map((e) => {
-    let id = typeof e?.id === "string" && /^[a-zA-Z0-9-]{1,80}$/.test(e.id) && !ids.has(e.id) ? e.id : nuevoIdEstudiante();
+  const casos = (Array.isArray(lista) ? lista.slice(0, 10) : []).map((e) => {
+    let id = typeof e?.id === "string" && ID_TRABAJADOR.test(e.id) && !ids.has(e.id) ? e.id : nuevoIdEstudiante();
     while (ids.has(id)) id = nuevoIdEstudiante();
     ids.add(id); return { id, ...normalizarTrabajador(e) };
   });
+  for (const caso of casos) {
+    if (caso.etapa !== "trabajo" || !practicaDeOrigen(caso, casos)) delete caso.origen;
+  }
+  return casos;
 }
+function practicaDeOrigen(e, casos = estado.trabajadores) {
+  return casos.find((caso) => caso.id === e.origen && caso.etapa === "practica");
+}
+function empleoDePractica(e) {
+  return estado.trabajadores.find((caso) => caso.etapa === "trabajo" && caso.origen === e.id);
+}
+function acuerdoConDatos(a) {
+  return a.roles.length || a.fecha || a.revision || a.criterio || a.estado !== "sin-acuerdos";
+}
+
 function trabajadorActual() { return (estado.trabajadores || []).find((e) => e.id === estado.trabajadorActivo) || estado.trabajadores?.[0]; }
 function nombreTrabajador(e) { return e.iniciales || `Persona ${estado.trabajadores.indexOf(e) + 1}`; }
 function tituloTrabajador(e) { return "Ajustes para " + nombreTrabajador(e); }
-function datosTrabajador(e) { return Boolean(e.etapa === "practica" || e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.compartir || e.acuerdo.criterio || e.modalidad || e.acuerdo.roles.length || e.acuerdo.fecha); }
+function datosTrabajador(e) { return Boolean(e.etapa === "practica" || e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.compartir || e.modalidad || e.origen || acuerdoConDatos(e.acuerdo)); }
 function elegidasTrabajo(e) {
   return catalogo.filter((r) => aplica(r, e) && Object.hasOwn(e.seleccion, r.id))
     .sort((a, b) => Object.keys(TIPOS_TRABAJO).indexOf(a.subtipo) - Object.keys(TIPOS_TRABAJO).indexOf(b.subtipo) || catalogo.indexOf(a) - catalogo.indexOf(b));
@@ -683,6 +699,20 @@ function ajustesTrabajo(e = trabajadorActual()) {
   const orden = Object.keys(e.dimensiones).length === 1 && e.dimensiones[13] ?
     [...auditivos.map((id) => catalogo.find((r) => r.id === id)).filter(Boolean), ...catalogo.filter((r) => !auditivos.includes(r.id))] : catalogo;
   return catalogo.filter((r) => aplica(r, e) && r.tipo === "trabajo" && r.subtipo !== "proceso" && compatibleModalidad(r, e) && (puntaje(r, e) > 0 || enModalidad(r, e) || seguridadActiva(e, true) && r.id === "tr-alertas-visuales")).sort((a, b) => compararAcceso(a, b, e, orden));
+}
+function pintarHistoriaPractica(e) {
+  const origen = practicaDeOrigen(e);
+  $("#trabajo-historia").hidden = !origen;
+  $("#primer-empleo-revisar").hidden = !origen || e.descripcionGuardada;
+  $("#primer-empleo-revisar").textContent = origen ? "Revisa estas situaciones con la persona para el nuevo trabajo: pueden ser distintas" +
+    (origen.nivelOrigen === "media" ? ". Si aún es menor de edad, sus datos tienen protección especial (Ley 21.719) y para trabajar necesita autorización" : "") : "";
+  const fichas = origen ? elegidasCentro(origen) : [];
+  $("#trabajo-historia-fichas").hidden = !fichas.length;
+  $("#trabajo-historia-fichas").replaceChildren(...fichas.map((r) => el("li", { text: textoModalidad(r.titulo, r, origen) })));
+  $("#trabajo-historia-estado").textContent = origen ? estadoCaso(origen, true) : "";
+  const criterio = origen?.acuerdo.criterio.trim();
+  $("#trabajo-historia-criterio").hidden = !criterio;
+  $("#trabajo-historia-criterio").textContent = criterio ? "¿Cómo sabremos que funciona? " + criterio : "";
 }
 function pintarEstadoTrabajo() {
   const e = trabajadorActual(); if (!e) return;
@@ -704,8 +734,15 @@ function pintarEstadoTrabajo() {
   $("#trabajo-descripcion-texto").textContent = [e.tipoPuesto, situaciones, e.ayuda.trim() ? "Le ayuda: " + e.ayuda.trim() : ""].filter(Boolean).join(" · ") || "Todavía no guardas una situación.";
   const a = e.acuerdo;
   $("#trabajo-acuerdo-texto").textContent = a.fecha ? `${estadoCaso(e, true)} · ${a.roles.map((r) => ROLES_NIVEL_TRABAJO[r]).join(", ")} · Fecha: ${fechaLarga(a.fecha)} · Próxima revisión: ${fechaLarga(a.revision) || "Sin indicar"}` : "Todavía no guardas acuerdos.";
-  $("#trabajo-duplicadas").textContent = e.iniciales && estado.trabajadores.some((otro) => otro.id !== e.id && otro.iniciales.toUpperCase() === e.iniciales.toUpperCase()) ? `Ya hay una persona ${e.iniciales}. Agrega un número para distinguirlas` : "";
+  $("#trabajo-duplicadas").textContent = e.iniciales && estado.trabajadores.some((otro) => otro.id !== e.id && otro.id !== e.origen && otro.origen !== e.id && otro.iniciales.toUpperCase() === e.iniciales.toUpperCase()) ? `Ya hay una persona ${e.iniciales}. Agrega un número para distinguirlas` : "";
   const practica = e.etapa === "practica", centro = elegidasCentro(e).length > 0;
+  const lleno = practica && !empleoDePractica(e) && estado.trabajadores.length >= 10 &&
+    estado.trabajadores.every(datosTrabajador);
+  $("#acciones-practica").hidden = !practica;
+  $("#preparar-primer-empleo").disabled = lleno;
+  $("#primer-empleo-ayuda").textContent = lleno ? "Máximo 10 casos en Práctica y trabajo" : "";
+  $("#preparar-centro").hidden = $("#centro-ayuda").hidden = !e.descripcionGuardada;
+  pintarHistoriaPractica(e);
   $("#documento-trabajo").hidden = practica;
   $("#documento-trabajo").disabled = !estado.trabajadores.some((caso) => caso.etapa === "trabajo" && datosTrabajador(caso));
   $("#preparar-centro").disabled = !centro;
@@ -778,14 +815,58 @@ function guardarAcuerdosTrabajo() {
   if (Object.keys(errores).length) return;
   e.acuerdo.estado = "completo"; guardar(); pintarEstadoTrabajo(); abrirPaso("trabajo-acuerdo", false); $("#trabajo-acuerdo-editar").focus();
 }
+function abrirCasoTrabajo(e) {
+  estado.trabajadorActivo = e.id;
+  guardar(); sincronizarTrabajo(); pintarSeleccion();
+  irAlPasoVisible(1, $("#trabajo-descripcion"));
+}
+function prepararPrimerEmpleo() {
+  const practica = trabajadorActual();
+  if (practica?.etapa !== "practica") return;
+  const existente = empleoDePractica(practica);
+  if (existente) { abrirCasoTrabajo(existente); return; }
+  // La transición puede hacerse aunque queden acuerdos pendientes en los otros casos.
+  const vacio = estado.trabajadores.findIndex((e) => !datosTrabajador(e));
+  if (vacio < 0 && estado.trabajadores.length >= 10) return;
+  let id = nuevoIdEstudiante();
+  while (estado.trabajadores.some((e) => e.id === id)) id = nuevoIdEstudiante();
+  const { iniciales, dimensiones, ayuda, modalidad } = practica;
+  // La persona decide de nuevo qué decir y compartir con su empleador.
+  const trabajo = { id, ...normalizarTrabajador({ etapa: "trabajo", origen: practica.id,
+    iniciales, dimensiones, ayuda, modalidad, descripcionGuardada: false }) };
+  if (vacio < 0) estado.trabajadores.push(trabajo);
+  else estado.trabajadores[vacio] = trabajo;
+  abrirCasoTrabajo(trabajo);
+}
+function desvincularPractica(id) {
+  for (const caso of estado.trabajadores) if (caso.origen === id) delete caso.origen;
+}
 function prepararTrabajo() {
+  $("#preparar-primer-empleo").addEventListener("click", prepararPrimerEmpleo);
+  $("#ver-caso-practica").addEventListener("click", () => {
+    const origen = practicaDeOrigen(trabajadorActual());
+    if (origen) abrirCasoTrabajo(origen);
+  });
   for (const [id, clave] of [["etapa", "etapa"], ["nivel-origen", "nivelOrigen"]]) $("#trabajo-" + id).addEventListener("change", (ev) => {
     const e = trabajadorActual();
     const valor = normalizarTrabajador({ [clave]: ev.target.value })[clave];
     if (e[clave] === valor) return;
+    if (clave === "etapa") {
+      const fichas = Object.keys(e.seleccion);
+      const nuevaEtapa = { ...e, etapa: valor };
+      const quitar = fichas.filter((id) => !catalogo.some((r) => r.id === id && aplica(r, nuevaEtapa)));
+      if ((fichas.length || acuerdoConDatos(e.acuerdo)) && !window.confirm(
+        `Se quitarán ${quitar.length} ajustes y los roles que no corresponden a esta etapa. Para conservar la práctica, cancela y usa «Preparar su primer empleo».`)) {
+        ev.target.value = e.etapa;
+        return;
+      }
+      for (const id of quitar) delete e.seleccion[id];
+      e.acuerdo.roles = e.acuerdo.roles.filter((rol) => Object.hasOwn(rolesTrabajo(nuevaEtapa), rol));
+      delete e.origen;
+      desvincularPractica(e.id);
+    }
     marcarRevision(e);
     e[clave] = valor;
-    e.acuerdo.roles = e.acuerdo.roles.filter((rol) => Object.hasOwn(rolesTrabajo(e), rol));
     guardar(); sincronizarTrabajo(); abrirPaso("trabajo-descripcion", true); pintarSeleccion();
   });
   $("#trabajo-modalidad").addEventListener("change", ev => { const e = trabajadorActual(); marcarRevision(e); e.modalidad = modalidadValida(ev.target.value); guardar(); pintarTrabajo(); pintarSeleccion(); });
@@ -804,8 +885,11 @@ function prepararTrabajo() {
   $("#trabajo-ir-acuerdos").addEventListener("click", () => irPaso(3));
   $("#agregar-trabajador").addEventListener("click", agregarTrabajador);
   $("#quitar-trabajador").addEventListener("click", () => {
-    if (!window.confirm("Se borran sus datos y ajustes de este navegador. ¿Continuar?")) return;
-    estado.trabajadores = estado.trabajadores.filter((e) => e.id !== estado.trabajadorActivo);
+    const actual = trabajadorActual();
+    const vinculo = empleoDePractica(actual) ? " Su caso de primer empleo se mantiene." : "";
+    if (!window.confirm("Se borran sus datos y ajustes de este navegador." + vinculo + " ¿Continuar?")) return;
+    desvincularPractica(actual.id);
+    estado.trabajadores = estado.trabajadores.filter((e) => e.id !== actual.id);
     if (!estado.trabajadores.length) estado.trabajadores.push({ id: nuevoIdEstudiante(), ...normalizarTrabajador() });
     estado.trabajadorActivo = estado.trabajadores[0].id; guardar(); sincronizarTrabajo(); pintarSeleccion(); document.getElementById("trabajador-" + estado.trabajadorActivo).focus();
   });

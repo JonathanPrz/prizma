@@ -49,9 +49,10 @@ async function probar() {
     pagina.setDefaultTimeout(8000);
     const errores = [], confirmaciones = [];
     pagina.on('pageerror', error => errores.push(error.message));
+    let cancelarConfirmacion = false;
     pagina.on('dialog', dialogo => {
       confirmaciones.push(dialogo.message());
-      return dialogo.accept();
+      return cancelarConfirmacion ? dialogo.dismiss() : dialogo.accept();
     });
     const campo = id => pagina.locator('#' + id);
     const listo = () => pagina.waitForFunction(() => catalogo.length && !document.querySelector('#contexto').hidden);
@@ -176,7 +177,15 @@ async function probar() {
     assert.match(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
 
     await campo('trabajo-descripcion-editar').click();
+    const practicaAntes = await pagina.evaluate(() => trabajadorActual());
+    cancelarConfirmacion = true;
     await campo('trabajo-etapa').selectOption('trabajo');
+    assert.match(confirmaciones.at(-1), /Se quitarán 2 ajustes.*Preparar su primer empleo/);
+    assert.equal(await campo('trabajo-etapa').inputValue(), 'practica');
+    assert.deepEqual(await pagina.evaluate(() => trabajadorActual()), practicaAntes);
+    cancelarConfirmacion = false;
+    await campo('trabajo-etapa').selectOption('trabajo');
+    assert.deepEqual(await pagina.evaluate(() => [trabajadorActual().seleccion, trabajadorActual().acuerdo.roles]), [{}, []]);
     await campo('trabajo-ir-acuerdos').click();
     await pagina.getByLabel('Persona trabajadora', { exact: true }).check();
     await campo('guardar-acuerdos-trabajo').click();
@@ -201,14 +210,12 @@ async function probar() {
     await campo('cerrar').click();
 
     await campo('trabajo-etapa').selectOption('practica');
+    assert.match(confirmaciones.at(-1), /Se quitarán 1 ajustes/);
+    assert.deepEqual(await pagina.evaluate(() => [trabajadorActual().seleccion, trabajadorActual().acuerdo.roles]), [{}, []]);
     await campo('abrir-mochila').click();
-    assert.equal(await campo('sel-trabajadores').locator('li').count(), 2);
-    assert.equal(await campo('sel-trabajadores').locator('textarea').first().inputValue(), 'Nota privada del caso');
-    assert.equal(await campo('sel-trabajadores').locator('textarea[data-nota-clave$="tr-subtitulos"]').count(), 0);
-    assert(await pagina.evaluate(() => Object.hasOwn(trabajadorActual().seleccion, 'tr-subtitulos')));
-    await campo('pdf-trabajo').click();
-    assert.deepEqual(await pagina.locator('input[name="compartir-centro"]').evaluateAll(campos => campos.map(c => c.value).sort()), ['pp-c-analisis', 'pp-c-pasos']);
-    await campo('cancelar-centro').click();
+    assert(await campo('sel-vacia').isVisible());
+    assert(await campo('pdf-trabajo').isDisabled());
+    await campo('cerrar-mochila').click();
 
     await abrir({ ...base, perfil: { nivel: 'media' } });
     await campo('paso-descripcion-editar').click();
@@ -297,8 +304,108 @@ async function probar() {
     assert.match(await campo('migracion-practica').innerText(), /La práctica de JP ahora está/);
     assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 10);
     assert.equal(await pagina.evaluate(() => estado.trabajadores[9].seleccion['pp-c-pasos']), 'Nota que se mueve');
+    const practica = {
+      ...practicaAntes, id: 'practica-pq', nivelOrigen: 'media', ayuda: 'Instrucciones escritas',
+      modalidad: 'senas', tipoPuesto: 'Bodega', voz: 'Voz reservada de práctica', compartir: 'Decisión del centro'
+    };
+    const contextoTrabajo = { ...base, ambito: 'trabajo', trabajadorActivo: practica.id };
+    await abrir({ ...contextoTrabajo, trabajadores: [practica, { id: 'vacio', seleccion: {} }, ...llenos.slice(0, 8)] });
+    const original = await caso();
+    await campo('preparar-primer-empleo').click();
+    const empleo = await caso();
+    assert.equal(empleo.etapa, 'trabajo');
+    assert.equal(empleo.origen, original.id);
+    assert.equal(empleo.iniciales, original.iniciales);
+    assert.deepEqual(empleo.dimensiones, original.dimensiones);
+    assert.equal(empleo.ayuda, original.ayuda);
+    assert.equal(empleo.modalidad, original.modalidad);
+    assert.deepEqual([empleo.voz, empleo.compartir, empleo.tipoPuesto], ['', '', '']);
+    assert.deepEqual(empleo.seleccion, {});
+    assert.deepEqual(empleo.acuerdo, { roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos' });
+    assert.equal(empleo.descripcionGuardada, false);
+    assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 10);
+    assert.equal(await pagina.evaluate(() => estado.trabajadores.some(e => e.id === 'vacio')), false);
+    assert(await campo('trabajo-descripcion-cuerpo').isVisible());
+    assert(await campo('primer-empleo-revisar').isVisible());
+    assert.match(await campo('primer-empleo-revisar').innerText(), /Revisa estas situaciones.*Si aún es menor de edad.*Ley 21\.719/);
+    assert.equal(await pagina.getByLabel('Familia o apoderado').count(), 0);
+    assert.equal(await campo('trabajo-duplicadas').textContent(), '');
+    assert(await campo('trabajo-historia').isVisible());
+    const titulos = await campo('trabajo-historia-fichas').locator('li').allTextContents();
+    assert.deepEqual(titulos, await pagina.evaluate(() => elegidasCentro(estado.trabajadores[0]).map(r => r.titulo)));
+    assert.equal(titulos.length, 2);
+    assert.equal(await campo('trabajo-historia-estado').textContent(), 'Acuerdos completos');
+    assert.match(await campo('trabajo-historia-criterio').textContent(), /Criterio privado del caso/);
+    assert(await pagina.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await campo('ver-caso-practica').click();
+    assert.deepEqual(await caso(), original);
+    assert.equal(await campo('trabajo-duplicadas').textContent(), '');
+    await campo('preparar-primer-empleo').click();
+    assert.deepEqual(await caso(), empleo);
+    assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 10);
+    const modelos = await pagina.evaluate(({ origen, empleo }) => {
+      const practica = estado.trabajadores.find(e => e.id === origen);
+      const centro = documentoParaCentro(['pp-c-pasos'], true, practica);
+      seccionesTrabajo = { barreras: true, voz: true, ajustes: true };
+      return { centro, trabajo: documentoTrabajo([empleo]) };
+    }, { origen: original.id, empleo: empleo.id });
+    for (const modelo of Object.values(modelos)) {
+      assert(modelo);
+      assert(!JSON.stringify(modelo).includes('Ajustes acordados en su práctica'));
+      assert(!JSON.stringify(modelo).includes('Criterio privado del caso'));
+    }
+    assert.equal(modelos.trabajo.grupos.length, 1);
+    assert.equal(modelos.trabajo.grupos[0].trabajador, empleo.id);
+    for (const titulo of titulos) assert(!JSON.stringify(modelos.trabajo).includes(titulo), titulo);
+    assert.equal(modelos.centro.acciones.length, 1);
+    const aprobado = modelos.centro.acciones[0].titulo;
+    assert(titulos.includes(aprobado));
+    for (const titulo of titulos.filter(titulo => titulo !== aprobado)) {
+      assert(!JSON.stringify(modelos.centro).includes(titulo), titulo);
+    }
+
+    await campo('abrir-mochila').click();
+    const descargado = pagina.waitForEvent('download');
+    await campo('guardar-respaldo').click();
+    const archivo = await (await descargado).path();
+    const respaldo = JSON.parse(await fs.readFile(archivo, 'utf8'));
+    assert.equal(respaldo.trabajadores.find(e => e.id === empleo.id).origen, original.id);
+    const importar = async datos => {
+      await campo('abrir-respaldo').setInputFiles({
+        name: 'respaldo.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(datos))
+      });
+      await pagina.waitForFunction(() => document.querySelector('#abrir-respaldo').files.length === 0);
+      assert.match(await campo('respaldo-estado').textContent(), /^Respaldo abierto/);
+    };
+    await importar(respaldo);
+    assert.equal((await caso()).origen, original.id);
+    await campo('cerrar-mochila').click();
+    assert(await campo('trabajo-historia').isVisible());
+    await campo('trabajador-caso-0').click();
+    await campo('trabajo-iniciales').fill('PQ');
+    assert.match(await campo('trabajo-duplicadas').textContent(), /Ya hay una persona PQ/);
+    await campo('trabajador-' + empleo.id).click();
+    assert.match(await campo('trabajo-duplicadas').textContent(), /Ya hay una persona PQ/);
+    await campo('ver-caso-practica').click();
+    await campo('quitar-trabajador').click();
+    assert.match(confirmaciones.at(-1), /Su caso de primer empleo se mantiene/);
+    assert.equal((await caso()).id, empleo.id);
+    assert(!Object.hasOwn(await caso(), 'origen'));
+    assert(!await campo('trabajo-historia').isVisible());
+
+    await campo('abrir-mochila').click();
+    for (const origen of ['inexistente', 'caso-0', '<invalido>', empleo.id]) {
+      await importar({ ...respaldo, trabajadores: respaldo.trabajadores.map(e => e.id === empleo.id ? { ...e, origen } : e) });
+      assert(!Object.hasOwn(await caso(), 'origen'), origen);
+      assert(!await campo('trabajo-historia').isVisible(), origen);
+    }
+    await campo('cerrar-mochila').click();
+
+    await abrir({ ...contextoTrabajo, trabajadores: [practica, ...llenos.slice(0, 9)] });
+    assert(await campo('preparar-primer-empleo').isDisabled());
+    assert.equal(await campo('primer-empleo-ayuda').innerText(), 'Máximo 10 casos en Práctica y trabajo');
     assert.deepEqual(errores, []);
-    console.log('Correcto: selector, etapas, seguridad, acuerdos, mochila, documento privado, límite y migración única desde almacenamiento y respaldo, sin desborde a 390 px.');
+    console.log('Correcto: selector, etapas, seguridad, acuerdos, mochila, documento privado, transición al empleo, límite y migración única desde almacenamiento y respaldo, sin desborde a 390 px.');
   } finally {
     await navegador?.close();
     await new Promise(ok => servidor.close(ok));
