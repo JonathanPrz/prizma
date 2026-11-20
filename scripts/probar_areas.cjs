@@ -19,6 +19,8 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
     await boton.focus(); await p.keyboard.press('Enter');
     assert.equal(await boton.getAttribute('aria-expanded'),'true');
     assert.match(await boton.innerText(), /^− /);
+    assert.match(await boton.locator('span[aria-hidden="true"]').innerText(), /^−/, 'El símbolo no debe leerse');
+    assert(!(await boton.evaluate((b) => [...b.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join(''))).includes('−'), 'El símbolo queda fuera del texto que se lee');
     assert.notEqual(await boton.evaluate(n=>getComputedStyle(n).backgroundColor),cerrado);
     const contraste=await boton.evaluate(n=>{
      const estilo=getComputedStyle(n);
