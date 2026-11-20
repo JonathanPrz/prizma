@@ -1177,8 +1177,11 @@ function empiezaPor(id, fichas, persona) {
         const destino = document.getElementById("elegir-" + r.id);
         const grupo = destino?.closest("details[data-grupo]");
         if (!grupo) return;
+        const ficha = destino.closest(".tarjeta");
+        const titulo = ficha.querySelector("h3, h4");
         grupo.open = true;
-        enfocarYDesplazar(destino, "center");
+        titulo.setAttribute("tabindex", "-1");
+        enfocarYDesplazar(titulo, ficha);
       },
     })))),
     el("p", { class: "ayuda", text: "Responden mejor a lo que describiste" })) : null;
@@ -1260,11 +1263,11 @@ function irPaso(numero) {
   irAlPasoVisible(numero, $("#" + id));
 }
 let desplazamientoIntencional = false;
-function enfocarYDesplazar(destino, block = "start") {
+function enfocarYDesplazar(destino, inicio = destino) {
   desplazamientoIntencional = true;
   try { destino.focus({ preventScroll: true }); }
   finally { desplazamientoIntencional = false; }
-  destino.scrollIntoView?.({ block });
+  inicio.scrollIntoView?.({ block: "start" });
 }
 function irAlPasoVisible(numero, destino) {
   actualizarPaso(numero);

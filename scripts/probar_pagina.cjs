@@ -263,7 +263,21 @@ async function probar() {
       assert((await enlacesApoyos.first().boundingBox()).height >= 24);
       await enlacesApoyos.first().focus();
       await pagina.keyboard.press('Enter');
-      assert(await pagina.locator(destino).evaluate(n => n === document.activeElement && n.closest('details[data-grupo]').open));
+      const fichaEnlazada = await pagina.locator(destino).evaluate(n => {
+        const ficha = n.closest('.tarjeta');
+        const titulo = ficha.querySelector('h3, h4');
+        const indicador = document.querySelector('#indicador-pasos');
+        const arriba = getComputedStyle(indicador).position === 'sticky'
+          ? indicador.getBoundingClientRect().bottom : document.querySelector('.cabecera').getBoundingClientRect().bottom;
+        const abajo = Math.min(innerHeight, document.querySelector('#barra-continuar').getBoundingClientRect().top);
+        return {
+          enfocada: titulo === document.activeElement && titulo.tabIndex === -1,
+          abierta: n.closest('details[data-grupo]').open,
+          visible: ficha.getBoundingClientRect().top >= arriba && titulo.getBoundingClientRect().bottom <= abajo
+        };
+      });
+      assert(fichaEnlazada.enfocada && fichaEnlazada.abierta, JSON.stringify(fichaEnlazada));
+      if (width === 390) assert(fichaEnlazada.visible, JSON.stringify(fichaEnlazada));
       assert.equal(await gruposApoyos.locator('xpath=self::*[@open]').count(), 1);
       const medidas = await nodo('panel-apoyos').evaluate(n => ({
         ancho: n.getBoundingClientRect().width,
