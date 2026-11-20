@@ -419,27 +419,53 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 #quitar-estudiante, #quitar-trabajador { justify-self: start; }
 
 .descripcion-areas > .ayuda { margin-bottom: .75rem; }
-#areas, #trabajo-areas, .situaciones-area { display: grid; gap: 1rem; }
-.area-descripcion > .boton { width: 100%; text-align: left; }
+#areas, #trabajo-areas { display: grid; gap: .75rem; }
+.area-descripcion > .boton { width: 100%; text-align: left; font-size: 1.0625rem; font-weight: 700; }
 .area-descripcion > .boton .icono-estado { margin-inline-start: .25rem; }
 .area-descripcion + .area-descripcion { border-top: 1px solid var(--linea); padding-top: .75rem; }
-.situaciones-area { padding-top: .75rem; }
-.situaciones-area legend { font-weight: 700; }
+.situaciones-area { container-type: inline-size; display: grid; gap: 1rem; padding-top: .75rem; }
+.situaciones-area legend { font-size: 1rem; font-weight: 600; }
 
-.frecuencias { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .25rem; margin-top: .5rem; }
+.frecuencias {
+  display: inline-grid; grid-template-columns: repeat(4, minmax(6.5rem, 1fr)); gap: 0;
+  max-width: 100%; margin-top: .5rem;
+  border: 1px solid var(--borde-control); border-radius: .5rem; background: var(--superficie);
+}
 .frecuencias label {
   position: relative; display: flex; align-items: center; justify-content: center; gap: .25rem;
-  min-height: 2.75rem; padding: .25rem; text-align: center;
-  border: 2px solid var(--borde-control); border-radius: .35rem; background: var(--superficie);
+  min-height: 2.25rem; padding-inline: .75rem; text-align: center;
+  color: var(--tinta); font-size: .875rem; font-weight: 600; line-height: 1.1;
 }
+.frecuencias label + label::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 1px;
+  background: var(--linea); pointer-events: none;
+}
+.frecuencias label:first-child { border-start-start-radius: .4375rem; }
+.frecuencias label:last-child { border-end-end-radius: .4375rem; }
 .frecuencias input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .frecuencias .icono-estado { display: none; margin: 0; }
-.area-descripcion > [data-marcada="true"], .frecuencias label:has(input:checked:not([value="0"])) {
+.area-descripcion > [data-marcada="true"] {
   background: var(--acento-suave); border: 2px solid var(--acento); color: var(--acento-texto);
 }
+.frecuencias label:has(input:checked:not([value="0"])) {
+  background: var(--acento-suave); box-shadow: inset 0 0 0 2px var(--acento); color: var(--acento-texto);
+}
 .frecuencias label:has(input:checked) .icono-estado { display: inline-block; }
-.frecuencias label:has(input:focus-visible) { outline: 3px solid var(--enfoque); outline-offset: 2px; }
-@media (width < 30rem) { .frecuencias { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.frecuencias label:has(input:focus-visible) { z-index: 1; outline: 3px solid var(--enfoque); outline-offset: 2px; }
+@container (width >= 26.125rem) {
+  .frecuencias label:first-child { border-end-start-radius: .4375rem; }
+  .frecuencias label:last-child { border-start-end-radius: .4375rem; }
+}
+@container (width < 26.125rem) {
+  .frecuencias { grid-template-columns: repeat(2, minmax(6.5rem, 1fr)); }
+  .frecuencias label:nth-child(2) { border-start-end-radius: .4375rem; }
+  .frecuencias label:nth-child(3) { border-end-start-radius: .4375rem; }
+  .frecuencias label:nth-child(3)::before { display: none; }
+  .frecuencias label:nth-child(n + 3)::after {
+    content: ""; position: absolute; inset: 0 0 auto; height: 1px;
+    background: var(--linea); pointer-events: none;
+  }
+}
 
 .seguridad { display: grid; gap: .75rem; }
 

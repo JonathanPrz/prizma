@@ -111,17 +111,54 @@ async function probar() {
       const radios = frecuencia.getByRole('radio');
       assert.equal(await radios.count(), 4);
       assert(await radios.first().isChecked());
-      assert.equal((await radios.first().locator('..').evaluate(estiloControl)).fondo, areaCerrada.fondo);
+      const neutra = await radios.first().locator('..').evaluate(n => {
+        const css = getComputedStyle(n);
+        return { color: css.color, peso: css.fontWeight, fondo: css.backgroundColor, sombra: css.boxShadow };
+      });
+      const tinta = await pagina.locator('body').evaluate(n => getComputedStyle(n).color);
+      assert.deepEqual(neutra, { color: tinta, peso: '600', fondo: 'rgba(0, 0, 0, 0)', sombra: 'none' });
+      assert(!(await radios.first().locator('..').locator('[aria-hidden="true"]').count()));
+      const borde = await frecuencia.evaluate(n => {
+        const css = getComputedStyle(n);
+        return [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth, css.borderRadius, css.gap];
+      });
+      assert.deepEqual(borde, ['1px', '1px', '1px', '1px', '8px', '0px']);
+      if (width === 1280) assert((await frecuencia.boundingBox()).width <= 520);
+      const fuenteArea = await area.evaluate(n => parseFloat(getComputedStyle(n).fontSize));
+      const fuenteSituacion = await grupo.locator('legend').first().evaluate(n => parseFloat(getComputedStyle(n).fontSize));
+      assert.equal(fuenteSituacion, 16);
+      assert(fuenteArea > fuenteSituacion);
+      async function verificarMargenes() {
+        const margenes = await frecuencia.locator('label').evaluateAll(celdas => celdas.map(celda => {
+          const rango = document.createRange();
+          rango.selectNodeContents([...celda.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()));
+          const texto = rango.getBoundingClientRect();
+          const borde = celda.getBoundingClientRect();
+          return { opcion: rango.toString(), izquierda: texto.left - borde.left, derecha: borde.right - texto.right };
+        }));
+        assert(margenes.every(m => m.izquierda >= 8 && m.derecha >= 8), JSON.stringify(margenes));
+      }
+      await verificarMargenes();
       const posiciones = await frecuencia.locator('label').evaluateAll(celdas => celdas.map(celda => {
         const r = celda.getBoundingClientRect();
-        return { x: r.x, y: r.y, ancho: r.width, alto: r.height };
+        const css = getComputedStyle(celda);
+        return { x: r.x, y: r.y, ancho: r.width, alto: r.height, letra: css.fontSize,
+          bordes: [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth] };
       }));
-      assert(posiciones.every(p => p.alto >= 44 && p.ancho === posiciones[0].ancho));
+      assert(posiciones.every(p => p.alto >= 32 && p.alto <= 40 && p.ancho >= 104 && p.ancho === posiciones[0].ancho &&
+        p.letra === '14px' && p.bordes.every(borde => borde === '0px')));
       if (width === 390) {
         const [primera, segunda, tercera, cuarta] = posiciones;
         assert(primera.x === tercera.x && segunda.x === cuarta.x && primera.x < segunda.x);
         assert(primera.y === segunda.y && tercera.y === cuarta.y && primera.y < tercera.y);
         assert(await pagina.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        for (const celda of await frecuencia.locator('label').all()) {
+          assert(await celda.isVisible());
+          assert(await celda.evaluate(n => {
+            const r = n.getBoundingClientRect();
+            return r.left >= 0 && r.right <= innerWidth && n.scrollWidth <= n.clientWidth;
+          }));
+        }
       } else {
         assert(posiciones.every(p => p.y === posiciones[0].y));
       }
@@ -135,13 +172,18 @@ async function probar() {
       assert.match(await area.innerText(), /\(1 marcada\)/);
       const seleccionada = await radios.nth(2).locator('..').evaluate(estiloControl);
       assert.notEqual(seleccionada.fondo, areaCerrada.fondo);
-      assert.deepEqual(await area.evaluate(estiloControl), seleccionada);
+      const areaMarcada = await area.evaluate(estiloControl);
+      assert.equal(areaMarcada.fondo, seleccionada.fondo);
+      assert.equal(areaMarcada.texto, seleccionada.texto);
+      assert.equal(seleccionada.borde, '0px');
+      assert.match(await radios.nth(2).locator('..').evaluate(n => getComputedStyle(n).boxShadow), /0px 0px 0px 2px inset/);
       await area.click();
       assert.equal(await area.getAttribute('aria-expanded'), 'false');
-      assert.deepEqual(await area.evaluate(estiloControl), seleccionada);
+      assert.deepEqual(await area.evaluate(estiloControl), areaMarcada);
       assert.match(await area.innerText(), /\(1 marcada\)/);
       await area.click();
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
+      await verificarMargenes();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
       assert(await nodo('continuar-conteo').isVisible());
@@ -307,6 +349,14 @@ async function probar() {
       await nodo('trabajo-roles').locator('input').first().check();
       await nodo('guardar-acuerdos-trabajo').click();
       assert.equal(await nodo('continuar').innerText(), 'Ver documento para el centro');
+      await nodo('trabajo-iniciales').fill('JP');
+      await nodo('preparar-primer-empleo').click();
+      assert(await nodo('trabajo-historia').isVisible());
+      assert.match(await nodo('trabajo-historia-estado').textContent(), /^Estado del acuerdo de la práctica:/);
+      assert.equal(await nodo('trabajo-agregar-ayuda').textContent(), 'Completa los acuerdos de: JP (práctica), JP (primer empleo)');
+      const casos = await nodo('lista-trabajadores').getByRole('button').allTextContents();
+      assert.match(casos[0], /^JP \(práctica\)/);
+      assert.equal(casos[1], 'JP (primer empleo)');
       assert.deepEqual(errores, []);
       await pagina.close();
     }

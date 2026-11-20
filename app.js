@@ -685,7 +685,11 @@ function acuerdoConDatos(a) {
 }
 
 function trabajadorActual() { return (estado.trabajadores || []).find((e) => e.id === estado.trabajadorActivo) || estado.trabajadores?.[0]; }
-function nombreTrabajador(e) { return e.iniciales || `Persona ${estado.trabajadores.indexOf(e) + 1}`; }
+function nombreTrabajador(e) {
+  if (!e.iniciales) return `Persona ${estado.trabajadores.indexOf(e) + 1}`;
+  const repetidas = estado.trabajadores.some((otro) => otro.id !== e.id && otro.iniciales.toUpperCase() === e.iniciales.toUpperCase());
+  return repetidas ? e.iniciales + (e.etapa === "practica" ? " (práctica)" : " (primer empleo)") : e.iniciales;
+}
 function tituloTrabajador(e) { return "Ajustes para " + nombreTrabajador(e); }
 function datosTrabajador(e) { return Boolean(e.etapa === "practica" || e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.compartir || e.modalidad || e.origen || acuerdoConDatos(e.acuerdo)); }
 function elegidasTrabajo(e) {
@@ -709,7 +713,7 @@ function pintarHistoriaPractica(e) {
   const fichas = origen ? elegidasCentro(origen) : [];
   $("#trabajo-historia-fichas").hidden = !fichas.length;
   $("#trabajo-historia-fichas").replaceChildren(...fichas.map((r) => el("li", { text: textoModalidad(r.titulo, r, origen) })));
-  $("#trabajo-historia-estado").textContent = origen ? estadoCaso(origen, true) : "";
+  $("#trabajo-historia-estado").textContent = origen ? "Estado del acuerdo de la práctica: " + estadoCaso(origen, true) : "";
   const criterio = origen?.acuerdo.criterio.trim();
   $("#trabajo-historia-criterio").hidden = !criterio;
   $("#trabajo-historia-criterio").textContent = criterio ? "¿Cómo sabremos que funciona? " + criterio : "";

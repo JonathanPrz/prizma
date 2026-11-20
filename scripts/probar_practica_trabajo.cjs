@@ -334,7 +334,7 @@ async function probar() {
     const titulos = await campo('trabajo-historia-fichas').locator('li').allTextContents();
     assert.deepEqual(titulos, await pagina.evaluate(() => elegidasCentro(estado.trabajadores[0]).map(r => r.titulo)));
     assert.equal(titulos.length, 2);
-    assert.equal(await campo('trabajo-historia-estado').textContent(), 'Acuerdos completos');
+    assert.equal(await campo('trabajo-historia-estado').textContent(), 'Estado del acuerdo de la práctica: Acuerdos completos');
     assert.match(await campo('trabajo-historia-criterio').textContent(), /Criterio privado del caso/);
     assert(await pagina.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await campo('ver-caso-practica').click();
