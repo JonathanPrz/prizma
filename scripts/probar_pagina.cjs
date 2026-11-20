@@ -235,7 +235,12 @@ async function probar() {
       await verificarErrores(true);
 
       await nodo('trabajo-descripcion-editar').click();
+      const confirmacionEtapa = pagina.waitForEvent('dialog').then(async dialogo => {
+        await dialogo.accept();
+        return dialogo.message();
+      });
       await nodo('trabajo-etapa').selectOption('practica');
+      assert.match(await confirmacionEtapa, /Se quitarán 1 ajustes/);
       const fichaCentro = nodo('elegir-pp-c-analisis');
       await fichaCentro.evaluate(b => b.closest('details').open = true);
       await fichaCentro.click();
