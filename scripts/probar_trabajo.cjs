@@ -65,8 +65,13 @@ assert.deepEqual(json('ajustesTrabajo(normalizarTrabajador({dimensiones:{13:3}})
 run('Object.assign(trabajadorActual(), normalizarTrabajador({ dimensiones:{1:3}, modalidad:"senas" })); pintarTrabajo()');
 const primerasSenas = n('#trabajo-tarjetas').hijos[0];
 assert.equal(primerasSenas.tag, 'section');
-assert.deepEqual(idsTarjetas(primerasSenas).slice(0, 2).sort(), ['tr-interprete', 'tr-lengua-senas']);
-assert(todos(primerasSenas).some(x => x.className === 't-razon' && x.textContent === 'Porque usa: Lengua de señas'));
+const enlacesSenas = todos(primerasSenas).filter(x => x.tag === 'a').map(x => x.href.replace('#elegir-', ''));
+assert.deepEqual(enlacesSenas.slice(0, 2).sort(), ['tr-interprete', 'tr-lengua-senas']);
+assert.deepEqual(idsTarjetas(primerasSenas), []);
+for (const id of enlacesSenas.slice(0, 2)) {
+ const ficha = todos(n('#trabajo-tarjetas')).find(x => x.className === 'tarjeta' && idsTarjetas(x).includes(id));
+ assert(todos(ficha).some(x => x.className === 't-razon' && x.textContent === 'Porque usa: Lengua de señas'));
+}
 run('Object.assign(trabajadorActual(), normalizarTrabajador({ etapa:"practica", dimensiones:{13:3}, modalidad:"senas" })); pintarTrabajo()');
 assert.deepEqual(idsTarjetas(n('#practica-profesional-grupos')), [
   'pp-plan', 'pp-responsables', 'pp-visita', 'pp-formatos', 'pp-seguridad', 'pp-horas', 'pp-c-tecnologia',

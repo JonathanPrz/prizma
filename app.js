@@ -188,14 +188,21 @@ function normalizarDatos(datos, avisos = []) {
     pestana: ["apoyos", "trabajo"].includes(g.pestana) ? g.pestana : "dua",
   };
 }
+function pintarBotonesCaso(contenedor, casos, prefijo, activo, activar) {
+  const ids = casos.map((e) => prefijo + e.id);
+  const botones = Array.from(contenedor.children || []);
+  if (botones.length !== ids.length || botones.some((b, i) => b.id !== ids[i])) {
+    contenedor.replaceChildren(...casos.map((e, i) => el("button", {
+      type: "button", class: "chip", id: ids[i], "aria-pressed": String(e.id === activo), onclick: () => activar(e.id),
+    })));
+  } else {
+    botones.forEach((b) => b.setAttribute("aria-pressed", String(b.id === prefijo + activo)));
+  }
+}
 function pintarSelectorEstudiantes() {
-  $("#lista-estudiantes").replaceChildren(...estado.estudiantes.map((e) => el("button", {
-    type: "button", class: "chip", id: `estudiante-${e.id}`, "aria-pressed": String(e.id === estado.estudianteActivo), text: rotuloCaso(nombreEstudiante(e), estadoCaso(e)),
-    onclick: () => {
-      estado.estudianteActivo = e.id; guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarEstadoCasos();
-      document.getElementById(`estudiante-${e.id}`).focus();
-    },
-  })));
+  pintarBotonesCaso($("#lista-estudiantes"), estado.estudiantes, "estudiante-", estado.estudianteActivo, (id) => {
+    estado.estudianteActivo = id; guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarEstadoCasos();
+  });
   pintarEstadoCasos();
   $("#quitar-estudiante").setAttribute("aria-label", "Quitar este caso: " + nombreEstudiante(estudianteActual()));
 }
@@ -233,9 +240,7 @@ function pintarRepeticiones() {
       onclick: () => {
         if (!borradorDua) editarClase();
         if (!borradorDua.necesidades.includes(n.id)) borradorDua.necesidades.push(n.id);
-        guardarClase();
-        const destino = $("#t-dua-marcadas") || $("#t-dua-empezar") || $("#acciones");
-        destino.setAttribute("tabindex", "-1"); destino.focus(); destino.scrollIntoView({ block: "start" });
+        guardarClase("#t-dua-marcadas, #t-dua-empezar");
       },
     }) : null);
   }));
@@ -424,13 +429,13 @@ function resumenClase() {
   const detalles = [estado.perfil.meta.trim(), ...necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto), ...[...estado.perfil.actividad, ...estado.perfil.evidencia].map(etiqueta), ...(practicaActiva() ? ["Taller, laboratorio o terreno"] : [])].filter(Boolean);
   $("#paso-clase-texto").textContent = detalles.join(" · ") || "Sin detalles de la clase.";
 }
-function guardarClase() {
+function guardarClase(destino = "#acciones") {
   if (borradorDua) {
     estado.perfil = normalizarPerfil({ ...borradorDua.perfil, nivel: estado.perfil.nivel, reflexion: estado.perfil.reflexion });
     estado.necesidades = normalizarNecesidades(borradorDua.necesidades);
   }
   borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso("paso-clase", false);
-  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#acciones"));
+  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $(destino) || $("#acciones"));
 }
 function prepararPasos() {
   $("#perfil").addEventListener("submit", (evento) => { evento.preventDefault(); guardarClase(); });
@@ -514,17 +519,14 @@ function pintarApoyos() {
     avisoVisual("aviso-apoyos", "!", `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
   const e = estudianteActual(), lista = accesosVisibles(e), practicas = practicasVisibles();
-  const todas = [...lista, ...practicas].sort((a, b) => compararAcceso(a, b, e));
-  const primeras = todas.length > 3 || lista.some((r) => enModalidad(r, e)) ? todas.slice(0, 3) : [];
-  const destacadas = new Set(primeras.map((r) => r.id));
-  const resto = lista.filter((r) => !destacadas.has(r.id)), restoPracticas = practicas.filter((r) => !destacadas.has(r.id));
+  const primeras = [...lista, ...practicas].sort((a, b) => compararAcceso(a, b, e)).slice(0, 3);
+  const grupos = Object.entries(TIPOS_ACCESO).map(([tipo, nombre]) => [nombre, lista.filter((r) => r.subtipo === tipo)]);
+  grupos.push(["En talleres, laboratorios y terreno", practicas]);
   $("#apoyos-resultados").replaceChildren(
-    ...(primeras.length ? [el("section", { "aria-labelledby": "t-para-empezar" }, el("h3", { id: "t-para-empezar", text: "Para empezar" }), el("p", { class: "ayuda", text: "Los apoyos que mejor responden a lo que describiste." }), el("ul", { class: "tarjetas" }, primeras.map(tarjeta)))] : []),
-    ...Object.entries(TIPOS_ACCESO).filter(([tipo]) => resto.some((r) => r.subtipo === tipo))
-      // Cada grupo se ubica según su ficha más pertinente; así no queda una buena ficha debajo de grupos peores.
-      .sort(([a], [b]) => compararAcceso(resto.find((r) => r.subtipo === a), resto.find((r) => r.subtipo === b), e)).map(([tipo, nombre]) =>
-      grupoPlegado(nombre, resto.filter((r) => r.subtipo === tipo), definicionAcceso())));
-  if (restoPracticas.length) $("#apoyos-resultados").append(grupoPlegado("En talleres, laboratorios y terreno", restoPracticas, definicionAcceso()));
+    ...[empiezaPor("t-apoyos-empezar", primeras, e)].filter(Boolean),
+    ...grupos.filter(([, fichas]) => fichas.length)
+      .sort(([, a], [, b]) => compararAcceso(a[0], b[0], e))
+      .map(([nombre, fichas]) => grupoPlegado(nombre, fichas, definicionAcceso())));
   const objetivos = objetivosVisibles();
   $("#objetivos summary").textContent = `Adecuaciones en los objetivos (${objetivos.length})`;
   $("#desregulacion summary").textContent = `Apoyos ante desregulación (${catalogo.filter((r) => r.tipo === "desregulacion" && aplica(r)).length})`;
@@ -766,23 +768,23 @@ function pintarTrabajo() {
   $("#trabajo-tarjetas").hidden = practica;
   $("#practica-profesional-grupos").replaceChildren(...(practica ? Object.keys(TIPOS_PRACTICA).map((subtipo) =>
     grupoPlegado(nombreGrupoPractica(subtipo, e), fichasPracticaProfesional(subtipo, e), "")) : []));
-  const lista = practica ? [] : ajustesTrabajo(e), primeras = lista.length > 4 || lista.some((r) => enModalidad(r, e)) ? lista.slice(0, 4) : [], ids = new Set(primeras.map((r) => r.id));
-  const grupo = (titulo, fichas) => titulo === "Para empezar" ? el("section", {}, el("h3", { text: titulo }), el("p", { class: "ayuda", text: "Los ajustes que mejor responden a lo que describiste." }), el("ul", { class: "tarjetas" }, fichas.map((r) => tarjeta(r)))) : grupoPlegado(titulo, fichas, "Cambio en el puesto, la comunicación, las herramientas o el horario. La ley lo llama «ajuste necesario» (Ley 20.422, art. 8).");
+  const lista = practica ? [] : ajustesTrabajo(e);
+  const grupos = Object.entries(TIPOS_TRABAJO).filter(([id]) => id !== "proceso")
+    .map(([id, nombre]) => [nombre, lista.filter((r) => r.subtipo === id)])
+    .filter(([, fichas]) => fichas.length)
+    .sort(([, a], [, b]) => lista.indexOf(a[0]) - lista.indexOf(b[0]));
+  if (!practica) grupos.push([TIPOS_TRABAJO.proceso, catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo === "proceso")]);
   $("#trabajo-tarjetas").replaceChildren(
-    ...(primeras.length ? [grupo("Para empezar", primeras)] : []),
-    ...Object.entries(TIPOS_TRABAJO).filter(([id]) => id !== "proceso").map(([id, nombre]) => {
-      const fichas = lista.filter((r) => r.subtipo === id && !ids.has(r.id)); return fichas.length ? grupo(nombre, fichas) : null;
-    }).filter(Boolean),
-    ...(practica ? [] : [grupo(TIPOS_TRABAJO.proceso, catalogo.filter((r) => r.tipo === "trabajo" && r.subtipo === "proceso"))]));
+    ...[empiezaPor("t-trabajo-empezar", lista.slice(0, 4), e)].filter(Boolean),
+    ...grupos.map(([nombre, fichas]) => grupoPlegado(nombre, fichas, "Cambio en el puesto, la comunicación, las herramientas o el horario. La ley lo llama «ajuste necesario» (Ley 20.422, art. 8).")));
   pintarSeguridad(e, true);
   pintarEstadoTrabajo();
 }
 function sincronizarTrabajo() {
   const e = trabajadorActual(); if (!e) return;
-  $("#lista-trabajadores").replaceChildren(...estado.trabajadores.map((e) => el("button", { type: "button", class: "chip", id: "trabajador-" + e.id,
-    "aria-pressed": String(e.id === estado.trabajadorActivo), text: rotuloCaso(nombreTrabajador(e), estadoCaso(e, true)), onclick: () => {
-      estado.trabajadorActivo = e.id; guardar(); sincronizarTrabajo(); pintarSeleccion(); document.getElementById("trabajador-" + e.id).focus();
-    } })));
+  pintarBotonesCaso($("#lista-trabajadores"), estado.trabajadores, "trabajador-", estado.trabajadorActivo, (id) => {
+    estado.trabajadorActivo = id; guardar(); sincronizarTrabajo(); pintarSeleccion();
+  });
   for (const [id, clave] of [["iniciales", "iniciales"], ["puesto", "tipoPuesto"], ["ayuda", "ayuda"], ["voz", "voz"], ["compartir", "compartir"]]) $("#trabajo-" + id).value = e[clave];
   $("#trabajo-etapa").value = e.etapa;
   $("#trabajo-nivel-origen").value = e.nivelOrigen;
@@ -1124,7 +1126,7 @@ function compararDua(a, b, practica = practicaActiva()) {
   return orden[a.momento] - orden[b.momento] || compararPertinenciaDua(a, b, practica);
 }
 function primerasDua(lista = visibles()) {
-  return !estado.necesidades.length && lista.length > 3 && (estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva()) ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
+  return !estado.necesidades.length ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
 }
 function visibles() {
   const practica = practicaActiva();
@@ -1151,15 +1153,35 @@ function el(tag, attrs = {}, ...hijos) {
 function definicionAcceso() {
   return esSuperior() ? "En superior: cambio en la enseñanza, la evaluación o el entorno que mantiene los resultados de aprendizaje (Ley 21.091)." : "Apoyo que cambia cómo recibe la información, cómo responde, el entorno o el tiempo, sin cambiar lo que debe aprender (Decreto 83).";
 }
-function grupoPlegado(nombre, acciones, definicion) {
-  const clave = nombre + ":" + (acciones[0]?.id || "");
-  const abierto = [...document.querySelectorAll("details[data-grupo]")].some((d) => d.getAttribute?.("data-grupo") === clave && d.open);
-  const grupo = el("details", { class: "grupo-apoyos", "data-grupo": clave },
-    el("summary", { text: `${nombre} (${acciones.length})` }),
+const gruposAbiertos = new Set();
+function grupoPlegado(nombre, acciones, definicion, sufijo = "") {
+  const anterior = [...document.querySelectorAll("details[data-grupo]")].find((d) => d.getAttribute?.("data-grupo") === nombre);
+  const grupo = el("details", { class: "grupo-apoyos", "data-grupo": nombre },
+    el("summary", { text: `${nombre} (${acciones.length})${sufijo}` }),
     definicion ? el("p", { class: "ayuda", text: definicion }) : null,
     el("ul", { class: "tarjetas" }, acciones.map((r) => tarjeta(r))));
-  grupo.open = abierto;
+  grupo.open = anterior?.open ?? gruposAbiertos.has(nombre);
+  grupo.addEventListener("toggle", () => {
+    if (!grupo.isConnected) return;
+    if (grupo.open) gruposAbiertos.add(nombre); else gruposAbiertos.delete(nombre);
+  });
   return grupo;
+}
+function empiezaPor(id, fichas, persona) {
+  return fichas.length ? el("section", { class: "empieza-por", "aria-labelledby": id },
+    el("p", { id, tabindex: "-1", text: "Empieza por:" }),
+    el("ul", {}, fichas.map((r) => el("li", {}, el("a", {
+      href: "#elegir-" + r.id, text: textoModalidad(r.titulo, r, persona),
+      onclick: (evento) => {
+        evento.preventDefault();
+        const destino = document.getElementById("elegir-" + r.id);
+        const grupo = destino?.closest("details[data-grupo]");
+        if (!grupo) return;
+        grupo.open = true;
+        enfocarYDesplazar(destino, "center");
+      },
+    })))),
+    el("p", { class: "ayuda", text: "Responden mejor a lo que describiste" })) : null;
 }
 let pasoActual = 1;
 function pasosActuales() {
@@ -1237,11 +1259,17 @@ function irPaso(numero) {
   } else if (numero === 3 && personal) abrirPaso(id, true);
   irAlPasoVisible(numero, $("#" + id));
 }
+let desplazamientoIntencional = false;
+function enfocarYDesplazar(destino, block = "start") {
+  desplazamientoIntencional = true;
+  try { destino.focus({ preventScroll: true }); }
+  finally { desplazamientoIntencional = false; }
+  destino.scrollIntoView?.({ block });
+}
 function irAlPasoVisible(numero, destino) {
   actualizarPaso(numero);
   destino.setAttribute("tabindex", "-1");
-  destino.focus({ preventScroll: true });
-  destino.scrollIntoView?.({ block: "start" });
+  enfocarYDesplazar(destino);
 }
 function continuarPaso() {
   if (pasoActual === 1) {
@@ -1271,17 +1299,24 @@ function prepararIndicador() {
   actualizarPaso(1);
 }
 
+function alternarOpcion(lista, id) {
+  return lista.includes(id) ? lista.filter((opcion) => opcion !== id) : [...lista, id];
+}
 function pintarControles() {
-  const configuracion = borradorDua || estado;
+  const contenedor = $("#necesidades");
   $("#necesidades-campo").hidden = !necesidades.length;
-  $("#necesidades").replaceChildren(...necesidades.map((n) => el("button", {
-    type: "button", id: "necesidad-" + n.id, class: "chip", "aria-pressed": String(configuracion.necesidades.includes(n.id)),
-    onclick: () => {
-      configuracion.necesidades = configuracion.necesidades.includes(n.id) ? configuracion.necesidades.filter((id) => id !== n.id) : [...configuracion.necesidades, n.id];
-      pintarControles();
-      document.getElementById("necesidad-" + n.id).focus();
-    }, text: n.texto,
+  if (!contenedor.children?.length) contenedor.replaceChildren(...necesidades.map((n) => el("button", {
+    type: "button", id: "necesidad-" + n.id, class: "chip", text: n.texto,
+    onclick: (evento) => {
+      const configuracion = borradorDua || estado;
+      configuracion.necesidades = alternarOpcion(configuracion.necesidades, n.id);
+      evento.currentTarget.setAttribute("aria-pressed", String(configuracion.necesidades.includes(n.id)));
+    },
   })));
+  const configuracion = borradorDua || estado;
+  Array.from(contenedor.children || []).forEach((boton, i) => {
+    boton.setAttribute("aria-pressed", String(configuracion.necesidades.includes(necesidades[i].id)));
+  });
   pintarFiltrosVista();
 }
 
@@ -1293,28 +1328,27 @@ function limpiarFiltrosVista() {
   actualizarVistaDua();
 }
 function pintarFiltrosVista() {
-  const cont = $("#momentos"); cont.replaceChildren();
-  for (const [id, nombre] of MOMENTOS) {
-    cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(estado.momentos.includes(id)),
-      "aria-label": nombreMomento(id, nombre),
-      onclick: () => {
-        estado.momentos = estado.momentos.includes(id) ? estado.momentos.filter((m) => m !== id) : [...estado.momentos, id];
-        actualizarVistaDua();
-        document.getElementById("m-" + id).focus();
-      },
+  const cont = $("#momentos");
+  if (!cont.children?.length) for (const [id, nombre] of MOMENTOS) {
+    cont.append(el("button", { type: "button", id: "m-" + id, class: "chip",
+      onclick: () => { estado.momentos = alternarOpcion(estado.momentos, id); actualizarVistaDua(); },
     }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase") })) : nombre));
   }
-  const chips = $("#propositos"); chips.replaceChildren();
-  for (const [id, p] of Object.entries(PROPOSITOS)) {
-    const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
-      el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto })));
-    b.addEventListener("click", () => {
-      estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
-      actualizarVistaDua();
-      document.getElementById("proposito-" + id).focus();
-    });
-    chips.append(b);
+  Array.from(cont.children || []).forEach((boton, i) => {
+    const [id, nombre] = MOMENTOS[i];
+    boton.setAttribute("aria-label", nombreMomento(id, nombre));
+    boton.setAttribute("aria-pressed", String(estado.momentos.includes(id)));
+  });
+  const chips = $("#propositos");
+  const propositos = Object.entries(PROPOSITOS);
+  if (!chips.children?.length) for (const [id, p] of propositos) {
+    chips.append(el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, title: "Principio DUA: " + p.principio,
+      onclick: () => { estado.propositos = alternarOpcion(estado.propositos, id); actualizarVistaDua(); },
+    }, el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto }))));
   }
+  Array.from(chips.children || []).forEach((boton, i) => {
+    boton.setAttribute("aria-pressed", String(estado.propositos.includes(propositos[i][0])));
+  });
 }
 
 function estudiantesCubiertos(r) {
@@ -1325,7 +1359,7 @@ function agregarVersionCurso(r) {
   const version = versionCurso(r); if (!version) return;
   if (!Object.hasOwn(estado.seleccion, version.id)) estado.seleccion[version.id] = "";
   guardar(); pintarTarjetas(); pintarApoyos(); pintarSeleccion();
-  document.getElementById("version-" + r.id)?.focus();
+  document.getElementById("version-" + r.id)?.focus({ preventScroll: true });
 }
 function textoPublico(texto) { return texto.replace(/la ficha clínica/g, "los antecedentes clínicos"); }
 function motivoApoyo(r, e) {
@@ -1335,16 +1369,38 @@ function motivoApoyo(r, e) {
   if (!marcadas) return modalidad;
   return (modalidad ? modalidad + "; y marcaste: " : "Porque marcaste: ") + marcadas + ".";
 }
+function relacionTarjeta(r) {
+  const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
+  const repetida = estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
+  const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);
+  const avisos = [
+    ofrecida ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), "Ya está considerado en el DUA: " + version.titulo) : null,
+    r.tipo === "dua" && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), avisoDua(r)) : null,
+    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status" }, iconoEstado("!"), `Este apoyo lo eligieron ${repetida} estudiantes`) : null];
+  const acciones =
+    version ? el("div", { class: "version-curso", id: "version-" + r.id, tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
+      preguntar ? el("div", { role: "status" }, el("p", { text: `Este apoyo lo necesitan ${repetida} estudiantes. ¿Quieres agregar su versión a todo el curso?` }),
+        el("div", { class: "acciones-intro" },
+          el("button", { type: "button", class: "boton", id: "curso-" + r.id, text: "Sí, agregar al curso", onclick: () => agregarVersionCurso(r) }),
+          el("button", { type: "button", class: "boton", id: "individual-" + r.id, text: "No, mantener individual", onclick: () => {
+            estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById("version-" + r.id).focus({ preventScroll: true });
+          } }))) : el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso", onclick: () => agregarVersionCurso(r) })) : null;
+  return { avisos, acciones };
+}
+function pintarBotonElegir(boton, titulo, elegida) {
+  boton.setAttribute("aria-pressed", String(elegida));
+  boton.setAttribute("aria-label", (elegida ? "Elegida: " : "Elegir: ") + titulo);
+  boton.replaceChildren(...(elegida ? [iconoEstado("✓"), " Elegida"] : ["Elegir"]));
+}
 function tarjeta(r, destacarMomento = false, agrupada = false) {
   const dua = r.tipo === "dua", trabajo = r.tipo === "trabajo" || r.tipo === "practica-profesional" && estado.ambito === "trabajo", acceso = r.tipo === "acceso", persona = trabajo ? trabajadorActual() : estudianteActual(), prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : persona.seleccion);
   const motivo = acceso || trabajo || r.tipo === "desregulacion" ? motivoApoyo(r, persona) : "";
   const queBusca = agrupada && consideraciones[r.consideracion];
-  const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
-  const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
-  const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);
-  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton", "aria-pressed": String(elegida), "aria-label": (elegida ? "Elegida: " : "Elegir: ") + textoModalidad(r.titulo, r, persona) }, elegida ? [iconoEstado("✓"), " Elegida"] : "Elegir");
-  boton.addEventListener("click", () => alternar(r.id));
-  return el("li", { class: "tarjeta" + (elegida ? " elegida" : "") },
+  const { avisos, acciones } = trabajo ? {} : relacionTarjeta(r);
+  const boton = el("button", { type: "button", id: "elegir-" + r.id, class: "boton" });
+  pintarBotonElegir(boton, textoModalidad(r.titulo, r, persona), elegida);
+  boton.addEventListener("click", () => alternar(r.id, undefined, undefined, boton));
+  return el("li", { class: "tarjeta" + (elegida ? " elegida" : ""), "data-accion": r.id },
     el("div", { class: "t-arriba" },
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].principio),
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "Consideración " + r.consideracion),
@@ -1355,17 +1411,9 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
     queBusca ? el("p", { class: "t-que-busca", text: `Qué busca: ${queBusca}` }) : null,
     r.tipo === "objetivos" && r.subtipo === "eliminacion" ? el("strong", { class: "ultimo-recurso", text: "Último recurso" }) : null,
     !dua && APOYOS_FORMA.includes(r.id) ? avisoVisual("aviso-apoyos", "!", el("strong", { text: "¿Lo que se evalúa es esa habilidad? " }), el("span", { text: "Úsalo solo si esta habilidad no es lo que estás evaluando" })) : null,
-    ofrecida ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), "Ya está considerado en el DUA: " + version.titulo) : null,
-    dua && estudiantesCubiertos(r) ? el("p", { class: "aviso-cruzado", role: "status" }, iconoEstado("✓"), avisoDua(r)) : null,
-    repetida >= 2 && !version ? el("p", { class: "aviso-apoyos", role: "status" }, iconoEstado("!"), `Este apoyo lo eligieron ${repetida} estudiantes`) : null,
+    trabajo ? null : el("div", { class: "relacion-tarjeta" }, avisos),
     el("ol", {}, (dua ? r.como.map(textoPublico) : pasosApoyo(r, persona)).map((p) => el("li", { text: p }))),
-    version ? el("div", { class: "version-curso", id: "version-" + r.id, tabindex: "-1" }, el("p", { text: "Versión para todo el curso: " + version.titulo }),
-      preguntar ? el("div", { role: "status" }, el("p", { text: `Este apoyo lo necesitan ${repetida} estudiantes. ¿Quieres agregar su versión a todo el curso?` }),
-        el("div", { class: "acciones-intro" },
-          el("button", { type: "button", class: "boton", id: "curso-" + r.id, text: "Sí, agregar al curso", onclick: () => agregarVersionCurso(r) }),
-          el("button", { type: "button", class: "boton", id: "individual-" + r.id, text: "No, mantener individual", onclick: () => {
-            estado.mantenerIndividual = [...new Set([...(estado.mantenerIndividual || []), r.id])]; guardar(); pintarApoyos(); document.getElementById("version-" + r.id).focus();
-          } }))) : el("button", { type: "button", class: "boton", id: "curso-" + r.id, ...(ofrecida ? { disabled: "" } : {}), text: ofrecida ? "Ya está en el curso" : "Agregar al curso", onclick: () => agregarVersionCurso(r) })) : null,
+    trabajo ? null : el("div", { class: "relacion-tarjeta" }, acciones),
     el("div", { class: "t-abajo" },
       el("span", { class: "respaldo " + r.respaldo, text: RESPALDO[r.respaldo] }),
       boton),
@@ -1387,10 +1435,12 @@ function pintarTarjetas() {
   pintarRepeticiones();
   const lista = visibles(), primeras = primerasDua(lista);
   const marcadas = necesidades.filter((n) => estado.necesidades.includes(n.id));
-  const destacadas = new Set(primeras.map((r) => r.id));
-  const resto = lista.filter((r) => !destacadas.has(r.id) && !coincidenciasNecesidades(r).length);
-  const otros = MOMENTOS.filter(([id]) => resto.some((r) => r.momento === id)).map(([id, nombre]) =>
-    grupoPlegado(nombreMomento(id, nombre), resto.filter((r) => r.momento === id)));
+  const resto = lista.filter((r) => !coincidenciasNecesidades(r).length);
+  const otros = MOMENTOS.map(([id, nombre]) => [nombreMomento(id, nombre), resto.filter((r) => r.momento === id)])
+    .filter(([, fichas]) => fichas.length).map(([nombre, fichas]) => {
+      const cantidad = marcadas.length ? 0 : fichas.filter((r) => coincidencias(r).length > 0).length;
+      return grupoPlegado(nombre, fichas, "", cantidad ? ` · ${cantidad} responden a lo que marcaste` : "");
+    });
   const contenedor = $("#tarjetas");
   if (marcadas.length) {
     const grupos = marcadas.map((n) => {
@@ -1410,16 +1460,25 @@ function pintarTarjetas() {
         el("h3", { id: "t-dua-marcadas", tabindex: "-1", text: "Para lo que marcaste" }), grupos),
       el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), otros));
   } else {
-    contenedor.replaceChildren(
-      ...(primeras.length ? [el("section", { "aria-labelledby": "t-dua-empezar" },
-        el("h3", { id: "t-dua-empezar", text: "Para empezar" }),
-        el("p", { class: "ayuda", text: "Las acciones que mejor responden a lo que describiste." }),
-        el("ul", { class: "tarjetas" }, primeras.map((r) => tarjeta(r, true))))] : []), ...otros);
+    contenedor.replaceChildren(...[empiezaPor("t-dua-empezar", primeras)].filter(Boolean), ...otros);
   }
   $("#conteo").textContent = plural(lista.length, "acción", "acciones");
 }
 
-function alternar(id, estudianteId, trabajadorId) {
+function actualizarEleccion(r, persona, elegida, trabajo) {
+  document.querySelectorAll(".tarjeta[data-accion]").forEach((ficha) => {
+    if (ficha.getAttribute("data-accion") !== r.id) return;
+    ficha.classList.toggle("elegida", elegida);
+    pintarBotonElegir(ficha.querySelector(".t-abajo button"), textoModalidad(r.titulo, r, persona), elegida);
+    if (!trabajo && r.tipo !== "dua") {
+      const { avisos, acciones } = relacionTarjeta(r);
+      const [aviso, version] = ficha.querySelectorAll(".relacion-tarjeta");
+      aviso.replaceChildren(...avisos.filter(Boolean));
+      version.replaceChildren(...[acciones].filter(Boolean));
+    }
+  });
+}
+function alternar(id, estudianteId, trabajadorId, boton) {
   const r = catalogo.find((r) => r.id === id);
   if (!r) return;
   const trabajo = r.tipo === "trabajo" || r.tipo === "practica-profesional" && (trabajadorId || estado.ambito === "trabajo" && estudianteId === undefined), persona = trabajo ? estado.trabajadores.find((e) => e.id === (trabajadorId || estado.trabajadorActivo)) : estado.estudiantes.find((e) => e.id === (estudianteId || estado.estudianteActivo));
@@ -1432,7 +1491,15 @@ function alternar(id, estudianteId, trabajadorId) {
   const agregada = !Object.hasOwn(seleccion, id);
   if (!agregada) delete seleccion[id]; else seleccion[id] = "";
   const abiertas = new Set([...document.querySelectorAll("details[data-ficha][open]")].map((n) => n.getAttribute("data-ficha")));
-  guardar(); if (trabajo) pintarTrabajo(); else { pintarTarjetas(); pintarApoyos(); } pintarSeleccion();
+  guardar();
+  if (boton?.closest) {
+    actualizarEleccion(r, persona, agregada, trabajo);
+    if (trabajo) pintarEstadoTrabajo();
+    else if (r.tipo === "dua") pintarApoyos();
+    else { pintarTarjetas(); pintarEstadoCasos(); }
+  } else if (trabajo) pintarTrabajo();
+  else { pintarTarjetas(); pintarApoyos(); }
+  pintarSeleccion();
   document.querySelectorAll("details[data-ficha]").forEach((n) => {
     if (abiertas.has(n.getAttribute("data-ficha"))) n.open = true;
   });
@@ -1446,7 +1513,7 @@ function alternar(id, estudianteId, trabajadorId) {
     aviso.textContent = "";
     requestAnimationFrame(() => { aviso.textContent = "Agregada a tu mochila"; });
   }
-  if (foco.startsWith("elegir-") || foco.startsWith("quitar-")) {
+  if (!boton?.closest && (foco.startsWith("elegir-") || foco.startsWith("quitar-"))) {
     (document.getElementById(foco) || (foco.startsWith("quitar-clase-") ? document.getElementById(siguiente) || $("#t-seleccion-dua") : $("#mochila .quitar") || $("#t-seleccion"))).focus();
   }
 }
@@ -2102,7 +2169,7 @@ async function iniciar() {
   }).observe($("#barra-continuar"));
   document.addEventListener("focusin", evento => {
     const barra = $("#barra-continuar"), foco = evento.target;
-    if (foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden) return;
+    if (desplazamientoIntencional || !foco.matches(":focus-visible") || foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden) return;
     const indicador = $("#indicador-pasos");
     const cabecera = $(".cabecera").getBoundingClientRect().bottom;
     const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?

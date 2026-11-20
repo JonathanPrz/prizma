@@ -516,3 +516,9 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .campo-acuerdo { display: grid; gap: .25rem; }
 
 .n-sel, .conteo, #continuar-conteo, #paso-acuerdos-texto, #trabajo-acuerdo-texto { font-variant-numeric: tabular-nums; }
+
+:is(#necesidades, #momentos, #propositos) .chip { border-width: 2px; }
+.empieza-por > p:first-child { font-weight: 700; }
+.empieza-por ul { margin-block: .25rem; }
+.empieza-por a { display: inline-block; min-height: 1.5rem; }
+.relacion-tarjeta { display: contents; }

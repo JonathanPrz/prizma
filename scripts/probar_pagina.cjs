@@ -61,9 +61,70 @@ async function probar() {
         assert.equal(await nodo('indicador-pasos').locator('.paso-terminado').first().getAttribute('aria-hidden'), 'true');
       }
 
+      async function verificarClics(id) {
+        for (const boton of await nodo(id).getByRole('button').all()) {
+          const antes = await boton.evaluate(n => {
+            window.opcionProbada = n;
+            const barra = document.querySelector('#barra-continuar').getBoundingClientRect();
+            window.scrollBy(0, n.getBoundingClientRect().bottom - barra.top + 2);
+            const r = n.getBoundingClientRect();
+            return { x: r.left + r.width / 2, y: r.top + r.height / 2, scroll: scrollY };
+          });
+          for (const marcado of ['true', 'false']) {
+            await pagina.mouse.click(antes.x, antes.y);
+            const despues = await pagina.evaluate(async () => {
+              await new Promise(ok => requestAnimationFrame(() => requestAnimationFrame(ok)));
+              return { scroll: scrollY, foco: document.activeElement === window.opcionProbada };
+            });
+            assert.deepEqual(despues, { scroll: antes.scroll, foco: true }, await boton.getAttribute('id'));
+            assert.equal(await boton.getAttribute('aria-pressed'), marcado);
+          }
+        }
+      }
       await nodo('nivel').selectOption('basica');
+      if (width !== 640) {
+        await verificarClics('necesidades');
+        assert(await nodo('paso-clase-toggle').evaluate(b => {
+          const practica = document.querySelector('#practica');
+          (practica.getClientRects().length ? practica : b).focus();
+          const campo = document.querySelector('#meta'), barra = document.querySelector('#barra-continuar');
+          window.scrollBy(0, campo.getBoundingClientRect().bottom - barra.getBoundingClientRect().top - 12);
+          window.scrollAntesDeTab = scrollY;
+          return campo.getBoundingClientRect().bottom > barra.getBoundingClientRect().top;
+        }));
+        await pagina.keyboard.press('Tab');
+        const teclado = await nodo('meta').evaluate(n => ({
+          foco: document.activeElement.id, antes: window.scrollAntesDeTab, despues: scrollY,
+          abajo: n.getBoundingClientRect().bottom, barra: document.querySelector('#barra-continuar').getBoundingClientRect().top
+        }));
+        assert(teclado.foco === 'meta' && teclado.despues > teclado.antes && teclado.abajo <= teclado.barra, JSON.stringify(teclado));
+        await pagina.locator('#perfil .mas-detalles summary').click();
+        await pagina.locator('input[name="actividad"][value="crear"]').check();
+        await nodo('guardar-clase').evaluate(n => n.scrollIntoView({ block: 'center' }));
+        await pagina.evaluate(() => {
+          window.trayectoriaGuardado = [scrollY];
+          addEventListener('scroll', () => trayectoriaGuardado.push(scrollY), { passive: true, signal: (window.finMedicion = new AbortController()).signal });
+        });
+      }
       await nodo('guardar-clase').click();
       await verificarResultados('t-acciones', '#proyectar');
+      if (width !== 640) {
+        const trayecto = await pagina.evaluate(async () => {
+          await new Promise(ok => setTimeout(ok, 600));
+          finMedicion.abort();
+          return [...new Set(trayectoriaGuardado)];
+        });
+        assert.equal(trayecto.length, 2, JSON.stringify(trayecto));
+        assert.match(await nodo('tarjetas').locator('summary').allTextContents().then(textos => textos.join(' ')), /responden a lo que marcaste/);
+        await verificarClics('momentos');
+        await verificarClics('propositos');
+        await nodo('paso-clase-editar').click();
+        await pagina.locator('#necesidades button').first().click();
+        await nodo('guardar-clase').click();
+        assert.equal(await nodo('t-dua-marcadas').innerText(), 'Para lo que marcaste');
+        assert.equal(await nodo('t-dua-empezar').count(), 0);
+        assert((await pagina.locator('#tarjetas .dua-marcadas .tarjeta:visible').count()) > 0);
+      }
       if (width === 640) {
         assert.equal(await nodo('indicador-pasos').evaluate(n => getComputedStyle(n).position), 'static');
         assert.deepEqual(errores, []);
@@ -184,10 +245,26 @@ async function probar() {
       await area.click();
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
       await verificarMargenes();
+      await pagina.locator('input[name="dimension-2"][value="2"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
       assert(await nodo('continuar-conteo').isVisible());
       assert.equal(await nodo('continuar-conteo').textContent(), '0 elegidos para JP');
+      const gruposApoyos = nodo('apoyos-resultados').locator('details[data-grupo]');
+      assert.equal(await nodo('apoyos-resultados').locator('.tarjeta:visible').count(), 0);
+      assert.equal(await nodo('apoyos-resultados').locator('.tarjeta').count(), await gruposApoyos.locator('li.tarjeta').count());
+      const titulosApoyos = await gruposApoyos.locator(':scope > summary').allTextContents();
+      assert(titulosApoyos.every(titulo => !titulo.includes('responden a lo que marcaste')));
+      assert.equal(titulosApoyos.reduce((total, titulo) => total + Number(titulo.match(/\((\d+)\)$/)[1]), 0),
+        await nodo('apoyos-resultados').locator('.tarjeta').count());
+      const enlacesApoyos = nodo('apoyos-resultados').locator('.empieza-por a');
+      assert.equal(await enlacesApoyos.count(), 3);
+      const destino = await enlacesApoyos.first().getAttribute('href');
+      assert((await enlacesApoyos.first().boundingBox()).height >= 24);
+      await enlacesApoyos.first().focus();
+      await pagina.keyboard.press('Enter');
+      assert(await pagina.locator(destino).evaluate(n => n === document.activeElement && n.closest('details[data-grupo]').open));
+      assert.equal(await gruposApoyos.locator('xpath=self::*[@open]').count(), 1);
       const medidas = await nodo('panel-apoyos').evaluate(n => ({
         ancho: n.getBoundingClientRect().width,
         columnas: [...n.querySelectorAll('.tarjetas')].filter(l => l.getClientRects().length)
@@ -209,7 +286,9 @@ async function probar() {
       assert(await tarjeta.locator('.t-razon').evaluate(razon =>
         Boolean(razon.previousElementSibling?.matches('h3,h4'))));
       await detalle.locator('summary').click();
+      const botonElegir = await elegir.elementHandle();
       await elegir.click();
+      assert(await botonElegir.evaluate(b => b === document.activeElement && b.getAttribute('aria-pressed') === 'true'));
       assert(await detalle.evaluate(d => d.open));
       assert(await nodo('continuar-conteo').isVisible());
       assert.equal(await nodo('continuar-conteo').textContent(), '1 elegido para JP');
