@@ -1,6 +1,6 @@
 # Tarea 059 · Logo nuevo: tres principios y una persona
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/059-logo` · Pull request con destino `main`
+Estado: **integrada** (PR #79) · Asignada a: Codex · Rama: `codex/059-logo` · Pull request con destino `main`
 
 ## Para qué
 El dueño aprobó el logo «C ajustada» el 20-11-2026, después de dos revisiones adversariales. Es una grilla de 2×2 girada 45°, apoyada sobre un vértice:
