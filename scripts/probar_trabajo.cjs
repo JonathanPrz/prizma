@@ -15,8 +15,9 @@ c=vm.createContext({getComputedStyle:()=>({getPropertyValue:()=> '#21633b'}),doc
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);const run=s=>vm.runInContext(s,c),json=s=>JSON.parse(JSON.stringify(run(s)));
 run(`catalogo=${leer('data/recomendaciones.json')};fuentes=Object.fromEntries(${leer('data/fuentes.json')}.map(f=>[f.id,f]));necesidades=${leer('data/necesidades.json')};estado.perfil.nivel='basica'`);
 // Exact source text, not a second hand-written copy of the specification.
-const guia=html.split('<dialog id="guia-trabajo"')[1].split('</dialog>')[0];
-const lis=[...guia.matchAll(/<li>(.*?)<\/li>/g)].map(m=>m[1]);
+const guia=html.split('<dialog id="guia-nivel"')[1].split('</dialog>')[0];
+const seccionLegal=guia.split('<h3 id="guia-seccion-trabajo"')[1].split('</section>')[0];
+const lis=[...seccionLegal.matchAll(/<li>(.*?)<\/li>/g)].map(m=>m[1]);
 const esperados=[...tarea.split('**Todas las empresas e instituciones**')[1].split('4. **Mi mochila:**')[0].matchAll(/^   [1-7]\. (.+)$/gm)].map(m=>m[1]);
 assert.equal(esperados.length,7);assert.deepEqual(lis.slice(0,6),esperados.slice(0,6));assert(lis[6].includes("Los plazos dependen del caso"));assert(lis[6].includes("https://www.dt.gob.cl/portal/1628/w3-article-103247.html"));
 const describe=leer('docs/tareas/058-paso-describe.md');

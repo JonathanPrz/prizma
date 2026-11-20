@@ -761,7 +761,6 @@ function pintarTrabajo() {
   const e = trabajadorActual(); if (!e) return;
   const practica = e.etapa === "practica";
   $("#bloque-practica-profesional").hidden = !practica;
-  $("#enlace-guia-trabajo").hidden = practica;
   $("#t-trabajo").textContent = practica ? "Apoyos para la práctica profesional" : "Ajustes para que cada persona pueda trabajar en igualdad";
   $("#trabajo-bajada").textContent = practica ? "Apoyos para participar en igualdad durante la práctica profesional." : "Cambios en el puesto, la comunicación, las herramientas o el horario que permiten a una persona con discapacidad trabajar en igualdad.";
   $("#trabajo-ajustes-ayuda").hidden = practica;
@@ -910,14 +909,6 @@ function prepararTrabajo() {
     const valor = fechaValida(ev.target.value) ? ev.target.value : ""; if (e.acuerdo[clave] !== valor) marcarRevision(e);
     e.acuerdo[clave] = valor; guardar(); pintarEstadoTrabajo();
   });
-  let origenGuiaTrabajo;
-  document.querySelectorAll("#enlace-guia-trabajo, .enlace-guia-trabajo").forEach((enlace) => enlace.addEventListener("click", (ev) => {
-    ev.preventDefault(); if (document.querySelector("dialog[open]")) return;
-    origenGuiaTrabajo = ev.currentTarget; $("#guia-trabajo").showModal(); $("#t-guia-trabajo").focus();
-  }));
-  $("#guia-trabajo").addEventListener("close", () => {
-    if (privacidadPendiente) { privacidadPendiente = false; mostrarAvisoPrivacidad(origenAvisoPrivacidad); } else origenGuiaTrabajo?.focus();
-  });
   for (const id of ["documento-trabajo", "pdf-trabajo"]) $("#" + id).addEventListener("click", () => trabajadorActual()?.etapa === "practica" ? prepararCentro() : prepararDocumentoTrabajo());
   sincronizarTrabajo();
 }
@@ -933,7 +924,7 @@ let origenGuiaApoyos = null, dialogoPrivacidad = null;
 const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} };
 let estado = { ambito: "educacion", trabajadores: [], trabajadorActivo: "", claseGuardada: false, mantenerIndividual: [], versionSituaciones: 2, asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "", reflexion: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
 let inclusionDocumento = null, solicitudDocumento = 0;
-let centroDocumento = null, origenCentro = null, origenGuiaPractica = null, origenDocumento = null;
+let centroDocumento = null, origenCentro = null, origenDocumento = null;
 let borradorDua = null;
 
 function cargar() {
@@ -1783,6 +1774,41 @@ async function verDocumentoCentro(e) {
   centroDocumento = d; armarHoja(); $("#documento-centro").close();
   mostrarMensaje($("#vista-estado"), ""); $("#vista").showModal(); $("#cerrar").focus();
 }
+function prepararGuiaNivel() {
+  const guia = $("#guia-nivel");
+  let origen;
+  const desplazar = (titulo) => {
+    guia.scrollTop += titulo.getBoundingClientRect().top - guia.getBoundingClientRect().top -
+      guia.clientTop - parseFloat(getComputedStyle(guia).paddingTop);
+  };
+  document.querySelectorAll("#enlace-guia-nivel, #enlace-guia-practica, .enlace-guia-trabajo").forEach((enlace) => {
+    enlace.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      if (document.querySelector("dialog[open]")) return;
+      origen = evento.currentTarget;
+      const caso = trabajadorActual();
+      const practica = origen.id === "enlace-guia-practica" || origen.id === "enlace-guia-nivel" && caso?.etapa === "practica";
+      const niveles = $("#guia-niveles-practica");
+      const primero = caso?.nivelOrigen === "superior" ? $("#guia-practica-superior") : $("#guia-practica-media");
+      if (niveles.firstElementChild !== primero) niveles.prepend(primero);
+      guia.showModal();
+      $("#t-guia-nivel").focus({ preventScroll: true });
+      desplazar($(practica ? "#guia-seccion-practica" : "#guia-seccion-trabajo"));
+    });
+  });
+  guia.querySelectorAll("nav a").forEach((enlace) => enlace.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    const titulo = $(enlace.hash);
+    titulo.focus({ preventScroll: true });
+    desplazar(titulo);
+  }));
+  guia.addEventListener("close", () => {
+    if (privacidadPendiente) {
+      privacidadPendiente = false;
+      mostrarAvisoPrivacidad(origenAvisoPrivacidad);
+    } else origen?.focus();
+  });
+}
 function prepararPracticaProfesional() {
   $("#preparar-practica").addEventListener("click", () => {
     if (!nivelPracticaProfesional()) return;
@@ -1799,14 +1825,6 @@ function prepararPracticaProfesional() {
     estado.trabajadorActivo = caso.id;
     history.pushState(null, "", "#trabajo"); mostrarPestana("trabajo", true);
   });
-  $("#enlace-guia-practica").addEventListener("click", (evento) => {
-    evento.preventDefault(); origenGuiaPractica = evento.currentTarget;
-    const superior = trabajadorActual().nivelOrigen === "superior";
-    $("#guia-practica-media").hidden = superior; $("#guia-practica-superior").hidden = !superior;
-    $("#guia-practica").showModal(); $("#t-guia-practica").focus();
-  });
-  $("#guia-practica-entendido").addEventListener("click", () => $("#guia-practica").close());
-  $("#guia-practica").addEventListener("close", () => origenGuiaPractica?.focus());
   $("#preparar-centro").addEventListener("click", prepararCentro);
   $("#decision-centro").addEventListener("change", actualizarDecisionCentro);
   $("#ver-centro").addEventListener("click", () => verDocumentoCentro(trabajadorActual()));
@@ -2193,7 +2211,7 @@ async function iniciar() {
     document.documentElement.dataset.tema = siguiente; nombrarTema();
     try { localStorage.setItem("prizma.tema", siguiente); } catch (e) { /* el tema funciona sin almacenamiento */ }
   });
-  prepararAvisos(); prepararPracticaProfesional();
+  prepararAvisos(); prepararPracticaProfesional(); prepararGuiaNivel();
   let pendienteScroll = false;
   window.addEventListener("scroll", () => {
     if (pendienteScroll || !estado.ambito) return;

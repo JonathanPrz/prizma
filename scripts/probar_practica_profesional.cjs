@@ -47,8 +47,11 @@ assert.equal(json('centroDocumento.acciones').length,1);assert(pdf.pageMargins.e
 run('centroDocumento=null');assert.deepEqual(json('elegidasTrabajo(e).map(r=>r.id).sort()'),['pp-c-analisis','pp-c-pasos','pp-e-barrera','pp-plan']);
 assert(!JSON.stringify(json('documento({curso:false,estudiantes:["a"]})')).includes('pp-c-pasos'));
 const html=leer('index.html'),tarea=leer('docs/tareas/028-practica-profesional.md');
-for(const linea of tarea.split('\n').map(s=>s.trim()).filter(s=>/^\d\. (El liceo|El profesor|El representante|Si hacen|La institución)/.test(s)||s.startsWith('- El estudiante decide')||s.startsWith('- El centro proporciona'))){const exacto=linea.replace(/^(?:\d\.|-) /,'');assert(html.includes('<li>'+exacto+'</li>'),exacto);}
-assert(html.includes('Orientación basada en la normativa citada. No es asesoría legal.'));
+for(const linea of tarea.split('\n').map(s=>s.trim()).filter(s=>/^\d\. (El liceo|El profesor|El representante|Si hacen|La institución)/.test(s)||s.startsWith('- El centro proporciona'))){const exacto=linea.replace(/^(?:\d\.|-) /,'');assert(html.includes('<li>'+exacto+'</li>'),exacto);}
+const privacidad=tarea.split('\n').map(s=>s.trim()).find(s=>s.startsWith('- El estudiante decide'));
+assert(privacidad);
+assert(html.includes('<p>'+privacidad.replace('- El estudiante decide qué información se comparte.', 'La persona decide qué información se comparte y con quién.')+'</p>'));
+assert(html.includes('Orientación basada en la normativa citada, vigente al 16 de noviembre de 2026. No es asesoría legal.'));
 (async()=>{
  run('prepararCentro()');assert(nodos.get('#ver-centro').disabled);assert(campos().length===2);
  nodos.get('#decision-centro').checked=true;run('actualizarDecisionCentro()');assert(!nodos.get('#ver-centro').disabled);

@@ -76,6 +76,28 @@ async function probar() {
       await campo('elegir-' + id).click();
     }
 
+    const guia = campo('guia-nivel');
+    const enlaceGuia = campo('enlace-guia-nivel');
+    const tituloDentroDeGuia = (id) => campo(id).evaluate(n => {
+      const dialogo = n.closest('dialog');
+      const limite = dialogo.getBoundingClientRect();
+      const titulo = n.getBoundingClientRect();
+      return titulo.top >= limite.top && titulo.bottom <= limite.bottom;
+    });
+    async function verificarAperturaGuia(enlace, seccion) {
+      await enlace.focus();
+      await pagina.keyboard.press('Enter');
+      assert(await guia.isVisible());
+      assert.equal(await pagina.evaluate(() => document.activeElement.id), 't-guia-nivel');
+      assert(await tituloDentroDeGuia(seccion), seccion);
+      assert(await guia.evaluate(n => n.scrollWidth <= n.clientWidth && document.documentElement.scrollWidth <= innerWidth));
+    }
+    async function verificarCierreGuia(enlace) {
+      await pagina.keyboard.press('Escape');
+      await guia.waitFor({ state: 'hidden' });
+      assert(await enlace.evaluate(n => n === document.activeElement));
+    }
+
     await abrir(base);
     const escuela = () => pagina.evaluate(() => ({
       perfil: estado.perfil, seleccion: estado.seleccion, claseGuardada: estado.claseGuardada,
@@ -97,6 +119,36 @@ async function probar() {
     assert.deepEqual(confirmaciones, []);
 
     await campo('nivel').selectOption('practica-trabajo');
+    assert.equal(await pagina.locator('dialog#guia-nivel, dialog#guia-practica, dialog#guia-trabajo').count(), 1);
+    assert(await enlaceGuia.isVisible());
+    assert.equal(await enlaceGuia.innerText(), 'Guía de Práctica y trabajo');
+    await verificarAperturaGuia(enlaceGuia, 'guia-seccion-trabajo');
+    assert.equal(await guia.getAttribute('aria-labelledby'), 't-guia-nivel');
+    assert.deepEqual(await guia.locator(':scope > section > h3').allTextContents(), [
+      'Antes de empezar', 'En la práctica profesional', 'Del paso al primer empleo', 'En el trabajo'
+    ]);
+    const indice = guia.getByRole('navigation', { name: 'Índice de la guía' });
+    assert.deepEqual(await indice.getByRole('link').allTextContents(), [
+      'En la práctica profesional', 'Del paso al primer empleo', 'En el trabajo'
+    ]);
+    for (const enlace of await indice.getByRole('link').all()) {
+      const id = (await enlace.getAttribute('href')).slice(1);
+      await enlace.click();
+      assert.equal(await pagina.evaluate(() => document.activeElement.id), id);
+      assert(await tituloDentroDeGuia(id), id);
+    }
+    const textoGuia = await guia.innerText();
+    for (const texto of ['Decreto 2.516', 'art. 154 ter', '157 bis', 'Ley 21.719']) assert(textoGuia.includes(texto), texto);
+    const direccion = guia.getByRole('link', { name: 'sitio de la Dirección del Trabajo' });
+    assert.equal(await direccion.getAttribute('href'), 'https://www.dt.gob.cl/portal/1628/w3-article-103247.html');
+    assert.deepEqual(await guia.locator('section:has(> #guia-seccion-transicion) li').allTextContents(), [
+      'Lo acordado en la práctica no pasa solo al empleo: la persona decide qué contarle a su nuevo empleador.',
+      '“Preparar su primer empleo” copia las situaciones y lo que le ayuda, para revisarlos con la persona. No copia lo que dijo ni lo que compartió con el centro.',
+      'En el empleo, los ajustes los hace el empleador. Los de la práctica sirven para conversarlos.',
+      'Si aún es menor de edad, para trabajar necesita autorización (Código del Trabajo, art. 13).'
+    ]);
+    await verificarCierreGuia(enlaceGuia);
+
     assert.equal(await campo('trabajo-etapa').inputValue(), 'trabajo');
     assert(!await campo('trabajo-nivel-origen-campo').isVisible());
     await campo('trabajo-etapa').selectOption('practica');
@@ -115,6 +167,25 @@ async function probar() {
 
     await campo('trabajo-descripcion-editar').click();
     await campo('trabajo-nivel-origen').selectOption('superior');
+    assert(await enlaceGuia.isVisible());
+    await verificarAperturaGuia(enlaceGuia, 'guia-seccion-practica');
+    assert.deepEqual(await campo('guia-niveles-practica').locator('h4').allTextContents(), [
+      'En la educación superior', 'En la media técnico-profesional'
+    ]);
+    await verificarCierreGuia(enlaceGuia);
+    const enlacePractica = campo('enlace-guia-practica');
+    await verificarAperturaGuia(enlacePractica, 'guia-seccion-practica');
+    await guia.getByRole('button', { name: 'Entendido' }).click();
+    await guia.waitFor({ state: 'hidden' });
+    assert(await enlacePractica.evaluate(n => n === document.activeElement));
+    await verificarAperturaGuia(enlacePractica, 'guia-seccion-practica');
+    await enlacePractica.evaluate(n => mostrarAvisoPrivacidad(n));
+    assert(!await campo('aviso-privacidad').isVisible());
+    await pagina.keyboard.press('Escape');
+    await campo('aviso-privacidad').waitFor({ state: 'visible' });
+    assert(!await guia.isVisible());
+    await campo('privacidad-entendido').click();
+    assert(await enlacePractica.evaluate(n => n === document.activeElement));
     assert.equal(await campo('elegir-pp-plan-superior').count(), 1);
     assert.equal(await campo('elegir-pp-plan').count(), 0);
     await campo('trabajo-etapa').selectOption('trabajo');
