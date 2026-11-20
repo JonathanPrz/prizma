@@ -8,9 +8,9 @@ const MOMENTOS = [
   ["antes", "Antes"], ["durante", "Durante"], ["despues", "Después"], ["toda-la-clase", "En toda la clase"],
 ];
 const PROPOSITOS = {
-  motivar: { nombre: "Motivar y sostener el interés", corto: "Motivar", principio: "Compromiso", directrices: ["7", "8", "9"] },
-  presentar: { nombre: "Presentar la información", corto: "Presentar", principio: "Representación", directrices: ["1", "2", "3"] },
-  mostrar: { nombre: "Expresarse y organizarse", corto: "Expresarse y organizarse", principio: "Acción y expresión", directrices: ["4", "5", "6"] },
+  motivar: { color: "compromiso", nombre: "Motivar y sostener el interés", corto: "Motivar", principio: "Compromiso", directrices: ["7", "8", "9"] },
+  presentar: { color: "representacion", nombre: "Presentar la información", corto: "Presentar", principio: "Representación", directrices: ["1", "2", "3"] },
+  mostrar: { color: "accion", nombre: "Expresarse y organizarse", corto: "Expresarse y organizarse", principio: "Acción y expresión", directrices: ["4", "5", "6"] },
 };
 const RESPALDO = {
   "investigacion-solida": "Investigación sólida",
@@ -209,8 +209,7 @@ function pintarRepeticiones() {
         if (!borradorDua) editarClase();
         if (!borradorDua.necesidades.includes(n.id)) borradorDua.necesidades.push(n.id);
         guardarClase();
-        if (!$("#t-dua-empezar")) limpiarFiltrosVista();
-        const destino = $("#t-dua-empezar") || $("#acciones");
+        const destino = $("#t-dua-marcadas") || $("#t-dua-empezar") || $("#acciones");
         destino.setAttribute("tabindex", "-1"); destino.focus(); destino.scrollIntoView({ block: "start" });
       },
     }) : null);
@@ -730,7 +729,7 @@ function prepararTrabajo() {
 const $ = (s) => document.querySelector(s);
 const proposito = (r) => Object.keys(PROPOSITOS).find((k) => PROPOSITOS[k].directrices.includes(r.consideracion.split(".")[0]));
 
-let catalogo = [], fuentes = {}, necesidades = [];
+let catalogo = [], fuentes = {}, necesidades = [], consideraciones = {};
 const privacidadesSesion = new Set();
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
@@ -937,7 +936,7 @@ function compararDua(a, b, practica = practicaActiva()) {
   return orden[a.momento] - orden[b.momento] || compararPertinenciaDua(a, b, practica);
 }
 function primerasDua(lista = visibles()) {
-  return lista.length > 3 && (estado.necesidades.length || estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva()) ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
+  return !estado.necesidades.length && lista.length > 3 && (estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva()) ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
 }
 function visibles() {
   const practica = practicaActiva();
@@ -1055,8 +1054,11 @@ function pintarFiltrosVista() {
   const cont = $("#momentos"); cont.replaceChildren();
   for (const [id, nombre] of MOMENTOS) {
     const acciones = catalogo.filter((r) => r.tipo === "dua" && r.momento === id && aplica(r));
-    const conteo = estado.necesidades.length ? `${acciones.length} · ${acciones.filter((r) => necesidades.some((n) => estado.necesidades.includes(n.id) && n.consideraciones.includes(r.consideracion))).length} para ti` : String(acciones.length);
+    const coincide = acciones.filter((r) => coincidenciasNecesidades(r).length).length;
+    const conteo = estado.necesidades.length ? `${acciones.length} · ${coincide} coincide` : String(acciones.length);
+    const etiquetaMomento = `${nombreMomento(id, nombre)}: ${plural(acciones.length, "acción", "acciones")}`;
     cont.append(el("button", { type: "button", id: "m-" + id, class: "chip", "aria-pressed": String(estado.momentos.includes(id)),
+      "aria-label": estado.necesidades.length ? `${etiquetaMomento}, ${coincide} coincide con lo que marcaste` : etiquetaMomento,
       onclick: () => {
         estado.momentos = estado.momentos.includes(id) ? estado.momentos.filter((m) => m !== id) : [...estado.momentos, id];
         actualizarVistaDua();
@@ -1067,7 +1069,7 @@ function pintarFiltrosVista() {
   const chips = $("#propositos"); chips.replaceChildren();
   for (const [id, p] of Object.entries(PROPOSITOS)) {
     const b = el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, "aria-pressed": String(estado.propositos.includes(id)), title: "Principio DUA: " + p.principio },
-      el("span", { class: "tri", "aria-hidden": "true" }), p.corto);
+      el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto })));
     b.addEventListener("click", () => {
       estado.propositos = estado.propositos.includes(id) ? estado.propositos.filter((x) => x !== id) : [...estado.propositos, id];
       actualizarVistaDua();
@@ -1088,8 +1090,9 @@ function agregarVersionCurso(r) {
   document.getElementById("version-" + r.id)?.focus();
 }
 function textoPublico(texto) { return texto.replace(/la ficha clínica/g, "los antecedentes clínicos"); }
-function tarjeta(r, destacarMomento = false) {
+function tarjeta(r, destacarMomento = false, agrupada = false) {
   const dua = r.tipo === "dua", trabajo = r.tipo === "trabajo", acceso = r.tipo === "acceso", persona = trabajo ? trabajadorActual() : estudianteActual(), prop = dua ? proposito(r) : null, elegida = r.id in (dua ? estado.seleccion : persona.seleccion);
+  const queBusca = agrupada && consideraciones[r.consideracion];
   const version = versionCurso(r), ofrecida = version && Object.hasOwn(estado.seleccion, version.id);
   const repetida = trabajo ? 0 : estado.estudiantes.filter((e) => Object.hasOwn(e.seleccion, r.id)).length;
   const preguntar = repetida >= 2 && version && !ofrecida && !(estado.mantenerIndividual || []).includes(r.id);
@@ -1100,7 +1103,7 @@ function tarjeta(r, destacarMomento = false) {
       !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].corto),
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "DUA " + r.consideracion)),
     dua && destacarMomento ? el("p", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null,
-    dua && coincidenciasNecesidades(r).length ? el("p", { class: "t-razon", text: "Responde a: " + coincidenciasNecesidades(r).map((n) => n.texto).join("; ") + "." }) : null,
+    queBusca ? el("p", { class: "t-razon", text: `DUA 3.0, consideración ${r.consideracion} · Qué busca: ${queBusca}` }) : null,
     dua && practicaActiva() && esPractica(r) ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: taller, laboratorio o terreno." }) : null,
     trabajo && dimensionesCoincidentes(r, persona).length ? el("p", { class: "t-razon", text: "Porque marcaste: " + dimensionesCoincidentes(r, persona).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[persona.dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : null,
     acceso ? el("p", { class: "t-razon", text: "Porque marcaste: " + (esPractica(r) ? "actividades prácticas" + (dimensionesCoincidentes(r).length ? "; " : "") : "") + dimensionesCoincidentes(r).map((d) => `${DIMENSIONES[d - 1][0]} (${FRECUENCIAS[estudianteActual().dimensiones[d]].toLowerCase()})`).join(", ") + "." }) : dua && coincidencias(r).length ? el("p", { class: "t-razon", text: "Responde a lo que marcaste: " + coincidencias(r).map(etiqueta).join(", ") + "." }) : null,
@@ -1137,11 +1140,37 @@ function fechaLocal() {
 
 function pintarTarjetas() {
   pintarRepeticiones();
-  const lista = visibles(), primeras = primerasDua(lista), destacadas = new Set(primeras.map((r) => r.id)), resto = lista.filter((r) => !destacadas.has(r.id));
-  $("#tarjetas").replaceChildren(
-    ...(primeras.length ? [el("section", { "aria-labelledby": "t-dua-empezar" }, el("h3", { id: "t-dua-empezar", text: "Para empezar" }), el("p", { class: "ayuda", text: "Las acciones que mejor responden a lo que describiste." }), el("ul", { class: "tarjetas" }, primeras.map((r) => tarjeta(r, true))))] : []),
-    ...MOMENTOS.filter(([id]) => resto.some((r) => r.momento === id)).map(([id, nombre]) =>
-      grupoPlegado(nombreMomento(id, nombre), resto.filter((r) => r.momento === id))));
+  const lista = visibles(), primeras = primerasDua(lista);
+  const marcadas = necesidades.filter((n) => estado.necesidades.includes(n.id));
+  const destacadas = new Set(primeras.map((r) => r.id));
+  const resto = lista.filter((r) => !destacadas.has(r.id) && !coincidenciasNecesidades(r).length);
+  const otros = MOMENTOS.filter(([id]) => resto.some((r) => r.momento === id)).map(([id, nombre]) =>
+    grupoPlegado(nombreMomento(id, nombre), resto.filter((r) => r.momento === id)));
+  const contenedor = $("#tarjetas");
+  if (marcadas.length) {
+    const grupos = marcadas.map((n) => {
+      const acciones = lista.filter((r) => n.consideraciones.includes(r.consideracion)).sort(compararPertinenciaDua);
+      const titulo = "t-dua-necesidad-" + n.id;
+      return el("div", { role: "group", "aria-labelledby": titulo },
+        el("h3", { id: titulo, tabindex: "-1", text: n.texto }),
+        acciones.length ? el("ul", { class: "tarjetas" }, acciones.map((r) => tarjeta(r, true, true))) :
+          el("div", { class: "acciones-intro" }, el("p", { class: "ayuda", text: "Ninguna acción en este filtro" }),
+            el("button", { type: "button", class: "boton", text: "Quitar filtros", onclick: () => {
+              limpiarFiltrosVista();
+              document.getElementById(titulo).focus();
+            } })));
+    });
+    contenedor.replaceChildren(
+      el("section", { class: "dua-marcadas", "aria-labelledby": "t-dua-marcadas" },
+        el("h3", { id: "t-dua-marcadas", tabindex: "-1", text: "Para lo que marcaste" }), grupos),
+      el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), otros));
+  } else {
+    contenedor.replaceChildren(
+      ...(primeras.length ? [el("section", { "aria-labelledby": "t-dua-empezar" },
+        el("h3", { id: "t-dua-empezar", text: "Para empezar" }),
+        el("p", { class: "ayuda", text: "Las acciones que mejor responden a lo que describiste." }),
+        el("ul", { class: "tarjetas" }, primeras.map((r) => tarjeta(r, true))))] : []), ...otros);
+  }
   $("#conteo").textContent = plural(lista.length, "acción", "acciones");
 }
 
@@ -1441,6 +1470,7 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
   const sel = opciones.curso ? elegidasOrdenadas() : [], alumnos = estado.estudiantes.filter((e) => opciones.estudiantes.includes(e.id));
   const usadas = [...sel, ...alumnos.flatMap((e) => elegidasOrdenadas(e.seleccion))];
   const accion = (r, seleccion, persona) => ({ id: r.id, titulo: textoModalidad(r.titulo, r, persona), como: pasosApoyo(r, persona), porque: r.porque, nota: (seleccion[r.id] || "").trim(),
+    proposito: r.tipo === "dua" ? proposito(r) : null,
     ofrecida: r.tipo !== "dua" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),
     dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.` + (r.tipo === "dua" && avisoDua(r) ? " " + avisoDua(r) + "." : ""),
     revisionModalidad: Boolean(persona && !compatibleModalidad(r, persona)),
@@ -1480,7 +1510,7 @@ function armarHoja() {
   const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
     el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
   const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), a.revisionModalidad ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, el("ol", {}, a.como.map((t) => el("li", { text: t }))),
-    el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato", text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : "") }),
+    el("p", {}, el("strong", { text: "Por qué funciona: " }), a.porque), el("p", { class: "h-dato" }, a.proposito ? el("span", { class: "t-proposito " + a.proposito, text: PROPOSITOS[a.proposito].principio + " · " }) : null, a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : "")),
     a.nota ? el("p", { class: "h-nota" }, el("strong", { text: "Mi nota: " }), a.nota) : null);
   if (d.centro) {
     $("#hoja").replaceChildren(
@@ -1510,7 +1540,10 @@ function definicionPdf() {
   const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
   const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
     { text: a.titulo, style: "h3" }, ...(a.revisionModalidad ? [{ text: "Revisa este apoyo: no corresponde a la modalidad actual.", bold: true }] : []), { ol: [...a.como], margin: [0, 4, 0, 4] },
-    { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : ""), style: "dato", margin: [0, 4, 0, 0] },
+    { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] }, { text: [
+      ...(a.proposito ? [{ text: PROPOSITOS[a.proposito].principio + " · ", color: getComputedStyle(document.documentElement).getPropertyValue("--hoja-" + PROPOSITOS[a.proposito].color).trim(), bold: true }] : []),
+      a.dato + (a.ofrecida ? " También ofrecido a todo el curso." : ""),
+    ], style: "dato", margin: [0, 4, 0, 0] },
     ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
   ] });
   const contenido = d.centro ? [
@@ -1775,9 +1808,15 @@ async function iniciar() {
     if (!validas.length && (!Array.isArray(datos) || datos.length)) throw new Error("Necesidades inválidas");
     return validas;
   }).catch(() => { $("#necesidades-error").hidden = false; return []; });
+  const cargaConsideraciones = fetch("data/consideraciones.json").then((r) => {
+    if (!r.ok) throw new Error("consideraciones");
+    return r.json();
+  }).then((datos) => Object.fromEntries(datos.filter((c) =>
+    c && Object.hasOwn(CONSIDERACIONES, c.id) && typeof c.que_busca === "string" && c.que_busca.trim()
+  ).map((c) => [c.id, c.que_busca]))).catch(() => ({}));
   try {
-    const [r, f, n] = await Promise.all([...["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })), cargaNecesidades]);
-    fuentes = validarFuentes(f); catalogo = validarCatalogo(r, fuentes); necesidades = n;
+    const [r, f, n, c] = await Promise.all([...["data/recomendaciones.json", "data/fuentes.json"].map((u) => fetch(u).then((x) => { if (!x.ok) throw new Error(u); return x.json(); })), cargaNecesidades, cargaConsideraciones]);
+    fuentes = validarFuentes(f); catalogo = validarCatalogo(r, fuentes); necesidades = n; consideraciones = c;
   } catch (e) {
     $("#guia-empezar").disabled = false;
     $("#inicio-estado").textContent = $("#conteo").textContent = "No se pudo cargar el catálogo. Recarga la página; si abriste el archivo directamente, usa la versión publicada.";

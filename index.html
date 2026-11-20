@@ -66,7 +66,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <label id="practica-campo" class="casilla-practica" hidden><input id="practica" type="checkbox"> Mi clase tiene taller, laboratorio o terreno<span class="ayuda">Prizma pondrá primero acciones útiles en talleres y sumará apoyos de taller en los casos de tus estudiantes</span></label>
           <label class="meta"><span>¿Qué quieres que aprendan en esta <span data-voc="clase">clase</span>?</span>
           <textarea id="meta" name="meta" maxlength="500" rows="2" placeholder="Por ejemplo: explicar por qué cambian las estaciones del año"></textarea>
-          <span class="ayuda">Quita las barreras, no el desafío de aprender esto.</span>
+          <span class="ayuda">Quita las barreras, no el desafío de aprender esto. La meta va a tu documento y te ayuda a elegir: Prizma no la usa para ordenar las acciones</span>
         </label>
           <p id="necesidades-error" class="ayuda" role="status" hidden>No se pudieron cargar las necesidades. Puedes usar las demás opciones de la clase.</p>
           <fieldset id="necesidades-campo" hidden aria-describedby="necesidades-ayuda">
@@ -82,7 +82,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
           <label><input type="checkbox" name="actividad" value="conversar" aria-describedby="actividad-ayuda"> Conversar o debatir</label>
           <label><input type="checkbox" name="actividad" value="experimentar" aria-describedby="actividad-ayuda"> Experimentar o manipular materiales</label>
           <label><input type="checkbox" name="actividad" value="crear" aria-describedby="actividad-ayuda"> Crear o producir algo</label>
-          <label><input type="checkbox" name="actividad" value="moverse" aria-describedby="actividad-ayuda"> Moverse o salir de la sala</label>
+          <label><input type="checkbox" name="actividad" value="moverse" aria-describedby="actividad-ayuda"> Moverse dentro de la sala</label>
         </fieldset>
         <fieldset class="perfil-opciones">
           <legend>¿Cómo mostrarán lo que aprendieron?</legend>
@@ -98,11 +98,11 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
           <button type="submit" class="boton boton-principal" id="guardar-clase">Guardar</button>
         </form></div>
 </section>
-    <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
     <section id="acciones" class="paso resultados" tabindex="-1">
       <h2 id="t-acciones">2. Acciones sugeridas</h2>
+      <button type="button" id="proyectar" class="boton" aria-pressed="false">Proyectar al curso</button>
       <div id="filtros-vista" class="filtros-vista">
-        <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
+        <fieldset aria-describedby="filtros-vista-ayuda momento-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div><p id="momento-ayuda" class="ayuda">"Coincide" cuenta las acciones que responden a lo que marcaste en el paso 1</p></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
         <p id="filtros-vista-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos</p>
         <a href="#acciones" id="limpiar-filtros">Limpiar filtros</a>

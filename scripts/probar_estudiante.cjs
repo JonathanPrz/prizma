@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
-const contexto = vm.createContext({});
+const contexto = vm.createContext({getComputedStyle: () => ({getPropertyValue: () => '#21633b'})});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''), contexto);
 const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, contexto)));
 assert.deepEqual(ejecutar('normalizarEstudiante({ iniciales: "A11", dimensiones: {1: 3, 6: 2, 0: 1, 15: 2, "01": 1, 3: "2", 4: 4}, ayuda: "x".repeat(301) })'), { iniciales: '', dimensiones: {1: 3, 6: 2}, ayuda: 'x'.repeat(300), modalidad: '', paci: false, paec: false, dec: false, revisarInstrumentos: false, practicaProfesional: false, descripcionGuardada: true, acuerdo: {roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos'}, voz: '' });

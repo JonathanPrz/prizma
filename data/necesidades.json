@@ -1,25 +1,23 @@
 [
   {
     "id": "motivacion",
-    "texto": "Les cuesta motivarse o se desconectan",
+    "texto": "Las actividades no conectan con los intereses ni tienen un propósito claro para el curso",
     "consideraciones": [
       "7.1",
       "7.2",
       "7.3",
       "8.1"
     ],
-    "dimensiones": [
-      14
-    ]
+    "dimensiones": []
   },
   {
     "id": "comprension",
-    "texto": "No entienden las explicaciones o las instrucciones",
+    "texto": "La información se explica de una sola forma o supone conocimientos que no todos tienen",
     "consideraciones": [
       "1.2",
       "2.1",
       "2.5",
-      "3.2"
+      "3.1"
     ],
     "dimensiones": [
       3,
@@ -28,7 +26,7 @@
   },
   {
     "id": "tareas-largas",
-    "texto": "Se pierden en tareas largas o con muchos pasos",
+    "texto": "Las tareas largas no tienen pasos visibles ni apoyos para organizarse",
     "consideraciones": [
       "5.3",
       "6.2",
@@ -41,12 +39,10 @@
   },
   {
     "id": "participacion",
-    "texto": "Algunos no participan o les cuesta trabajar en grupo",
+    "texto": "La participación depende de una sola forma de interactuar",
     "consideraciones": [
       "8.3",
-      "8.4",
-      "5.4",
-      "9.2"
+      "8.4"
     ],
     "dimensiones": [
       4,
@@ -55,39 +51,40 @@
   },
   {
     "id": "lectoescritura",
-    "texto": "Hay estudiantes que leen o escriben con dificultad",
+    "texto": "Los materiales solo se pueden leer, ver o manipular de una forma",
     "consideraciones": [
+      "1.1",
       "2.2",
+      "4.1",
       "4.2",
-      "5.2",
-      "1.1"
+      "5.2"
     ],
     "dimensiones": [
       2,
-      6
-    ]
-  },
-  {
-    "id": "evaluar",
-    "texto": "Quiero evaluar de formas distintas",
-    "consideraciones": [
-      "5.1",
-      "4.1",
-      "8.5",
-      "9.3"
-    ],
-    "dimensiones": [
-      12,
+      6,
       8
     ]
   },
   {
-    "id": "lengua-cultura",
-    "texto": "Hay estudiantes de otra lengua o cultura",
+    "id": "evaluar",
+    "texto": "Hay una sola forma de mostrar lo aprendido",
     "consideraciones": [
-      "2.3",
+      "5.1",
+      "5.4",
+      "8.5"
+    ],
+    "dimensiones": [
+      12
+    ]
+  },
+  {
+    "id": "lengua-cultura",
+    "texto": "Los materiales usan una sola lengua y una sola cultura",
+    "consideraciones": [
       "1.3",
-      "2.4"
+      "2.3",
+      "2.4",
+      "3.3"
     ],
     "dimensiones": [
       10
@@ -95,16 +92,27 @@
   },
   {
     "id": "clima",
-    "texto": "El clima del curso dificulta aprender",
+    "texto": "El ambiente de la sala genera tensión, distracciones o frustración",
     "consideraciones": [
       "7.4",
-      "8.4",
       "9.1",
+      "9.2",
       "9.4"
     ],
     "dimensiones": [
       5,
       7
+    ]
+  },
+  {
+    "id": "desafio",
+    "texto": "La tarea tiene un solo nivel de desafío",
+    "consideraciones": [
+      "8.2",
+      "3.4"
+    ],
+    "dimensiones": [
+      14
     ]
   }
 ]

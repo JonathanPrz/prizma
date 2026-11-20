@@ -18,18 +18,17 @@ for (const nivel of ['basica', 'parvularia']) {
   vm.runInContext('estado.necesidades = ["tareas-largas"];', contexto);
   assert.equal(ejecutar('visibles()[0].consideracion'), '5.3');
   assert.deepEqual(ejecutar('visibles().map(r => r.id).sort()'), todos);
-  assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0])[0].texto'), 'Se pierden en tareas largas o con muchos pasos');
+  assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0])[0].texto'), 'Las tareas largas no tienen pasos visibles ni apoyos para organizarse');
 }
 vm.runInContext('estado.perfil.nivel = "basica"; estado.momentos = ["toda-la-clase"]; estado.necesidades = ["participacion", "clima"]; estado.perfil.actividad = ["conversar"];', contexto);
-assert.equal(ejecutar('visibles()[0].consideracion'), '8.4');
-assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0]).length'), 2);
+assert.equal(ejecutar('coincidenciasNecesidades(visibles()[0]).length'), 1);
 const puntuaciones = ejecutar('visibles().map(r => coincidenciasNecesidades(r).length)');
 assert.ok(puntuaciones.every((n, i) => !i || puntuaciones[i - 1] >= n));
 assert.deepEqual(ejecutar('validarRespaldo({app:"prizma", version:1, perfil:{}, seleccion:{}, necesidades:["participacion","inventada","participacion","clima"]}).necesidades'), ['participacion', 'clima']);
 assert.deepEqual(ejecutar('validarRespaldo({app:"prizma", version:1, perfil:{}, seleccion:{}}).necesidades'), []);
-assert.match(ejecutar('documento().resumen.flat().join(": ")'), /Qué quiere resolver: Algunos no participan o les cuesta trabajar en grupo; El clima del curso dificulta aprender/);
+assert.match(ejecutar('documento().resumen.flat().join(": ")'), /Qué quiere resolver: La participación depende de una sola forma de interactuar; El ambiente de la sala genera tensión, distracciones o frustración/);
 assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Qué quiere resolver'));
 vm.runInContext('necesidades = []; estado.necesidades = normalizarNecesidades(estado.necesidades);', contexto);
 assert.deepEqual(ejecutar('estado.necesidades'), []);
 assert.ok(ejecutar('visibles().length') > 0);
-console.log('Correcto: necesidades válidas, orden sin ocultar, parvularia, coincidencias múltiples, respaldo, PDF y catálogo opcional ausente.');
+console.log('Correcto: necesidades válidas, orden sin ocultar, parvularia, coincidencias únicas, respaldo, PDF y catálogo opcional ausente.');

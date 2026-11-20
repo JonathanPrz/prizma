@@ -11,6 +11,12 @@
   --motivar: #b0145a;
   --presentar: #00727d;
   --mostrar: #5a33a8;
+  --hoja-compromiso: #21633b;
+  --hoja-representacion: #693b97;
+  --hoja-accion: #005873;
+  --compromiso: var(--hoja-compromiso);
+  --representacion: var(--hoja-representacion);
+  --accion: var(--hoja-accion);
   --solida: #0f5132;
   --solida-fondo: #e4f4ea;
   --hoja: #ffffff;
@@ -27,6 +33,7 @@
   --papel: #0d1424; --superficie: #192133; --panel: #222c40;
   --tinta: #e8ecf8; --tenue: #b6bfd5; --linea: #39445b; --borde-control: #8490a8;
   --enfoque: #8fb2ff; --motivar: #ff7fb0; --presentar: #4fd1dc; --mostrar: #b79cff;
+  --compromiso: #8bdaa1; --representacion: #d2afff; --accion: #76d7ee;
   --solida: #a7e3bd; --solida-fondo: #183a29; color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -34,6 +41,7 @@
     --papel: #0d1424; --superficie: #192133; --panel: #222c40;
     --tinta: #e8ecf8; --tenue: #b6bfd5; --linea: #39445b; --borde-control: #8490a8;
     --enfoque: #8fb2ff; --motivar: #ff7fb0; --presentar: #4fd1dc; --mostrar: #b79cff;
+    --compromiso: #8bdaa1; --representacion: #d2afff; --accion: #76d7ee;
     --solida: #a7e3bd; --solida-fondo: #183a29; color-scheme: dark;
   }
 }
@@ -98,13 +106,18 @@ input[type="checkbox"] { width: 1.2rem; height: 1.2rem; flex: none; accent-color
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
 .chip { font: inherit; font-size: .875rem; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .45rem .65rem; border-radius: .35rem; border: 1px solid var(--borde-control); background: var(--superficie); color: var(--tinta); cursor: pointer; text-align: left; }
 .chip[aria-pressed="true"] { border: 2px solid currentColor; padding: calc(.45rem - 1px) calc(.65rem - 1px); text-decoration: underline; text-underline-offset: .2em; }
-.chip[aria-pressed="true"].motivar, .t-proposito.motivar { color: var(--motivar); }
-.chip[aria-pressed="true"].presentar, .t-proposito.presentar { color: var(--presentar); }
-.chip[aria-pressed="true"].mostrar, .t-proposito.mostrar { color: var(--mostrar); }
+.chip[aria-pressed="true"].motivar, .t-proposito.motivar { color: var(--compromiso); }
+.chip[aria-pressed="true"].presentar, .t-proposito.presentar { color: var(--representacion); }
+.chip[aria-pressed="true"].mostrar, .t-proposito.mostrar { color: var(--accion); }
 .tri { width: .7rem; height: .7rem; flex: none; clip-path: polygon(0 100%, 50% 0, 100% 100%); }
-.motivar .tri, .tri.motivar { background: var(--motivar); }
-.presentar .tri, .tri.presentar { background: var(--presentar); }
-.mostrar .tri, .tri.mostrar { background: var(--mostrar); }
+.motivar .tri, .tri.motivar { background: var(--compromiso); }
+.presentar .tri, .tri.presentar { background: var(--representacion); }
+.mostrar .tri, .tri.mostrar { background: var(--accion); }
+.dua-marcadas { display: grid; gap: 1.25rem; }
+.grupos-momentos > .dua-marcadas > h3 { margin-bottom: 0; }
+.dua-marcadas [role="group"] > h3 { margin-bottom: .75rem; font-size: 1.05rem; }
+#proyectar { justify-self: start; }
+#propositos small { display: block; font-weight: 400; }
 .conteo { color: var(--tenue); font-size: .9375rem; }
 .grupos-momentos { display: grid; gap: 2rem; }
 .grupos-momentos > section > h3 { margin-bottom: 1rem; }
@@ -184,6 +197,12 @@ details.fuentes ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .hoja h3 { font-size: 1.02rem; margin: 0 0 .2rem; }
 .hoja p + p { margin-top: .3rem; }
 .hoja .h-meta, .hoja .h-dato { color: var(--hoja-tenue); font-size: .85rem; }
+.hoja {
+  --compromiso: var(--hoja-compromiso);
+  --representacion: var(--hoja-representacion);
+  --accion: var(--hoja-accion);
+}
+.h-dato .t-proposito { display: inline; }
 .hoja .h-accion { break-inside: avoid; margin-bottom: .9rem; }
 .hoja .h-accion ol { margin: .2rem 0; padding-left: 1.3rem; }
 .hoja .h-nota { border-left: 3px solid var(--hoja-linea); padding-left: .5rem; margin-top: .3rem; }
@@ -325,12 +344,10 @@ input[type="date"] { font: inherit; color: var(--tinta); background: var(--super
 .paso-cuerpo .casilla-practica .ayuda { grid-column: 2; }
 
 .filtros-vista { display: grid; gap: .75rem; padding: 1rem; border: 1px solid var(--linea); border-radius: .35rem; background: var(--panel); }
+.filtros-vista .chips { flex-direction: row; }
+.filtros-vista .chip { width: auto; max-width: 100%; }
 .filtros-vista legend { font-weight: 800; margin-bottom: .5rem; }
 .filtros-vista > a { justify-self: start; min-height: 1.5rem; }
-@media (max-width: 48rem) {
-  .filtros-vista .chips { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; padding: .4rem; scroll-padding-inline: .4rem; }
-  .filtros-vista .chip { flex: 0 0 auto; width: auto; }
-}
 
 #areas, #trabajo-areas { display: flex; flex-wrap: wrap; gap: .5rem; }
 
