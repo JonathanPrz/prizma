@@ -9,6 +9,11 @@ Decisión del dueño (20-11-2026): Prizma tiene demasiados modos. El modo «Para
 
 **Por qué es un nivel y no una parte del caso de clase** (aclaración del dueño, 20-11-2026): la práctica no es una asignatura. Quien la usa es la coordinación de práctica, quien acompaña al estudiante en su práctica o primer empleo o, en el futuro, quien asesora en inclusión a una empresa. Para ese rol, las acciones DUA y las adecuaciones de clase no tienen sentido.
 
+**Para cualquiera que llegue desde afuera** (dueño, 20-11-2026): Prizma es pública. El nivel debe servir igual a la coordinación de práctica de cualquier liceo o institución, a profesionales de inclusión, a recursos humanos o jefaturas y a la propia persona. Por eso:
+- los textos no suponen quién usa la página: nada de «tu estudiante» ni «tu empresa». Los grupos se nombran por quién hace la acción: «Lo que hace el liceo o la institución», «Lo que hace el centro de práctica o el empleador», «Lo que hace la persona»;
+- la ayuda del nivel nombra los usos posibles sin elegir uno: «Para coordinar la práctica profesional, acompañar un primer empleo o hacer ajustes en un lugar de trabajo»;
+- en el acuerdo, ningún rol es obligatorio por defecto, salvo «la persona», que siempre participa.
+
 **La v1 fue rechazada por la revisión adversarial,** por cuatro razones:
 - las fichas de práctica no habrían aparecido, porque sus `niveles` son media o superior;
 - un caso de trabajador no puede guardar fichas de práctica;
@@ -25,7 +30,7 @@ Actualiza `docs/arquitectura.md` con la sección «Ajuste del dueño (20-11-2026
 
 ### 1. Entrada y nivel
 - Se eliminan `#inicio` y el botón «Cambiar ámbito». Al entrar se ve Prizma con el selector de nivel.
-- El selector `#nivel` suma la opción «Práctica y trabajo» (`practica-trabajo`), con la ayuda «Para coordinar la práctica profesional, acompañar el primer empleo o asesorar a una empresa». Con ella:
+- El selector `#nivel` suma la opción «Práctica y trabajo» (`practica-trabajo`), con la ayuda «Para coordinar la práctica profesional, acompañar un primer empleo o hacer ajustes en un lugar de trabajo». Con ella:
   - se ocultan las pestañas de Educación;
   - se muestra `#panel-trabajo`, reutilizando lo que hoy hace `mostrarPestana("trabajo")`.
 - Cambiar de nivel con casos guardados pide confirmación, como hoy.
