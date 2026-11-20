@@ -1454,11 +1454,8 @@ function fechaLocal() {
 const aperturasDua = new Map();
 let firmaCarpetasDua;
 function carpetaDua(clave, titulo, abierta, ...contenido) {
-  const carpeta = el("details", { class: "grupo-apoyos" }, el("summary", { text: titulo }), contenido);
+  const carpeta = el("details", { class: "grupo-apoyos", "data-carpeta-dua": clave }, el("summary", { text: titulo }), contenido);
   carpeta.open = aperturasDua.get(clave) ?? abierta;
-  carpeta.addEventListener("toggle", () => {
-    if (carpeta.isConnected) aperturasDua.set(clave, carpeta.open);
-  });
   return carpeta;
 }
 function carpetaMomento(nombre, acciones) {
@@ -1521,7 +1518,13 @@ function pintarTarjetas() {
   const contenedor = $("#tarjetas");
   const firma = JSON.stringify([estado.momentos, estado.propositos, estado.necesidades, estado.perfil.nivel,
     estado.perfil.meta, estado.perfil.practica, estado.perfil.actividad, estado.perfil.evidencia]);
-  if (firma !== firmaCarpetasDua) { aperturasDua.clear(); firmaCarpetasDua = firma; }
+  aperturasDua.clear();
+  if (firma === firmaCarpetasDua) {
+    document.querySelectorAll("#tarjetas [data-carpeta-dua]").forEach((carpeta) => {
+      aperturasDua.set(carpeta.getAttribute("data-carpeta-dua"), carpeta.open);
+    });
+  }
+  firmaCarpetasDua = firma;
   const carpetas = (acciones) => gruposPorMomento(acciones).map(([nombre, fichas]) => carpetaMomento(nombre, fichas));
   if (marcadas.length) {
     const grupos = marcadas.map((n) => {
