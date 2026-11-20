@@ -1,6 +1,6 @@
 # Tarea 060 · La barra de continuar no queda encima ni debajo del pie
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/060-barra-continuar` · Pull request con destino `main`
+Estado: **integrada** (PR #80) · Asignada a: Codex · Rama: `codex/060-barra-continuar` · Pull request con destino `main`
 
 ## Para qué
 El dueño encontró la barra fija («0 elegidos para Estudiante 1 · Guardar y ver apoyos») «medio bug»: al llegar al final de la página aparece debajo del pie, sobre una franja de fondo gris, y se ve como una pieza suelta. Mediciones en `main` (Chromium, 800 px de alto):
