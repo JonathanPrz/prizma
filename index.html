@@ -111,8 +111,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
       <div id="filtros-vista" class="filtros-vista">
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Momento</legend><div class="chips" id="momentos"></div></fieldset>
         <fieldset aria-describedby="filtros-vista-ayuda"><legend>Para qué</legend><div class="chips" id="propositos"></div></fieldset>
-        <p id="filtros-vista-ayuda" class="ayuda">Si no eliges ninguno, se muestran todos</p>
-        <a href="#acciones" id="limpiar-filtros">Quitar filtros</a>
+        <p id="filtros-vista-ayuda" class="ayuda" tabindex="-1">Elige un momento o un principio para ver menos acciones.</p>
+        <a href="#acciones" id="limpiar-filtros" hidden>Quitar filtros</a>
       </div>
       <p class="conteo" id="conteo" aria-live="polite" aria-atomic="true"></p>
       <section id="barreras-repetidas" class="aviso-apoyos" aria-label="Barreras que se repiten en tu curso" hidden></section>
@@ -338,7 +338,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </section>
   <section>
     <h3 id="guia-seccion-trabajo" tabindex="-1">En el trabajo</h3>
-    <h4>Qué son</h4><p>la ley chilena los llama ajustes necesarios (Ley 20.422, art. 8). Se acuerdan con la persona, a partir de las tareas del cargo y sin pedir diagnósticos.</p>
+    <h4>Qué son</h4><p>La ley chilena los llama ajustes necesarios (Ley 20.422, art. 8). Se acuerdan con la persona, a partir de las tareas del cargo y sin pedir diagnósticos.</p>
     <h4>Qué exige la ley</h4>
     <h4>Todas las empresas e instituciones</h4><ol><li>No discriminar por discapacidad y hacer los ajustes necesarios (Ley 20.422, arts. 7 y 8; Código del Trabajo, art. 2).</li><li>Adaptar los procesos de selección cuando haya pruebas o requisitos (Ley 20.422, art. 24).</li><li>Guardar reserva de los datos privados de cada trabajador (Código del Trabajo, art. 154 ter).</li></ol>
     <h4>Desde 10 trabajadores permanentes</h4><ol start="4"><li>Incluir la accesibilidad y los ajustes en el reglamento interno (Código del Trabajo, arts. 153 y 154).</li></ol>

@@ -20,9 +20,9 @@ assert.equal(run('normalizarDatos({estudiante:{dimensiones:{1:2}}}).estudiantes[
 const ids=x=>todos(x).filter(x=>x.id?.startsWith('elegir-')).map(x=>x.id.slice(7));
 run('editarClase();pintarTarjetas()');const antes=ids(n('#tarjetas'));
 n('#necesidad-tareas-largas').eventos.click({currentTarget:n('#necesidad-tareas-largas')});assert.deepEqual(json('estado.necesidades'),[]);assert.deepEqual(ids(n('#tarjetas')),antes,'Un clic no actualiza los resultados guardados');
-run('guardarClase()');assert.equal(n('#paso-clase-cuerpo').hidden,true);assert.deepEqual(json('estado.necesidades'),['tareas-largas']);assert.equal(json('primerasDua().length'),0);assert.equal(ids(n('#t-dua-necesidad-tareas-largas').parentElement).length,4);
+run('guardarClase()');assert.equal(n('#paso-clase-cuerpo').hidden,true);assert.deepEqual(json('estado.necesidades'),['tareas-largas']);assert.equal(json('recomendadasDua(visibles()).length'),0);assert.equal(ids(n('#t-dua-necesidad-tareas-largas').parentElement).length,4);
 const render=ids(n('#tarjetas'));assert.equal(new Set(render).size,render.length);assert.equal(render.length,run('visibles().length'));
-run('editarClase();limpiarClase()');assert.deepEqual(json('estado.necesidades'),['tareas-largas']);run('guardarClase()');assert.equal(run('primerasDua().length'),3);
+run('editarClase();limpiarClase()');assert.deepEqual(json('estado.necesidades'),['tareas-largas']);run('guardarClase()');assert.equal(run('recomendadasDua(visibles()).length'),0);
 run('pintarEstadoCasos();guardarDescripcion()');assert(n('#descripcion-error').textContent.includes('al menos una situación'));run('agregarEstudiante()');assert.equal(run('estado.estudiantes.length'),1);
 run("Object.assign(estudianteActual(),normalizarEstudiante({iniciales:'JP',dimensiones:{1:3}}));guardarDescripcion();alternar('acc-1-agenda');guardarAcuerdos()");assert(n('#acuerdo-roles-error').textContent.includes('rol'));assert(n('#acuerdo-fecha-error').textContent.includes('fecha del acuerdo'));
 run("estudianteActual().acuerdo={roles:['estudiante'],fecha:'2026-11-16',revision:'2026-11-16',estado:'sin-acuerdos'};guardarAcuerdos()");assert(n('#acuerdo-revision-error').textContent.includes('posterior'));

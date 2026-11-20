@@ -240,7 +240,7 @@ function pintarRepeticiones() {
       onclick: () => {
         if (!borradorDua) editarClase();
         if (!borradorDua.necesidades.includes(n.id)) borradorDua.necesidades.push(n.id);
-        guardarClase("#t-dua-marcadas, #t-dua-empezar");
+        guardarClase();
       },
     }) : null);
   }));
@@ -429,13 +429,13 @@ function resumenClase() {
   const detalles = [estado.perfil.meta.trim(), ...necesidades.filter((n) => estado.necesidades.includes(n.id)).map((n) => n.texto), ...[...estado.perfil.actividad, ...estado.perfil.evidencia].map(etiqueta), ...(practicaActiva() ? ["Taller, laboratorio o terreno"] : [])].filter(Boolean);
   $("#paso-clase-texto").textContent = detalles.join(" · ") || "Sin detalles de la clase.";
 }
-function guardarClase(destino = "#acciones") {
+function guardarClase() {
   if (borradorDua) {
     estado.perfil = normalizarPerfil({ ...borradorDua.perfil, nivel: estado.perfil.nivel, reflexion: estado.perfil.reflexion });
     estado.necesidades = normalizarNecesidades(borradorDua.necesidades);
   }
   borradorDua = null; estado.claseGuardada = true; guardar(); resumenClase(); abrirPaso("paso-clase", false);
-  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $(destino) || $("#acciones"));
+  pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); irAlPasoVisible(2, $("#t-dua-marcadas") || $("#t-dua-recomendadas") || $("#acciones"), $("#acciones"));
 }
 function prepararPasos() {
   $("#perfil").addEventListener("submit", (evento) => { evento.preventDefault(); guardarClase(); });
@@ -460,7 +460,11 @@ function prepararPasos() {
   $("#reflexion").value = estado.perfil.reflexion || "";
   $("#reflexion").addEventListener("input", (evento) => { estado.perfil.reflexion = evento.target.value.slice(0, 500); guardar(); actualizarRespaldo(); $("#documento-clase").disabled = !elegidasOrdenadas().length && !estado.perfil.reflexion; if (!privacidadAvisada && evento.target.value) mostrarAvisoPrivacidad(evento.target); });
   $("#limpiar-clase").addEventListener("click", (evento) => { evento.preventDefault(); limpiarClase(); });
-  $("#limpiar-filtros").addEventListener("click", (evento) => { evento.preventDefault(); limpiarFiltrosVista(); });
+  $("#limpiar-filtros").addEventListener("click", (evento) => {
+    evento.preventDefault();
+    limpiarFiltrosVista();
+    $("#filtros-vista-ayuda").focus({ preventScroll: true });
+  });
   $("#documento-clase").addEventListener("click", prepararDocumento);
   if (!estado.claseGuardada) editarClase(); else { abrirPaso("paso-clase", false); resumenClase(); }
 }
@@ -1116,8 +1120,18 @@ function compararDua(a, b, practica = practicaActiva()) {
   const orden = Object.fromEntries(MOMENTOS.map(([id], i) => [id, i]));
   return orden[a.momento] - orden[b.momento] || compararPertinenciaDua(a, b, practica);
 }
-function primerasDua(lista = visibles()) {
-  return !estado.necesidades.length ? [...lista].sort(compararPertinenciaDua).slice(0, 3) : [];
+function hayContextoDua() {
+  return estado.perfil.actividad.length || estado.perfil.evidencia.length || practicaActiva();
+}
+function respondeAlContexto(r) { return coincidencias(r).length > 0 || practicaActiva() && esPractica(r); }
+function hayFiltrosVista() { return estado.momentos.length || estado.propositos.length; }
+function recomendadasDua(lista) {
+  return !estado.necesidades.length && !hayFiltrosVista() && hayContextoDua()
+    ? lista.filter(respondeAlContexto).sort(compararPertinenciaDua) : [];
+}
+function gruposPorMomento(lista) {
+  return MOMENTOS.map(([id, nombre]) => [nombreMomento(id, nombre), lista.filter(r => r.momento === id)])
+    .filter(([, acciones]) => acciones.length);
 }
 function visibles() {
   const practica = practicaActiva();
@@ -1145,14 +1159,14 @@ function definicionAcceso() {
   return esSuperior() ? "En superior: cambio en la enseñanza, la evaluación o el entorno que mantiene los resultados de aprendizaje (Ley 21.091)." : "Apoyo que cambia cómo recibe la información, cómo responde, el entorno o el tiempo, sin cambiar lo que debe aprender (Decreto 83).";
 }
 const gruposAbiertos = new Set();
-function grupoPlegado(nombre, acciones, definicion, sufijo = "") {
+function grupoPlegado(nombre, acciones, definicion, abrir = false) {
   const anterior = [...document.querySelectorAll("details[data-grupo]")].find((d) => d.getAttribute?.("data-grupo") === nombre);
-  const grupo = el("details", { class: "grupo-apoyos", "data-grupo": nombre },
-    el("summary", { text: `${nombre} (${acciones.length})${sufijo}` }),
+  const grupo = el("details", { class: "grupo-apoyos", ...(abrir ? {} : { "data-grupo": nombre }) },
+    el("summary", { text: `${nombre} (${acciones.length})` }),
     definicion ? el("p", { class: "ayuda", text: definicion }) : null,
     el("ul", { class: "tarjetas" }, acciones.map((r) => tarjeta(r))));
-  grupo.open = anterior?.open ?? gruposAbiertos.has(nombre);
-  grupo.addEventListener("toggle", () => {
+  grupo.open = abrir || (anterior?.open ?? gruposAbiertos.has(nombre));
+  if (!abrir) grupo.addEventListener("toggle", () => {
     if (!grupo.isConnected) return;
     if (grupo.open) gruposAbiertos.add(nombre); else gruposAbiertos.delete(nombre);
   });
@@ -1260,10 +1274,10 @@ function enfocarYDesplazar(destino, inicio = destino) {
   finally { desplazamientoIntencional = false; }
   inicio.scrollIntoView?.({ block: "start" });
 }
-function irAlPasoVisible(numero, destino) {
+function irAlPasoVisible(numero, destino, inicio = destino) {
   actualizarPaso(numero);
   destino.setAttribute("tabindex", "-1");
-  enfocarYDesplazar(destino);
+  enfocarYDesplazar(destino, inicio);
 }
 function continuarPaso() {
   if (pasoActual === 1) {
@@ -1322,6 +1336,7 @@ function limpiarFiltrosVista() {
   actualizarVistaDua();
 }
 function pintarFiltrosVista() {
+  $("#limpiar-filtros").hidden = !hayFiltrosVista();
   const cont = $("#momentos");
   if (!cont.children?.length) for (const [id, nombre] of MOMENTOS) {
     cont.append(el("button", { type: "button", id: "m-" + id, class: "chip",
@@ -1338,7 +1353,7 @@ function pintarFiltrosVista() {
   if (!chips.children?.length) for (const [id, p] of propositos) {
     chips.append(el("button", { type: "button", id: "proposito-" + id, class: "chip " + id, title: "Principio DUA: " + p.principio,
       onclick: () => { estado.propositos = alternarOpcion(estado.propositos, id); actualizarVistaDua(); },
-    }, el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, el("small", { text: p.corto }))));
+    }, el("span", { class: "tri", "aria-hidden": "true" }), el("span", {}, p.principio, " ", el("small", { text: p.corto }))));
   }
   Array.from(chips.children || []).forEach((boton, i) => {
     boton.setAttribute("aria-pressed", String(estado.propositos.includes(propositos[i][0])));
@@ -1425,17 +1440,48 @@ function fechaLocal() {
   return `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}-${String(fecha.getDate()).padStart(2, "0")}`;
 }
 
+function seccionRecomendadas(acciones) {
+  const tarjetas = acciones.map((r, i) => {
+    const ficha = tarjeta(r, true);
+    ficha.hidden = i >= 6;
+    return ficha;
+  });
+  const restantes = tarjetas.slice(6);
+  const boton = restantes.length ? el("button", {
+    type: "button", class: "boton",
+    text: restantes.length === 1 ? "Ver la recomendada restante" : `Ver las ${restantes.length} recomendadas restantes`,
+    onclick: (evento) => {
+      restantes.forEach((ficha) => { ficha.hidden = false; });
+      evento.currentTarget.hidden = true;
+      const titulo = restantes[0].querySelector("h4");
+      titulo.setAttribute("tabindex", "-1");
+      enfocarYDesplazar(titulo, restantes[0]);
+    },
+  }) : null;
+  return el("section", { "aria-labelledby": "t-dua-recomendadas" },
+    el("h3", { id: "t-dua-recomendadas", tabindex: "-1", text: `Recomendadas para tu ${voc("clase")} (${acciones.length})` }),
+    el("p", { class: "ayuda", text: "Responden a lo que marcaste en el paso 1, en orden de prioridad." }),
+    el("ul", { class: "tarjetas" }, tarjetas), boton);
+}
+
+function conteoDua(lista) {
+  const total = plural(lista.length, "acción", "acciones");
+  const contexto = hayContextoDua();
+  const responden = plural(lista.filter(respondeAlContexto).length, "responde a lo que marcaste", "responden a lo que marcaste");
+  if (!hayFiltrosVista()) return contexto ? `${total} · ${responden}` : `${total} para todo el ${voc("curso")}`;
+  const filtros = [
+    ...MOMENTOS.filter(([id]) => estado.momentos.includes(id)).map(([id, nombre]) => nombreMomento(id, nombre)),
+    ...Object.entries(PROPOSITOS).filter(([id]) => estado.propositos.includes(id)).map(([, p]) => p.principio),
+  ];
+  return new Intl.ListFormat("es-CL").format(filtros) + ": " + total + (contexto ? ", " + responden : "");
+}
+
 function pintarTarjetas() {
   pintarRepeticiones();
-  const lista = visibles(), primeras = primerasDua(lista);
+  const lista = visibles();
   const marcadas = necesidades.filter((n) => estado.necesidades.includes(n.id));
-  const resto = lista.filter((r) => !coincidenciasNecesidades(r).length);
-  const otros = MOMENTOS.map(([id, nombre]) => [nombreMomento(id, nombre), resto.filter((r) => r.momento === id)])
-    .filter(([, fichas]) => fichas.length).map(([nombre, fichas]) => {
-      const cantidad = marcadas.length ? 0 : fichas.filter((r) => coincidencias(r).length > 0).length;
-      return grupoPlegado(nombre, fichas, "", cantidad ? ` · ${cantidad} responden a lo que marcaste` : "");
-    });
   const contenedor = $("#tarjetas");
+  const plegados = (acciones, abrir = false) => gruposPorMomento(acciones).map(([nombre, fichas]) => grupoPlegado(nombre, fichas, "", abrir));
   if (marcadas.length) {
     const grupos = marcadas.map((n) => {
       const acciones = lista.filter((r) => n.consideraciones.includes(r.consideracion)).sort(compararPertinenciaDua);
@@ -1452,11 +1498,20 @@ function pintarTarjetas() {
     contenedor.replaceChildren(
       el("section", { class: "dua-marcadas", "aria-labelledby": "t-dua-marcadas" },
         el("h3", { id: "t-dua-marcadas", tabindex: "-1", text: "Para lo que marcaste" }), grupos),
-      el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), otros));
+      el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: "Las demás acciones" }), plegados(lista.filter((r) => !coincidenciasNecesidades(r).length))));
+  } else if (estado.momentos.length) {
+    contenedor.replaceChildren(el("ul", { class: "tarjetas" }, lista.map((r) => tarjeta(r, estado.momentos.length > 1))));
+  } else if (estado.propositos.length) {
+    contenedor.replaceChildren(...plegados(lista, true));
   } else {
-    contenedor.replaceChildren(...[empiezaPor("t-dua-empezar", primeras)].filter(Boolean), ...otros);
+    const recomendadas = recomendadasDua(lista);
+    if (recomendadas.length) {
+      const demas = lista.filter((r) => !respondeAlContexto(r));
+      contenedor.replaceChildren(seccionRecomendadas(recomendadas),
+        el("section", { "aria-labelledby": "t-dua-demas" }, el("h3", { id: "t-dua-demas", text: `Las demás acciones (${demas.length})` }), plegados(demas)));
+    } else contenedor.replaceChildren(...plegados(lista));
   }
-  $("#conteo").textContent = plural(lista.length, "acción", "acciones");
+  $("#conteo").textContent = conteoDua(lista);
 }
 
 function actualizarEleccion(r, persona, elegida, trabajo) {
@@ -2146,15 +2201,20 @@ function prepararProyeccion() {
   }
 
   entrar.addEventListener("click", async () => {
-    const acciones = visibles();
-    $("#acciones-proyectadas").replaceChildren(...acciones.map((r) => {
+    const lista = visibles(), recomendadas = recomendadasDua(lista);
+    const acciones = recomendadas.length ? recomendadas : lista;
+    const fichaProyectada = (r) => {
       const principio = proposito(r);
       return el("li", { class: "tarjeta", "data-accion": r.id },
         el("p", { class: "t-proposito " + principio }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[principio].principio),
         el("h3", { text: r.titulo }),
         consideraciones[r.consideracion] ? el("p", { class: "t-que-busca", text: "Qué busca: " + consideraciones[r.consideracion] }) : null,
         el("ol", {}, r.como.map((paso) => el("li", { text: textoPublico(paso) }))));
-    }));
+    };
+    const grupos = !hayFiltrosVista() && !hayContextoDua() ? gruposPorMomento(acciones) : [];
+    $("#acciones-proyectadas").replaceChildren(...(grupos.length
+      ? grupos.map(([nombre, fichas]) => el("li", {}, el("h3", { text: nombre }), el("ul", { class: "tarjetas" }, fichas.map(fichaProyectada))))
+      : acciones.map(fichaProyectada)));
     $("#proyeccion-vacia").hidden = Boolean(acciones.length);
     vista.hidden = false;
     raiz.classList.add("proyectando");
