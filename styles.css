@@ -193,7 +193,7 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 .boton-principal:hover { background: var(--acento-hover); }
 .boton-sutil, .quitar { background: transparent; border: 0; color: var(--acento-texto); text-decoration: underline; }
 .boton-peligro { color: var(--error); border-color: var(--error); }
-:is(button[aria-pressed="true"], button[aria-expanded="true"], .pestanas [aria-selected="true"]) {
+:is(button[aria-pressed="true"], .pestanas [aria-selected="true"]) {
   background: var(--acento-suave); border: 2px solid var(--acento); color: var(--acento-texto);
 }
 .boton:disabled, .chip:disabled { background: var(--panel); color: var(--tenue); opacity: 1; cursor: not-allowed; }

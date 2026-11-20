@@ -73,7 +73,16 @@ async function probar() {
 
       await nodo('tab-apoyos').click();
       await nodo('iniciales').fill('JP');
-      await nodo('area-0').click();
+      const area = nodo('area-0');
+      const estiloControl = n => {
+        const css = getComputedStyle(n);
+        return { fondo: css.backgroundColor, borde: css.borderTopWidth, texto: css.color };
+      };
+      const areaCerrada = await area.evaluate(estiloControl);
+      await area.click();
+      await pagina.mouse.move(0, 0);
+      assert.equal(await area.getAttribute('aria-expanded'), 'true');
+      assert.deepEqual(await area.evaluate(estiloControl), areaCerrada);
       await pagina.locator('input[name="dimension-1"][value="3"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
@@ -114,6 +123,14 @@ async function probar() {
           abajo: document.querySelector('#barra-continuar').getBoundingClientRect().top
         }));
         assert(posicion.titulo >= posicion.arriba && posicion.control < posicion.abajo, JSON.stringify(posicion));
+        const titulo = nodo(trabajo ? 'trabajo-acuerdo-toggle' : 'paso-acuerdos-toggle');
+        assert.equal(await titulo.getAttribute('aria-expanded'), 'true');
+        assert.deepEqual(await titulo.evaluate(estiloControl), {
+          fondo: 'rgba(0, 0, 0, 0)', borde: '0px', texto: await pagina.locator('body').evaluate(n => getComputedStyle(n).color)
+        });
+        await pagina.keyboard.press('Tab');
+        await titulo.focus();
+        assert(await titulo.evaluate(n => n.matches(':focus-visible') && getComputedStyle(n).outlineWidth === '3px'));
         await nodo(trabajo ? 'guardar-acuerdos-trabajo' : 'guardar-acuerdos').click();
         assert.equal(await roles.evaluate(r => r === document.activeElement), true);
         assert.equal(await roles.getAttribute('aria-invalid'), 'true');
