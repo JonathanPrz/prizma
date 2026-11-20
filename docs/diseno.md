@@ -112,24 +112,29 @@ Es un menú. No hay mínimos, puntajes ni casillas de "cumple / no cumple".
   - la fecha y la versión del catálogo [E1],
   - el aviso de responsabilidad.
 
-## 4. Barreras: 5 áreas y 11 dimensiones
+## 4. Barreras: 5 áreas y 14 situaciones
 
 Las áreas 1 a 4 siguen las 4 grandes áreas del *SEND Code of Practice* que usa la EEF [C17]. El área 5 suma el contexto de la CIF y la identidad de DUA 3.0 [A3, B3].
-Cada dimensión se pregunta como **situaciones de la clase**, no como fallas del estudiante [A2].
+Cada situación se pregunta como **dónde aparece la barrera**, no como falla o rasgo del estudiante [A2]. Redacción aprobada el 20-11-2026 (tarea 058). Los números no cambian, porque los datos guardados los usan.
 
-| Área | Dimensión | Ejemplos de situaciones con barreras |
+| Área | Situación | Frase (Educación) |
 |---|---|---|
-| **1. Cognición y aprendizaje** | 1. Atención y organización | instrucciones largas, tareas con muchos pasos, empezar una tarea, cambios de actividad |
-| | 2. Lectura, escritura y cálculo | textos largos, copiar de la pizarra, escribir a mano, cálculo mental |
-| **2. Comunicación e interacción** | 3. Comunicación y lenguaje | instrucciones solo orales, lenguaje figurado, responder en voz alta |
-| | 4. Interacción social | trabajo en grupo, normas que no se dicen, exponer en público |
-| **3. Social, emocional y salud mental** | 5. Emociones y regulación | evaluaciones, imprevistos, frustración, desregulación |
-| **4. Sensorial y física** | 6. Visión y audición | ver la pizarra, escuchar con ruido |
-| | 7. Sensibilidad sensorial | ruido, luz, multitudes, texturas, olores |
-| | 8. Movimiento y motricidad | escribir, manipular materiales, desplazarse |
-| | 9. Salud y energía | fatiga, dolor, ausencias por tratamiento |
-| **5. Contexto e identidad** | 10. Identidad, lengua y pertenencia | otra lengua materna, pueblo originario, migración, sentirse parte del curso |
-| | 11. Espacio, tiempo y actitudes | sala, tiempos, materiales, tecnología, actitudes de compañeros o adultos, apoyo en casa |
+| **1. Cognición y aprendizaje** | 1. Organizarse y mantener la atención | Cuando hay tareas de muchos pasos, instrucciones largas, cambios de rutina sin aviso o debe empezar una tarea. |
+| | 2. Lectura, escritura y cálculo | Cuando debe leer textos largos, copiar de la pizarra, escribir a mano o calcular de memoria. |
+| | 14. Tareas con poco desafío | Cuando termina antes y no hay más, la práctica es repetitiva o no puede profundizar. |
+| **2. Comunicación e interacción** | 3. Comprender lo que se dice o se lee | Cuando las instrucciones son solo orales o hay lenguaje figurado o palabras nuevas. |
+| | 12. Expresarse oralmente | Cuando debe responder en voz alta, explicar con sus palabras o hablar frente a otros. |
+| | 4. Relacionarse con otros | En trabajos en grupo, recreos, al exponer, con normas que nadie explica o cuando lo molestan. |
+| **3. Social, emocional y salud mental** | 5. Manejar las emociones | En evaluaciones, imprevistos, esperas o cuando algo le frustra. |
+| **4. Sensorial y física** | 6. Información que se ve | Cuando debe ver la pizarra, leer letra pequeña o interpretar imágenes y gráficos. |
+| | 13. Información que se oye | Cuando debe escuchar al docente, oír con ruido de fondo o ver videos sin subtítulos. |
+| | 7. Ruido, luz y otros estímulos | Con ruido, luz fuerte, mucha gente, ciertas texturas u olores. |
+| | 8. Moverse y usar las manos | Al escribir a mano, manipular materiales o desplazarse. |
+| | 9. Salud y energía | En jornadas largas, con dolor o al volver de ausencias por tratamiento. |
+| **5. Contexto e identidad** | 10. Identidad, lengua y pertenencia | Cuando la clase usa solo español, no considera su cultura o no se siente parte del curso. |
+| | 11. Lugar, horarios y actitudes | Cuando la sala, los horarios, los materiales o la tecnología no le sirven, o hay actitudes que lo excluyen. |
+
+**Desregulación.** Es un estado, no una situación: la desregulación emocional y conductual (Circular 586) o desregulación emocional (Mineduc 2025). Sus gatillos aparecen en varias situaciones: sensoriales (7), emocionales (5), transiciones y demanda académica (1 y 2) y acoso escolar (4). Los apoyos ante desregulación se muestran siempre. Las situaciones solo explican el motivo.
 
 **Frecuencia**, en la interfaz: a veces · seguido · casi siempre [B4].
 Prizma registra el **desempeño en la clase actual**, es decir, lo que el docente ve y puede cambiar [B2].
