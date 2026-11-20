@@ -457,14 +457,15 @@ function pintarApoyos() {
 function actualizarArea(boton, nombre, ids, persona) {
   const cantidad = ids.filter((d) => persona.dimensiones[d]).length;
   const icono = boton.getAttribute("aria-expanded") === "true" ? "−" : "+";
-  boton.textContent = `${icono} ${nombre}${cantidad ? ` (${plural(cantidad, "marcada", "marcadas")})` : ""}`;
+  // El símbolo solo se ve: aria-expanded ya anuncia si está abierta.
+  boton.replaceChildren(el("span", { "aria-hidden": "true", text: icono + " " }), `${nombre}${cantidad ? ` (${plural(cantidad, "marcada", "marcadas")})` : ""}`);
 }
 function actualizarFrecuencias(contenedor) {
   contenedor.parentElement.hidden = ![...contenedor.children].some((grupo) => !grupo.hidden);
 }
 function botonArea(nombre, ids, persona, grupo, id) {
   grupo.hidden = !ids.some((d) => persona.dimensiones[d]);
-  grupo.append(el("h4", { text: nombre }));
+  grupo.append(el("h4", { class: "subtitulo-area", text: nombre }));
   const boton = el("button", { type: "button", class: "boton", id, "aria-controls": grupo.id, "aria-expanded": String(!grupo.hidden) });
   actualizarArea(boton, nombre, ids, persona);
   boton.addEventListener("click", () => {
