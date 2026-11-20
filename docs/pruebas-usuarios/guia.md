@@ -25,7 +25,7 @@ Cinco personas bastan para encontrar la mayoría de los problemas grandes. Es me
 
 ## Preparación (10 minutos)
 1. Abre https://jonathanprz.github.io/prizma/ en el dispositivo que usará la persona: su teléfono o un computador.
-2. Si el dispositivo ya usó Prizma, borra los datos: «Mi mochila» y después «Borrar los datos».
+2. Si el dispositivo ya usó Prizma, borra los datos: abre «Mi mochila» y presiona «Borrar los datos de Educación» o «Borrar los datos de Trabajo».
 3. Ten esta guía impresa o en otra pantalla, con la hoja de registro (al final).
 4. Calcula unos 40 minutos por persona.
 
@@ -117,7 +117,7 @@ Usa la tarea A, B o F, en el teléfono de la persona, con su lector de pantalla 
 6. «Del 1 al 5, ¿qué tan fácil fue usarlo?» (1 = muy difícil, 5 = muy fácil).
 
 ### 5. Cierre (2 minutos)
-Agradece y borra los datos del dispositivo si no es suyo: «Mi mochila» y después «Borrar los datos».
+Agradece y borra los datos del dispositivo si no es suyo: en «Mi mochila», «Borrar los datos de Educación» y «Borrar los datos de Trabajo».
 
 ## Hoja de registro (una por persona)
 Perfil: ______ · Dispositivo: teléfono / computador · Lector de pantalla: sí / no · Fecha: ______
