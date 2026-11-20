@@ -14,7 +14,9 @@ def lineas(a):
     if a not in TEXTOS: TEXTOS[a] = open(os.path.join(RAIZ, a), encoding='utf-8').read().split('\n')
     return TEXTOS[a]
 
-def palabras(t): return {w for w in re.findall(r'[a-záéíóúñü]{5,}', norm(t))}
+# Palabras de 4 letras o más: así cuentan siglas como OCR o LSCh (en minúscula tras norm) y términos cortos.
+def palabras(t): return {w for w in re.findall(r'[a-záéíóúñü0-9]{3,}', norm(t)) if len(w) >= 4 or w.isalpha() and w in SIGLAS}
+SIGLAS = {'ocr', 'caa', 'pie', 'dec', 'tea', 'dua'}
 VACIAS = palabras('donde cuando sobre entre desde hasta tiene pueden puede debe deben según tienen hacer través otros otras todos todas cada parte forma personas persona estudiantes estudiante')
 
 def inicio_cuerpo(a):
