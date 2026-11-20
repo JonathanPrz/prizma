@@ -1,75 +1,94 @@
 # Tarea 051 · «Práctica y paso al trabajo» como nivel, sin modo Trabajo aparte
 
-Estado: **v1, pendiente de revisión adversarial y aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
+Estado: **v2, tras revisión adversarial; pendiente de aprobación del dueño** · Asignada a: Codex · Rama: `codex/051-practica-trabajo` · Pull request con destino `main`
 
 ## Para qué
-Decisión del dueño (20-11-2026): Prizma tiene demasiados modos. El modo «Para el trabajo» se integra como un **nivel más**, con la práctica profesional:
+Decisión del dueño (20-11-2026): Prizma tiene demasiados modos. El modo «Para el trabajo» se integra como un nivel más, junto con la práctica profesional:
 
 > Nivel: Parvularia · Básica · Media · Superior · **Práctica y paso al trabajo**
 
-Así desaparece la pantalla «¿Dónde quieres apoyar?» y la práctica deja de estar escondida en una casilla. Los ajustes laborales encajan en el grupo del centro de práctica o del empleador.
+**La v1 fue rechazada por la revisión adversarial,** por cuatro razones:
+- las fichas de práctica no habrían aparecido, porque sus `niveles` son media o superior;
+- un caso de trabajador no puede guardar fichas de práctica;
+- el documento para el centro depende del caso de estudiante;
+- el aviso de privacidad aplicaba el Código del Trabajo a practicantes sin contrato.
 
-Esto cambia la arquitectura aprobada el 16-11-2026 (`docs/arquitectura.md`, decisiones 1 y 3). Actualiza ese documento con una sección «Ajuste del dueño (20-11-2026)».
+Esta versión es la más pequeña que cumple la decisión. Ordenar los grupos y unir las guías queda para una tarea 052.
 
-**No cambies `data/recomendaciones.json` ni `docs/fuentes/`**, salvo lo que diga esta tarea.
+Actualiza `docs/arquitectura.md` con la sección «Ajuste del dueño (20-11-2026)». Este ajuste reemplaza las decisiones 1 (pantalla de inicio) y 3 (mochila por ámbito).
 
-## Cómo queda
+**No cambies `data/recomendaciones.json` ni `docs/fuentes/`.**
+
+## Cambios
 
 ### 1. Entrada y nivel
-- Se elimina la pantalla de inicio de ámbito y el botón «Cambiar ámbito». Al entrar, se ve directamente Prizma con el selector de nivel.
-- El selector suma la opción **«Práctica y paso al trabajo»** (valor `practica-trabajo`), con la ayuda: «Para preparar la práctica profesional y el ingreso a un empleo, con el liceo o la institución, el centro o el empleador y la persona».
-- Con ese nivel, la pestaña «Para el curso (DUA)» no aparece: solo hay casos de personas.
+- Se eliminan `#inicio` y el botón «Cambiar ámbito». Al entrar se ve Prizma con el selector de nivel.
+- El selector `#nivel` suma la opción «Práctica y paso al trabajo» (`practica-trabajo`). Con ella:
+  - se ocultan las pestañas de Educación;
+  - se muestra `#panel-trabajo`, reutilizando lo que hoy hace `mostrarPestana("trabajo")`.
 - Cambiar de nivel con casos guardados pide confirmación, como hoy.
 
-### 2. Casos en «Práctica y paso al trabajo»
-Usan el modelo de casos de trabajo que ya existe (`estado.trabajadores`, `trabajadorActual()`), con estos cambios:
-- **Título del paso 1:** «Describe la situación de la persona». La ayuda aclara que puede ser un estudiante en práctica o una persona que entra a trabajar.
-- **Pregunta nueva:** «¿En qué etapa está?», con las opciones «Prepara su práctica», «Está en práctica» y «Está entrando o ya está en un trabajo».
-- **Apoyos sugeridos, en 3 grupos:**
-  - *Lo que hace el liceo o la institución:* fichas `practica-profesional` con subtipo `institucion`;
-  - *Lo que hace el centro o el empleador:* fichas `practica-profesional` con subtipo `centro`, más las fichas `trabajo`, agrupadas como hoy por información, comunicación, puesto, tiempo y proceso;
-  - *Lo que hace la persona:* fichas `practica-profesional` con subtipo `estudiante`.
-- **Según la etapa:**
-  - con «Prepara su práctica» o «Está en práctica», los grupos de práctica van primero;
-  - con «Está entrando o ya está en un trabajo», los ajustes de trabajo van primero y los de la institución quedan plegados.
-- **Roles del acuerdo:** se suman «Liceo o institución (profesor tutor)» y «Centro de práctica». Se mantienen los de trabajo.
-- Las fichas de práctica deben aplicar en este nivel: agrega `practica-trabajo` a la lista de niveles válidos en el validador y en `aplica()`. Las fichas no se editan.
+### 2. El caso del nivel nuevo
+Usa el modelo de trabajador que ya existe (`estado.trabajadores`), con estos campos nuevos:
+- **`etapa`**, con la pregunta «¿En qué etapa está?» y las opciones «Prepara su práctica» (`prepara`), «Está en práctica» (`practica`) y «Está entrando o ya está en un trabajo» (`trabajo`). El valor por defecto es `trabajo`, para que los casos antiguos se vean igual.
+- **`nivelOrigen`**, con la pregunta «¿Desde qué nivel hace la práctica?» y las opciones «Media técnico-profesional» (`media`) y «Superior (IP, CFT o universidad)» (`superior`). Solo se muestra si la etapa es `prepara` o `practica`.
 
-### 3. Lo que sale de media y superior
-- La casilla «Este estudiante hará su práctica profesional» se quita de media y superior.
-- En su lugar, en media y superior va una línea con enlace: «¿Hará su práctica o va a entrar a trabajar? Usa el nivel Práctica y paso al trabajo».
+Con esos campos:
+- **`aplica()`:** en este nivel, una ficha `practica-profesional` aplica si su `niveles` incluye el `nivelOrigen` del caso. Así se respeta la diferencia legal entre media (Decreto 2.516) y superior. Las fichas `trabajo` aplican como hoy.
+- **Qué se muestra según la etapa, sin duplicados:**
+  - con `prepara` o `practica`: los apoyos de práctica en sus 3 grupos de hoy (institución, centro y estudiante). Los ajustes `trabajo` no se muestran;
+  - con `trabajo`: los ajustes `trabajo` como hoy. Las fichas de práctica no se muestran.
+- **`seleccionValidada`** de los trabajadores acepta los tipos `trabajo` y `practica-profesional`. Una prueba comprueba que una `pp-*` elegida sobrevive a recargar y a restaurar un respaldo.
+- **Roles del acuerdo:** agrega a `ROLES_TRABAJO` «Liceo o institución (profesor tutor)» y «Centro de práctica». Con etapa de práctica, el rol de la persona se llama «Estudiante en práctica»; con etapa de trabajo, «Persona trabajadora».
 
-### 4. Documentos, mochila, privacidad y guías
-- **Documentos:**
-  - el documento de trabajo, con sus secciones elegibles (tarea 046);
-  - el documento para el centro de práctica, en el que el estudiante decide qué compartir.
+### 3. El documento para el centro y la seguridad
+- `elegidasCentro`, `documentoParaCentro`, `verDocumentoCentro` y `seguridadActiva` reciben el caso como parámetro, en vez de leer `estudianteActual()` dentro.
+- El documento para el centro se ofrece en el nivel nuevo cuando la etapa es de práctica.
+- La regla de siempre se mantiene: el estudiante decide qué ajustes comparte, y el documento no lleva datos personales ni notas.
 
-  Los dos van en este nivel.
-- **Mochila y «Borrar los datos»:** «Borrar los datos de Trabajo» pasa a «Borrar los datos de práctica y trabajo». El respaldo sigue siendo uno solo.
-- **Aviso de privacidad:** en este nivel se usa el aviso de trabajo (Código del Trabajo, art. 154 ter: reserva de datos) y se le suma la frase «En la práctica, el estudiante decide qué contar al centro».
-- **Guías:** la guía de este nivel une «Apoyos para la práctica» y «¿Qué son los ajustes en el trabajo y qué exige la ley?», sin repetir contenido.
+### 4. Media y superior
+- Se quita la casilla «Este estudiante hará su práctica profesional».
+- En su lugar va el botón **«Preparar su práctica»**. Crea un caso en el nivel nuevo, copiando las iniciales y las situaciones del estudiante, con etapa `prepara` y `nivelOrigen` igual al nivel actual. Después cambia al nivel nuevo, con confirmación.
+- Bajo el botón, la ayuda: «Pasa sus datos al nivel Práctica y paso al trabajo».
 
-### 5. Datos guardados (migración)
-- Si `estado.ambito === "trabajo"`, el nivel pasa a `practica-trabajo`. Los casos de trabajo se conservan.
-- Si un caso de estudiante tenía `practicaProfesional: true`, se conserva su selección de apoyos de práctica. La primera vez se muestra el aviso: «La práctica profesional ahora está en el nivel Práctica y paso al trabajo. Tus apoyos elegidos siguen guardados».
-- El respaldo antiguo se puede restaurar sin errores.
+### 5. Privacidad
+El nivel nuevo tiene su propio aviso, con estas frases:
+- «Escribe solo iniciales y describe situaciones, sin diagnósticos.»
+- «Si es estudiante, sus datos tienen la protección especial de la Ley 21.719, sobre todo si es menor de edad.»
+- «Si tiene contrato de trabajo, rige además la reserva del Código del Trabajo (art. 154 ter).»
+- «La persona decide qué contar al centro o al empleador.»
 
-### 6. Textos y documentos del proyecto
-Actualiza `AGENTS.md` («Qué es Prizma»), el subtítulo, el pie de página y `docs/arquitectura.md`. Ya no hay «tres partes» en dos ámbitos: hay un selector de nivel con cinco opciones.
+### 6. Mochila y respaldo
+- «Borrar los datos de Trabajo» pasa a «Borrar los datos de práctica y trabajo».
+- El respaldo sigue siendo uno solo.
+
+### 7. Migración de datos guardados
+- **`ambito: "trabajo"`:** el nivel activo pasa a `practica-trabajo`. Si el estado o el respaldo también tiene `perfil.nivel` de educación con casos escolares, ese nivel se guarda en `estado.nivelEducacion` y se recupera al volver a un nivel educativo.
+- **Estudiante con `practicaProfesional: true`:** se crea un caso en el nivel nuevo con sus iniciales, sus situaciones y sus `pp-*` elegidas, con etapa `practica` y `nivelOrigen` igual al nivel educativo. El estudiante original conserva lo demás. Se avisa una vez: «La práctica de {iniciales} ahora está en el nivel Práctica y paso al trabajo».
+- Los respaldos antiguos se restauran sin errores ni pérdidas.
+
+### 8. Validador y textos
+- `validar_catalogo.py`: agrega `practica-trabajo` solo a la comprobación de nivel conocido (línea 32), **no** a la cobertura DUA (líneas 69-71). En `app.js`, lo mismo en `validarCatalogo`.
+- Actualiza `AGENTS.md` («Qué es Prizma»), el subtítulo y el pie de página.
 
 ## Pruebas
-- Actualiza las pruebas que usan la pantalla de inicio, `elegir-educacion` y `elegir-trabajo`.
+- Reescribe las pruebas que usan `#inicio`, `elegir-educacion`, `elegir-trabajo` o la casilla de práctica, sin debilitar lo que comprueban.
 - Prueba nueva, `scripts/probar_practica_trabajo.cjs`:
-  - el nivel nuevo muestra los 3 grupos y no la pestaña DUA;
-  - la etapa cambia el orden;
-  - el documento de trabajo y el del centro funcionan;
-  - migración: un estado antiguo con `ambito: "trabajo"` y otro con `practicaProfesional: true` cargan sin perder datos;
-  - no hay desplazamiento horizontal a 390 px.
-- `validar_catalogo.py` y todas las pruebas pasan. La regla de «4 ajustes por situación» de trabajo se mantiene.
+  - **nivel nuevo:** con etapa `practica` y `nivelOrigen: "media"` aparecen `pp-plan` y `pp-visita`; con `superior` aparece `pp-plan-superior`; con etapa `trabajo` aparecen los ajustes `tr-*` y ninguna `pp-*`;
+  - **documento para el centro:** funciona desde un caso del nivel nuevo;
+  - **botón «Preparar su práctica»:** crea el caso con las iniciales y las situaciones copiadas;
+  - **migración:** un estado con `ambito: "trabajo"` y otro con `practicaProfesional: true` cargan sin perder datos;
+  - **aviso de privacidad:** el del nivel nuevo menciona la Ley 21.719 y el art. 154 ter solo con contrato;
+  - **ancho:** no hay desplazamiento horizontal a 390 px.
+
+## Fuera de esta tarea (tarea 052)
+- Mostrar práctica y trabajo juntos en un caso de transición.
+- La guía unificada del nivel.
 
 ## Criterios de aceptación
-- [ ] No hay pantalla de ámbito. El nivel «Práctica y paso al trabajo» reúne práctica y trabajo en 3 grupos.
-- [ ] Media y superior ya no tienen la casilla de práctica, y enlazan al nivel nuevo.
-- [ ] Los datos antiguos de trabajo y de práctica se conservan.
-- [ ] Documentos, privacidad, guías y `AGENTS.md` actualizados.
+- [ ] Sin pantalla de ámbito. El nivel nuevo muestra práctica o trabajo según la etapa, sin duplicados.
+- [ ] Las fichas de práctica respetan media o superior según `nivelOrigen`.
+- [ ] El documento para el centro funciona en el nivel nuevo.
+- [ ] Los datos antiguos se conservan y se ven.
+- [ ] El aviso de privacidad distingue estudiante de trabajador con contrato.
 - [ ] Pasan el validador y todas las pruebas.
