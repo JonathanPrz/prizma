@@ -531,5 +531,4 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .empieza-por a { display: inline-block; min-height: 1.5rem; }
 .relacion-tarjeta { display: contents; }
 
-[aria-labelledby="t-dua-recomendadas"] > :is(.ayuda, .tarjetas) { margin-bottom: 1rem; }
 #acciones-proyectadas > li > ul { margin-top: 1rem; }
