@@ -3,7 +3,7 @@ const leer=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8'),html=leer('ind
 const opciones=[...html.split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m=>({value:m[1]}));
 const controles=nombre=>[...html.matchAll(new RegExp('name="'+nombre+'" value="([^"]+)"','g'))].map(m=>({value:m[1]}));
 let c;
-function nodo(tag='div'){return {tag,id:'',hijos:[],eventos:{},options:opciones,value:'',isConnected:true,open:false,replaceChildren(...h){this.hijos=h;},append(...h){this.hijos.push(...h);},setAttribute(k,v){this[k]=String(v);if(k==='id')nodos.set('#'+v,this);},addEventListener(t,f){this.eventos[t]=f;},focus(){c.document.activeElement=this;},scrollIntoView(){}};}
+function nodo(tag='div'){return {tag,id:'',hijos:[],parentElement:{},get children(){return this.hijos.filter(h=>typeof h==='object');},eventos:{},options:opciones,value:'',isConnected:true,open:false,replaceChildren(...h){this.hijos=h;for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},append(...h){this.hijos.push(...h);for(const hijo of h)if(hijo&&typeof hijo==='object')hijo.parentElement=this;},getAttribute(k){return this[k]??null;},setAttribute(k,v){this[k]=String(v);if(k==='id')nodos.set('#'+v,this);},addEventListener(t,f){this.eventos[t]=f;},focus(){c.document.activeElement=this;},scrollIntoView(){}};}
 const n=s=>{if(!nodos.has(s))nodos.set(s,nodo());return nodos.get(s);};
 const todos=x=>(x?.hijos||[]).filter(h=>typeof h==='object').flatMap(h=>[h,...todos(h)]);
 c=vm.createContext({document:{activeElement:{id:''},createElement:nodo,getElementById:id=>nodos.get('#'+id),querySelector:s=>s==='.logo'?{outerHTML:html.match(/<svg class="logo".*?<\/svg>/)[0]}:n(s),querySelectorAll:s=>{

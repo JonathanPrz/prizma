@@ -456,13 +456,23 @@ function pintarApoyos() {
 }
 function actualizarArea(boton, nombre, ids, persona) {
   const cantidad = ids.filter((d) => persona.dimensiones[d]).length;
-  boton.textContent = cantidad ? `${nombre} (${plural(cantidad, "marcada", "marcadas")})` : nombre;
+  const icono = boton.getAttribute("aria-expanded") === "true" ? "−" : "+";
+  boton.textContent = `${icono} ${nombre}${cantidad ? ` (${plural(cantidad, "marcada", "marcadas")})` : ""}`;
+}
+function actualizarFrecuencias(contenedor) {
+  contenedor.parentElement.hidden = ![...contenedor.children].some((grupo) => !grupo.hidden);
 }
 function botonArea(nombre, ids, persona, grupo, id) {
   grupo.hidden = !ids.some((d) => persona.dimensiones[d]);
+  grupo.append(el("h4", { text: nombre }));
   const boton = el("button", { type: "button", class: "boton", id, "aria-controls": grupo.id, "aria-expanded": String(!grupo.hidden) });
   actualizarArea(boton, nombre, ids, persona);
-  boton.addEventListener("click", () => { grupo.hidden = !grupo.hidden; boton.setAttribute("aria-expanded", String(!grupo.hidden)); });
+  boton.addEventListener("click", () => {
+    grupo.hidden = !grupo.hidden;
+    boton.setAttribute("aria-expanded", String(!grupo.hidden));
+    actualizarArea(boton, nombre, ids, persona);
+    actualizarFrecuencias(grupo.parentElement);
+  });
   return boton;
 }
 function sincronizarEstudiante() {
@@ -496,6 +506,7 @@ function sincronizarEstudiante() {
     });
     dimensiones.append(grupo);
   });
+  actualizarFrecuencias(dimensiones);
   sincronizarAcuerdos();
   abrirPaso("paso-descripcion", !estudianteActual().descripcionGuardada);
   abrirPaso("paso-acuerdos", estadoCaso(estudianteActual()) !== "Acuerdos completos");
@@ -646,6 +657,7 @@ function sincronizarTrabajo() {
       }); grupo.append(campo);
     }); $("#trabajo-dimensiones").append(grupo);
   });
+  actualizarFrecuencias($("#trabajo-dimensiones"));
   $("#trabajo-roles").replaceChildren(...Object.entries(ROLES_TRABAJO).map(([id, nombre]) => {
     const campo = el("input", { type: "checkbox", name: "rol-trabajo", value: id }); campo.checked = e.acuerdo.roles.includes(id);
     campo.addEventListener("change", () => { marcarRevision(e); e.acuerdo.roles = [...document.querySelectorAll('input[name="rol-trabajo"]:checked')].map((c) => c.value); guardar(); pintarEstadoTrabajo(); });
