@@ -1,6 +1,6 @@
 # Tarea 065 · Resultados DUA: recomendadas arriba, filtros que recortan y sin «Empieza por:»
 
-Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/065-resultados-dua` · Pull request con destino `main`
+Estado: **integrada** (PR #86) · Asignada a: Codex · Rama: `codex/065-resultados-dua` · Pull request con destino `main`
 
 ## Para qué
 El dueño aprobó esta versión el 20-11-2026, después de dos revisiones adversariales y de una muestra en el lienzo de diseño.
