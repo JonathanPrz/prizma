@@ -1,6 +1,6 @@
 # Tarea 069 · Nivel por estudiante y flujo después de las adecuaciones de acceso
 
-Estado: **lista para Codex, después de integrar la 067 y la 068** · Asignada a: Codex · Rama: `codex/069-nivel-por-caso` · Pull request con destino `main`
+Estado: **lista para Codex** · Asignada a: Codex · Rama: `codex/069-nivel-por-caso` · Pull request con destino `main`
 
 ## Para qué
 Lo decidió un tercer debate de 10 especialistas, con críticas cruzadas, votación y un moderador (20-11-2026). El dueño aprobó la síntesis completa. Hoy:
