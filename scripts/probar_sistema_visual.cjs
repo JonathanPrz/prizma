@@ -74,6 +74,17 @@ async function probar() {
         assert(!resultado.desborde, contexto);
       }
 
+      async function verificarCasoActivo(lista) {
+        const caso = pagina.locator(lista + ' button[aria-pressed="true"]');
+        assert.match(await caso.innerText(), /Sin acuerdos/);
+        const estilo = await caso.evaluate(n => ({
+          borde: getComputedStyle(n).borderTopWidth,
+          contenido: getComputedStyle(n, '::after').content
+        }));
+        assert.deepEqual(estilo, { borde: '2px', contenido: 'none' });
+        assert.doesNotMatch(await caso.innerText(), /✓/);
+      }
+
       await pagina.selectOption('#nivel', 'basica');
       await pagina.click('#guardar-clase');
       await medir('DUA con resultados');
@@ -98,6 +109,7 @@ async function probar() {
       await pagina.click('#cerrar');
 
       await pagina.click('#tab-apoyos');
+      await verificarCasoActivo('#lista-estudiantes');
       await pagina.click('#guardar-descripcion');
       assert.equal(await pagina.locator('.mensaje-error:has(#descripcion-error) [aria-hidden]').innerText(), '✕');
       await pagina.click('#area-0');
@@ -112,6 +124,7 @@ async function probar() {
       assert.deepEqual(foco, ['3px', '2px']);
 
       await pagina.selectOption('#nivel', 'practica-trabajo');
+      await verificarCasoActivo('#lista-trabajadores');
       assert.equal(await pagina.locator('#continuar').textContent(), 'Guardar y ver ajustes');
       await pagina.click('#abrir-mochila');
       await medir('mochila de trabajo vacía');

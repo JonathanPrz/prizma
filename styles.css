@@ -424,8 +424,6 @@ dialog { box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .icono-estado { display: inline-block; margin-inline-end: .25rem; font-weight: 700; }
 .icono-estado:is(.estado-revisar, .estado-completo) { border-radius: .25rem; padding-inline: .25rem; }
 
-button[aria-pressed="true"]:not([id^="elegir-"])::after { content: "✓" / ""; margin-inline-start: .25rem; }
-
 .estado-variable:not(:has(> [data-estado]:not([data-estado=""]))) { background: none; color: var(--tenue); }
 .estado-variable:has(> [data-estado="error"]) { background: var(--error-suave); color: var(--error); }
 .estado-variable:has(> [data-estado="exito"]) { background: var(--solida-fondo); color: var(--solida); }
