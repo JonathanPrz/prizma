@@ -21,18 +21,20 @@ function nodo(id) {
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['persistencia-aviso','panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','inicio','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','pestanas-educacion','elegir-educacion','elegir-trabajo','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
+for (const id of ['persistencia-aviso','panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','nivel','nivel-ayuda','preparar-practica-campo','preparar-practica','preparar-practica-ayuda','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','pestanas-educacion','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
 // The dedicated work-flow test covers rendering; this suite checks tab navigation.
 ejecutar('sincronizarTrabajo=()=>{};cargarPrivacidad=()=>{};pintarSeleccion=()=>{};prepararIndicador=()=>{};prepararPestanas()');
-assert.equal(nodos.get('#inicio').hidden, false);
+assert.equal(nodos.get('#panel-dua').hidden, false);
+assert.equal(nodos.get('#abrir-mochila').hidden, false);
 
 for (const id of ['apoyos', 'trabajo', 'dua', 'trabajo', 'apoyos', 'dua']) {
   contexto.location.hash = '#' + id; eventos.hashchange();
   assert.equal(contexto.document.activeElement.id, (id==='trabajo'?'panel-':'tab-') + id);
   assert.equal(almacen.get('prizma.v1').pestana, id);
-  assert.equal(nodos.get('#nivel-campo').hidden,id==='trabajo');
+  assert.equal(nodos.get('#nivel-campo').hidden,false);
+  assert.equal(nodos.get('#nivel').value,id==='trabajo'?'practica-trabajo':'');
   for (const nombre of ['dua', 'apoyos', 'trabajo']) {
     assert.equal(nodos.get('#panel-' + nombre).hidden, nombre !== id);
     if(nombre==='trabajo')continue;

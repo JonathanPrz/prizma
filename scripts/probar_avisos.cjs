@@ -22,7 +22,7 @@ function visita(bloqueado = false, confirmada = false) {
       replaceChildren(){}, close(valor=''){this.returnValue=valor;this.open=false;this.emit('close');},append(){},setAttribute(){},
     };
   }
-  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-filtros-apoyos','t-filtros-dialogo','revision-situaciones','revision-situaciones-texto','revision-situaciones-entendido','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura','practica-profesional','paso-descripcion-toggle'])nodos.set('#'+id,nodo(id));
+  for(const id of [...ids,'t-guia-dua','guia-empezar','t-guia-apoyos','guia-apoyos-escolar','guia-apoyos-superior','guia-apoyos-entendido','t-privacidad','privacidad-entendido','tab-dua','tab-apoyos','panel-dua','panel-apoyos','abrir-filtros','t-filtros-dua','agregar-estudiante','quitar-estudiante','t-filtros-apoyos','t-filtros-dialogo','revision-situaciones','revision-situaciones-texto','revision-situaciones-entendido','t-apoyos','iniciales','estudiante-ayuda','estudiante-voz','asignatura','preparar-practica','preparar-practica-campo','preparar-practica-ayuda','paso-descripcion-toggle'])nodos.set('#'+id,nodo(id));
   for(const id of ['dua','apoyos'])nodos.set('#panel-'+id+' .acciones-intro',nodo('intro-'+id));
   vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/,''),c);
   const run = code => vm.runInContext(code,c), n = id => nodos.get('#'+id);

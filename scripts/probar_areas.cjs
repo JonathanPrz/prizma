@@ -7,9 +7,9 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
  try{
   for(const ancho of [1280,390])for(const tema of ['light','dark']){
    const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:tema,reducedMotion:'reduce'}),errores=[];p.on('pageerror',e=>errores.push(e.message));
-   await p.goto('http://127.0.0.1:'+servidor.address().port);await p.waitForFunction(()=>catalogo.length>0);await p.click('#elegir-educacion');await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
+   await p.goto('http://127.0.0.1:'+servidor.address().port);await p.waitForFunction(()=>catalogo.length>0);await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
    for (const prefijo of ['', 'trabajo-']) {
-    if (prefijo) { await p.locator('.cambiar-ambito').first().click(); await p.click('#elegir-trabajo'); }
+    if (prefijo) { await p.selectOption('#nivel','practica-trabajo'); }
     const boton=p.locator('#'+prefijo+'area-0');
     const bloque=p.locator('#'+prefijo+'dimensiones').locator('..');
     const grupo=p.locator('#'+await boton.getAttribute('aria-controls'));
