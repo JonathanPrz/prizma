@@ -1,6 +1,6 @@
 # Tarea 048 · «¿Qué usa hoy para comunicarse o acceder?» sugiere sus apoyos
 
-Estado: **v3, ajustada tras integrar la tarea 051 (PR #71)** · Asignada a: Codex · Rama: `codex/048-modalidad` · Pull request con destino `main`
+Estado: **integrada** (PR #72) · Asignada a: Codex · Rama: `codex/048-modalidad` · Pull request con destino `main`
 
 ## Para qué
 Hoy la pregunta de modalidad casi no cambia las sugerencias. Si marcas «Braille», no sube la ficha de Braille. Esta tarea hace que **la modalidad muestre y ponga primero los apoyos de acceso o los ajustes de trabajo que le corresponden**, en «Para un estudiante» y en el nivel «Práctica y trabajo», etapa «Primer empleo o trabajo».
