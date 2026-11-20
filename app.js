@@ -408,8 +408,11 @@ function fichasPracticaProfesional(subtipo, e) {
 function elegidasCentro(e) {
   return e?.etapa === "practica" ? elegidasOrdenadas(e.seleccion, e).filter((r) => r.subtipo === "centro") : [];
 }
+function practicaConIniciales(iniciales) {
+  return iniciales ? estado.trabajadores.find((e) => e.etapa === "practica" && e.iniciales.toUpperCase() === iniciales.toUpperCase()) : undefined;
+}
 function pintarPrepararPractica() {
-  const lleno = estado.trabajadores.length >= 10;
+  const lleno = estado.trabajadores.length >= 10 && !practicaConIniciales(estudianteActual().iniciales);
   $("#preparar-practica-campo").hidden = !nivelPracticaProfesional();
   $("#preparar-practica").disabled = lleno;
   $("#preparar-practica-ayuda").textContent = lleno ? "Máximo 10 casos en Práctica y trabajo" : "";
@@ -545,6 +548,7 @@ function escucharEstudiante() {
       if (valor !== estudianteActual()[clave]) marcarRevision(estudianteActual());
       estudianteActual()[clave] = valor;
       campo.value = estudianteActual()[clave];
+      if (clave === "iniciales") pintarPrepararPractica();
       guardar(); pintarTituloApoyos(); pintarSelectorEstudiantes(); pintarSeleccion(); pintarEstadoCasos();
       if (!privacidadAvisada && escribio) mostrarAvisoPrivacidad(campo);
     });
@@ -598,7 +602,7 @@ function nombreTrabajador(e) { return e.iniciales || `Persona ${estado.trabajado
 function tituloTrabajador(e) { return "Ajustes para " + nombreTrabajador(e); }
 function datosTrabajador(e) { return Boolean(e.etapa === "practica" || e.iniciales || e.tipoPuesto || e.ayuda || e.voz || Object.keys(e.dimensiones).length || Object.keys(e.seleccion).length || e.compartir || e.acuerdo.criterio || e.modalidad || e.acuerdo.roles.length || e.acuerdo.fecha); }
 function elegidasTrabajo(e) {
-  return catalogo.filter((r) => ["trabajo", "practica-profesional"].includes(r.tipo) && Object.hasOwn(e.seleccion, r.id))
+  return catalogo.filter((r) => aplica(r, e) && Object.hasOwn(e.seleccion, r.id))
     .sort((a, b) => Object.keys(TIPOS_TRABAJO).indexOf(a.subtipo) - Object.keys(TIPOS_TRABAJO).indexOf(b.subtipo) || catalogo.indexOf(a) - catalogo.indexOf(b));
 }
 function ajustesTrabajo(e = trabajadorActual()) {
@@ -1017,8 +1021,9 @@ function actualizarPaso(numero) {
 function actualizarContinuar() {
   const b = $("#continuar");
   if (!b?.isConnected) return;
-  const seleccion = estado.pestana === "trabajo" ? trabajadorActual()?.seleccion : estado.pestana === "apoyos" ? estudianteActual().seleccion : estado.seleccion;
-  const cantidad = Object.keys(seleccion || {}).length;
+  const e = trabajadorActual();
+  const cantidad = estado.pestana === "trabajo" ? (e ? elegidasTrabajo(e).length : 0) :
+    Object.keys(estado.pestana === "apoyos" ? estudianteActual().seleccion : estado.seleccion).length;
   b.textContent = pasoActual === 1 ? (estado.pestana === "dua" ? "Guardar y ver acciones" : "Guardar y ver apoyos") :
     pasoActual === 2 ? (estado.pestana === "dua" ? `Ir a tu selección (${cantidad} elegidas)` : `Ir a acuerdos (${cantidad} elegidos)`) : "Ver documento";
 }
@@ -1246,7 +1251,10 @@ function elegidasOrdenadas(seleccion = estado.seleccion, e) {
 }
 function totalElegidas() { return Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0) + (estado.trabajadores || []).reduce((n, e) => n + Object.keys(e.seleccion).length, 0); }
 function pintarSeleccion() {
-  const trabajo = estado.ambito === "trabajo", sel = trabajo ? [] : elegidasOrdenadas(), total = trabajo ? estado.trabajadores.reduce((n, e) => n + Object.keys(e.seleccion).length, 0) : Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0);
+  const trabajo = estado.ambito === "trabajo", sel = trabajo ? [] : elegidasOrdenadas();
+  const laborales = trabajo ? estado.trabajadores.map((e) => ({ e, ajustes: elegidasTrabajo(e) })).filter(({ ajustes }) => ajustes.length) : [];
+  const total = trabajo ? laborales.reduce((n, { ajustes }) => n + ajustes.length, 0) :
+    Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0);
   $("#n-sel").textContent = total;
   $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(total, "elegida", "elegidas")}`);
   $("#sel-curso-titulo").hidden = !sel.length;
@@ -1262,12 +1270,11 @@ function pintarSeleccion() {
     el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante() }),
       ...Object.keys(GRUPOS_APOYOS).filter((tipo) => elegidasOrdenadas(e.seleccion).some((r) => r.tipo === tipo)).map((tipo) =>
         el("div", {}, el("h4", { text: esSuperior() && ["acceso", "adicional"].includes(tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
-  const laborales = (estado.trabajadores || []).filter((e) => Object.keys(e.seleccion).length);
   $("#seleccion-trabajo").hidden = !trabajo || !laborales.length;
   $("#pdf").hidden = trabajo;
   $("#borrar").textContent = trabajo ? "Borrar los datos de Práctica y trabajo" : "Borrar los datos de Educación";
   $("#sel-vacia").textContent = trabajo ? "Todavía no eliges ajustes. Usa el botón «Elegir» de cada ajuste." : "Todavía no eliges acciones ni apoyos. Usa el botón «Elegir».";
-  $("#sel-trabajadores").replaceChildren(...(trabajo ? laborales : []).map((e) => el("section", {}, el("h4", { text: tituloTrabajador(e) }), el("ol", { class: "sel-lista" }, elegidasTrabajo(e).map((r) => itemSeleccion(r, e, "quitar-trabajo-", true))))));
+  $("#sel-trabajadores").replaceChildren(...laborales.map(({ e, ajustes }) => el("section", {}, el("h4", { text: tituloTrabajador(e) }), el("ol", { class: "sel-lista" }, ajustes.map((r) => itemSeleccion(r, e, "quitar-trabajo-", true))))));
   function itemSeleccion(r, e, prefijo = "quitar-", trabajo = false) {
     const seleccion = e ? e.seleccion : estado.seleccion;
     const claveNota = (trabajo ? "trabajo:" + e.id : e ? e.id : "curso") + ":" + r.id;
@@ -1404,7 +1411,7 @@ function prepararDocumentoTrabajo() {
   $("#error-documento").textContent = ""; $("#mochila").close(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 function documentoTrabajo(ids = inclusionTrabajo || []) {
-  const ajustes = (e) => seccionesTrabajo.ajustes ? elegidasTrabajo(e).filter((r) => aplica(r, e)) : [];
+  const ajustes = (e) => seccionesTrabajo.ajustes ? elegidasTrabajo(e) : [];
   const personas = estado.trabajadores.filter((e) => e.etapa !== "practica" && ids.includes(e.id)), usadas = personas.flatMap(ajustes);
   return { trabajo: true, titulo: "Plan de ajustes en el trabajo", fecha: new Date().toLocaleDateString("es-CL"), logo: logoDocumento(),
     resumen: [["Fecha", new Date().toLocaleDateString("es-CL")], ["Contenido", personas.map(tituloTrabajador).join("; ") || "Sin personas elegidas"]],
@@ -1501,10 +1508,11 @@ async function verDocumentoCentro(e) {
 }
 function prepararPracticaProfesional() {
   $("#preparar-practica").addEventListener("click", () => {
-    if (!nivelPracticaProfesional() || estado.trabajadores.length >= 10) return;
+    if (!nivelPracticaProfesional()) return;
     const e = estudianteActual();
-    let caso = estado.trabajadores.find((t) => t.etapa === "practica" && t.iniciales.toUpperCase() === e.iniciales.toUpperCase());
+    let caso = practicaConIniciales(e.iniciales);
     if (!caso) {
+      if (estado.trabajadores.length >= 10) return;
       let id = nuevoIdEstudiante();
       while (estado.trabajadores.some((t) => t.id === id)) id = nuevoIdEstudiante();
       caso = { id, ...normalizarTrabajador({ iniciales: e.iniciales, dimensiones: e.dimensiones, descripcionGuardada: e.descripcionGuardada, etapa: "practica", nivelOrigen: estado.perfil.nivel }) };

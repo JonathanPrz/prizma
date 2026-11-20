@@ -175,6 +175,41 @@ async function probar() {
     assert.deepEqual(await pagina.evaluate(() => trabajadorActual().acuerdo.roles), ['institucion']);
     assert.match(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
 
+    await campo('trabajo-descripcion-editar').click();
+    await campo('trabajo-etapa').selectOption('trabajo');
+    await campo('trabajo-ir-acuerdos').click();
+    await pagina.getByLabel('Persona trabajadora', { exact: true }).check();
+    await campo('guardar-acuerdos-trabajo').click();
+    assert.match(await campo('trabajo-acuerdos-error').innerText(), /Elige al menos un ajuste/);
+    assert.doesNotMatch(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    await campo('abrir-mochila').click();
+    assert(await campo('sel-vacia').isVisible());
+    assert.equal(await campo('n-sel').textContent(), '0');
+    await campo('cerrar-mochila').click();
+
+    await elegir('tr-subtitulos');
+    await campo('guardar-acuerdos-trabajo').click();
+    assert.match(await campo('lista-trabajadores').innerText(), /Acuerdos completos/);
+    await campo('abrir-mochila').click();
+    assert.equal(await campo('sel-trabajadores').locator('li').count(), 1);
+    assert.match(await campo('sel-trabajadores').locator('textarea').getAttribute('data-nota-clave'), /tr-subtitulos$/);
+    await campo('pdf-trabajo').click();
+    await pagina.locator('#opciones-documento input[name="incluir"]').check();
+    await campo('generar-documento').click();
+    await pagina.waitForSelector('#vista[open]');
+    assert.deepEqual(await pagina.evaluate(() => modeloDocumento().grupos[0].acciones.map(r => r.id)), ['tr-subtitulos']);
+    await campo('cerrar').click();
+
+    await campo('trabajo-etapa').selectOption('practica');
+    await campo('abrir-mochila').click();
+    assert.equal(await campo('sel-trabajadores').locator('li').count(), 2);
+    assert.equal(await campo('sel-trabajadores').locator('textarea').first().inputValue(), 'Nota privada del caso');
+    assert.equal(await campo('sel-trabajadores').locator('textarea[data-nota-clave$="tr-subtitulos"]').count(), 0);
+    assert(await pagina.evaluate(() => Object.hasOwn(trabajadorActual().seleccion, 'tr-subtitulos')));
+    await campo('pdf-trabajo').click();
+    assert.deepEqual(await pagina.locator('input[name="compartir-centro"]').evaluateAll(campos => campos.map(c => c.value).sort()), ['pp-c-analisis', 'pp-c-pasos']);
+    await campo('cancelar-centro').click();
+
     await abrir({ ...base, perfil: { nivel: 'media' } });
     await campo('paso-descripcion-editar').click();
     await campo('preparar-practica').click();
@@ -196,6 +231,27 @@ async function probar() {
     await campo('paso-descripcion-editar').click();
     assert(await campo('preparar-practica').isDisabled());
     assert.equal(await campo('preparar-practica-ayuda').innerText(), 'Máximo 10 casos en Práctica y trabajo');
+
+    const coincidencia = { ...creado, id: 'practica-existente', iniciales: 'jp' };
+    await abrir({ ...base, perfil: { nivel: 'superior' }, trabajadores: [...llenos.slice(0, 9), coincidencia] });
+    await campo('paso-descripcion-editar').click();
+    assert(await campo('preparar-practica').isEnabled());
+    await campo('iniciales').fill('XX');
+    assert(await campo('preparar-practica').isDisabled());
+    await campo('iniciales').fill('JP');
+    await campo('preparar-practica').click();
+    assert.equal((await caso()).id, coincidencia.id);
+    assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 10);
+
+    await abrir({
+      ...base, perfil: { nivel: 'media' }, estudiantes: [{ ...estudiante, iniciales: '' }],
+      trabajadores: [{ ...coincidencia, iniciales: '' }]
+    });
+    await campo('paso-descripcion-editar').click();
+    await campo('preparar-practica').click();
+    assert.notEqual((await caso()).id, coincidencia.id);
+    assert.equal((await caso()).iniciales, '');
+    assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 2);
 
     await abrir(legado);
     assert.equal(await campo('nivel').inputValue(), 'practica-trabajo');
