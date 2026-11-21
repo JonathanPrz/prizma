@@ -78,7 +78,7 @@ async function probar() {
 
     await nodo('paso-descripcion-editar').click();
     await nivel.selectOption('media');
-    assert.equal(await nodo('nivel-estudiante-estado').textContent(), 'Cambiaste a media.');
+    assert.equal(await nodo('nivel-estudiante-estado').textContent(), 'Cambiaste a educación media.');
     assert.match(await nodo('objetivos-media').innerText(), /Decreto 67, art. 5/);
     await nivel.selectOption('basica');
     const situacion5 = pagina.locator('input[name="dimension-5"][value="2"]');
@@ -92,9 +92,10 @@ async function probar() {
     assert(await crisis.evaluate(n => n === document.activeElement && n.parentElement.open));
 
     await nivel.selectOption('superior');
-    assert.equal(await nodo('nivel-estudiante-estado').textContent(), 'Cambiaste a superior: 1 apoyo ya no aplica y queda guardado');
+    assert.equal(await nodo('nivel-estudiante-estado').textContent(), 'Cambiaste a educación superior: 1 apoyo ya no aplica y queda guardado.');
     assert.equal((await estadoCaso()).seleccion['obj-priorizacion'], 'Mantener esta nota');
-    assert.equal((await estadoCaso()).acuerdo.estado, 'por-revisar');
+    assert.equal(await pagina.evaluate(() => estadoCaso(estudianteActual())), 'Sin acuerdos');
+    assert(!await nodo('acuerdos-revisar').isVisible());
     assert.equal(await nodo('n-sel').textContent(), '0');
     const plan = await pagina.evaluate(() => documento({ curso: false, estudiantes: ['jp', 'am'] }));
     assert(plan.grupos.every(g => g.nivel === 'superior'));
@@ -106,7 +107,22 @@ async function probar() {
     await nivel.selectOption('basica');
     assert.notDeepEqual(await pagina.evaluate(() => accesosVisibles().map(r => r.id)), sup);
     assert.equal(await nodo('elegir-obj-priorizacion').getAttribute('aria-pressed'), 'true');
+    assert.equal(await nodo('nivel-estudiante-estado').textContent(), 'Cambiaste a educación básica.');
+    await nodo('roles-acuerdo').locator('input[value="familia"]').check();
+    await nodo('roles-acuerdo').locator('input[value="pie"]').check();
+    await nodo('fecha-acuerdo').fill('2026-11-18');
+    await nodo('revision-acuerdo').fill('2026-12-18');
+    await nodo('criterio-acuerdo').fill('Resuelve dos ejercicios con el apoyo acordado.');
+    await nodo('guardar-acuerdos').click();
+    assert.equal(await pagina.evaluate(() => estadoCaso(estudianteActual())), 'Acuerdos completos');
+    await nivel.selectOption('superior');
+    assert.equal((await estadoCaso()).acuerdo.estado, 'por-revisar');
+    assert.equal(await pagina.evaluate(() => estadoCaso(estudianteActual())), 'Por revisar');
+    assert(await nodo('acuerdos-revisar').isVisible());
+    assert.match(await nodo('acuerdos-revisar').textContent(), /Cambiaste el caso después del acuerdo\. Revisa los acuerdos\.$/);
+    await nivel.selectOption('basica');
     await nivel.selectOption('parvularia');
+    assert.match(await nodo('nivel-estudiante-estado').textContent(), /^Cambiaste a educación parvularia\b.*\.$/);
     assert(!await nodo('objetivos').isVisible());
     assert(await nodo('desregulacion').isVisible());
     assert.match(await nodo('objetivos-parvularia').innerText(), /Decreto 83/);

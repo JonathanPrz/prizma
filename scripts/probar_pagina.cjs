@@ -86,6 +86,16 @@ async function probar() {
       const taller = nodo('practica');
       const primeraCasilla = pagina.locator('#perfil input[name="actividad"]').first();
       const conteoTaller = '9 de 36 acciones responden a lo que marcaste';
+      const espacios = await pagina.evaluate(() => {
+        const rect = selector => document.querySelector(selector).getBoundingClientRect();
+        return {
+          ayuda: rect('#perfil legend').top - rect('#paso-clase-cuerpo > p.ayuda').bottom,
+          preguntas: rect('#perfil fieldset + fieldset legend').top - rect('#perfil fieldset').bottom
+        };
+      });
+      assert(espacios.ayuda >= 16, `Ayuda a ${width} px: ${espacios.ayuda} px`);
+      assert(espacios.preguntas >= espacios.ayuda, `Preguntas a ${width} px: ${espacios.preguntas} px`);
+
       if (width !== 640) {
         assert(!await nodo('necesidades-campo').evaluate(n => n.open));
         if (width === 390) {

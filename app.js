@@ -636,9 +636,10 @@ function escucharEstudiante() {
     const e = estudianteActual(), antes = elegidasOrdenadas(e.seleccion, e);
     e.nivel = nivelEducativo(ev.target.value) ?? "basica";
     const ocultas = antes.filter(r => !aplica(r, e)).length;
-    if (ocultas) e.acuerdo.estado = "por-revisar";
+    if (ocultas) marcarRevision(e);
     const aviso = ocultas === 1 ? "1 apoyo ya no aplica y queda guardado" : `${ocultas} apoyos ya no aplican y quedan guardados`;
-    $("#nivel-estudiante-estado").textContent = `Cambiaste a ${e.nivel}${ocultas ? ": " + aviso : "."}`;
+    const nombreNivel = NIVELES[e.nivel].split(" (")[0].toLowerCase();
+    $("#nivel-estudiante-estado").textContent = `Cambiaste a ${nombreNivel}${ocultas ? ": " + aviso : ""}.`;
     guardar(); aplicarVocabulario(); sincronizarAcuerdos(); pintarApoyos(); pintarTarjetas(); pintarSeleccion();
   });
   $("#ir-crisis").addEventListener("click", (ev) => {
