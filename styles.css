@@ -315,8 +315,8 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 
 .version-curso { padding: .75rem; border: 1px solid var(--linea); border-radius: .35rem; }
 #barreras-repetidas p { margin-block: .5rem; }
-#opciones-documento { display: grid; gap: .75rem; margin-block: 1rem; }
-#opciones-documento label { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
+:is(#opciones-documento, #opciones-familia) { display: grid; gap: .75rem; margin-block: 1rem; }
+:is(#opciones-documento, #opciones-familia) label { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
 .hoja { font-family: Roboto, Arial, sans-serif; font-size: 10.5pt; line-height: 1.2; }
 .hoja h1 { font-size: 20pt; }
 .hoja h2 { font-size: 14pt; }
@@ -364,7 +364,6 @@ input[type="date"] { font: inherit; font-size: 1rem; font-weight: 400; line-heig
 .paso-guia a { display: inline-block; min-height: 1.5rem; }
 
 #trabajo-puesto, #trabajo-iniciales { font: inherit; font-size: 1rem; font-weight: 400; line-height: 1.6; color: var(--tinta); background: var(--superficie); border: 1.5px solid var(--borde-control); border-radius: .35rem; padding: .5rem .75rem; min-height: 2.75rem; width: 100%; }
-#opciones-documento label { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
 
 .identidad { min-width: 0; max-width: 100%; }
 @media (max-width: 39.999rem) { .subtitulo-marca { display: none; } }
@@ -567,3 +566,11 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 .mochila-nota textarea { margin-top: .25rem; }
 #formato-documento .ayuda { margin-block: 0 .5rem; margin-inline-start: 1.75rem; }
 .guion-pasos { list-style: none; padding-inline-start: .75rem; }
+
+.h-familia { font-size: 11pt; overflow-wrap: anywhere; }
+.h-familia + .h-familia { margin-top: 2rem; border-top: 1px solid var(--hoja-linea); padding-top: 1rem; }
+.h-familia ul { padding-inline-start: 1.3em; }
+.h-familia-linea { white-space: nowrap; overflow: hidden; }
+@media print {
+  .h-familia + .h-familia { break-before: page; margin-top: 0; border-top: 0; padding-top: 0; }
+}
