@@ -99,7 +99,8 @@ async function probar() {
       await pagina.click('#panel-ir');
       assert(await pagina.locator('#panel-elegidas').isVisible());
       assert.equal(await pagina.locator('#panel-conteo').textContent(), 'Todavía no eliges acciones.');
-      assert(!await pagina.locator('#panel-ir').isVisible());
+      // El botón del panel copia a la barra: si la barra ofrece «Ir a tu selección» sin elegidas, el panel también.
+      assert.equal(await pagina.locator('#panel-ir').isVisible(), !(await pagina.locator('#continuar').evaluate(n => n.hidden)));
       await elegir(pagina, 3);
       const panel = pagina.locator('#panel-elegidas');
       assert(await panel.isVisible());

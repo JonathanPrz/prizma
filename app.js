@@ -1366,7 +1366,9 @@ function pintarPanelElegidas() {
   $("#panel-grupos").replaceChildren(...grupos.map(([nombre, titulos]) =>
     el("section", {}, el("h3", { text: nombre }), el("ul", {}, titulos.map((t) => el("li", {}, el("span", { text: t })))))));
   const ir = $("#panel-ir");
-  ir.hidden = !personal && pasoActual > 1 && !sel.length;
+  // El botón del panel es el de la barra: mismo texto, misma visibilidad y mismo estado.
+  ir.hidden = $("#continuar").hidden;
+  ir.disabled = $("#continuar").disabled;
   ir.textContent = $("#continuar").textContent;
 }
 function activarPasoAbierto(id) {
