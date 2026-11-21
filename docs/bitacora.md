@@ -93,10 +93,10 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 ## Flujo y navegación
 
 ### Un solo selector de nivel con cinco opciones
-- Hoy: `#nivel` tiene Educación parvularia, básica (por defecto), media (CH y TP), superior (universidad, IP o CFT) y Práctica y trabajo. Siempre está visible. Elegir «Práctica y trabajo» abre el ámbito Trabajo sin tocar el nivel educativo guardado.
+- Hoy: `#nivel`, con la etiqueta «Nivel para el curso» y la ayuda «Ordena las acciones para todo el curso. Cada estudiante tiene su propio nivel.», tiene Educación parvularia, básica (por defecto), media (CH y TP), superior (universidad, IP o CFT) y Práctica y trabajo. Siempre está visible. Elegir «Práctica y trabajo» abre el ámbito Trabajo sin tocar el nivel educativo guardado.
 - Por qué: menos modos. La práctica es otro rol (coordinación, primer empleo, ajustes en el trabajo) y no una asignatura; las acciones DUA y las adecuaciones de clase no le sirven.
 - No volver a: la pantalla «¿Dónde quieres apoyar?» y el botón «Cambiar ámbito» (ya no existen en `index.html` ni `app.js`). Una media separada en CH y TP (tarea 020).
-- Historial: tareas 013, 020, 036 y 051 · PR #20, #35 y #71
+- Historial: tareas 013, 020, 036, 051 y 078 · PR #20, #35, #71 y #100
 
 ### «Sin indicar» ya no es un nivel
 - Hoy: no hay opción vacía. El selector arranca en básica y se dice a la vista.
@@ -104,17 +104,17 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - No volver a: un nivel vacío con comportamiento oculto.
 - Historial: tarea 069 · PR #90
 
-### El nivel es propio de cada estudiante
-- Hoy: cada caso guarda su `nivel` y las fichas, el vocabulario y los roles del acuerdo usan el del caso. El nivel general sirve para DUA y como valor inicial de casos nuevos. Cambiar el nivel de un caso no pide confirmación; las fichas que dejan de aplicar quedan guardadas y ocultas, y un aviso las cuenta. Los datos antiguos migran a básica.
-- Por qué: una docente con estudiantes de distintos niveles no podía reflejarlo. Decidido por un consejo de 10 especialistas.
-- No volver a: un nivel único para todos los casos con confirmación al cambiarlo.
-- Historial: tareas 036 y 069 · PR #35 y #90
+### Hay dos niveles: el del curso y el de cada estudiante
+- Hoy: `#nivel` («Nivel para el curso») ordena las acciones DUA y es el valor inicial de los casos. `#nivel-estudiante` («Nivel de este estudiante», ayuda «Cambia los apoyos y las palabras. Es solo de este estudiante.») es propio de cada caso, y las fichas, el vocabulario y los roles del acuerdo usan ese. Un caso vacío (`datosEstudiante` falso) sigue al nivel general al cambiarlo y también al cargar la página, sin aviso. Un caso con datos conserva su nivel, y junto a `#nivel` un aviso `role="status"` dice «JP sigue en Educación superior. Puedes cambiarlo dentro del caso.» (o «2 casos siguen con su propio nivel…»); no hay cambio masivo. El encabezado del caso muestra «Nivel: …». Cambiar el nivel de un caso no pide confirmación: las fichas que dejan de aplicar quedan guardadas y ocultas, y un aviso las cuenta. Los datos antiguos migran a básica.
+- Por qué: una docente con estudiantes de distintos niveles necesita que cada caso tenga el suyo (consejo de 10 especialistas, tarea 069). Pero el dueño cambió el nivel general y su caso siguió en superior («sigue todo el rato como ajuste razonable»), y además el primer caso nacía en básica aunque se eligiera otro nivel arriba. El consejo 078 (9 perfiles simulados por un solo modelo, no especialistas independientes; la propuesta de Diseño UX sumó 23 de 54 puntos) resolvió con etiquetas, nivel visible y sincronización solo de los casos vacíos.
+- No volver a: un nivel único para todos los casos (impide trabajar con casos de distintos niveles); un cambio masivo del nivel de los casos con datos.
+- Historial: tareas 036, 069 y 078 · PR #35, #90 y #100
 
 ### Dos pestañas en Educación: «Para el curso (DUA)» y «Para un estudiante»
-- Hoy: `role="tab"` con flechas del teclado; la activa se guarda y va en el hash (`#dua`, `#apoyos`). En superior la segunda se llama «Ajustes razonables».
+- Hoy: `role="tab"` con flechas del teclado; la activa se guarda y va en el hash (`#dua`, `#apoyos`). La segunda pestaña siempre dice «Para un estudiante»; dentro del caso, los títulos usan el nivel del caso («Ajustes razonables para JP» en superior, «Apoyos para JP» en los demás).
 - Por qué: separar lo que se hace para todo el curso de lo que se acuerda para una persona. El nombre «Apoyos individualizados» se cambió porque no se entendía.
-- No volver a: «Apoyos adicionales» como pestaña o bloque (no tenía fichas; decisión del dueño, 2026).
-- Historial: tareas 016, 018, 036 y 069 · PR #16, #18 y #90
+- No volver a: «Apoyos adicionales» como pestaña o bloque (no tenía fichas; decisión del dueño, 2026). Que la pestaña cambie a «Ajustes razonables» según el caso activo: con un caso en superior, la pestaña lo decía aunque se estuviera en DUA con otro nivel.
+- Historial: tareas 016, 018, 036, 069 y 078 · PR #16, #18, #90 y #100
 
 ### Cada flujo tiene tres pasos: Describe, Elige, Acuerda
 - Hoy: el indicador de pasos son 3 segmentos iguales de 44 px («1 Describe», «2 Elige», «3 …») que llevan a cada paso; el actual tiene fondo `--acento-suave`, negrita y `aria-current="step"`, los hechos llevan «✓» antes del número y los pendientes van en `--tenue`. Es fijo (`sticky`) bajo la cabecera, salvo en pantallas de 40 rem o menos, donde va estático. En «Para un estudiante» y en Práctica y trabajo se trabaja un caso completo antes de agregar el siguiente; hasta 10 casos.
@@ -156,17 +156,21 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Por qué: 4 fichas de «Antes» nunca respondían a lo marcado y quedaban escondidas; en 14 de 35 combinaciones típicas ninguna ficha de «Antes» respondía.
 - Historial: tarea 070 · PR #91
 
-### Una columna de 46 rem con tarjetas en lista y un panel de lo elegido solo en escritorio
-- Hoy: el contenido, la cabecera, los avisos y el pie comparten una columna de `46rem` (más 48 px de margen). Columna y panel se centran juntos y la columna no se mueve entre pasos ni pestañas; por eso en el paso 1 y en «Para un estudiante» queda corrida a la izquierda en escritorio. `.bajada` y párrafos largos a `70ch`. `.tarjetas` en una columna. Los pasos y avisos de la tarjeta se ven siempre; solo se pliegan «Por qué funciona» y las fuentes. Desde `80rem`, en los pasos 2 y 3 de «Para el curso (DUA)», aparece a la derecha el panel «Lo que elegiste» (`aside`, 17 rem, `position: sticky`): conteo, elegidas por momento (máximo 2 líneas cada una) y un botón («Ir a tu selección»; en el paso 3, «Ver documento»). Va después de la columna en el DOM, así que el orden de foco y de lectura no cambia. Reemplaza a la barra de continuar mientras se ve. Desaparece bajo `80rem`, con zoom alto y en proyección; no existe en «Para un estudiante» ni en Práctica y trabajo.
-- Por qué: la gente se perdía (hallazgos H1, V0, V7, C6 y C7 de la auditoría de interfaz) y la jerarquía y la pulcritud mandan sobre el tamaño de letra. A 1280 px el contenido ocupaba unos 500 px y la cabecera todo el ancho; el dueño reabrió la tarea 054 y el consejo de la tarea 076 (6 especialistas) eligió un panel limitado: D (panel limitado) 15 puntos, A (columna sola) 12, B (panel siempre) 9, C (tarjetas en 2 columnas) 0. Las decisiones anteriores son antecedentes, no vetos.
-- No volver a: tarjetas en 2 columnas (el orden visual difiere del de foco y lectura, WCAG 1.3.2 y 2.4.3, y las alturas desiguales se leen en zigzag); un panel siempre visible (duplica la barra de continuar y la mochila); esconder los pasos de las tarjetas.
-- Historial: tareas 050, 054 y 076 · PR #70, #74 y #97
+### Una columna de 46 rem con tarjetas en lista y un panel «Lo que elegiste» desde el paso 1
+- Hoy: el contenido, la cabecera, los avisos y el pie comparten una columna de `46rem` (más 48 px de margen). Columna y panel se centran juntos y la columna no se mueve entre pasos ni pestañas; por eso en el paso 1 y en «Para un estudiante» queda corrida a la izquierda en escritorio. `.bajada` y párrafos largos a `70ch`. `.tarjetas` en una columna. Los pasos y avisos de la tarjeta se ven siempre; solo se pliegan «Por qué funciona» y las fuentes. Desde `80rem`, en los tres ámbitos y desde el paso 1, aparece a la derecha el panel «Lo que elegiste» (`aside`, `20rem`, `position: sticky`). Va después de la columna en el DOM, así que el orden de foco y de lectura no cambia. Su contenido depende del paso:
+  - DUA, paso 1: «Nivel del curso: …» y «Todavía no eliges acciones para el curso.» (o «N elegidas para el curso»); no repite actividad ni evidencia, que se marcan al lado. Pasos 2 y 3: conteo y elegidas por momento (máximo 2 líneas cada una).
+  - Para un estudiante: «Lo que elegiste para JP», «Nivel: …»; paso 1, «Situaciones marcadas: N» sin nombrarlas; paso 2, «N apoyos elegidos» por tipo; paso 3, «Acuerdo: …» (estado del caso).
+  - Práctica y trabajo: igual, sin nivel y con «N ajustes elegidos».
+  El botón del panel copia el texto, el estado y la visibilidad de `#continuar` (hay una sola acción principal), y la barra se oculta mientras el panel está a la vista. Desaparece bajo `80rem`, con zoom alto y en proyección.
+- Por qué: la gente se perdía (hallazgos H1, V0, V7, C6 y C7 de la auditoría de interfaz) y la jerarquía y la pulcritud mandan sobre el tamaño de letra. A 1280 px el contenido ocupaba unos 500 px y la cabecera todo el ancho; el dueño reabrió la tarea 054 y el consejo de la tarea 076 (6 especialistas) eligió un panel limitado: D (panel limitado) 15 puntos, A (columna sola) 12, B (panel siempre) 9, C (tarjetas en 2 columnas) 0. Después el panel le gustó al dueño, que pidió más espacio, que aparezca desde el comienzo y que esté en los apoyos individuales; lo resolvió el consejo 078 (simulado, 9 perfiles). Las decisiones anteriores son antecedentes, no vetos.
+- No volver a: tarjetas en 2 columnas (el orden visual difiere del de foco y lectura, WCAG 1.3.2 y 2.4.3, y las alturas desiguales se leen en zigzag); un panel de 17 rem; un botón del panel con visibilidad propia (en el paso 2 sin elegidas no había cómo avanzar); un panel que duplica la mochila; esconder los pasos de las tarjetas.
+- Historial: tareas 050, 054, 076 y 078 · PR #70, #74, #97 y #100
 
 ### La barra de continuar es pegajosa y dice lo que hace
-- Hoy: `.barra-continuar` es `position: sticky; bottom: 0`, de ancho completo, y se detiene antes del pie. En DUA se oculta mientras el panel «Lo que elegiste» está a la vista (desde 80 rem); en el teléfono y bajo 80 rem queda como siempre. El conteo se oculta en el paso 1 con 0 elegidos. En DUA dice «N elegidas»; en el paso 3 de estudiante y trabajo dice «Guardar acuerdos» hasta que están completos, y luego «Ver documento» («Ver documento para el centro» en práctica).
+- Hoy: `.barra-continuar` es `position: sticky; bottom: 0`, de ancho completo, y se detiene antes del pie. Se oculta mientras el panel «Lo que elegiste» está a la vista (desde 80 rem, en los tres ámbitos); en el teléfono y bajo 80 rem queda como siempre. El conteo se oculta en el paso 1 con 0 elegidos. En DUA dice «N elegidas»; en el paso 3 de estudiante y trabajo dice «Guardar acuerdos» hasta que están completos, y luego «Ver documento» («Ver documento para el centro» en práctica).
 - Por qué: la barra fija quedaba bajo el pie como una pieza suelta. «0 acciones» se leía como si no hubiera acciones.
 - No volver a: `position: fixed` con `padding-bottom` en el cuerpo.
-- Historial: tareas 055, 060, 066 y 076 · PR #75, #80, #87 y #97
+- Historial: tareas 055, 060, 066, 076 y 078 · PR #75, #80, #87, #97 y #100
 
 ### La página no salta al hacer clic
 - Hoy: el ajuste de posición del `focusin` solo actúa con foco de teclado (`:focus-visible`). Los botones que cambian de estado se actualizan en su lugar, sin recrearse ni llamar `.focus()`.
@@ -339,10 +343,10 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Historial: tareas 013, 028, 032 y 051 · PR #27, #32 y #71
 
 ### Superior usa ajustes razonables, no adecuaciones del Decreto 83
-- Hoy: sin bloque de objetivos; una línea explica que se hacen ajustes razonables (Ley 21.091 art. 2 e, Ley 20.422 art. 39, Ley 21.545 art. 21, CDPD art. 2 y 24). La ficha `sup-coordinar` no existe como ficha: es la regla de cómo se acuerdan, y va en el aviso.
-- Por qué: en superior no rigen las adecuaciones curriculares.
-- No volver a: `sup-coordinar` como ficha elegible.
-- Historial: tareas 013 y 021 · PR #21
+- Hoy: «ajustes razonables» se usa solo en superior; en parvularia, básica y media se dice «adecuaciones de acceso» (Decreto 83). Sin bloque de objetivos; una línea explica que se hacen ajustes razonables (Ley 21.091 art. 2 e, Ley 20.422 art. 39, Ley 21.545 art. 21, CDPD art. 2 y 24). La ficha `sup-coordinar` no existe como ficha: es la regla de cómo se acuerdan, y va en el aviso.
+- Por qué: en superior no rigen las adecuaciones curriculares. La CDPD define los ajustes razonables (art. 2, `docs/fuentes/normativa/cdpd.md` línea 93) y los exige en la educación en general (art. 24.2.c, línea 447).
+- No volver a: `sup-coordinar` como ficha elegible; «ajustes razonables» en los niveles escolares.
+- Historial: tareas 013, 021 y 078 · PR #21 y #100
 
 ### Las adecuaciones en los objetivos son el último recurso
 - Hoy: 13 fichas con los 5 tipos del Decreto 83, dentro de «Si el acceso no basta», con el aviso de que se deciden con el equipo y la familia y se registran en el PACI. La eliminación va al final. En parvularia y superior se muestra una línea en vez del bloque.
