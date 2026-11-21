@@ -9,7 +9,7 @@ const raiz=path.resolve(__dirname,'..'),salida=path.join(raiz,'docs/marca/041-ar
    const p=await b.newPage({viewport:{width:ancho,height:900},colorScheme:tema,reducedMotion:'reduce'}),errores=[];p.on('pageerror',e=>errores.push(e.message));
    await p.goto('http://127.0.0.1:'+servidor.address().port);await p.waitForFunction(()=>catalogo.length>0);await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
    for (const prefijo of ['', 'trabajo-']) {
-    if (prefijo) { await p.selectOption('#nivel','practica-trabajo'); }
+    if (prefijo) { await p.click('#tab-dua'); await p.selectOption('#nivel','practica-trabajo'); }
     const boton=p.locator('#'+prefijo+'area-0');
     const grupos=p.locator('#'+prefijo+'areas .situaciones-area:visible');
     const grupo=p.locator('#'+await boton.getAttribute('aria-controls'));

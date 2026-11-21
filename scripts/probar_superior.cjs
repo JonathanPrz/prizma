@@ -6,7 +6,7 @@ const leer = archivo => fs.readFileSync(path.join(__dirname, '..', archivo), 'ut
 const opciones = [...leer('index.html').split('<select id="nivel"')[1].split('</select>')[0].matchAll(/value="([^"]*)"/g)].map(m => ({value: m[1]}));
 const contexto = vm.createContext({document: {querySelector: () => ({options: opciones}), querySelectorAll: () => []}});
 vm.runInContext(leer('app.js').replace(/iniciar\(\);\s*$/, ''), contexto);
-vm.runInContext(`catalogo = ${leer('data/recomendaciones.json')}; estado.perfil.nivel = "superior"; estudianteActual().dimensiones = {2: 2}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));`, contexto);
+vm.runInContext(`catalogo = ${leer('data/recomendaciones.json')}; estudianteActual().nivel = "superior"; estudianteActual().dimensiones = {2: 2}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));`, contexto);
 const ejecutar = codigo => JSON.parse(JSON.stringify(vm.runInContext(codigo, contexto)));
 assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-digital":"Acuerdo"}}).perfil.nivel'), 'superior');
 assert.equal(ejecutar('validarRespaldo({app:"prizma",version:1,perfil:{nivel:"superior"},seleccion:{"sup-coordinar":"Acuerdo","sup-digital":"Material"}}).descartadas'), 1);
@@ -25,7 +25,7 @@ assert.equal(doc.grupos[0].nombre, "Ajustes razonables para un estudiante");
 assert.equal(doc.grupos[0].subtitulo, 'Propuesta para acordar con el estudiante y la unidad de inclusión');
 assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split('. Versión DUA')[0].split('. Respaldo:')[0]), ['Ajuste razonable: Presentación de la información', 'Ajuste razonable: Organización del tiempo y el horario']);
 assert(!ejecutar('JSON.stringify(definicionPdf())').includes('Decreto 83'));
-vm.runInContext('estado.perfil.nivel = "basica";', contexto);
+vm.runInContext('estudianteActual().nivel = "basica";', contexto);
 assert.deepEqual(ejecutar('elegidasOrdenadas(estudianteActual().seleccion).map(r => r.id)'), ['acc-1-partes', 'obj-priorizacion', 'dec-durante-validar']);
 assert.equal(ejecutar('estudianteActual().seleccion["sup-tiempo"]'), 'Examen');
 assert.match(ejecutar('tipoOficial(catalogo.find(r => r.id === "acc-1-partes"))'), /Decreto 83/);
@@ -33,6 +33,6 @@ assert.equal(ejecutar('subtituloEstudiante()'), 'Propuesta para conversar con el
 console.log('Correcto: superior en respaldo, 36 DUA, ajustes filtrados, dos ajustes de acceso, PDF con rótulos propios y selección preservada al cambiar nivel.');
 
 assert.equal(ejecutar('tipoOficial({tipo: "adicional", niveles: ["basica", "superior"]})'), 'Apoyo adicional');
-vm.runInContext('estado.perfil.nivel = "superior";', contexto);
+vm.runInContext('estudianteActual().nivel = "superior";', contexto);
 assert.equal(ejecutar('tipoOficial({tipo: "adicional", niveles: []})'), 'Ajuste razonable: Apoyo adicional');
 console.log('Correcto: rótulos de apoyos adicionales compartidos dependen del nivel actual.');

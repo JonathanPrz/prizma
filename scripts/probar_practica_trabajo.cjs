@@ -107,6 +107,7 @@ async function probar() {
     assert.equal(antes.acuerdo, 'Acuerdos completos');
     assert.deepEqual(await campo('nivel').locator('option:not([value=""])').evaluateAll(opciones => opciones.map(o => o.value)),
       ['parvularia', 'basica', 'media', 'superior', 'practica-trabajo']);
+    await campo('tab-dua').click();
     await campo('nivel').selectOption('practica-trabajo');
     assert(await campo('nivel-campo').isVisible());
     assert(await campo('nivel-ayuda').isVisible());
@@ -118,6 +119,7 @@ async function probar() {
     assert.deepEqual(await escuela(), antes);
     assert.deepEqual(confirmaciones, []);
 
+    await campo('tab-dua').click();
     await campo('nivel').selectOption('practica-trabajo');
     assert.equal(await pagina.locator('dialog#guia-nivel, dialog#guia-practica, dialog#guia-trabajo').count(), 1);
     assert(await enlaceGuia.isVisible());

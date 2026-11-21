@@ -549,3 +549,7 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
   .perfil-rejilla label { gap: .375rem; min-height: 1.5rem; padding-block: 0; line-height: 1.2; }
   .perfil-rejilla input { width: 1rem; height: 1rem; }
 }
+
+#ir-crisis { justify-self: start; min-height: 1.5rem; }
+#documentos-estudiante label { display: flex; align-items: center; gap: .5rem; min-height: 2rem; }
+:is(#nivel-estudiante-estado, #carpetas-estudiante-estado):empty { display: none; }

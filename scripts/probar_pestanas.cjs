@@ -33,8 +33,8 @@ for (const id of ['apoyos', 'trabajo', 'dua', 'trabajo', 'apoyos', 'dua']) {
   contexto.location.hash = '#' + id; eventos.hashchange();
   assert.equal(contexto.document.activeElement.id, (id==='trabajo'?'panel-':'tab-') + id);
   assert.equal(almacen.get('prizma.v1').pestana, id);
-  assert.equal(nodos.get('#nivel-campo').hidden,false);
-  assert.equal(nodos.get('#nivel').value,id==='trabajo'?'practica-trabajo':'');
+  assert.equal(nodos.get('#nivel-campo').hidden,id==='apoyos');
+  assert.equal(nodos.get('#nivel').value,id==='trabajo'?'practica-trabajo':'basica');
   for (const nombre of ['dua', 'apoyos', 'trabajo']) {
     assert.equal(nodos.get('#panel-' + nombre).hidden, nombre !== id);
     if(nombre==='trabajo')continue;

@@ -83,8 +83,8 @@ function compatibleModalidad(r, e = estudianteActual()) { return !(EXCLUSIONES_M
 function enModalidad(r, e) {
   return e.etapa !== "practica" && Boolean(APOYOS_MODALIDAD[modalidadValida(e.modalidad)]?.includes(r.id)) && compatibleModalidad(r, e);
 }
-function seleccionIncompatible(e, trabajo = false) { return catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && (trabajo ? aplica(r, e) : aplica(r)) && !compatibleModalidad(r, e)); }
-function seguridadActiva(e, trabajo = false) { return Boolean(e && [6, 13, 8].some(d => e.dimensiones[d]) && (trabajo || practicaActiva())); }
+function seleccionIncompatible(e) { return catalogo.some(r => Object.hasOwn(e.seleccion, r.id) && aplica(r, e) && !compatibleModalidad(r, e)); }
+function seguridadActiva(e, trabajo = false) { return Boolean(e && [6, 13, 8].some(d => e.dimensiones[d]) && (trabajo || estado.perfil.practica && hayPracticas(nivelCaso(e)))); }
 function textoModalidad(texto, r, e) {
   if (e?.modalidad !== "ampliacion") return texto;
   // Estas fichas ofrecen formatos alternativos; no se excluye su parte compatible con ampliación.
@@ -121,8 +121,10 @@ function normalizarAcuerdo(valor, permitidos = ROLES_ACUERDO) {
 }
 function normalizarEstudiante(valor) {
   const e = valor && typeof valor === "object" && !Array.isArray(valor) ? valor : {};
+  const nivel = nivelEducativo(e.nivel);
   const dimensiones = e.dimensiones && typeof e.dimensiones === "object" && !Array.isArray(e.dimensiones) ? e.dimensiones : {};
   return {
+    ...(nivel ? { nivel } : {}),
     iniciales: typeof e.iniciales === "string" && /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?$/.test(e.iniciales) ? e.iniciales : "",
     dimensiones: Object.fromEntries(Object.entries(dimensiones).filter(([k, v]) => /^(?:[1-9]|1[0-4])$/.test(k) && Number.isInteger(v) && v >= 1 && v <= 3)),
     ayuda: typeof e.ayuda === "string" ? e.ayuda.slice(0, 300) : "",
@@ -147,6 +149,7 @@ function seleccionValidada(valor, dua) {
 }
 function normalizarDatos(datos, avisos = []) {
   const g = datos && typeof datos === "object" && !Array.isArray(datos) ? datos : {};
+  const perfil = normalizarPerfil(g.perfil, g.estudiante?.practica);
   const actuales = Array.isArray(g.estudiantes);
   const lista = actuales ? g.estudiantes.slice(0, 10) : [{ ...normalizarEstudiante(g.estudiante), seleccion: g.seleccion }];
   const ids = new Set();
@@ -154,10 +157,9 @@ function normalizarDatos(datos, avisos = []) {
     let id = typeof e?.id === "string" && /^[a-zA-Z0-9-]{1,80}$/.test(e.id) && !ids.has(e.id) ? e.id : nuevoIdEstudiante();
     while (ids.has(id)) id = nuevoIdEstudiante();
     ids.add(id);
-    return { id, ...normalizarEstudiante(e), seleccion: seleccionValidada(e?.seleccion, false) };
+    return { id, nivel: perfil.nivel, ...normalizarEstudiante(e), seleccion: seleccionValidada(e?.seleccion, false) };
   });
   const trabajadores = normalizarTrabajadores(g.trabajadores);
-  const perfil = normalizarPerfil(g.perfil, g.estudiante?.practica);
   for (const e of estudiantes.filter((caso) => caso.practicaProfesional)) {
     const nombre = e.iniciales || `Estudiante ${estudiantes.indexOf(e) + 1}`;
     if (trabajadores.length >= 10) {
@@ -168,7 +170,7 @@ function normalizarDatos(datos, avisos = []) {
     const seleccion = Object.fromEntries(Object.entries(e.seleccion).filter(([id]) => id.startsWith("pp-")));
     let id = nuevoIdEstudiante();
     while (trabajadores.some((caso) => caso.id === id)) id = nuevoIdEstudiante();
-    trabajadores.push({ id, ...normalizarTrabajador({ ...e, acuerdo: undefined, etapa: "practica", nivelOrigen: perfil.nivel, seleccion }) });
+    trabajadores.push({ id, ...normalizarTrabajador({ ...e, acuerdo: undefined, etapa: "practica", nivelOrigen: e.nivel, seleccion }) });
     for (const ficha of Object.keys(seleccion)) delete e.seleccion[ficha];
     e.practicaProfesional = false;
     delete e.avisoPracticaPendiente;
@@ -210,7 +212,7 @@ function agregarEstudiante() {
   if (estado.estudiantes.length >= 10 || estado.estudiantes.some((e) => estadoCaso(e) !== "Acuerdos completos")) return;
   let id = nuevoIdEstudiante();
   while (estado.estudiantes.some((e) => e.id === id)) id = nuevoIdEstudiante();
-  const e = { id, ...normalizarEstudiante(), seleccion: {} };
+  const e = { id, ...normalizarEstudiante(), nivel: estado.perfil.nivel, seleccion: {} };
   estado.estudiantes.push(e); estado.estudianteActivo = e.id;
   guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarEstadoCasos();
   $("#paso-descripcion").scrollIntoView({ block: "start" }); $("#iniciales").focus();
@@ -219,7 +221,7 @@ function quitarEstudiante() {
   if (!window.confirm("Se borran sus datos y apoyos de este navegador. ¿Continuar?")) return;
   const indice = estado.estudiantes.findIndex((e) => e.id === estado.estudianteActivo);
   estado.estudiantes.splice(indice, 1);
-  if (!estado.estudiantes.length) estado.estudiantes.push({ id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} });
+  if (!estado.estudiantes.length) estado.estudiantes.push({ id: nuevoIdEstudiante(), ...normalizarEstudiante(), nivel: estado.perfil.nivel, seleccion: {} });
   estado.estudianteActivo = estado.estudiantes[Math.min(indice, estado.estudiantes.length - 1)].id;
   guardar(); sincronizarEstudiante(); pintarSeleccion(); pintarTarjetas(); pintarEstadoCasos();
   document.getElementById(`estudiante-${estado.estudianteActivo}`).focus();
@@ -246,16 +248,17 @@ function pintarRepeticiones() {
   }));
 }
 
-function esSuperior() { return estado.perfil.nivel === "superior"; }
-function subtituloEstudiante() { return esSuperior() ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
-function tituloEstudiante(e = estudianteActual()) { return (esSuperior() ? "Ajustes razonables para " : "Apoyos para ") + (e.iniciales || "un estudiante"); }
+function nivelCaso(e = estudianteActual()) { return e?.nivel ?? estado.perfil.nivel; }
+function esSuperior(e) { return nivelCaso(e) === "superior"; }
+function subtituloEstudiante(e) { return esSuperior(e) ? "Propuesta para acordar con el estudiante y la unidad de inclusión" : "Propuesta para conversar con el equipo de apoyo"; }
+function tituloEstudiante(e = estudianteActual()) { return (esSuperior(e) ? "Ajustes razonables para " : "Apoyos para ") + (e.iniciales || "un estudiante"); }
 function nombreGrupoPractica(subtipo, e) { return ["media", "superior"].includes(e.nivelOrigen) ? TIPOS_PRACTICA[subtipo] : ""; }
-function tipoOficial(r) {
+function tipoOficial(r, e) {
   if (r.tipo === "trabajo") return "Ajuste en el trabajo: " + TIPOS_TRABAJO[r.subtipo];
   if (r.tipo === "practica-profesional") return "Apoyo para la práctica: " + TIPOS_PRACTICA[r.subtipo];
-  if (esSuperior() && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
+  if (esSuperior(e) && ["acceso", "adicional"].includes(r.tipo)) return `Ajuste razonable: ${TIPOS_ACCESO[r.subtipo] || "Apoyo adicional"}`;
   if (r.tipo === "adicional") return "Apoyo adicional";
-  if (r.tipo === "acceso" && estado.perfil.nivel === "media") return `Adecuación de acceso (criterios del Decreto 83, por remisión del Decreto 67, art. 5): ${TIPOS_ACCESO[r.subtipo]}`;
+  if (r.tipo === "acceso" && nivelCaso(e) === "media") return `Adecuación de acceso (criterios del Decreto 83, por remisión del Decreto 67, art. 5): ${TIPOS_ACCESO[r.subtipo]}`;
   if (r.tipo === "acceso") return `Adecuación de acceso: ${TIPOS_ACCESO[r.subtipo]} (Decreto 83)`;
   if (r.tipo === "objetivos") return `Adecuación en los objetivos: ${TIPOS_OBJETIVOS[r.subtipo]} (Decreto 83)`;
   return `Apoyo ante desregulación: ${MOMENTOS_DEC[r.subtipo]}`;
@@ -277,7 +280,7 @@ function compararAcceso(a, b, e = estudianteActual(), orden = catalogo) {
   return Number(enModalidad(b, e)) - Number(enModalidad(a, e)) || puntaje(b, e) - puntaje(a, e) || proporcion(b) - proporcion(a) || orden.indexOf(a) - orden.indexOf(b);
 }
 function esPractica(r) { return r.contextos.includes("practica"); }
-function hayPracticas() { return catalogo.some((r) => r.tipo === "acceso" && aplica(r) && esPractica(r)); }
+function hayPracticas(nivel = estado.perfil.nivel) { return catalogo.some((r) => r.tipo === "acceso" && (!r.niveles.length || r.niveles.includes(nivel)) && esPractica(r)); }
 function practicaActiva() { return estado.perfil.practica && hayPracticas(); }
 function practicasVisibles() {
   return catalogo.filter(r => r.tipo === "acceso" && aplica(r) && esPractica(r) && compatibleModalidad(r) && (estado.perfil.practica && puntaje(r) > 0 || seguridadActiva(estudianteActual()) && IDS_SEGURIDAD.includes(r.id))).sort(compararAcceso);
@@ -290,16 +293,16 @@ function situacionesSinApoyos() {
   return Object.keys(estudianteActual().dimensiones).map(Number).filter((d) =>
     !catalogo.some((r) => r.tipo === "acceso" && aplica(r) && (!esPractica(r) || estado.perfil.practica) && r.dimensiones.includes(d)));
 }
-function rolesPermitidos() { return esSuperior() ? ["estudiante", "inclusion", "docente"] : ["estudiante", "familia", "equipo", "diferencial", "pie", "jefatura", "docente"]; }
+function rolesPermitidos(e) { return esSuperior(e) ? ["estudiante", "inclusion", "docente"] : ["estudiante", "familia", "equipo", "diferencial", "pie", "jefatura", "docente"]; }
 function camposConErrores(e, trabajo = false) {
-  const a = e.acuerdo || normalizarAcuerdo(), errores = {}, roles = trabajo ? Object.keys(rolesTrabajo(e)) : rolesPermitidos();
+  const a = e.acuerdo || normalizarAcuerdo(), errores = {}, roles = trabajo ? Object.keys(rolesTrabajo(e)) : rolesPermitidos(e);
   if (!e.descripcionGuardada || !Object.keys(e.dimensiones).length) (errores.descripcion ??= []).push("Guarda una descripción con al menos una situación.");
-  if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length) (errores.seleccion ??= []).push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
+  if (!(trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e)).length) (errores.seleccion ??= []).push(trabajo ? "Elige al menos un ajuste." : "Elige al menos un apoyo.");
   if (typeof a.criterio !== "string" || !a.criterio.trim() || a.criterio.length > 200) (errores.criterio ??= []).push("Indica cómo sabremos que funciona (máximo 200 caracteres).");
-  if (seleccionIncompatible(e, trabajo)) (errores.seleccion ??= []).push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
+  if (seleccionIncompatible(e)) (errores.seleccion ??= []).push("Revisa los apoyos elegidos para la modalidad actual en Mi mochila.");
   if (!a.roles.some((r) => roles.includes(r))) (errores.roles ??= []).push("Elige al menos un rol.");
   if (a.roles.some((r) => !roles.includes(r))) (errores.roles ??= []).push("Revisa los roles para este nivel.");
-  if (!trabajo && catalogo.some(r => r.tipo === "objetivos" && Object.hasOwn(e.seleccion, r.id)) && (!a.roles.includes("familia") || !a.roles.some(r => ["diferencial", "pie", "jefatura"].includes(r)))) (errores.roles ??= []).push("Una adecuación en los objetivos se decide con la familia y el equipo de apoyo (Decreto 83). Agrega esos roles");
+  if (!trabajo && catalogo.some(r => r.tipo === "objetivos" && aplica(r, e) && Object.hasOwn(e.seleccion, r.id)) && (!a.roles.includes("familia") || !a.roles.some(r => ["diferencial", "pie", "jefatura"].includes(r)))) (errores.roles ??= []).push("Una adecuación en los objetivos se decide con la familia y el equipo de apoyo (Decreto 83). Agrega esos roles");
   if (!fechaValida(a.fecha)) (errores.fecha ??= []).push("Indica una fecha del acuerdo válida.");
   if (!fechaValida(a.revision)) (errores.revision ??= []).push("Indica una próxima revisión válida.");
   else if (a.fecha && a.revision <= a.fecha) (errores.revision ??= []).push("La revisión debe ser posterior al acuerdo.");
@@ -478,7 +481,7 @@ function pintarTituloApoyos() {
   pintarContextoEstudiante(); pintarRevisionSituaciones();
   $("#t-apoyos").textContent = (esSuperior() ? "2. Ajustes razonables sugeridos para " : "2. Apoyos sugeridos para ") + nombreEstudiante(estudianteActual());
 }
-function nivelPracticaProfesional() { return ["media", "superior"].includes(estado.perfil.nivel); }
+function nivelPracticaProfesional() { return ["media", "superior"].includes(nivelCaso()); }
 function fichasPracticaProfesional(subtipo, e) {
   return catalogo.filter((r) => r.subtipo === subtipo && aplica(r, e) && compatibleModalidad(r, e) &&
     (subtipo !== "centro" || !r.dimensiones.length || puntaje(r, e) > 0)).sort((a, b) => compararAcceso(a, b, e));
@@ -495,11 +498,35 @@ function pintarPrepararPractica() {
   $("#preparar-practica").disabled = lleno;
   $("#preparar-practica-ayuda").textContent = lleno ? "Máximo 10 casos en Práctica y trabajo" : "";
 }
+const aperturasEstudiante = new WeakMap();
+let ultimoCasoCarpetas;
+function pintarCarpetasEstudiante(e) {
+  const carpetas = [["objetivos", "Si el acceso no basta", e.paci],
+    ["desregulacion", "Si hay una crisis", Boolean(e.dimensiones[5] || e.dimensiones[7] || e.paec || e.dec)]];
+  const anteriores = aperturasEstudiante.get(e) || {};
+  if (ultimoCasoCarpetas) {
+    const ultima = aperturasEstudiante.get(ultimoCasoCarpetas);
+    for (const [id] of carpetas) ultima[id].abierta = $("#" + id).open;
+  }
+  const avisos = [];
+  for (const [id, titulo, condicion] of carpetas) {
+    const panel = $("#" + id);
+    const activar = condicion && !panel.hidden;
+    const anterior = anteriores[id];
+    const abrir = activar && !anterior?.activar;
+    panel.open = abrir || Boolean(anterior?.abierta);
+    if (anterior && abrir && !anterior.abierta) avisos.push(`Se abrió "${titulo}"`);
+    anteriores[id] = { activar, abierta: panel.open };
+  }
+  aperturasEstudiante.set(e, anteriores);
+  if (avisos.length || ultimoCasoCarpetas !== e) $("#carpetas-estudiante-estado").textContent = avisos.join(". ");
+  ultimoCasoCarpetas = e;
+}
 function pintarApoyos() {
   pintarPrepararPractica(); pintarEstadoCasos();
-  const superior = esSuperior();
+  const e = estudianteActual(), superior = esSuperior(e);
   $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos para un estudiante";
-  $("#bajada-apoyos").textContent = superior ? "Cambios en la forma de enseñar, evaluar o en el entorno que permiten participar en igualdad, sin bajar los resultados de aprendizaje." : "Cuando las acciones para todo el curso no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.";
+  $("#bajada-apoyos").textContent = superior ? "Cambios en la forma de enseñar, evaluar o en el entorno que permiten participar en igualdad, sin bajar los resultados de aprendizaje." : `Cuando las acciones para todo el ${voc("curso", nivelCaso(e))} no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.`;
   $("#voz-etiqueta").textContent = superior ? "¿Qué dice el estudiante?" : "¿Qué dicen el estudiante y su familia?";
   $("#voz-ayuda").textContent = superior ? "Lo que le acomoda, lo que le preocupa o lo que propone. No escribas diagnósticos." : "Lo que les acomoda, lo que les preocupa o lo que proponen. No escribas diagnósticos.";
   pintarTituloApoyos();
@@ -508,18 +535,18 @@ function pintarApoyos() {
   });
   $("#aviso-acceso-escolar").hidden = superior;
   $("#aviso-acceso-superior").hidden = !superior;
-  $("#objetivos").hidden = superior || estado.perfil.nivel === "parvularia";
-  $("#objetivos-aviso").hidden = superior;
-  $("#objetivos-superior").hidden = !superior;
+  const parvularia = nivelCaso(e) === "parvularia";
+  $("#objetivos").hidden = superior || parvularia;
+  $("#objetivos-media").hidden = nivelCaso(e) !== "media";
+  $("#objetivos-parvularia").hidden = !parvularia;
   $("#desregulacion").hidden = superior;
+  $("#ir-crisis").hidden = superior;
+  $("#documentos-estudiante").hidden = superior;
   $("#crisis-superior").hidden = !superior;
-  const adicionales = catalogo.filter((r) => r.tipo === "adicional" && aplica(r));
-  $("#apoyos-adicionales").hidden = !adicionales.length;
-  $("#apoyos-adicionales").replaceChildren(...adicionales.map(tarjeta));
   $("#apoyos-sin-fichas").replaceChildren(...situacionesSinApoyos().map((d) =>
     avisoVisual("aviso-apoyos", "!", `Aún no hay apoyos para "${DIMENSIONES[d - 1][0]}" en este nivel. `,
       el("a", { href: "#dua", text: "Revisa las acciones DUA." }))));
-  const e = estudianteActual(), lista = accesosVisibles(e), practicas = practicasVisibles();
+  const lista = accesosVisibles(e), practicas = practicasVisibles();
   const primeras = [...lista, ...practicas].sort((a, b) => compararAcceso(a, b, e)).slice(0, 3);
   const grupos = Object.entries(TIPOS_ACCESO).map(([tipo, nombre]) => [nombre, lista.filter((r) => r.subtipo === tipo)]);
   grupos.push(["En talleres, laboratorios y terreno", practicas]);
@@ -529,16 +556,16 @@ function pintarApoyos() {
       .sort(([, a], [, b]) => compararAcceso(a[0], b[0], e))
       .map(([nombre, fichas]) => grupoPlegado(nombre, fichas, definicionAcceso())));
   const objetivos = objetivosVisibles();
-  $("#objetivos summary").textContent = `Adecuaciones en los objetivos (${objetivos.length})`;
-  $("#desregulacion summary").textContent = `Apoyos ante desregulación (${catalogo.filter((r) => r.tipo === "desregulacion" && aplica(r)).length})`;
+  $("#objetivos summary").textContent = `Si el acceso no basta (${objetivos.length})`;
+  $("#desregulacion summary").textContent = `Si hay una crisis (${catalogo.filter((r) => r.tipo === "desregulacion" && aplica(r)).length})`;
   $("#asignatura-campo").hidden = !catalogo.some((r) => r.tipo === "objetivos" && aplica(r));
   $("#asignatura").value = estado.asignatura;
   $("#objetivos-tarjetas").replaceChildren(...Object.entries(TIPOS_OBJETIVOS).filter(([tipo]) => objetivos.some((r) => r.subtipo === tipo)).map(([tipo, nombre]) =>
-    grupoPlegado(nombre, objetivos.filter((r) => r.subtipo === tipo), "Apoyo que cambia qué aprende o cuándo. Último paso (Decreto 83).")));
-  $("#objetivos-parvularia").hidden = estado.perfil.nivel !== "parvularia";
+    grupoPlegado(nombre, objetivos.filter((r) => r.subtipo === tipo))));
   $("#desregulacion-resultados").replaceChildren(...Object.entries(MOMENTOS_DEC).map(([subtipo, nombre]) =>
-    grupoPlegado(nombre, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)), "Qué hacer antes, durante y después de una crisis.")));
-  for (const campo of ["paci", "paec", "dec"]) for (const lugar of ["objetivos", "dec"]) $("#" + campo + "-" + lugar).checked = estudianteActual()[campo];
+    grupoPlegado(nombre, catalogo.filter((r) => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)))));
+  for (const campo of ["paci", "paec", "dec"]) $("#" + campo).checked = e[campo];
+  pintarCarpetasEstudiante(e);
   $("#modalidad-revisar").textContent = seleccionIncompatible(estudianteActual()) ? "Revisa los apoyos elegidos para la modalidad actual en Mi mochila." : "";
   pintarSeguridad();
   $("#apoyos-estado").textContent = Object.keys(estudianteActual().dimensiones).length || practicas.length ? `${lista.length + practicas.length} ${superior ? "ajustes razonables sugeridos" : "adecuaciones de acceso sugeridas"}` : "Marca al menos una situación para ver apoyos.";
@@ -591,6 +618,9 @@ function pintarAreas(persona, trabajo = false) {
 function sincronizarEstudiante() {
   pintarSelectorEstudiantes();
   $("#iniciales").value = estudianteActual().iniciales;
+  $("#nivel-estudiante").value = nivelCaso();
+  $("#nivel-estudiante-estado").textContent = "";
+  aplicarVocabulario();
   $("#modalidad").value = estudianteActual().modalidad;
   $("#estudiante-ayuda").value = estudianteActual().ayuda;
   $("#estudiante-voz").value = estudianteActual().voz;
@@ -602,7 +632,25 @@ function sincronizarEstudiante() {
 }
 function escucharEstudiante() {
   $("#modalidad").addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e.modalidad = modalidadValida(ev.target.value); guardar(); pintarApoyos(); pintarSeleccion(); });
-  for (const campo of ["paci", "paec", "dec"]) for (const lugar of ["objetivos", "dec"]) $("#" + campo + "-" + lugar).addEventListener("change", ev => { const e = estudianteActual(); marcarRevision(e); e[campo] = ev.target.checked; guardar(); pintarApoyos(); });
+  $("#nivel-estudiante").addEventListener("change", (ev) => {
+    const e = estudianteActual(), antes = elegidasOrdenadas(e.seleccion, e);
+    e.nivel = nivelEducativo(ev.target.value) ?? "basica";
+    const ocultas = antes.filter(r => !aplica(r, e)).length;
+    if (ocultas) e.acuerdo.estado = "por-revisar";
+    const aviso = ocultas === 1 ? "1 apoyo ya no aplica y queda guardado" : `${ocultas} apoyos ya no aplican y quedan guardados`;
+    $("#nivel-estudiante-estado").textContent = `Cambiaste a ${e.nivel}${ocultas ? ": " + aviso : "."}`;
+    guardar(); aplicarVocabulario(); sincronizarAcuerdos(); pintarApoyos(); pintarTarjetas(); pintarSeleccion();
+  });
+  $("#ir-crisis").addEventListener("click", (ev) => {
+    ev.preventDefault();
+    $("#desregulacion").open = true;
+    enfocarYDesplazar($("#desregulacion summary"));
+  });
+  $("#documentos-estudiante").addEventListener("change", (ev) => {
+    const e = estudianteActual(), campo = ev.target.id;
+    if (!["paci", "paec", "dec"].includes(campo)) return;
+    marcarRevision(e); e[campo] = ev.target.checked; guardar(); pintarApoyos(); actualizarRespaldo();
+  });
   $("#criterio-acuerdo").addEventListener("input", ev => { const e = estudianteActual(); marcarRevision(e); e.acuerdo.criterio = ev.target.value.slice(0, 200); guardar(); pintarEstadoCasos(); if (!privacidadAvisada && ev.target.value) mostrarAvisoPrivacidad(ev.target); });
 
   $("#revision-situaciones-entendido").addEventListener("click", () => {
@@ -922,8 +970,8 @@ const privacidadesSesion = new Set();
 let privacidadAvisada = false, origenAvisoPrivacidad = null;
 let origenGuiaDUA = null, privacidadPendiente = false;
 let origenGuiaApoyos = null, dialogoPrivacidad = null;
-const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), seleccion: {} };
-let estado = { ambito: "educacion", trabajadores: [], trabajadorActivo: "", claseGuardada: false, mantenerIndividual: [], versionSituaciones: 2, asignatura: "", pestana: "dua", perfil: { nivel: "", practica: false, actividad: [], evidencia: [], meta: "", reflexion: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
+const estudianteInicial = { id: nuevoIdEstudiante(), ...normalizarEstudiante(), nivel: "basica", seleccion: {} };
+let estado = { ambito: "educacion", trabajadores: [], trabajadorActivo: "", claseGuardada: false, mantenerIndividual: [], versionSituaciones: 2, asignatura: "", pestana: "dua", perfil: { nivel: "basica", practica: false, actividad: [], evidencia: [], meta: "", reflexion: "" }, momentos: [], propositos: [], necesidades: [], seleccion: {}, estudiantes: [estudianteInicial], estudianteActivo: estudianteInicial.id };
 let inclusionDocumento = null, solicitudDocumento = 0;
 let centroDocumento = null, origenCentro = null, origenDocumento = null;
 
@@ -957,15 +1005,18 @@ function normalizarMomentos(valor) {
   return Array.isArray(valor) ? [...new Set(valor.filter((id) => MOMENTOS.some(([momento]) => momento === id)))] : [];
 }
 
+function nivelEducativo(valor) {
+  const nivel = ["media-ch", "media-tp"].includes(valor) ? "media" : valor;
+  return typeof nivel === "string" && Object.hasOwn(NIVELES, nivel) ? nivel : undefined;
+}
 function normalizarPerfil(perfil, practicaAnterior = false) {
   const p = perfil && typeof perfil === "object" && !Array.isArray(perfil) ? perfil : {};
   const lista = (nombre) => {
     const valores = [...document.querySelectorAll(`input[name="${nombre}"]`)].map((c) => c.value);
     return Array.isArray(p[nombre]) ? [...new Set(p[nombre].filter((v) => valores.includes(v)))] : [];
   };
-  const nivel = ["media-ch", "media-tp"].includes(p.nivel) ? "media" : p.nivel;
   return {
-    nivel: typeof nivel === "string" && Object.hasOwn(NIVELES, nivel) ? nivel : "",
+    nivel: nivelEducativo(p.nivel) ?? "basica",
     practica: Object.hasOwn(p, "practica") ? p.practica === true : practicaAnterior === true,
     actividad: lista("actividad"), evidencia: lista("evidencia"),
     meta: typeof p.meta === "string" ? p.meta.slice(0, 500) : "",
@@ -973,13 +1024,13 @@ function normalizarPerfil(perfil, practicaAnterior = false) {
   };
 }
 
-function voc(clave) {
+function voc(clave, nivel = estado.pestana === "apoyos" ? nivelCaso() : estado.perfil.nivel) {
   const palabras = { clase: "experiencia de aprendizaje", curso: "grupo", estudiantes: "niños y niñas" };
-  return estado.perfil.nivel === "parvularia" ? palabras[clave] : clave;
+  return nivel === "parvularia" ? palabras[clave] : clave;
 }
 
 function aplicarVocabulario() {
-  document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc); });
+  document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc, n.closest?.("#panel-apoyos") ? nivelCaso() : estado.perfil.nivel); });
   $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Para un estudiante";
 }
 
@@ -993,7 +1044,7 @@ function mostrarPestana(id, enfocar = false) {
       tab.setAttribute("aria-selected", String(nombre === id)); tab.tabIndex = nombre === id ? 0 : -1;
     }
   }
-  $("#nivel-campo").hidden = false;
+  $("#nivel-campo").hidden = id === "apoyos";
   pintarPrepararPractica();
   $("#nivel").value = id === "trabajo" ? "practica-trabajo" : estado.perfil.nivel;
   $("#nivel-ayuda").hidden = id !== "trabajo";
@@ -1047,7 +1098,7 @@ function limpiarClase() {
 }
 
 function nombreMomento(id, nombre) {
-  return id === "toda-la-clase" ? `En toda la ${voc("clase")}` : nombre;
+  return id === "toda-la-clase" ? `En toda la ${voc("clase", estado.perfil.nivel)}` : nombre;
 }
 
 function nombresMomentos() {
@@ -1058,9 +1109,7 @@ function nombresMomentos() {
 function aplica(r, e) {
   if (e?.etapa === "trabajo") return r.tipo === "trabajo";
   if (e?.etapa === "practica") return r.tipo === "practica-profesional" && r.niveles.includes(e.nivelOrigen);
-  const p = estado.perfil;
-  // Sin nivel elegido se muestran las acciones de básica y media, para no duplicar las versiones de parvularia.
-  const nivel = p.nivel || "basica";
+  const nivel = r.tipo === "dua" ? estado.perfil.nivel : nivelCaso(e);
   if (r.niveles.length && !r.niveles.includes(nivel)) return false;
   return true;
 }
@@ -1196,7 +1245,7 @@ function pasosActuales() {
 function pasosTerminados() {
   if (estado.pestana === "dua") return [estado.claseGuardada, elegidasOrdenadas().length > 0, false];
   const trabajo = estado.pestana === "trabajo", e = trabajo ? trabajadorActual() : estudianteActual();
-  return [e?.descripcionGuardada, e && (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length > 0,
+  return [e?.descripcionGuardada, e && (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e)).length > 0,
     e && estadoCaso(e, trabajo) === "Acuerdos completos"];
 }
 function actualizarPaso(numero) {
@@ -1224,7 +1273,7 @@ function actualizarContinuar() {
   pintarAccionPrincipal();
   const trabajo = estado.pestana === "trabajo", personal = estado.pestana !== "dua";
   const e = trabajo ? trabajadorActual() : estudianteActual();
-  const cantidad = !personal ? elegidasOrdenadas().length : !e ? 0 : (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion)).length;
+  const cantidad = !personal ? elegidasOrdenadas().length : !e ? 0 : (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e)).length;
   const conteo = $("#continuar-conteo");
   if (conteo) {
     const contador = $("#continuar-cantidad"), caso = $("#continuar-caso");
@@ -1339,7 +1388,7 @@ function pintarFiltrosVista() {
   if (!cont.children?.length) for (const [id, nombre] of MOMENTOS) {
     cont.append(el("button", { type: "button", id: "m-" + id, class: "chip",
       onclick: () => { estado.momentos = alternarOpcion(estado.momentos, id); actualizarVistaDua(); },
-    }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase") })) : nombre));
+    }, id === "toda-la-clase" ? el("span", {}, "En toda la ", el("span", { "data-voc": "clase", text: voc("clase", estado.perfil.nivel) })) : nombre));
   }
   Array.from(cont.children || []).forEach((boton, i) => {
     const [id, nombre] = MOMENTOS[i];
@@ -1359,7 +1408,7 @@ function pintarFiltrosVista() {
 }
 
 function estudiantesCubiertos(r) {
-  return estado.estudiantes.filter((e) => catalogo.some((a) => Object.hasOwn(e.seleccion, a.id) && a.tipo !== "dua" && aplica(a) && versionCurso(a)?.id === r.id)).length;
+  return estado.estudiantes.filter((e) => catalogo.some((a) => Object.hasOwn(e.seleccion, a.id) && a.tipo !== "dua" && aplica(a, e) && versionCurso(a)?.id === r.id)).length;
 }
 function avisoDua(r) { const n = estudiantesCubiertos(r); return n ? `Responde también a apoyos individuales de ${plural(n, "estudiante", "estudiantes")}` : ""; }
 function agregarVersionCurso(r) {
@@ -1409,7 +1458,7 @@ function tarjeta(r, destacarMomento = false, agrupada = false) {
   boton.addEventListener("click", () => alternar(r.id, undefined, undefined, boton));
   return el("li", { class: "tarjeta" + (elegida ? " elegida" : ""), "data-accion": r.id },
     el("div", { class: "t-arriba" },
-      !dua ? el("span", { class: "t-proposito", text: tipoOficial(r) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].principio),
+      !dua ? el("span", { class: "t-proposito", text: tipoOficial(r, persona) }) : el("span", { class: "t-proposito " + prop }, el("span", { class: "tri", "aria-hidden": "true" }), PROPOSITOS[prop].principio),
       !dua ? null : el("abbr", { class: "t-dua", title: "Consideración DUA 3.0: " + CONSIDERACIONES[r.consideracion] }, "Consideración " + r.consideracion),
       dua && destacarMomento ? el("span", { class: "t-momento", text: nombresMomentos()[r.momento] }) : null),
     el(dua || trabajo || ["objetivos", "practica-profesional"].includes(r.tipo) ? "h4" : "h3", { text: textoModalidad(r.titulo, r, persona) }),
@@ -1490,7 +1539,7 @@ function conteoDua(lista) {
   const contexto = hayContextoDua();
   const cantidad = contexto ? lista.filter(respondeAlContexto).length : 0;
   const conteo = contexto ? `${cantidad} de ${total} ${cantidad === 1 ? "responde" : "responden"} a lo que marcaste` : total;
-  if (!hayFiltrosVista()) return contexto ? conteo : `${total} para todo el ${voc("curso")}`;
+  if (!hayFiltrosVista()) return contexto ? conteo : `${total} para todo el ${voc("curso", estado.perfil.nivel)}`;
   const filtros = [
     ...MOMENTOS.filter(([id]) => estado.momentos.includes(id)).map(([id, nombre]) => nombreMomento(id, nombre)),
     ...Object.entries(PROPOSITOS).filter(([id]) => estado.propositos.includes(id)).map(([, p]) => p.principio),
@@ -1615,8 +1664,9 @@ function totalElegidas() { return Object.keys(estado.seleccion).length + estado.
 function pintarSeleccion() {
   const trabajo = estado.ambito === "trabajo", sel = trabajo ? [] : elegidasOrdenadas();
   const laborales = trabajo ? estado.trabajadores.map((e) => ({ e, ajustes: elegidasTrabajo(e) })).filter(({ ajustes }) => ajustes.length) : [];
+  const escolares = trabajo ? [] : estado.estudiantes.map(e => ({ e, apoyos: elegidasOrdenadas(e.seleccion, e) })).filter(({ apoyos }) => apoyos.length);
   const total = trabajo ? laborales.reduce((n, { ajustes }) => n + ajustes.length, 0) :
-    Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0);
+    Object.keys(estado.seleccion).length + escolares.reduce((n, { apoyos }) => n + apoyos.length, 0);
   $("#n-sel").textContent = total;
   $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(total, "elegida", "elegidas")}`);
   $("#sel-curso-titulo").hidden = !sel.length;
@@ -1628,10 +1678,10 @@ function pintarSeleccion() {
   $("#dua-seleccion").replaceChildren(...sel.map((r) => itemSeleccion(r, null, "quitar-clase-")));
   $("#dua-seleccion-vacia").hidden = sel.length > 0;
   $("#documento-clase").disabled = !sel.length && !estado.perfil.reflexion && !estado.perfil.meta.trim();
-  $("#sel-estudiantes").replaceChildren(...(trabajo ? [] : estado.estudiantes).filter((e) => Object.keys(e.seleccion).length).map((e) =>
-    el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante() }),
-      ...Object.keys(GRUPOS_APOYOS).filter((tipo) => elegidasOrdenadas(e.seleccion).some((r) => r.tipo === tipo)).map((tipo) =>
-        el("div", {}, el("h4", { text: esSuperior() && ["acceso", "adicional"].includes(tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, elegidasOrdenadas(e.seleccion).filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
+  $("#sel-estudiantes").replaceChildren(...escolares.map(({ e, apoyos }) =>
+    el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante(e) }),
+      ...Object.keys(GRUPOS_APOYOS).filter((tipo) => apoyos.some((r) => r.tipo === tipo)).map((tipo) =>
+        el("div", {}, el("h4", { text: esSuperior(e) && ["acceso", "adicional"].includes(tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, apoyos.filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
   $("#seleccion-trabajo").hidden = !trabajo || !laborales.length;
   $("#cerrar-mochila")?.classList?.toggle("boton-principal", trabajo && !laborales.length);
   $("#pdf").hidden = trabajo;
@@ -1650,7 +1700,7 @@ function pintarSeleccion() {
       guardar(); if (trabajo) pintarEstadoTrabajo(); else pintarEstadoCasos();
       if (!privacidadAvisada && nota.value) mostrarAvisoPrivacidad(nota);
     });
-    return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r) : nombreMomento[r.momento] }),
+    return el("li", {}, el("span", { class: "sel-momento", text: e ? tipoOficial(r, e) : nombreMomento[r.momento] }),
       el("span", { class: "sel-titulo", text: textoModalidad(r.titulo, r, e) }), e && !compatibleModalidad(r, e) ? avisoVisual("aviso-apoyos", "!", "Revisa este apoyo: no corresponde a la modalidad actual.") : null, nota,
       el("button", { type: "button", class: "quitar", id: prefijo + (e ? e.id + "-" : "") + r.id, onclick: () => alternar(r.id, trabajo ? undefined : e?.id, trabajo ? e.id : undefined), "aria-label": "Quitar: " + textoModalidad(r.titulo, r, e) + ", " + (e ? (trabajo ? nombreTrabajador(e) : nombreEstudiante(e)) : "del curso"), text: "Quitar" }));
   }
@@ -1673,10 +1723,7 @@ function escucharPerfil() {
       return;
     }
     const desdeTrabajo = estado.ambito === "trabajo";
-    const cantidad = estado.estudiantes.filter(datosEstudiante).length;
-    if (!desdeTrabajo && nivel !== estado.perfil.nivel && cantidad && !window.confirm(`Cambiar el nivel cambia los apoyos sugeridos de tus ${cantidad} casos. Lo que ya elegiste se conserva`)) { $("#nivel").value = estado.perfil.nivel; return; }
-    if (!desdeTrabajo && nivel !== estado.perfil.nivel) estado.estudiantes.forEach(marcarRevision);
-    estado.perfil.nivel = nivel;
+    estado.perfil.nivel = nivelEducativo(nivel) ?? "basica";
     if (desdeTrabajo) { history.pushState(null, "", "#dua"); mostrarPestana("dua"); }
     guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); sincronizarAcuerdos(); resumenClase();
     $("#practica-campo").hidden = estado.pestana !== "dua" || !hayPracticas();
@@ -1703,7 +1750,7 @@ function escucharPerfil() {
 
 function hayDatos() {
   const p = estado.perfil;
-  return Boolean(estado.necesidades.length || p.nivel || p.meta || p.actividad.length || p.evidencia.length || totalElegidas() || estado.estudiantes.some(datosEstudiante) || (estado.trabajadores || []).some(datosTrabajador) || estado.estudiantes.length > 1 || estado.perfil.practica || estado.perfil.reflexion || estado.asignatura || estado.momentos.length || estado.propositos.length);
+  return Boolean(estado.necesidades.length || p.nivel !== "basica" || p.meta || p.actividad.length || p.evidencia.length || totalElegidas() || estado.estudiantes.some(e => datosEstudiante(e) || nivelCaso(e) !== p.nivel) || (estado.trabajadores || []).some(datosTrabajador) || estado.estudiantes.length > 1 || estado.perfil.practica || estado.perfil.reflexion || estado.asignatura || estado.momentos.length || estado.propositos.length);
 }
 
 function actualizarRespaldo() {
@@ -1923,7 +1970,7 @@ function prepararPracticaProfesional() {
       if (estado.trabajadores.length >= 10) return;
       let id = nuevoIdEstudiante();
       while (estado.trabajadores.some((t) => t.id === id)) id = nuevoIdEstudiante();
-      caso = { id, ...normalizarTrabajador({ iniciales: e.iniciales, dimensiones: e.dimensiones, descripcionGuardada: e.descripcionGuardada, etapa: "practica", nivelOrigen: estado.perfil.nivel }) };
+      caso = { id, ...normalizarTrabajador({ iniciales: e.iniciales, dimensiones: e.dimensiones, descripcionGuardada: e.descripcionGuardada, etapa: "practica", nivelOrigen: nivelCaso(e) }) };
       const vacio = estado.trabajadores.findIndex((t) => !datosTrabajador(t));
       if (vacio === -1) estado.trabajadores.push(caso); else estado.trabajadores[vacio] = caso;
     }
@@ -1945,20 +1992,20 @@ function logoDocumento() {
 }
 function documento(opciones = inclusionDocumento || { curso: true, estudiantes: datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] }) {
   const sel = opciones.curso ? elegidasOrdenadas() : [], alumnos = estado.estudiantes.filter((e) => opciones.estudiantes.includes(e.id));
-  const usadas = [...sel, ...alumnos.flatMap((e) => elegidasOrdenadas(e.seleccion))];
+  const usadas = [...sel, ...alumnos.flatMap((e) => elegidasOrdenadas(e.seleccion, e))];
   const accion = (r, seleccion, persona) => ({ id: r.id, titulo: textoModalidad(r.titulo, r, persona), como: pasosApoyo(r, persona), porque: r.porque, nota: (seleccion[r.id] || "").trim(),
     proposito: r.tipo === "dua" ? proposito(r) : null,
     ofrecida: r.tipo !== "dua" && Boolean(versionCurso(r) && Object.hasOwn(estado.seleccion, versionCurso(r).id)),
-    dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.` + (r.tipo === "dua" && avisoDua(r) ? " " + avisoDua(r) + "." : ""),
+    dato: (r.tipo === "dua" ? `Acción para todo el curso. DUA 3.0, consideración ${r.consideracion}: ${CONSIDERACIONES[r.consideracion]}.` : tipoOficial(r, persona) + "." + (r.dua ? ` Versión DUA 3.0, consideración ${r.dua}.` : "")) + ` Respaldo: ${RESPALDO[r.respaldo]}.` + (r.tipo === "dua" && avisoDua(r) ? " " + avisoDua(r) + "." : ""),
     revisionModalidad: Boolean(persona && !compatibleModalidad(r, persona)),
-    grupo: r.tipo === "practica-profesional" ? "Práctica profesional · " + TIPOS_PRACTICA[r.subtipo] : r.tipo === "acceso" ? `${esSuperior() ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
+    grupo: r.tipo === "practica-profesional" ? "Práctica profesional · " + TIPOS_PRACTICA[r.subtipo] : r.tipo === "acceso" ? `${esSuperior(persona) ? "Ajustes razonables" : GRUPOS_APOYOS.acceso} · ${TIPOS_ACCESO[r.subtipo]}` : GRUPOS_APOYOS[r.tipo],
   });
   const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].filter((c) => estado.perfil[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
   const titulo = alumnos.length ? "Plan de apoyos para el aprendizaje" : "Acciones para todo el curso";
   const contenido = [opciones.curso ? "Curso" : "", alumnos.length ? plural(alumnos.length, "estudiante", "estudiantes") : ""].filter(Boolean).join(" y ");
   return { titulo, fecha, logo: logoDocumento(), curso: opciones.curso,
-    resumen: [["Fecha", fecha], ["Nivel", NIVELES[estado.perfil.nivel] || "Sin indicar"], ...(practicaActiva() ? [["Clase práctica", "Clase con taller, laboratorio o terreno"]] : []),
+    resumen: [["Fecha", fecha], ...(opciones.curso ? [["Nivel", NIVELES[estado.perfil.nivel]]] : []), ...(practicaActiva() ? [["Clase práctica", "Clase con taller, laboratorio o terreno"]] : []),
       ...(estado.perfil.actividad.length ? [["Actividad de la clase", textos("actividad")]] : []),
       ...(estado.perfil.evidencia.length ? [["Cómo mostrarán lo aprendido", textos("evidencia")]] : []),
       ["Meta de aprendizaje", estado.perfil.meta.trim() || "Sin información"],
@@ -1966,8 +2013,8 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
     grupos: MOMENTOS.filter(([id]) => sel.some((r) => r.momento === id)).map(([id, nombre]) => ({ nombre: nombreMomento(id, nombre), acciones: sel.filter((r) => r.momento === id).map((r) => accion(r, estado.seleccion)) }))
       .concat(opciones.curso && estado.perfil.reflexion?.trim() ? [{ nombre: "Después de la clase: ¿qué funcionó?", reflexion: estado.perfil.reflexion.trim(), acciones: [] }] : [])
       .concat(alumnos.map((e) => {
-        const apoyos = elegidasOrdenadas(e.seleccion);
-        return { estudiante: e.id, acuerdo: normalizarAcuerdo(e.acuerdo), estadoAcuerdo: estadoCaso(e), nombre: tituloEstudiante(e), subtitulo: subtituloEstudiante(),
+        const apoyos = elegidasOrdenadas(e.seleccion, e);
+        return { estudiante: e.id, nivel: nivelCaso(e), acuerdo: normalizarAcuerdo(e.acuerdo), estadoAcuerdo: estadoCaso(e), nombre: tituloEstudiante(e), subtitulo: subtituloEstudiante(e),
           cif: Object.entries(e.dimensiones).map(([d, f]) => [DIMENSIONES[d - 1][0], FRECUENCIAS[f], apoyos.filter((r) => r.dimensiones.includes(Number(d))).map((r) => r.titulo).join("; ") || "Sin apoyo elegido"]),
           ayuda: e.ayuda.trim() || "Sin información", voz: e.voz.trim() || "Sin información", modalidad: MODALIDADES[e.modalidad || ""], paci: e.paci, paec: e.paec, dec: e.dec, acciones: apoyos.map((r) => accion(r, e.seleccion, e)),
         };
@@ -1976,7 +2023,7 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
   };
 }
 function datosContexto(g) {
-  return [["¿Qué usa hoy para comunicarse o acceder?", g.modalidad || "No aplica"], ...(g.trabajador ? [["¿Qué decidió compartir la persona y con quién?", g.compartir || "No informado"]] : esSuperior() ? [] : [["Tiene PACI", g.paci ? "Sí" : "No informado"], ["Tiene PAEC", g.paec ? "Sí" : "No informado"], ["Se aplica el protocolo DEC del establecimiento", g.dec ? "Sí" : "No informado"]])];
+  return [["¿Qué usa hoy para comunicarse o acceder?", g.modalidad || "No aplica"], ...(g.trabajador ? [["¿Qué decidió compartir la persona y con quién?", g.compartir || "No informado"]] : g.nivel === "superior" ? [] : [["Tiene PACI", g.paci ? "Sí" : "No informado"], ["Tiene PAEC", g.paec ? "Sí" : "No informado"], ["Se aplica el protocolo DEC del establecimiento", g.dec ? "Sí" : "No informado"]])];
 }
 function datosAcuerdo(g) {
   const a = g.acuerdo || normalizarAcuerdo(), roles = g.trabajador ? ROLES_TRABAJO : ROLES_ACUERDO;
@@ -2004,9 +2051,10 @@ function armarHoja() {
     d.curso ? el("h2", { text: "Acciones para todo el curso" }) : null,
     ...d.grupos.map((g) => el("section", { class: (g.estudiante || g.trabajador) ? "h-estudiante" : "h-momento" },
       el((g.estudiante || g.trabajador) ? "h2" : "h3", { text: g.nombre }), g.subtitulo ? el("p", { text: g.subtitulo }) : null,
+      g.nivel ? el("p", { text: NIVELES[g.nivel] }) : null,
       g.cif ? el("div", {}, el("h3", { text: CIF_TITULO }), el("p", { class: "h-dato", text: d.trabajo ? "Las situaciones describen dónde aparecen las barreras, no rasgos de la persona (CIF, OMS 2001). La persona decide qué contar." : CIF_AVISO }),
         el("div", { class: "tabla-cif", tabindex: "0", role: "region", "aria-label": CIF_TITULO }, tabla(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS, g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]], "h-cif"))) : null,
-      g.voz !== undefined ? tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores") : null,
+      g.voz !== undefined ? tabla(["Facilitadores y voz", "Información"], [["Le ayuda", g.ayuda], [d.trabajo ? "Qué dice la persona" : (g.nivel === "superior" ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), g.voz], ...datosContexto(g)], "h-facilitadores") : null,
       g.reflexion ? el("p", { text: g.reflexion }) : null,
       ...g.acciones.flatMap((a, i) => [(g.estudiante || g.trabajador) && a.grupo !== g.acciones[i - 1]?.grupo ? el("h3", { class: "h-grupo", text: a.grupo }) : null, ficha(a)]),
       (g.estudiante || g.trabajador && g.acuerdo) ? el("div", { class: "h-acuerdos" }, el("h3", { text: d.trabajo ? "Acuerdos" : "Acuerdos (para completar en la reunión)" }), ...datosAcuerdo(g).map((text) => el("p", { text })), g.estadoAcuerdo === "Por revisar" ? el("p", { text: "Por revisar: cambiaste el caso después del acuerdo." }) : null) : null)),
@@ -2042,12 +2090,13 @@ function definicionPdf() {
       ...(g.reflexion ? [{ unbreakable: true, stack: [{ text: g.nombre, style: "h3" }, { text: g.reflexion, margin: [0, 5, 0, 12] }] }] : []),
       ...((g.estudiante || g.trabajador) ? [{ id: "alumno-" + (g.estudiante || g.trabajador), text: g.nombre, style: "h2", headlineLevel: 1, pageBreak: "before", margin: [0, 8, 0, 6] }] : []),
       ...((g.estudiante || g.trabajador) ? [{ text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] }] : []),
+      ...(g.nivel ? [{ text: NIVELES[g.nivel], margin: [0, 0, 0, 8] }] : []),
       ...(g.cif ? [
         { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen dónde aparecen las barreras, no rasgos de la persona (CIF, OMS 2001). La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
         { table: { headerRows: 1, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
       ] : []),
       ...(g.voz !== undefined ? [
-        { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: d.trabajo ? "Qué dice la persona" : (esSuperior() ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), bold: true }, g.voz], ...datosContexto(g)] }, layout: fino, margin: [0, 0, 0, 12] },
+        { table: { widths: [125, "*"], body: [[{ text: "Le ayuda", bold: true }, g.ayuda], [{ text: d.trabajo ? "Qué dice la persona" : (g.nivel === "superior" ? "Qué dice el estudiante" : "Qué dicen el estudiante y su familia"), bold: true }, g.voz], ...datosContexto(g)] }, layout: fino, margin: [0, 0, 0, 12] },
       ] : []),
       ...g.acciones.flatMap((a, i) => !(g.estudiante || g.trabajador) && i === 0 ? [{ unbreakable: true, stack: [
         ...(g === d.grupos[0] ? [{ text: "Acciones para todo el curso", style: "h2" }] : []),
