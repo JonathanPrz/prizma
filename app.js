@@ -1868,7 +1868,7 @@ function prepararDocumentoTrabajo() {
   solicitudDocumento++; origenDocumento = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
   $("#generar-documento").disabled = false;
   $("#t-incluir-documento").textContent = "¿Qué personas incluirás en el documento de trabajo?";
-  $("#formato-documento").hidden = true; $("#contenido-documento").hidden = false;
+  $("#formato-documento").hidden = true; mostrarContenidoDocumento("plan");
   $("#opciones-documento").replaceChildren(
     el("p", { class: "ayuda", text: "La persona decide qué contar. Revisa con ella los datos, las notas y los ajustes antes de compartir el documento." }),
     el("fieldset", {}, el("legend", { text: "Secciones que la persona decide compartir" }), ...[["barreras", "Barreras y situaciones"], ["voz", "Lo que dice la persona"], ["ajustes", "Ajustes acordados"]].map(([id, texto]) => {
@@ -1907,7 +1907,41 @@ function guionClase() {
     })),
   };
 }
+function estudiantesParaFamilia() {
+  return estado.estudiantes.filter(e => nivelCaso(e) !== "superior" && datosEstudiante(e));
+}
+function resumenFamilia(ids) {
+  const titulo = "Resumen para la familia", fecha = fechaLarga(fechaLocal());
+  const linea = "________________________________________";
+  return {
+    familia: true, titulo, logo: logoDocumento(),
+    grupos: estudiantesParaFamilia().filter(e => ids.includes(e.id)).map(e => ({
+      nombre: "Apoyos para " + nombreEstudiante(e),
+      subtitulo: [titulo, fecha, NIVELES[nivelCaso(e)].split(" (")[0]].join(" · "),
+      secciones: [
+        ["Cuándo le cuesta más en el colegio", Object.entries(e.dimensiones).sort((a, b) => b[1] - a[1]).map(([id]) => DIMENSIONES[id - 1][1])],
+        ["Qué le ayuda", e.ayuda.trim()],
+        ["Lo que nos contaron", e.voz.trim()],
+        ["Qué haremos en el colegio", elegidasOrdenadas(e.seleccion, e).filter(r => compatibleModalidad(r, e)).map(r => textoModalidad(r.titulo, r, e))],
+      ].filter(([, contenido]) => contenido.length),
+      casa: "Lo que acordamos para la casa",
+      lineas: [linea, linea, linea],
+      acuerdos: [
+        "Próxima conversación: " + (fechaLarga(e.acuerdo?.revision) || linea),
+        "¿Cómo sabremos que funciona?: " + (e.acuerdo?.criterio.trim() || linea),
+      ],
+      paci: e.paci ? "Tiene un Plan de Adecuación Curricular Individual (PACI). Pueden pedir verlo." : "",
+      pie: "Este resumen no es un diagnóstico: describe situaciones del colegio y los apoyos que probaremos. Si tienen dudas, conversen con el equipo.",
+    })),
+  };
+}
+function mostrarContenidoDocumento(formato) {
+  $("#contenido-documento").hidden = formato === "guion";
+  $("#opciones-documento").hidden = formato === "familia";
+  $("#opciones-familia").hidden = formato !== "familia";
+}
 function modeloDocumento() {
+  if (!centroDocumento && inclusionTrabajo === null && inclusionDocumento?.familia) return resumenFamilia(inclusionDocumento.estudiantes);
   if (!centroDocumento && inclusionTrabajo === null && inclusionDocumento?.guion) return guionClase();
   const d = centroDocumento || (inclusionTrabajo !== null ? documentoTrabajo() : documento());
   return { ...d, borrador: d.centro ? centroDocumento.borrador : d.grupos.some((g) => (g.estudiante || g.trabajador) && g.estadoAcuerdo !== "Acuerdos completos") };
@@ -1927,9 +1961,22 @@ function prepararDocumento() {
   guion.disabled = !elegidasOrdenadas().length;
   $("#guion-ayuda").textContent = guion.disabled ? "Elige acciones para todo el curso para armar el guion." :
     "La meta y los pasos de cada acción, por momento. Para imprimir y usar en la sala.";
-  guion.checked = !guion.disabled && (estado.formatoDocumento ? estado.formatoDocumento === "guion" : !estado.estudiantes.some(datosEstudiante));
-  $("#formato-plan").checked = !guion.checked;
-  $("#contenido-documento").hidden = guion.checked;
+  const casosFamilia = estudiantesParaFamilia();
+  const familia = $("#formato-familia");
+  familia.disabled = !casosFamilia.length;
+  familia.checked = !familia.disabled && estado.formatoDocumento === "familia";
+  const preferencia = familia.disabled && estado.formatoDocumento === "familia" ? "" : estado.formatoDocumento;
+  guion.checked = !guion.disabled && (preferencia ? preferencia === "guion" : !estado.estudiantes.some(datosEstudiante));
+  $("#familia-ayuda").textContent = familia.disabled ? "Agrega un caso de parvularia, básica o media para armar el resumen." :
+    "Una hoja por estudiante, en palabras simples. Para leer con la familia.";
+  $("#formato-plan").checked = !guion.checked && !familia.checked;
+  mostrarContenidoDocumento(familia.checked ? "familia" : guion.checked ? "guion" : "plan");
+  $("#opciones-familia").replaceChildren(...casosFamilia.map(e => {
+    const campo = el("input", { type: "checkbox", name: "incluir-familia", value: e.id });
+    campo.checked = true;
+    campo.addEventListener("change", () => mostrarMensaje($("#error-documento"), ""));
+    return el("label", {}, campo, nombreEstudiante(e));
+  }));
   inclusionDocumento = { curso: true, estudiantes: estado.pestana !== "dua" && datosEstudiante(estudianteActual()) ? [estado.estudianteActivo] : [] };
   $("#opciones-documento").replaceChildren(...[["curso", "Acciones para todo el curso"], ...estado.estudiantes.filter(datosEstudiante).map((e) => ["alumno:" + e.id, tituloEstudiante(e)])].map(([id, texto]) => {
     const c = el("input", { type: "checkbox", value: id, name: "incluir" });
@@ -1944,9 +1991,17 @@ function prepararDocumento() {
 async function generarDocumento() {
   const ids = [...document.querySelectorAll('input[name="incluir"]:checked')].map((c) => c.value);
   const guion = inclusionTrabajo === null && $("#formato-guion")?.checked && !$("#formato-guion").disabled;
-  if (!guion && !ids.length) { mostrarMensaje($("#error-documento"), inclusionTrabajo !== null ? "Elige al menos una persona trabajadora." : "Elige el curso o al menos un estudiante.", "error"); return; }
-  if (inclusionTrabajo !== null) inclusionTrabajo = ids.filter((id) => id.startsWith("trabajo:")).map((id) => id.slice(8));
-  else inclusionDocumento = guion ? { guion: true } : { curso: ids.includes("curso"), estudiantes: ids.filter((id) => id.startsWith("alumno:")).map((id) => id.slice(7)) };
+  const familia = inclusionTrabajo === null && $("#formato-familia")?.checked && !$("#formato-familia").disabled;
+  if (familia) {
+    const marcados = new Set([...document.querySelectorAll('input[name="incluir-familia"]:checked')].map(c => c.value));
+    const estudiantes = estudiantesParaFamilia().filter(e => marcados.has(e.id)).map(e => e.id);
+    if (!estudiantes.length) { mostrarMensaje($("#error-documento"), "Elige al menos un estudiante.", "error"); return; }
+    inclusionDocumento = { familia: true, estudiantes };
+  } else {
+    if (!guion && !ids.length) { mostrarMensaje($("#error-documento"), inclusionTrabajo !== null ? "Elige al menos una persona trabajadora." : "Elige el curso o al menos un estudiante.", "error"); return; }
+    if (inclusionTrabajo !== null) inclusionTrabajo = ids.filter((id) => id.startsWith("trabajo:")).map((id) => id.slice(8));
+    else inclusionDocumento = guion ? { guion: true } : { curso: ids.includes("curso"), estudiantes: ids.filter((id) => id.startsWith("alumno:")).map((id) => id.slice(7)) };
+  }
   const solicitud = solicitudDocumento;
   const boton = $("#generar-documento");
   boton.disabled = true; mostrarMensaje($("#error-documento"), "Preparando documento…");
@@ -2147,9 +2202,47 @@ function pdfGuion(d) {
     ],
   };
 }
+function armarResumenFamilia(d) {
+  $("#hoja").replaceChildren(...d.grupos.map(g => el("section", { class: "h-familia" },
+    el("div", { class: "h-marca" },
+      d.logo ? el("img", { src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(d.logo), width: "32", height: "32", alt: "" }) : null,
+      el("strong", { text: "Prizma" })),
+    el("h1", { text: g.nombre }), el("p", { text: g.subtitulo }),
+    ...g.secciones.flatMap(([titulo, contenido]) => [
+      el("h2", { text: titulo }),
+      Array.isArray(contenido) ? el("ul", {}, contenido.map(text => el("li", { text }))) : el("p", { text: contenido }),
+    ]),
+    el("h2", { text: g.casa }), ...g.lineas.map(text => el("p", { class: "h-familia-linea", text })),
+    ...g.acuerdos.map(text => el("p", { text })),
+    g.paci ? el("p", { text: g.paci }) : null,
+    el("p", { class: "h-aviso", text: g.pie }))));
+}
+function pdfResumenFamilia(d) {
+  return {
+    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [36, 30, 36, 30],
+    defaultStyle: { font: "Roboto", fontSize: 11, lineHeight: 1.04 },
+    styles: { seccion: { bold: true, fontSize: 12, margin: [0, 7, 0, 2] } },
+    content: d.grupos.flatMap((g, i) => [
+      { ...(i ? { pageBreak: "before" } : {}), columns: [
+        ...(d.logo ? [{ svg: d.logo, width: 24 }] : []),
+        { text: "Prizma", bold: true, fontSize: 14, margin: [d.logo ? 5 : 0, 2, 0, 0] },
+      ] },
+      { text: g.nombre, bold: true, fontSize: 18, margin: [0, 3, 0, 2] },
+      g.subtitulo,
+      ...g.secciones.flatMap(([text, contenido]) => [{ text, style: "seccion" },
+        Array.isArray(contenido) ? { ul: contenido } : { text: contenido }]),
+      { text: g.casa, style: "seccion" },
+      ...g.lineas,
+      ...g.acuerdos.map(text => ({ text, margin: [0, 4, 0, 0] })),
+      ...(g.paci ? [{ text: g.paci, margin: [0, 5, 0, 0] }] : []),
+      { text: g.pie, margin: [0, 8, 0, 0] },
+    ]),
+  };
+}
 function armarHoja() {
   const d = modeloDocumento();
   if (d.guion) return armarGuion(d);
+  if (d.familia) return armarResumenFamilia(d);
   const tabla = (columnas, filas, clase = "") => el("table", { class: clase }, el("thead", {}, el("tr", {}, columnas.map((t) => el("th", { scope: "col", text: t })))),
     el("tbody", {}, filas.map((fila) => el("tr", {}, fila.map((t, i) => el(i ? "td" : "th", i ? { text: t } : { scope: "row", text: t }))))));
   const ficha = (a) => el("div", { class: "h-accion" }, el("h3", { text: a.titulo }), a.revisionModalidad ? el("p", { class: "aviso-apoyos", text: "Revisa este apoyo: no corresponde a la modalidad actual." }) : null, el("ol", {}, a.como.map((t) => el("li", { text: t }))),
@@ -2185,6 +2278,7 @@ function armarHoja() {
 function definicionPdf() {
   const d = modeloDocumento();
   if (d.guion) return pdfGuion(d);
+  if (d.familia) return pdfResumenFamilia(d);
   const margen = 56.7, ancho = 595.28 - 2 * margen;
   const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
   const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
@@ -2284,7 +2378,7 @@ async function descargarPdf() {
     await prepararPdf();
     if (!$("#vista").open || solicitud !== solicitudDocumento || centro !== centroDocumento) return;
     const fecha = fechaLocal();
-    window.pdfMake.createPdf(definicionPdf()).download(inclusionTrabajo !== null ? `prizma-trabajo-${fecha}.pdf` : centroDocumento ? `prizma-practica-${fecha}.pdf` : `prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
+    window.pdfMake.createPdf(definicionPdf()).download(inclusionTrabajo !== null ? `prizma-trabajo-${fecha}.pdf` : centroDocumento ? `prizma-practica-${fecha}.pdf` : inclusionDocumento?.familia ? `prizma-familia-${fecha}.pdf` : `prizma-${documento().grupos.some((g) => g.estudiante) ? "plan" : "curso"}-${fecha}.pdf`);
     mostrarMensaje(aviso, "PDF descargado. Búscalo en tu carpeta de descargas.", "exito");
   } catch (e) {
     mostrarMensaje(aviso, "No se pudo crear el PDF. Usa «Imprimir» y elige «Guardar como PDF».", "error");
@@ -2551,7 +2645,7 @@ async function iniciar() {
   $("#generar-documento").addEventListener("click", generarDocumento);
   $("#formato-documento").addEventListener("change", (ev) => {
     estado.formatoDocumento = ev.target.value;
-    $("#contenido-documento").hidden = estado.formatoDocumento === "guion";
+    mostrarContenidoDocumento(estado.formatoDocumento);
     mostrarMensaje($("#error-documento"), "");
   });
   $("#cancelar-documento").addEventListener("click", () => $("#incluir-documento").close());

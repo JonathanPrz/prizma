@@ -450,8 +450,10 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <p id="guion-ayuda" class="ayuda">La meta y los pasos de cada acción, por momento. Para imprimir y usar en la sala.</p>
     <label><input type="radio" name="formato-documento" id="formato-plan" value="plan" aria-describedby="plan-ayuda"> Plan completo</label>
     <p id="plan-ayuda" class="ayuda">Incluye estudiantes, acuerdos y fuentes. Para la reunión con PIE y familia, y para archivar.</p>
+    <label><input type="radio" name="formato-documento" id="formato-familia" value="familia" aria-describedby="familia-ayuda"> Resumen para la familia</label>
+    <p id="familia-ayuda" class="ayuda">Una hoja por estudiante, en palabras simples. Para leer con la familia.</p>
   </fieldset>
-  <fieldset id="contenido-documento"><legend>Contenido</legend><div id="opciones-documento"></div></fieldset>
+  <fieldset id="contenido-documento"><legend>Contenido</legend><div id="opciones-documento"></div><div id="opciones-familia" hidden></div></fieldset>
   <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><p id="error-documento" role="status"></p></div>
   <button type="button" class="boton boton-principal" id="generar-documento">Ver documento</button>
   <button type="button" class="boton" id="cancelar-documento">Cancelar</button>
