@@ -3,11 +3,11 @@
     "id": 1,
     "ofrecidos": [
       "acc-2-audio",
+      "acc-2-pictogramas",
       "acc-2-tiempo",
       "acc-8-teclado",
       "acc-1-organizador",
       "acc-8-transcribe",
-      "acc-2-pictogramas",
       "obj-graduacion",
       "obj-graduacion-matematica",
       "obj-graduacion-lenguaje",
@@ -34,8 +34,7 @@
     "encontrados": [
       "acc-2-audio",
       "acc-2-pictogramas",
-      "acc-2-tiempo",
-      "acc-8-teclado"
+      "acc-2-tiempo"
     ],
     "ausentes": [],
     "excluidosPresentes": []
@@ -49,6 +48,7 @@
       "acc-11-ayudas",
       "prac-rotulos",
       "prac-evacuacion",
+      "prac-procedimiento",
       "prac-recorrido",
       "obj-graduacion",
       "obj-graduacion-matematica",
@@ -76,22 +76,22 @@
       "acc-6-audicion",
       "acc-3-escrito",
       "prac-rotulos",
-      "prac-recorrido"
+      "prac-recorrido",
+      "prac-procedimiento",
+      "prac-evacuacion"
     ],
-    "ausentes": [
-      "prac-procedimiento"
-    ],
+    "ausentes": [],
     "excluidosPresentes": []
   },
   {
     "id": 3,
     "ofrecidos": [
       "acc-7-transiciones",
-      "acc-4-recreo",
       "acc-7-desfogue",
       "acc-5-pausas",
       "acc-5-anticipar",
       "acc-9-rutina",
+      "acc-4-recreo",
       "acc-7-tranquilo",
       "acc-7-luz",
       "acc-4-exponer",
@@ -111,8 +111,7 @@
       "acc-1-agenda",
       "acc-7-tranquilo",
       "dec-antes-gatillantes",
-      "dec-antes-refugio",
-      "acc-4-recreo"
+      "dec-antes-refugio"
     ],
     "ausentes": [],
     "excluidosPresentes": []
@@ -121,15 +120,15 @@
     "id": 4,
     "ofrecidos": [
       "acc-10-lengua",
-      "acc-10-responder",
       "acc-10-cultura",
-      "acc-10-familia",
-      "acc-1-partes",
       "acc-3-escrito",
       "acc-2-pictogramas",
       "acc-4-normas",
       "acc-1-agenda",
+      "acc-10-responder",
       "acc-12-opciones",
+      "acc-10-familia",
+      "acc-1-partes",
       "obj-graduacion",
       "obj-graduacion-matematica",
       "obj-graduacion-lenguaje",
@@ -196,8 +195,7 @@
       "acc-14-extension",
       "acc-14-eleccion",
       "acc-14-compactar",
-      "acc-14-pares",
-      "obj-enriquecimiento-historia"
+      "acc-14-pares"
     ],
     "ausentes": [],
     "excluidosPresentes": []
@@ -230,7 +228,6 @@
       "pp-plan-superior",
       "pp-c-ambiente",
       "pp-e-compartir",
-      "sup-tiempo",
       "pp-e-acuerdo"
     ],
     "ausentes": [],
@@ -240,11 +237,11 @@
     "id": 7,
     "ofrecidos": [
       "acc-8-accesible",
-      "acc-8-materiales",
       "acc-8-desplazamiento",
+      "acc-11-ayudas",
+      "acc-8-materiales",
       "acc-8-teclado",
       "acc-8-transcribe",
-      "acc-11-ayudas",
       "obj-graduacion",
       "obj-graduacion-matematica",
       "obj-graduacion-lenguaje",
@@ -271,8 +268,6 @@
     "encontrados": [
       "acc-8-accesible",
       "acc-8-desplazamiento",
-      "acc-8-teclado",
-      "acc-8-transcribe",
       "acc-8-materiales"
     ],
     "ausentes": [],
@@ -284,9 +279,9 @@
       "tr-subtitulos",
       "tr-interprete",
       "tr-mensajes-escritos",
+      "tr-lengua-senas",
       "tr-alertas-visuales",
       "tr-formatos-formacion",
-      "tr-lengua-senas",
       "tr-pedir",
       "tr-analizar",
       "tr-decidir",
@@ -299,7 +294,6 @@
     "encontrados": [
       "tr-alertas-visuales",
       "tr-mensajes-escritos",
-      "tr-subtitulos",
       "tr-analizar",
       "tr-privacidad"
     ],

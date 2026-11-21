@@ -91,8 +91,9 @@ async function probar() {
     }
     assert(definicion.content.some(n => JSON.stringify(n.ul) === JSON.stringify(situaciones)));
     assert(definicion.content.some(n => JSON.stringify(n.ul) === JSON.stringify(apoyos)));
-    assert.equal(definicion.content.filter(n => typeof n === 'string' && /^_+$/.test(n)).length, 3);
-    assert.equal(await hoja.locator('.h-familia-linea').count(), 3);
+    assert.equal(definicion.content.filter(n => typeof n === 'string' && /^_+$/.test(n)).length, 2);
+    assert.equal(await hoja.locator('.h-familia-linea').count(), 2);
+    assert.match(texto, /Lo completamos juntos en la reunión\./);
     assert.equal(definicion.defaultStyle.fontSize, 11);
     assert(await nodo('vista').evaluate(n => n.scrollWidth <= n.clientWidth && document.documentElement.scrollWidth <= innerWidth));
     const descarga = pagina.waitForEvent('download');
@@ -107,7 +108,7 @@ async function probar() {
     const segundaHoja = hoja.locator('.h-familia').nth(1);
     assert.match(await segundaHoja.innerText(), /Apoyos para LC[\s\S]*Lo que nos contaron[\s\S]*Prefiere leer con alguien/);
     assert.doesNotMatch(await segundaHoja.innerText(), /PACI/);
-    assert.match(await segundaHoja.innerText(), /Próxima conversación: _+[\s\S]*¿Cómo sabremos que funciona\?: _+/);
+    assert.match(await segundaHoja.innerText(), /Próxima conversación: _+[\s\S]*Qué esperamos ver: _+/);
     assert(!(await segundaHoja.innerText()).includes(aclaracion));
     assert.equal(await segundaHoja.getByRole('heading', { name: tituloApoyos }).count(), 0);
     const contenidoDosCasos = await pagina.evaluate(() => definicionPdf().content);
@@ -128,10 +129,11 @@ async function probar() {
     await casillas.nth(1).uncheck();
     await generar();
     assert.equal(await hoja.locator('ul').nth(0).locator('li').count(), 6);
-    assert.equal(await hoja.locator('ul').nth(1).locator('li').count(), 8);
+    assert.equal(await hoja.locator('ul').nth(1).locator('li').count(), 6);
+    assert.match(await hoja.innerText(), /El plan completo tiene 8 apoyos\./);
     const referencia = await buffer();
     assert.equal(paginas(referencia), 1);
-    console.log('Resumen de referencia: 6 situaciones, 8 apoyos y 1 página A4.');
+    console.log('Resumen de referencia: 6 situaciones, 6 de 8 apoyos y 1 página A4.');
     await pagina.keyboard.press('Escape');
 
     await pagina.evaluate(() => {

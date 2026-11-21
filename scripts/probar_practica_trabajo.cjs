@@ -396,7 +396,7 @@ async function probar() {
     assert.equal(empleo.modalidad, original.modalidad);
     assert.deepEqual([empleo.voz, empleo.compartir, empleo.tipoPuesto], ['', '', '']);
     assert.deepEqual(empleo.seleccion, {});
-    assert.deepEqual(empleo.acuerdo, { roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos' });
+    assert.deepEqual(empleo.acuerdo, { roles: [], fecha: '', revision: '', criterio: '', coordina: '', casa: '', estado: 'sin-acuerdos' });
     assert.equal(empleo.descripcionGuardada, false);
     assert.equal(await pagina.evaluate(() => estado.trabajadores.length), 10);
     assert.equal(await pagina.evaluate(() => estado.trabajadores.some(e => e.id === 'vacio')), false);

@@ -23,7 +23,7 @@ assert.equal(e('validarRespaldo({app:"prizma",version:1,perfil:{},seleccion:{}})
 assert.equal(e('validarRespaldo({app:"prizma",version:1,perfil:{},seleccion:{},asignatura:"ciencias",estudiante:{practica:true}}).asignatura'),'ciencias');
 vm.runInContext('cargar()',c);assert.equal(e('estado.asignatura'),'');assert.equal(e('estado.perfil.practica'),false);
 vm.runInContext('estado.perfil.nivel=estudianteActual().nivel="basica"; Object.assign(estudianteActual(), normalizarEstudiante({dimensiones:{1:2,6:3},ayuda:"Visual",voz:"Prefiere pausas"})); estudianteActual().seleccion={"sim-practica":"", "acc-1-partes":""}',c);
-const cif=e('documento().grupos.at(-1).cif');assert.equal(cif.length,2);assert.equal(cif[0][1],'Seguido');assert(cif[0][2].includes(e('catalogo.find(r=>r.id==="sim-practica").titulo')));assert.equal(cif[1][2],'Sin apoyo elegido');
+const cif=e('documento().grupos.at(-1).cif');assert.equal(cif.length,2);assert.equal(cif[0][1],'Seguido');assert(cif[0][2].split(', ').includes(String(e('elegidasOrdenadas(estudianteActual().seleccion,estudianteActual()).findIndex(r=>r.id==="sim-practica")+1'))));assert.equal(cif[1][2],'Sin apoyo elegido');
 assert(e('JSON.stringify(definicionPdf())').includes('Barreras y facilitadores (enfoque CIF)'));assert(e('definicionPdf().content.some(b=>b.table?.headerRows===1&&b.table.body[0].length===3)'));
 vm.runInContext('estado.seleccion=Object.fromEntries([[catalogo.find(r=>r.tipo==="dua").id,""]]); estudianteActual().voz=""',c);assert.equal(e('documento().grupos.at(-1).cif.length'),2);
 console.log('Correcto: asignatura validada y generales primero, práctica simulada/aislada por nivel, respaldos antiguos y tabla CIF con apoyos por dimensión y casos sin apoyo.');
