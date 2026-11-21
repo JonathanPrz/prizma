@@ -43,7 +43,7 @@ function texto(n){return typeof n==='string'?n:[n.textContent||'',...(n.hijos||[
 const pdf=json('definicionPdf()'), salida=JSON.stringify([json('centroDocumento'),pdf])+texto(nodos.get('#hoja'));
 for(const prohibido of ['ZZQX','QQZZ','AYUDA_PRIVADA','VOZ_PRIVADA','NOTA_PRIVADA','OTRA_VOZ','OTRA_NOTA',...json('DIMENSIONES.map(d=>d[0])'),'Barreras y facilitadores','Mi nota:'])assert(!salida.includes(prohibido),prohibido);
 for(const obligatorio of ['Plan de apoyos para la práctica profesional','Profesor tutor o coordinador','Por qué funciona:','Acuerdos (para completar en la reunión)','Contiene solo lo que la persona decidió compartir.'])assert(salida.includes(obligatorio),obligatorio);
-assert.equal(json('centroDocumento.acciones').length,1);assert(pdf.pageMargins.every(n=>n===56.7));assert.equal(pdf.defaultStyle.font,'Roboto');assert(run("definicionPdf().footer(2,3)"));
+assert.equal(json('centroDocumento.acciones').length,1);assert.equal(JSON.stringify(pdf.pageMargins),"[51,60,51,54]");assert.equal(pdf.defaultStyle.font,'Roboto');assert(run("definicionPdf().footer(2,3)"));
 run('centroDocumento=null');assert.deepEqual(json('elegidasTrabajo(e).map(r=>r.id).sort()'),['pp-c-analisis','pp-c-pasos','pp-e-barrera','pp-plan']);
 assert(!JSON.stringify(json('documento({curso:false,estudiantes:["a"]})')).includes('pp-c-pasos'));
 const html=leer('index.html'),tarea=leer('docs/tareas/028-practica-profesional.md');

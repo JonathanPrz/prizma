@@ -172,8 +172,19 @@ async function probar() {
     assert(!cif.some(fila => fila[2].includes(plan.modelo.grupos.at(-1).acciones[0].titulo)));
     const definicion = JSON.parse(plan.pdf);
     const tablas = definicion.content.filter(n => n.table?.headerRows === 1);
-    assert.equal(tablas.length, 1);
-    assert.equal(tablas[0].table.dontBreakRows, true);
+    assert(tablas.length >= 2);
+    assert.equal(tablas.filter(n => n.table.dontBreakRows).length, 1);
+    // Tarea 075: márgenes, tamaños, color de h2, keepWithNext y encabezados de tabla repetidos.
+    assert.deepEqual(definicion.pageMargins, [51, 60, 51, 54]);
+    assert.deepEqual([definicion.defaultStyle.fontSize, definicion.defaultStyle.color, definicion.defaultStyle.lineHeight], [10.5, '#1a2134', 1.15]);
+    const { h1, h2, h3, dato } = definicion.styles;
+    assert.deepEqual([h1.fontSize, h2.fontSize, h2.color, h3.fontSize, h3.color, dato.fontSize, dato.color], [22, 15, '#2456d6', 11.5, '#1a2134', 8.5, '#4f586e']);
+    assert.deepEqual(h2.margin, [0, 14, 0, 6]);
+    for (const e of [h1, h2, h3]) assert.equal(e.keepWithNext, true);
+    const filete = definicion.content.find(n => n.canvas?.[0]?.lineColor === '#2456d6');
+    assert.deepEqual([filete.canvas[0].x2, filete.canvas[0].lineWidth], [40, 1.5]);
+    const todasTablas = definicion.content.filter(n => n.table && n.table.body.length > 1);
+    for (const t of todasTablas.filter(n => n.table.widths.length > 1)) assert.equal(t.table.headerRows, 1);
     // Con curso y acciones DUA sí sale el título; y el primer estudiante no empieza hoja nueva si solo hay tabla antes.
     assert(!definicion.content.find(n => n.text === 'Apoyos para SP').pageBreak);
     assert(definicion.content.some(n => n.pageBreak === 'before' && n.text === 'Fuentes'));
@@ -188,8 +199,8 @@ async function probar() {
       inclusionDocumento = { curso: true, estudiantes: ['sp'] };
       pdfMake.createPdf(definicionPdf()).getBuffer(b => resolve(new TextDecoder('latin1').decode(b).match(/\/Type\s+\/Page\b/g).length));
     }));
-    assert(paginas < 8, 'El plan debe tener menos de 8 páginas, tiene ' + paginas);
-    console.log('Plan del caso de referencia:', paginas, 'páginas (antes: 8).');
+    assert(paginas <= 5, 'El plan no debe crecer: tenía 5 páginas tras la tarea 074, tiene ' + paginas);
+    console.log('Plan del caso de referencia:', paginas, 'páginas (tras la tarea 074: 5).');
 
     // Resumen para la familia: 6 viñetas, total, texto de casa o frase de reunión, 1 página.
     const familia = await pagina.evaluate(() => {
@@ -214,6 +225,18 @@ async function probar() {
     }
     assert(!familia.con.hoja.includes('¿Cómo sabremos que funciona?'));
     assert.equal(familia.paginas, 1);
+    const resumenPdf = JSON.parse(familia.con.pdf);
+    assert.deepEqual(resumenPdf.pageMargins, [51, 51, 51, 51]);
+    assert.deepEqual([resumenPdf.defaultStyle.fontSize, resumenPdf.defaultStyle.lineHeight], [12, 1.25]);
+    assert.deepEqual([resumenPdf.styles.seccion.fontSize, resumenPdf.styles.seccion.margin[1], resumenPdf.styles.aclaracion.fontSize, resumenPdf.styles.aclaracion.color], [14, 16, 10, '#4f586e']);
+    const tituloFamilia = resumenPdf.content.find(n => n.text === 'Apoyos para SP');
+    assert.deepEqual([tituloFamilia.fontSize, tituloFamilia.color], [24, '#2456d6']);
+    const cuadro = resumenPdf.content.find(n => n.table);
+    assert(JSON.stringify(cuadro).includes('#f4f6fc') && JSON.stringify(cuadro).includes('Próxima conversación'));
+    const sinLineas = JSON.parse(familia.sin.pdf).content.filter(n => n.canvas?.[0]?.lineWidth === .5);
+    assert.equal(sinLineas.length, 2);
+    assert.equal(sinLineas[0].margin[1], 22);
+    console.log('Resumen para la familia:', familia.paginas, 'página.');
 
     assert.deepEqual(errores, []);
     console.log('Acuerdos y contenido de documentos: todo correcto.');

@@ -51,6 +51,9 @@
   --hoja-tenue: #444444;
   --hoja-linea: #888888;
   --hoja-suave: #f2f2f2;
+  /* La hoja es blanca también en modo oscuro: estos valores valen para ambos modos. */
+  --hoja-acento: #2456d6;
+  --hoja-acento-suave: #e8eefc;
   --velo: rgb(22 24 29 / .6);
   --sombra: rgb(24 33 63 / .06);
   --sombra-dialogo: rgb(22 24 29 / .18);
@@ -262,7 +265,7 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 .h-dato .t-proposito { display: inline; }
 .hoja .h-accion { break-inside: avoid; margin-bottom: .9rem; }
 .hoja .h-accion ol { margin: .2rem 0; padding-left: 1.3rem; }
-.hoja .h-nota { border-left: 3px solid var(--hoja-linea); padding-left: .5rem; margin-top: .3rem; }
+.hoja .h-nota { border-left: 2px solid var(--hoja-acento); padding-left: .5rem; margin-top: .3rem; }
 .hoja .h-fuentes { font-size: .85rem; padding-left: 1.3rem; overflow-wrap: anywhere; }
 .hoja .h-aviso { margin-top: 1.2rem; font-size: .85rem; border: 1px solid var(--hoja-linea); padding: .5rem .7rem; }
 @media (max-width: 34rem) {
@@ -317,9 +320,10 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 #barreras-repetidas p { margin-block: .5rem; }
 :is(#opciones-documento, #opciones-familia) { display: grid; gap: .75rem; margin-block: 1rem; }
 :is(#opciones-documento, #opciones-familia) label { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
-.hoja { font-family: Roboto, Arial, sans-serif; font-size: 10.5pt; line-height: 1.2; }
-.hoja h1 { font-size: 20pt; }
-.hoja h2 { font-size: 14pt; }
+.hoja { font-family: Roboto, Arial, sans-serif; font-size: 10.5pt; line-height: 1.2; color: var(--hoja-tinta); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.hoja h1 { font-size: 22pt; font-weight: 400; }
+.hoja h1::after { content: ""; display: block; width: 40pt; border-top: 1.5pt solid var(--hoja-acento); margin-top: .3rem; }
+.hoja h2 { font-size: 15pt; font-weight: 400; color: var(--hoja-acento); }
 .hoja h3 { font-size: 11.5pt; }
 .h-marca { display: flex; align-items: center; gap: .4rem; font-size: 20pt; }
 .hoja table { width: 100%; border-collapse: collapse; margin-block: .75rem; }
@@ -328,7 +332,8 @@ details.fuentes ul { margin: .5rem 0 0; padding-left: 1rem; }
 .hoja .h-cif th:nth-child(1) { width: 38%; }
 .hoja .h-cif th:nth-child(2) { width: 18%; }
 .hoja .h-cif th:nth-child(3) { width: 44%; }
-.hoja .h-cif thead { background: var(--hoja-suave); }
+.hoja thead { background: var(--hoja-acento-suave); }
+.hoja .h-resumen th, .hoja .h-resumen td, .hoja .h-cif th, .hoja .h-cif td { border-color: #c9d0e0; }
 .hoja .h-facilitadores, .hoja .h-nota { padding: .5rem; background: var(--hoja-suave); }
 .h-estudiante, .h-fuentes-seccion { border-top: 1px solid var(--hoja-linea); margin-top: 2rem; padding-top: 1rem; }
 .h-acuerdos { break-inside: avoid; margin-block: 1rem; }
@@ -567,10 +572,15 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 #formato-documento .ayuda { margin-block: 0 .5rem; margin-inline-start: 1.75rem; }
 .guion-pasos { list-style: none; padding-inline-start: .75rem; }
 
-.h-familia { font-size: 11pt; overflow-wrap: anywhere; }
+.h-familia { overflow-wrap: anywhere; }
 .h-familia + .h-familia { margin-top: 2rem; border-top: 1px solid var(--hoja-linea); padding-top: 1rem; }
 .h-familia ul { padding-inline-start: 1.3em; }
 .h-familia-linea { white-space: nowrap; overflow: hidden; }
+.h-familia-cuadro { margin-top: 1rem; padding: .5rem .75rem; background: #f4f6fc; border: 1pt solid var(--hoja-acento); break-inside: avoid; }
+.h-familia { font-size: 12pt; line-height: 1.25; }
+.h-familia h1 { font-size: 24pt; color: var(--hoja-acento); }
+.h-familia h1::after { display: none; }
+.h-familia h2 { font-size: 14pt; margin-top: 1rem; border-bottom: 0; }
 @media print {
   .h-familia + .h-familia { break-before: page; margin-top: 0; border-top: 0; padding-top: 0; }
 }

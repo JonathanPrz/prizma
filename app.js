@@ -2246,31 +2246,34 @@ function armarResumenFamilia(d) {
       total ? el("p", { text: total }) : null,
     ]),
     el("h2", { text: g.casa }), ...g.lineas.map(text => el("p", /^_+$/.test(text) ? { class: "h-familia-linea", text } : { text })),
-    ...g.acuerdos.map(text => el("p", { text })),
+    el("div", { class: "h-familia-cuadro" }, ...g.acuerdos.map(text => el("p", { text }))),
     g.paci ? el("p", { text: g.paci }) : null,
     el("p", { class: "h-aviso", text: g.pie }))));
 }
 function pdfResumenFamilia(d) {
+  const ancho = 595.28 - 102, azul = "#2456d6", tenue = "#4f586e";
   return {
-    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [36, 30, 36, 30],
-    defaultStyle: { font: "Roboto", fontSize: 11, lineHeight: 1.04 },
-    styles: { seccion: { bold: true, fontSize: 12, margin: [0, 7, 0, 2] } },
+    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [51, 51, 51, 51],
+    defaultStyle: { font: "Roboto", fontSize: 12, lineHeight: 1.25, color: "#1a2134" },
+    // Roboto en negrita pesa poco: la jerarquía va con tamaño y color.
+    styles: { seccion: { fontSize: 14, color: azul, margin: [0, 16, 0, 4], keepWithNext: true }, aclaracion: { fontSize: 10, color: tenue } },
     content: d.grupos.flatMap((g, i) => [
       { ...(i ? { pageBreak: "before" } : {}), columns: [
         ...(d.logo ? [{ svg: d.logo, width: 24 }] : []),
-        { text: "Prizma", bold: true, fontSize: 14, margin: [d.logo ? 5 : 0, 2, 0, 0] },
+        { text: "Prizma", fontSize: 14, margin: [d.logo ? 5 : 0, 2, 0, 0] },
       ] },
-      { text: g.nombre, bold: true, fontSize: 18, margin: [0, 3, 0, 2] },
-      g.subtitulo,
+      { text: g.nombre, fontSize: 24, color: azul, margin: [0, 4, 0, 2], keepWithNext: true },
+      { text: g.subtitulo, color: tenue, fontSize: 10.5 },
       ...g.secciones.flatMap(([text, contenido, aclaracion, total]) => [{ text, style: "seccion" },
-        ...(aclaracion ? [{ text: aclaracion }] : []),
+        ...(aclaracion ? [{ text: aclaracion, style: "aclaracion", margin: [0, 0, 0, 3] }] : []),
         Array.isArray(contenido) ? { ul: contenido } : { text: contenido },
         ...(total ? [{ text: total, margin: [0, 3, 0, 0] }] : [])]),
       { text: g.casa, style: "seccion" },
-      ...g.lineas,
-      ...g.acuerdos.map(text => ({ text, margin: [0, 4, 0, 0] })),
-      ...(g.paci ? [{ text: g.paci, margin: [0, 5, 0, 0] }] : []),
-      { text: g.pie, margin: [0, 8, 0, 0] },
+      ...g.lineas.map(l => /^_+$/.test(l) ? { canvas: [{ type: "line", x1: 0, y1: 0, x2: ancho, y2: 0, lineWidth: .5, lineColor: "#1a2134" }], margin: [0, 22, 0, 0] } : { text: l }),
+      { table: { widths: ["*"], body: [[{ stack: g.acuerdos.map((text, k) => ({ text, margin: [0, k ? 4 : 0, 0, 0] })), margin: [8, 7, 8, 7], fillColor: "#f4f6fc" }]] },
+        layout: { hLineWidth: () => 1, vLineWidth: () => 1, hLineColor: () => azul, vLineColor: () => azul }, margin: [0, 10, 0, 0], unbreakable: true },
+      ...(g.paci ? [{ text: g.paci, margin: [0, 8, 0, 0] }] : []),
+      { text: g.pie, fontSize: 10, color: tenue, margin: [0, 8, 0, 0] },
     ]),
   };
 }
@@ -2314,43 +2317,45 @@ function definicionPdf() {
   const d = modeloDocumento();
   if (d.guion) return pdfGuion(d);
   if (d.familia) return pdfResumenFamilia(d);
-  const margen = 56.7, ancho = 595.28 - 2 * margen;
+  const margen = 51, ancho = 595.28 - 2 * margen, azul = "#2456d6";
   const primerCurso = d.curso ? d.grupos.find((g) => !(g.estudiante || g.trabajador)) : undefined;
-  const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#aaaaaa", vLineColor: () => "#aaaaaa", paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
-  const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 12], stack: [
+  const fino = { hLineWidth: () => .4, vLineWidth: () => .4, hLineColor: () => "#c9d0e0", vLineColor: () => "#c9d0e0", fillColor: (fila) => fila === 0 ? "#e8eefc" : null, paddingLeft: () => 6, paddingRight: () => 6, paddingTop: () => 5, paddingBottom: () => 5 };
+  const sinFondo = { ...fino, fillColor: () => null };
+  const titulo = (text) => [{ text, style: "h1" }, { canvas: [{ type: "line", x1: 0, y1: 0, x2: 40, y2: 0, lineWidth: 1.5, lineColor: azul }], margin: [0, 4, 0, 0] }];
+  const ficha = (a) => ({ unbreakable: true, margin: [0, 0, 0, 9], stack: [
     { text: a.numero ? `${a.numero}. ${a.titulo}` : a.titulo, style: "h3" }, ...(a.revisionModalidad ? [{ text: "Revisa este apoyo: no corresponde a la modalidad actual.", bold: true }] : []), { ol: [...a.como], margin: [0, 4, 0, 4] },
     { text: [{ text: "Por qué funciona: ", bold: true }, a.porque] },
     { text: a.dato, style: "dato", margin: [0, 4, 0, 0],
       ...(a.proposito ? { color: getComputedStyle(document.documentElement).getPropertyValue("--hoja-" + PROPOSITOS[a.proposito].color).trim() } : {}) },
     ...(a.ofrecida ? [{ text: "También ofrecido a todo el curso.", style: "dato" }] : []),
     ...(a.avisoCurso ? [{ text: a.avisoCurso, style: "dato" }] : []),
-    ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: "noBorders", margin: [0, 5, 0, 0] }] : []),
+    ...(a.nota ? [{ table: { widths: ["*"], body: [[{ text: [{ text: "Mi nota: ", bold: true }, a.nota], fillColor: "#f2f2f2", margin: [5, 5, 5, 5] }]] }, layout: { hLineWidth: () => 0, vLineWidth: (i) => i === 0 ? 2 : 0, vLineColor: () => azul }, margin: [0, 5, 0, 0] }] : []),
   ] });
   const contenido = d.centro ? [
-    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
-    { text: d.titulo, style: "h1" },
+    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", fontSize: 20, margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
+    ...titulo(d.titulo),
     ...(d.borrador ? [{ text: "Borrador: acuerdos sin completar", bold: true, margin: [0, 8, 0, 8] }] : []),
-    { table: { widths: [150, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: fino, margin: [0, 12, 0, 18] },
+    { table: { headerRows: 1, widths: [150, "*"], body: [["Campo", "Completar a mano"], ...d.resumen.map(([k, v]) => [{ text: k, bold: true }, v])] }, layout: fino, margin: [0, 12, 0, 18] },
     ...d.acciones.map(ficha),
     { unbreakable: true, stack: [{ text: "Acuerdos (para completar en la reunión)", style: "h2" }, ...["Acordado con", "Fecha", "Próxima revisión", "¿Qué esperamos ver en la próxima revisión?"].map((t) => ({ text: t + ": __________________________________________________", margin: [0, 12, 0, 0] }))] },
     { text: PIE_PRACTICA, style: "dato", margin: [0, 18, 0, 0] },
     { text: AVISO_TRABAJO("practica"), style: "dato", margin: [0, 14, 0, 0] },
   ] : [
-    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", style: "h1", margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
-    { text: d.titulo, style: "h1" },
+    { columns: [...(d.logo ? [{ svg: d.logo, width: 36 }] : []), { text: "Prizma", fontSize: 20, margin: [6, 6, 0, 0] }], margin: [0, 0, 0, 8] },
+    ...titulo(d.titulo),
     ...(d.borrador ? [{ text: "Borrador: acuerdos sin completar", bold: true, margin: [0, 8, 0, 8] }] : []),
-    { table: { widths: [110, "*"], body: d.resumen.map(([k, v]) => [{ text: k, bold: true }, v]) }, layout: { ...fino, vLineWidth: () => 0, hLineWidth: () => .3 }, margin: [0, 8, 0, 14] },
+    { table: { headerRows: 1, widths: [110, "*"], body: [["Resumen", "Información"], ...d.resumen.map(([k, v]) => [{ text: k, bold: true }, v])] }, layout: { ...fino, vLineWidth: () => 0, hLineWidth: () => .3 }, margin: [0, 8, 0, 14] },
     ...d.grupos.flatMap((g) => [
       ...(g.reflexion ? [{ unbreakable: true, stack: [...(g === primerCurso ? [{ text: "Acciones para todo el curso", style: "h2", headlineLevel: 1 }] : []), { text: g.nombre, style: "h3" }, { text: g.reflexion, margin: [0, 5, 0, 12] }] }] : []),
-      ...((g.estudiante || g.trabajador) ? [{ id: "alumno-" + (g.estudiante || g.trabajador), text: g.nombre, style: "h2", headlineLevel: 1, ...(d.grupos.indexOf(g) ? { pageBreak: "before" } : {}), margin: [0, 8, 0, 6] }] : []),
+      ...((g.estudiante || g.trabajador) ? [{ id: "alumno-" + (g.estudiante || g.trabajador), text: g.nombre, style: "h2", headlineLevel: 1, ...(d.grupos.indexOf(g) ? { pageBreak: "before" } : {}) }] : []),
       ...((g.estudiante || g.trabajador) ? [{ text: g.subtitulo, italics: true, margin: [0, 0, 0, 8] }] : []),
       ...(g.nivel ? [{ text: NIVELES[g.nivel], margin: [0, 0, 0, 8] }] : []),
       ...(g.cif ? [
         { text: CIF_TITULO, style: "h3", headlineLevel: 2 }, { text: d.trabajo ? "Las situaciones describen dónde aparecen las barreras, no rasgos de la persona (CIF, OMS 2001). La persona decide qué contar." : CIF_AVISO, style: "dato", margin: [0, 3, 0, 5] },
-        { table: { headerRows: 1, dontBreakRows: true, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true, fillColor: "#eeeeee" })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
+        { table: { headerRows: 1, dontBreakRows: true, widths: [ancho * .38 - 13, ancho * .18 - 13, ancho * .44 - 13], body: [(d.trabajo ? ["Situación", "Frecuencia", "Ajustes elegidos para esa situación"] : CIF_COLUMNAS).map((text) => ({ text, bold: true })), ...(g.cif.length ? g.cif : [["Sin situaciones indicadas", "—", "Sin apoyo elegido"]])] }, layout: fino, margin: [0, 0, 0, 10] },
       ] : []),
       ...(filasFacilitadores(d, g).length ? [
-        { table: { widths: [125, "*"], body: filasFacilitadores(d, g).map(([k, v], i) => [d.trabajo && i >= 2 ? k : { text: k, bold: true }, v]) }, layout: fino, margin: [0, 0, 0, 12] },
+        { table: { headerRows: 1, widths: [125, "*"], body: [["Facilitadores y voz", "Información"], ...filasFacilitadores(d, g).map(([k, v], i) => [d.trabajo && i >= 2 ? k : { text: k, bold: true }, v])] }, layout: fino, margin: [0, 0, 0, 12] },
       ] : []),
       ...g.acciones.flatMap((a, i) => !(g.estudiante || g.trabajador) && i === 0 ? [{ unbreakable: true, stack: [
         ...(g === primerCurso ? [{ text: "Acciones para todo el curso", style: "h2", headlineLevel: 1 }] : []),
@@ -2363,10 +2368,10 @@ function definicionPdf() {
     ...(d.trabajo ? [] : [{ text: AVISO_PLAN, bold: true, margin: [0, 10, 0, 0] }]),
     { id: "fuentes-documento", text: "Fuentes", style: "h2", pageBreak: "before", headlineLevel: 1 },
     { ol: d.fuentes.map((f) => ({ stack: [{ text: f.cita }, { text: f.url, style: "dato", margin: [0, 2, 0, 8] }] })) },
-    { table: { widths: ["*"], body: [[{ text: d.trabajo ? AVISO_TRABAJO("trabajo") : AVISO, style: "dato", margin: [5, 5, 5, 5] }]] }, layout: fino, margin: [0, 14, 0, 0] },
+    { table: { widths: ["*"], body: [[{ text: d.trabajo ? AVISO_TRABAJO("trabajo") : AVISO, style: "dato", margin: [5, 5, 5, 5] }]] }, layout: sinFondo, margin: [0, 14, 0, 0] },
   ];
   return {
-    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [margen, margen, margen, margen], content: contenido,
+    language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [margen, 60, margen, 54], content: contenido,
     pageBreakBefore: (n, siguientes) => Boolean(n.headlineLevel && siguientes.every((n) => n.headlineLevel)),
     header: (actual) => actual === 1 ? null : { margin: [margen, 20, margen, 0], stack: [
       { columns: [{ text: "Prizma · " + d.titulo, width: "*" }, { text: d.fecha, width: 115, alignment: "right" }], fontSize: 8, color: "#555555" },
@@ -2381,8 +2386,9 @@ function definicionPdf() {
         { text: `Página ${actual} de ${total}`, alignment: "right", width: 95 },
       ], fontSize: 8, color: "#555555", margin: [margen, 20, margen, 0] };
     },
-    defaultStyle: { font: "Roboto", fontSize: 10.5, lineHeight: 1.2, color: "#111111" },
-    styles: { h1: { fontSize: 20, bold: true }, h2: { fontSize: 14, bold: true, margin: [0, 8, 0, 6] }, h3: { fontSize: 11.5, bold: true }, dato: { fontSize: 8.5, color: "#555555" } },
+    defaultStyle: { font: "Roboto", fontSize: 10.5, lineHeight: 1.15, color: "#1a2134" },
+    // Roboto en negrita pesa poco: los títulos se distinguen por tamaño, color y filete.
+    styles: { h1: { fontSize: 22, keepWithNext: true }, h2: { fontSize: 15, color: azul, margin: [0, 14, 0, 6], keepWithNext: true }, h3: { fontSize: 11.5, color: "#1a2134", keepWithNext: true }, dato: { fontSize: 8.5, color: "#4f586e" } },
   };
 }
 
