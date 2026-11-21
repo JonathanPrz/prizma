@@ -1,6 +1,6 @@
 # Tarea 075 · Estética del plan completo y del resumen para la familia
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/075-estetica-documentos` · Pull request con destino `main`
+Estado: **integrada** (PR #96) · Asignada a: Codex (lo implementó un agente de Claude) · Rama: `codex/075-estetica-documentos` · Pull request con destino `main`
 
 **Hazla después de integrar la tarea 074.** Toca las mismas funciones.
 
