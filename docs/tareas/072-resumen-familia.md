@@ -1,6 +1,6 @@
 # Tarea 072 · Resumen para la familia
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/072-resumen-familia` · Pull request con destino `main`
+Estado: **integrada** (PR #93) · Asignada a: Codex · Rama: `codex/072-resumen-familia` · Pull request con destino `main`
 
 ## Para qué
 El cuarto consejo de inclusión (21-11-2026) dejó esta versión para una tarea propia, y el dueño la aprobó.
