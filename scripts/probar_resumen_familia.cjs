@@ -82,7 +82,7 @@ async function probar() {
     assert(texto.replace(/\s+/g, ' ').includes([tituloApoyos, aclaracion, apoyos[0]].join(' ')));
     const indiceApoyos = definicion.content.findIndex(n => n.text === tituloApoyos);
     assert(indiceApoyos >= 0);
-    assert.deepEqual(definicion.content.slice(indiceApoyos + 1, indiceApoyos + 3), [{ text: aclaracion }, { ul: apoyos }]);
+    assert.deepEqual(definicion.content.slice(indiceApoyos + 1, indiceApoyos + 3), [{ text: aclaracion, style: 'aclaracion', margin: [0, 0, 0, 3] }, { ul: apoyos }]);
     for (const contenido of [texto, JSON.stringify(definicion.content)]) {
       assert.doesNotMatch(contenido, /Lo que nos contaron|Barreras y facilitadores|Adecuaciones de acceso|DUA 3\.0|Fuentes|Nota privada docente|PAEC|\bDEC\b/);
       assert.match(contenido, /Tiene un Plan de Adecuación Curricular Individual \(PACI\)\. Pueden pedir verlo\./);
@@ -91,10 +91,10 @@ async function probar() {
     }
     assert(definicion.content.some(n => JSON.stringify(n.ul) === JSON.stringify(situaciones)));
     assert(definicion.content.some(n => JSON.stringify(n.ul) === JSON.stringify(apoyos)));
-    assert.equal(definicion.content.filter(n => typeof n === 'string' && /^_+$/.test(n)).length, 2);
+    assert.equal(definicion.content.filter(n => n.canvas?.[0]?.lineWidth === .5 && n.margin[1] === 22).length, 2);
     assert.equal(await hoja.locator('.h-familia-linea').count(), 2);
     assert.match(texto, /Lo completamos juntos en la reunión\./);
-    assert.equal(definicion.defaultStyle.fontSize, 11);
+    assert(definicion.defaultStyle.fontSize >= 11.5);
     assert(await nodo('vista').evaluate(n => n.scrollWidth <= n.clientWidth && document.documentElement.scrollWidth <= innerWidth));
     const descarga = pagina.waitForEvent('download');
     await nodo('descargar').click();
@@ -133,7 +133,7 @@ async function probar() {
     assert.match(await hoja.innerText(), /El plan completo tiene 8 apoyos\./);
     const referencia = await buffer();
     assert.equal(paginas(referencia), 1);
-    console.log('Resumen de referencia: 6 situaciones, 6 de 8 apoyos y 1 página A4.');
+    console.log('Resumen de caso denso: 6 situaciones, 6 de 8 apoyos y', paginas(referencia), 'páginas A4.');
     await pagina.keyboard.press('Escape');
 
     await pagina.evaluate(() => {
