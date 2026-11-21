@@ -41,6 +41,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <p id="instrumentos-aviso" class="marco aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Revisa qué instrumentos tiene el estudiante</p>
 <main class="disposicion">
   <div class="marco">
+  <div class="columna">
   <p id="estado-catalogo" role="status">Cargando los apoyos…</p>
   <div id="migracion-practica" role="status"></div>
   <div class="contexto" id="contexto" hidden>
@@ -269,6 +270,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
+  </div>
+  <aside id="panel-elegidas" class="panel-elegidas" aria-labelledby="t-panel-elegidas" hidden>
+    <h2 id="t-panel-elegidas">Lo que elegiste</h2>
+    <p id="panel-conteo" class="panel-conteo"></p>
+    <div id="panel-grupos"></div>
+    <button type="button" id="panel-ir" class="boton" hidden>Ir a tu selección</button>
+  </aside>
   </div>
   <div id="barra-continuar" class="barra-continuar" hidden>
     <div class="barra-contenido">

@@ -153,7 +153,7 @@ async function probar() {
           };
         });
         const contexto = entorno + ' ' + pantalla;
-        const escala = width === 390 ? ['13px', '14px', '16px', '17px', '20px', '24px'] : ['13px', '14px', '16px', '17px', '20px', '28px'];
+        const escala = width === 390 ? ['14px', '16px', '17px', '20px', '24px'] : ['14px', '16px', '17px', '20px', '28px'];
         assert(Object.keys(resultado.letra).every(n => escala.includes(n)), contexto + ' ' + JSON.stringify(resultado.letra));
         assert.equal(resultado.principales.length, 1, contexto + ' ' + resultado.principales.join(', '));
         assert(!resultado.desborde, contexto);

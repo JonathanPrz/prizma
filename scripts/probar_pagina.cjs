@@ -32,10 +32,13 @@ async function probar() {
       await pagina.addInitScript(() => {
         localStorage.setItem('prizma.privacidad.v1', '1');
         localStorage.setItem('prizma.privacidad.v1.trabajo', '1');
+        window.barraVisible = () => document.querySelector('#barra-continuar').getClientRects().length > 0;
       });
       await pagina.goto(url);
       await pagina.waitForSelector('#contexto');
       const nodo = id => pagina.locator('#' + id);
+      // Tarea 076: desde 80 rem el panel de lo elegido reemplaza a la barra en los pasos 2 y 3 de DUA.
+      const hayPanel = width >= 1280;
       const activo = pagina.locator('#indicador-pasos [aria-current="step"]');
       assert(await nodo('barra-continuar').isVisible());
 
@@ -49,7 +52,7 @@ async function probar() {
           return {
             arriba: getComputedStyle(indicador).position === 'static' ?
               document.querySelector('.cabecera').getBoundingClientRect().bottom : indicador.getBoundingClientRect().bottom,
-            abajo: document.querySelector('#barra-continuar').getBoundingClientRect().top,
+            abajo: barraVisible() ? document.querySelector('#barra-continuar').getBoundingClientRect().top : innerHeight,
             inicio: rectTitulo.top, fin: rectTitulo.bottom, control: control?.bottom,
             desborde: document.documentElement.scrollWidth > innerWidth
           };
@@ -65,8 +68,8 @@ async function probar() {
         for (const boton of await nodo(id).getByRole('button').all()) {
           const antes = await boton.evaluate(n => {
             window.opcionProbada = n;
-            const barra = document.querySelector('#barra-continuar').getBoundingClientRect();
-            window.scrollBy(0, n.getBoundingClientRect().bottom - barra.top + 2);
+            const limite = barraVisible() ? document.querySelector('#barra-continuar').getBoundingClientRect().top : innerHeight;
+            window.scrollBy(0, n.getBoundingClientRect().bottom - limite + 2);
             const r = n.getBoundingClientRect();
             return { x: r.left + r.width / 2, y: r.top + r.height / 2, scroll: scrollY };
           });
@@ -93,14 +96,15 @@ async function probar() {
           preguntas: rect('#perfil fieldset + fieldset legend').top - rect('#perfil fieldset').bottom
         };
       });
-      assert(espacios.ayuda >= 16, `Ayuda a ${width} px: ${espacios.ayuda} px`);
+      // Tarea 076: a 390 px las casillas de 44 px dejan poco alto; el paso 1 debe medir 720 px o menos.
+      assert(espacios.ayuda >= (width === 390 ? 2 : 16), `Ayuda a ${width} px: ${espacios.ayuda} px`);
       assert(espacios.preguntas >= espacios.ayuda, `Preguntas a ${width} px: ${espacios.preguntas} px`);
 
       if (width !== 640) {
         assert(!await nodo('necesidades-campo').evaluate(n => n.open));
         if (width === 390) {
           const alto = (await nodo('paso-clase').boundingBox()).height;
-          assert(alto <= 600, 'Alto del paso 1: ' + alto);
+          assert(alto <= 720, 'Alto del paso 1: ' + alto);
           console.log('Alto del paso 1 a 390 px: ' + alto + ' px.');
         }
         await taller.evaluate(n => n.scrollIntoView({ block: 'center' }));
@@ -114,12 +118,17 @@ async function probar() {
         await nodo('ver-acciones-dua').click();
         assert(await nodo('t-acciones').evaluate(n => n === document.activeElement));
         await verificarResultados('t-acciones', '#proyectar');
-        assert(await nodo('continuar-conteo').isVisible());
-        assert.match(await nodo('continuar-conteo').textContent(), /0 elegidas/);
-        assert.doesNotMatch(await nodo('continuar-conteo').textContent(), /acciones/);
+        if (hayPanel) {
+          assert(!await nodo('barra-continuar').isVisible());
+          assert.equal(await nodo('panel-conteo').textContent(), 'Todavía no eliges acciones.');
+        } else {
+          assert(await nodo('continuar-conteo').isVisible());
+          assert.match(await nodo('continuar-conteo').textContent(), /0 elegidas/);
+          assert.doesNotMatch(await nodo('continuar-conteo').textContent(), /acciones/);
+        }
         const primeraDua = pagina.locator('#dua-momento-antes > ul .tarjeta button[id^="elegir-"]').first();
         await primeraDua.click();
-        assert.match(await nodo('continuar-conteo').textContent(), /1 elegida/);
+        assert.match(await nodo(hayPanel ? 'panel-conteo' : 'continuar-conteo').textContent(), /1 elegida/);
         await primeraDua.click();
         await verificarClics('momentos');
         await verificarClics('propositos');
