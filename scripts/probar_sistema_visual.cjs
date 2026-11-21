@@ -184,7 +184,7 @@ async function probar() {
       }
 
       await pagina.selectOption('#nivel', 'basica');
-      await pagina.click('#continuar');
+      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
       await medir('DUA con resultados');
       await verificarTitulos('#panel-dua');
       const tarjeta = pagina.locator('#elegir-dua-1-1');

@@ -31,6 +31,8 @@ const CONSIDERACIONES = {
   "8.1": "Aclarar el significado y el propósito de las metas", "8.2": "Optimizar los desafíos y el apoyo", "8.3": "Fomentar la colaboración, la interdependencia y el aprendizaje colectivo", "8.4": "Fomentar la pertenencia y la comunidad", "8.5": "Ofrecer retroalimentación orientada a la acción",
   "9.1": "Reconocer expectativas, creencias y motivaciones", "9.2": "Desarrollar la conciencia de sí mismo y de los demás", "9.3": "Promover la reflexión individual y colectiva", "9.4": "Cultivar la empatía y las prácticas restaurativas",
 };
+const AYUDA_NIVEL_CURSO = "Ordena las acciones para todo el curso. Cada estudiante tiene su propio nivel.";
+const AYUDA_NIVEL_TRABAJO = "Para coordinar la práctica profesional, acompañar un primer empleo o hacer ajustes en un lugar de trabajo";
 const NIVELES = { parvularia: "Educación parvularia", basica: "Educación básica", media: "Educación media (CH y TP)", superior: "Educación superior (universidad, IP o CFT)" };
 
 const AREAS = [
@@ -540,6 +542,7 @@ function pintarCarpetasEstudiante(e) {
 function pintarApoyos() {
   pintarPrepararPractica(); pintarEstadoCasos();
   const e = estudianteActual(), superior = esSuperior(e);
+  $("#nivel-caso").textContent = "Nivel: " + nombreNivel(nivelCaso(e));
   $("#t-estudiante").textContent = superior ? "Ajustes razonables para un estudiante" : "Apoyos para un estudiante";
   $("#bajada-apoyos").textContent = superior ? "Cambios en la forma de enseñar, evaluar o en el entorno que permiten participar en igualdad, sin bajar los resultados de aprendizaje." : `Cuando las acciones para todo el ${voc("curso", nivelCaso(e))} no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.`;
   $("#voz-etiqueta").textContent = superior ? "¿Qué dice el estudiante?" : "¿Qué dicen el estudiante y su familia?";
@@ -995,6 +998,7 @@ let centroDocumento = null, origenCentro = null, origenDocumento = null;
 function cargar() {
   const avisos = [];
   try { const g = JSON.parse(localStorage.getItem(CLAVE)); if (g) estado = normalizarDatos(g, avisos); } catch (e) { /* sin almacenamiento: la página funciona igual */ }
+  for (const caso of estado.estudiantes) if (!datosEstudiante(caso)) caso.nivel = estado.perfil.nivel;
   if (avisos.length) { guardar(); mostrarMigracionPractica(avisos); }
 }
 function mostrarMigracionPractica(avisos) {
@@ -1049,7 +1053,6 @@ function voc(clave, nivel = estado.pestana === "apoyos" ? nivelCaso() : estado.p
 
 function aplicarVocabulario() {
   document.querySelectorAll("[data-voc]").forEach((n) => { n.textContent = voc(n.dataset.voc, n.closest?.("#panel-apoyos") ? nivelCaso() : estado.perfil.nivel); });
-  $("#tab-apoyos").textContent = esSuperior() ? "Ajustes razonables" : "Para un estudiante";
 }
 
 function mostrarPestana(id, enfocar = false) {
@@ -1065,7 +1068,9 @@ function mostrarPestana(id, enfocar = false) {
   $("#nivel-campo").hidden = id === "apoyos";
   pintarPrepararPractica();
   $("#nivel").value = id === "trabajo" ? "practica-trabajo" : estado.perfil.nivel;
-  $("#nivel-ayuda").hidden = id !== "trabajo";
+  $("#nivel-etiqueta").textContent = id === "trabajo" ? "Nivel" : "Nivel para el curso";
+  $("#nivel-ayuda").textContent = id === "trabajo" ? AYUDA_NIVEL_TRABAJO : AYUDA_NIVEL_CURSO;
+  $("#nivel-ayudas").hidden = id === "apoyos";
   $("#pestanas-educacion").hidden = id === "trabajo";
   $("#practica-campo").hidden = estado.pestana !== "dua" || !hayPracticas();
   $("#pie-educacion").hidden = id === "trabajo"; $("#pie-trabajo").hidden = id !== "trabajo"; $("#pie-ambito").hidden = false;
@@ -1296,8 +1301,6 @@ function pintarAccionPrincipal() {
 function actualizarContinuar() {
   const b = $("#continuar");
   if (!b?.isConnected) return;
-  pintarPanelElegidas();
-  pintarAccionPrincipal();
   const trabajo = estado.pestana === "trabajo", personal = estado.pestana !== "dua";
   const e = trabajo ? trabajadorActual() : estudianteActual();
   const cantidad = !personal ? elegidasOrdenadas().length : !e ? 0 : (trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e)).length;
@@ -1320,22 +1323,53 @@ function actualizarContinuar() {
     pasoActual === 2 ? (personal ? "Ir a acuerdos" : "Ir a tu selección") :
     personal && !terminados[2] ? "Guardar acuerdos" :
     trabajo && e?.etapa === "practica" ? "Ver documento para el centro" : "Ver documento";
+  pintarPanelElegidas();
+  pintarAccionPrincipal();
 }
-// Solo se ve con 80 rem o más (CSS) y reemplaza a la barra de continuar.
+// Solo se ve con 80 rem o más (CSS) y reemplaza a la barra de continuar. Su botón es el de la barra.
+function nombreNivel(nivel) { return NIVELES[nivel].split(" (")[0]; }
 function pintarPanelElegidas() {
   const panel = $("#panel-elegidas");
   if (!panel) return;
-  const visible = estado.pestana === "dua" && pasoActual >= 2;
-  panel.hidden = !visible;
-  if (!visible) return;
-  const sel = elegidasOrdenadas();
-  $("#panel-conteo").textContent = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones.";
-  $("#panel-grupos").replaceChildren(...gruposPorMomento(sel).map(([nombre, acciones]) =>
-    el("section", {}, el("h3", { text: nombre }),
-      el("ul", {}, acciones.map((r) => el("li", {}, el("span", { text: textoModalidad(r.titulo, r, null) })))))));
+  const personal = estado.pestana !== "dua", trabajo = estado.pestana === "trabajo";
+  const e = !personal ? null : trabajo ? trabajadorActual() : estudianteActual();
+  panel.hidden = personal && !e;
+  if (panel.hidden) return;
+  const sel = !personal ? elegidasOrdenadas() : trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e);
+  const terminos = trabajo ? ["ajuste elegido", "ajustes elegidos"] : ["apoyo elegido", "apoyos elegidos"];
+  let nivel = "", conteo, grupos = [];
+  if (!personal) {
+    if (pasoActual === 1) {
+      nivel = "Nivel del curso: " + nombreNivel(estado.perfil.nivel);
+      conteo = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones para el " + voc("curso") + ".";
+    } else {
+      conteo = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones.";
+      grupos = gruposPorMomento(sel).map(([nombre, acciones]) => [nombre, acciones.map((r) => textoModalidad(r.titulo, r, null))]);
+    }
+  } else {
+    if (!trabajo) nivel = "Nivel: " + nombreNivel(nivelCaso(e));
+    conteo = pasoActual === 1 ? "Situaciones marcadas: " + Object.keys(e.dimensiones).length :
+      pasoActual === 2 ? plural(sel.length, ...terminos) : "Acuerdo: " + estadoCaso(e, trabajo);
+    if (pasoActual > 1 && sel.length) {
+      const nombreGrupo = (r) => trabajo ? (r.tipo === "practica-profesional" ? "Práctica profesional · " + TIPOS_PRACTICA[r.subtipo] : TIPOS_TRABAJO[r.subtipo]) :
+        esSuperior(e) && ["acceso", "adicional"].includes(r.tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo];
+      for (const r of sel) {
+        const nombre = nombreGrupo(r), grupo = grupos.find(([n]) => n === nombre);
+        if (grupo) grupo[1].push(textoModalidad(r.titulo, r, e)); else grupos.push([nombre, [textoModalidad(r.titulo, r, e)]]);
+      }
+    }
+  }
+  $("#t-panel-elegidas").textContent = !personal ? "Lo que elegiste" : "Lo que elegiste para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e));
+  $("#panel-nivel").textContent = nivel;
+  $("#panel-nivel").hidden = !nivel;
+  $("#panel-conteo").textContent = conteo;
+  $("#panel-grupos").replaceChildren(...grupos.map(([nombre, titulos]) =>
+    el("section", {}, el("h3", { text: nombre }), el("ul", {}, titulos.map((t) => el("li", {}, el("span", { text: t })))))));
   const ir = $("#panel-ir");
-  ir.hidden = !sel.length;
-  ir.textContent = pasoActual === 3 ? "Ver documento" : "Ir a tu selección";
+  // El botón del panel es el de la barra: mismo texto, misma visibilidad y mismo estado.
+  ir.hidden = $("#continuar").hidden;
+  ir.disabled = $("#continuar").disabled;
+  ir.textContent = $("#continuar").textContent;
 }
 function activarPasoAbierto(id) {
   const indice = pasosActuales().indexOf(id);
@@ -1372,7 +1406,10 @@ function continuarPaso() {
   if (pasoActual === 1) {
     if (estado.pestana === "dua") irAlPasoVisible(2, $("#t-acciones"), $("#acciones"));
     else $(estado.pestana === "apoyos" ? "#descripcion-caso" : "#descripcion-trabajo").requestSubmit();
-  } else if (pasoActual === 2) irPaso(3);
+  } else if (pasoActual === 2) {
+    if (estado.pestana === "dua") irAlPasoVisible(3, $("#t-seleccion-dua"), $("#seleccion-dua"));
+    else irPaso(3);
+  }
   else if (estado.pestana === "dua") $("#documento-clase").click();
   else {
     const trabajo = estado.pestana === "trabajo", caso = trabajo ? trabajadorActual() : estudianteActual();
@@ -1803,6 +1840,13 @@ function escucharPerfil() {
     }
     const desdeTrabajo = estado.ambito === "trabajo";
     estado.perfil.nivel = nivelEducativo(nivel) ?? "basica";
+    // Un caso vacío sigue al nivel general; uno con datos conserva el suyo y se avisa.
+    for (const caso of estado.estudiantes) if (!datosEstudiante(caso)) caso.nivel = estado.perfil.nivel;
+    const aparte = estado.estudiantes.filter((caso) => nivelCaso(caso) !== estado.perfil.nivel);
+    $("#nivel-casos-estado").textContent = !aparte.length ? "" : aparte.length === 1 ?
+      `${nombreEstudiante(aparte[0])} sigue en ${nombreNivel(nivelCaso(aparte[0]))}. Puedes cambiarlo dentro del caso.` :
+      `${aparte.length} casos siguen con su propio nivel. Puedes cambiarlo dentro de cada caso.`;
+    $("#nivel-estudiante").value = nivelCaso();
     if (desdeTrabajo) { history.pushState(null, "", "#dua"); mostrarPestana("dua"); }
     guardar(); aplicarVocabulario(); pintarControles(); pintarTarjetas(); pintarApoyos(); pintarSeleccion(); sincronizarAcuerdos(); resumenClase();
     $("#practica-campo").hidden = estado.pestana !== "dua" || !hayPracticas();
@@ -2638,10 +2682,7 @@ async function iniciar() {
     if (rect.top < superior + 8) window.scrollBy(0, rect.top - superior - 8);
     else if (rect.bottom > inferior - 8) window.scrollBy(0, Math.min(rect.bottom - inferior + 8, rect.top - superior - 8));
   });
-  $("#panel-ir").addEventListener("click", () => {
-    if (pasoActual === 3) $("#documento-clase").click();
-    else irAlPasoVisible(3, $("#t-seleccion-dua"), $("#seleccion-dua"));
-  });
+  $("#panel-ir").addEventListener("click", continuarPaso);
   const tema = $("#tema");
   const nombrarTema = () => {
     const texto = "Cambiar a modo " + (document.documentElement.dataset.tema === "oscuro" ? "claro" : "oscuro");

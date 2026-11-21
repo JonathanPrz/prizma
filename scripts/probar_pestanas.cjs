@@ -21,7 +21,7 @@ function nodo(id) {
     close() {this.open = false; this.eventos.close();},
   };
 }
-for (const id of ['persistencia-aviso','panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','nivel','nivel-ayuda','preparar-practica-campo','preparar-practica','preparar-practica-ayuda','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','necesidades-campo','pestanas-educacion','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
+for (const id of ['persistencia-aviso','panel-trabajo','tab-trabajo','nivel-campo','practica-campo','paso-descripcion-toggle','panel-dua','panel-apoyos','tab-dua','tab-apoyos','.saltar','abrir-mochila','cerrar-mochila','mochila','t-seleccion','paso-clase-toggle','paso-clase-cuerpo','paso-clase-resumen','nivel','nivel-ayuda','nivel-ayudas','nivel-etiqueta','nivel-casos-estado','nivel-caso','nivel-estudiante','panel-nivel','panel-conteo','panel-grupos','panel-ir','t-panel-elegidas','panel-elegidas','preparar-practica-campo','preparar-practica','preparar-practica-ayuda','contexto','pie-educacion','pie-trabajo','pie-ambito','indicador-pasos','barra-continuar','necesidades-campo','pestanas-educacion','continuar','documento-estudiante'])nodos.set(id===' .saltar'.trim()?id:'#'+id,nodo(id));
 const ejecutar = codigo => vm.runInContext(codigo, contexto);
 ejecutar(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8').replace(/iniciar\(\);\s*$/, ''));
 // The dedicated work-flow test covers rendering; this suite checks tab navigation.
