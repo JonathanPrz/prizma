@@ -207,7 +207,9 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <fieldset><legend>¿Con quiénes se acordó?</legend><span class="error-campo" id="acuerdo-roles-error"></span><div id="roles-acuerdo" class="opciones-acuerdo"></div></fieldset>
     <div class="campo-acuerdo"><label for="fecha-acuerdo">Fecha del acuerdo<input type="date" id="fecha-acuerdo" required></label><span class="error-campo" id="acuerdo-fecha-error"></span></div>
     <div class="campo-acuerdo"><label for="revision-acuerdo">Próxima revisión<input type="date" id="revision-acuerdo" required></label><span class="error-campo" id="acuerdo-revision-error"></span></div>
-    <div class="campo-acuerdo"><label for="criterio-acuerdo">¿Cómo sabremos que funciona?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required></textarea></label><span class="error-campo" id="acuerdo-criterio-error"></span></div>
+    <div class="campo-acuerdo"><label for="criterio-acuerdo">¿Qué esperamos ver en la próxima revisión?<textarea id="criterio-acuerdo" maxlength="200" rows="2" required aria-describedby="criterio-acuerdo-ayuda"></textarea></label><span class="ayuda" id="criterio-acuerdo-ayuda"></span><span class="error-campo" id="acuerdo-criterio-error"></span></div>
+    <div class="campo-acuerdo"><label for="coordina-acuerdo">¿Quién coordina estos apoyos? (opcional)<select id="coordina-acuerdo"></select></label></div>
+    <div class="campo-acuerdo" id="casa-acuerdo-campo"><label for="casa-acuerdo">¿Qué probarán en casa? (opcional)<textarea id="casa-acuerdo" maxlength="300" rows="2" aria-describedby="casa-acuerdo-ayuda"></textarea></label><span class="ayuda" id="casa-acuerdo-ayuda">Acuérdenlo con la familia. Una o dos ideas. Sale en el resumen para la familia.</span></div>
     <button type="submit" id="guardar-acuerdos" class="boton">Guardar acuerdos</button>
   </form></div>
 </section>
@@ -261,7 +263,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <fieldset><legend>¿Con quiénes se acordó?</legend><span class="error-campo" id="trabajo-acuerdo-roles-error"></span><div id="trabajo-roles" class="opciones-acuerdo"></div></fieldset>
 <div class="campo-acuerdo"><label for="trabajo-fecha">Fecha del acuerdo<input type="date" id="trabajo-fecha" required></label><span class="error-campo" id="trabajo-acuerdo-fecha-error"></span></div>
 <div class="campo-acuerdo"><label for="trabajo-revision">Próxima revisión<input type="date" id="trabajo-revision" required></label><span class="error-campo" id="trabajo-acuerdo-revision-error"></span></div>
-<div class="campo-acuerdo"><label for="trabajo-criterio">¿Cómo sabremos que funciona?<textarea id="trabajo-criterio" maxlength="200" rows="2" required></textarea></label><span class="error-campo" id="trabajo-acuerdo-criterio-error"></span></div>
+<div class="campo-acuerdo"><label for="trabajo-criterio">¿Qué esperamos ver en la próxima revisión?<textarea id="trabajo-criterio" maxlength="200" rows="2" required aria-describedby="trabajo-criterio-ayuda"></textarea></label><span class="ayuda" id="trabajo-criterio-ayuda"></span><span class="error-campo" id="trabajo-acuerdo-criterio-error"></span></div>
 <label for="trabajo-compartir">¿Qué decidió compartir la persona y con quién?<textarea id="trabajo-compartir" maxlength="300" rows="2"></textarea></label>
 <button type="submit" id="guardar-acuerdos-trabajo" class="boton">Guardar acuerdos</button></form></div></section>
 <div class="agregar-caso"><button type="button" id="agregar-trabajador" class="boton" aria-describedby="trabajo-agregar-ayuda" disabled>Agregar otro caso</button><p id="trabajo-agregar-ayuda" class="ayuda" role="status"></p></div>
