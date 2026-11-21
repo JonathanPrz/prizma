@@ -1,6 +1,6 @@
 # Tarea 073 · Aclaración en «Qué haremos en el colegio» del resumen para la familia
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/073-aclaracion-familia` · Pull request con destino `main`
+Estado: **integrada** (PR #94) · Asignada a: Codex · Rama: `codex/073-aclaracion-familia` · Pull request con destino `main`
 
 ## Para qué
 En el resumen para la familia (tarea 072), los títulos de los apoyos son instrucciones para la docente, por ejemplo: «Lee en voz alta los enunciados o entrégalos en audio». Leídos por la familia, parecen órdenes dirigidas a ellos. No cambies `data/`, `docs/fuentes/` ni `.claude/`.
