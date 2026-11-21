@@ -1,6 +1,6 @@
 # Tarea 078 · El nivel del caso a la vista, y el panel «Lo que elegiste» en todos los pasos y ámbitos
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/078-nivel-y-panel` · Pull request con destino `main`
+Estado: **integrada** (PR #100) · Asignada a: Codex (lo implementó un agente de Claude) · Rama: `codex/078-nivel-y-panel` · Pull request con destino `main`
 
 ## Para qué
 **El problema que vivió el dueño:** «si inicialmente pongo educación superior y comienzo a seleccionar cosas, pero después cambio a, digamos, educación parvularia, sigue todo el rato como ajuste razonable».
