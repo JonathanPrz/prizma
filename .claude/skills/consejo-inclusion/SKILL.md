@@ -190,6 +190,7 @@ Un agente con el modelo económico actualiza la bitácora de decisiones, `docs/b
 **La primera vez,** la reconstruye a partir de `docs/tareas/`, `docs/diseno.md`, el código actual y el historial de commits.
 
 ## Reglas
+- **Las decisiones anteriores son antecedentes, no vetos.** Si el dueño convoca un consejo sobre algo ya decidido, es porque duda. Los especialistas y el moderador evalúan cada alternativa por sus méritos, sin descartarla con «ya lo decidiste». Pueden citar la decisión previa y su razón como un argumento más.
 - Los especialistas no cambian código, `data/`, `docs/fuentes/` ni `.claude/`. Escriben solo en la carpeta del consejo.
 - Nunca se registran diagnósticos: se describen barreras y situaciones.
 - El dueño tiene la autoridad, y decide primero el tamaño y los perfiles. Los votos orientan, pero no deciden.
