@@ -73,19 +73,21 @@ async function probar() {
     await nodo('nivel').selectOption('basica');
 
     const mochila = nodo('mochila');
+    const curso = mochila.locator('[data-grupo="curso"]'), caso = mochila.locator('[data-grupo^="e"]').first();
+    const desplegar = async grupo => { if (!await grupo.evaluate(n => n.open)) await grupo.locator(':scope > summary').click(); };
     const abrir = () => nodo('abrir-mochila').click();
     const sinDesborde = contenedor => contenedor.evaluate(n =>
       document.documentElement.scrollWidth <= innerWidth && n.scrollWidth <= n.clientWidth);
     await abrir();
     assert.equal(await nodo('t-seleccion').textContent(), 'Mi mochila (6)');
-    assert.equal(await nodo('sel-lista').locator('li').count(), 4);
-    assert.deepEqual(await nodo('sel-lista').locator('h4').allTextContents(), ['Antes', 'Después']);
-    assert.equal(await nodo('sel-lista').locator('textarea').count(), 0);
+    assert.equal(await curso.locator('li').count(), 4);
+    assert.deepEqual(await curso.locator('h4').allTextContents(), ['Antes', 'Después']);
+    assert.equal(await curso.locator('textarea').count(), 0);
     const etiquetas = await mochila.locator('.quitar').evaluateAll(botones => botones.map(b => b.getAttribute('aria-label')));
     assert.equal(new Set(etiquetas).size, 6);
     assert(!await nodo('datos-respaldo').evaluate(n => n.open));
     assert(await sinDesborde(mochila));
-    console.log('Altura de la mochila a 390 px: ' + await nodo('seleccion').evaluate(n => n.scrollHeight) + ' px.');
+    console.log('Altura de la mochila a 390 px: ' + await mochila.evaluate(n => n.scrollHeight) + ' px.');
     await nodo('abrir-respaldo').setInputFiles({ name: 'invalido.json', mimeType: 'application/json', buffer: Buffer.from('{') });
     await nodo('respaldo-estado').waitFor({ state: 'visible' });
     assert(await nodo('datos-respaldo').evaluate(n => n.open));
@@ -94,13 +96,15 @@ async function probar() {
     await pagina.waitForFunction(() => document.activeElement.matches('#dua-seleccion #nota-curso-dua-8-1-meta-visible'));
     await nodo('nota-curso-dua-8-1-meta-visible').fill('Mostrar un ejemplo al comenzar.');
     await abrir();
-    assert.match(await nodo('sel-lista').innerText(), /Nota: Mostrar un ejemplo al comenzar/);
-    const nota = nodo('sel-estudiantes').locator('details').first();
+    assert.match(await curso.innerText(), /Nota: Mostrar un ejemplo al comenzar/);
+    await desplegar(caso);
+    const nota = caso.locator('details').first();
     await nota.getByText('Agregar nota', { exact: true }).click();
     await nota.locator('textarea').fill('Entregar la agenda al entrar.');
     await pagina.reload();
     await pagina.waitForFunction(() => catalogo.length > 0);
     await abrir();
+    await desplegar(caso);
     assert.equal(await nota.locator('summary').textContent(), 'Nota');
     assert(await nota.evaluate(n => n.open));
     assert.equal(await nota.locator('textarea').inputValue(), 'Entregar la agenda al entrar.');

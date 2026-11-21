@@ -275,13 +275,6 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <p class="ayuda">La persona decide qué contar. Revisa el contenido con ella antes de compartirlo.</p><button type="button" id="documento-trabajo" class="boton" disabled>Ver documento</button>
 </section>
   </div>
-  <aside id="panel-elegidas" class="panel-elegidas" aria-labelledby="t-panel-elegidas" hidden>
-    <h2 id="t-panel-elegidas">Lo que elegiste</h2>
-    <p id="panel-nivel" class="panel-conteo" hidden></p>
-    <p id="panel-conteo" class="panel-conteo"></p>
-    <div id="panel-grupos"></div>
-    <button type="button" id="panel-ir" class="boton" hidden>Ir a tu selección</button>
-  </aside>
   </div>
   <div id="barra-continuar" class="barra-continuar" hidden>
     <div class="barra-contenido">
@@ -293,16 +286,17 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 
 
 
-<dialog id="mochila" class="mochila" aria-labelledby="t-seleccion">
-  <aside class="seleccion" id="seleccion" tabindex="-1" aria-labelledby="t-seleccion">
-    <div class="mochila-barra"><h2 id="t-seleccion" tabindex="-1" autofocus>Mi mochila</h2><button type="button" id="cerrar-mochila" class="boton">Cerrar</button></div>
-    <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
-    <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
-    <div id="sel-lista"></div>
-    <div id="sel-estudiantes"></div>
-    <section id="seleccion-trabajo" hidden><h3>Práctica y trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton boton-principal">Ver documento de trabajo</button></section>
+<dialog id="mochila-dialogo" class="mochila" aria-labelledby="t-seleccion">
+  <aside class="seleccion" id="mochila" aria-labelledby="t-seleccion" hidden>
+    <div class="mochila-barra"><h2 id="t-seleccion" tabindex="-1">Mi mochila</h2><button type="button" id="cerrar-mochila" class="boton">Cerrar</button></div>
+    <p id="sel-nivel" class="panel-conteo" hidden></p>
+    <p id="sel-acuerdo" class="panel-conteo" hidden></p>
+    <p id="sel-vacia" class="ayuda">Todavía no eliges nada. Lo que elijas aparece aquí.</p>
+    <div id="sel-grupos"></div>
+    <p id="mochila-aviso" class="solo-lectores" role="status"></p>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
+      <button type="button" id="pdf-trabajo" class="boton boton-principal">Ver documento de trabajo</button>
       <p class="ayuda">Revisa el documento y descárgalo en PDF o imprímelo.</p>
       <details id="datos-respaldo"><summary>Datos y respaldo</summary>
         <button type="button" id="guardar-respaldo" class="boton" disabled>Guardar respaldo</button>

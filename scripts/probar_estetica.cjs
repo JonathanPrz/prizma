@@ -91,27 +91,26 @@ async function probar() {
       await pagina.close();
     }
 
-    // 1280 px: panel de lo elegido, que reemplaza a la barra.
+    // 1280 px: «Mi mochila» es un panel fijo y la barra de continuar sigue abajo (tarea 079).
     for (const colorScheme of ['light', 'dark']) {
       const pagina = await abrir(1280, colorScheme);
-      assert(await pagina.locator('#panel-elegidas').isVisible(), 'Desde la tarea 078 el panel se ve ya en el paso 1');
-      assert(!await pagina.locator('#barra-continuar').isVisible());
-      await pagina.click('#panel-ir');
-      assert(await pagina.locator('#panel-elegidas').isVisible());
-      assert.equal(await pagina.locator('#panel-conteo').textContent(), 'Todavía no eliges acciones.');
-      // El botón del panel copia a la barra: si la barra ofrece «Ir a tu selección» sin elegidas, el panel también.
-      assert.equal(await pagina.locator('#panel-ir').isVisible(), !(await pagina.locator('#continuar').evaluate(n => n.hidden)));
-      await elegir(pagina, 3);
-      const panel = pagina.locator('#panel-elegidas');
+      const panel = pagina.locator('#mochila');
+      assert(await panel.isVisible(), 'La mochila se ve sin abrirla');
+      assert(await pagina.locator('#barra-continuar').isVisible());
+      assert.equal(await pagina.locator('#panel-elegidas').count(), 0);
+      assert.equal(await pagina.locator('#t-seleccion').textContent(), 'Mi mochila (0)');
+      assert(await pagina.locator('#sel-vacia').isVisible());
+      await pagina.click('#continuar');
       assert(await panel.isVisible());
-      assert(!await pagina.locator('#barra-continuar').isVisible(), 'La barra debe ocultarse con el panel');
-      assert.equal(await panel.getAttribute('aria-labelledby'), 't-panel-elegidas');
-      assert.equal(await pagina.locator('#t-panel-elegidas').evaluate(n => n.tagName + ':' + n.textContent), 'H2:Lo que elegiste');
-      assert.equal(await pagina.locator('#panel-conteo').textContent(), '3 elegidas para el curso');
-      const grupos = await pagina.locator('#panel-grupos section').evaluateAll(s => s.map(g => [g.querySelector('h3').textContent, g.querySelectorAll('li').length]));
+      await elegir(pagina, 3);
+      assert(await panel.isVisible());
+      assert(await pagina.locator('#barra-continuar').isVisible(), 'La barra sigue visible con el panel');
+      assert.equal(await panel.getAttribute('aria-labelledby'), 't-seleccion');
+      assert.equal(await pagina.locator('#t-seleccion').evaluate(n => n.tagName + ':' + n.textContent), 'H2:Mi mochila (3)');
+      const grupos = await pagina.locator('#mochila [data-grupo="curso"] section').evaluateAll(s => s.map(g => [g.querySelector('h4').textContent, g.querySelectorAll('li').length]));
       assert.equal(grupos.reduce((n, [, c]) => n + c, 0), 3);
       assert(grupos.every(([nombre]) => ['Antes', 'Durante', 'Después', 'En toda la clase'].includes(nombre)), JSON.stringify(grupos));
-      const titulos = await pagina.locator('#panel-grupos li').allInnerTexts();
+      const titulos = await pagina.locator('#mochila [data-grupo="curso"] .sel-titulo').allInnerTexts();
       const enTarjetas = await pagina.locator('#tarjetas .tarjeta.elegida h4').allInnerTexts();
       assert.deepEqual([...titulos].sort(), [...enTarjetas].sort());
       const medidas = await panel.evaluate(n => {
@@ -119,21 +118,19 @@ async function probar() {
         const columna = document.querySelector('.columna');
         return {
           ancho: r.width, sticky: p.position, top: p.top,
-          despues: Boolean(columna.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_FOLLOWING) && !columna.contains(n),
-          lineas: [...n.querySelectorAll('li > span')].map(s => Math.round(s.getBoundingClientRect().height / parseFloat(getComputedStyle(s).lineHeight)))
+          despues: Boolean(columna.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_FOLLOWING) && !columna.contains(n)
         };
       });
-      assert(medidas.ancho >= 318 && medidas.ancho <= 322, 'Ancho del panel: ' + medidas.ancho);
+      assert(medidas.ancho >= 382 && medidas.ancho <= 386, 'Ancho del panel: ' + medidas.ancho);
       assert.equal(medidas.sticky, 'sticky');
       assert(medidas.despues, 'El panel debe ir después de la columna en el DOM');
-      assert(medidas.lineas.every(l => l <= 2), JSON.stringify(medidas.lineas));
-      // Un solo botón principal visible: el del panel.
-      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'panel-ir');
-      await pagina.click('#panel-ir');
+      // Un solo botón principal visible: el de la barra.
+      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'continuar');
+      await pagina.click('#continuar');
       assert(await pagina.locator('#t-seleccion-dua').evaluate(n => n === document.activeElement), 'El foco debe llegar al título del paso 3');
-      assert.equal(await pagina.locator('#panel-ir').textContent(), 'Ver documento');
+      assert.equal(await pagina.locator('#continuar').textContent(), 'Ver documento');
       assert(await panel.isVisible());
-      await pagina.click('#panel-ir');
+      await pagina.click('#continuar');
       assert(await pagina.locator('#vista[open]').count() === 1 || await pagina.locator('dialog[open]').count() === 1, 'Ver documento debe abrir el diálogo');
       await pagina.keyboard.press('Escape');
       await sinDesborde(pagina, '1280 con panel');
@@ -146,10 +143,10 @@ async function probar() {
       await pagina.click('#salir-proyeccion');
       assert(await panel.isVisible());
 
-      // Al pasar a Para un estudiante, el panel y la barra vuelven a como estaban.
+      // También en «Para un estudiante»: panel y barra a la vez.
       await pagina.click('#tab-apoyos');
       assert(await panel.isVisible(), 'El panel también está en Para un estudiante');
-      assert(!await pagina.locator('#barra-continuar').isVisible());
+      assert(await pagina.locator('#barra-continuar').isVisible());
       assert.deepEqual(pagina.errores, []);
       await pagina.close();
     }
@@ -157,17 +154,17 @@ async function probar() {
     // Bajo 80 rem y en el teléfono: sin panel y con barra.
     for (const width of [1000, 1262, 390]) {
       const pagina = await abrir(width);
-      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
+      await pagina.locator('#continuar:visible').click();
       await elegir(pagina, 3);
-      assert(!await pagina.locator('#panel-elegidas').isVisible(), `Panel visible a ${width} px`);
+      assert(!await pagina.locator('#mochila').isVisible(), `Panel visible a ${width} px`);
       assert(await pagina.locator('#barra-continuar').isVisible(), `Barra oculta a ${width} px`);
       await sinDesborde(pagina, String(width));
       await pagina.close();
     }
     {
       const pagina = await abrir(1920);
-      await pagina.click('#panel-ir');
-      assert(await pagina.locator('#panel-elegidas').isVisible());
+      await pagina.click('#continuar');
+      assert(await pagina.locator('#mochila').isVisible());
       await sinDesborde(pagina, '1920');
       const columna = await caja(pagina, '.columna'), logo = await caja(pagina, '.marca .logo');
       assert(Math.abs(columna.x - logo.x) <= 2 && columna.w >= 728 && columna.w <= 740);
@@ -202,7 +199,7 @@ async function probar() {
       assert.equal(indicador[0].color, tokens.texto);
       assert.equal(indicador[1].color, tokens.tenue);
       await pagina.keyboard.press('Tab');
-      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
+      await pagina.locator('#continuar:visible').click();
       await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]')?.textContent.includes('2 Elige'));
       await elegir(pagina, 1);
       const hecho = await pagina.locator('#indicador-pasos a').nth(1).innerText();
@@ -273,7 +270,7 @@ async function probar() {
       assert((await caja(pagina, '#limpiar-clase')).h >= 24);
 
       await pagina.locator('#perfil input[name="actividad"]').first().check();
-      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
+      await pagina.locator('#continuar:visible').click();
       await pagina.evaluate(() => document.querySelectorAll('#tarjetas details').forEach(d => { d.open = true; }));
       const controles = await pagina.evaluate(() => {
         const alto = selector => [...document.querySelectorAll(selector)].filter(n => n.checkVisibility()).map(n => [selector, Math.round(n.getBoundingClientRect().height * 10) / 10]);
@@ -291,7 +288,7 @@ async function probar() {
       await pagina.click('#abrir-mochila');
       const mochila = await pagina.evaluate(() => [...document.querySelectorAll('#mochila .quitar, #mochila summary')].filter(n => n.checkVisibility()).map(n => Math.round(n.getBoundingClientRect().height)));
       assert(mochila.length > 0 && mochila.every(h => h >= 44), JSON.stringify(mochila));
-      await pagina.click('#cerrar-mochila');
+      if (await pagina.locator('#cerrar-mochila').isVisible()) await pagina.click('#cerrar-mochila');
 
       // Ningún texto visible de menos de 14 px.
       const chicos = await pagina.evaluate(() => [...document.body.querySelectorAll('*')].filter(n =>

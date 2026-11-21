@@ -6,7 +6,7 @@ const leer = ruta => fs.readFileSync(path.join(__dirname, '..', ruta), 'utf8');
 function visita(bloqueado = false, confirmada = false) {
   const nodos = new Map(), almacen = new Map(confirmada ? [['prizma.privacidad.v1','1']] : []);
   const guias = [nodo('guia-panel'),nodo('guia-pie')], apoyos = [nodo('apoyos-panel'),nodo('apoyos-pie')], privacidad = [nodo('privacidad'),nodo('datos-permitidos')];
-  const ids = ['guia-dua','guia-apoyos','aviso-privacidad','filtros-dialogo','mochila'];
+  const ids = ['guia-dua','guia-apoyos','aviso-privacidad','filtros-dialogo','mochila-dialogo'];
   const abiertos = () => ids.map(id => nodos.get('#'+id)).filter(n => n.open);
   const c = vm.createContext({document: {
     activeElement: null, createElement: tag => nodo(tag),
@@ -49,7 +49,7 @@ for(const campo of ['iniciales','estudiante-ayuda','estudiante-voz']){
 }
 const sinIniciales=visita();sinIniciales.run("estudianteActual().nivel='superior'; pintarTituloApoyos()");assert.equal(sinIniciales.n('t-apoyos').textContent,'2. Ajustes razonables sugeridos para Estudiante 1');
 const recordada=visita(false,true);assert(recordada.run('privacidadAvisada'));recordada.privacidad[1].emit('click');assert(recordada.n('aviso-privacidad').open);
-const mochila=visita();const nota=mochila.nodo('nota');nota.dialogo=mochila.n('mochila');mochila.c.nota=nota;mochila.n('mochila').showModal();mochila.run('mostrarAvisoPrivacidad(nota)');assert(mochila.n('aviso-privacidad').open&&!mochila.n('mochila').open);mochila.n('privacidad-entendido').emit('click');assert(mochila.n('mochila').open);assert.equal(mochila.c.document.activeElement,nota);
+const mochila=visita();const nota=mochila.nodo('nota');nota.dialogo=mochila.n('mochila-dialogo');mochila.c.nota=nota;mochila.n('mochila-dialogo').showModal();mochila.run('mostrarAvisoPrivacidad(nota)');assert(mochila.n('aviso-privacidad').open&&!mochila.n('mochila-dialogo').open);mochila.n('privacidad-entendido').emit('click');assert(mochila.n('mochila-dialogo').open);assert.equal(mochila.c.document.activeElement,nota);
 const html=leer('index.html'),tarea=leer('docs/tareas/022-guias-sin-emergentes.md');
 for(const tipo of ['escolar','superior']){
  const bloque=html.split('id="guia-apoyos-'+tipo+'"')[1].split('</div>')[0];const lista=[...bloque.split('<ol>')[1].matchAll(/<li>(.*?)<\/li>/g)].map(m=>m[1]);assert.equal(lista.length,6);const inicio=tarea.indexOf(tipo==='escolar'?'**En la escuela.**':'**En superior.**');

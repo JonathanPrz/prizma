@@ -184,7 +184,7 @@ async function probar() {
       }
 
       await pagina.selectOption('#nivel', 'basica');
-      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
+      await pagina.locator('#continuar:visible').click();
       await medir('DUA con resultados');
       await verificarTitulos('#panel-dua');
       const tarjeta = pagina.locator('#elegir-dua-1-1');
@@ -241,7 +241,7 @@ async function probar() {
       assert.equal(await pagina.locator('#continuar').textContent(), 'Guardar y ver ajustes');
       await pagina.click('#abrir-mochila');
       await medir('mochila de trabajo vacía');
-      await pagina.click('#cerrar-mochila');
+      if (await pagina.locator('#cerrar-mochila').isVisible()) await pagina.click('#cerrar-mochila');
       await pagina.click('#trabajo-area-0');
       await pagina.check('input[name="trabajo-dimension-1"][value="2"]');
       await pagina.click('#guardar-descripcion-trabajo');
@@ -254,7 +254,8 @@ async function probar() {
       await ajuste.click();
       await pagina.click('#abrir-mochila');
       await medir('mochila de trabajo');
-      assert(await pagina.locator('#pdf-trabajo').evaluate(n => n.classList.contains('boton-principal')));
+      // En el panel de escritorio la única acción principal es la de la barra; en el diálogo lo es el documento.
+      assert.equal(await pagina.locator('#pdf-trabajo').evaluate(n => n.classList.contains('boton-principal')), width < 1280);
       assert.deepEqual(errores, []);
       await pagina.close();
     }

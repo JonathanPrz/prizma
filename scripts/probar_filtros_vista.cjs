@@ -110,7 +110,7 @@ async function probar() {
       assert.deepEqual(respaldo.momentos, ['durante']); assert.deepEqual(respaldo.propositos, ['presentar']);
       const validado = await p.evaluate(d => validarRespaldo(d), respaldo);
       assert.deepEqual(validado.momentos, ['durante']); assert.deepEqual(validado.propositos, ['presentar']);
-      await p.click('#cerrar-mochila');
+      if (await p.locator('#cerrar-mochila').isVisible()) await p.click('#cerrar-mochila');
       await p.click('#limpiar-filtros');
       await p.selectOption('#nivel', 'parvularia');
       assert((await p.locator('#m-toda-la-clase').innerText()).includes('En toda la experiencia de aprendizaje'));

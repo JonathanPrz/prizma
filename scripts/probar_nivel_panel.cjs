@@ -1,4 +1,4 @@
-// Tarea 078: el nivel del caso a la vista y el panel «Lo que elegiste» en todos los pasos y ámbitos.
+// Tareas 078 y 079: el nivel del caso a la vista y «Mi mochila» como panel fijo en todos los pasos y ámbitos.
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const http = require('node:http');
@@ -116,69 +116,65 @@ async function probar() {
       await pagina.close();
     }
 
-    // Panel en DUA, 1280 px.
+    // Mochila en DUA, 1280 px.
     {
       const pagina = await abrir(1280);
       await pagina.check('input[name="actividad"][value="conversar"]');
-      const panel = pagina.locator('#panel-elegidas');
+      const panel = pagina.locator('#mochila');
       assert(await panel.isVisible());
-      assert(!await pagina.locator('#barra-continuar').isVisible());
+      assert(await pagina.locator('#barra-continuar').isVisible());
       const paso1 = await panel.innerText();
-      assert.match(paso1, /Nivel del curso: Educación básica/);
-      assert.match(paso1, /Todavía no eliges acciones para el curso\./);
+      assert.equal(await texto(pagina, 'sel-nivel'), 'Nivel: Educación básica');
+      assert.match(paso1, /Todavía no eliges nada\. Lo que elijas aparece aquí\./);
       assert.doesNotMatch(paso1, /Conversar|actividad|evidencia/i);
-      assert.equal(await texto(pagina, 'panel-ir'), 'Ver acciones');
-      assert.equal(await texto(pagina, 'panel-ir'), await pagina.locator('#continuar').textContent());
-      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'panel-ir');
+      assert.equal(await texto(pagina, 'continuar'), 'Ver acciones');
+      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'continuar');
       const medidas = await pagina.evaluate(() => ({
-        panel: document.querySelector('#panel-elegidas').getBoundingClientRect().width,
+        panel: document.querySelector('#mochila').getBoundingClientRect().width,
         columna: document.querySelector('.columna').getBoundingClientRect().width,
         desborde: document.documentElement.scrollWidth - innerWidth
       }));
-      assert(Math.abs(medidas.panel - 320) <= 2, 'Panel: ' + medidas.panel);
+      assert(Math.abs(medidas.panel - 384) <= 2, 'Panel: ' + medidas.panel);
       assert(Math.abs(medidas.columna - 736) <= 2, 'Columna: ' + medidas.columna);
       assert(medidas.desborde <= 0);
       await foto(pagina, 'dua-paso-1.png');
-      await pagina.click('#panel-ir');
-      assert.equal(await texto(pagina, 'panel-conteo'), 'Todavía no eliges acciones.');
+      await pagina.click('#continuar');
+      assert.equal(await texto(pagina, 't-seleccion'), 'Mi mochila (0)');
       await elegirPrimeros(pagina, '#tarjetas button[id^="elegir-"]', 2);
-      assert.equal(await texto(pagina, 'panel-conteo'), '2 elegidas para el curso');
-      assert.equal(await texto(pagina, 'panel-ir'), 'Ir a tu selección');
-      await pagina.click('#panel-ir');
-      assert.equal(await texto(pagina, 'panel-ir'), 'Ver documento');
+      assert.equal(await texto(pagina, 't-seleccion'), 'Mi mochila (2)');
+      assert.equal(await texto(pagina, 'continuar'), 'Ir a tu selección');
+      await pagina.click('#continuar');
+      assert.equal(await texto(pagina, 'continuar'), 'Ver documento');
       assert.deepEqual(errores, []);
       await pagina.close();
     }
 
-    // Panel en «Para un estudiante», 1280 px.
+    // Mochila en «Para un estudiante», 1280 px.
     {
       const pagina = await abrir(1280, datos({ estudiantes: [jp({ nivel: 'superior' })], estudianteActivo: 'jp', perfil: { nivel: 'superior' } }));
       await pagina.click('#tab-apoyos');
-      const panel = pagina.locator('#panel-elegidas');
+      const panel = pagina.locator('#mochila');
       assert(await panel.isVisible());
-      assert(!await pagina.locator('#barra-continuar').isVisible());
-      assert.equal(await texto(pagina, 't-panel-elegidas'), 'Lo que elegiste para JP');
-      assert.equal(await texto(pagina, 'panel-conteo'), 'Situaciones marcadas: 2');
-      assert.equal(await texto(pagina, 'panel-ir'), await pagina.locator('#continuar').textContent());
-      await pagina.click('#panel-ir');
+      assert(await pagina.locator('#barra-continuar').isVisible());
+      assert.equal(await panel.locator('[data-grupo="ejp"] > summary h3').textContent(), 'Ajustes razonables para JP');
+      assert.equal(await texto(pagina, 'sel-nivel'), 'Nivel: Educación superior');
+      await pagina.click('#continuar');
       await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]').textContent.includes('2 Elige'));
       await elegirPrimeros(pagina, '#apoyos-resultados button[id^="elegir-"]', 2);
-      assert.equal(await texto(pagina, 'panel-nivel'), 'Nivel: Educación superior');
-      assert.equal(await texto(pagina, 'panel-conteo'), '2 apoyos elegidos');
+      assert.equal(await texto(pagina, 't-seleccion'), 'Mi mochila (2)');
       assert.equal(await panel.locator('li').count(), 2);
-      assert.equal(await texto(pagina, 'panel-ir'), 'Ir a acuerdos');
+      assert.equal(await texto(pagina, 'continuar'), 'Ir a acuerdos');
       await foto(pagina, 'estudiante-paso-2.png');
-      await pagina.click('#panel-ir');
+      await pagina.click('#continuar');
       await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]').textContent.includes('3 Acuerda'));
-      assert.equal(await texto(pagina, 'panel-conteo'), 'Acuerdo: Sin acuerdos');
-      assert.equal(await texto(pagina, 'panel-ir'), 'Guardar acuerdos');
-      assert.equal(await texto(pagina, 'panel-ir'), await pagina.locator('#continuar').textContent());
+      assert.equal(await texto(pagina, 'sel-acuerdo'), 'Acuerdo: Sin acuerdos');
+      assert.equal(await texto(pagina, 'continuar'), 'Guardar acuerdos');
       await foto(pagina, 'estudiante-paso-3.png');
       assert.deepEqual(errores, []);
       await pagina.close();
     }
 
-    // Panel en Práctica y trabajo, 1280 px.
+    // Mochila en Práctica y trabajo, 1280 px.
     {
       const pagina = await abrir(1280);
       await pagina.selectOption('#nivel', 'practica-trabajo');
@@ -186,14 +182,13 @@ async function probar() {
       await pagina.locator('input[name="trabajo-dimension-1"][value="3"]').check();
       await pagina.click('#guardar-descripcion-trabajo');
       await elegirPrimeros(pagina, '#trabajo-tarjetas button[id^="elegir-"]', 1);
-      const panel = pagina.locator('#panel-elegidas');
+      const panel = pagina.locator('#mochila');
       assert(await panel.isVisible());
-      assert(!await pagina.locator('#barra-continuar').isVisible());
-      assert.match(await texto(pagina, 't-panel-elegidas'), /^Lo que elegiste para /);
-      assert.equal(await texto(pagina, 'panel-conteo'), '1 ajuste elegido');
+      assert(await pagina.locator('#barra-continuar').isVisible());
+      assert.match(await panel.locator('[data-grupo^="t"] > summary h3').first().textContent(), /^Ajustes para /);
+      assert.equal(await texto(pagina, 't-seleccion'), 'Mi mochila (1)');
       assert.equal(await panel.locator('li').count(), 1);
-      assert.equal(await texto(pagina, 'panel-ir'), await pagina.locator('#continuar').textContent());
-      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'panel-ir');
+      assert.equal(await pagina.locator('main .boton-principal:visible').evaluateAll(b => b.map(n => n.id).join()), 'continuar');
       await foto(pagina, 'trabajo-paso-2.png');
       assert.deepEqual(errores, []);
       await pagina.close();
@@ -204,14 +199,14 @@ async function probar() {
       const pagina = await abrir(ancho, datos({ estudiantes: [jp()], estudianteActivo: 'jp' }));
       for (const pestana of ['dua', 'apoyos']) {
         await pagina.click('#tab-' + pestana);
-        assert(!await pagina.locator('#panel-elegidas').isVisible(), `Panel visible a ${ancho} px`);
+        assert(!await pagina.locator('#mochila').isVisible(), `Panel visible a ${ancho} px`);
         assert(await pagina.locator('#barra-continuar').isVisible(), `Barra oculta a ${ancho} px`);
         assert(await pagina.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Desborde a ${ancho} px`);
       }
       await pagina.close();
     }
     assert.deepEqual(errores, []);
-    console.log('Correcto: nivel del caso a la vista, avisos de nivel, y panel «Lo que elegiste» en DUA, Para un estudiante y Práctica y trabajo.');
+    console.log('Correcto: nivel del caso a la vista, avisos de nivel, y «Mi mochila» como panel en DUA, Para un estudiante y Práctica y trabajo.');
   } finally {
     await navegador?.close();
     await new Promise(ok => servidor.close(ok));
