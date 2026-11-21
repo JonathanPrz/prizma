@@ -1,6 +1,6 @@
 # Tarea 071 · Espacio en el paso 1 y aviso «Por revisar» sin acuerdo
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/071-ajustes-menores` · Pull request con destino `main`
+Estado: **integrada** (PR #92) · Asignada a: Codex · Rama: `codex/071-ajustes-menores` · Pull request con destino `main`
 
 ## Para qué
 Son tres detalles que vio el dueño o que aparecieron al revisar la tarea 069. No cambies `data/`, `docs/fuentes/` ni `.claude/`.
