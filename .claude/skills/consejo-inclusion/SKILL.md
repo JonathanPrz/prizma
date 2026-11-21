@@ -85,7 +85,8 @@ El moderador lee el contexto y escribe `composicion.md` (máximo 250 palabras) c
 
 **Siempre disponibles**
 - analista de datos (mide con un script sobre el catálogo);
-- abogado del diablo (ataca el supuesto de fondo y, en la ronda 2, también el consenso).
+- abogado del diablo (ataca el supuesto de fondo y, en la ronda 2, también el consenso);
+- secretario de actas (ver «Paso 8»): no propone ni vota; registra lo que se decidió.
 
 ## Paso 2 · Ronda 1: propuestas
 Cada especialista:
@@ -146,6 +147,44 @@ Escribe la tarea en `docs/tareas/NNN-*.md`, al estilo de las anteriores:
 - los criterios de aceptación.
 
 Si la tarea toca `data/`, autorízalo de forma explícita y limítalo. Actualiza `docs/diseno.md` cuando el debate cambie una decisión de diseño.
+
+## Paso 8 · Secretario de actas (después de integrar la tarea)
+Un agente con el modelo económico actualiza la bitácora de decisiones, `docs/bitacora.md`. No participa en el debate ni vota.
+
+**Qué lee:**
+- la síntesis del consejo;
+- la tarea que salió;
+- el pull request integrado;
+- los commits relacionados (`git log`), que sirven de antecedente.
+
+**Qué registra:** solo decisiones que ya están integradas, agrupadas por tema:
+- tipografía;
+- color y tema;
+- documentos e impresión;
+- flujo y navegación;
+- textos;
+- accesibilidad;
+- privacidad;
+- catálogo y normativa.
+
+**Cómo es cada entrada:**
+```
+### <Decisión en una frase>
+- Fecha: 21-11-2026 · Fuente: tarea 075, PR #96 (commit 888f1a9)
+- Qué: <la regla concreta, con valores: «cuerpo 11,5 pt en el resumen para la familia»>
+- Por qué: <la razón que se dio, con su evidencia>
+- Descartado: <alternativas que se rechazaron y por qué, si las hubo>
+- Reemplaza a: <entrada anterior, si cambia una decisión previa>
+```
+
+**Reglas del secretario:**
+- **No borra entradas antiguas.** Si una decisión cambia, marca la antigua como «Reemplazada por …» y agrega la nueva.
+- **No inventa razones.** Si un commit o una tarea no dice por qué, escribe «Razón no registrada».
+- **Cita siempre** la tarea, el pull request o el commit.
+- **Escribe en español de Chile,** con frases cortas.
+- **Solo escribe en `docs/bitacora.md`.** El líder lo revisa y lo sube a `main`.
+
+**La primera vez,** reconstruye la bitácora con `docs/tareas/`, `docs/diseno.md` y el historial de commits.
 
 ## Reglas
 - Los especialistas no cambian código, `data/`, `docs/fuentes/` ni `.claude/`. Escriben solo en la carpeta del consejo.
