@@ -1,6 +1,6 @@
 # Tarea 076 · Estética de la web: columna más ancha, pasos claros, menos cajas y panel de lo elegido en escritorio
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/076-estetica-web` · Pull request con destino `main`
+Estado: **integrada** (PR #97) · Asignada a: Codex (lo implementó un agente de Claude) · Rama: `codex/076-estetica-web` · Pull request con destino `main`
 
 ## Para qué
 Lo decidió un consejo de 6 especialistas (21-11-2026), con dos rondas de votos y un debate abierto sobre escritorio. Los especialistas fueron: diseño de interfaz, diseño de experiencia, accesibilidad, teléfono, docente y abogado del diablo. El dueño aprobó todo.
@@ -61,7 +61,7 @@ Sin elegidas: «Todavía no eliges acciones.» y sin botón.
 ## 5. Paso 1 en el teléfono
 - **Bajo 30 rem,** las casillas de «¿Qué harán principalmente?» y «¿Cómo mostrarán lo que aprendieron?» van en 1 columna.
 - **Cada casilla** con su etiqueta mide 44 px de alto o más, y ninguna etiqueta se parte en 2 líneas a 390 px.
-- **Nuevo límite de altura del paso 1** a 390 px, con las necesidades plegadas: **720 px**. Hoy es 600; el dueño aprobó el cambio. Actualiza esa prueba.
+- **Nuevo límite de altura del paso 1** a 390 px, con las necesidades plegadas: **860 px** (se estimó 720, pero con 16 px de aire bajo la ayuda, como pide la tarea 071, mide 856). El dueño aprobó el cambio.
 
 ## 6. Tamaños mínimos
 - **Ningún texto visible** mide menos de 14 px (0,875 rem), en ningún ancho. Revisa `.t-arriba`, `.respaldo`, `.sel-momento` y las ayudas.
