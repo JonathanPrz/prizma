@@ -206,6 +206,8 @@ async function probar() {
       await elegir(pagina, 1);
       const hecho = await pagina.locator('#indicador-pasos a').nth(1).innerText();
       assert.match(hecho, /✓/);
+      // El paso terminado se anuncia al lector de pantalla, no solo con el ✓ visual.
+      assert.equal(await pagina.evaluate(() => document.querySelectorAll('#indicador-pasos a')[1].querySelector('.paso-terminado:not([hidden]) .solo-lectores')?.textContent), 'Hecho: ');
 
       const tarjeta = await pagina.locator('#tarjetas .tarjeta.elegida').first().evaluate(n => {
         const e = getComputedStyle(n);

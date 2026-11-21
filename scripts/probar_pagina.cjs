@@ -61,7 +61,8 @@ async function probar() {
         if (primerControl) assert(medicion.control <= medicion.abajo, JSON.stringify(medicion));
         assert(!medicion.desborde);
         assert(await nodo('indicador-pasos').locator('.paso-terminado').first().isVisible());
-        assert.equal(await nodo('indicador-pasos').locator('.paso-terminado').first().getAttribute('aria-hidden'), 'true');
+        assert.equal(await nodo('indicador-pasos').locator('.paso-terminado [aria-hidden="true"]').first().textContent(), '✓');
+        assert.equal(await nodo('indicador-pasos').locator('.paso-terminado .solo-lectores').first().textContent(), 'Hecho: ');
       }
 
       async function verificarClics(id) {
