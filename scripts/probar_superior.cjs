@@ -23,7 +23,7 @@ assert.deepEqual(ejecutar('elegidasOrdenadas(estudianteActual().seleccion).map(r
 const doc = ejecutar('documento()');
 assert.equal(doc.grupos[0].nombre, "Ajustes razonables para un estudiante");
 assert.equal(doc.grupos[0].subtitulo, 'Propuesta para acordar con el estudiante y la unidad de inclusión');
-assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split('. Versión DUA')[0].split('. Respaldo:')[0]), ['Ajuste razonable: Presentación de la información', 'Ajuste razonable: Organización del tiempo y el horario']);
+assert.deepEqual(doc.grupos[0].acciones.map(a => a.dato.split(' · DUA 3.0')[0]), ['Ajuste razonable: Presentación de la información', 'Ajuste razonable: Organización del tiempo y el horario']);
 assert(!ejecutar('JSON.stringify(definicionPdf())').includes('Decreto 83'));
 vm.runInContext('estudianteActual().nivel = "basica";', contexto);
 assert.deepEqual(ejecutar('elegidasOrdenadas(estudianteActual().seleccion).map(r => r.id)'), ['acc-1-partes', 'obj-priorizacion', 'dec-durante-validar']);

@@ -24,6 +24,22 @@ for r in R:
     errores += [f"{i}: contiene «{p}»" for p in PROHIBIDO if p in texto.lower()]
     if r.get("destacada") and r.get("respaldo") != "investigacion-solida": errores.append(f"{i}: destacada sin investigación sólida")
 NIVELES = ["parvularia", "basica", "media", "superior"]
+def validar_bases(fichas):
+    errores = []
+    bases = Counter()
+    for ficha in fichas:
+        base = ficha.get("base")
+        es_dua = ficha.get("tipo") == "dua"
+        if "base" in ficha and (not isinstance(base, bool) or not es_dua or ficha.get("momento") != "antes"):
+            errores.append(f"{ficha['id']}: base debe ser booleana y solo se admite en DUA de Antes")
+        if es_dua and not ficha.get("contextos") and base is not True:
+            errores.append(f"{ficha['id']}: DUA sin contextos y sin base")
+        if base is True and es_dua:
+            bases.update(ficha.get("niveles") or NIVELES)
+    errores.extend(f"{nivel}: más de una ficha base" for nivel, cantidad in bases.items() if cantidad > 1)
+    return errores
+
+errores += validar_bases(R)
 CONTEXTOS = {"practica", "escuchar-leer", "conversar", "experimentar", "crear", "moverse", "escribiendo", "hablando", "haciendo", "grupo", "observacion"}
 for r in R:
     errores += [f"{r['id']}: contexto desconocido {c}" for c in r.get("contextos", []) if c not in CONTEXTOS]
@@ -76,4 +92,5 @@ for n in NIVELES:
     faltan = sorted(CONS - {r["consideracion"] for r in R if r["tipo"] == "dua" and (not r["niveles"] or n in r["niveles"])})
     if faltan: errores.append(f"Nivel {n}: consideraciones DUA sin acción: {', '.join(faltan)}")
 print("\n".join(errores) or f"Catálogo correcto: {len(R)} recomendaciones, {len(set(dua))} de 36 consideraciones DUA.")
-sys.exit(1 if errores else 0)
+if __name__ == "__main__":
+    sys.exit(1 if errores else 0)

@@ -209,6 +209,7 @@ async function probar() {
     await campo('guardar-acuerdos-trabajo').click();
     assert.match(await campo('trabajo-acuerdo-texto').textContent(), /Acuerdos completos/);
     await campo('abrir-mochila').click();
+    await campo('sel-trabajadores').locator('details > summary').first().click();
     await campo('sel-trabajadores').locator('textarea').first().fill('Nota privada del caso');
     await campo('cerrar-mochila').click();
     await campo('trabajo-acuerdo-editar').click();
@@ -216,6 +217,7 @@ async function probar() {
     await campo('abrir-mochila').click();
     assert.match(await campo('sel-trabajadores').innerText(), /PQ/);
     assert.equal(await campo('sel-trabajadores').locator('li').count(), 2);
+    await campo('datos-respaldo').locator(':scope > summary').click();
     assert.equal(await campo('borrar').innerText(), 'Borrar los datos de Práctica y trabajo');
     await campo('pdf-trabajo').click();
     assert(await campo('documento-centro').isVisible());
@@ -438,6 +440,7 @@ async function probar() {
     }
 
     await campo('abrir-mochila').click();
+    if (!await campo('datos-respaldo').evaluate(n => n.open)) await campo('datos-respaldo').locator(':scope > summary').click();
     const descargado = pagina.waitForEvent('download');
     await campo('guardar-respaldo').click();
     const archivo = await (await descargado).path();
