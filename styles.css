@@ -553,3 +553,14 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 #ir-crisis { justify-self: start; min-height: 1.5rem; }
 #documentos-estudiante label { display: flex; align-items: center; gap: .5rem; min-height: 2rem; }
 :is(#nivel-estudiante-estado, #carpetas-estudiante-estado):empty { display: none; }
+
+#mochila .sel-lista { gap: .375rem; }
+#mochila .sel-lista li { gap: .25rem; padding-bottom: .375rem; }
+#sel-lista section + section { margin-top: .75rem; }
+.mochila-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .5rem; }
+#mochila :is(summary, .sel-lista a) { cursor: pointer; min-height: 1.5rem; }
+#mochila .sel-lista a { display: inline-block; }
+#datos-respaldo > :not(summary) { margin-top: .5rem; }
+.mochila-nota textarea { margin-top: .25rem; }
+#formato-documento .ayuda { margin-block: 0 .5rem; margin-inline-start: 1.75rem; }
+.guion-pasos { list-style: none; padding-inline-start: .75rem; }

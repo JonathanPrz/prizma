@@ -283,21 +283,23 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
     <div class="mochila-barra"><h2 id="t-seleccion" tabindex="-1" autofocus>Mi mochila</h2><button type="button" id="cerrar-mochila" class="boton">Cerrar</button></div>
     <p id="sel-vacia" class="ayuda">Todavía no eliges acciones. Usa el botón «Elegir» de cada tarjeta.</p>
     <h3 id="sel-curso-titulo">Para todo el <span data-voc="curso">curso</span></h3>
-    <ol id="sel-lista" class="sel-lista"></ol>
+    <div id="sel-lista"></div>
     <div id="sel-estudiantes"></div>
     <section id="seleccion-trabajo" hidden><h3>Práctica y trabajo</h3><div id="sel-trabajadores"></div><button type="button" id="pdf-trabajo" class="boton boton-principal">Ver documento de trabajo</button></section>
     <div class="sel-botones">
       <button type="button" id="pdf" class="boton boton-principal">Ver documento</button>
       <p class="ayuda">Revisa el documento y descárgalo en PDF o imprímelo.</p>
-      <button type="button" id="guardar-respaldo" class="boton" disabled>Guardar respaldo</button>
-      <div class="abrir-respaldo">
-        <input type="file" id="abrir-respaldo" accept=".json,application/json" aria-describedby="respaldo-ayuda">
-        <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
-      </div>
-      <p id="respaldo-ayuda" class="ayuda">El respaldo guarda los datos de Educación y de Práctica y trabajo en un archivo. Úsalo para no perderlos o pasarlos a otro computador.</p>
-      <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><span class="icono-estado icono-exito" aria-hidden="true">✓</span><p id="respaldo-estado" class="ayuda" aria-live="polite"></p></div>
-      <button type="button" id="borrar" class="boton boton-peligro">Borrar todo</button>
-      <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
+      <details id="datos-respaldo"><summary>Datos y respaldo</summary>
+        <button type="button" id="guardar-respaldo" class="boton" disabled>Guardar respaldo</button>
+        <div class="abrir-respaldo">
+          <input type="file" id="abrir-respaldo" accept=".json,application/json" aria-describedby="respaldo-ayuda">
+          <label for="abrir-respaldo" class="boton">Abrir respaldo</label>
+        </div>
+        <p id="respaldo-ayuda" class="ayuda">El respaldo guarda los datos de Educación y de Práctica y trabajo en un archivo. Úsalo para no perderlos o pasarlos a otro computador.</p>
+        <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><span class="icono-estado icono-exito" aria-hidden="true">✓</span><p id="respaldo-estado" class="ayuda" aria-live="polite"></p></div>
+        <p class="ayuda">Tus datos se guardan solo en este navegador. No hay cuentas ni servidor.</p>
+        <button type="button" id="borrar" class="boton boton-peligro">Borrar todo</button>
+      </details>
     </div>
   </aside>
 </dialog>
@@ -443,7 +445,13 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 
 <dialog id="incluir-documento" class="aviso-privacidad" aria-labelledby="t-incluir-documento">
   <h2 id="t-incluir-documento" tabindex="-1" autofocus>¿Qué quieres incluir en el documento?</h2>
-  <fieldset><legend>Contenido</legend><div id="opciones-documento"></div></fieldset>
+  <fieldset id="formato-documento" hidden><legend>¿Qué documento necesitas?</legend>
+    <label><input type="radio" name="formato-documento" id="formato-guion" value="guion" aria-describedby="guion-ayuda"> Guion de clase (1 página)</label>
+    <p id="guion-ayuda" class="ayuda">La meta y los pasos de cada acción, por momento. Para imprimir y usar en la sala.</p>
+    <label><input type="radio" name="formato-documento" id="formato-plan" value="plan" aria-describedby="plan-ayuda"> Plan completo</label>
+    <p id="plan-ayuda" class="ayuda">Incluye estudiantes, acuerdos y fuentes. Para la reunión con PIE y familia, y para archivar.</p>
+  </fieldset>
+  <fieldset id="contenido-documento"><legend>Contenido</legend><div id="opciones-documento"></div></fieldset>
   <div class="mensaje-estado estado-variable"><span class="icono-estado" aria-hidden="true">✕</span><span class="icono-estado icono-aviso" aria-hidden="true">!</span><p id="error-documento" role="status"></p></div>
   <button type="button" class="boton boton-principal" id="generar-documento">Ver documento</button>
   <button type="button" class="boton" id="cancelar-documento">Cancelar</button>

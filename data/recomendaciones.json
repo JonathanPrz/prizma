@@ -25,6 +25,7 @@
       "superior"
     ],
     "contextos": [],
+    "base": true,
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -409,8 +410,7 @@
     "titulo": "Anticipa lo que puede costar y muestra el error como parte de aprender",
     "como": [
       "Antes de una tarea difícil, di qué parte suele costar.",
-      "Cuenta un error tuyo y qué aprendiste de él.",
-      "Pide a cada uno una meta pequeña para hoy."
+      "Cuenta un error tuyo y qué aprendiste de él."
     ],
     "porque": "Esperar la dificultad y verla como normal reduce la ansiedad y el abandono.",
     "areas": [
@@ -420,7 +420,10 @@
       5
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "experimentar",
+      "crear"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",
@@ -1045,7 +1048,10 @@
       1
     ],
     "niveles": [],
-    "contextos": [],
+    "contextos": [
+      "hablando",
+      "haciendo"
+    ],
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3"
@@ -1205,6 +1211,7 @@
       "parvularia"
     ],
     "contextos": [],
+    "base": true,
     "respaldo": "consenso-expertos",
     "fuentes": [
       "cast-dua-3",

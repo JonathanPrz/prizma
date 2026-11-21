@@ -104,6 +104,7 @@ async function probar() {
       // Recarga y respaldo usan los mismos valores validados, sin requerir descripción.
       await p.click('#abrir-mochila');
       assert(!await p.locator('#guardar-respaldo').isDisabled());
+      await p.locator('#datos-respaldo > summary').click();
       const descarga = p.waitForEvent('download'); await p.click('#guardar-respaldo');
       const archivo = await (await descarga).path(); const respaldo = JSON.parse(fs.readFileSync(archivo, 'utf8'));
       assert.deepEqual(respaldo.momentos, ['durante']); assert.deepEqual(respaldo.propositos, ['presentar']);
@@ -194,7 +195,7 @@ async function probar() {
       await limpiar.click();
       await nodo('practica').check();
       await carpetasEsperadas([
-        ['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes'],
+        ['Antes (11 · 2 responden)', true, 2, 'Ver las otras 9 de Antes'],
         ['Durante (14 · 6 responden)', true, 3, 'Ver las otras 11 de Durante'],
         ['Después (4 · ninguna responde)', false, 0],
         ['En toda la clase (7 · 1 responde)', true, 1, 'Ver las otras 6']
@@ -212,26 +213,23 @@ async function probar() {
       await p.evaluate(() => pintarTarjetas());
       assert.equal(await nodo('dua-momento-durante').evaluate(n => n.open), false);
       await nodo('m-antes').click();
-      await carpetasEsperadas([['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes']]);
-      assert.equal(await nodo('conteo').textContent(), 'Antes: 1 de 11 acciones responde a lo que marcaste');
+      await carpetasEsperadas([['Antes (11 · 2 responden)', true, 2, 'Ver las otras 9 de Antes']]);
+      assert.equal(await nodo('conteo').textContent(), 'Antes: 2 de 11 acciones responden a lo que marcaste');
       await nodo('proposito-motivar').click();
-      await carpetasEsperadas([['Antes (4 · ninguna responde)', true, 4]]);
+      await carpetasEsperadas([['Antes (4 · 1 responde)', true, 1, 'Ver las otras 3 de Antes']]);
       assert(await limpiar.isVisible());
-      assert.equal(await nodo('conteo').textContent(), 'Antes y Compromiso: 0 de 4 acciones responden a lo que marcaste');
-      assert.deepEqual(await tarjetas.locator(':scope > .aviso-apoyos button').allTextContents(), ['Durante (1)', 'En toda la clase (1)']);
-      await tarjetas.getByRole('button', { name: 'Durante (1)', exact: true }).click();
-      assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [['durante'], ['motivar']]);
-      assert(await resumenDurante.evaluate(n => n === document.activeElement));
+      assert.equal(await nodo('conteo').textContent(), 'Antes y Compromiso: 1 de 4 acciones responde a lo que marcaste');
       await limpiar.click();
       assert(!await limpiar.isVisible());
 
       await nodo('practica').uncheck();
       await p.locator('input[value="moverse"]').check();
       await nodo('m-antes').click();
-      await carpetasEsperadas([['Antes (11 · ninguna responde)', true, 11]]);
-      assert.match(await tarjetas.getByRole('status').textContent(), /Ninguna acción de Antes responde.*Responden en:/);
-      await tarjetas.getByRole('button', { name: 'Durante (3)', exact: true }).click();
-      assert.deepEqual(await p.evaluate(() => estado.momentos), ['durante']);
+      await carpetasEsperadas([['Antes (11 · 1 responde)', true, 1, 'Ver las otras 10 de Antes']]);
+      await nodo('proposito-mostrar').click();
+      assert.match(await tarjetas.getByRole('status').textContent(), /Ninguna acción.*responde.*Responden en:/);
+      await tarjetas.getByRole('button', { name: /^Durante \(/ }).click();
+      assert.deepEqual(await p.evaluate(() => [estado.momentos, estado.propositos]), [['durante'], ['mostrar']]);
       assert(await resumenDurante.evaluate(n => n === document.activeElement));
       await limpiar.click();
       await p.locator('input[value="moverse"]').uncheck();

@@ -85,7 +85,7 @@ async function probar() {
       assert.equal(await nodo('guardar-clase').count(), 0);
       const taller = nodo('practica');
       const primeraCasilla = pagina.locator('#perfil input[name="actividad"]').first();
-      const conteoTaller = '8 de 36 acciones responden a lo que marcaste';
+      const conteoTaller = '9 de 36 acciones responden a lo que marcaste';
       if (width !== 640) {
         assert(!await nodo('necesidades-campo').evaluate(n => n.open));
         if (width === 390) {
