@@ -1,6 +1,6 @@
 # Tarea 070 · Acciones de «Antes» sin contexto, mochila agrupada y documento en dos versiones
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/070-antes-mochila-documento` · Pull request con destino `main`
+Estado: **integrada** (PR #91) · Asignada a: Codex · Rama: `codex/070-antes-mochila-documento` · Pull request con destino `main`
 
 ## Para qué
 Lo decidió un cuarto consejo de inclusión de 10 especialistas, con críticas cruzadas, votación y moderador (21-11-2026), y el dueño lo aprobó. Datos medidos:
