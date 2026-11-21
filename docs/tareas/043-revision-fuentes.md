@@ -1,6 +1,6 @@
 # Tarea 043 · Revisión sistemática de las fuentes: ¿cada ficha dice lo que dice su fuente?
 
-Estado: **pendiente** · Asignada a: Codex (modelo de bajo consumo) · **Va antes de la tarea 042**
+Estado: **integrada en parte**: lotes L1 y L3 (PR #49 y #50), revisión adversarial (PR #52) y correcciones (PR #53). Los lotes L2 y L4 a L8 se cerraron sin integrar · Asignada a: Codex (modelo de bajo consumo) · **Va antes de la tarea 042**
 
 ## Para qué
 Claude dijo haber revisado las fuentes, pero nadie comprobó que lo que afirma cada ficha esté en la fuente que cita. Esta tarea lo comprueba de dos formas:

@@ -1,6 +1,6 @@
 # Tarea 046 · Corregir la página según la revisión adversarial
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/046-correcciones` · Pull request con destino `main`
+Estado: **integrada** (PR #58 y #59) · Asignada a: Codex · Rama: `codex/046-correcciones` · Pull request con destino `main`
 
 ## Para qué
 La revisión adversarial (`docs/revision-adversarial/README.md`, tarea 042) encontró problemas reales de privacidad, de acuerdos, de textos legales y de accesibilidad. Claude los aceptó en la columna «Respuesta de Claude». Esta tarea corrige **la página**. Claude corrige aparte las fichas del catálogo: O9 a O11, O13 a O17.

@@ -1,6 +1,6 @@
 # Tarea 040 · Simulación de casos, preguntas clave y reauditoría en la web
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/040-simulacion` (un pull request por fase, todos con destino `main`)
+Estado: **integrada** (PR #40, #41 y #42) · Asignada a: Codex · Rama: `codex/040-simulacion` (un pull request por fase, todos con destino `main`)
 
 ## Para qué
 El dueño quiere que Prizma sea un sistema semiautomático. Claude, como asesor, analizó 9 casos y de ese análisis surgieron preguntas clave y errores. Lee:

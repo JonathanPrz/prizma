@@ -1,6 +1,6 @@
 # Tarea 024 · Auditoría: de 1 a 10 estudiantes, ¿las recomendaciones son las adecuadas?
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/024-auditoria-estudiantes`
+Estado: **integrada** (PR #24) · Asignada a: Codex · Rama: `codex/024-auditoria-estudiantes`
 
 ## Para qué
 
