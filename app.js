@@ -1390,7 +1390,7 @@ function prepararIndicador() {
   n.hidden = false; $("#barra-continuar").hidden = false;
   const textos = estado.pestana === "dua" ? ["1 Describe", "2 Elige", "3 Tu selección"] : ["1 Describe", "2 Elige", "3 Acuerda"];
   n.replaceChildren(...pasosActuales().map((id, i) => {
-    const a = el("a", { href: "#" + id }, el("span", { class: "paso-terminado", "aria-hidden": "true", hidden: "", text: "✓" }), textos[i]);
+    const a = el("a", { href: "#" + id }, el("span", { class: "paso-terminado", hidden: "" }, el("span", { "aria-hidden": "true", text: "✓" }), el("span", { class: "solo-lectores", text: "Hecho: " })), textos[i]);
     a.addEventListener("click", (e) => { e.preventDefault(); irPaso(i + 1); });
     return a;
   }));
