@@ -2254,7 +2254,7 @@ function pdfResumenFamilia(d) {
   const ancho = 595.28 - 102, azul = "#2456d6", tenue = "#4f586e";
   return {
     language: "es-CL", info: { title: d.titulo, creator: "Prizma" }, pageSize: "A4", pageMargins: [51, 51, 51, 51],
-    defaultStyle: { font: "Roboto", fontSize: 12, lineHeight: 1.25, color: "#1a2134" },
+    defaultStyle: { font: "Roboto", fontSize: 11.5, lineHeight: 1.15, color: "#1a2134" },
     // Roboto en negrita pesa poco: la jerarquía va con tamaño y color.
     styles: { seccion: { fontSize: 14, color: azul, margin: [0, 16, 0, 4], keepWithNext: true }, aclaracion: { fontSize: 10, color: tenue } },
     content: d.grupos.flatMap((g, i) => [
@@ -2269,11 +2269,11 @@ function pdfResumenFamilia(d) {
         Array.isArray(contenido) ? { ul: contenido } : { text: contenido },
         ...(total ? [{ text: total, margin: [0, 3, 0, 0] }] : [])]),
       { text: g.casa, style: "seccion" },
-      ...g.lineas.map(l => /^_+$/.test(l) ? { canvas: [{ type: "line", x1: 0, y1: 0, x2: ancho, y2: 0, lineWidth: .5, lineColor: "#1a2134" }], margin: [0, 22, 0, 0] } : { text: l }),
+      ...g.lineas.map(l => /^_+$/.test(l) ? { canvas: [{ type: "line", x1: 0, y1: 0, x2: ancho, y2: 0, lineWidth: .5, lineColor: "#1a2134" }], margin: [0, 22, 0, 0] } : { text: l, margin: [0, 6, 0, 0] }),
       { table: { widths: ["*"], body: [[{ stack: g.acuerdos.map((text, k) => ({ text, margin: [0, k ? 4 : 0, 0, 0] })), margin: [8, 7, 8, 7], fillColor: "#f4f6fc" }]] },
-        layout: { hLineWidth: () => 1, vLineWidth: () => 1, hLineColor: () => azul, vLineColor: () => azul }, margin: [0, 10, 0, 0], unbreakable: true },
-      ...(g.paci ? [{ text: g.paci, margin: [0, 8, 0, 0] }] : []),
-      { text: g.pie, fontSize: 10, color: tenue, margin: [0, 8, 0, 0] },
+        layout: { hLineWidth: () => 1, vLineWidth: () => 1, hLineColor: () => azul, vLineColor: () => azul }, margin: [0, 8, 0, 0], unbreakable: true },
+      ...(g.paci ? [{ text: g.paci, margin: [0, 6, 0, 0] }] : []),
+      { text: g.pie, fontSize: 10, color: tenue, margin: [0, 6, 0, 0] },
     ]),
   };
 }

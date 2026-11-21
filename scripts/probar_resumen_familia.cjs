@@ -94,7 +94,7 @@ async function probar() {
     assert.equal(definicion.content.filter(n => n.canvas?.[0]?.lineWidth === .5 && n.margin[1] === 22).length, 2);
     assert.equal(await hoja.locator('.h-familia-linea').count(), 2);
     assert.match(texto, /Lo completamos juntos en la reunión\./);
-    assert.equal(definicion.defaultStyle.fontSize, 12);
+    assert(definicion.defaultStyle.fontSize >= 11.5);
     assert(await nodo('vista').evaluate(n => n.scrollWidth <= n.clientWidth && document.documentElement.scrollWidth <= innerWidth));
     const descarga = pagina.waitForEvent('download');
     await nodo('descargar').click();
@@ -132,8 +132,7 @@ async function probar() {
     assert.equal(await hoja.locator('ul').nth(1).locator('li').count(), 6);
     assert.match(await hoja.innerText(), /El plan completo tiene 8 apoyos\./);
     const referencia = await buffer();
-    // Con la tipografía de la tarea 075 (12 pt) este caso, el más denso, pasa a una segunda hoja; el caso de la tarea 074 (probar_acuerdos) sigue en 1.
-    assert(paginas(referencia) <= 2);
+    assert.equal(paginas(referencia), 1);
     console.log('Resumen de caso denso: 6 situaciones, 6 de 8 apoyos y', paginas(referencia), 'páginas A4.');
     await pagina.keyboard.press('Escape');
 

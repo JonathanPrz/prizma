@@ -227,7 +227,7 @@ async function probar() {
     assert.equal(familia.paginas, 1);
     const resumenPdf = JSON.parse(familia.con.pdf);
     assert.deepEqual(resumenPdf.pageMargins, [51, 51, 51, 51]);
-    assert.deepEqual([resumenPdf.defaultStyle.fontSize, resumenPdf.defaultStyle.lineHeight], [12, 1.25]);
+    assert.deepEqual([resumenPdf.defaultStyle.fontSize, resumenPdf.defaultStyle.lineHeight], [11.5, 1.15]);
     assert.deepEqual([resumenPdf.styles.seccion.fontSize, resumenPdf.styles.seccion.margin[1], resumenPdf.styles.aclaracion.fontSize, resumenPdf.styles.aclaracion.color], [14, 16, 10, '#4f586e']);
     const tituloFamilia = resumenPdf.content.find(n => n.text === 'Apoyos para SP');
     assert.deepEqual([tituloFamilia.fontSize, tituloFamilia.color], [24, '#2456d6']);
