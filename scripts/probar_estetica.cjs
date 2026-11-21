@@ -94,9 +94,9 @@ async function probar() {
     // 1280 px: panel de lo elegido, que reemplaza a la barra.
     for (const colorScheme of ['light', 'dark']) {
       const pagina = await abrir(1280, colorScheme);
-      assert(await pagina.locator('#barra-continuar').isVisible());
-      assert(!await pagina.locator('#panel-elegidas').isVisible(), 'El panel no debe verse en el paso 1');
-      await pagina.click('#continuar');
+      assert(await pagina.locator('#panel-elegidas').isVisible(), 'Desde la tarea 078 el panel se ve ya en el paso 1');
+      assert(!await pagina.locator('#barra-continuar').isVisible());
+      await pagina.click('#panel-ir');
       assert(await pagina.locator('#panel-elegidas').isVisible());
       assert.equal(await pagina.locator('#panel-conteo').textContent(), 'Todavía no eliges acciones.');
       assert(!await pagina.locator('#panel-ir').isVisible());
@@ -122,7 +122,7 @@ async function probar() {
           lineas: [...n.querySelectorAll('li > span')].map(s => Math.round(s.getBoundingClientRect().height / parseFloat(getComputedStyle(s).lineHeight)))
         };
       });
-      assert(medidas.ancho >= 270 && medidas.ancho <= 274, 'Ancho del panel: ' + medidas.ancho);
+      assert(medidas.ancho >= 318 && medidas.ancho <= 322, 'Ancho del panel: ' + medidas.ancho);
       assert.equal(medidas.sticky, 'sticky');
       assert(medidas.despues, 'El panel debe ir después de la columna en el DOM');
       assert(medidas.lineas.every(l => l <= 2), JSON.stringify(medidas.lineas));
@@ -147,8 +147,8 @@ async function probar() {
 
       // Al pasar a Para un estudiante, el panel y la barra vuelven a como estaban.
       await pagina.click('#tab-apoyos');
-      assert(!await panel.isVisible());
-      assert(await pagina.locator('#barra-continuar').isVisible());
+      assert(await panel.isVisible(), 'El panel también está en Para un estudiante');
+      assert(!await pagina.locator('#barra-continuar').isVisible());
       assert.deepEqual(pagina.errores, []);
       await pagina.close();
     }
@@ -156,7 +156,7 @@ async function probar() {
     // Bajo 80 rem y en el teléfono: sin panel y con barra.
     for (const width of [1000, 1262, 390]) {
       const pagina = await abrir(width);
-      await pagina.click('#continuar');
+      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
       await elegir(pagina, 3);
       assert(!await pagina.locator('#panel-elegidas').isVisible(), `Panel visible a ${width} px`);
       assert(await pagina.locator('#barra-continuar').isVisible(), `Barra oculta a ${width} px`);
@@ -165,7 +165,7 @@ async function probar() {
     }
     {
       const pagina = await abrir(1920);
-      await pagina.click('#continuar');
+      await pagina.click('#panel-ir');
       assert(await pagina.locator('#panel-elegidas').isVisible());
       await sinDesborde(pagina, '1920');
       const columna = await caja(pagina, '.columna'), logo = await caja(pagina, '.marca .logo');
@@ -201,7 +201,7 @@ async function probar() {
       assert.equal(indicador[0].color, tokens.texto);
       assert.equal(indicador[1].color, tokens.tenue);
       await pagina.keyboard.press('Tab');
-      await pagina.click('#continuar');
+      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
       await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]')?.textContent.includes('2 Elige'));
       await elegir(pagina, 1);
       const hecho = await pagina.locator('#indicador-pasos a').nth(1).innerText();
@@ -272,7 +272,7 @@ async function probar() {
       assert((await caja(pagina, '#limpiar-clase')).h >= 24);
 
       await pagina.locator('#perfil input[name="actividad"]').first().check();
-      await pagina.click('#continuar');
+      await pagina.locator('#continuar:visible, #panel-ir:visible').click();
       await pagina.evaluate(() => document.querySelectorAll('#tarjetas details').forEach(d => { d.open = true; }));
       const controles = await pagina.evaluate(() => {
         const alto = selector => [...document.querySelectorAll(selector)].filter(n => n.checkVisibility()).map(n => [selector, Math.round(n.getBoundingClientRect().height * 10) / 10]);

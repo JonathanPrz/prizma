@@ -45,7 +45,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <p id="estado-catalogo" role="status">Cargando los apoyos…</p>
   <div id="migracion-practica" role="status"></div>
   <div class="contexto" id="contexto" hidden>
-    <label id="nivel-campo">Nivel
+    <label id="nivel-campo"><span id="nivel-etiqueta">Nivel para el curso</span>
           <select id="nivel" name="nivel" aria-describedby="nivel-ayuda">
             <option value="parvularia">Educación parvularia</option>
             <option value="basica" selected>Educación básica</option>
@@ -54,7 +54,10 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
             <option value="practica-trabajo">Práctica y trabajo</option>
           </select>
         </label>
-    <p id="nivel-ayuda" class="ayuda" hidden>Para coordinar la práctica profesional, acompañar un primer empleo o hacer ajustes en un lugar de trabajo</p>
+    <div id="nivel-ayudas" class="nivel-ayudas">
+      <p id="nivel-ayuda" class="ayuda">Ordena las acciones para todo el curso. Cada estudiante tiene su propio nivel.</p>
+      <p id="nivel-casos-estado" class="ayuda" role="status"></p>
+    </div>
     <div id="pestanas-educacion" class="pestanas" role="tablist" aria-label="Tipo de acciones">
       <button type="button" id="tab-dua" role="tab" aria-controls="panel-dua" aria-selected="true" tabindex="0">Para el curso (DUA)</button>
       <button type="button" id="tab-apoyos" role="tab" aria-controls="panel-apoyos" aria-selected="false" tabindex="-1">Para un estudiante</button>
@@ -134,6 +137,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <section id="panel-apoyos" class="explorador" role="tabpanel" aria-labelledby="tab-apoyos" tabindex="-1" hidden>
     <div class="cabecera-intro">
       <h1 id="t-estudiante">Apoyos para un estudiante</h1>
+      <p id="nivel-caso" class="nivel-caso"></p>
       <p id="bajada-apoyos" class="bajada">Cuando las acciones para todo el curso no bastan, un estudiante puede necesitar apoyos propios. Se acuerdan con él, su familia y el equipo.</p>
       <div id="revision-situaciones" class="aviso-apoyos" role="region" aria-label="Revisa las situaciones guardadas" hidden>
         <p><span class="icono-estado" aria-hidden="true">!</span> <span id="revision-situaciones-texto"></span></p>
@@ -147,7 +151,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <div id="paso-descripcion-resumen" class="paso-resumen" hidden><p id="paso-descripcion-texto"></p><button type="button" class="boton" id="paso-descripcion-editar">Editar<span class="solo-lectores"> 1. Describe la situación de un estudiante</span></button></div>
   <div id="paso-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-caso" class="perfil-campos">        <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" aria-describedby="iniciales-ayuda iniciales-duplicadas" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
         <p id="iniciales-duplicadas" class="ayuda" role="status"></p>
-        <label for="nivel-estudiante">¿En qué nivel está?
+        <label for="nivel-estudiante">Nivel de este estudiante
           <select id="nivel-estudiante" aria-describedby="nivel-estudiante-ayuda">
             <option value="parvularia">Educación parvularia</option>
             <option value="basica" selected>Educación básica</option>
@@ -273,6 +277,7 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   </div>
   <aside id="panel-elegidas" class="panel-elegidas" aria-labelledby="t-panel-elegidas" hidden>
     <h2 id="t-panel-elegidas">Lo que elegiste</h2>
+    <p id="panel-nivel" class="panel-conteo" hidden></p>
     <p id="panel-conteo" class="panel-conteo"></p>
     <div id="panel-grupos"></div>
     <button type="button" id="panel-ir" class="boton" hidden>Ir a tu selección</button>

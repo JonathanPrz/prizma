@@ -37,10 +37,12 @@ async function probar() {
       await pagina.goto(url);
       await pagina.waitForSelector('#contexto');
       const nodo = id => pagina.locator('#' + id);
-      // Tarea 076: desde 80 rem el panel de lo elegido reemplaza a la barra en los pasos 2 y 3 de DUA.
+      // Tareas 076 y 078: desde 80 rem el panel de lo elegido reemplaza a la barra en todos los pasos.
       const hayPanel = width >= 1280;
       const activo = pagina.locator('#indicador-pasos [aria-current="step"]');
-      assert(await nodo('barra-continuar').isVisible());
+      // Tarea 078: con panel, la barra se oculta desde el paso 1.
+      assert.equal(await nodo('barra-continuar').isVisible(), !hayPanel);
+      assert.equal(await nodo('panel-elegidas').isVisible(), hayPanel);
 
       async function verificarResultados(titulo, primerControl) {
         await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]')?.textContent.includes('2 Elige'));
@@ -180,7 +182,8 @@ async function probar() {
       await nodo('tab-apoyos').click();
       await nodo('iniciales').fill('JP');
       assert(!(await nodo('continuar-conteo').isVisible()));
-      assert(await nodo('continuar').evaluate(b => {
+      if (hayPanel) assert.equal(await nodo('panel-ir').textContent(), await nodo('continuar').textContent());
+      else assert(await nodo('continuar').evaluate(b => {
         const contenido = b.parentElement;
         return Math.abs(contenido.getBoundingClientRect().right -
           parseFloat(getComputedStyle(contenido).paddingRight) - b.getBoundingClientRect().right) <= 1;
@@ -293,8 +296,11 @@ async function probar() {
       await pagina.locator('input[name="dimension-2"][value="2"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
-      assert(await nodo('continuar-conteo').isVisible());
-      assert.equal(await nodo('continuar-conteo').textContent(), '0 elegidos para JP');
+      if (hayPanel) assert.equal(await nodo('panel-conteo').textContent(), '0 apoyos elegidos');
+      else {
+        assert(await nodo('continuar-conteo').isVisible());
+        assert.equal(await nodo('continuar-conteo').textContent(), '0 elegidos para JP');
+      }
       const gruposApoyos = nodo('apoyos-resultados').locator('details[data-grupo]');
       assert.equal(await nodo('apoyos-resultados').locator('.tarjeta:visible').count(), 0);
       assert.equal(await nodo('apoyos-resultados').locator('.tarjeta').count(), await gruposApoyos.locator('li.tarjeta').count());
@@ -314,7 +320,7 @@ async function probar() {
         const indicador = document.querySelector('#indicador-pasos');
         const arriba = getComputedStyle(indicador).position === 'sticky'
           ? indicador.getBoundingClientRect().bottom : document.querySelector('.cabecera').getBoundingClientRect().bottom;
-        const abajo = Math.min(innerHeight, document.querySelector('#barra-continuar').getBoundingClientRect().top);
+        const abajo = Math.min(innerHeight, barraVisible() ? document.querySelector('#barra-continuar').getBoundingClientRect().top : innerHeight);
         return {
           enfocada: titulo === document.activeElement && titulo.tabIndex === -1,
           abierta: n.closest('details[data-grupo]').open,
@@ -349,8 +355,11 @@ async function probar() {
       await elegir.click();
       assert(await botonElegir.evaluate(b => b === document.activeElement && b.getAttribute('aria-pressed') === 'true'));
       assert(await detalle.evaluate(d => d.open));
-      assert(await nodo('continuar-conteo').isVisible());
-      assert.equal(await nodo('continuar-conteo').textContent(), '1 elegido para JP');
+      if (hayPanel) assert.equal(await nodo('panel-conteo').textContent(), '1 apoyo elegido');
+      else {
+        assert(await nodo('continuar-conteo').isVisible());
+        assert.equal(await nodo('continuar-conteo').textContent(), '1 elegido para JP');
+      }
       if (width === 390) {
         assert(await nodo('continuar-conteo').evaluate(n => {
           const caso = n.querySelector('#continuar-caso');
@@ -358,6 +367,8 @@ async function probar() {
             getComputedStyle(caso).position === 'absolute' && caso.getBoundingClientRect().width === 1;
         }));
       }
+      // La geometría de la barra solo importa donde la barra se ve.
+      if (!hayPanel) {
       const geometria = await pagina.evaluate(async () => {
         const barra = document.querySelector('#barra-continuar');
         const raiz = document.documentElement;
@@ -383,6 +394,7 @@ async function probar() {
         return medidas;
       });
       assert.deepEqual(geometria, { visibleMitad: true, anchoCompleto: true, antesPie: true, sinFranja: true });
+      }
 
       async function verificarErrores(trabajo) {
         const prefijo = trabajo ? 'trabajo-acuerdo-' : 'acuerdo-';
@@ -394,7 +406,7 @@ async function probar() {
           arriba: document.querySelector('#indicador-pasos').getBoundingClientRect().bottom,
           titulo: input.closest('section').querySelector('h2').getBoundingClientRect().top,
           control: input.getBoundingClientRect().bottom,
-          abajo: document.querySelector('#barra-continuar').getBoundingClientRect().top
+          abajo: barraVisible() ? document.querySelector('#barra-continuar').getBoundingClientRect().top : innerHeight
         }));
         assert(posicion.titulo >= posicion.arriba && posicion.control < posicion.abajo, JSON.stringify(posicion));
         const titulo = nodo(trabajo ? 'trabajo-acuerdo-toggle' : 'paso-acuerdos-toggle');
@@ -434,7 +446,7 @@ async function probar() {
         assert(await ultimoCampo.evaluate(campo => {
           const barra = document.querySelector('#barra-continuar');
           window.scrollBy(0, campo.getBoundingClientRect().bottom - barra.getBoundingClientRect().top - 12);
-          const cubierto = campo.getBoundingClientRect().bottom > barra.getBoundingClientRect().top;
+          const cubierto = !barraVisible() || campo.getBoundingClientRect().bottom > barra.getBoundingClientRect().top;
           campo.blur();
           campo.focus({ preventScroll: true });
           return cubierto;
@@ -445,7 +457,7 @@ async function probar() {
           const arriba = getComputedStyle(indicador).position === 'sticky' ?
             indicador.getBoundingClientRect().bottom : document.querySelector('.cabecera').getBoundingClientRect().bottom;
           return document.activeElement === campo && r.top >= arriba &&
-            r.bottom <= Math.min(innerHeight, document.querySelector('#barra-continuar').getBoundingClientRect().top);
+            r.bottom <= Math.min(innerHeight, barraVisible() ? document.querySelector('#barra-continuar').getBoundingClientRect().top : innerHeight);
         }));
         await nodo(trabajo ? 'guardar-acuerdos-trabajo' : 'guardar-acuerdos').click();
         assert.equal(await nodo('continuar').innerText(), 'Ver documento');
