@@ -12,7 +12,7 @@ const jp = {
   acuerdo: { revision: '2026-12-15', criterio: 'Completa la primera parte de la tarea.' }
 };
 const am = { id: 'am', iniciales: 'AM', nivel: 'superior', dimensiones: { 1: 2 } };
-const lc = { ...jp, id: 'lc', iniciales: 'LC', nivel: 'media', paci: false, acuerdo: {}, voz: 'Prefiere leer con alguien.' };
+const lc = { ...jp, id: 'lc', iniciales: 'LC', nivel: 'media', paci: false, seleccion: {}, acuerdo: {}, voz: 'Prefiere leer con alguien.' };
 
 async function probar() {
   const servidor = http.createServer(async (req, res) => {
@@ -77,6 +77,12 @@ async function probar() {
     assert.equal(apoyos.length, 2);
     assert(apoyos.includes('Lee en voz alta los enunciados o entrégalos en audio'));
     const definicion = await pagina.evaluate(() => definicionPdf());
+    const tituloApoyos = 'Qué haremos en el colegio';
+    const aclaracion = 'Estas son las indicaciones para el equipo del colegio. No tienen que hacerlas en casa.';
+    assert(texto.replace(/\s+/g, ' ').includes([tituloApoyos, aclaracion, apoyos[0]].join(' ')));
+    const indiceApoyos = definicion.content.findIndex(n => n.text === tituloApoyos);
+    assert(indiceApoyos >= 0);
+    assert.deepEqual(definicion.content.slice(indiceApoyos + 1, indiceApoyos + 3), [{ text: aclaracion }, { ul: apoyos }]);
     for (const contenido of [texto, JSON.stringify(definicion.content)]) {
       assert.doesNotMatch(contenido, /Lo que nos contaron|Barreras y facilitadores|Adecuaciones de acceso|DUA 3\.0|Fuentes|Nota privada docente|PAEC|\bDEC\b/);
       assert.match(contenido, /Tiene un Plan de Adecuación Curricular Individual \(PACI\)\. Pueden pedir verlo\./);
@@ -102,7 +108,13 @@ async function probar() {
     assert.match(await segundaHoja.innerText(), /Apoyos para LC[\s\S]*Lo que nos contaron[\s\S]*Prefiere leer con alguien/);
     assert.doesNotMatch(await segundaHoja.innerText(), /PACI/);
     assert.match(await segundaHoja.innerText(), /Próxima conversación: _+[\s\S]*¿Cómo sabremos que funciona\?: _+/);
-    assert.equal(await pagina.evaluate(() => definicionPdf().content.filter(n => n.pageBreak === 'before').length), 1);
+    assert(!(await segundaHoja.innerText()).includes(aclaracion));
+    assert.equal(await segundaHoja.getByRole('heading', { name: tituloApoyos }).count(), 0);
+    const contenidoDosCasos = await pagina.evaluate(() => definicionPdf().content);
+    assert.equal(contenidoDosCasos.filter(n => n.pageBreak === 'before').length, 1);
+    const segundaPagina = contenidoDosCasos.findIndex(n => n.pageBreak === 'before');
+    assert(segundaPagina > 0);
+    assert(!contenidoDosCasos.slice(segundaPagina).some(n => n.text === aclaracion || n.text === tituloApoyos));
     await pagina.keyboard.press('Escape');
 
     await pagina.evaluate(() => {
