@@ -155,7 +155,7 @@ async function probar() {
     const plan = await pagina.evaluate(() => { armarHoja(); return { hoja: $('#hoja').innerText, pdf: JSON.stringify(definicionPdf()), modelo: documento() }; });
     for (const texto of [plan.hoja, plan.pdf]) {
       assert(!texto.includes('Acciones para todo el curso'));
-      assert(texto.includes('Nivel del curso') && texto.includes('Documentos'));
+      assert(!texto.includes('Nivel del curso') && texto.includes('Documentos'), 'un curso sin contenido no muestra su nivel');
       assert(!texto.includes('No informado'));
       assert(texto.includes('Apoyos (n.º de ficha)'));
       assert(texto.includes('Coordina: Equipo PIE') && texto.includes('Qué probarán en casa: Usar la agenda'));

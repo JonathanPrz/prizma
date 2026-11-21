@@ -2161,9 +2161,11 @@ function documento(opciones = inclusionDocumento || { curso: true, estudiantes: 
   const textos = (nombre) => [...document.querySelectorAll(`input[name="${nombre}"]`)].filter((c) => estado.perfil[nombre].includes(c.value)).map((c) => c.closest("label").textContent.trim()).join(", ");
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
   const titulo = alumnos.length ? "Plan de apoyos para el aprendizaje" : "Acciones para todo el curso";
-  const contenido = [opciones.curso ? "Curso" : "", alumnos.length ? plural(alumnos.length, "estudiante", "estudiantes") : ""].filter(Boolean).join(" y ");
+  // Un curso incluido sin acciones, meta ni reflexión no aporta nada y confunde el nivel con el del estudiante.
+  const cursoConContenido = opciones.curso && Boolean(sel.length || estado.perfil.reflexion?.trim() || estado.perfil.meta.trim() || !alumnos.length);
+  const contenido = [cursoConContenido ? "Curso" : "", alumnos.length ? plural(alumnos.length, "estudiante", "estudiantes") : ""].filter(Boolean).join(" y ");
   return { titulo, fecha, logo: logoDocumento(), curso: opciones.curso,
-    resumen: [["Fecha", fecha], ...(opciones.curso ? [["Nivel del curso", NIVELES[estado.perfil.nivel]]] : []), ...(practicaActiva() ? [["Clase práctica", "Clase con taller, laboratorio o terreno"]] : []),
+    resumen: [["Fecha", fecha], ...(cursoConContenido ? [["Nivel del curso", NIVELES[estado.perfil.nivel]]] : []), ...(practicaActiva() ? [["Clase práctica", "Clase con taller, laboratorio o terreno"]] : []),
       ...(estado.perfil.actividad.length ? [["Actividad de la clase", textos("actividad")]] : []),
       ...(estado.perfil.evidencia.length ? [["Cómo mostrarán lo aprendido", textos("evidencia")]] : []),
       ["Meta de aprendizaje", estado.perfil.meta.trim()],
