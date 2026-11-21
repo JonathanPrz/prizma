@@ -1,6 +1,6 @@
 # Tarea 074 · Paso 3 «Acuerdos» con ayuda, coordinación y casa, y errores de contenido de los documentos
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/074-acuerdos-documentos` · Pull request con destino `main`
+Estado: **integrada** (PR #95) · Asignada a: Codex (lo implementó un agente de Claude) · Rama: `codex/074-acuerdos-documentos` · Pull request con destino `main`
 
 ## Para qué
 Un consejo de 5 especialistas (21-11-2026), con críticas cruzadas y votos, revisó el paso 3 y dos PDF reales del dueño. El dueño aprobó la síntesis.
