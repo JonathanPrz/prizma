@@ -68,18 +68,19 @@ async function navegador() {
       assert((await p.locator('#guia-dua').innerText()).includes('experiencia de aprendizaje'));
       await p.keyboard.press('Escape');
       assert.equal(await p.evaluate(()=>document.activeElement.className),'enlace-guia-dua');
-      await p.selectOption('#nivel','superior');await p.click('#tab-apoyos');
+      await p.selectOption('#nivel','superior');await p.click('#tab-apoyos');await p.selectOption('#nivel-estudiante','superior');
       assert.equal(await p.locator('#voz-etiqueta').innerText(),'¿Qué dice el estudiante?');
       await p.fill('#iniciales','JP');await p.click('#privacidad-entendido');
-      p.once('dialog',d=>d.dismiss());await p.selectOption('#nivel','basica');
+      assert(!await p.locator('#nivel').isVisible());
+      await p.selectOption('#nivel-estudiante','basica');
+      assert.equal(await p.locator('#nivel-estudiante').inputValue(),'basica');
       assert.equal(await p.locator('#nivel').inputValue(),'superior');
-      p.once('dialog',d=>{assert.equal(d.message(),'Cambiar el nivel cambia los apoyos sugeridos de tus 1 casos. Lo que ya elegiste se conserva');d.accept();});await p.selectOption('#nivel','basica');
       await p.evaluate(()=>{Object.assign(estudianteActual(),normalizarEstudiante({iniciales:'JP',dimensiones:{1:3},descripcionGuardada:true}));estudianteActual().seleccion={'acc-1-agenda':'Nota educativa'};sincronizarEstudiante();pintarSeleccion();});
       await p.click('#documento-estudiante');await p.click('#generar-documento');await p.waitForSelector('#vista[open]');
       assert((await p.locator('#hoja').innerText()).includes('Borrador: acuerdos sin completar'));
       const definicion=await p.evaluate(()=>definicionPdf());assert(JSON.stringify(definicion.content.slice(0,4)).includes('Borrador: acuerdos sin completar'));
       await p.keyboard.press('Escape');
-      await p.locator('#nivel').focus();await p.keyboard.press('End');assert.equal(await p.locator('#nivel').inputValue(),'practica-trabajo');
+      await p.click('#tab-dua');await p.locator('#nivel').focus();await p.keyboard.press('End');assert.equal(await p.locator('#nivel').inputValue(),'practica-trabajo');
       assert(await p.locator('#nivel').isVisible());assert(!await p.locator('#tab-dua').isVisible());assert(!await p.locator('#pie-educacion').isVisible());
       await p.fill('#trabajo-iniciales','AB');await p.waitForSelector('#aviso-privacidad[open]');
       assert((await p.locator('#aviso-privacidad').innerText()).includes('154 ter'));
@@ -99,7 +100,7 @@ async function navegador() {
       assert.deepEqual(errores,[]);await p.close();
     }
     const p=await browser.newPage();await p.addInitScript(()=>{Storage.prototype.getItem=Storage.prototype.setItem=()=>{throw Error('bloqueado');};});await p.goto(url+'/#trabajo');await p.waitForFunction(()=>catalogo.length>0);assert(await p.locator('#panel-trabajo').isVisible());await p.close();
-    console.log('Correcto: ambos temas/ancho, teclado/foco, guías, confirmación de nivel, borradores, mochila/privacidad/borrado por ámbito, recarga, almacenamiento bloqueado y sin desborde.');
+    console.log('Correcto: ambos temas/ancho, teclado/foco, guías, niveles independientes, borradores, mochila/privacidad/borrado por ámbito, recarga, almacenamiento bloqueado y sin desborde.');
   } finally { await browser.close(); await new Promise(ok=>servidor.close(ok)); }
 }
 navegador().catch(error=>{console.error(error);process.exitCode=1;});

@@ -14,7 +14,7 @@ run('necesidades=validarNecesidades(necesidadesReales);fuentes=validarFuentes(fu
 assert.deepEqual(dato('catalogo'),recomendaciones,'Se modificó o descartó una ficha');
 assert.deepEqual(dato('Object.values(fuentes)'),referencias,'Se modificó o descartó una fuente');
 assert.equal(run('DIMENSIONES.length'),14);
-assert.equal(run('normalizarPerfil({nivel:"practica-trabajo"}).nivel'),"");
+assert.equal(run('normalizarPerfil({nivel:"practica-trabajo"}).nivel'),"basica");
 for(const nivel of opciones.map(o=>o.value).filter(nivel=>nivel!=="practica-trabajo")){
  c.nivel=nivel;
  run(`var entrada={app:'prizma',version:2,claseGuardada:true,mantenerIndividual:catalogo.filter(r=>r.dua).map(r=>r.id),
@@ -27,7 +27,7 @@ for(const nivel of opciones.map(o=>o.value).filter(nivel=>nivel!=="practica-trab
  const {seleccion,...resto}=original;
  const escolar=Object.fromEntries(Object.entries(seleccion).filter(([id])=>!id.startsWith('pp-')));
  const practica=Object.fromEntries(Object.entries(seleccion).filter(([id])=>id.startsWith('pp-')));
- assert.deepEqual(dato('vuelta.estudiantes'),[{...resto,practicaProfesional:false,seleccion:escolar}]);
+ assert.deepEqual(dato('vuelta.estudiantes'),[{...resto,nivel,practicaProfesional:false,seleccion:escolar}]);
  const [laboral,migrado]=dato('vuelta.trabajadores');
  assert.deepEqual(laboral,{...dato('entrada.trabajadores[0]'),etapa:'trabajo',nivelOrigen:'media'});
  assert.equal(migrado.etapa,'practica');

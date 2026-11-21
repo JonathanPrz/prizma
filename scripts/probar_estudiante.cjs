@@ -15,7 +15,7 @@ assert.ok(apoyos.filter(r => r.dimensiones.includes(6)).length >= 2);
 assert.ok(apoyos.every((r, i) => !i || apoyos[i - 1].puntos >= r.puntos));
 vm.runInContext('estudianteActual().dimensiones[2] = 1;', contexto);
 assert.ok(ejecutar('accesosVisibles().some(r => r.id === "acc-2-audio")'));
-vm.runInContext('estado.perfil.nivel = "parvularia";', contexto);
+vm.runInContext('estudianteActual().nivel = "parvularia";', contexto);
 assert.equal(ejecutar('accesosVisibles().some(r => r.id === "acc-2-audio")'), false);
 console.log('Correcto: validación del estudiante, puntaje, visión y audición y exclusión por nivel.');
 
@@ -23,8 +23,8 @@ contexto.document = {
   querySelector: () => ({ options: [{value: ""}, {value: "basica"}, {value: "parvularia"}] }),
   querySelectorAll: () => [],
 };
-assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}}).estudiantes[0])'), {iniciales: '', dimensiones: {}, ayuda: '', modalidad: '', paci: false, paec: false, dec: false, revisarInstrumentos: false, practicaProfesional: false, descripcionGuardada: false, acuerdo: {roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos'}, voz: ''});
-assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}, estudiante: {iniciales: "AB12", dimensiones: {6: 3, 15: 2}, ayuda: "x".repeat(301)}}).estudiantes[0])'), {iniciales: '', dimensiones: {6: 3}, ayuda: 'x'.repeat(300), modalidad: '', paci: false, paec: false, dec: false, revisarInstrumentos: false, practicaProfesional: false, descripcionGuardada: true, acuerdo: {roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos'}, voz: ''});
+assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}}).estudiantes[0])'), {nivel: 'basica', iniciales: '', dimensiones: {}, ayuda: '', modalidad: '', paci: false, paec: false, dec: false, revisarInstrumentos: false, practicaProfesional: false, descripcionGuardada: false, acuerdo: {roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos'}, voz: ''});
+assert.deepEqual(ejecutar('normalizarEstudiante(validarRespaldo({app: "prizma", version: 1, perfil: {}, seleccion: {}, estudiante: {iniciales: "AB12", dimensiones: {6: 3, 15: 2}, ayuda: "x".repeat(301)}}).estudiantes[0])'), {nivel: 'basica', iniciales: '', dimensiones: {6: 3}, ayuda: 'x'.repeat(300), modalidad: '', paci: false, paec: false, dec: false, revisarInstrumentos: false, practicaProfesional: false, descripcionGuardada: true, acuerdo: {roles: [], fecha: '', revision: '', criterio: '', estado: 'sin-acuerdos'}, voz: ''});
 vm.runInContext('estudianteActual().iniciales = "ÁÑ"; estudianteActual().ayuda = "Apoyos visuales"; estudianteActual().seleccion = {"acc-1-partes": "Una nota"}; fuentes = Object.fromEntries(catalogo.flatMap(r => r.fuentes).map(id => [id, {cita: id, url: "https://example.org"}]));', contexto);
 const doc = ejecutar('documento()');
 assert.equal(doc.grupos.length, 1);
@@ -35,15 +35,15 @@ assert.match(doc.grupos[0].acciones[0].dato, /Adecuación de acceso: Organizaci�
 assert.ok(ejecutar('JSON.stringify(definicionPdf())').includes('Apoyos para ÁÑ'));
 console.log('Correcto: respaldo antiguo y validado, documento separado y definición PDF con tipos oficiales.');
 
-vm.runInContext('estado.perfil.nivel = "basica";', contexto);
+vm.runInContext('estudianteActual().nivel = "basica";', contexto);
 assert.deepEqual([...new Set(ejecutar('objetivosVisibles().map(r => r.subtipo)'))], ['graduacion', 'priorizacion', 'temporalizacion', 'enriquecimiento', 'eliminacion']);
-vm.runInContext('estado.perfil.nivel = "parvularia";', contexto);
+vm.runInContext('estudianteActual().nivel = "parvularia";', contexto);
 assert.deepEqual(ejecutar('objetivosVisibles()'), []);
-for (const nivel of ['', 'parvularia', 'basica', 'media']) {
-  vm.runInContext(`estado.perfil.nivel = ${JSON.stringify(nivel)};`, contexto);
+for (const nivel of ['parvularia', 'basica', 'media']) {
+  vm.runInContext(`estudianteActual().nivel = ${JSON.stringify(nivel)};`, contexto);
   assert.deepEqual(ejecutar('Object.keys(MOMENTOS_DEC).map(subtipo => catalogo.filter(r => r.tipo === "desregulacion" && r.subtipo === subtipo && aplica(r)).length)'), [3, 3, 3]);
 }
-vm.runInContext('estado.perfil.nivel = "basica"; estudianteActual().seleccion = {"obj-eliminacion": "Última", "obj-priorizacion": "Equipo", "dec-durante-validar": "Protocolo", "acc-1-partes": "Acceso"};', contexto);
+vm.runInContext('estudianteActual().nivel = "basica"; estudianteActual().seleccion = {"obj-eliminacion": "Última", "obj-priorizacion": "Equipo", "dec-durante-validar": "Protocolo", "acc-1-partes": "Acceso"};', contexto);
 const ampliado = ejecutar('documento()');
 assert.deepEqual(ampliado.grupos[0].acciones.map(a => a.grupo), ['Adecuaciones de acceso · Organización del tiempo y el horario', 'Adecuaciones en los objetivos', 'Adecuaciones en los objetivos', 'Apoyos ante desregulación']);
 assert.match(ampliado.grupos[0].acciones[1].dato, /Adecuación en los objetivos: Priorización \(Decreto 83\)/);
@@ -70,7 +70,7 @@ assert.equal(ejecutar('documento().grupos.at(-1).voz'), 'Prefiere explicar con d
 assert.equal(ejecutar('documento().grupos.at(-1).acciones.length'), 0);
 // Sin vacíos en el catálogo actual; se simula uno para probar el aviso sin depender del contenido.
 for (const nivel of ['parvularia', 'basica', 'superior']) {
-  vm.runInContext(`estado.perfil.nivel="${nivel}"; Object.assign(estudianteActual(), normalizarEstudiante({dimensiones:{1:1,2:2,10:2,11:3}}))`, contexto);
+  vm.runInContext(`estudianteActual().nivel="${nivel}"; Object.assign(estudianteActual(), normalizarEstudiante({dimensiones:{1:1,2:2,10:2,11:3}}))`, contexto);
   assert.deepEqual(ejecutar('situacionesSinApoyos()'), [], nivel);
 }
 vm.runInContext('var catalogoReal = catalogo; catalogo = catalogo.filter(r => !(r.tipo === "acceso" && r.dimensiones.includes(11)))', contexto);
@@ -89,7 +89,7 @@ for (const [modalidad, ids] of Object.entries(tabla)) {
     assert(['acceso', 'trabajo'].includes(catalogo.find(r => r.id === id)?.tipo), modalidad + ': ' + id);
   }
 }
-vm.runInContext('estado.perfil.nivel = "basica"; estudianteActual().dimensiones = {1: 3}', contexto);
+vm.runInContext('estudianteActual().nivel = "basica"; estudianteActual().dimensiones = {1: 3}', contexto);
 assert.deepEqual(ejecutar('accesosVisibles().map(r => r.id)'), [
   'acc-1-ubicacion', 'acc-1-partes', 'acc-1-organizador', 'acc-7-luz',
   'acc-1-agenda', 'acc-7-desfogue', 'acc-9-jornada', 'acc-9-rutina'
@@ -101,7 +101,7 @@ assert.equal(ejecutar('motivoApoyo(accesosVisibles()[0], {modalidad:"braille", d
 vm.runInContext('estudianteActual().modalidad = "ampliacion"; estudianteActual().dimensiones[6] = 2', contexto);
 assert.equal(ejecutar('accesosVisibles()[0].id'), 'acc-6-ampliar');
 assert(!ejecutar('accesosVisibles().some(r => r.id === "acc-6-braille")'));
-vm.runInContext('estado.perfil.nivel = "superior"; estudianteActual().modalidad = "lengua"; estudianteActual().dimensiones = {1:3}', contexto);
+vm.runInContext('estudianteActual().nivel = "superior"; estudianteActual().modalidad = "lengua"; estudianteActual().dimensiones = {1:3}', contexto);
 assert.equal(ejecutar('accesosVisibles()[0].id'), 'sup-lengua');
 assert(!ejecutar('accesosVisibles().some(r => r.id === "acc-10-familia")'));
 console.log('Correcto: catálogo de modalidades, prioridad, motivo y exclusiones en básica y superior, y orden original sin modalidad.');

@@ -440,6 +440,7 @@ async function probar() {
       const ampliar = nodo('elegir-acc-6-ampliar').locator('xpath=ancestor::li[contains(@class, "tarjeta")]');
       assert.equal(await ampliar.locator('.t-razon').textContent(), 'Porque marcaste: Información que se ve (seguido).');
 
+      await nodo('tab-dua').click();
       await nodo('nivel').selectOption('practica-trabajo');
       await nodo('trabajo-area-0').click();
       await pagina.locator('input[name="trabajo-dimension-1"][value="3"]').check();

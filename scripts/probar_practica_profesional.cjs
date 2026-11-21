@@ -21,7 +21,7 @@ assert.deepEqual(json('estudianteActual().seleccion'),{});assert.equal(run('esta
 assert.equal(run('validarRespaldo(respaldoAntiguo).trabajadores.length'),1);
 assert.equal(run('validarRespaldo(respaldoAntiguo).descartadas'),0);
 for(const nivel of ['basica','parvularia','','media','superior']){
- c.nivel=nivel;run('estado.perfil.nivel=nivel;pintarPrepararPractica()');
+ c.nivel=nivel;run('estudianteActual().nivel=nivel;pintarPrepararPractica()');
  assert.equal(nodos.get('#preparar-practica-campo').hidden,!['media','superior'].includes(nivel));
 }
 run('e.nivelOrigen="superior"');

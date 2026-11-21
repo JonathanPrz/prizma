@@ -46,9 +46,8 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <div class="contexto" id="contexto" hidden>
     <label id="nivel-campo">Nivel
           <select id="nivel" name="nivel" aria-describedby="nivel-ayuda">
-            <option value="">Sin indicar</option>
             <option value="parvularia">Educación parvularia</option>
-            <option value="basica">Educación básica</option>
+            <option value="basica" selected>Educación básica</option>
             <option value="media">Educación media (CH y TP)</option>
             <option value="superior">Educación superior (universidad, IP o CFT)</option>
             <option value="practica-trabajo">Práctica y trabajo</option>
@@ -147,6 +146,16 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
   <div id="paso-descripcion-resumen" class="paso-resumen" hidden><p id="paso-descripcion-texto"></p><button type="button" class="boton" id="paso-descripcion-editar">Editar<span class="solo-lectores"> 1. Describe la situación de un estudiante</span></button></div>
   <div id="paso-descripcion-cuerpo" class="paso-cuerpo"><form id="descripcion-caso" class="perfil-campos">        <label for="iniciales">Iniciales <input id="iniciales" type="text" maxlength="5" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ]{1,4}[0-9]?" aria-describedby="iniciales-ayuda iniciales-duplicadas" autocomplete="off"><span class="ayuda" id="iniciales-ayuda">Solo iniciales. Si se repiten, agrega un número: JP2</span></label>
         <p id="iniciales-duplicadas" class="ayuda" role="status"></p>
+        <label for="nivel-estudiante">¿En qué nivel está?
+          <select id="nivel-estudiante" aria-describedby="nivel-estudiante-ayuda">
+            <option value="parvularia">Educación parvularia</option>
+            <option value="basica" selected>Educación básica</option>
+            <option value="media">Educación media (CH y TP)</option>
+            <option value="superior">Educación superior (universidad, IP o CFT)</option>
+          </select>
+          <span id="nivel-estudiante-ayuda" class="ayuda">Cambia los apoyos y las palabras. Es solo de este estudiante.</span>
+        </label>
+        <p id="nivel-estudiante-estado" class="ayuda" role="status"></p>
         <a href="#aviso-privacidad" class="enlace-privacidad" aria-haspopup="dialog" aria-controls="aviso-privacidad">¿Qué datos puedo escribir?</a>
         <label for="modalidad">¿Qué usa hoy para comunicarse o acceder?<select id="modalidad" aria-describedby="modalidad-ayuda"><option value="">No aplica</option><option value="senas">Lengua de señas</option><option value="braille">Braille</option><option value="ampliacion">Lupa o ampliación</option><option value="caa">Tablero o comunicación aumentativa</option><option value="lengua">Otra lengua materna</option></select><span id="modalidad-ayuda" class="ayuda">Prizma pondrá primero los apoyos para esa forma de comunicarse o acceder</span></label>
         <fieldset class="descripcion-areas"><legend>¿En qué áreas encuentra barreras?</legend><p class="ayuda">¿Con qué frecuencia tiene dificultades en estas situaciones?</p><div id="areas"></div><span class="error-campo" id="acuerdo-descripcion-error"></span></fieldset>
@@ -156,35 +165,38 @@ document.documentElement.dataset.tema = ["claro", "oscuro"].includes(temaInicial
 <div class="mensaje-estado mensaje-error"><span class="icono-estado" aria-hidden="true">✕</span><p id="descripcion-error" role="alert"></p></div><button type="submit" id="guardar-descripcion" class="boton">Guardar descripción</button></form></div>
 </section>    <section id="estudiante" class="paso resultados" tabindex="-1" hidden>
       <h2 id="t-apoyos" tabindex="-1">2. Apoyos sugeridos</h2>
+      <a href="#desregulacion" id="ir-crisis">Ver apoyos ante una crisis</a>
       <p id="aviso-acceso-escolar" class="ayuda">Los apoyos se acuerdan con el estudiante, su familia y el equipo.</p>
       <p id="aviso-acceso-superior" class="ayuda" hidden>Los apoyos se acuerdan con el estudiante y la unidad de inclusión.</p>
       <div id="apoyos-sin-fichas" aria-live="polite"></div>
       <p id="apoyos-estado" class="conteo" aria-live="polite"></p>
-      <ul id="apoyos-adicionales" class="tarjetas" aria-label="Apoyos adicionales" hidden></ul>
-      <div class="mensaje-estado"><span class="icono-estado" aria-hidden="true">!</span><p id="modalidad-revisar" role="status"></p></div><div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
+      <div class="mensaje-estado"><span class="icono-estado" aria-hidden="true">!</span><p id="modalidad-revisar" role="status"></p></div>
       <div id="apoyos-resultados"></div>
-        <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83)</p>
-        <p id="objetivos-superior" class="ayuda" hidden>En superior se hacen ajustes razonables que mantienen los resultados de aprendizaje</p>
+      <div id="estudiante-seguridad" class="aviso-apoyos seguridad" role="status" hidden></div>
+      <fieldset id="documentos-estudiante" aria-describedby="documentos-estudiante-ayuda">
+        <legend>Documentos de este estudiante</legend>
+        <p id="documentos-estudiante-ayuda" class="ayuda">Marca los que ya existen. Salen en tu documento.</p>
+        <label><input type="checkbox" id="paci"> Tiene PACI (Decreto 83)</label>
+        <label><input type="checkbox" id="paec"> Tiene PAEC (estudiante autista)</label>
+        <label><input type="checkbox" id="dec"> Se aplica el protocolo DEC del establecimiento</label>
+      </fieldset>
+      <p id="carpetas-estudiante-estado" class="ayuda" role="status"></p>
+      <p id="objetivos-parvularia" class="ayuda" hidden>En parvularia preferentemente no se adecuan los objetivos (Decreto 83).</p>
       <details id="objetivos" class="bloque-apoyo">
-        <summary>Adecuaciones en los objetivos</summary><p>Apoyo que cambia qué aprende o cuándo. Último paso (Decreto 83).</p>
+        <summary>Si el acceso no basta</summary>
+        <p class="ayuda">Estas adecuaciones cambian qué aprende o cuándo. Son el último paso (Decreto 83). Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
+        <p id="objetivos-media" class="ayuda" hidden>Criterios del Decreto 83, por remisión del Decreto 67, art. 5.</p>
         <label id="asignatura-campo" class="asignatura" for="asignatura">Asignatura
           <select id="asignatura"><option value="">Todas</option><option value="lenguaje">Lenguaje</option><option value="matematica">Matemática</option><option value="ciencias">Ciencias</option><option value="historia">Historia</option></select>
         </label>
-        <p id="objetivos-aviso" class="aviso-apoyos"><span class="icono-estado" aria-hidden="true">!</span> Úsalas solo si las adecuaciones de acceso no bastan. Se deciden con el equipo de apoyo y la familia, con la participación del estudiante, y se registran en el PACI.</p>
-        <label><input type="checkbox" id="paci-objetivos"> Tiene PACI</label>
-        <label><input type="checkbox" id="paec-objetivos"> Tiene PAEC</label>
-        <label><input type="checkbox" id="dec-objetivos"> Se aplica el protocolo DEC del establecimiento</label>
         <div id="objetivos-tarjetas" class="grupos-momentos"></div>
       </details>
       <details id="desregulacion" class="bloque-apoyo">
-        <summary>Apoyos ante desregulación</summary><p>Qué hacer antes, durante y después de una crisis.</p>
-        <label><input type="checkbox" id="paci-dec"> Tiene PACI</label>
-        <label><input type="checkbox" id="paec-dec"> Tiene PAEC</label>
-        <label><input type="checkbox" id="dec-dec"> Se aplica el protocolo DEC del establecimiento</label>
+        <summary>Si hay una crisis</summary>
+        <p class="ayuda">Qué hacer antes, durante y después. Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</p>
         <div id="desregulacion-resultados"></div>
-        <p class="aviso-apoyos"><span class="icono-estado" aria-hidden="true">!</span> <strong>Sigue el protocolo DEC de tu establecimiento. Si el estudiante es autista, revisa su PAEC. Prizma no reemplaza esos documentos.</strong></p>
       </details>
-      <p id="crisis-superior" class="ayuda" hidden>Si un estudiante vive una crisis, sigue el protocolo de tu institución y contacta a su unidad de bienestar o de inclusión.</p>
+      <p id="crisis-superior" class="ayuda" hidden>Si hay una crisis, sigue el protocolo de tu institución y avisa a la unidad de inclusión.</p>
       <button type="button" id="ir-acuerdos" class="boton">Continuar a acuerdos</button><span class="error-campo" id="acuerdo-seleccion-error"></span>
     </section>
     <p id="acuerdos-revisar" class="aviso-apoyos" role="status" hidden><span class="icono-estado" aria-hidden="true">!</span> Cambiaste el caso después del acuerdo. Revisa los acuerdos</p>

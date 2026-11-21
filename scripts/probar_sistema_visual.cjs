@@ -225,13 +225,17 @@ async function probar() {
       assert.match(await tarjetaEstudiante.evaluate(n => getComputedStyle(n).fontFamily), /^"Public Sans",/);
       await verificarTitulos('#panel-apoyos');
       assert.deepEqual(peticionesFuente, [origen + '/vendor/fuentes/public-sans-latin.woff2']);
-      await pagina.locator('#nivel').focus();
-      const foco = await pagina.locator('#nivel').evaluate(n => {
+      await pagina.click('#paso-descripcion-editar');
+      await pagina.keyboard.press('Tab');
+      await pagina.locator('#nivel-estudiante').focus();
+      assert(await pagina.locator('#nivel-estudiante').evaluate(n => n === document.activeElement));
+      const foco = await pagina.locator('#nivel-estudiante').evaluate(n => {
         const css = getComputedStyle(n);
         return [css.outlineWidth, css.outlineOffset];
       });
       assert.deepEqual(foco, ['3px', '2px']);
 
+      await pagina.click('#tab-dua');
       await pagina.selectOption('#nivel', 'practica-trabajo');
       await verificarCasoActivo('#lista-trabajadores');
       assert.equal(await pagina.locator('#continuar').textContent(), 'Guardar y ver ajustes');

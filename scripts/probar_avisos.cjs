@@ -33,7 +33,7 @@ for(const bloqueado of [false,true]) {
  const v=visita(bloqueado),{run,n,abiertos,c}=v;
  for(const id of ['dua','apoyos','dua','apoyos']){run(`mostrarPestana('${id}')`);assert.equal(abiertos().length,0);}
  for(const superior of [false,true]){
-  run(`estado.perfil.nivel='${superior?'superior':'media'}'`);
+  run(`estudianteActual().nivel='${superior?'superior':'media'}'`);
   for(const enlace of v.apoyos){enlace.emit('click');assert(n('guia-apoyos').open);assert.equal(c.document.activeElement.id,'t-guia-apoyos');assert.equal(n('t-guia-apoyos').textContent,superior?'¿Qué son los ajustes razonables?':'¿Qué son los apoyos para un estudiante?');assert.equal(n('guia-apoyos-escolar').hidden,superior);assert.equal(n('guia-apoyos-superior').hidden,!superior);n('guia-apoyos-entendido').emit('click');assert.equal(c.document.activeElement,enlace);}
  }
  v.guias[0].emit('click');run('mostrarGuiaApoyos()');assert(!n('guia-apoyos').open);n('guia-dua').close();assert.equal(c.document.activeElement,v.guias[0]);
@@ -45,9 +45,9 @@ for(const campo of ['iniciales','estudiante-ayuda','estudiante-voz']){
  const v=visita(),{run,n}=v;
  run('pintarSeleccion=()=>{}; pintarSelectorEstudiantes=()=>{}; escucharEstudiante()');
  n(campo).value=campo==='iniciales'?'AB':'Apoyo visual';n(campo).emit('input');assert(n('aviso-privacidad').open);assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'2. Apoyos sugeridos para AB':'2. Apoyos sugeridos para Estudiante 1');n('privacidad-entendido').emit('click');assert.equal(v.almacen.get('prizma.privacidad.v1'),'1');n(campo).emit('input');assert.equal(v.abiertos().length,0);
- run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'2. Ajustes razonables sugeridos para AB':'2. Ajustes razonables sugeridos para Estudiante 1');
+ run("estudianteActual().nivel='superior'; pintarTituloApoyos()");assert.equal(n('t-apoyos').textContent,campo==='iniciales'?'2. Ajustes razonables sugeridos para AB':'2. Ajustes razonables sugeridos para Estudiante 1');
 }
-const sinIniciales=visita();sinIniciales.run("estado.perfil.nivel='superior'; pintarTituloApoyos()");assert.equal(sinIniciales.n('t-apoyos').textContent,'2. Ajustes razonables sugeridos para Estudiante 1');
+const sinIniciales=visita();sinIniciales.run("estudianteActual().nivel='superior'; pintarTituloApoyos()");assert.equal(sinIniciales.n('t-apoyos').textContent,'2. Ajustes razonables sugeridos para Estudiante 1');
 const recordada=visita(false,true);assert(recordada.run('privacidadAvisada'));recordada.privacidad[1].emit('click');assert(recordada.n('aviso-privacidad').open);
 const mochila=visita();const nota=mochila.nodo('nota');nota.dialogo=mochila.n('mochila');mochila.c.nota=nota;mochila.n('mochila').showModal();mochila.run('mostrarAvisoPrivacidad(nota)');assert(mochila.n('aviso-privacidad').open&&!mochila.n('mochila').open);mochila.n('privacidad-entendido').emit('click');assert(mochila.n('mochila').open);assert.equal(mochila.c.document.activeElement,nota);
 const html=leer('index.html'),tarea=leer('docs/tareas/022-guias-sin-emergentes.md');
