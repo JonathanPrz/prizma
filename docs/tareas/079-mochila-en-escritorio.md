@@ -1,6 +1,6 @@
 # Tarea 079 · Una sola mochila: panel fijo en escritorio y diálogo en el teléfono
 
-Estado: **pendiente** · Asignada a: Codex · Rama: `codex/079-mochila-escritorio` · Pull request con destino `main`
+Estado: **integrada** (PR #101) · Asignada a: Codex (lo implementó un agente de Claude) · Rama: `codex/079-mochila-escritorio` · Pull request con destino `main`
 
 ## Para qué
 El dueño dijo: «siento que la mochila y esta columna nueva cumplen una función similar». Hoy hay dos lugares con lo elegido:
