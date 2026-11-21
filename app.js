@@ -1286,7 +1286,8 @@ function pintarAccionPrincipal() {
   const candidatos = (estado.pestana === "dua" ? ["documento-clase"] :
     estado.pestana === "apoyos" ? ["guardar-descripcion", "guardar-acuerdos", "documento-estudiante"] :
     ["guardar-descripcion-trabajo", "guardar-acuerdos-trabajo", "documento-trabajo", "preparar-centro"]).map((id) => $("#" + id));
-  const elegido = principal.getClientRects().length ? principal : candidatos.find((boton) => boton.getClientRects().length);
+  // Con el panel de escritorio a la vista, la barra no se ve y el panel lleva la acción principal.
+  const elegido = [principal, $("#panel-ir"), ...candidatos].find((boton) => boton?.getClientRects().length);
   document.querySelectorAll("main .boton-principal").forEach((boton) => {
     if (boton !== elegido) boton.classList.remove("boton-principal");
   });
@@ -1295,6 +1296,7 @@ function pintarAccionPrincipal() {
 function actualizarContinuar() {
   const b = $("#continuar");
   if (!b?.isConnected) return;
+  pintarPanelElegidas();
   pintarAccionPrincipal();
   const trabajo = estado.pestana === "trabajo", personal = estado.pestana !== "dua";
   const e = trabajo ? trabajadorActual() : estudianteActual();
@@ -1318,6 +1320,22 @@ function actualizarContinuar() {
     pasoActual === 2 ? (personal ? "Ir a acuerdos" : "Ir a tu selección") :
     personal && !terminados[2] ? "Guardar acuerdos" :
     trabajo && e?.etapa === "practica" ? "Ver documento para el centro" : "Ver documento";
+}
+// Solo se ve con 80 rem o más (CSS) y reemplaza a la barra de continuar.
+function pintarPanelElegidas() {
+  const panel = $("#panel-elegidas");
+  if (!panel) return;
+  const visible = estado.pestana === "dua" && pasoActual >= 2;
+  panel.hidden = !visible;
+  if (!visible) return;
+  const sel = elegidasOrdenadas();
+  $("#panel-conteo").textContent = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones.";
+  $("#panel-grupos").replaceChildren(...gruposPorMomento(sel).map(([nombre, acciones]) =>
+    el("section", {}, el("h3", { text: nombre }),
+      el("ul", {}, acciones.map((r) => el("li", {}, el("span", { text: textoModalidad(r.titulo, r, null) })))))));
+  const ir = $("#panel-ir");
+  ir.hidden = !sel.length;
+  ir.textContent = pasoActual === 3 ? "Ver documento" : "Ir a tu selección";
 }
 function activarPasoAbierto(id) {
   const indice = pasosActuales().indexOf(id);
@@ -2610,7 +2628,7 @@ async function iniciar() {
   }).observe($("#barra-continuar"));
   document.addEventListener("focusin", evento => {
     const barra = $("#barra-continuar"), foco = evento.target;
-    if (desplazamientoIntencional || !foco.matches(":focus-visible") || foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden) return;
+    if (desplazamientoIntencional || !foco.matches(":focus-visible") || foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden || !barra.getClientRects().length) return;
     const indicador = $("#indicador-pasos");
     const cabecera = $(".cabecera").getBoundingClientRect().bottom;
     const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?
@@ -2619,6 +2637,10 @@ async function iniciar() {
     const rect = foco.getBoundingClientRect();
     if (rect.top < superior + 8) window.scrollBy(0, rect.top - superior - 8);
     else if (rect.bottom > inferior - 8) window.scrollBy(0, Math.min(rect.bottom - inferior + 8, rect.top - superior - 8));
+  });
+  $("#panel-ir").addEventListener("click", () => {
+    if (pasoActual === 3) $("#documento-clase").click();
+    else irAlPasoVisible(3, $("#t-seleccion-dua"), $("#seleccion-dua"));
   });
   const tema = $("#tema");
   const nombrarTema = () => {
@@ -2642,7 +2664,7 @@ async function iniciar() {
       const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
       const foco = document.activeElement;
       const secciones = pasosActuales().map((id) => $("#" + id));
-      const barra = $("#barra-continuar").getBoundingClientRect().top;
+      const barraNodo = $("#barra-continuar"), barra = barraNodo.getClientRects().length ? barraNodo.getBoundingClientRect().top : innerHeight;
       const activa = secciones[pasoActual - 1];
       const rect = foco?.getBoundingClientRect();
       if (activa?.contains(foco) && rect?.bottom > padding && rect.top < barra) return;
