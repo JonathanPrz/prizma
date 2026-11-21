@@ -82,13 +82,12 @@ async function probar() {
       await pagina.close();
     }
 
-    // En el teléfono, las pestañas tampoco saltan al ocultarse el nivel.
+    // En el teléfono no se reserva el hueco del nivel oculto: las pestañas suben y no queda un espacio en blanco arriba.
     {
       const pagina = await abrir(390);
-      const antes = await caja(pagina, '#tab-dua');
       await pagina.click('#tab-apoyos');
-      const despues = await caja(pagina, '#tab-dua');
-      assert(Math.abs(despues.y - antes.y) <= 2 && Math.abs(despues.x - antes.x) <= 2, 'Las pestañas saltan a 390 px');
+      const hueco = await pagina.evaluate(() => document.querySelector('#tab-dua').getBoundingClientRect().top - document.querySelector('.cabecera').getBoundingClientRect().bottom);
+      assert(hueco <= 32, 'Espacio en blanco sobre las pestañas a 390 px: ' + hueco);
       await pagina.close();
     }
 
@@ -247,7 +246,7 @@ async function probar() {
       assert(espacio <= 24, 'Espacio bajo el indicador: ' + espacio);
       const paso1 = await pagina.locator('#paso-clase').evaluate(n => ({ alto: n.getBoundingClientRect().height, fondo: getComputedStyle(n).backgroundColor, borde: getComputedStyle(n).borderTopWidth, abierto: document.querySelector('#necesidades-campo').open }));
       assert(!paso1.abierto);
-      assert(paso1.alto <= 720, 'Alto del paso 1: ' + paso1.alto);
+      assert(paso1.alto <= 860, 'Alto del paso 1: ' + paso1.alto);
       assert.equal(paso1.fondo, 'rgba(0, 0, 0, 0)');
       assert.equal(paso1.borde, '0px');
       const casillas = await pagina.locator('#perfil .perfil-rejilla').evaluateAll(rejillas => rejillas.map(r => ({

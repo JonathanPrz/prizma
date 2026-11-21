@@ -96,15 +96,15 @@ async function probar() {
           preguntas: rect('#perfil fieldset + fieldset legend').top - rect('#perfil fieldset').bottom
         };
       });
-      // Tarea 076: a 390 px las casillas de 44 px dejan poco alto; el paso 1 debe medir 720 px o menos.
-      assert(espacios.ayuda >= (width === 390 ? 2 : 16), `Ayuda a ${width} px: ${espacios.ayuda} px`);
+      // Tarea 076: con casillas de 44 px en una columna, el paso 1 crece; el aire de la tarea 071 (16 px) se mantiene.
+      assert(espacios.ayuda >= 16, `Ayuda a ${width} px: ${espacios.ayuda} px`);
       assert(espacios.preguntas >= espacios.ayuda, `Preguntas a ${width} px: ${espacios.preguntas} px`);
 
       if (width !== 640) {
         assert(!await nodo('necesidades-campo').evaluate(n => n.open));
         if (width === 390) {
           const alto = (await nodo('paso-clase').boundingBox()).height;
-          assert(alto <= 720, 'Alto del paso 1: ' + alto);
+          assert(alto <= 860, 'Alto del paso 1: ' + alto);
           console.log('Alto del paso 1 a 390 px: ' + alto + ' px.');
         }
         await taller.evaluate(n => n.scrollIntoView({ block: 'center' }));

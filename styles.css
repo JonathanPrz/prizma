@@ -595,10 +595,8 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
   }
   .disposicion:has(.panel-elegidas:not([hidden])) .barra-continuar { display: none; }
 }
-/* El selector de nivel se oculta en «Para un estudiante»: las pestañas no se mueven. */
-@media (max-width: 48rem) {
-  .contexto:has(> #nivel-campo[hidden])::before { content: ""; width: 100%; height: 4.4rem; }
-}
+/* El selector de nivel se oculta en «Para un estudiante»: en escritorio las pestañas no se mueven.
+   En el teléfono no se reserva el hueco, porque quedaba un espacio en blanco arriba. */
 @media (min-width: 48.0625rem) {
   .pestanas { margin-left: auto; }
   .contexto:has(> #nivel-campo[hidden]) { min-height: 4.4rem; }
@@ -612,35 +610,12 @@ dialog { font: inherit; box-shadow: 0 .5rem 2rem var(--sombra-dialogo); }
 @media (max-width: 29.999rem) {
   .perfil-rejilla { grid-template-columns: minmax(0, 1fr); }
 }
-/* Paso 1 compacto en el teléfono: las casillas de 44 px ya ocupan casi todo el alto. */
+/* Paso 1 en el teléfono: casillas de 44 px, sin apretar el aire entre la ayuda y las preguntas (tarea 071). */
 @media (max-width: 33.999rem) {
-  #paso-clase, #paso-clase-cuerpo { gap: .5rem; }
-  #paso-clase .paso-titulo { min-height: 2rem; }
+  #paso-clase { gap: .5rem; }
+  #paso-clase-cuerpo { gap: 1rem; }
   #perfil { gap: .25rem; }
-  #perfil > fieldset + fieldset { margin-block-start: .5rem; }
-  #paso-clase :is(.ayuda, legend, summary) { line-height: 1.3; }
+  #perfil > fieldset + fieldset { margin-block-start: 1rem; }
   #paso-clase legend { margin-bottom: 0; }
-  #paso-clase .perfil-rejilla { column-gap: .5rem; }
   #paso-clase .casilla-practica, #practica-campo { min-height: 2.75rem; margin-top: 0; padding-top: .25rem; }
-  #paso-clase #necesidades-campo > summary { padding-block: .5rem; }
 }
-@media (max-width: 33.999rem) {
-  #paso-clase, #paso-clase-cuerpo { gap: .25rem; }
-  #perfil > fieldset + fieldset { margin-block-start: .25rem; }
-  #paso-clase .casilla-practica { gap: 0 .5rem; padding-top: 0; }
-  #paso-clase #necesidades-campo > summary { font-size: .875rem; padding-block: .5rem; }
-}
-@media (max-width: 33.999rem) {
-  #paso-clase, #paso-clase-cuerpo, #perfil { gap: .125rem; }
-  #paso-clase :is(.ayuda, legend, summary) { line-height: 1.25; }
-  #paso-clase .paso-titulo { padding-block: 0; }
-  #paso-clase #practica-campo { border-top: 0; margin-top: 0; }
-  #paso-clase #conteo-paso1 { margin-top: .25rem; }
-}
-@media (max-width: 33.999rem) {
-  #paso-clase .paso-titulo { min-height: 1.75rem; }
-  #paso-clase #practica-campo { padding-block: 0; }
-  #paso-clase #perfil > fieldset + fieldset { margin-block-start: 0; }
-  #paso-clase #conteo-paso1 { margin-top: .125rem; }
-}
-@media (max-width: 33.999rem) { #paso-clase { gap: 0; } }
