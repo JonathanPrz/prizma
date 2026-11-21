@@ -67,9 +67,10 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Historial: tareas 047 y 053 · PR #62 y #73
 
 ### Lo elegido nunca depende solo del color
-- Hoy: lo elegido lleva fondo `--acento-suave`, borde `--acento` y un ✓ (`aria-hidden`). Cada aviso lleva ícono y texto. El ✓ se reserva para «elegido»: «Acuerdos completos» no lo usa.
-- Por qué: WCAG 2.2 AA. Al quitar el visto bueno automático de los botones activos se evitó que todo pareciera elegido.
-- Historial: tareas 053 y 058 · PR #73 y #78
+- Hoy: lo elegido lleva fondo `--acento-suave` y un ✓ (`aria-hidden`); la tarjeta elegida, además, una barra izquierda de 4 px `--acento` y el botón «✓ Elegida». Cada aviso lleva ícono y texto. El ✓ se reserva para «elegido»: «Acuerdos completos» no lo usa.
+- Por qué: WCAG 2.2 AA. Al quitar el visto bueno automático de los botones activos se evitó que todo pareciera elegido. La barra de 4 px reemplaza al borde grueso completo para tener menos cajas.
+- No volver a: borde azul grueso alrededor de toda la tarjeta elegida.
+- Historial: tareas 053, 058 y 076 · PR #73, #78 y #97
 
 ### La hoja del documento es blanca también en modo oscuro
 - Hoy: `--hoja-*` valen para ambos modos (`--hoja` `#ffffff`, `--hoja-tinta` `#111111`).
@@ -116,10 +117,10 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Historial: tareas 016, 018, 036 y 069 · PR #16, #18 y #90
 
 ### Cada flujo tiene tres pasos: Describe, Elige, Acuerda
-- Hoy: un indicador de pasos fijo lleva a cada paso. En «Para un estudiante» y en Práctica y trabajo se trabaja un caso completo antes de agregar el siguiente; hasta 10 casos.
-- Por qué: menos desplazamiento y que cada caso reciba su importancia. Se descartaron los filtros laterales de apoyos (el dueño no los percibía como un flujo claro).
-- No volver a: filtros laterales ni los 3 pasos «Tu clase / Para todos / Para un estudiante» de la tarea 014.
-- Historial: tareas 014, 016, 023, 029 y 036 · PR #16, #23, #29 y #35
+- Hoy: el indicador de pasos son 3 segmentos iguales de 44 px («1 Describe», «2 Elige», «3 …») que llevan a cada paso; el actual tiene fondo `--acento-suave`, negrita y `aria-current="step"`, los hechos llevan «✓» antes del número y los pendientes van en `--tenue`. Es fijo (`sticky`) bajo la cabecera, salvo en pantallas de 40 rem o menos, donde va estático. En «Para un estudiante» y en Práctica y trabajo se trabaja un caso completo antes de agregar el siguiente; hasta 10 casos.
+- Por qué: menos desplazamiento y que cada caso reciba su importancia. Los segmentos se leen como pasos y no como enlaces sueltos. Se descartaron los filtros laterales de apoyos (el dueño no los percibía como un flujo claro).
+- No volver a: filtros laterales ni los 3 pasos «Tu clase / Para todos / Para un estudiante» de la tarea 014; enlaces subrayados sueltos como indicador; círculos con conectores (no caben bien en el teléfono).
+- Historial: tareas 014, 016, 023, 029, 036 y 076 · PR #16, #23, #29, #35 y #97
 
 ### El paso 1 de DUA se aplica al instante, sin «Guardar»
 - Hoy: un solo oyente en `#perfil` escribe en `estado.perfil` y `estado.necesidades` y repinta resultados. Existe «Borrar respuestas». Una línea viva resume lo marcado.
@@ -128,10 +129,16 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Historial: tareas 066 y 068 · PR #87 y #89
 
 ### «Momento» y «Para qué» son filtros de vista en el paso 2
-- Hoy: «Antes», «Durante» y «Después» en una fila de tres columnas; «En toda la clase» ocupa el ancho de las tres. Sin conteos en los botones. «Quitar filtros» solo se ve con filtros activos. Funcionan al instante.
+- Hoy: «Antes», «Durante» y «Después» en una fila de tres columnas, sin fondo gris (los botones conservan el borde de control); «En toda la clase» ocupa el ancho de las tres. Sin conteos en los botones. «Quitar filtros» solo se ve con filtros activos. Funcionan al instante.
 - Por qué: no describen la clase; se cambian muchas veces al recorrer las acciones, y en el paso 1 obligaban a guardar y reabrir.
 - No volver a: ponerlos en el paso 1.
-- Historial: tareas 037 y 056 · PR #37 y #76
+- Historial: tareas 037, 056 y 076 · PR #37, #76 y #97
+
+### El paso 1 en el teléfono va en una columna, con casillas de 44 px
+- Hoy: bajo `30rem`, las casillas de «¿Qué harán principalmente?» y «¿Cómo mostrarán lo que aprendieron?» van en 1 columna y miden 44 px; bajo `34rem`, los pasos (`.paso`) no llevan borde ni fondo y se separan por espacio (`gap: 2rem`). El paso 1 a 390 px, con las necesidades plegadas, mide unos 856 px (límite 860 en las pruebas). En «Para un estudiante» no se reserva el hueco del selector de nivel en el teléfono; en escritorio (desde 48,0625 rem) sí, para que las pestañas no se muevan.
+- Por qué: a 390 px las casillas medían de 24 a 34 px y algunas etiquetas se partían. Se mantiene el aire de 16 px bajo la ayuda que pidió la tarea 071, por eso el límite subió de 720 a 860 px (el dueño lo aprobó). El hueco reservado dejaba espacio en blanco sobre las pestañas.
+- No volver a: apretar el aire a 2 px para caber en 720 px.
+- Historial: tareas 071 y 076 · PR #92 y #97
 
 ### Los resultados DUA van en carpetas por momento
 - Hoy: carpetas Antes, Durante, Después y En toda la clase. En cada una van primero las acciones que responden a lo marcado; el resto queda en «Ver las otras N». Si hay necesidades marcadas, se muestra «Para lo que marcaste». Los filtros solo quitan carpetas o tarjetas.
@@ -149,17 +156,17 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 - Por qué: 4 fichas de «Antes» nunca respondían a lo marcado y quedaban escondidas; en 14 de 35 combinaciones típicas ninguna ficha de «Antes» respondía.
 - Historial: tarea 070 · PR #91
 
-### Una columna centrada y tarjetas en lista
-- Hoy: paneles y barra de contexto con `max-width: 50rem` centrados; `.bajada` y párrafos largos a `70ch`; sin panel lateral; `.tarjetas` en una columna. Los pasos y avisos de la tarjeta se ven siempre; solo se pliegan «Por qué funciona» y las fuentes.
-- Por qué: la gente se perdía (hallazgos H1, V0, V7, C6 y C7 de la auditoría de interfaz). La jerarquía y la pulcritud mandan sobre el tamaño de letra.
-- No volver a: grillas de dos columnas ni esconder los pasos de las tarjetas.
-- Historial: tareas 050 y 054 · PR #70 y #74
+### Una columna de 46 rem con tarjetas en lista y un panel de lo elegido solo en escritorio
+- Hoy: el contenido, la cabecera, los avisos y el pie comparten una columna de `46rem` (más 48 px de margen). Columna y panel se centran juntos y la columna no se mueve entre pasos ni pestañas; por eso en el paso 1 y en «Para un estudiante» queda corrida a la izquierda en escritorio. `.bajada` y párrafos largos a `70ch`. `.tarjetas` en una columna. Los pasos y avisos de la tarjeta se ven siempre; solo se pliegan «Por qué funciona» y las fuentes. Desde `80rem`, en los pasos 2 y 3 de «Para el curso (DUA)», aparece a la derecha el panel «Lo que elegiste» (`aside`, 17 rem, `position: sticky`): conteo, elegidas por momento (máximo 2 líneas cada una) y un botón («Ir a tu selección»; en el paso 3, «Ver documento»). Va después de la columna en el DOM, así que el orden de foco y de lectura no cambia. Reemplaza a la barra de continuar mientras se ve. Desaparece bajo `80rem`, con zoom alto y en proyección; no existe en «Para un estudiante» ni en Práctica y trabajo.
+- Por qué: la gente se perdía (hallazgos H1, V0, V7, C6 y C7 de la auditoría de interfaz) y la jerarquía y la pulcritud mandan sobre el tamaño de letra. A 1280 px el contenido ocupaba unos 500 px y la cabecera todo el ancho; el dueño reabrió la tarea 054 y el consejo de la tarea 076 (6 especialistas) eligió un panel limitado: D (panel limitado) 15 puntos, A (columna sola) 12, B (panel siempre) 9, C (tarjetas en 2 columnas) 0. Las decisiones anteriores son antecedentes, no vetos.
+- No volver a: tarjetas en 2 columnas (el orden visual difiere del de foco y lectura, WCAG 1.3.2 y 2.4.3, y las alturas desiguales se leen en zigzag); un panel siempre visible (duplica la barra de continuar y la mochila); esconder los pasos de las tarjetas.
+- Historial: tareas 050, 054 y 076 · PR #70, #74 y #97
 
 ### La barra de continuar es pegajosa y dice lo que hace
-- Hoy: `#barra-continuar` es `position: sticky; bottom: 0`, de ancho completo, y se detiene antes del pie. El conteo se oculta en el paso 1 con 0 elegidos. En DUA dice «N elegidas»; en el paso 3 de estudiante y trabajo dice «Guardar acuerdos» hasta que están completos, y luego «Ver documento» («Ver documento para el centro» en práctica).
+- Hoy: `.barra-continuar` es `position: sticky; bottom: 0`, de ancho completo, y se detiene antes del pie. En DUA se oculta mientras el panel «Lo que elegiste» está a la vista (desde 80 rem); en el teléfono y bajo 80 rem queda como siempre. El conteo se oculta en el paso 1 con 0 elegidos. En DUA dice «N elegidas»; en el paso 3 de estudiante y trabajo dice «Guardar acuerdos» hasta que están completos, y luego «Ver documento» («Ver documento para el centro» en práctica).
 - Por qué: la barra fija quedaba bajo el pie como una pieza suelta. «0 acciones» se leía como si no hubiera acciones.
 - No volver a: `position: fixed` con `padding-bottom` en el cuerpo.
-- Historial: tareas 055, 060 y 066 · PR #75, #80 y #87
+- Historial: tareas 055, 060, 066 y 076 · PR #75, #80, #87 y #97
 
 ### La página no salta al hacer clic
 - Hoy: el ajuste de posición del `focusin` solo actúa con foco de teclado (`:focus-visible`). Los botones que cambian de estado se actualizan en su lugar, sin recrearse ni llamar `.focus()`.
@@ -287,9 +294,9 @@ Esta bitácora muestra cómo están las cosas hoy, no el proceso. El proceso (ta
 ## Accesibilidad
 
 ### Reglas de WCAG 2.2 AA en toda la página
-- Hoy: foco visible de 3 px (`--enfoque`), objetivos táctiles de al menos 24 px (los selectores de frecuencia, de 36 px), sin desplazamiento horizontal a 390 px, `prefers-reduced-motion` respetado.
+- Hoy: foco visible de 3 px (`--enfoque`), ningún texto visible bajo 14 px (0,875 rem), objetivos táctiles de al menos 24 px en escritorio y de 44 px en el teléfono (bajo 34 rem) para las casillas del paso 1, «Por qué funciona y fuentes», Elegir, Quitar, Editar y los `summary` de carpetas; sin desplazamiento horizontal a 390 px, `prefers-reduced-motion` respetado.
 - Por qué: regla del proyecto (AGENTS.md).
-- Historial: tareas 014, 053, 060 y 061 · PR #73, #80 y #82
+- Historial: tareas 014, 053, 060, 061 y 076 · PR #73, #80, #82 y #97
 
 ### Los radios nativos se conservan
 - Hoy: las frecuencias son `input type="radio"` ocultos visualmente, no con `display: none`; las flechas del teclado y los lectores de pantalla funcionan.
