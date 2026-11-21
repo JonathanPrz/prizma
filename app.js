@@ -1057,7 +1057,7 @@ function aplicarVocabulario() {
 
 function mostrarPestana(id, enfocar = false) {
   estado.pestana = id; estado.ambito = id === "trabajo" ? "trabajo" : "educacion";
-  $("#contexto").hidden = false; $("#abrir-mochila").hidden = false;
+  $("#contexto").hidden = false; $("#abrir-mochila").hidden = false; $("#mochila").hidden = false;
   for (const nombre of ["dua", "apoyos", "trabajo"]) {
     $("#panel-" + nombre).hidden = nombre !== id;
     if (nombre !== "trabajo") {
@@ -1103,17 +1103,42 @@ function prepararPestanas() {
     evento.preventDefault(); $("#panel-" + estado.pestana).focus();
   });
   delete estado.paso; desdeHash(false);
-  $("#abrir-mochila").addEventListener("click", () => { pintarSeleccion(); $("#mochila").showModal(); });
-  $("#cerrar-mochila").addEventListener("click", () => $("#mochila").close());
-  $("#mochila").addEventListener("close", () => {
-    if (destinoNotaCurso) {
-      const nota = destinoNotaCurso;
-      destinoNotaCurso = null;
-      irAlPasoVisible(3, nota);
-    } else $("#abrir-mochila").focus();
+  $("#abrir-mochila").addEventListener("click", () => {
+    pintarSeleccion();
+    const titulo = $("#t-seleccion");
+    if (mochilaEnPanel()) { titulo.focus({ preventScroll: true }); titulo.scrollIntoView?.({ block: "nearest" }); }
+    else { $("#mochila-dialogo").showModal(); titulo.focus(); }
   });
+  $("#cerrar-mochila").addEventListener("click", cerrarMochila);
+  $("#mochila-dialogo").addEventListener("close", alCerrarMochila);
   $("#continuar").addEventListener("click", continuarPaso);
   $("#documento-estudiante").addEventListener("click", prepararDocumento);
+}
+
+// Un solo nodo (#mochila) y un solo render: desde 80 rem vive en la página como panel y debajo, en el diálogo.
+function mochilaEnPanel() { return Boolean(window.matchMedia?.("(min-width: 80rem)").matches); }
+function alCerrarMochila() {
+  if (destinoNotaCurso) {
+    const nota = destinoNotaCurso;
+    destinoNotaCurso = null;
+    irAlPasoVisible(3, nota);
+  } else $("#abrir-mochila").focus();
+}
+function cerrarMochila() {
+  const dialogo = $("#mochila-dialogo");
+  if (dialogo.open) dialogo.close(); else if (destinoNotaCurso) alCerrarMochila();
+}
+function ubicarMochila() {
+  const panel = mochilaEnPanel(), nodo = $("#mochila"), dialogo = $("#mochila-dialogo");
+  const conFoco = nodo.contains(document.activeElement);
+  if (panel && dialogo.open) dialogo.close();
+  (panel ? document.querySelector(".disposicion > .marco") : dialogo).append(nodo);
+  if (conFoco) $("#abrir-mochila").focus();
+  $("#cerrar-mochila").hidden = panel;
+  const abrir = $("#abrir-mochila");
+  if (panel) abrir.removeAttribute("aria-haspopup"); else abrir.setAttribute("aria-haspopup", "dialog");
+  // Con el panel a la vista, la única acción principal de la pantalla es la de la barra.
+  for (const id of ["pdf", "pdf-trabajo"]) $("#" + id).classList.toggle("boton-principal", !panel);
 }
 
 function limpiarClase() {
@@ -1291,8 +1316,7 @@ function pintarAccionPrincipal() {
   const candidatos = (estado.pestana === "dua" ? ["documento-clase"] :
     estado.pestana === "apoyos" ? ["guardar-descripcion", "guardar-acuerdos", "documento-estudiante"] :
     ["guardar-descripcion-trabajo", "guardar-acuerdos-trabajo", "documento-trabajo", "preparar-centro"]).map((id) => $("#" + id));
-  // Con el panel de escritorio a la vista, la barra no se ve y el panel lleva la acción principal.
-  const elegido = [principal, $("#panel-ir"), ...candidatos].find((boton) => boton?.getClientRects().length);
+  const elegido = [principal, ...candidatos].find((boton) => boton?.getClientRects().length);
   document.querySelectorAll("main .boton-principal").forEach((boton) => {
     if (boton !== elegido) boton.classList.remove("boton-principal");
   });
@@ -1323,53 +1347,17 @@ function actualizarContinuar() {
     pasoActual === 2 ? (personal ? "Ir a acuerdos" : "Ir a tu selección") :
     personal && !terminados[2] ? "Guardar acuerdos" :
     trabajo && e?.etapa === "practica" ? "Ver documento para el centro" : "Ver documento";
-  pintarPanelElegidas();
+  pintarCabeceraMochila();
   pintarAccionPrincipal();
 }
-// Solo se ve con 80 rem o más (CSS) y reemplaza a la barra de continuar. Su botón es el de la barra.
 function nombreNivel(nivel) { return NIVELES[nivel].split(" (")[0]; }
-function pintarPanelElegidas() {
-  const panel = $("#panel-elegidas");
-  if (!panel) return;
-  const personal = estado.pestana !== "dua", trabajo = estado.pestana === "trabajo";
+// Nivel y acuerdo del ámbito activo; cambian sin que cambie la lista de lo elegido.
+function pintarCabeceraMochila() {
+  const trabajo = estado.pestana === "trabajo", personal = estado.pestana !== "dua";
   const e = !personal ? null : trabajo ? trabajadorActual() : estudianteActual();
-  panel.hidden = personal && !e;
-  if (panel.hidden) return;
-  const sel = !personal ? elegidasOrdenadas() : trabajo ? elegidasTrabajo(e) : elegidasOrdenadas(e.seleccion, e);
-  const terminos = trabajo ? ["ajuste elegido", "ajustes elegidos"] : ["apoyo elegido", "apoyos elegidos"];
-  let nivel = "", conteo, grupos = [];
-  if (!personal) {
-    if (pasoActual === 1) {
-      nivel = "Nivel del curso: " + nombreNivel(estado.perfil.nivel);
-      conteo = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones para el " + voc("curso") + ".";
-    } else {
-      conteo = sel.length ? plural(sel.length, "elegida", "elegidas") + " para el " + voc("curso") : "Todavía no eliges acciones.";
-      grupos = gruposPorMomento(sel).map(([nombre, acciones]) => [nombre, acciones.map((r) => textoModalidad(r.titulo, r, null))]);
-    }
-  } else {
-    if (!trabajo) nivel = "Nivel: " + nombreNivel(nivelCaso(e));
-    conteo = pasoActual === 1 ? "Situaciones marcadas: " + Object.keys(e.dimensiones).length :
-      pasoActual === 2 ? plural(sel.length, ...terminos) : "Acuerdo: " + estadoCaso(e, trabajo);
-    if (pasoActual > 1 && sel.length) {
-      const nombreGrupo = (r) => trabajo ? (r.tipo === "practica-profesional" ? "Práctica profesional · " + TIPOS_PRACTICA[r.subtipo] : TIPOS_TRABAJO[r.subtipo]) :
-        esSuperior(e) && ["acceso", "adicional"].includes(r.tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo];
-      for (const r of sel) {
-        const nombre = nombreGrupo(r), grupo = grupos.find(([n]) => n === nombre);
-        if (grupo) grupo[1].push(textoModalidad(r.titulo, r, e)); else grupos.push([nombre, [textoModalidad(r.titulo, r, e)]]);
-      }
-    }
-  }
-  $("#t-panel-elegidas").textContent = !personal ? "Lo que elegiste" : "Lo que elegiste para " + (trabajo ? nombreTrabajador(e) : nombreEstudiante(e));
-  $("#panel-nivel").textContent = nivel;
-  $("#panel-nivel").hidden = !nivel;
-  $("#panel-conteo").textContent = conteo;
-  $("#panel-grupos").replaceChildren(...grupos.map(([nombre, titulos]) =>
-    el("section", {}, el("h3", { text: nombre }), el("ul", {}, titulos.map((t) => el("li", {}, el("span", { text: t })))))));
-  const ir = $("#panel-ir");
-  // El botón del panel es el de la barra: mismo texto, misma visibilidad y mismo estado.
-  ir.hidden = $("#continuar").hidden;
-  ir.disabled = $("#continuar").disabled;
-  ir.textContent = $("#continuar").textContent;
+  const textos = { "sel-nivel": trabajo || personal && !e ? "" : "Nivel: " + nombreNivel(personal ? nivelCaso(e) : estado.perfil.nivel),
+    "sel-acuerdo": e ? "Acuerdo: " + estadoCaso(e, trabajo) : "" };
+  for (const [id, texto] of Object.entries(textos)) { $("#" + id).textContent = texto; $("#" + id).hidden = !texto; }
 }
 function activarPasoAbierto(id) {
   const indice = pasosActuales().indexOf(id);
@@ -1714,6 +1702,10 @@ function alternar(id, estudianteId, trabajadorId, boton) {
   const foco = document.activeElement.id;
   const siguientes = foco.startsWith("quitar-clase-") ? elegidasOrdenadas().map(r => "quitar-clase-" + r.id) : [];
   const siguiente = siguientes[siguientes.indexOf(foco) + 1];
+  // Quitar desde la mochila: el foco sigue en el mismo grupo (el siguiente «Quitar», si no el anterior).
+  const hermanos = document.activeElement.matches?.("#mochila .quitar") ? [...document.activeElement.closest("details").querySelectorAll(".quitar")] : [];
+  const lugar = hermanos.indexOf(document.activeElement);
+  const siguienteMochila = (hermanos[lugar + 1] || hermanos[lugar - 1])?.id;
   const agregada = !Object.hasOwn(seleccion, id);
   if (!agregada) delete seleccion[id]; else seleccion[id] = "";
   const abiertas = new Set([...document.querySelectorAll("details[data-ficha][open]")].map((n) => n.getAttribute("data-ficha")));
@@ -1740,7 +1732,12 @@ function alternar(id, estudianteId, trabajadorId, boton) {
     requestAnimationFrame(() => { aviso.textContent = "Agregada a tu mochila"; });
   }
   if (!boton?.closest && (foco.startsWith("elegir-") || foco.startsWith("quitar-"))) {
-    (document.getElementById(foco) || (foco.startsWith("quitar-clase-") ? document.getElementById(siguiente) || $("#t-seleccion-dua") : $("#mochila .quitar") || $("#t-seleccion"))).focus();
+    (document.getElementById(foco) || (foco.startsWith("quitar-clase-") ? document.getElementById(siguiente) || $("#t-seleccion-dua") : document.getElementById(siguienteMochila) || $("#t-seleccion"))).focus();
+  }
+  if (!agregada) {
+    const aviso = $("#mochila-aviso");
+    aviso.textContent = "";
+    requestAnimationFrame(() => { aviso.textContent = `Quitaste ${textoModalidad(r.titulo, r, persona)}. Quedan ${totalMochila}.`; });
   }
 }
 
@@ -1749,36 +1746,54 @@ function elegidasOrdenadas(seleccion = estado.seleccion, e) {
     .sort((a, b) => a.tipo === "dua" && b.tipo === "dua" ? compararDua(a, b) : ordenApoyo(a) - ordenApoyo(b) || a.id.localeCompare(b.id, "es", { numeric: true }));
 }
 function totalElegidas() { return Object.keys(estado.seleccion).length + estado.estudiantes.reduce((n, e) => n + Object.keys(e.seleccion).length, 0) + (estado.trabajadores || []).reduce((n, e) => n + Object.keys(e.seleccion).length, 0); }
+let totalMochila = 0, ambitoMochila = "";
+const aperturaMochila = new Map();
 function pintarSeleccion() {
-  const trabajo = estado.ambito === "trabajo", sel = trabajo ? [] : elegidasOrdenadas();
-  const laborales = trabajo ? estado.trabajadores.map((e) => ({ e, ajustes: elegidasTrabajo(e) })).filter(({ ajustes }) => ajustes.length) : [];
-  const escolares = trabajo ? [] : estado.estudiantes.map(e => ({ e, apoyos: elegidasOrdenadas(e.seleccion, e) })).filter(({ apoyos }) => apoyos.length);
-  const total = trabajo ? laborales.reduce((n, { ajustes }) => n + ajustes.length, 0) :
-    Object.keys(estado.seleccion).length + escolares.reduce((n, { apoyos }) => n + apoyos.length, 0);
+  const trabajo = estado.ambito === "trabajo", personal = estado.pestana !== "dua";
+  const activo = trabajo ? trabajadorActual() : personal ? estudianteActual() : null;
+  const sel = trabajo ? [] : elegidasOrdenadas();
+  const casos = trabajo ? estado.trabajadores.map((e) => ({ e, lista: elegidasTrabajo(e) })) :
+    estado.estudiantes.map((e) => ({ e, lista: elegidasOrdenadas(e.seleccion, e) }));
+  const total = trabajo ? casos.reduce((n, { lista }) => n + lista.length, 0) :
+    Object.keys(estado.seleccion).length + casos.reduce((n, { lista }) => n + lista.length, 0);
+  totalMochila = total;
   $("#n-sel").textContent = total;
   $("#abrir-mochila").setAttribute("aria-label", `Mi mochila: ${plural(total, "elegida", "elegidas")}`);
-  $("#sel-curso-titulo").hidden = !sel.length;
   $("#t-seleccion").textContent = `Mi mochila (${total})`;
   $("#sel-vacia").hidden = total > 0;
   $("#pdf").disabled = !sel.length && !estado.estudiantes.some(datosEstudiante);
   actualizarRespaldo(); actualizarContinuar();
   const nombreMomento = nombresMomentos();
-  $("#sel-lista").replaceChildren(...gruposPorMomento(sel).map(([nombre, acciones]) =>
-    el("section", {}, el("h4", { text: nombre }),
-      el("ol", { class: "sel-lista" }, acciones.map((r) => itemSeleccion(r, null))))));
   $("#dua-seleccion").replaceChildren(...sel.map((r) => itemSeleccion(r, null, "quitar-clase-")));
   $("#dua-seleccion-vacia").hidden = sel.length > 0;
   $("#documento-clase").disabled = !sel.length && !estado.perfil.reflexion && !estado.perfil.meta.trim();
-  $("#sel-estudiantes").replaceChildren(...escolares.map(({ e, apoyos }) =>
-    el("section", {}, el("h3", { text: tituloEstudiante(e) }), el("p", { class: "ayuda", text: subtituloEstudiante(e) }),
-      ...Object.keys(GRUPOS_APOYOS).filter((tipo) => apoyos.some((r) => r.tipo === tipo)).map((tipo) =>
-        el("div", {}, el("h4", { text: esSuperior(e) && ["acceso", "adicional"].includes(tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[tipo] }), el("ol", { class: "sel-lista" }, apoyos.filter((r) => r.tipo === tipo).map((r) => itemSeleccion(r, e))))))));
-  $("#seleccion-trabajo").hidden = !trabajo || !laborales.length;
-  $("#cerrar-mochila")?.classList?.toggle("boton-principal", trabajo && !laborales.length);
-  $("#pdf").hidden = trabajo;
+  $("#cerrar-mochila")?.classList?.toggle("boton-principal", trabajo && !total);
+  $("#pdf").hidden = trabajo; $("#pdf-trabajo").hidden = !trabajo || !total;
   $("#borrar").textContent = trabajo ? "Borrar los datos de Práctica y trabajo" : "Borrar los datos de Educación";
-  $("#sel-vacia").textContent = trabajo ? "Todavía no eliges ajustes. Usa el botón «Elegir» de cada ajuste." : "Todavía no eliges acciones ni apoyos. Usa el botón «Elegir».";
-  $("#sel-trabajadores").replaceChildren(...laborales.map(({ e, ajustes }) => el("section", {}, el("h4", { text: tituloTrabajador(e) }), el("ol", { class: "sel-lista" }, ajustes.map((r) => itemSeleccion(r, e, "quitar-trabajo-", true))))));
+  // El ámbito activo va abierto y el resto plegado; lo que la persona abre o cierra se conserva hasta que cambie de ámbito.
+  const claveActiva = trabajo ? "t" + activo?.id : personal ? "e" + activo?.id : "curso";
+  document.querySelectorAll("#sel-grupos > details").forEach((d) => aperturaMochila.set(d.dataset.grupo, d.open));
+  if (claveActiva !== ambitoMochila) { aperturaMochila.clear(); ambitoMochila = claveActiva; }
+  const grupos = [];
+  if (!trabajo) grupos.push({ clave: "curso", activo: !personal, n: sel.length, unidad: ["acción", "acciones"], vacio: "Todavía no eliges acciones.",
+    titulo: "Para todo el " + voc("curso", estado.perfil.nivel), cuerpo: gruposPorMomento(sel).map(([nombre, acciones]) =>
+      el("section", {}, el("h4", { text: nombre }), el("ol", { class: "sel-lista" }, acciones.map((r) => itemSeleccion(r, null))))) });
+  for (const { e, lista } of casos) {
+    const nombreTipo = (r) => trabajo ? null : esSuperior(e) && ["acceso", "adicional"].includes(r.tipo) ? "Ajustes razonables" : GRUPOS_APOYOS[r.tipo];
+    const tipos = trabajo ? [] : [...new Set(lista.map(nombreTipo))];
+    const items = (r) => itemSeleccion(r, e, trabajo ? "quitar-trabajo-" : "quitar-", trabajo);
+    grupos.push({ clave: (trabajo ? "t" : "e") + e.id, activo: e === activo, n: lista.length, unidad: trabajo ? ["ajuste", "ajustes"] : ["apoyo", "apoyos"],
+      vacio: trabajo ? "Todavía no eliges ajustes." : "Todavía no eliges apoyos.", nombre: trabajo ? nombreTrabajador(e) : nombreEstudiante(e), titulo: trabajo ? tituloTrabajador(e) : tituloEstudiante(e),
+      cuerpo: [trabajo ? null : el("p", { class: "ayuda", text: subtituloEstudiante(e) }),
+        ...(trabajo ? [el("ol", { class: "sel-lista" }, lista.map(items))] : tipos.map((tipo) =>
+          el("div", {}, el("h4", { text: tipo }), el("ol", { class: "sel-lista" }, lista.filter((r) => nombreTipo(r) === tipo).map(items)))))] });
+  }
+  $("#sel-grupos").replaceChildren(...grupos.filter((g) => g.n || g.activo).sort((a, b) => b.activo - a.activo).map((g) => {
+    const abierto = aperturaMochila.has(g.clave) ? aperturaMochila.get(g.clave) : g.activo;
+    const resumen = g.activo && g.clave !== "curso" ? g.titulo : `${g.nombre || g.titulo} · ${plural(g.n, ...g.unidad)}`;
+    return el("details", { class: "grupo-mochila", "data-grupo": g.clave, ...(abierto ? { open: "" } : {}) },
+      el("summary", {}, el("h3", { text: resumen })), g.n ? g.cuerpo : el("p", { class: "ayuda", text: g.vacio }));
+  }));
   function itemSeleccion(r, e, prefijo = "quitar-", trabajo = false) {
     const seleccion = e ? e.seleccion : estado.seleccion;
     const claveNota = (trabajo ? "trabajo:" + e.id : e ? e.id : "curso") + ":" + r.id;
@@ -1799,7 +1814,7 @@ function pintarSeleccion() {
           mostrarPestana("dua");
         }
         destinoNotaCurso = document.getElementById("nota-curso-" + r.id);
-        $("#mochila").close();
+        cerrarMochila();
       } }, "Editar en el paso 3") : null;
       return el("li", {}, el("div", { class: "mochila-item" }, el("span", { class: "sel-titulo", text: titulo }), quitar),
         texto ? el("p", { class: "ayuda" }, "Nota: " + texto + " · ", editar) : null);
@@ -1943,7 +1958,7 @@ let seccionesTrabajo = { barreras: false, voz: false, ajustes: true };
 function prepararDocumentoTrabajo() {
   centroDocumento = null; inclusionDocumento = null; inclusionTrabajo = [];
   seccionesTrabajo = { barreras: false, voz: false, ajustes: true };
-  solicitudDocumento++; origenDocumento = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
+  solicitudDocumento++; origenDocumento = document.activeElement?.closest("#mochila-dialogo") ? $("#abrir-mochila") : document.activeElement;
   $("#generar-documento").disabled = false;
   $("#t-incluir-documento").textContent = "¿Qué personas incluirás en el documento de trabajo?";
   $("#formato-documento").hidden = true; mostrarContenidoDocumento("plan");
@@ -1958,7 +1973,7 @@ function prepararDocumentoTrabajo() {
       const campo = el("input", { type: "checkbox", name: "incluir", value: "trabajo:" + e.id }); campo.checked = false;
       return el("label", {}, campo, tituloTrabajador(e));
     }));
-  mostrarMensaje($("#error-documento"), ""); $("#mochila").close(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
+  mostrarMensaje($("#error-documento"), ""); cerrarMochila(); $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 function documentoTrabajo(ids = inclusionTrabajo || []) {
   const ajustes = (e) => seccionesTrabajo.ajustes ? elegidasTrabajo(e) : [];
@@ -2040,7 +2055,7 @@ function prepararDocumento() {
   inclusionTrabajo = null; $("#t-incluir-documento").textContent = "¿Qué incluirás en el documento?";
   centroDocumento = null;
   solicitudDocumento++;
-  origenDocumento = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
+  origenDocumento = document.activeElement?.closest("#mochila-dialogo") ? $("#abrir-mochila") : document.activeElement;
   $("#generar-documento").disabled = false;
   $("#formato-documento").hidden = false;
   const guion = $("#formato-guion");
@@ -2071,7 +2086,7 @@ function prepararDocumento() {
     return el("label", {}, c, texto);
   }));
   mostrarMensaje($("#error-documento"), "");
-  $("#mochila").close();
+  cerrarMochila();
   $("#incluir-documento").showModal(); $("#t-incluir-documento").focus();
 }
 async function generarDocumento() {
@@ -2115,8 +2130,8 @@ function prepararCentro() {
   if (!elegidasCentro(e).length) return;
   inclusionTrabajo = null;
   solicitudDocumento++;
-  origenCentro = document.activeElement?.closest("#mochila") ? $("#abrir-mochila") : document.activeElement;
-  $("#mochila").close();
+  origenCentro = document.activeElement?.closest("#mochila-dialogo") ? $("#abrir-mochila") : document.activeElement;
+  cerrarMochila();
   $("#decision-centro").checked = false;
   $("#opciones-centro").replaceChildren(...elegidasCentro(e).map((r) => {
     const campo = el("input", { type: "checkbox", name: "compartir-centro", value: r.id });
@@ -2547,7 +2562,7 @@ function mostrarAvisoPrivacidad(origen = document.activeElement) {
   origenAvisoPrivacidad = origen;
   const abierto = document.querySelector("dialog[open]");
   if (abierto) {
-    if (origen?.closest("dialog") === abierto && abierto.id === "mochila") {
+    if (origen?.closest("dialog") === abierto && abierto.id === "mochila-dialogo") {
       dialogoPrivacidad = abierto;
       abierto.addEventListener("close", () => mostrarAvisoPrivacidad(origen), { once: true });
       abierto.close();
@@ -2672,7 +2687,7 @@ async function iniciar() {
   }).observe($("#barra-continuar"));
   document.addEventListener("focusin", evento => {
     const barra = $("#barra-continuar"), foco = evento.target;
-    if (desplazamientoIntencional || !foco.matches(":focus-visible") || foco.closest("dialog, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden || !barra.getClientRects().length) return;
+    if (desplazamientoIntencional || !foco.matches(":focus-visible") || foco.closest("dialog, #mochila, .cabecera, #indicador-pasos, #barra-continuar, #proyeccion") || barra.hidden || !barra.getClientRects().length) return;
     const indicador = $("#indicador-pasos");
     const cabecera = $(".cabecera").getBoundingClientRect().bottom;
     const superior = getComputedStyle(indicador).position === "sticky" && indicador.getBoundingClientRect().top <= cabecera + 1 ?
@@ -2682,7 +2697,8 @@ async function iniciar() {
     if (rect.top < superior + 8) window.scrollBy(0, rect.top - superior - 8);
     else if (rect.bottom > inferior - 8) window.scrollBy(0, Math.min(rect.bottom - inferior + 8, rect.top - superior - 8));
   });
-  $("#panel-ir").addEventListener("click", continuarPaso);
+  window.matchMedia?.("(min-width: 80rem)").addEventListener("change", ubicarMochila);
+  ubicarMochila();
   const tema = $("#tema");
   const nombrarTema = () => {
     const texto = "Cambiar a modo " + (document.documentElement.dataset.tema === "oscuro" ? "claro" : "oscuro");

@@ -90,7 +90,7 @@ async function probar() {
       assert(await salida.evaluate(n => n === document.activeElement));
       assert.equal(await pagina.evaluate(() => window.solicitudesFullscreen), 1);
       assert.equal(await pagina.evaluate(() => Boolean(document.fullscreenElement)), width === 1280);
-      for (const selector of ['.cabecera', '#filtros-vista', '#barra-continuar', '#abrir-mochila', '#tarjetas button[id^="elegir-"]']) {
+      for (const selector of ['.cabecera', '#filtros-vista', '#barra-continuar', '#abrir-mochila', '#mochila', '#tarjetas button[id^="elegir-"]']) {
         assert.equal(await pagina.locator(selector + ':visible').count(), 0, selector);
       }
       assert.equal(await nodo('proyeccion').locator('button').count(), 1);

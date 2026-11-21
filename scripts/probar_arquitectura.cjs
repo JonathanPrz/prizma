@@ -88,14 +88,14 @@ async function navegador() {
       await p.keyboard.press('Escape');assert.equal(await p.evaluate(()=>document.activeElement.id),'trabajo-iniciales');
       await p.evaluate(()=>{trabajadorActual().seleccion={'tr-subtitulos':'Nota laboral'};pintarSeleccion();});
       await p.click('#abrir-mochila');assert(!await p.locator('#datos-respaldo').evaluate(n=>n.open));await p.click('#datos-respaldo > summary');const mochila=await p.locator('#mochila').innerText();assert(!mochila.includes('JP'));assert(mochila.includes('AB'));assert(mochila.includes('Educación y de Práctica y trabajo en un archivo'));
-      await p.click('#cerrar-mochila');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.evaluate(()=>estado.ambito),'trabajo');
+      if (await p.locator('#cerrar-mochila').isVisible()) await p.click('#cerrar-mochila');await p.reload();await p.waitForFunction(()=>catalogo.length>0);assert.equal(await p.evaluate(()=>estado.ambito),'trabajo');
       const texto=await p.locator('body').innerText();for(const termino of prohibidos)assert(!termino.test(texto));
       assert(!await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
       await p.screenshot({path:path.join(capturas,`trabajo-${width}-${colorScheme}.png`)});
       await p.click('#abrir-mochila');if (!await p.locator('#datos-respaldo').evaluate(n=>n.open)) await p.click('#datos-respaldo > summary');p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length>0&&estado.trabajadores.length===1&&!trabajadorActual().iniciales);
       assert.equal(await p.evaluate(()=>estudianteActual().iniciales),'JP');
       await p.selectOption('#nivel','basica');await p.click('#tab-apoyos');
-      await p.click('#abrir-mochila');assert((await p.locator('#mochila').innerText()).includes('JP'));assert(!await p.locator('#seleccion-trabajo').isVisible());
+      await p.click('#abrir-mochila');assert((await p.locator('#mochila').innerText()).includes('JP'));assert(!await p.locator('#pdf-trabajo').isVisible());
       if (!await p.locator('#datos-respaldo').evaluate(n=>n.open)) await p.click('#datos-respaldo > summary');p.once('dialog',d=>d.accept());await p.click('#borrar');await p.waitForFunction(()=>catalogo.length>0&&!estudianteActual().iniciales);
       assert.deepEqual(errores,[]);await p.close();
     }

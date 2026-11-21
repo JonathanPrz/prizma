@@ -37,12 +37,11 @@ async function probar() {
       await pagina.goto(url);
       await pagina.waitForSelector('#contexto');
       const nodo = id => pagina.locator('#' + id);
-      // Tareas 076 y 078: desde 80 rem el panel de lo elegido reemplaza a la barra en todos los pasos.
+      // Tarea 079: desde 80 rem «Mi mochila» es un panel fijo; la barra de continuar se ve en todos los anchos.
       const hayPanel = width >= 1280;
       const activo = pagina.locator('#indicador-pasos [aria-current="step"]');
-      // Tarea 078: con panel, la barra se oculta desde el paso 1.
-      assert.equal(await nodo('barra-continuar').isVisible(), !hayPanel);
-      assert.equal(await nodo('panel-elegidas').isVisible(), hayPanel);
+      assert(await nodo('barra-continuar').isVisible());
+      assert.equal(await nodo('mochila').isVisible(), hayPanel);
 
       async function verificarResultados(titulo, primerControl) {
         await pagina.waitForFunction(() => document.querySelector('#indicador-pasos [aria-current="step"]')?.textContent.includes('2 Elige'));
@@ -121,17 +120,14 @@ async function probar() {
         await nodo('ver-acciones-dua').click();
         assert(await nodo('t-acciones').evaluate(n => n === document.activeElement));
         await verificarResultados('t-acciones', '#proyectar');
-        if (hayPanel) {
-          assert(!await nodo('barra-continuar').isVisible());
-          assert.equal(await nodo('panel-conteo').textContent(), 'Todavía no eliges acciones.');
-        } else {
-          assert(await nodo('continuar-conteo').isVisible());
-          assert.match(await nodo('continuar-conteo').textContent(), /0 elegidas/);
-          assert.doesNotMatch(await nodo('continuar-conteo').textContent(), /acciones/);
-        }
+        assert(await nodo('continuar-conteo').isVisible());
+        assert.match(await nodo('continuar-conteo').textContent(), /0 elegidas/);
+        assert.doesNotMatch(await nodo('continuar-conteo').textContent(), /acciones/);
+        if (hayPanel) assert.equal(await nodo('t-seleccion').textContent(), 'Mi mochila (0)');
         const primeraDua = pagina.locator('#dua-momento-antes > ul .tarjeta button[id^="elegir-"]').first();
         await primeraDua.click();
-        assert.match(await nodo(hayPanel ? 'panel-conteo' : 'continuar-conteo').textContent(), /1 elegida/);
+        assert.match(await nodo('continuar-conteo').textContent(), /1 elegida/);
+        if (hayPanel) assert.equal(await nodo('t-seleccion').textContent(), 'Mi mochila (1)');
         await primeraDua.click();
         await verificarClics('momentos');
         await verificarClics('propositos');
@@ -182,8 +178,7 @@ async function probar() {
       await nodo('tab-apoyos').click();
       await nodo('iniciales').fill('JP');
       assert(!(await nodo('continuar-conteo').isVisible()));
-      if (hayPanel) assert.equal(await nodo('panel-ir').textContent(), await nodo('continuar').textContent());
-      else assert(await nodo('continuar').evaluate(b => {
+      assert(await nodo('continuar').evaluate(b => {
         const contenido = b.parentElement;
         return Math.abs(contenido.getBoundingClientRect().right -
           parseFloat(getComputedStyle(contenido).paddingRight) - b.getBoundingClientRect().right) <= 1;
@@ -296,8 +291,7 @@ async function probar() {
       await pagina.locator('input[name="dimension-2"][value="2"]').check();
       await nodo('guardar-descripcion').click();
       await verificarResultados('t-apoyos');
-      if (hayPanel) assert.equal(await nodo('panel-conteo').textContent(), '0 apoyos elegidos');
-      else {
+      {
         assert(await nodo('continuar-conteo').isVisible());
         assert.equal(await nodo('continuar-conteo').textContent(), '0 elegidos para JP');
       }
@@ -355,8 +349,7 @@ async function probar() {
       await elegir.click();
       assert(await botonElegir.evaluate(b => b === document.activeElement && b.getAttribute('aria-pressed') === 'true'));
       assert(await detalle.evaluate(d => d.open));
-      if (hayPanel) assert.equal(await nodo('panel-conteo').textContent(), '1 apoyo elegido');
-      else {
+      {
         assert(await nodo('continuar-conteo').isVisible());
         assert.equal(await nodo('continuar-conteo').textContent(), '1 elegido para JP');
       }
@@ -367,8 +360,7 @@ async function probar() {
             getComputedStyle(caso).position === 'absolute' && caso.getBoundingClientRect().width === 1;
         }));
       }
-      // La geometría de la barra solo importa donde la barra se ve.
-      if (!hayPanel) {
+      {
       const geometria = await pagina.evaluate(async () => {
         const barra = document.querySelector('#barra-continuar');
         const raiz = document.documentElement;
