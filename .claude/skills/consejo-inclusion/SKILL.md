@@ -151,13 +151,15 @@ Si la tarea toca `data/`, autorízalo de forma explícita y limítalo. Actualiza
 ## Paso 8 · Secretario de actas (después de integrar la tarea)
 Un agente con el modelo económico actualiza la bitácora de decisiones, `docs/bitacora.md`. No participa en el debate ni vota.
 
+**La bitácora muestra solo cómo están las cosas hoy, no el proceso.** El proceso ya queda guardado en git: tareas, pull requests y commits. Si algo se borra, se recupera desde el historial.
+
 **Qué lee:**
 - la síntesis del consejo;
-- la tarea que salió;
-- el pull request integrado;
-- los commits relacionados (`git log`), que sirven de antecedente.
+- la tarea integrada y su pull request;
+- el código actual (`app.js`, `styles.css`, `index.html`), para comprobar que la entrada describe lo que hay hoy;
+- `git log` y `docs/tareas/`, como antecedentes.
 
-**Qué registra:** solo decisiones que ya están integradas, agrupadas por tema:
+**Temas:**
 - tipografía;
 - color y tema;
 - documentos e impresión;
@@ -165,26 +167,27 @@ Un agente con el modelo económico actualiza la bitácora de decisiones, `docs/b
 - textos;
 - accesibilidad;
 - privacidad;
-- catálogo y normativa.
+- catálogo y normativa;
+- marca.
 
-**Cómo es cada entrada:**
+**Cada entrada:**
 ```
-### <Decisión en una frase>
-- Fecha: 21-11-2026 · Fuente: tarea 075, PR #96 (commit 888f1a9)
-- Qué: <la regla concreta, con valores: «cuerpo 11,5 pt en el resumen para la familia»>
-- Por qué: <la razón que se dio, con su evidencia>
-- Descartado: <alternativas que se rechazaron y por qué, si las hubo>
-- Reemplaza a: <entrada anterior, si cambia una decisión previa>
+### <Qué se decidió, en pocas palabras>
+- Hoy: <cómo es ahora, con valores concretos>
+- Por qué: <la razón final, con su evidencia>
+- No volver a: <alternativas probadas y descartadas, con su razón en una línea; omítelo si no hay>
+- Historial: tareas NNN y NNN · PR #N y #N
 ```
 
-**Reglas del secretario:**
-- **No borra entradas antiguas.** Si una decisión cambia, marca la antigua como «Reemplazada por …» y agrega la nueva.
-- **No inventa razones.** Si un commit o una tarea no dice por qué, escribe «Razón no registrada».
-- **Cita siempre** la tarea, el pull request o el commit.
+**Reglas:**
+- **Si una decisión cambia, reescribe la entrada.** No agrega otra: actualiza «Hoy» y «Por qué», mueve lo anterior a «No volver a» si fue descartado por una razón, y suma la tarea a «Historial».
+- **No describe pasos intermedios** ni versiones que nunca se integraron.
+- **No inventa razones.** Si no encuentra el porqué, escribe «Razón no registrada».
+- **Comprueba en el código** que «Hoy» es cierto.
 - **Escribe en español de Chile,** con frases cortas.
 - **Solo escribe en `docs/bitacora.md`.** El líder lo revisa y lo sube a `main`.
 
-**La primera vez,** reconstruye la bitácora con `docs/tareas/`, `docs/diseno.md` y el historial de commits.
+**La primera vez,** la reconstruye a partir de `docs/tareas/`, `docs/diseno.md`, el código actual y el historial de commits.
 
 ## Reglas
 - Los especialistas no cambian código, `data/`, `docs/fuentes/` ni `.claude/`. Escriben solo en la carpeta del consejo.
